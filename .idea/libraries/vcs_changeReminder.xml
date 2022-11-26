@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="vcs-changeReminder">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/vcs-changeReminder/lib/vcs-changeReminder.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

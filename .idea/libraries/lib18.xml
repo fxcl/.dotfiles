@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="lib18">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/featuresTrainer/lib/assertj-swing-3.17.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/featuresTrainer/lib/featuresTrainer.jar!/" />
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/featuresTrainer/lib/assertj-core-3.20.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

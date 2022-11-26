@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="indexing-shared">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/indexing-shared/lib/indexing-shared.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

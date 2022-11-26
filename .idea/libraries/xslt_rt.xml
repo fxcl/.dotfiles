@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="xslt-rt">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/xpath/lib/rt/xslt-rt.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

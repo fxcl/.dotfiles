@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="stream-debugger">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/stream-debugger/lib/stream-debugger.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

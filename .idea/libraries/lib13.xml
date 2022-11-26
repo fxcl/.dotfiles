@@ -1,0 +1,62 @@
+<component name="libraryTable">
+  <library name="lib13">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/Kotlin/kotlinc/lib/kotlin-test-junit.jar!/" />
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/Kotlin/kotlinc/lib/kotlin-runner.jar!/" />
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/Kotlin/kotlinc/lib/kotlinx-coroutines-core.jar!/" />
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/Kotlin/kotlinc/lib/kotlin-stdlib.jar!/" />
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/Kotlin/kotlinc/lib/allopen-compiler-plugin.jar!/" />
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/Kotlin/kotlinc/lib/kotlin-test-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/Kotlin/kotlinc/lib/kotlin-imports-dumper-compiler-plugin.jar!/" />
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/Kotlin/kotlinc/lib/kotlin-script-runtime.jar!/" />
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/Kotlin/kotlinc/lib/kotlin-scripting-compiler-impl.jar!/" />
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/Kotlin/kotlinc/lib/annotations-13.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/Kotlin/kotlinc/lib/kotlin-daemon-client.jar!/" />
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/Kotlin/kotlinc/lib/kotlin-annotation-processing-runtime.jar!/" />
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/Kotlin/kotlinc/lib/kotlin-reflect.jar!/" />
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/Kotlin/kotlinc/lib/mutability-annotations-compat.jar!/" />
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/Kotlin/kotlinc/lib/kotlin-test-junit-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/Kotlin/kotlinc/lib/kotlinx-serialization-compiler-plugin.jar!/" />
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/Kotlin/kotlinc/lib/kotlin-preloader.jar!/" />
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/Kotlin/kotlinc/lib/kotlin-test-testng-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/Kotlin/kotlinc/lib/kotlin-ant.jar!/" />
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/Kotlin/kotlinc/lib/kotlin-script-runtime-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/Kotlin/kotlinc/lib/jvm-abi-gen.jar!/" />
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/Kotlin/kotlinc/lib/kotlin-test-junit5-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/Kotlin/kotlinc/lib/kotlin-stdlib-js-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/Kotlin/kotlinc/lib/sam-with-receiver-compiler-plugin.jar!/" />
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/Kotlin/kotlinc/lib/kotlin-compiler.jar!/" />
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/Kotlin/kotlinc/lib/kotlin-stdlib-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/Kotlin/kotlinc/lib/parcelize-runtime.jar!/" />
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/Kotlin/kotlinc/lib/kotlin-daemon.jar!/" />
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/Kotlin/kotlinc/lib/kotlin-test-testng.jar!/" />
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/Kotlin/kotlinc/lib/kotlin-scripting-js.jar!/" />
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/Kotlin/kotlinc/lib/android-extensions-compiler.jar!/" />
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/Kotlin/kotlinc/lib/kotlin-stdlib-jdk7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/Kotlin/kotlinc/lib/kotlin-test-junit5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/Kotlin/kotlinc/lib/kotlin-scripting-compiler.jar!/" />
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/Kotlin/kotlinc/lib/kotlin-test.jar!/" />
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/Kotlin/kotlinc/lib/kotlin-reflect-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/Kotlin/kotlinc/lib/kotlin-annotation-processing.jar!/" />
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/Kotlin/kotlinc/lib/kotlin-test-js-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/Kotlin/kotlinc/lib/android-extensions-runtime.jar!/" />
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/Kotlin/kotlinc/lib/kotlin-stdlib-jdk7-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/Kotlin/kotlinc/lib/kotlin-scripting-common.jar!/" />
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/Kotlin/kotlinc/lib/parcelize-compiler.jar!/" />
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/Kotlin/kotlinc/lib/kotlin-test-js.jar!/" />
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/Kotlin/kotlinc/lib/kotlin-annotation-processing-cli.jar!/" />
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/Kotlin/kotlinc/lib/kotlin-stdlib-jdk8-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/Kotlin/kotlinc/lib/kotlin-annotations-jvm-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/Kotlin/kotlinc/lib/kotlin-stdlib-js.jar!/" />
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/Kotlin/kotlinc/lib/kotlin-scripting-jvm.jar!/" />
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/Kotlin/kotlinc/lib/js.engines.jar!/" />
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/Kotlin/kotlinc/lib/kotlin-annotations-jvm.jar!/" />
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/Kotlin/kotlinc/lib/trove4j.jar!/" />
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/Kotlin/kotlinc/lib/kotlin-stdlib-jdk8.jar!/" />
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/Kotlin/kotlinc/lib/kotlin-main-kts.jar!/" />
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/Kotlin/kotlinc/lib/noarg-compiler-plugin.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

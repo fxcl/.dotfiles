@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="laf-macos">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/laf-macos/lib/laf-macos.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

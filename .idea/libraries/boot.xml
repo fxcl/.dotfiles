@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="boot">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/marketplace/lib/boot/marketplace-bootstrap.jar!/" />
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/marketplace/lib/boot/marketplace-impl.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

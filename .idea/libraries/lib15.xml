@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="lib15">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/wsl-fs-helper/lib/wsl-fs-helper.jar!/" />
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/wsl-fs-helper/lib/kotlinx-coroutines-debug-1.5.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/wsl-fs-helper/lib/okio-2.8.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/wsl-fs-helper/lib/java-diff-utils-4.9.jar!/" />
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/wsl-fs-helper/lib/okhttp-4.9.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/wsl-fs-helper/lib/kotlinx-coroutines-slf4j-1.5.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/wsl-fs-helper/lib/bifurcan-0.2.0-alpha6.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="settings-repository">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/settings-repository/lib/settings-repository.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

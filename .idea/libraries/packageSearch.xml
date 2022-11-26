@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="packageSearch">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/packageSearch/lib/packageSearch.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

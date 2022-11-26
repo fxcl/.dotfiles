@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="lib26">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/devkit/lib/devkit.jar!/" />
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/devkit/lib/devkit-jps.jar!/" />
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/devkit/lib/3rd-party.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

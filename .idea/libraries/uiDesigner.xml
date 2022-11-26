@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="uiDesigner">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/uiDesigner/lib/uiDesigner.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

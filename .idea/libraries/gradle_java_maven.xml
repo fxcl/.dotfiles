@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="gradle-java-maven">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/gradle-java-maven/lib/gradle-java-maven.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="java-guiForms-jps">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/uiDesigner/lib/jps/java-guiForms-jps.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

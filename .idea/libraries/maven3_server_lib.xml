@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="maven3-server-lib">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/maven/lib/maven3-server-lib/archetype-catalog-2.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/maven/lib/maven3-server-lib/maven-dependency-tree-1.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/maven/lib/maven3-server-lib/lucene-core-2.4.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/maven/lib/maven3-server-lib/nexus-indexer-3.0.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/maven/lib/maven3-server-lib/nexus-indexer-artifact-1.0.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/maven/lib/maven3-server-lib/archetype-common-2.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

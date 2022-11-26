@@ -1,0 +1,19 @@
+<component name="libraryTable">
+  <library name="projector">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/cwm-plugin-projector/lib/projector/kotlinx-serialization-protobuf-jvm-1.3.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/cwm-plugin-projector/lib/projector/projector-server-30f65afc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/cwm-plugin-projector/lib/projector/projector-awt-30f65afc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/cwm-plugin-projector/lib/projector/projector-util-agent-1731046c.jar!/" />
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/cwm-plugin-projector/lib/projector/projector-util-logging-jvm-1731046c.jar!/" />
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/cwm-plugin-projector/lib/projector/Java-WebSocket-1.4.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/cwm-plugin-projector/lib/projector/projector-server-core-1731046c.jar!/" />
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/cwm-plugin-projector/lib/projector/projector-common-jvm-1731046c.jar!/" />
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/cwm-plugin-projector/lib/projector/projector-common-1731046c.jar!/" />
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/cwm-plugin-projector/lib/projector/projector-ij-common-1731046c.jar!/" />
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/cwm-plugin-projector/lib/projector/projector-util-loading-1731046c.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="rt1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/xslt-debugger/lib/rt/saxon-9he.jar!/" />
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/xslt-debugger/lib/rt/xslt-debugger-impl-rt.jar!/" />
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/xslt-debugger/lib/rt/saxon-6_5_5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/xslt-debugger/lib/rt/xalan-2_7_2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

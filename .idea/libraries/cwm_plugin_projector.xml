@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="cwm-plugin-projector">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/cwm-plugin-projector/lib/cwm-plugin-projector.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

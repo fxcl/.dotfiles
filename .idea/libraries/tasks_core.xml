@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="tasks-core">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/tasks/lib/tasks-core.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

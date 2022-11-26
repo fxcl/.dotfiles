@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="gradle-dependencyUpdater">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/gradle-dependencyUpdater/lib/gradle-dependencyUpdater.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

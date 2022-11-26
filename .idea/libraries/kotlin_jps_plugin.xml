@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="kotlin-jps-plugin">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/Kotlin/lib/jps/kotlin-jps-plugin.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
