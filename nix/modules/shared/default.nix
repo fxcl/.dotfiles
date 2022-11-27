@@ -9,7 +9,6 @@
     ./sudoers.nix
     ./lf.nix
      ./starship.nix
-    ./ssh.nix
     # ./fonts.nix
     ./gui.nix
     ./git.nix
@@ -32,11 +31,10 @@
     sudoers.enable = lib.mkDefault true;
     lf.enable = lib.mkDefault true;
     starship.enable = lib.mkDefault true;
-    ssh.enable = lib.mkDefault true;
     # fonts.enable = lib.mkDefault true;
     gui.enable = lib.mkDefault true;
     git.enable = lib.mkDefault true;
-    gpg.enable = lib.mkDefault true;
+    gpg.enable = lib.mkDefault false;
     vim.enable = lib.mkDefault true;
     java.enable = lib.mkDefault true;
     node.enable = lib.mkDefault true;

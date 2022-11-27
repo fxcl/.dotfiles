@@ -39,7 +39,7 @@ in
             ${optionalString (username != "") "  name = ${username}"}
             ${optionalString (email != "") "  email = ${email}"}
               useconfigonly = true
-              signingkey = 3A35721A
+              signingkey = 66DAB066419C4453
             ${optionalString (github_username != "") ''
             [github]
               username = ${github_username}''}
@@ -59,6 +59,11 @@ in
         };
 
         ".config/tig" = {
+          recursive = true;
+          source = ../../../config/tig;
+        };
+
+        ".aria2" = {
           recursive = true;
           source = ../../../config/tig;
         };

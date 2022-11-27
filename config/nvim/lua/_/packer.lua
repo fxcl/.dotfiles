@@ -378,7 +378,7 @@ return require('packer').startup {
 		-- Themes, UI & eye candy {{{
 		use { 'https://github.com/ahmedelgabri/vim-colors-plain', opt = true }
 		use {
-			vim.env.HOME .. '/Sites/personal/forks/vim-colors-plain',
+			vim.env.HOME .. '/workspace/forks/vim-colors-plain',
 			opt = true,
 			as = 'plain-lua',
 		}

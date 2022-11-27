@@ -7,7 +7,7 @@ let
   inherit (config.my) hostConfigHome;
 
 
-  darwinPackages = with pkgs; [ openssl gawk gnused coreutils findutils ];
+  darwinPackages = with pkgs; [ openssl gawk gnused coreutils findutils];
   nixosPackages = with pkgs; [ dwm dmenu xclip ];
 
 in
@@ -134,7 +134,7 @@ in
               # graphviz
               # nodePackages.mermaid-cli
               # difftastic
-              # vale
+              vale
               entr
               ffmpeg
               lua
@@ -164,6 +164,17 @@ in
                 #   recursive = true;
                 #   source = ../../../config/.terminfo;
                 # };
+
+                ".config/vale" = {
+                  recursive = true;
+                  source = ../../../config/vale;
+                };
+                ".vale.ini" = {
+                  source = ../../../config/.vale.ini;
+                };
+                ".ssh/config" = {
+                  source = ../../../config/ssh/config;
+                  };
               }
             ];
 

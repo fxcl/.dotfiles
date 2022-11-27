@@ -27,12 +27,13 @@ in
           "iterm2"
           "notunes"
           "keepingyouawake"
-          "google-chrome"
+          # "google-chrome"
           "mpv"
           "iina"
           "appcleaner"
           "raycast"
           "rectangle"
+         # "aria2"
           # "bitwarden"
           # "hammerspoon"
           # "adobe-acrobat-reader"
@@ -96,7 +97,7 @@ in
             logseq
             #zoom-us
             #signal-desktop
-            slack
+            #slack
             #docker
             # sqlitebrowser
             # virtualbox
