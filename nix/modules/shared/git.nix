@@ -38,18 +38,24 @@ in
             [user]
             ${optionalString (username != "") "  name = ${username}"}
             ${optionalString (email != "") "  email = ${email}"}
-              useconfigonly = true
-              signingkey = 66DAB066419C4453
+            useconfigonly = true
+
             ${optionalString (github_username != "") ''
             [github]
               username = ${github_username}''}
+
             [gpg]
               program = ${pkgs.gnupg}/bin/gpg
+
             [diff "exif"]
               textconv = ${pkgs.exiftool}/bin/exiftool
+
             ${optionalString pkgs.stdenv.isDarwin ''
             [diff "plist"]
               textconv = plutil -convert xml1 -o -''}
+
+            [include]
+            	path = ${hostConfigHome}/gitconfig
           '';
         };
 
@@ -63,9 +69,9 @@ in
           source = ../../../config/tig;
         };
 
-        ".aria2" = {
+        ".config/aria2" = {
           recursive = true;
-          source = ../../../config/tig;
+          source = ../../../config/aria2;
         };
       };
     };

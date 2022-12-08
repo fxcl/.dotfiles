@@ -181,7 +181,7 @@ in
           dock.mru-spaces = false;
 
           # Dock - Orient to the bottom
-          dock.orientation = "bottom";
+          dock.orientation = "left";
 
           # Dock - Minimize apps to their icon
           dock.minimize-to-application = true;

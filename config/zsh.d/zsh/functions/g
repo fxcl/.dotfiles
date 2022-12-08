@@ -1,0 +1,42 @@
+# vim:ft=zsh:
+
+# https://github.com/pengwynn/dotfiles/blob/master/git/git.zsh
+# Wrap git with hub
+
+emulate -L zsh
+
+command -v git >/dev/null || return 0
+
+unalias g 2>/dev/null
+
+function time_since_last_commit() {
+  local __LAST_COMMIT=$(git log --color=always -1 --pretty=format:"%C(238)%cr%Creset %C(blue)%h%Creset %s - %C(cyan)%aN %C(238)%(describe:tags,abbrev=0)%Creset" --date=auto:human 2>/dev/null)
+
+  printf "%s\n" "$__LAST_COMMIT"
+}
+
+# Hack because otherwise compdef doesn't work with zinit for some reason.
+autoload -Uz compinit compdef && compinit -C -d "${ZDOTDIR}/${zcompdump_file:-.zcompdump}"
+
+function g() {
+  local __CMD=""
+
+  if (( $+commands[hub] )); then
+    compdef g=hub
+    __CMD=$commands[hub]
+  elif (( $+commands[git] )); then
+    compdef g=git
+    __CMD=$commands[git]
+  fi
+
+  [[ $__CMD != "" ]] || return
+
+  if [ $# -eq 0 ]; then
+    printf "%s\n\n" "$(time_since_last_commit)"
+    "$__CMD" st 2> /dev/null || "$__CMD" status --short --branch
+  else
+    "$__CMD" "$@"
+  fi
+}
+
+g "$@"
