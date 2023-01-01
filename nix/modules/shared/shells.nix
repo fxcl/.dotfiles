@@ -57,11 +57,6 @@ in
 
             #XDG_RUNTIME_DIR = "${home}/.local/run";
 
-            NPM_CONFIG_USERCONFIG = "$XDG_CONFIG_HOME/npm/config";
-            NPM_CONFIG_TMP = "$XDG_RUNTIME_DIR/npm";
-            NPM_CONFIG_CACHE = "$XDG_CACHE_HOME/npm";
-            NPM_CONFIG_PREFIX = "$XDG_CACHE_HOME/npm";
-            NODE_REPL_HISTORY = "$XDG_CACHE_HOME/node/repl_history";
 
             IPYTHONDIR = "$XDG_CONFIG_HOME/ipython";
             PIP_CONFIG_FILE = "$XDG_CONFIG_HOME/pip/pip.conf";
@@ -135,11 +130,13 @@ in
               # buku
               graph-easy
               graphviz
-              nodePackages.mermaid-cli
+
               difftastic
               vale
               entr
               ffmpeg
+              fnm
+              ttfautohint
             ];
           };
 

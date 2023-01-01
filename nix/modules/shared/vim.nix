@@ -47,17 +47,18 @@ in
           # shellcheck
           # shfmt # Doesn't work with zsh, only sh & bash
           # stylua
-          nodePackages.neovim
-          nodePackages.vscode-langservers-extracted # HTML, CSS, JSON & ESLint LSPs
-          nodePackages.prettier
-          nodePackages.bash-language-server
-          # nodePackages.dockerfile-language-server-nodejs
-          nodePackages.typescript
-          nodePackages.typescript-language-server
-          nodePackages.vim-language-server
-          nodePackages.pyright
-          nodePackages.yaml-language-server
-          nodePackages."@tailwindcss/language-server"
+
+          # # nodePackages.dockerfile-language-server-nodejs
+          # nodePackages.neovim
+          # nodePackages.vscode-langservers-extracted # HTML, CSS, JSON & ESLint LSPs
+          # nodePackages.prettier
+          # nodePackages.bash-language-server
+          # nodePackages.typescript
+          # nodePackages.typescript-language-server
+          # nodePackages.vim-language-server
+          # nodePackages.pyright
+          # nodePackages.yaml-language-server
+          # nodePackages."@tailwindcss/language-server"
           rnix-lsp
           selene # Lua linter
           # statix

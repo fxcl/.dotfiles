@@ -132,3 +132,29 @@ if [ -e /etc/motd ]; then
     tee ${HOME}/.hushlogin < /etc/motd
   fi
 fi
+
+FNM_PATH=`which fnm`
+
+if [[ -x $FNM_PATH ]]; then
+  export FNM_HOME="$HOME/.fnm"
+  export PATH="$FNM_HOME:$PATH"
+  eval "$(fnm env --use-on-cd)"
+
+  FNM_USING_LOCAL_VERSION=0
+  autoload -U add-zsh-hook
+  _fnm_autoload_hook () {
+    if [[ -f .nvmrc && -r .nvmrc || -f .node-version && -r .node-version ]]; then
+      FNM_USING_LOCAL_VERSION=1
+      fnm use --install-if-missing
+    elif [ $FNM_USING_LOCAL_VERSION -eq 1 ]; then
+      FNM_USING_LOCAL_VERSION=0
+      fnm use default --install-if-missing
+    fi
+  }
+
+  add-zsh-hook chpwd _fnm_autoload_hook && _fnm_autoload_hook
+
+  #eval "`fnm env`"
+fi
+
+PATH="$PATH:~/.fnm"
