@@ -1,9 +1,9 @@
 local ensure_packer = function()
-	local install_path = vim.fn.stdpath 'data'
-		.. '/site/pack/packer/start/packer.nvim'
+	local install_path = string.format(
+		'%s/site/pack/packer/start/packer.nvim',
+		vim.fn.stdpath 'data'
+	)
 
-	-- local install_path =
-	-- 	string.format('%s/pack/packer/start/packer.nvim', vim.fn.stdpath 'config')
 	if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
 		vim.fn.system {
 			'git',
@@ -42,10 +42,15 @@ return require('packer').startup {
 			'https://github.com/ojroques/vim-oscyank',
 			event = { 'TextYankPost *' },
 			config = function()
-				vim.cmd [[augroup __oscyank__]]
-				vim.cmd [[autocmd!]]
-				vim.cmd [[autocmd TextYankPost * if v:event.operator is 'y' && v:event.regname is '' | OSCYankReg " | endif]]
-				vim.cmd [[augroup END]]
+				local au = require '_.utils.au'
+
+				au.augroup('__oscyank__', {
+					{
+						event = { 'TextYankPost' },
+						pattern = '*',
+						command = [[if v:event.operator is 'y' && v:event.regname is '' | OSCYankReg " | endif]],
+					},
+				})
 			end,
 		}
 		use {
@@ -72,6 +77,10 @@ return require('packer').startup {
 		use { 'https://github.com/tpope/vim-eunuch' }
 		use { 'https://github.com/tpope/vim-repeat' }
 		use { 'https://github.com/machakann/vim-sandwich' }
+		use {
+			'https://github.com/nullchilly/fsread.nvim',
+			cmd = { 'FSRead', 'FSToggle', 'FSClear' },
+		}
 		use {
 			'https://github.com/numToStr/Comment.nvim',
 			requires = {
@@ -141,8 +150,16 @@ return require('packer').startup {
 				},
 				{
 					'https://github.com/folke/todo-comments.nvim',
+					cmd = { 'Todocomment' },
 					config = function()
 						require('todo-comments').setup {}
+					end,
+				},
+				{
+					'https://github.com/folke/trouble.nvim',
+					cmd = { 'Trouble' },
+					config = function()
+						require('trouble').setup { icons = false }
 					end,
 				},
 				{
@@ -154,6 +171,7 @@ return require('packer').startup {
 				{ 'https://github.com/mickael-menu/zk-nvim' },
 				{
 					'https://github.com/danymat/neogen',
+					cmd = { 'Neogen' },
 					config = function()
 						require('neogen').setup { snippet_engine = 'luasnip' }
 					end,
@@ -166,6 +184,13 @@ return require('packer').startup {
 				},
 				{
 					'https://github.com/b0o/SchemaStore.nvim',
+				},
+				{
+					'https://github.com/DNLHC/glance.nvim',
+					cmd = { 'Glance' },
+					config = function()
+						require('glance').setup {}
+					end,
 				},
 			},
 		}
@@ -210,139 +235,31 @@ return require('packer').startup {
 					cmd = 'TSPlaygroundToggle',
 					after = 'nvim-treesitter',
 				},
-				{
-					'https://github.com/kristijanhusak/orgmode.nvim',
-					config = function()
-						require('orgmode').setup_ts_grammar()
-
-						require('orgmode').setup {
-							org_agenda_files = {
-								string.format('%s/org/*', vim.env.NOTES_DIR),
-							},
-							org_default_notes_file = string.format(
-								'%s/org/refile.org',
-								vim.env.NOTES_DIR
-							),
-							mappings = {
-								agenda = {
-									org_agenda_later = '>',
-									org_agenda_earlier = '<',
-								},
-								capture = {
-									org_capture_finalize = '<Leader>w',
-									org_capture_refile = 'R',
-									org_capture_kill = 'Q',
-								},
-								org = {
-									org_timestamp_up = '+',
-									org_timestamp_down = '-',
-								},
-							},
-							org_hide_emphasis_markers = true,
-							-- org_agenda_start_on_weekday = false,
-							org_todo_keywords = {
-								'TODO(t)',
-								'PROGRESS(p)',
-								'|',
-								'DONE(d)',
-								'REJECTED(r)',
-							},
-							org_agenda_templates = {
-								T = {
-									description = 'Todo',
-									template = '* TODO %?\n  DEADLINE: %T',
-									target = string.format('%s/org/todos.org', vim.env.NOTES_DIR),
-								},
-								w = {
-									description = 'Work todo',
-									template = '* TODO %?\n  DEADLINE: %T',
-									target = string.format('%s/org/work.org', vim.env.NOTES_DIR),
-								},
-							},
-							-- notifications = {
-							--   reminder_time = { 0, 1, 5, 10 },
-							--   repeater_reminder_time = { 0, 1, 5, 10 },
-							--   deadline_warning_reminder_time = { 0 },
-							--   cron_notifier = function(tasks)
-							--     for _, task in ipairs(tasks) do
-							--       local title = string.format(
-							--         '%s (%s)',
-							--         task.category,
-							--         task.humanized_duration
-							--       )
-							--       local subtitle = string.format(
-							--         '%s %s %s',
-							--         string.rep('*', task.level),
-							--         task.todo,
-							--         task.title
-							--       )
-							--       local date = string.format(
-							--         '%s: %s',
-							--         task.type,
-							--         task.time:to_string()
-							--       )
-							--
-							--       if vim.fn.executable 'terminal-notifier' == 1 then
-							--         vim.loop.spawn('terminal-notifier', {
-							--           args = {
-							--             '-title',
-							--             title,
-							--             '-subtitle',
-							--             subtitle,
-							--             '-message',
-							--             date,
-							--           },
-							--         })
-							--       end
-							--
-							--       if vim.fn.executable 'osascript' == 1 then
-							--         vim.loop.spawn('osascript', {
-							--           args = {
-							--             '-e',
-							--             string.format(
-							--               "display notification '%s - %s' with title '%s'",
-							--               subtitle,
-							--               date,
-							--               title
-							--             ),
-							--           },
-							--         })
-							--       end
-							--     end
-							--   end,
-							-- },
-						}
-					end,
-					requires = { { 'https://github.com/akinsho/org-bullets.nvim' } },
-				},
 			},
 		}
 		-- Syntax {{{
 		use {
-			'https://github.com/norcalli/nvim-colorizer.lua',
+			'https://github.com/NvChad/nvim-colorizer.lua',
 			config = function()
 				-- https://github.com/norcalli/nvim-colorizer.lua/issues/4#issuecomment-543682160
-				require('colorizer').setup({
-					'*',
-					'!vim',
-					'!packer',
-				}, {
-					css = true,
-				})
+				require('colorizer').setup {
+					filetypes = {
+						'*',
+						'!vim',
+						'!packer',
+					},
+					user_default_options = {
+						tailwind = 'lsp',
+						css = true,
+					},
+				}
 			end,
 		}
 		use { 'https://github.com/jez/vim-github-hub' }
-		use { 'https://github.com/lumiliet/vim-twig', ft = { 'twig' } }
 		use {
 			'https://github.com/jxnblk/vim-mdx-js',
 			ft = { 'mdx', 'markdown.mdx' },
 		}
-		-- use {
-		--   'https://github.com/lukas-reineke/headlines.nvim',
-		--   config = function()
-		--     require('headlines').setup()
-		--   end,
-		-- }
 		-- }}}
 
 		-- Git {{{
@@ -375,20 +292,29 @@ return require('packer').startup {
 			config = require '_.config.zenmode',
 		}
 
-		-- Themes, UI & eye candy {{{
-		use { 'https://github.com/ahmedelgabri/vim-colors-plain', opt = true }
 		use {
-			vim.env.HOME .. '/workspace/forks/vim-colors-plain',
+			'https://github.com/phaazon/mind.nvim',
+			requires = { { 'https://github.com/nvim-lua/plenary.nvim' } },
+			config = function()
+				require('mind').setup {}
+			end,
+		}
+
+		-- Themes, UI & eye candy {{{
+		use {
+			'https://github.com/ahmedelgabri/vim-colors-plain',
+			-- Disable on my personal machine, use the local fork instead
+			disable = vim.fn.hostname() == 'pandoras-box',
+			opt = true,
+			branch = 'lua',
+		}
+		use {
+			vim.env.HOME .. '/Sites/personal/forks/vim-colors-plain',
+			-- Disable on my work machine, use the git repo instead
+			disable = vim.fn.hostname() ~= 'pandoras-box',
 			opt = true,
 			as = 'plain-lua',
 		}
-		-- use { 'https://github.com/rakr/vim-two-firewatch', opt = true }
-		-- use { 'https://github.com/logico-dev/typewriter', opt = true }
-		-- use { 'https://github.com/arzg/vim-substrata', opt = true }
-		-- use { 'https://github.com/bluz71/vim-moonfly-colors', opt = true }
-		-- use { 'https://github.com/axvr/photon.vim', opt = true }
-		-- use { 'https://github.com/owickstrom/vim-colors-paramount', opt = true }
-		-- use { 'https://github.com/YorickPeterse/vim-paper', opt = true }
 		-- }}}
 
 		if packer_bootstrap then

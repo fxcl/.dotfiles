@@ -39,7 +39,10 @@ ls.config.set_config {
 
 require('luasnip.loaders.from_vscode').lazy_load {
 	path = {
-		'~/.config/nvim/pack/packer/start/friendly-snippets/snippets',
+		string.format(
+			'%s/pack/packer/start/friendly-snippets/snippets',
+			vim.fn.stdpath 'data'
+		),
 		string.format(
 			'%s/%s%s',
 			vim.env.XDG_DATA_HOME,
@@ -372,18 +375,23 @@ $0
 		),
 		s(
 			{ trig = 'img', dscr = 'Markdown image' },
-			fmt(
-				'![{alt}]({url}){next}',
-				{ alt = i(1, 'alt'), url = i(2), next = i(0) }
-			)
+			fmt('![{alt}]({url}){next}', {
+				url = f(function(_, snip)
+					return snip.env.TM_SELECTED_TEXT[1]
+						or sn(nil, i(1, 'https://example.com'))
+				end, {}),
+				alt = i(1, 'ALt'),
+				next = i(0),
+			})
 		),
 		s(
 			{ trig = 'link', dscr = 'Markdown link' },
 			fmt('[{text}]({url}){next}', {
-				text = f(function(_, snip)
-					return snip.env.TM_SELECTED_TEXT[1] or sn(nil, i(1, 'Text'))
+				url = f(function(_, snip)
+					return snip.env.TM_SELECTED_TEXT[1]
+						or sn(nil, i(1, 'https://example.com'))
 				end, {}),
-				url = i(1, 'https://example.com'),
+				text = i(1, 'Text'),
 				next = i(0),
 			})
 		),

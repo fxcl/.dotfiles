@@ -84,6 +84,10 @@ autoload -Uz _zinit
   zinit ice wait lucid atload'_zsh_autosuggest_start'
   zinit light https://github.com/zsh-users/zsh-autosuggestions
 
+  # fnm
+  zinit ice wait"2" lucid from"gh-r" as"program" atload'!eval "$(fnm env --multi --use-on-cd --log-level=quiet)"'
+  zinit light Schniz/fnm
+
   ############### Autosuggest
   export ZSH_AUTOSUGGEST_USE_ASYNC="true"
   export ZSH_AUTOSUGGEST_STRATEGY=("match_prev_cmd" "completion")
@@ -133,28 +137,10 @@ if [ -e /etc/motd ]; then
   fi
 fi
 
-FNM_PATH=`which fnm`
-
-if [[ -x $FNM_PATH ]]; then
-  export FNM_HOME="$HOME/.fnm"
-  export PATH="$FNM_HOME:$PATH"
-  eval "$(fnm env --use-on-cd)"
-
-  FNM_USING_LOCAL_VERSION=0
-  autoload -U add-zsh-hook
-  _fnm_autoload_hook () {
-    if [[ -f .nvmrc && -r .nvmrc || -f .node-version && -r .node-version ]]; then
-      FNM_USING_LOCAL_VERSION=1
-      fnm use --install-if-missing
-    elif [ $FNM_USING_LOCAL_VERSION -eq 1 ]; then
-      FNM_USING_LOCAL_VERSION=0
-      fnm use default --install-if-missing
-    fi
-  }
-
-  add-zsh-hook chpwd _fnm_autoload_hook && _fnm_autoload_hook
-
-  #eval "`fnm env`"
-fi
-
-PATH="$PATH:~/.fnm"
+add-zsh-hook -Uz chpwd (){
+  [ -d "node_modules" ] &&
+  bin=$PWD/node_modules/.bin
+  if [[ ":$PATH:" != *":$bin:"* ]]; then     # check if $bin is already in $PATH
+    export PATH=$bin:$PATH                   # prepend $bin to $PATH
+  fi
+}

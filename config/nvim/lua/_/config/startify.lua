@@ -163,6 +163,27 @@ return function()
 				'',
 				"— Goodhart's law",
 			},
+			{
+				'Any fool can write code that a computer can understand. Good programmers write code that humans can understand.',
+				'',
+				'— Martin Fowler',
+			},
+			{
+				"Quality, functionality & schedule. You get to pick only two, btw if you gonna pick functionality & schedule, I'm outta here, so every other quality Engineer because I don't want to deliver shit.",
+				'You gotta have quality, so you actually picking between functionality & schedule',
+				'',
+				'— Bryan Cantrill',
+			},
+			{
+				'The power of code to make toil go away has always fascinated me, perhaps more than the power of code to make things.',
+				'',
+				'— Rebecca Murphey',
+			},
+			{
+				'Influence is all about giving people your ideas and letting them run with it as their own.',
+				'',
+				'— Kris Nova',
+			},
 		})
 
 	vim.g.startify_bookmarks = { { t = '.git/todo.md' } }

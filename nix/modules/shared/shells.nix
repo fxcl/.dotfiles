@@ -8,7 +8,7 @@ let
 
   local_zshrc = "${hostConfigHome}/zshrc";
 
-  darwinPackages = with pkgs; [ openssl gawk gnused coreutils findutils];
+  darwinPackages = with pkgs; [ openssl gawk gnused coreutils findutils ];
   nixosPackages = with pkgs; [ dwm dmenu xclip ];
 
 in
@@ -24,7 +24,7 @@ in
 
   config = with lib;
     mkIf cfg.enable (mkMerge [
-        (if (builtins.hasAttr "launchd" options) then {
+      (if (builtins.hasAttr "launchd" options) then {
         launchd.user.agents."ui-mode-notify" = {
           serviceConfig = {
             ProgramArguments = [
@@ -166,9 +166,16 @@ in
                 })
 
               {
+                ".ssh/config" = {
+                  source = ../../../config/ssh/config;
+                };
                 ".config/zsh" = {
                   recursive = true;
                   source = ../../../config/zsh.d/zsh;
+                };
+                ".terminfo" = {
+                  recursive = true;
+                  source = ../../../config/.terminfo;
                 };
                 ".config/vale" = {
                   recursive = true;
@@ -177,14 +184,11 @@ in
                 ".vale.ini" = {
                   source = ../../../config/.vale.ini;
                 };
-                ".ssh/config" = {
-                  source = ../../../config/ssh/config;
-                  };
               }
             ];
 
           env =
-             # ====================================================
+            # ====================================================
             # This list gets set in alphabetical order.
             # So care needs to be taken if two env vars depend on each other
             # ====================================================
@@ -229,7 +233,7 @@ in
           fi
         '';
 
-       programs.zsh = {
+        programs.zsh = {
           enable = true;
           enableCompletion = true;
 
