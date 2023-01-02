@@ -52,5 +52,5 @@ function! miro#get_url(opts, ...) abort
 		endif
 	endif
 
-  return l:url
+	return l:url
 endfunction

@@ -58,7 +58,7 @@ in
           # nodePackages.vim-language-server
           # nodePackages.pyright
           # nodePackages.yaml-language-server
-          # nodePackages."@tailwindcss/language-server"
+          nodePackages."@tailwindcss/language-server"
           rnix-lsp
           selene # Lua linter
           # statix

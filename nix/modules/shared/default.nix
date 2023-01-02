@@ -22,6 +22,7 @@
     ./kube.nix
     ./python.nix
     ./vscode.nix
+    ./zk.nix
 
   ];
 
@@ -44,6 +45,6 @@
     kube.enable = lib.mkDefault false;
     python.enable = lib.mkDefault false;
     vscode.enable = lib.mkDefault true;
-
+    zk.enable = lib.mkDefault true;
   };
 }
