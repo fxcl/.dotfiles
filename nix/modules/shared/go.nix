@@ -1,10 +1,10 @@
-{ pkgs, lib, config, options, ... }:
+{ pkgs, lib, config, ... }:
 
 let
+
   cfg = config.my.modules.go;
 
 in
-
 {
   options = with lib; {
     my.modules.go = {

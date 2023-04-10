@@ -1,10 +1,10 @@
 { pkgs, lib, config, options, ... }:
 
 let
+
   cfg = config.my.modules.zk;
 
 in
-
 {
   options = with lib; {
     my.modules.zk = {

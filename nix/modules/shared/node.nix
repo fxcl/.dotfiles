@@ -1,10 +1,9 @@
-{ pkgs, lib, config, options, ... }:
+{ pkgs, lib, config, inputs, ... }:
 
 let
+
   cfg = config.my.modules.node;
-
 in
-
 {
   options = with lib; {
     my.modules.node = {

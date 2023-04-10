@@ -1,10 +1,9 @@
-{ pkgs, lib, config, options, ... }:
+{ pkgs, lib, config, ... }:
 
 let
+
   cfg = config.my.modules.python;
-
 in
-
 {
   options = with lib; {
     my.modules.python = {
@@ -37,8 +36,8 @@ in
                   vobject # Mutt calendar script
                 ]))
               # nixos.python38Packages.httpx
+              ruff
             ];
-
         };
 
         hm.file = {

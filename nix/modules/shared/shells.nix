@@ -76,7 +76,7 @@ in
             HOMEBREW_INSTALL_CLEANUP = "1";
             HOMEBREW_NO_INSECURE_REDIRECT = "1";
             HOMEBREW_NO_ANALYTICS = "1";
-            # # HOMEBREW_CASK_OPTS=--require-sha
+            # HOMEBREW_CASK_OPTS=--require-sha
             # HOMEBREW_CASK_OPTS = "";
             # HOMEBREW_INSTALL_BADGE = "🍵";
             # RUST_SRC_PATH = "$(rustc - -print sysroot) /lib/rustlib/src/rust/library";

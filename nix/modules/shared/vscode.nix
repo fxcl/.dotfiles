@@ -18,6 +18,8 @@ in
     mkIf cfg.enable {
       my.hm.programs.vscode = {
         enable = true;
+        # enableUpdateCheck = false;
+        # enableExtensionUpdateCheck = true;
         mutableExtensionsDir = true;
         package = pkgs.vscodium;
         # Notes:
@@ -57,7 +59,6 @@ in
             #ms-azuretools.vscode-docker
             #ms-kubernetes-tools.vscode-kubernetes-tools
             #ms-python.vscode-pylance
-            #aaron-bond.better-comments
             #foam.foam-vscode
             #formulahendry.auto-close-tag
             msjsdiag.debugger-for-chrome
@@ -263,13 +264,15 @@ in
           "editor.tabSize" = 2; # Because I prefer smaller tab sizes.
           "editor.formatOnPaste" = false; # Do not mess with my code by default. Will trust automatic rules language by language.
           "editor.formatOnSave" = false; # Do not mess with my code by default. Will trust automatic rules language by language.
+          "editor.formatOnType" = true;
           "editor.acceptSuggestionOnEnter" = "off";
           "editor.fontSize" = 18;
           "editor.letterSpacing" = 1.0;
           "editor.lineHeight" = 22;
-          "editor.renderWhitespace" = "all";
+          "editor.renderWhitespace" = "boundary";
           "editor.suggestSelection" = "first";
-          "editor.tabCompletion" = "onlySnippets";
+          #"editor.tabCompletion" = "onlySnippets";
+          "editor.tabCompletion" = "on";
           "editor.accessibilitySupport" = "0ff";
           "editor.quickSuggestions" = {
             "strings" = true;
@@ -282,9 +285,38 @@ in
           "editor.unicodeHighlight.ambiguousCharacters" = false;
           "editor.wordWrap" = "on";
           "editor.useTabStops" = false;
-          "editor.rulers" = [ 80 120 ];
+          "editor.rulers" = [72 80 100 120];
           # scroll with an animation
           "editor.smoothScrolling" = true;
+
+          "editor.autoClosingBrackets" = "always";
+          "editor.autoClosingDelete" = "always";
+          "editor.autoClosingOvertype" = "always";
+          "editor.autoClosingQuotes" = "always";
+          "editor.definitionLinkOpensInPeek" = true;
+          "editor.experimental.pasteActions.enabled" = true;
+          "editor.foldingImportsByDefault" = true;
+          "editor.linkedEditing" = true;
+          "editor.stickyTabStops" = true;
+
+          "editor.wordWrapColumn" = 120;
+          "editor.cursorSmoothCaretAnimation" = true;
+          "editor.cursorSurroundingLines" = 5;
+          "editor.find.autoFindInSelection" = "multiline";
+
+          "diffEditor.codeLens" = true;
+          "diffEditor.diffAlgorithm" = "experimental";
+          "editor.suggest.preview" = true;
+          "editor.suggest.shareSuggestSelections" = true;
+
+          "files.trimFinalNewlines" = true; # Keep files trimmed.
+          "files.insertFinalNewline" = true; # Because POSIX compliance (todo: read why is that really important, maybe to identify the last line?)
+          #"files.autoSave" = "onFocusChange"; # Because I am lazy and I often source control the files.
+          "files.autoSave" = "onWindowChange";
+
+          "files.enableTrash" = false;
+          "files.eol" = "\n";
+          "files.trimTrailingWhitespace" = true;
 
           "workbench.fontAliasing" = "antialiased";
           "workbench.editor.highlightModifiedTabs" = true; # Better highlight on modified tabs.
@@ -316,6 +348,96 @@ in
           "workbench.editorAssociations" = {
             "*.ipynb" = "jupyter.notebook.ipynb";
           };
+          "explorer.excludeGitIgnore" = true;
+          "explorer.fileNesting.enabled" = true;
+          "explorer.fileNesting.patterns" = {
+            "Cargo.toml" = "Cargo.*";
+            "flake.nix" = "flake.lock";
+            "tsconfig.json" = "tsconfig.*.json";
+            "*.asax"= "\$(capture).*.cs, \$(capture).*.vb";
+            "*.ascx"= "\$(capture).*.cs, \$(capture).*.vb";
+            "*.ashx"= "\$(capture).*.cs, \$(capture).*.vb";
+            "*.aspx"= "\$(capture).*.cs, \$(capture).*.vb";
+            "*.bloc.dart"= "\$(capture).event.dart, \$(capture).state.dart";
+            "*.c"= "\$(capture).h";
+            "*.cc"= "\$(capture).hpp, \$(capture).h, \$(capture).hxx";
+            "*.component.ts"= "\$(capture).component.html, \$(capture).component.spec.ts, \$(capture).component.css, \$(capture).component.scss, \$(capture).component.sass, \$(capture).component.less";
+            "*.cpp"= "\$(capture).hpp, \$(capture).h, \$(capture).hxx";
+            "*.cs"= "\$(capture).*.cs";
+            "*.cshtml"= "\$(capture).cshtml.cs";
+            "*.csproj"= "*.config, *proj.user, appsettings.*, bundleconfig.json";
+            "*.css"= "\$(capture).css.map, \$(capture).*.css";
+            "*.cxx"= "\$(capture).hpp, \$(capture).h, \$(capture).hxx";
+            "*.dart"= "\$(capture).freezed.dart, \$(capture).g.dart";
+            "*.ex"= "\$(capture).html.eex, \$(capture).html.heex, \$(capture).html.leex";
+            "*.go"= "\$(capture)_test.go";
+            "*.java"= "\$(capture).class";
+            "*.js"= "\$(capture).js.map, \$(capture).*.js, \${capture}.min.js, \${capture}.d.ts, \$(capture)_*.js";
+            "*.jsx"= "\$(capture).js, \$(capture).*.jsx, \$(capture)_*.js, \$(capture)_*.jsx";
+            "*.master"= "\$(capture).*.cs, \$(capture).*.vb";
+            "*.module.ts"= "\$(capture).resolver.ts, \$(capture).controller.ts, \$(capture).service.ts";
+            "*.pubxml"= "\$(capture).pubxml.user";
+            "*.resx"= "\$(capture).*.resx, \$(capture).designer.cs, \$(capture).designer.vb";
+            "*.tex"= "\$(capture).acn, \$(capture).acr, \$(capture).alg, \$(capture).aux, \$(capture).bbl, \$(capture).blg, \$(capture).fdb_latexmk, \$(capture).fls, \$(capture).glg, \$(capture).glo, \$(capture).gls, \$(capture).idx, \$(capture).ind, \$(capture).ist, \$(capture).lof, \$(capture).log, \$(capture).lot, \$(capture).out, \$(capture).pdf, \$(capture).synctex.gz, \$(capture).toc, \$(capture).xdv";
+            "*.ts"= "\$(capture).js, \$(capture).d.ts.map, \${capture}.d.ts, \$(capture).*.ts, \$(capture)_*.js, \$(capture)_*.ts";
+            "*.tsx"= "\$(capture).ts, \$(capture).*.tsx, \$(capture)_*.ts, \$(capture)_*.tsx";
+            "*.vbproj"= "*.config, *proj.user, appsettings.*, bundleconfig.json";
+            "*.vue"= "\$(capture).*.ts, \$(capture).*.js, \$(capture).story.vue";
+            "*.xaml"= "\$(capture).xaml.cs";
+            "+layout.svelte"= "+layout.ts,+layout.ts,+layout.js,+layout.server.ts,+layout.server.js";
+            "+page.svelte"= "+page.server.ts,+page.server.js,+page.ts,+page.js ";
+            ".clang-tidy"= ".clang-format, .clangd, compile_commands.json";
+            ".env"= "*.env, .env.*, .envrc, env.d.ts";
+            ".gitignore"= ".gitattributes, .gitmodules, .gitmessage, .mailmap, .git-blame*";
+            ".project"= ".classpath";
+            "BUILD.bazel"= "*.bzl, *.bazel, *.bazelrc, bazel.rc, .bazelignore, .bazelproject, WORKSPACE";
+            "CMakeLists.txt"= "*.cmake, *.cmake.in, .cmake-format.yaml, CMakePresets.json";
+            "I*.cs"= "\$(capture).cs";
+            "artisan"= "*.env, .babelrc*, .codecov, .cssnanorc*, .env.*, .envrc, .htmlnanorc*, .lighthouserc.*, .mocha*, .postcssrc*, .terserrc*, api-extractor.json, ava.config.*, babel.config.*, contentlayer.config.*, cssnano.config.*, cypress.*, env.d.ts, formkit.config.*, formulate.config.*, histoire.config.*, htmlnanorc.*, jasmine.*, jest.config.*, jsconfig.*, karma*, lighthouserc.*, playwright.config.*, postcss.config.*, puppeteer.config.*, server.php, svgo.config.*, tailwind.config.*, tsconfig.*, tsdoc.*, unocss.config.*, vitest.config.*, webpack.config.*, webpack.mix.js, windi.config.*";
+            "astro.config.*"= "*.env, .babelrc*, .codecov, .cssnanorc*, .env.*, .envrc, .htmlnanorc*, .lighthouserc.*, .mocha*, .postcssrc*, .terserrc*, api-extractor.json, ava.config.*, babel.config.*, contentlayer.config.*, cssnano.config.*, cypress.*, env.d.ts, formkit.config.*, formulate.config.*, histoire.config.*, htmlnanorc.*, jasmine.*, jest.config.*, jsconfig.*, karma*, lighthouserc.*, playwright.config.*, postcss.config.*, puppeteer.config.*, svgo.config.*, tailwind.config.*, tsconfig.*, tsdoc.*, unocss.config.*, vitest.config.*, webpack.config.*, windi.config.*";
+            "cargo.toml"= ".clippy.toml, .rustfmt.toml, cargo.lock, clippy.toml, cross.toml, rust-toolchain.toml, rustfmt.toml";
+            "composer.json"= ".php*.cache, composer.lock, phpunit.xml*, psalm*.xml";
+            "default.nix"= "shell.nix";
+            "deno.json*"= "*.env, .env.*, .envrc, api-extractor.json, env.d.ts, import-map.json, import_map.json, jsconfig.*, tsconfig.*, tsdoc.*";
+            "dockerfile"= ".dockerignore, docker-compose.*, dockerfile*";
+            "gatsby-config.*"= "*.env, .babelrc*, .codecov, .cssnanorc*, .env.*, .envrc, .htmlnanorc*, .lighthouserc.*, .mocha*, .postcssrc*, .terserrc*, api-extractor.json, ava.config.*, babel.config.*, contentlayer.config.*, cssnano.config.*, cypress.*, env.d.ts, formkit.config.*, formulate.config.*, gatsby-browser.*, gatsby-node.*, gatsby-ssr.*, gatsby-transformer.*, histoire.config.*, htmlnanorc.*, jasmine.*, jest.config.*, jsconfig.*, karma*, lighthouserc.*, playwright.config.*, postcss.config.*, puppeteer.config.*, svgo.config.*, tailwind.config.*, tsconfig.*, tsdoc.*, unocss.config.*, vitest.config.*, webpack.config.*, windi.config.*";
+            "gemfile"= ".ruby-version, gemfile.lock";
+            "go.mod"= ".air*, go.sum";
+            "go.work"= "go.work.sum";
+            "mix.exs"= ".credo.exs, .dialyzer_ignore.exs, .formatter.exs, .iex.exs, .tool-versions, mix.lock";
+            "next.config.*"= "*.env, .babelrc*, .codecov, .cssnanorc*, .env.*, .envrc, .htmlnanorc*, .lighthouserc.*, .mocha*, .postcssrc*, .terserrc*, api-extractor.json, ava.config.*, babel.config.*, contentlayer.config.*, cssnano.config.*, cypress.*, env.d.ts, formkit.config.*, formulate.config.*, histoire.config.*, htmlnanorc.*, jasmine.*, jest.config.*, jsconfig.*, karma*, lighthouserc.*, next-env.d.ts, playwright.config.*, postcss.config.*, puppeteer.config.*, svgo.config.*, tailwind.config.*, tsconfig.*, tsdoc.*, unocss.config.*, vitest.config.*, webpack.config.*, windi.config.*";
+            "nuxt.config.*"= "*.env, .babelrc*, .codecov, .cssnanorc*, .env.*, .envrc, .htmlnanorc*, .lighthouserc.*, .mocha*, .postcssrc*, .terserrc*, api-extractor.json, ava.config.*, babel.config.*, contentlayer.config.*, cssnano.config.*, cypress.*, env.d.ts, formkit.config.*, formulate.config.*, histoire.config.*, htmlnanorc.*, jasmine.*, jest.config.*, jsconfig.*, karma*, lighthouserc.*, playwright.config.*, postcss.config.*, puppeteer.config.*, svgo.config.*, tailwind.config.*, tsconfig.*, tsdoc.*, unocss.config.*, vitest.config.*, webpack.config.*, windi.config.*";
+            "package.json"= ".browserslist*, .circleci*, .commitlint*, .cz-config.js, .czrc, .dlint.json, .dprint.json, .editorconfig, .eslint*, .firebase*, .flowconfig, .github*, .gitlab*, .gitpod*, .huskyrc*, .jslint*, .lintstagedrc*, .markdownlint*, .node-version, .nodemon*, .npm*, .nvmrc, .pm2*, .pnp.*, .pnpm*, .prettier*, .releaserc*, .sentry*, .stackblitz*, .styleci*, .stylelint*, .tazerc*, .textlint*, .tool-versions, .travis*, .versionrc*, .vscode*, .watchman*, .xo-config*, .yamllint*, .yarnrc*, Procfile, apollo.config.*, appveyor*, azure-pipelines*, bower.json, build.config.*, commitlint*, crowdin*, dangerfile*, dlint.json, dprint.json, firebase.json, grunt*, gulp*, jenkins*, lerna*, lint-staged*, nest-cli.*, netlify*, nodemon*, nx.*, package-lock.json, package.nls*.json, phpcs.xml, pm2.*, pnpm*, prettier*, pullapprove*, pyrightconfig.json, release-tasks.sh, renovate*, rollup.config.*, stylelint*, tslint*, tsup.config.*, turbo*, typedoc*, unlighthouse*, vercel*, vetur.config.*, webpack*, workspace.json, xo.config.*, yarn*";
+            "pubspec.yaml"= ".metadata, .packages, all_lint_rules.yaml, analysis_options.yaml, build.yaml, pubspec.lock, pubspec_overrides.yaml";
+            "pyproject.toml"= ".pdm.toml, pdm.lock, pyproject.toml";
+            "quasar.conf.js"= "*.env, .babelrc*, .codecov, .cssnanorc*, .env.*, .envrc, .htmlnanorc*, .lighthouserc.*, .mocha*, .postcssrc*, .terserrc*, api-extractor.json, ava.config.*, babel.config.*, contentlayer.config.*, cssnano.config.*, cypress.*, env.d.ts, formkit.config.*, formulate.config.*, histoire.config.*, htmlnanorc.*, jasmine.*, jest.config.*, jsconfig.*, karma*, lighthouserc.*, playwright.config.*, postcss.config.*, puppeteer.config.*, quasar.extensions.json, svgo.config.*, tailwind.config.*, tsconfig.*, tsdoc.*, unocss.config.*, vitest.config.*, webpack.config.*, windi.config.*";
+            "readme*"= "authors, backers*, changelog*, citation*, code_of_conduct*, codeowners, contributing*, contributors, copying, credits, governance.md, history.md, license*, maintainers, readme*, security.md, sponsors*";
+            "remix.config.*"= "*.env, .babelrc*, .codecov, .cssnanorc*, .env.*, .envrc, .htmlnanorc*, .lighthouserc.*, .mocha*, .postcssrc*, .terserrc*, api-extractor.json, ava.config.*, babel.config.*, contentlayer.config.*, cssnano.config.*, cypress.*, env.d.ts, formkit.config.*, formulate.config.*, histoire.config.*, htmlnanorc.*, jasmine.*, jest.config.*, jsconfig.*, karma*, lighthouserc.*, playwright.config.*, postcss.config.*, puppeteer.config.*, remix.*, svgo.config.*, tailwind.config.*, tsconfig.*, tsdoc.*, unocss.config.*, vitest.config.*, webpack.config.*, windi.config.*";
+            "rush.json"= ".browserslist*, .circleci*, .commitlint*, .cz-config.js, .czrc, .dlint.json, .dprint.json, .editorconfig, .eslint*, .firebase*, .flowconfig, .github*, .gitlab*, .gitpod*, .huskyrc*, .jslint*, .lintstagedrc*, .markdownlint*, .node-version, .nodemon*, .npm*, .nvmrc, .pm2*, .pnp.*, .pnpm*, .prettier*, .releaserc*, .sentry*, .stackblitz*, .styleci*, .stylelint*, .tazerc*, .textlint*, .tool-versions, .travis*, .versionrc*, .vscode*, .watchman*, .xo-config*, .yamllint*, .yarnrc*, Procfile, apollo.config.*, appveyor*, azure-pipelines*, bower.json, build.config.*, commitlint*, crowdin*, dangerfile*, dlint.json, dprint.json, firebase.json, grunt*, gulp*, jenkins*, lerna*, lint-staged*, nest-cli.*, netlify*, nodemon*, nx.*, package-lock.json, package.nls*.json, phpcs.xml, pm2.*, pnpm*, prettier*, pullapprove*, pyrightconfig.json, release-tasks.sh, renovate*, rollup.config.*, stylelint*, tslint*, tsup.config.*, turbo*, typedoc*, unlighthouse*, vercel*, vetur.config.*, webpack*, workspace.json, xo.config.*, yarn*";
+            "shims.d.ts"= "*.d.ts";
+            "svelte.config.*"= "*.env, .babelrc*, .codecov, .cssnanorc*, .env.*, .envrc, .htmlnanorc*, .lighthouserc.*, .mocha*, .postcssrc*, .terserrc*, api-extractor.json, ava.config.*, babel.config.*, contentlayer.config.*, cssnano.config.*, cypress.*, env.d.ts, formkit.config.*, formulate.config.*, histoire.config.*, htmlnanorc.*, jasmine.*, jest.config.*, jsconfig.*, karma*, lighthouserc.*, mdsvex.config.js, playwright.config.*, postcss.config.*, puppeteer.config.*, svgo.config.*, tailwind.config.*, tsconfig.*, tsdoc.*, unocss.config.*, vitest.config.*, webpack.config.*, windi.config.*";
+            "vite.config.*"= "*.env, .babelrc*, .codecov, .cssnanorc*, .env.*, .envrc, .htmlnanorc*, .lighthouserc.*, .mocha*, .postcssrc*, .terserrc*, api-extractor.json, ava.config.*, babel.config.*, contentlayer.config.*, cssnano.config.*, cypress.*, env.d.ts, formkit.config.*, formulate.config.*, histoire.config.*, htmlnanorc.*, jasmine.*, jest.config.*, jsconfig.*, karma*, lighthouserc.*, playwright.config.*, postcss.config.*, puppeteer.config.*, svgo.config.*, tailwind.config.*, tsconfig.*, tsdoc.*, unocss.config.*, vitest.config.*, webpack.config.*, windi.config.*";
+            "vue.config.*"= "*.env, .babelrc*, .codecov, .cssnanorc*, .env.*, .envrc, .htmlnanorc*, .lighthouserc.*, .mocha*, .postcssrc*, .terserrc*, api-extractor.json, ava.config.*, babel.config.*, contentlayer.config.*, cssnano.config.*, cypress.*, env.d.ts, formkit.config.*, formulate.config.*, histoire.config.*, htmlnanorc.*, jasmine.*, jest.config.*, jsconfig.*, karma*, lighthouserc.*, playwright.config.*, postcss.config.*, puppeteer.config.*, svgo.config.*, tailwind.config.*, tsconfig.*, tsdoc.*, unocss.config.*, vitest.config.*, webpack.config.*, windi.config.*";
+
+          };
+
+          "search.quickOpen.includeSymbols" = true;
+          "search.smartCase" = true;
+          "search.showLineNumbers" = true;
+          "search.seedOnFocus" = true;
+          "search.seedWithNearestWord" = true;
+          "search.useGlobalIgnoreFiles" = true;
+          "search.useParentIgnoreFiles" = true;
+          "debug.allowBreakpointsEverywhere" = true;
+          "debug.autoExpandLazyVariables" = true;
+          "debug.console.fontFamily" = "PragmataPro Liga";
+          "debug.console.fontSize" = 16;
+          "debug.javascript.autoAttachFilter" = "smart";
+          "testing.alwaysRevealTestOnStateChange" = true;
+          "merge-conflict.autoNavigateNextConflict.enabled" = true;
+          "better-comments.highlightPlainText" = true;
+
+          "security.workspace.trust.untrustedFiles" = "open";
           "terminal.integrated.drawBoldTextInBrightColors" = false;
           "terminal.integrated.defaultProfile.linux" = "zsh";
           "terminal.integrated.defaultProfile.osx" = "zsh";
@@ -350,19 +472,16 @@ in
           "git.autofetch" = true;
 
           "redhat.telemetry.enabled" = false;
-          "security.workspace.trust.untrustedFiles" = "open";
+
           "typescript.updateImportsOnFileMove.enabled" = "always";
           "telemetry.enableTelemetry" = false;
           "telemetry.enableCrashReporter" = false;
           "telemetry.telemetryLevel" = "off";
 
-          "debug.console.fontFamily" = "PragmataPro Liga";
-          "debug.console.fontSize" = 16;
-          "debug.allowBreakpointsEverywhere" = true;
-          "debug.javascript.autoAttachFilter" = "smart";
-
           "breadcrumbs.enabled" = false;
           "liveServer.settings.donotShowInfoMsg" = true;
+          "conventionalCommits.emojiFormat" = "emoji";
+          "conventionalCommits.showEditor" = true;
 
           # copilot
           # "enable-proposed-api" = ["github.copilot"];
@@ -398,15 +517,14 @@ in
             "**/*.exe" = true;
             "**/*.o" = true;
           };
-          "files.trimTrailingWhitespace" = true;
           "files.associations" = {
             "*.config" = "makefile";
           };
-
-          "files.trimFinalNewlines" = true; # Keep files trimmed.
-          "files.insertFinalNewline" = true; # Because POSIX compliance (todo: read why is that really important, maybe to identify the last line?)
-          #"files.autoSave" = "onFocusChange"; # Because I am lazy and I often source control the files.
-          "files.autoSave" = "onWindowChange";
+          "files.watcherExclude" = {
+            "**/.bloop" = true;
+            "**/.metals" = true;
+            "**/.ammonite" = true;
+          };
 
           "window.menuBarVisibility" = "toggle";
           #"window.menuBarVisibility" = "default";
@@ -589,7 +707,8 @@ in
             "editor.defaultFormatter" = "vscode.json-language-features";
           };
           "[jsonc]" = {
-            "editor.defaultFormatter" = "vscode.json-language-features";
+            #"editor.defaultFormatter" = "vscode.json-language-features";
+            "editor.defaultFormatter" = "esbenp.prettier-vscode";
           };
 
           "[properties]" = {

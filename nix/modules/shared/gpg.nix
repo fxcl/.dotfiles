@@ -1,10 +1,10 @@
-{ pkgs, lib, config, options, ... }:
+{ pkgs, lib, config, ... }:
 
 let
+
   cfg = config.my.modules.gpg;
 
 in
-
 {
   options = with lib; {
     my.modules.gpg = {
@@ -23,6 +23,7 @@ in
         enable = true;
         enableSSHSupport = true;
       };
+
       my.hm.file = {
         ".config/gnupg/gpg-agent.conf".text = ''
           # ${config.my.nix_managed}

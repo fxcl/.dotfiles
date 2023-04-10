@@ -15,8 +15,7 @@ let
       type = with types; either str (listOf str);
     };
 
-  mkOpt = type: default:
-    mkOption { inherit type default; };
+  mkOpt = type: default: mkOption { inherit type default; };
 
   mkOpt' = type: default: description:
     mkOption { inherit type default description; };
@@ -137,7 +136,7 @@ in
           # configHome = mkAliasDefinitions options.my.hm.configHome;
           dataFile = mkAliasDefinitions options.my.hm.dataFile;
           # dataHome = mkAliasDefinitions options.my.hm.dataHome;
-          # stateHome = mkAliasDefinitions options.my.hm.stateHome;
+          stateHome = mkAliasDefinitions options.my.hm.stateHome;
 
         };
 

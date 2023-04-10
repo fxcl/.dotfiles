@@ -32,3 +32,7 @@ Host gitlab
   HostName gitlab.com
   User fxcl
   IdentityFile ~/.ssh/id_rsa_gitlab
+
+
+Host 192.168.10.1
+  KexAlgorithms +diffie-hellman-group1-sha1
