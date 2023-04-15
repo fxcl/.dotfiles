@@ -32,7 +32,7 @@ in
             a5huynh.vscode-ron
             serayuzgur.crates
             tamasfe.even-better-toml
-            vadimcn.vscode-lldb
+            # vadimcn.vscode-lldb
             ms-python.python
             redhat.vscode-yaml
             bbenoist.nix
@@ -217,13 +217,13 @@ in
               version = "2.4.1";
               sha256 = "1idhsrl9w8sc0qk58dvmyyjbmfznk3f4gz2zl6s9ksyz9d06vfrd";
             }
-            # {
-            #   # https://www.vsixhub.com/vsix/8048/
-            #   name = "vscode-lldb";
-            #   publisher = "vadimcn";
-            #   version = "1.7.4";
-            #   sha256 = "5c9c4db3b03cd48612f65d382340f9e5f2506ac3e6b7be65d74ca3de064d9978";
-            # }
+            {
+              # https://www.vsixhub.com/vsix/8048/
+              name = "vscode-lldb";
+              publisher = "vadimcn";
+              version = "1.7.4";
+              sha256 = "5c9c4db3b03cd48612f65d382340f9e5f2506ac3e6b7be65d74ca3de064d9978";
+            }
             # https://www.vsixhub.com/vsix/30/
             # {
             #   name = "ccls";

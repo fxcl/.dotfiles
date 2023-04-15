@@ -19,7 +19,7 @@ in
       my.env = rec {
         GOPATH = "$XDG_DATA_HOME/go";
         GOBIN = "${GOPATH}/bin";
-        GOROOT = "${pkgs.go_1_17}/share/go";
+        GOROOT = "${pkgs.go_1_20}/share/go";
         GOPROXY = "https://goproxy.cn,direct";
         GO111MODULE = "on";
         # GOSUMDB = "goproxy.cn/sumdb/sum.golang.org";
@@ -28,7 +28,7 @@ in
 
       my.user = {
         packages = with pkgs; [
-          go_1_17
+          go_1_20
           godef
           gopls
           golint

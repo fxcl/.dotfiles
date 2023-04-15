@@ -46,6 +46,9 @@ in
           # Rust dependencies
           fd
           ripgrep
+          lazygit
+          gdu
+          bottom
           # editorconfig-checker # do I use it?
           hadolint # Docker linter
           #dotenv-linter

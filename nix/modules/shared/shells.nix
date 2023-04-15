@@ -137,7 +137,7 @@ in
               entr
               ffmpeg
               fnm
-              ttfautohint
+              # ttfautohint
             ];
           };
 
