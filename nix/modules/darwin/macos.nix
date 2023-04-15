@@ -61,8 +61,8 @@ in
             AppleShowAllExtensions = true;
             AppleShowScrollBars = "Automatic";
             AppleTemperatureUnit = "Celsius";
-            InitialKeyRepeat = 10;
-            KeyRepeat = 1;
+            InitialKeyRepeat = 12;
+            KeyRepeat = 2;
             NSAutomaticCapitalizationEnabled = false;
             NSAutomaticDashSubstitutionEnabled = false;
             NSAutomaticQuoteSubstitutionEnabled = false;
@@ -97,7 +97,7 @@ in
             show-recents = false;
             showhidden = true;
             static-only = true;
-            tilesize = 32;
+            tilesize = 36;
             # Hot corners, reset them all.
             # Not supported in nix-darwin yet
             # wvous-tl-corner = 0;

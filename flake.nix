@@ -29,6 +29,7 @@
     # MacOS inputs
     darwin.url = "github:lnl7/nix-darwin/master";
     darwin.inputs.nixpkgs.follows = "nixpkgs"; # Ensure versions are consistent.
+    emacs.url = "github:cmacrae/emacs";
 
     agenix.url = "github:ryantm/agenix";
     agenix.inputs.nixpkgs.follows = "nixpkgs";
@@ -68,7 +69,7 @@
             "https://statix.cachix.org"
             "https://cache.nixos.org"
             "https://nixpkgs.cachix.org"
-            # "https://zxfstd.cachix.org"
+            "https://zxfstd.cachix.org"
           ];
 
           settings.trusted-public-keys = [
@@ -78,7 +79,7 @@
             # "nixpkgs.cachix.org-1:q91R6hxbwFvDqTSDKwDAV4T5PxqXGxswD8vhONFMeOE="
             # "nix-linter.cachix.org-1:BdTne5LEHQfIoJh4RsoVdgvqfObpyHO5L0SCjXFShlE="
             # "statix.cachix.org-1:Z9E/g1YjCjU117QOOt07OjhljCoRZddiAm4VVESvais="
-            # "zxfstd.cachix.org-1:3Q1gyqgA9NsOshOgknDvc6fhA8gw0PFAf2qs5vJpeLU="
+            "zxfstd.cachix.org-1:3Q1gyqgA9NsOshOgknDvc6fhA8gw0PFAf2qs5vJpeLU="
           ];
 
           gc = {
@@ -133,6 +134,33 @@
             ./nix/modules/darwin
             ./nix/hosts/vvh.nix
             ./nix/hosts/darwin
+
+            ({ ... }: {
+              # 使用 nixos-cn flake 提供的包
+              # environment.systemPackages =
+              #   [ nixos-cn.legacyPackages.x86_64-linux.netease-cloud-music ];
+              # 使用 nixos-cn 的 binary cache
+              nix.binaryCaches = [
+                "https://nixos-cn.cachix.org"
+                "https://hydra.iohk.io"
+                "https://cachix.org/api/v1/cache/emacs"
+              ];
+              nix.binaryCachePublicKeys = [
+                "nixos-cn.cachix.org-1:L0jEaL6w7kwQOPlLoCR3ADx+E3Q8SEFEcB9Jaibl0Xg="
+                "hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ="
+                "emacs.cachix.org-1:b1SMJNLY/mZF6GxQE+eDBeps7WnkT0Po55TAyzwOxTY="
+              ];
+              nixpkgs.overlays = [
+                inputs.emacs.overlay
+              ];
+              # imports = [
+              #   # 将nixos-cn flake提供的registry添加到全局registry列表中
+              #   # 可在`nixos-rebuild switch`之后通过`nix registry list`查看
+              #   nixos-cn.nixosModules.nixos-cn-registries
+              #   # 引入nixos-cn flake提供的NixOS模块
+              #   nixos-cn.nixosModules.nixos-cn
+              # ];
+            })
           ];
         };
       };

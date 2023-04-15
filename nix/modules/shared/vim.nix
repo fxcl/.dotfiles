@@ -38,8 +38,12 @@ in
 
       my.user = {
         packages = with pkgs; [
+          # General dependencies
+          tree-sitter # required for treesitter "auto-install" option to work
           fzf
           par
+
+          # Rust dependencies
           fd
           ripgrep
           # editorconfig-checker # do I use it?
@@ -62,7 +66,7 @@ in
           selene # Lua linter
           statix
           sumneko-lua-language-server
-          tree-sitter # required for treesitter "auto-install" option to work
+
         ];
       };
 
