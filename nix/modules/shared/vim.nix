@@ -21,6 +21,7 @@ in
     mkIf cfg.enable {
       environment.systemPackages = with pkgs;
         [
+          luajit
           vim
           neovim-unwrapped
         ] ++ (lib.optionals (!pkgs.stdenv.isDarwin) [
@@ -38,6 +39,7 @@ in
 
       my.user = {
         packages = with pkgs; [
+
           # General dependencies
           tree-sitter # required for treesitter "auto-install" option to work
           fzf

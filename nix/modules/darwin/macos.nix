@@ -75,7 +75,7 @@ in
             NSWindowResizeTime = 0.001;
             PMPrintingExpandedStateForPrint = true;
             PMPrintingExpandedStateForPrint2 = true;
-            _HIHideMenuBar = true;
+            _HIHideMenuBar = false;
             # com.apple.mouse.tapBehavior = 1;
             # com.apple.sound.beep.feedback = 0;
             # com.apple.springing.delay = 0;
@@ -83,7 +83,7 @@ in
           };
 
           dock = {
-            autohide = true;
+            autohide = false;
             autohide-delay = 0.0;
             autohide-time-modifier = 0.0;
             dashboard-in-overlay = true;
