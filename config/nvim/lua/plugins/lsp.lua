@@ -76,20 +76,7 @@ return {
 		},
 		{ 'https://github.com/mickael-menu/zk-nvim' },
 		{
-			'https://github.com/danymat/neogen',
-			cmd = { 'Neogen' },
-			opts = { snippet_engine = 'luasnip' },
-		},
-		{
-			'https://github.com/simrat39/inlay-hints.nvim',
-			opts = {},
-		},
-		{
 			'https://github.com/b0o/SchemaStore.nvim',
-		},
-		{
-			'https://github.com/DNLHC/glance.nvim',
-			opts = {},
 		},
 	},
 	config = function()
@@ -102,7 +89,6 @@ return {
 		-- require('vim.lsp.log').set_format_func(vim.inspect)
 
 		local has_lsp, nvim_lsp = pcall(require, 'lspconfig')
-		local has_ih, ih = pcall(require, 'inlay-hints')
 		local utils = require '_.utils'
 		local au = require '_.utils.au'
 		local hl = require '_.utils.highlight'
@@ -254,15 +240,6 @@ return {
 			-- ---------------
 			client.config.flags.allow_incremental_sync = true
 
-			-- https://github.com/simrat39/inlay-hints.nvim
-			if
-				has_ih and client.name == 'lua_ls'
-				or client.name == 'tsserver'
-				or client.name == 'gopls'
-			then
-				ih.on_attach(client, bufnr)
-			end
-
 			-- ---------------
 			-- MAPPINGS
 			-- ---------------
@@ -357,9 +334,14 @@ return {
 			lua_ls = {
 				settings = {
 					Lua = {
-						-- hint = {
-						-- 	enable = true,
-						-- },
+						codeLens = { enable = true },
+						hint = {
+							enable = true,
+							arrayIndex = 'Disable',
+							setType = true,
+							paramName = 'Disable',
+						},
+						format = { enable = false },
 						diagnostics = {
 							globals = {
 								'vim',
@@ -375,6 +357,7 @@ return {
 							},
 						},
 						workspace = {
+							checkThirdParty = false,
 							maxPreload = 2000,
 							preloadFileSize = 2000,
 							library = {
@@ -393,20 +376,6 @@ return {
 					return nvim_lsp.util.root_pattern('go.mod', '.git')(fname)
 						or nvim_lsp.util.path.dirname(fname)
 				end,
-				settings = {
-					-- @NOTE: LSP[gopls] unexpected gopls setting "hints"???
-					-- gopls = {
-					-- 	hints = {
-					-- 		assignVariableTypes = true,
-					-- 		compositeLiteralFields = true,
-					-- 		compositeLiteralTypes = true,
-					-- 		constantValues = true,
-					-- 		functionTypeParameters = true,
-					-- 		parameterNames = true,
-					-- 		rangeVariableTypes = true,
-					-- 	},
-					-- },
-				},
 			},
 			tsserver = {
 				root_dir = function(fname)
@@ -420,30 +389,6 @@ return {
 						'.git'
 					)(fname) or nvim_lsp.util.path.dirname(fname))
 				end,
-				-- settings = {
-				-- 	javascript = {
-				-- 		inlayHints = {
-				-- 			includeInlayEnumMemberValueHints = true,
-				-- 			includeInlayFunctionLikeReturnTypeHints = true,
-				-- 			includeInlayFunctionParameterTypeHints = true,
-				-- 			includeInlayParameterNameHints = 'all', -- 'none' | 'literals' | 'all';
-				-- 			includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-				-- 			includeInlayPropertyDeclarationTypeHints = true,
-				-- 			includeInlayVariableTypeHints = true,
-				-- 		},
-				-- 	},
-				-- 	typescript = {
-				-- 		inlayHints = {
-				-- 			includeInlayEnumMemberValueHints = true,
-				-- 			includeInlayFunctionLikeReturnTypeHints = true,
-				-- 			includeInlayFunctionParameterTypeHints = true,
-				-- 			includeInlayParameterNameHints = 'all', -- 'none' | 'literals' | 'all';
-				-- 			includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-				-- 			includeInlayPropertyDeclarationTypeHints = true,
-				-- 			includeInlayVariableTypeHints = true,
-				-- 		},
-				-- 	},
-				-- },
 			},
 			denols = {
 				root_dir = nvim_lsp.util.root_pattern('deno.json', 'deno.jsonc'),

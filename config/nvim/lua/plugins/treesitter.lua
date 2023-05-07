@@ -7,10 +7,6 @@ return {
 		{
 			'https://github.com/nvim-treesitter/nvim-treesitter-textobjects',
 		},
-		{
-			'https://github.com/nvim-treesitter/playground',
-			cmd = 'TSPlaygroundToggle',
-		},
 	},
 	config = function()
 		-- https://github.com/nvim-treesitter/nvim-treesitter/issues/3356#issuecomment-1226348556
@@ -145,24 +141,7 @@ return {
 						and p ~= 'query'
 				end, parsers.available_parsers()),
 			},
-			autopairs = {
-				enable = true,
-				disable = disable,
-			},
-			playground = {
-				enable = true,
-				disable = {},
-				updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
-				persist_queries = false, -- Whether the query persists across vim sessions
-			},
+			context_commentstring = { enable = true },
 		}
-
-		au.augroup('__treesitter__', {
-			{
-				event = 'FileType',
-				pattern = get_filetypes(),
-				command = 'setlocal foldmethod=expr foldexpr=nvim_treesitter#foldexpr()',
-			},
-		})
 	end,
 }

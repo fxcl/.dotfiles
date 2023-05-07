@@ -1,5 +1,0 @@
-{ pkgs, ... }:
-
-{
-  enable = false;
-}

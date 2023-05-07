@@ -1,5 +1,10 @@
 -- vim: foldmethod=marker
 
+-- Enable the Lua loader byte-compilation cache.
+if vim.loader then
+	vim.loader.enable()
+end
+
 -------------------------------------------------------------------------------
 -- GENERAL {{{1
 -------------------------------------------------------------------------------
@@ -13,13 +18,13 @@ local root = vim.env.USER == 'root'
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ','
 
--- Skip vim plugins menu.vim, saves ~100ms
+-- Skip vim plugins menu.vim, saves ~100ms, disabled by lazy.nvim in plugin_manager.lua
 vim.g.did_install_default_menus = 1
-vim.g.loaded_getscript = 1
-vim.g.loaded_getscriptPlugin = 1
-vim.g.loaded_vimball = 1
-vim.g.loaded_vimballPlugin = 1
-vim.g.loaded_rrhelper = 1
+-- vim.g.loaded_getscript = 1
+-- vim.g.loaded_getscriptPlugin = 1
+-- vim.g.loaded_vimball = 1
+-- vim.g.loaded_vimballPlugin = 1
+-- vim.g.loaded_rrhelper = 1
 
 -- vim.opt. them directly if they are installed, otherwise disable them. To avoid the then
 -- runtime check cost, which can be slow.
@@ -65,6 +70,8 @@ vim.opt.shiftwidth = 2
 vim.opt.expandtab = false
 
 vim.opt.signcolumn = 'yes'
+
+vim.opt.cmdheight = 0
 
 vim.opt.emoji = false
 
@@ -180,6 +187,9 @@ vim.opt.fillchars = {
 
 vim.opt.foldlevelstart = 99 -- start unfolded
 
+vim.opt.foldmethod = 'expr'
+vim.opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+
 vim.opt.linebreak = true
 vim.opt.textwidth = 80
 vim.opt.wrap = false
@@ -199,6 +209,10 @@ vim.opt.tildeop = true
 
 -- Make sure diffs are always opened in vertical splits, also match my git settings
 vim.opt.diffopt:append 'vertical,algorithm:histogram,indent-heuristic,hiddenoff'
+
+if vim.fn.has 'nvim-0.9' > 0 then
+	vim.opt.diffopt:append 'linematch:60'
+end
 
 vim.opt.shortmess:append 'A'
 vim.opt.shortmess:append 'I'

@@ -39,11 +39,6 @@ in
           # gitlint
 
           # rustup rustc cargo
-          # rust-analyzer-unwrapped
-          (writeScriptBin "rust-doc" ''
-            #! ${stdenv.shell} -e
-            exec ${pkgs.firefox-mac}/Applications/Firefox.app/Contents/MacOS/firefox "${rustc.doc}/share/doc/rust/html/index.html"
-          '')
         ];
       };
 

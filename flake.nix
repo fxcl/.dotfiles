@@ -23,26 +23,44 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-22.11-darwin"; # Default to stable for most things.
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable"; # Unstable for some packages.
 
-    #nur.url = "github:nix-community/NUR";
-    #nur.inputs.nixpkgs.follows = "nixpkgs";
+    # Home inputs
+    homemanager = {
+      url = "github:nix-community/home-manager/release-22.11";
+      inputs.nixpkgs.follows = "nixpkgs"; # Ensure versions are consistent.
+
+    };
 
     # MacOS inputs
-    darwin.url = "github:lnl7/nix-darwin/master";
-    darwin.inputs.nixpkgs.follows = "nixpkgs"; # Ensure versions are consistent.
+    darwin = {
+      url = "github:lnl7/nix-darwin/master";
+      inputs.nixpkgs.follows = "nixpkgs"; # Ensure versions are consistent.
+    };
+
+    # nur = {
+    #   url = "github:nix-community/NUR";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
+
     emacs.url = "github:cmacrae/emacs";
 
-    agenix.url = "github:ryantm/agenix";
-    agenix.inputs.nixpkgs.follows = "nixpkgs";
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
 
-    # Home inputs
-    homemanager.url = "github:nix-community/home-manager/release-22.11";
-    homemanager.inputs.nixpkgs.follows = "nixpkgs"; # Ensure versions are consistent.
+    };
 
-    rust-overlay.url = "github:oxalica/rust-overlay";
-    rust-overlay.inputs.nixpkgs.follows = "nixpkgs";
 
-    zk.url = "github:mickael-menu/zk";
-    zk.flake = false;
+
+    rust-overlay = {
+      url = "github:oxalica/rust-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    zk = {
+      url = "github:mickael-menu/zk";
+      flake = false;
+    };
+
   };
 
   outputs = { self, ... }@inputs:
@@ -55,28 +73,28 @@
             experimental-features = nix-command flakes
           '';
 
-          settings.extra-trusted-substituters = [
-            "https://nix-cache.status.im"
-          ];
+          settings = {
+            extra-trusted-substituters = [
+              "https://nix-cache.status.im"
+            ];
 
-          settings.substituters = [
-            "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store?priority=30"
-            "https://mirrors.ustc.edu.cn/nix-channels/store"
-            "https://cache.nixos.org"
-            "https://nix-community.cachix.org"
-            "https://nixpkgs.cachix.org"
-            "https://statix.cachix.org"
-            "https://cache.nixos.org"
-            "https://nixpkgs.cachix.org"
-          ];
+            substituters = [
+              "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store?priority=30"
+              "https://mirrors.ustc.edu.cn/nix-channels/store"
+              "https://cache.nixos.org"
+              "https://nix-community.cachix.org"
+              "https://nixpkgs.cachix.org"
+              "https://statix.cachix.org"
+              "https://cache.nixos.org"
+              "https://nixpkgs.cachix.org"
+            ];
 
-          settings.trusted-public-keys = [
-            "nix-cache.status.im-1:x/93lOfLU+duPplwMSBR+OlY4+mo+dCN7n0mr4oPwgY="
-            "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-            # "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-            # "nixpkgs.cachix.org-1:q91R6hxbwFvDqTSDKwDAV4T5PxqXGxswD8vhONFMeOE="
-            # "statix.cachix.org-1:Z9E/g1YjCjU117QOOt07OjhljCoRZddiAm4VVESvais="
-          ];
+            trusted-public-keys = [
+              "nix-cache.status.im-1:x/93lOfLU+duPplwMSBR+OlY4+mo+dCN7n0mr4oPwgY="
+              "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+            ];
+          };
+
 
           gc = {
             automatic = true;
@@ -92,17 +110,14 @@
                 unstable = inputs.nixpkgs-unstable.legacyPackages.${prev.system}; # Make available unstable channel.
               }
             )
-            self.overlay
-            # Access to NUR.
+            #self.overlay
             # nur.overlay
-            # Rust overlay for them ease of setting up Rust toolchains.
             inputs.rust-overlay.overlays.default
           ];
         };
       };
     in
     {
-      overlay = import ./overlays;
 
       darwinConfigurations = {
         tony = inputs.darwin.lib.darwinSystem {
@@ -129,7 +144,6 @@
             ./nix/modules/shared
             ./nix/modules/darwin
             ./nix/hosts/vvh.nix
-            ./nix/hosts/darwin
 
             ({ ... }: {
               # 使用 nixos-cn flake 提供的包
