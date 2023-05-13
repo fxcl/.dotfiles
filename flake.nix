@@ -92,6 +92,7 @@
             trusted-public-keys = [
               "nix-cache.status.im-1:x/93lOfLU+duPplwMSBR+OlY4+mo+dCN7n0mr4oPwgY="
               "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+              "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
             ];
           };
 
@@ -108,9 +109,9 @@
             (
               final: prev: {
                 unstable = inputs.nixpkgs-unstable.legacyPackages.${prev.system}; # Make available unstable channel.
+                # zk = prev.callPackage ./nix/pkgs/zk.nix { source = inputs.zk; };
               }
             )
-            #self.overlay
             # nur.overlay
             inputs.rust-overlay.overlays.default
           ];
@@ -130,7 +131,7 @@
             sharedHostsConfig
             ./nix/modules/shared
             ./nix/modules/darwin
-            ./nix/hosts/tony.nix
+            ./nix/hosts/tony
           ];
         };
         vvh = inputs.darwin.lib.darwinSystem {
