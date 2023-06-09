@@ -33,7 +33,7 @@ in
           "appcleaner"
           "raycast"
           "rectangle"
-         # "aria2"
+          # "aria2"
           # "bitwarden"
           # "hammerspoon"
           # "adobe-acrobat-reader"
@@ -110,6 +110,49 @@ in
           ".config/mpv" = {
             recursive = true;
             source = ../../../config/mpv;
+          };
+          ".config/tig" = {
+            recursive = true;
+            source = ../../../config/tig;
+          };
+
+          ".config/aria2" = {
+            recursive = true;
+            source = ../../../config/aria2;
+          };
+          ".cargo/config" = {
+            text = ''
+              [alias]
+              i = "init"
+              nb = "new --bin"
+              nl = "new --lib"
+
+              r = "run"
+              rr = "run --release"
+              re = "run --example"
+              rer = "run --release --example"
+
+              b = "build"
+              br = "build --release"
+              be = "build --example"
+              ber = "build --release --example"
+
+              c = "check"
+              cl = "clean"
+              clp = "clippy --manifest-path=Cargo.toml --all-targets -- -D warnings"
+              d = "doc"
+              do = "doc --open"
+              t = "test"
+              ben = "bench"
+              u = "update"
+              s = "search"
+              p = "publish"
+              in = "install"
+              un = "uninstall"
+              h = "--help"
+              f = "fmt"
+              ls = "--list"
+            '';
           };
         };
       }

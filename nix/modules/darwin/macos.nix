@@ -97,7 +97,7 @@ in
             show-recents = false;
             showhidden = true;
             static-only = true;
-            tilesize = 36;
+            tilesize = 48;
             # Hot corners, reset them all.
             # Not supported in nix-darwin yet
             # wvous-tl-corner = 0;

@@ -65,16 +65,6 @@ in
           recursive = true;
           source = ../../../config/git;
         };
-
-        ".config/tig" = {
-          recursive = true;
-          source = ../../../config/tig;
-        };
-
-        ".config/aria2" = {
-          recursive = true;
-          source = ../../../config/aria2;
-        };
       };
     };
 }
