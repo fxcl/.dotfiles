@@ -24,9 +24,9 @@ sync_flake() {
     sudo nixos-rebuild switch --flake ".#$HOST_TARGET"
   else
     if [ "$DEBUG" != "0" ]; then
-      nix build ".#hosts.$HOST_TARGET" --show-trace
+      nix build ".#$HOST_TARGET" --show-trace
     else
-      nix build ".#hosts.$HOST_TARGET"
+      nix build ".#$HOST_TARGET"
     fi
 
     case "$(uname -s)" in
