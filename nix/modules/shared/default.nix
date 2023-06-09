@@ -35,7 +35,7 @@
     # fonts.enable = lib.mkDefault true;
     gui.enable = lib.mkDefault true;
     git.enable = lib.mkDefault true;
-    gpg.enable = lib.mkDefault false;
+    gpg.enable = lib.mkDefault true;
     vim.enable = lib.mkDefault true;
     java.enable = lib.mkDefault true;
     node.enable = lib.mkDefault false;
