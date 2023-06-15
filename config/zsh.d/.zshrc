@@ -87,8 +87,17 @@ autoload -Uz _zinit
   zinit light https://github.com/zsh-users/zsh-autosuggestions
 
   # fnm
-  zinit ice wait"2" lucid from"gh-r" as"program" atload'!eval "$(fnm env --multi --use-on-cd --log-level=quiet)"'
-  zinit light Schniz/fnm
+# fnm
+zinit wait lucid for \
+    as'completion' \
+    atclone"./fnm completions --shell zsh > _fnm.zsh" \
+    atload'eval $(fnm env --shell zsh)' \
+    atpull'%atclone' \
+    blockf \
+    from'gh-r' \
+    nocompile \
+    sbin'fnm' \
+  @Schniz/fnm
 
   ############### Autosuggest
   export ZSH_AUTOSUGGEST_USE_ASYNC="true"
