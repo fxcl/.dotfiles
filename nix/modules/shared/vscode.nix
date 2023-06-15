@@ -436,7 +436,6 @@ in
           "search.useParentIgnoreFiles" = true;
           "debug.allowBreakpointsEverywhere" = true;
           "debug.autoExpandLazyVariables" = true;
-          "debug.console.fontFamily" = "PragmataPro Liga";
           "debug.console.fontSize" = 16;
           "debug.javascript.autoAttachFilter" = "smart";
           "testing.alwaysRevealTestOnStateChange" = true;
@@ -448,7 +447,6 @@ in
           "terminal.integrated.defaultProfile.linux" = "zsh";
           "terminal.integrated.defaultProfile.osx" = "zsh";
           "terminal.integrated.fontSize" = 12;
-          "terminal.integrated.fontFamily" = "PragmataPro Liga";
           "terminal.integrated.cursorStyle" = "line";
           "terminal.integrated.cursorBlinking" = true;
           "terminal.integrated.letterSpacing" = 1.0;

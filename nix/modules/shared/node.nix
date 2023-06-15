@@ -25,6 +25,7 @@ in
           NPM_CONFIG_CACHE = "$XDG_CACHE_HOME/npm";
           NPM_CONFIG_PREFIX = "$XDG_CACHE_HOME/npm";
           NODE_REPL_HISTORY = "$XDG_CACHE_HOME/node/repl_history";
+          NODE_OPTIONS = "--dns-result-order=ipv4first";
 
           NPM_CONFIG_EDITOR = "$EDITOR";
           NPM_CONFIG_INIT_AUTHOR_NAME = github_username;

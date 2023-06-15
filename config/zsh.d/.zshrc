@@ -86,19 +86,6 @@ autoload -Uz _zinit
   zinit ice wait lucid atload'_zsh_autosuggest_start'
   zinit light https://github.com/zsh-users/zsh-autosuggestions
 
-  # fnm
-# fnm
-zinit wait lucid for \
-    as'completion' \
-    atclone"./fnm completions --shell zsh > _fnm.zsh" \
-    atload'eval $(fnm env --shell zsh)' \
-    atpull'%atclone' \
-    blockf \
-    from'gh-r' \
-    nocompile \
-    sbin'fnm' \
-  @Schniz/fnm
-
   ############### Autosuggest
   export ZSH_AUTOSUGGEST_USE_ASYNC="true"
   export ZSH_AUTOSUGGEST_STRATEGY=("match_prev_cmd" "completion")
@@ -130,6 +117,14 @@ if [ "$(uname)" = "Darwin" ]; then
     fi
   ) &!
 fi
+
+# fnm
+if [ -d ~/.fnm ]
+then
+  export PATH=~/.fnm:$PATH
+  eval "`fnm env`"
+fi
+
 
 eval "$(direnv hook zsh)"
 eval "$(zoxide init zsh --hook pwd)"
