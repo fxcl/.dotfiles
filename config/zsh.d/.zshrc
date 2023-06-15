@@ -86,6 +86,10 @@ autoload -Uz _zinit
   zinit ice wait lucid atload'_zsh_autosuggest_start'
   zinit light https://github.com/zsh-users/zsh-autosuggestions
 
+  # # fnm
+  # zinit ice wait"2" lucid from"gh-r" as"program" atload'!eval "$(fnm env --multi --use-on-cd --log-level=quiet)"'
+  # zinit light Schniz/fnm
+
   ############### Autosuggest
   export ZSH_AUTOSUGGEST_USE_ASYNC="true"
   export ZSH_AUTOSUGGEST_STRATEGY=("match_prev_cmd" "completion")
@@ -118,13 +122,6 @@ if [ "$(uname)" = "Darwin" ]; then
   ) &!
 fi
 
-# fnm
-if [ -d ~/.fnm ]
-then
-  export PATH=~/.fnm:$PATH
-  eval "`fnm env`"
-fi
-
 
 eval "$(direnv hook zsh)"
 eval "$(zoxide init zsh --hook pwd)"
@@ -132,6 +129,15 @@ eval "$(zoxide init zsh --hook pwd)"
 ##############################################################
 # LOCAL.
 ##############################################################
+
+# Set up the asdf node version manager if present
+if [ -e "$HOME/.asdf/asdf.sh" ]; then
+  source "$HOME/.asdf/asdf.sh"
+elif [ -e "/usr/local/opt/asdf/libexec/asdf.sh" ]; then
+  source "/usr/local/opt/asdf/libexec/asdf.sh"
+elif [ -e "/usr/local/opt/asdf/asdf.sh" ]; then
+  source "/usr/local/opt/asdf/asdf.sh"
+fi
 
 if [ -f $HOST_CONFIGS/zshrc ]; then
 	source $HOST_CONFIGS/zshrc

@@ -141,7 +141,6 @@ in
               vale
               entr
               ffmpeg
-              fnm
               # ttfautohint
             ];
           };
