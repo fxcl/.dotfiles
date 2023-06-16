@@ -17,6 +17,7 @@ HISTFILE="${XDG_DATA_HOME}/.zsh_history"
 
 fpath=(
   ${ZDOTDIR}/functions
+  ${ASDF_DIR}/completions
   $fpath
 )
 
@@ -90,6 +91,87 @@ autoload -Uz _zinit
   # zinit ice wait"2" lucid from"gh-r" as"program" atload'!eval "$(fnm env --multi --use-on-cd --log-level=quiet)"'
   # zinit light Schniz/fnm
 
+  # asdf
+### Added by Zinit's installer
+ZINIT_DIR="$HOME/.local/share/zinit"
+ZINIT_HOME="$ZINIT_DIR/zinit.git"
+if [[ ! -f $ZINIT_HOME/zinit.zsh ]]; then
+    print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
+    command mkdir -p "$ZINIT_DIR" && command chmod g-rwX "$ZINIT_DIR"
+    command git clone https://github.com/zdharma-continuum/zinit "$ZINIT_HOME" && \
+        print -P "%F{33} %F{34}Installation successful.%f%b" || \
+        print -P "%F{160} The clone has failed.%f%b"
+fi
+
+source "$ZINIT_HOME/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+### End of Zinit's installer chunk
+
+
+# Autosuggestions & fast-syntax-highlighting
+zinit ice wait lucid atinit"ZINIT[COMPINIT_OPTS]=-C; zpcompinit; zpcdreplay"
+zinit light zdharma-continuum/fast-syntax-highlighting
+
+# zsh-autosuggestions
+zinit ice wait lucid atload"!_zsh_autosuggest_start"
+zinit load zsh-users/zsh-autosuggestions
+
+# zsh-bd - https://github.com/Tarrasch/zsh-bd
+zinit ice wait lucid
+zinit light tarrasch/zsh-bd
+
+
+zinit ice wait'0b' lucid id-as"junegunn/fzf_completions" pick"/dev/null" \
+  multisrc"shell/{completion,key-bindings}.zsh"
+zinit light junegunn/fzf
+
+# FZF
+zinit ice from="gh-r" as="command" bpick="*linux_amd64*"
+zinit light junegunn/fzf
+
+# BurntSushi/ripgrep
+zinit ice as"command" from"gh-r" mv"ripgrep* -> rg" pick"rg/rg"
+zinit light BurntSushi/ripgrep
+
+# fdfind
+zinit ice as"command" from"gh-r" mv"fd* -> fd" pick"fd/fd"
+zinit light sharkdp/fd
+
+#stylua
+zinit wait'1b' lucid light-mode from'gh-r' as'command' bpick'*linux*.tar.gz' for \
+    bpick'*linux.zip' JohnnyMorganz/StyLua \
+
+# shfmt
+zinit ice from"gh-r" as"program" mv"shfmt* -> shfmt" fbin"shfmt"
+zinit light mvdan/sh
+
+zinit ice wait"0a" as"command" from"gh-r" lucid \
+  mv"zoxide*/zoxide -> zoxide" \
+  atclone"./zoxide init zsh > init.zsh" \
+  atpull"%atclone" src"init.zsh" nocompile'!'
+zinit light ajeetdsouza/zoxide
+
+# zinit ice wait'0' lucid
+# zinit snippet 'https://github.com/git/git/contrib/completion/git-prompt.sh'
+
+# asdf-vm
+zinit wait lucid as"null" \
+    from"github" src"asdf.sh" as"program" for \
+    @asdf-vm/asdf
+
+zinit ice lucid wait'1' from"gh-r" as"program" mv"direnv* -> direnv" \
+    atclone'./direnv hook zsh > zhook.zsh' atpull'%atclone' \
+    pick"direnv" src="zhook.zsh" for \
+        direnv/direnv
+
+# it also works with turbo mode:
+zinit ice wait lucid
+zinit load redxtech/zsh-asdf-direnv
+
+zinit ice wait lucid as"completion"
+zinit snippet https://github.com/asdf-vm/asdf/blob/master/completions/_asdf
+
   ############### Autosuggest
   export ZSH_AUTOSUGGEST_USE_ASYNC="true"
   export ZSH_AUTOSUGGEST_STRATEGY=("match_prev_cmd" "completion")
@@ -122,22 +204,12 @@ if [ "$(uname)" = "Darwin" ]; then
   ) &!
 fi
 
-
 eval "$(direnv hook zsh)"
 eval "$(zoxide init zsh --hook pwd)"
 
 ##############################################################
 # LOCAL.
 ##############################################################
-
-# Set up the asdf node version manager if present
-if [ -e "$HOME/.asdf/asdf.sh" ]; then
-  source "$HOME/.asdf/asdf.sh"
-elif [ -e "/usr/local/opt/asdf/libexec/asdf.sh" ]; then
-  source "/usr/local/opt/asdf/libexec/asdf.sh"
-elif [ -e "/usr/local/opt/asdf/asdf.sh" ]; then
-  source "/usr/local/opt/asdf/asdf.sh"
-fi
 
 if [ -f $HOST_CONFIGS/zshrc ]; then
 	source $HOST_CONFIGS/zshrc
