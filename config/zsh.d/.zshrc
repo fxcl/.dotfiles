@@ -11,9 +11,12 @@
 typeset -g ZPLG_MOD_DEBUG=1
 declare -A ZINIT
 
-HISTSIZE=1000000
-SAVEHIST="$HISTSIZE"
-HISTFILE="${XDG_DATA_HOME}/.zsh_history"
+# https://gist.github.com/matthewmccullough/787142
+# https://unix.stackexchange.com/questions/273861/unlimited-history-in-zsh
+# HISTFILE="$HOME/.zsh_history"
+HISTSIZE=1000000                          # How many lines of history to keep in memory
+SAVEHIST="$HISTSIZE"                      # Number of history entries to save to disk
+HISTFILE="${XDG_DATA_HOME}/.zsh_history"  # Where to save history to disk
 
 fpath=(
   ${ZDOTDIR}/functions
@@ -210,6 +213,12 @@ eval "$(zoxide init zsh --hook pwd)"
 ##############################################################
 # LOCAL.
 ##############################################################
+
+# https://github.com/zdharma-continuum/zinit#quick-start maybe?
+# SSH
+alias ssh="ssh $SSH_CONFIG $SSH_ID "
+alias ssh-copy-id="ssh-copy-id $SSH_ID"
+alias wget="wget --hsts-file="$XDG_CACHE_HOME/wget-hsts""
 
 if [ -f $HOST_CONFIGS/zshrc ]; then
 	source $HOST_CONFIGS/zshrc
