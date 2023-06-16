@@ -61,7 +61,7 @@ in
             #ms-python.vscode-pylance
             #foam.foam-vscode
             #formulahendry.auto-close-tag
-            msjsdiag.debugger-for-chrome
+            #msjsdiag.debugger-for-chrome
             octref.vetur
             shardulm94.trailing-spaces
             golang.go
@@ -590,10 +590,10 @@ in
           # show references for everything
           "rust-analyzer.hover.actions.references.enable" = true;
           "rust-analyzer.lens.references" = true;
-          "rust-analyzer.lens.references.adt.enable" = true;
-          "rust-analyzer.lens.references.enumVariant.enable" = true;
-          "rust-analyzer.lens.references.method.enable" = true;
-          "rust-analyzer.lens.references.trait.enable" = true;
+          #"rust-analyzer.lens.references.adt.enable" = true;
+          #"rust-analyzer.lens.references.enumVariant.enable" = true;
+          #"rust-analyzer.lens.references.method.enable" = true;
+          #"rust-analyzer.lens.references.trait.enable" = true;
           "rust-analyzer.lens.methodReferences" = true;
           "rust-analyzer.lens.enumVariantReferences" = true;
 
