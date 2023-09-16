@@ -169,8 +169,8 @@ zinit ice lucid wait'1' from"gh-r" as"program" mv"direnv* -> direnv" \
         direnv/direnv
 
 # it also works with turbo mode:
-zinit ice wait lucid
-zinit load redxtech/zsh-asdf-direnv
+# zinit ice wait lucid
+# zinit load redxtech/zsh-asdf-direnv
 
 zinit ice wait lucid as"completion"
 zinit snippet https://github.com/asdf-vm/asdf/blob/master/completions/_asdf
