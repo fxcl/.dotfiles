@@ -23,6 +23,7 @@
     ./vscode.nix
     ./zk.nix
     ./emacs.nix
+    ./rust.nix
 
   ];
 
@@ -46,5 +47,6 @@
     vscode.enable = lib.mkDefault true;
     zk.enable = lib.mkDefault true;
     emacs.enable = lib.mkDefault true;
+    rust.enable = lib.mkDefault true;
   };
 }
