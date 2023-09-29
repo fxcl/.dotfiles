@@ -79,17 +79,14 @@ in
             # HOMEBREW_CASK_OPTS=--require-sha
             # HOMEBREW_CASK_OPTS = "";
             # HOMEBREW_INSTALL_BADGE = "🍵";
-            # RUST_SRC_PATH = "$(rustc - -print sysroot) /lib/rustlib/src/rust/library";
+
 
             HOST_CONFIGS = "${hostConfigHome}";
 
             # https://github.blog/2022-04-12-git-security-vulnerability-announced/
             GIT_CEILING_DIRECTORIES = builtins.dirOf home;
 
-            RUSTUP_DIST_SERVER = "https://rsproxy.cn";
-            RUSTUP_UPDATE_ROOT = "https://rsproxy.cn/rustup";
-            #RUSTUP_HOME = "$XDG_DATA_HOME/rustup";
-            #CARGO_HOME = "$XDG_DATA_HOME/cargo";
+
           };
           systemPackages = with pkgs;
             (if stdenv.isDarwin then darwinPackages else nixosPackages) ++ [
@@ -120,7 +117,7 @@ in
               vivid
               hyperfine
               jq
-              grc
+              #grc
               pure-prompt
               exa
               shellcheck
@@ -261,7 +258,7 @@ in
               ../../../config/zsh.d/zsh/config/completion.zsh
               ../../../config/zsh.d/zsh/config/utility.zsh
               ../../../config/zsh.d/zsh/config/aliases.zsh
-              "${pkgs.grc}/etc/grc.zsh"
+              #"${pkgs.grc}/etc/grc.zsh"
               "${pkgs.fzf}/share/fzf/completion.zsh"
               "${pkgs.fzf}/share/fzf/key-bindings.zsh"
               ../../../config/zsh.d/.zshrc

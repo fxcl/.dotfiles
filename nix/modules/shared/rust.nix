@@ -17,8 +17,11 @@ in
   config = with lib;
     mkIf cfg.enable {
         my.env = {
-        RUSTUP_HOME = "$XDG_DATA_HOME/rustup";
-        CARGO_HOME = "$XDG_DATA_HOME/cargo";
+          # RUST_SRC_PATH = "$(rustc --print sysroot) /lib/rustlib/src/rust/library";
+          RUSTUP_DIST_SERVER = "https://rsproxy.cn";
+          RUSTUP_UPDATE_ROOT = "https://rsproxy.cn/rustup";
+          RUSTUP_HOME = "$XDG_DATA_HOME/rustup";
+          CARGO_HOME = "$XDG_DATA_HOME/cargo";
       };
     };
 }

@@ -35,6 +35,11 @@ in
 
         brews = [
           "mas"
+          "rustup-init"
+          "llvm"
+          #"python3"
+          #"cmake"
+          #"openssl"
           # "libolm"
 
         ];
