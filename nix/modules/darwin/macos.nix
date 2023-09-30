@@ -34,10 +34,11 @@ in
         ];
 
         brews = [
+          "gcc"
+          "llvm"
           "libiconv"
           "mas"
           "rustup-init"
-          "llvm"
           #"python3"
           #"cmake"
           #"openssl"
