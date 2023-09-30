@@ -34,6 +34,7 @@ in
         ];
 
         brews = [
+          "libiconv"
           "mas"
           "rustup-init"
           "llvm"

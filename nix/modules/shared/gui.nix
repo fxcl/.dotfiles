@@ -152,6 +152,13 @@ in
               h = "--help"
               f = "fmt"
               ls = "--list"
+              [build]
+              target = "x86_64-apple-darwin"
+              rustflags = "-L /usr/local/lib"
+
+              [target.'cfg(all(target_os = "macos", target_arch = "x86_64"))']
+              rustflags = ["-C", "link-args=-framework CoreFoundation"]
+
             '';
           };
         };
