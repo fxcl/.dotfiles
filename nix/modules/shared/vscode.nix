@@ -737,7 +737,7 @@ in
           };
 
           "[python]" = {
-            "editor.renderFinalNewline" = true;
+            "editor.renderFinalNewline" = "on";
             "editor.rulers" = [ 88 ];
             "editor.trimAutoWhitespace" = true;
             "files.trimFinalNewlines" = true;
@@ -747,7 +747,7 @@ in
 
           "[rust]" = {
             "editor.defaultFormatter" = "matklad.rust-analyzer";
-            "editor.renderFinalNewline" = true;
+            "editor.renderFinalNewline" = "on";
             "editor.rulers" = [ 99 ];
             "editor.fontLigatures" = true;
             "editor.formatOnSave" = true;

@@ -43,7 +43,7 @@ in
           #"cmake"
           #"openssl"
           # "libolm"
-
+          "mysql-client"
         ];
 
         masApps = {
