@@ -77,7 +77,7 @@
             ];
 
             substituters = [
-              "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store?priority=30"
+              "https://mirrors.bfsu.edu.cn/nix-channels/"
               "https://mirrors.ustc.edu.cn/nix-channels/store"
               "https://cache.nixos.org"
               "https://nix-community.cachix.org"

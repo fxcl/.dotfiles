@@ -61,7 +61,7 @@ pkgs.mkShell {
       source .venv/bin/activate
       log_subheader "upgrading pip"
       pip install --upgrade pip
-      pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+      pip config set global.index-url http://mirrors.aliyun.com/pypi/simple
 
       echo ""
       if [ -s requirements.txt ]; then

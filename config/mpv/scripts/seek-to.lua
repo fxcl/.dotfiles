@@ -1,4 +1,10 @@
+-- Original script from https://github.com/occivink/mpv-scripts/blob/master/scripts/seek-to.lua
+
 local assdraw = require 'mp.assdraw'
+local utils = require 'mp.utils'
+local msg = require 'mp.msg'
+
+local platform = mp.get_property_native("platform")
 local active = false
 local cursor_position = 1
 local time_scale = {60*60*10, 60*60, 60*10, 60, 10, 1, 0.1, 0.01, 0.001}
@@ -92,13 +98,11 @@ function seek_to()
 end
 
 function backspace()
-    if cursor_position ~= 9 or current_time[9] == 0 then
-        shift_cursor(true)
-    end
     if history[history_position][cursor_position] ~= 0 then
         copy_history_to_last()
         history[#history][cursor_position] = 0
     end
+    shift_cursor(true)
 end
 
 function history_move(up)
@@ -153,5 +157,50 @@ function set_inactive()
     active = false
 end
 
-mp.add_key_binding(nil, "toggle-seeker", function() if active then set_inactive() else set_active() end end)
+function subprocess(args)
+    local cmd = {
+        name = "subprocess",
+        args = args,
+        playback_only = false,
+        capture_stdout = true
+    }
+    local res = mp.command_native(cmd)
+    if not res.error then
+        return res.stdout
+    else
+        msg.error("Error getting data from clipboard")
+        return
+    end
+end
 
+function get_clipboard()
+    local res
+    if platform == "windows" then
+        res = subprocess({ "powershell", "-Command", "Get-Clipboard", "-Raw" })
+    elseif platform == "darwin" then
+        res = subprocess({ "pbpaste" })
+    elseif platform == "linux" then
+        if os.getenv("WAYLAND_DISPLAY") then
+            res = subprocess({ "wl-paste", "-n" })
+        else
+            res = subprocess({ "xclip", "-selection", "clipboard", "-out" })
+        end
+    end
+    return res
+end
+
+function paste_timestamp()
+    local clipboard = get_clipboard()
+    if clipboard == nil then return end
+
+    timestamp = clipboard:match("%d*:?%d+:[0-5][0-9]%.?%d*")
+    if timestamp ~= nil then
+        mp.osd_message("Timestamp pasted: " .. timestamp)
+        mp.commandv("osd-bar", "seek", timestamp, "absolute")
+    else
+        msg.warn("No pastable timestamp found!")
+    end
+end
+
+mp.add_key_binding(nil, "toggle-seeker", function() if active then set_inactive() else set_active() end end)
+mp.add_key_binding("ctrl+alt+v", "paste-timestamp", paste_timestamp)
