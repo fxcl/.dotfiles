@@ -1,0 +1,9 @@
+[submodule "scripts/mpv-scripts"]
+	path = scripts/mpv-scripts
+	url = https://github.com/Argon-/mpv-scripts.git
+[submodule "scripts/mpv-repl"]
+	path = scripts/mpv-repl
+	url = https://github.com/rossy/mpv-repl.git
+[submodule "shaders/mpv-prescalers"]
+	path = shaders/mpv-prescalers
+	url = https://github.com/bjin/mpv-prescalers
