@@ -673,7 +673,8 @@ in
           "deno.enable" = true;
           "deno.lint" = true;
           "deno.unstable" = true;
-          "deno.path" = "${pkgs.deno}/bin/deno";
+          #"deno.path" = "${pkgs.deno}/bin/deno";
+          #"deno.path" = "~/.asdf/shims/deno";
           "deno.suggest.imports.hosts" = {
             "https://deno.land" = false;
           };
