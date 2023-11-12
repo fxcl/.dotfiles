@@ -19,14 +19,6 @@ return {
 		end
 
 		local parsers = require 'nvim-treesitter.parsers'
-		local au = require '_.utils.au'
-		local parser_config = parsers.get_parser_configs()
-
-		local function get_filetypes()
-			return vim.tbl_map(function(ft)
-				return parser_config[ft].filetype or ft
-			end, parsers.available_parsers())
-		end
 
 		local disable = function(lang, buf)
 			local max_filesize = 500 * 1024 -- 500 KB
@@ -141,7 +133,12 @@ return {
 						and p ~= 'query'
 				end, parsers.available_parsers()),
 			},
-			context_commentstring = { enable = true },
+			context_commentstring = {
+				enable = true,
+				enable_autocmd = false,
+			},
 		}
+
+		vim.treesitter.language.register('markdown', 'mdx')
 	end,
 }

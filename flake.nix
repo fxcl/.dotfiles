@@ -59,9 +59,14 @@
       flake = false;
     };
 
+    exa = {
+      url = "https://flakehub.com/f/exa-community/exa/0.14.0.tar.gz";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
-  outputs = { self, ... }@inputs:
+  outputs = { self,exa, ... }@inputs:
     let
       sharedHostsConfig = { config, pkgs, ... }: {
         nix = {
@@ -82,15 +87,19 @@
               "https://cache.nixos.org"
               "https://nix-community.cachix.org"
               "https://nixpkgs.cachix.org"
+              "https://srid.cachix.org"
+              "https://nix-linter.cachix.org"
               "https://statix.cachix.org"
-              "https://cache.nixos.org"
-              "https://nixpkgs.cachix.org"
             ];
 
             trusted-public-keys = [
               "nix-cache.status.im-1:x/93lOfLU+duPplwMSBR+OlY4+mo+dCN7n0mr4oPwgY="
               "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
               "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+              "nixpkgs.cachix.org-1:q91R6hxbwFvDqTSDKwDAV4T5PxqXGxswD8vhONFMeOE="
+              "srid.cachix.org-1:MTQ6ksbfz3LBMmjyPh0PLmos+1x+CdtJxA/J2W+PQxI="
+              "nix-linter.cachix.org-1:BdTne5LEHQfIoJh4RsoVdgvqfObpyHO5L0SCjXFShlE="
+              "statix.cachix.org-1:Z9E/g1YjCjU117QOOt07OjhljCoRZddiAm4VVESvais="
             ];
           };
 
@@ -108,6 +117,19 @@
               final: prev: {
                 unstable = inputs.nixpkgs-unstable.legacyPackages.${prev.system}; # Make available unstable channel.
                 # zk = prev.callPackage ./nix/pkgs/zk.nix { source = inputs.zk; };
+                exa = inputs.exa.packages.${final.system}.default.overrideAttrs (attrs: {
+                  postInstall = attrs.postInstall + ''
+                    ln -sv $out/bin/exa $out/bin/exa
+                  '';
+                });
+                next-prayer = prev.callPackage
+                  ./config/tmux/scripts/next-prayer/next-prayer.nix
+                { };
+
+                pure-prompt = prev.pure-prompt.overrideAttrs (old: {
+                patches = (old.patches or [ ]) ++ [ ./nix/hosts/pure-zsh.patch ];
+        });
+
               }
             )
             # nur.overlay

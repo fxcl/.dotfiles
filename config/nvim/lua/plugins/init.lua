@@ -12,7 +12,7 @@ return {
 					pattern = '*',
 					callback = function()
 						if vim.v.event.operator == 'y' and vim.v.event.regname == '' then
-							vim.cmd [[OSCYankReg "]]
+							vim.cmd [[OSCYankRegister "]]
 						end
 					end,
 				},
@@ -26,6 +26,7 @@ return {
 				'--',
 				':NvimTreeFindFile<CR>',
 				{ silent = true },
+				desc = 'Open Nvimtree',
 			},
 		},
 		opts = {
@@ -69,17 +70,29 @@ return {
 		},
 	},
 	{
-		'https://github.com/junegunn/vim-peekaboo',
-		event = 'BufReadPre',
-		config = function()
-			vim.g.peekaboo_window = 'vertical botright 60new'
+		'https://github.com/folke/which-key.nvim',
+		event = 'VeryLazy',
+		init = function()
+			vim.o.timeout = true
+			vim.o.timeoutlen = 300
 		end,
+		opts = {
+			window = {
+				border = 'single',
+			},
+		},
 	},
 	{
 		'https://github.com/mbbill/undotree',
 		cmd = 'UndotreeToggle',
 		keys = {
-			{ '<leader>u', vim.cmd.UndotreeToggle, silent = true, noremap = true },
+			{
+				'<leader>u',
+				vim.cmd.UndotreeToggle,
+				silent = true,
+				noremap = true,
+				desc = 'Toggle [U]ndotree',
+			},
 		},
 		config = function()
 			vim.g.undotree_WindowLayout = 2
@@ -95,7 +108,12 @@ return {
 		'https://github.com/tpope/vim-eunuch',
 		cmd = { 'Delete' },
 		keys = {
-			{ '<leader>m', ':Move <C-R>=expand("%")<cr>', { remap = true } },
+			{
+				'<leader>m',
+				':Move <C-R>=expand("%")<cr>',
+				{ remap = true },
+				desc = '[M]ove file',
+			},
 		},
 	},
 	{ 'https://github.com/tpope/vim-repeat' },
@@ -112,42 +130,13 @@ return {
 			{ 'gc', mode = { 'n', 'x' } },
 			{ 'gb', mode = { 'n', 'x' } },
 		},
-		opts = {
-			ignore = '^$', -- don't comment empty lines
-			---@param ctx Ctx
-			pre_hook = function(ctx)
-				-- Only calculate commentstring for tsx filetypes
-				if
-					vim.tbl_contains({
-						'typescriptreact',
-						'typescript.tsx',
-						'javascriptreact',
-						'javascript.jsx',
-					}, vim.bo.filetype)
-				then
-					local U = require 'Comment.utils'
-
-					-- Detemine whether to use linewise or blockwise commentstring
-					local type = ctx.ctype == U.ctype.line and '__default'
-						or '__multiline'
-
-					-- Determine the location where to calculate commentstring from
-					local location = nil
-					if ctx.ctype == U.ctype.block then
-						location =
-							require('ts_context_commentstring.utils').get_cursor_location()
-					elseif ctx.cmotion == U.cmotion.v or ctx.cmotion == U.cmotion.V then
-						location =
-							require('ts_context_commentstring.utils').get_visual_start_location()
-					end
-
-					return require('ts_context_commentstring.internal').calculate_commentstring {
-						key = type,
-						location = location,
-					}
-				end
-			end,
-		},
+		opts = function()
+			return {
+				pre_hook = require(
+					'ts_context_commentstring.integrations.comment_nvim'
+				).create_pre_hook(),
+			}
+		end,
 	},
 	{ 'https://github.com/wincent/loupe' },
 	{
@@ -178,40 +167,12 @@ return {
 		end,
 	},
 	-- Syntax {{{
-	{
-		'https://github.com/NvChad/nvim-colorizer.lua',
-		-- https://github.com/norcalli/nvim-colorizer.lua/issues/4#issuecomment-543682160
-		opts = {
-			filetypes = {
-				'*',
-				'!vim',
-				'!packer',
-			},
-			user_default_options = {
-				tailwind = 'lsp',
-				css = true,
-			},
-		},
-	},
 	{ 'https://github.com/jez/vim-github-hub' },
-	{
-		'https://github.com/jxnblk/vim-mdx-js',
-		ft = { 'mdx', 'markdown.mdx' },
-	},
 	-- }}}
 
 	-- Git {{{
 	{
 		'https://github.com/akinsho/git-conflict.nvim',
-		cmd = {
-			'GitConflictChooseOurs',
-			'GitConflictChooseTheirs',
-			'GitConflictChooseBoth',
-			'GitConflictChooseNone',
-			'GitConflictNextConflict',
-			'GitConflictPrevConflict',
-			'GitConflictListQf',
-		},
 		opts = {},
 	},
 	{

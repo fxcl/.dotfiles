@@ -5,7 +5,20 @@
 # Profiling.
 ##############################################################
 
-# uncomment to profile & run `zprof`
+# Start profiling (uncomment when necessary)
+#
+# See: https://stackoverflow.com/a/4351664/2103996
+
+# Per-command profiling:
+
+# zmodload zsh/datetime
+# setopt promptsubst
+# PS4='+$EPOCHREALTIME %N:%i> '
+# exec 3>&2 2> startlog.$$
+# setopt xtrace prompt_subst
+
+# Per-function profiling:
+
 # zmodload zsh/zprof
 
 typeset -g ZPLG_MOD_DEBUG=1
@@ -20,7 +33,6 @@ HISTFILE="${XDG_DATA_HOME}/.zsh_history"  # Where to save history to disk
 
 fpath=(
   ${ZDOTDIR}/functions
-  ${ASDF_DIR}/completions
   $fpath
 )
 
@@ -66,8 +78,6 @@ autoload -Uz _zinit
 # }}}
 
 # Utilities & enhancements {{{
-  zinit light https://github.com/Aloxaf/fzf-tab
-
   zinit ice wait lucid
   zinit light https://github.com/zsh-users/zsh-history-substring-search
   # bind UP and DOWN keys
@@ -90,91 +100,6 @@ autoload -Uz _zinit
   zinit ice wait lucid atload'_zsh_autosuggest_start'
   zinit light https://github.com/zsh-users/zsh-autosuggestions
 
-  # # fnm
-  # zinit ice wait"2" lucid from"gh-r" as"program" atload'!eval "$(fnm env --multi --use-on-cd --log-level=quiet)"'
-  # zinit light Schniz/fnm
-
-  # asdf
-### Added by Zinit's installer
-ZINIT_DIR="$HOME/.local/share/zinit"
-ZINIT_HOME="$ZINIT_DIR/zinit.git"
-if [[ ! -f $ZINIT_HOME/zinit.zsh ]]; then
-    print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
-    command mkdir -p "$ZINIT_DIR" && command chmod g-rwX "$ZINIT_DIR"
-    command git clone https://github.com/zdharma-continuum/zinit "$ZINIT_HOME" && \
-        print -P "%F{33} %F{34}Installation successful.%f%b" || \
-        print -P "%F{160} The clone has failed.%f%b"
-fi
-
-source "$ZINIT_HOME/zinit.zsh"
-autoload -Uz _zinit
-(( ${+_comps} )) && _comps[zinit]=_zinit
-### End of Zinit's installer chunk
-
-
-# Autosuggestions & fast-syntax-highlighting
-zinit ice wait lucid atinit"ZINIT[COMPINIT_OPTS]=-C; zpcompinit; zpcdreplay"
-zinit light zdharma-continuum/fast-syntax-highlighting
-
-# zsh-autosuggestions
-zinit ice wait lucid atload"!_zsh_autosuggest_start"
-zinit load zsh-users/zsh-autosuggestions
-
-# zsh-bd - https://github.com/Tarrasch/zsh-bd
-zinit ice wait lucid
-zinit light tarrasch/zsh-bd
-
-
-zinit ice wait'0b' lucid id-as"junegunn/fzf_completions" pick"/dev/null" \
-  multisrc"shell/{completion,key-bindings}.zsh"
-zinit light junegunn/fzf
-
-# FZF
-zinit ice from="gh-r" as="command" bpick="*linux_amd64*"
-zinit light junegunn/fzf
-
-# BurntSushi/ripgrep
-zinit ice as"command" from"gh-r" mv"ripgrep* -> rg" pick"rg/rg"
-zinit light BurntSushi/ripgrep
-
-# fdfind
-zinit ice as"command" from"gh-r" mv"fd* -> fd" pick"fd/fd"
-zinit light sharkdp/fd
-
-#stylua
-zinit wait'1b' lucid light-mode from'gh-r' as'command' bpick'*linux*.tar.gz' for \
-    bpick'*linux.zip' JohnnyMorganz/StyLua \
-
-# shfmt
-zinit ice from"gh-r" as"program" mv"shfmt* -> shfmt" fbin"shfmt"
-zinit light mvdan/sh
-
-zinit ice wait"0a" as"command" from"gh-r" lucid \
-  mv"zoxide*/zoxide -> zoxide" \
-  atclone"./zoxide init zsh > init.zsh" \
-  atpull"%atclone" src"init.zsh" nocompile'!'
-zinit light ajeetdsouza/zoxide
-
-# zinit ice wait'0' lucid
-# zinit snippet 'https://github.com/git/git/contrib/completion/git-prompt.sh'
-
-# asdf-vm
-zinit wait lucid as"null" \
-    from"github" src"asdf.sh" as"program" for \
-    @asdf-vm/asdf
-
-zinit ice lucid wait'1' from"gh-r" as"program" mv"direnv* -> direnv" \
-    atclone'./direnv hook zsh > zhook.zsh' atpull'%atclone' \
-    pick"direnv" src="zhook.zsh" for \
-        direnv/direnv
-
-# it also works with turbo mode:
-# zinit ice wait lucid
-# zinit load redxtech/zsh-asdf-direnv
-
-zinit ice wait lucid as"completion"
-zinit snippet https://github.com/asdf-vm/asdf/blob/master/completions/_asdf
-
   ############### Autosuggest
   export ZSH_AUTOSUGGEST_USE_ASYNC="true"
   export ZSH_AUTOSUGGEST_STRATEGY=("match_prev_cmd" "completion")
@@ -184,18 +109,7 @@ autoload -Uz compinit compdef && compinit -C -d "${ZDOTDIR}/${zcompdump_file:-.z
 
 zinit cdreplay -q
 
-############### Kitty
-if test -n "$KITTY_INSTALLATION_DIR"; then
-  export KITTY_SHELL_INTEGRATION="no-cursor"
-  autoload -Uz -- "$KITTY_INSTALLATION_DIR"/shell-integration/zsh/kitty-integration
-  kitty-integration
-  unfunction kitty-integration
-fi
-
-if [[ ! -z "${KITTY_WINDOW_ID}" ]]; then
-  kitty + complete setup zsh | source /dev/stdin
-fi
-
+############### Misc
 if [ "$(uname)" = "Darwin" ]; then
   # For context https://github.com/github/hub/pull/1962
   # I run in the background to not affect startup time.
@@ -214,12 +128,6 @@ eval "$(zoxide init zsh --hook pwd)"
 # LOCAL.
 ##############################################################
 
-# https://github.com/zdharma-continuum/zinit#quick-start maybe?
-# SSH
-alias ssh="ssh $SSH_CONFIG $SSH_ID "
-alias ssh-copy-id="ssh-copy-id $SSH_ID"
-alias wget="wget --hsts-file="$XDG_CACHE_HOME/wget-hsts""
-
 if [ -f $HOST_CONFIGS/zshrc ]; then
 	source $HOST_CONFIGS/zshrc
 fi
@@ -230,10 +138,15 @@ if [ -e /etc/motd ]; then
   fi
 fi
 
-add-zsh-hook -Uz chpwd (){
-  [ -d "node_modules" ] &&
-  bin=$PWD/node_modules/.bin
-  if [[ ":$PATH:" != *":$bin:"* ]]; then     # check if $bin is already in $PATH
-    export PATH=$bin:$PATH                   # prepend $bin to $PATH
-  fi
-}
+#
+# End profiling (uncomment when necessary)
+#
+
+# Per-command profiling:
+
+# unsetopt xtrace
+# exec 2>&3 3>&-
+
+# Per-function profiling:
+
+# zprof

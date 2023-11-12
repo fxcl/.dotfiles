@@ -8,7 +8,11 @@
     ./shells.nix
     ./sudoers.nix
     ./lf.nix
+    ./bat.nix
      ./starship.nix
+     ./ripgrep.nix
+     ./tmux.nix
+     ./misc.nix
     # ./fonts.nix
     ./gui.nix
     ./git.nix
@@ -24,7 +28,7 @@
     ./zk.nix
     ./emacs.nix
     ./rust.nix
-
+    ./zellij.nix
   ];
 
   my.modules = {
@@ -32,7 +36,11 @@
     shells.enable = lib.mkDefault true;
     sudoers.enable = lib.mkDefault true;
     lf.enable = lib.mkDefault true;
+    bat.enable = lib.mkDefault true;
     starship.enable = lib.mkDefault true;
+    ripgrep.enable = lib.mkDefault true;
+    tmux.enable = lib.mkDefault true;
+    misc.enable = lib.mkDefault true;
     # fonts.enable = lib.mkDefault true;
     gui.enable = lib.mkDefault true;
     git.enable = lib.mkDefault true;
@@ -48,5 +56,6 @@
     zk.enable = lib.mkDefault true;
     emacs.enable = lib.mkDefault true;
     rust.enable = lib.mkDefault true;
+    zellij.enable = lib.mkDefault true;
   };
 }

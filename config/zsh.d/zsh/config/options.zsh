@@ -59,3 +59,4 @@ setopt AUTOPARAMSLASH    # tab completing directory appends a slash
 setopt EXTENDED_GLOB     # Treat the ‘#’, ‘~’ and ‘^’ characters as part of patterns for filename generation, etc. (An initial unquoted ‘~’ always produces named directory expansion.)
 setopt MULTIOS           # Perform implicit tees or cats when multiple redirections are attempted.
 setopt NO_CLOBBER        # Disallow ‘>’ redirection to overwrite existing files. ‘>|’ or ‘>!’ must be used to overwrite a file.
+

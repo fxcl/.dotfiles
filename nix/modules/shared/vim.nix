@@ -21,7 +21,6 @@ in
     mkIf cfg.enable {
       environment.systemPackages = with pkgs;
         [
-          luajit
           vim
           neovim-unwrapped
         ] ++ (lib.optionals (!pkgs.stdenv.isDarwin) [
@@ -35,43 +34,34 @@ in
         MANPAGER = "$EDITOR +Man!";
       };
 
-      environment.shellAliases.e = "$EDITOR --listen /tmp/nvim.pipe";
-
       my.user = {
         packages = with pkgs; [
-
-          # General dependencies
-          tree-sitter # required for treesitter "auto-install" option to work
           fzf
           par
-
-          # Rust dependencies
           fd
           ripgrep
-          lazygit
-          gdu
-          bottom
           # editorconfig-checker # do I use it?
           hadolint # Docker linter
-          #dotenv-linter
+          dotenv-linter
           nixpkgs-fmt
           vim-vint
           shellcheck
           shfmt # Doesn't work with zsh, only sh & bash
           stylua
-          #nodePackages.vscode-langservers-extracted # HTML, CSS, JSON & ESLint LSPs
-          #nodePackages.prettier
-          #nodePackages.bash-language-server
-          #nodePackages.dockerfile-language-server-nodejs
-          #nodePackages.typescript-language-server
-          #nodePackages.vim-language-server
-          #nodePackages.pyright
-          #nodePackages.yaml-language-server
-          #nodePackages."@tailwindcss/language-server"
+          nodePackages.vscode-langservers-extracted # HTML, CSS, JSON & ESLint LSPs
+          nodePackages.prettier
+          nodePackages.bash-language-server
+          nodePackages.dockerfile-language-server-nodejs
+          nodePackages.typescript-language-server
+          nodePackages.vim-language-server
+          nodePackages.yaml-language-server
+          nodePackages."@tailwindcss/language-server"
           selene # Lua linter
           statix
           sumneko-lua-language-server
-
+          tree-sitter # required for treesitter "auto-install" option to work
+          nil
+          actionlint
         ];
       };
 

@@ -1,10 +1,10 @@
-{ pkgs, lib, config, options, ... }:
+{ lib, config, ... }:
 
 let
+
   cfg = config.my.modules.rust;
 
 in
-
 {
   options = with lib; {
     my.modules.rust = {

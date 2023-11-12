@@ -24,7 +24,7 @@ in
           NPM_CONFIG_TMP = "$XDG_RUNTIME_DIR/npm";
           NPM_CONFIG_CACHE = "$XDG_CACHE_HOME/npm";
           NPM_CONFIG_PREFIX = "$XDG_CACHE_HOME/npm";
-          NODE_REPL_HISTORY = "$XDG_CACHE_HOME/node/repl_history";
+          NODE_REPL_HISTORY = "$XDG_CACHE_HOME/node_repl_history";
           NODE_OPTIONS = "--dns-result-order=ipv4first";
 
           NPM_CONFIG_EDITOR = "$EDITOR";
@@ -87,6 +87,5 @@ in
           sass_binary_site=https://npmmirror.com/mirrors/node-sass
         ";
       };
-
     };
 }

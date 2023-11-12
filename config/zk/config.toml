@@ -26,7 +26,7 @@ extension = "md"
 template = "default.md"
 
 # Path globs ignored while indexing existing notes.
-ignore = [
+exclude = [
   "drafts/*",
   "log.md",
   ".neuron",
@@ -64,6 +64,8 @@ id-length = 12
 [extra]
 author = "Ahmed El Gabri"
 
+# [notebook]
+# dir = "$NOTES_DIR" # same as "$HOME/notebook"
 
 # GROUP OVERRIDES
 #
@@ -88,12 +90,6 @@ employer = "miro"
 [group.journal]
 
 [group.journal.note]
-filename = "{{format-date now '%Y-%m-%d'}}"
-template = "journal.md"
-
-[group.todo]
-
-[group.todo.note]
 filename = "{{format-date now '%Y-%m-%d'}}"
 template = "journal.md"
 
@@ -232,6 +228,4 @@ rfc = 'zk new work --template rfc.md --title "$*"'
 
 # Personal
 j = 'zk new --no-input journal'
-t = 'zk new --no-input todo'
-p = 'zk new personal --title "$*"'
-
+p = 'zk new --no-input personal --title "$*"'

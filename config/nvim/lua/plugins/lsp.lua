@@ -5,35 +5,29 @@ local function setup_null(on_attach)
 		return
 	end
 
-	local h = require 'null-ls.helpers'
-
 	nls.setup {
-		debug = true,
+		debug = false,
 		debounce = 150,
 		on_attach = on_attach,
 		sources = {
 			-- nixlinter,
 			nls.builtins.diagnostics.shellcheck.with {
 				filetypes = { 'sh', 'bash' },
-				runtime_condition = h.cache.by_bufnr(function(params)
-					-- don't run on .env files, which are also set to sh
-					return params.bufname:match '%.env.*' == nil
-						or params.bufname:match '%.env' == nil
-				end),
 			},
 			nls.builtins.diagnostics.ruff,
 			nls.builtins.diagnostics.hadolint,
 			nls.builtins.diagnostics.vint,
-			nls.builtins.diagnostics.vale.with {
-				filetypes = {
-					'asciidoc',
-					'markdown',
-					'tex',
-					'text',
-				},
-			},
 			nls.builtins.diagnostics.statix,
-			nls.builtins.diagnostics.dotenv_linter,
+			nls.builtins.diagnostics.dotenv_linter.with {
+				filetypes = { 'dotenv' },
+				extra_args = { '--skip', 'UnorderedKey' },
+			},
+			nls.builtins.diagnostics.actionlint.with {
+				condition = function()
+					local cwd = vim.fn.expand '%:p:.'
+					return cwd:find '.github/workflows'
+				end,
+			},
 		},
 	}
 end
@@ -44,6 +38,7 @@ return {
 	dependencies = {
 		{
 			'https://github.com/j-hui/fidget.nvim',
+			tag = 'legacy',
 			opts = {
 				window = {
 					relative = 'editor', -- where to anchor the window, either `"win"` or `"editor"`
@@ -61,11 +56,6 @@ return {
 			},
 		},
 		{
-			'https://github.com/folke/todo-comments.nvim',
-			cmd = { 'Todocomment' },
-			opts = {},
-		},
-		{
 			'https://github.com/folke/trouble.nvim',
 			cmd = { 'Trouble' },
 			opts = { icons = false },
@@ -77,6 +67,35 @@ return {
 		{ 'https://github.com/mickael-menu/zk-nvim' },
 		{
 			'https://github.com/b0o/SchemaStore.nvim',
+		},
+		{
+			'https://github.com/lewis6991/hover.nvim',
+			config = function()
+				require('hover').setup {
+					init = function()
+						require 'hover.providers.lsp'
+						require 'hover.providers.gh'
+						require '_.hover.github_user'
+						require 'hover.providers.jira'
+						require 'hover.providers.man'
+						require 'hover.providers.dictionary'
+					end,
+				}
+
+				-- Setup keymaps
+				vim.keymap.set(
+					'n',
+					'K',
+					require('hover').hover,
+					{ desc = 'Open hover popup' }
+				)
+				vim.keymap.set(
+					'n',
+					'gK',
+					require('hover').hover_select,
+					{ desc = 'Select hover popup source' }
+				)
+			end,
 		},
 	},
 	config = function()
@@ -186,27 +205,56 @@ return {
 				{ 'n' },
 				'<leader>a',
 				'<cmd>lua vim.lsp.buf.code_action()<CR>',
+				{ desc = 'Code [A]ctions' },
 			},
-			{ { 'n' }, '<leader>f', '<cmd>lua vim.lsp.buf.references()<CR>' },
-			{ { 'n' }, '<leader>r', '<cmd>lua vim.lsp.buf.rename()<CR>' },
-			{ { 'n' }, 'K', '<cmd>lua vim.lsp.buf.hover()<CR>' },
+			{
+				{ 'n' },
+				'<leader>f',
+				'<cmd>lua vim.lsp.buf.references()<CR>',
+				{ desc = 'Show Re[f]erences' },
+			},
+			{
+				{ 'n' },
+				'<leader>r',
+				'<cmd>lua vim.lsp.buf.rename()<CR>',
+				{ desc = '[R]ename Symbol' },
+			},
+			-- { { 'n' }, 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', {desc = "Open Hover popup"} },
 			{
 				{ 'n' },
 				'<leader>ld',
 				'<cmd>lua vim.diagnostic.open_float(nil, { focusable = false,  close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" }, source = "always" })<CR>',
+				{ desc = '[L]ist [D]iagnostics' },
 			},
-			{ { 'n' }, '[d', '<cmd>lua vim.diagnostic.goto_next()<cr>' },
-			{ { 'n' }, ']d', '<cmd>lua vim.diagnostic.goto_prev()<CR>' },
-			{ { 'n' }, '<C-]>', '<cmd>lua vim.lsp.buf.definition()<CR>' },
+			{
+				{ 'n' },
+				'[d',
+				'<cmd>lua vim.diagnostic.goto_next()<cr>',
+				{ desc = 'Next diagnostic' },
+			},
+			{
+				{ 'n' },
+				']d',
+				'<cmd>lua vim.diagnostic.goto_prev()<CR>',
+				{ desc = 'Prev diagnostic' },
+			},
+			{
+				{ 'n' },
+				'<C-]>',
+				'<cmd>lua vim.lsp.buf.definition()<CR>',
+				{ desc = 'Go To Definition' },
+			},
 			{
 				{ 'n' },
 				'<leader>D',
 				'<cmd>lua vim.lsp.buf.declaration()<CR>',
+				{ desc = 'Go to [D]eclaration' },
 			},
 			{
 				{ 'n' },
 				'<leader>i',
 				'<cmd>lua vim.lsp.buf.implementation()<CR>',
+				{ desc = 'Go to [I]mplementation' },
 			},
 		}
 
@@ -244,15 +292,14 @@ return {
 			-- MAPPINGS
 			-- ---------------
 			for _, item in ipairs(mappings) do
-				local modes, lhs, rhs = item[1], item[2], item[3]
+				local extra_opts = table.remove(item, 4)
+				local merged_opts = vim.tbl_extend('force', map_opts, extra_opts)
 
-				if lhs == 'K' then
-					if vim.api.nvim_buf_get_option(bufnr, 'filetype') ~= 'vim' then
-						vim.keymap.set(modes, lhs, rhs, map_opts)
-					end
-				else
-					vim.keymap.set(modes, lhs, rhs, map_opts)
-				end
+				table.insert(item, 4, merged_opts)
+
+				local modes, lhs, rhs, opts = item[1], item[2], item[3], item[4]
+
+				vim.keymap.set(modes, lhs, rhs, opts)
 			end
 
 			-- ---------------
@@ -307,7 +354,6 @@ return {
 			vimls = {
 				init_options = { isNeovim = true },
 			},
-			pyright = {},
 			dockerls = {},
 			clojure_lsp = {},
 			eslint = {},
@@ -341,6 +387,9 @@ return {
 							setType = true,
 							paramName = 'Disable',
 						},
+						doc = {
+							privateName = { '^_' },
+						},
 						format = { enable = false },
 						diagnostics = {
 							globals = {
@@ -358,8 +407,8 @@ return {
 						},
 						workspace = {
 							checkThirdParty = false,
-							maxPreload = 2000,
-							preloadFileSize = 2000,
+							maxPreload = 1000,
+							preloadFileSize = 1000,
 							library = {
 								['/Applications/Hammerspoon.app/Contents/Resources/extensions/hs/'] = true,
 							},
