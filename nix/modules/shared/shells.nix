@@ -260,7 +260,7 @@ in
                   ../../../config/zsh.d/zsh/config/completion.zsh
                   ../../../config/zsh.d/zsh/config/utility.zsh
                   ../../../config/zsh.d/zsh/config/aliases.zsh
-                  "${pkgs.grc}/etc/grc.zsh"
+                  #"${pkgs.grc}/etc/grc.zsh"
                   "${pkgs.fzf}/share/fzf/completion.zsh"
                   "${pkgs.fzf}/share/fzf/key-bindings.zsh"
                   ../../../config/zsh.d/.zshrc
@@ -269,7 +269,7 @@ in
             ];
 
 
-          promptInit = "autoload -U promptinit; promptinit; prompt pure; zstyle :prompt:pure:path color green";
+          promptInit = "autoload -U promptinit; promptinit; prompt pure";
         };
       }
     ]);
