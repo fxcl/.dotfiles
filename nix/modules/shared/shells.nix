@@ -49,6 +49,8 @@ in
           shells = [ pkgs.bashInteractive pkgs.zsh ];
           variables = {
             # NOTE: Darwin doesn't set them by default, unlike NixOS. So we have to set them.
+            # This is just using what's inside home-manager. Defaults are here
+            # https://github.com/nix-community/home-manager/blob/a4b0a3faa4055521f2a20cfafe26eb85e6954751/modules/misc/xdg.nix#L14-L17
             XDG_CACHE_HOME = hm.cacheHome;
             XDG_CONFIG_HOME = hm.configHome;
             XDG_DATA_HOME = hm.dataHome;
@@ -107,7 +109,6 @@ in
           user = {
             shell = if pkgs.stdenv.isDarwin then [ pkgs.zsh ] else pkgs.zsh;
             packages = with pkgs; [
-              emacs
               tealdeer # rust implementation of `tldr`
               ncdu
               bat
@@ -119,7 +120,7 @@ in
               jq
               #grc
               pure-prompt
-              exa
+              eza
               shellcheck
               shfmt # Doesn't work with zsh, only sh & bash
               lnav # System Log file navigator
@@ -133,7 +134,6 @@ in
               # buku
               graph-easy
               graphviz
-
               difftastic
               vale
               entr
@@ -204,7 +204,7 @@ in
               FZF_DEFAULT_COMMAND = "${FZF_CTRL_T_COMMAND} --type f";
               # https://github.com/sharkdp/bat/issues/634#issuecomment-524525661
               FZF_PREVIEW_COMMAND =
-                "COLORTERM=truecolor ${pkgs.bat}/bin/bat --style=changes --wrap never --color always {} || cat {} || (${pkgs.exa}/bin/exa --tree --group-directories-first {} || ${pkgs.tree}/bin/tree -C {})";
+                "COLORTERM=truecolor ${pkgs.bat}/bin/bat --style=changes --wrap never --color always {} || cat {} || (${pkgs.eza}/bin/eza --tree --group-directories-first {} || ${pkgs.tree}/bin/tree -C {})";
               FZF_CTRL_T_COMMAND =
                 "${pkgs.fd}/bin/fd --hidden --follow --no-ignore-vcs";
               FZF_ALT_C_COMMAND = "${FZF_CTRL_T_COMMAND} --type d .";
@@ -214,7 +214,7 @@ in
               FZF_CTRL_R_OPTS =
                 "--preview 'echo {}' --preview-window down:3:wrap:hidden --bind 'ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort' --header 'Press CTRL-Y to copy command into clipboard'";
               FZF_ALT_C_OPTS =
-                "--preview '(${pkgs.exa}/bin/exa --tree --group-directories-first {} || ${pkgs.tree}/bin/tree -C {}) 2> /dev/null'";
+                "--preview '(${pkgs.eza}/bin/eza --tree --group-directories-first {} || ${pkgs.tree}/bin/tree -C {}) 2> /dev/null'";
             };
 
         };
@@ -269,7 +269,7 @@ in
             ];
 
 
-          promptInit = "autoload -U promptinit; promptinit; prompt pure";
+          promptInit = "autoload -U promptinit; promptinit; prompt pure; zstyle :prompt:pure:path color green";
         };
       }
     ]);

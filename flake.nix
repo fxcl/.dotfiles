@@ -59,14 +59,14 @@
       flake = false;
     };
 
-    exa = {
-      url = "https://flakehub.com/f/exa-community/exa/0.14.0.tar.gz";
+    eza = {
+      url = "https://flakehub.com/f/eza-community/eza/0.15.3.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
   };
 
-  outputs = { self,exa, ... }@inputs:
+  outputs = { self,eza, ... }@inputs:
     let
       sharedHostsConfig = { config, pkgs, ... }: {
         nix = {
@@ -110,25 +110,39 @@
           };
         };
 
+        fonts = {
+          fontDir.enable = true;
+          fonts = with pkgs; [  ] ++ (lib.optionals
+            pkgs.stdenv.isLinux [
+            noto-fonts
+            noto-fonts-cjk
+            noto-fonts-emoji
+            # liberation_ttf
+            fira-code
+            fira-code-symbols
+            mplus-outline-fonts
+            dina-font
+            proggyfonts
+            (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
+          ]);
+        };
+
         nixpkgs = {
           config = { allowUnfree = true; };
           overlays = [
             (
               final: prev: {
                 unstable = inputs.nixpkgs-unstable.legacyPackages.${prev.system}; # Make available unstable channel.
+                pragmatapro = prev.callPackage ./nix/pkgs/pragmatapro.nix { };
                 # zk = prev.callPackage ./nix/pkgs/zk.nix { source = inputs.zk; };
-                exa = inputs.exa.packages.${final.system}.default.overrideAttrs (attrs: {
-                  postInstall = attrs.postInstall + ''
-                    ln -sv $out/bin/exa $out/bin/exa
-                  '';
-                });
+                eza = inputs.eza.packages.${final.system}.default;
                 next-prayer = prev.callPackage
                   ./config/tmux/scripts/next-prayer/next-prayer.nix
                 { };
 
-                pure-prompt = prev.pure-prompt.overrideAttrs (old: {
-                patches = (old.patches or [ ]) ++ [ ./nix/hosts/pure-zsh.patch ];
-        });
+                #pure-prompt = prev.pure-prompt.overrideAttrs (old: {
+                #patches = (old.patches or [ ]) ++ [ ./nix/hosts/pure-zsh.patch ];
+                #});
 
               }
             )
