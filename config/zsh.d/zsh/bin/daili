@@ -60,3 +60,11 @@ function proxy_off(){
     git config --global --unset https.proxy
     echo -e "Proxy environment variables removed."
 }
+
+if  [  "$1"  ==  "on"  ];  then
+     proxy_on
+elif  [  "$1"  ==  "off"  ];  then
+     proxy_off
+else
+     echo  "Invalid  parameter"
+fi
