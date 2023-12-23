@@ -34,6 +34,9 @@ in
                   flake8
                   # ipython
                   vobject # Mutt calendar script
+                  yamllint
+                  grip
+                  debugpy
                 ]))
               # nixos.python38Packages.httpx
               ruff

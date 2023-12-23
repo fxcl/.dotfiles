@@ -266,7 +266,7 @@ in
           "editor.minimap.enabled" = false;
           "editor.fontLigatures" = true;
           "editor.codeLensFontFamily" = "'Zed Mono', \"FiraCode Nerd Font Mono\", \"Noto Sans Mono CJK JP\", monospace";
-          "editor.fontFamily" = "'Zed Mono', Mensch, Menlo, Consolas, Monaco, 'Courier New',\"FiraCode Nerd Font Mono\", \"Noto Sans Mono CJK JP\", monospace";
+          "editor.fontFamily" = "'MonoLisa Nerd Font Mono','Zed Mono', Mensch, Menlo, Consolas, Monaco, 'Courier New',\"FiraCode Nerd Font Mono\", \"Noto Sans Mono CJK JP\", monospace";
           "editor.tabSize" = 2; # Because I prefer smaller tab sizes.
           "editor.formatOnPaste" = false; # Do not mess with my code by default. Will trust automatic rules language by language.
           "editor.formatOnSave" = false; # Do not mess with my code by default. Will trust automatic rules language by language.
@@ -818,6 +818,11 @@ in
           ];
           "aws.profile" = "profile:default";
           "aws.telemetry" = false;
+          "CodeGPT.apiKey" = "Google";
+          #"CodeGPT.apiKey": "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";
+          #"CodeGPT.apiKey": "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"
+          "CodeGPT.model" = "chat-bison-001";
+          "CodeGPT.query.language" = "Chinese";
         };
 
         keybindings = [

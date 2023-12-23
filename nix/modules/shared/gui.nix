@@ -31,7 +31,7 @@ in
           "mpv"
           "iina"
           "appcleaner"
-          "raycast"
+          #"raycast"
           "rectangle"
           # "aria2"
           # "bitwarden"
