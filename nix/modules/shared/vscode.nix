@@ -825,7 +825,7 @@ in
           "CodeGPT.query.language" = "Chinese";
           "github.copilot.advanced" = {
             "debug.overrideChatEngine" = "gpt-4";
-            };
+          };
           "github-enterprise.uri" = "https://cocopilot.org";
         };
 
