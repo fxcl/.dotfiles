@@ -24,7 +24,7 @@
 
   my.user = {
     packages = with pkgs; [
-      emacs
+      #emacs
     ];
   };
   system.stateVersion = 4;

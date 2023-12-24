@@ -26,6 +26,10 @@ in
           NPM_CONFIG_PREFIX = "$XDG_CACHE_HOME/npm";
           NODE_REPL_HISTORY = "$XDG_CACHE_HOME/node_repl_history";
           NODE_OPTIONS = "--dns-result-order=ipv4first";
+          # Allow 32³ entries; the default is 1000.
+          NODE_REPL_HISTORY_SIZE = "32768";
+          # Use sloppy mode by default, matching web browsers.
+          NODE_REPL_MODE = "sloppy";
 
           NPM_CONFIG_EDITOR = "$EDITOR";
           NPM_CONFIG_INIT_AUTHOR_NAME = github_username;

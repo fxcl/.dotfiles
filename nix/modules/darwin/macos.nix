@@ -128,19 +128,10 @@ in
             tilesize = 46;
             # Hot corners, reset them all.
             # Not supported in nix-darwin yet
-            wvous-tl-corner = 2; # top-left - Mission Control
-            wvous-tr-corner = 13; # top-right - Lock Screen
-            wvous-bl-corner = 3; # bottom-left - Application Windows
-            wvous-br-corner = 4; # bottom-right - Desktop
-
-            # wvous-tl-corner = 0;
-            # wvous-tl-modifier = 0;
-            # wvous-tr-corner = 0;
-            # wvous-tr-modifier = 0;
-            # wvous-bl-corner = 0;
-            # wvous-bl-modifier = 0;
-            # wvous-br-corner = 0;
-            # wvous-br-modifier = 0;
+            #wvous-tl-corner = 2; # top-left - Mission Control
+            #wvous-tr-corner = 13; # top-right - Lock Screen
+            #wvous-bl-corner = 3; # bottom-left - Application Windows
+            #wvous-br-corner = 4; # bottom-right - Desktop
           };
 
           finder = {
