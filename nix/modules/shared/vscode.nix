@@ -823,6 +823,10 @@ in
           #"CodeGPT.apiKey": "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"
           "CodeGPT.model" = "chat-bison-001";
           "CodeGPT.query.language" = "Chinese";
+          "github.copilot.advanced" = {
+            "debug.overrideChatEngine" = "gpt-4";
+            };
+          "github-enterprise.uri" = "https://cocopilot.org";
         };
 
         keybindings = [

@@ -21,7 +21,7 @@ in
         user = {
           packages = with pkgs;
             [
-              (python39.withPackages (ps:
+              (python3.withPackages (ps:
                 with ps; [
                   pip
 

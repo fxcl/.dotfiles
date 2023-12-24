@@ -4,7 +4,7 @@
 }:
 let
   LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath [ pkgs.stdenv.cc.cc.lib pkgs.libiconv];
-  env-python = pkgs.python39;
+  env-python = pkgs.python3;
   env-python-with-packages = env-python.withPackages (ps: with ps; [
     # pip
     # wheel
@@ -44,7 +44,7 @@ pkgs.mkShell {
       # See https://pip.pypa.io/en/stable/user_guide/#environment-variables.
 
       export PIP_PREFIX="$(pwd)/.venv"
-      export PYTHONPATH="$PIP_PREFIX/${pkgs.python39.sitePackages}:$PYTHONPATH"
+      export PYTHONPATH="$PIP_PREFIX/${pkgs.python3.sitePackages}:$PYTHONPATH"
       #PYTHONPATH=${env-python-with-packages}/${env-python-with-packages.sitePackages}
 
       export PATH="$PIP_PREFIX/bin:$PATH"
