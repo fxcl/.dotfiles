@@ -28,6 +28,7 @@ in
         # https://github.com/NixOS/nixpkgs/blob/master/pkgs/misc/vscode-extensions/default.nix
         extensions = with pkgs.vscode-extensions;
           [
+            github.github-vscode-theme
             matklad.rust-analyzer
             a5huynh.vscode-ron
             serayuzgur.crates

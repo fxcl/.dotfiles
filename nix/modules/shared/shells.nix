@@ -127,7 +127,7 @@ in
               pandoc
               scc
               tokei
-              _1password # CLI
+              #_1password # CLI
               docker
               rename
               glow
