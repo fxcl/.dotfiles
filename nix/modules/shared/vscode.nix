@@ -27,41 +27,41 @@ in
         # - Update using the following: export temp=$(mktemp) && curl -s https://raw.githubusercontent.com/NixOS/nixpkgs/master/pkgs/misc/vscode-extensions/update_installed_exts.sh > $temp && chmod +x $temp && $temp $(whereis codium)
         # https://github.com/NixOS/nixpkgs/blob/master/pkgs/misc/vscode-extensions/default.nix
         extensions = with pkgs.vscode-extensions;
-        let
-          lib = pkgs.lib;
-          vitesse-theme = pkgs.vscode-utils.buildVscodeMarketplaceExtension {
-            mktplcRef = {
-              name = "theme-vitesse";
-              publisher = "antfu";
-              version = "0.6.4";
-              sha256 = "sha256-6nIzHJsLsIG3O6p97Q+YdDKxHj7r+pEwiq0UbJ/vlf4=";
+          let
+            lib = pkgs.lib;
+            vitesse-theme = pkgs.vscode-utils.buildVscodeMarketplaceExtension {
+              mktplcRef = {
+                name = "theme-vitesse";
+                publisher = "antfu";
+                version = "0.6.4";
+                sha256 = "sha256-6nIzHJsLsIG3O6p97Q+YdDKxHj7r+pEwiq0UbJ/vlf4=";
+              };
+              meta = with pkgs.lib; {
+                description = "Vitesse theme for VS Code";
+                downloadPage =
+                  "https://marketplace.visualstudio.com/items?itemName=antfu.theme-vitesse";
+                homepage = "no";
+                license = licenses.mit;
+              };
             };
-            meta = with pkgs.lib; {
-              description = "Vitesse theme for VS Code";
-              downloadPage =
-                "https://marketplace.visualstudio.com/items?itemName=antfu.theme-vitesse";
-              homepage = "no";
-              license = licenses.mit;
-            };
-          };
 
-          vscode-jest = pkgs.vscode-utils.buildVscodeMarketplaceExtension {
-            mktplcRef = {
-              name = "vscode-jest";
-              publisher = "orta";
-              version = "5.2.3";
-              sha256 = "sha256-cPHwBO7dI44BZJwTPtLR7bfdBcLjaEcyLVvl2Qq+BgE=";
+            vscode-jest = pkgs.vscode-utils.buildVscodeMarketplaceExtension {
+              mktplcRef = {
+                name = "vscode-jest";
+                publisher = "orta";
+                version = "5.2.3";
+                sha256 = "sha256-cPHwBO7dI44BZJwTPtLR7bfdBcLjaEcyLVvl2Qq+BgE=";
+              };
+              meta = with pkgs.lib; {
+                description =
+                  "This extension provides an extensible user interface for running your tests in VS Code. It can be used with any testing framework if there is a corresponding Test Adapter extension.";
+                downloadPage =
+                  "https://marketplace.visualstudio.com/items?itemName=hbenl.vscode-test-explorer";
+                homepage = "no";
+                license = licenses.mit;
+              };
             };
-            meta = with pkgs.lib; {
-              description =
-                "This extension provides an extensible user interface for running your tests in VS Code. It can be used with any testing framework if there is a corresponding Test Adapter extension.";
-              downloadPage =
-                "https://marketplace.visualstudio.com/items?itemName=hbenl.vscode-test-explorer";
-              homepage = "no";
-              license = licenses.mit;
-            };
-          };
-        in
+          in
           [
             vitesse-theme
             antfu.icons-carbon
@@ -362,7 +362,7 @@ in
           "editor.suggest.shareSuggestSelections" = true;
 
           "editor.find.addExtraSpaceOnTop" = false;
-          "editor.lineNumbers" = "interval";
+          "editor.lineNumbers" = "relative";
           # "editor.multiCursorModifier" = "ctrlCmd";
           "editor.unicodeHighlight.invisibleCharacters" = false;
           "editor.hover.sticky" = true;
@@ -381,24 +381,24 @@ in
           "files.enableTrash" = false;
           "files.eol" = "\n";
           "files.trimTrailingWhitespace" = true;
-          "workbench.editor.tabCloseButton"= "left";
-          "workbench.fontAliasing"= "antialiased";
-          "workbench.iconTheme"= "file-icons";
-          "workbench.list.smoothScrolling"= true;
-          "workbench.preferredDarkColorTheme"= "Vitesse Dark";
-          "workbench.preferredLightColorTheme"= "Vitesse Light";
-          "workbench.productIconTheme"= "icons-carbon";
-          "workbench.sideBar.location"= "left";
-          "workbench.startupEditor"= "newUntitledFile";
-          "workbench.tree.expandMode"= "singleClick";
-          "workbench.tree.indent"= 10;
+          "workbench.editor.tabCloseButton" = "left";
+          "workbench.fontAliasing" = "antialiased";
+          "workbench.iconTheme" = "file-icons";
+          "workbench.list.smoothScrolling" = true;
+          "workbench.preferredDarkColorTheme" = "Vitesse Dark";
+          "workbench.preferredLightColorTheme" = "Vitesse Light";
+          "workbench.productIconTheme" = "icons-carbon";
+          "workbench.sideBar.location" = "left";
+          "workbench.startupEditor" = "newUntitledFile";
+          "workbench.tree.expandMode" = "singleClick";
+          "workbench.tree.indent" = 10;
 
           "workbench.editor.highlightModifiedTabs" = true; # Better highlight on modified tabs.
           "workbench.editor.enablePreview" = false; # I often prefer small files therefore I thank the extra space.
           "workbench.statusBar.feedback.visible" = false;
           "workbench.activityBar.visible" = true;
           #"workbench.colorTheme" = "Gruvbox Light (Medium)";
-          "workbench.colorTheme" = "Gruvbox Dark Hard";
+          "workbench.colorTheme" = "Vitesse Light";
           #"workbench.iconTheme" = "Gruvbox Light";
           "workbench.editor.wrapTabs" = true;
           "workbench.editor.tabSizing" = "fit";
@@ -550,6 +550,13 @@ in
           "telemetry.enableTelemetry" = false;
           "telemetry.enableCrashReporter" = false;
           "telemetry.telemetryLevel" = "off";
+          "vetur.format.defaultFormatterOptions" = {
+            "js-beautify-html" = { "wrap_attributes" = "aligned-multiple"; };
+            "prettyhtml" = {
+            "printWidth" = 400;
+            "wrapAttributes" = false;
+            };
+          };
 
           "breadcrumbs.enabled" = false;
           "liveServer.settings.donotShowInfoMsg" = true;
@@ -557,7 +564,7 @@ in
           "conventionalCommits.showEditor" = true;
 
           # copilot
-          "enable-proposed-api" = ["github.copilot"];
+          "enable-proposed-api" = [ "github.copilot" ];
           "github.copilot.enable" = {
             "*" = true;
             "yaml" = false;
@@ -565,23 +572,23 @@ in
             "markdown" = true;
           };
 
-          "search.exclude" ={
-            "**/.git" =true;
-            "**/.github" =true;
-            "**/.nuxt" =true;
-            "**/.output" =true;
-            "**/.pnpm" =true;
-            "**/.vscode" =true;
-            "**/.yarn" =true;
-            "**/bower_components" =true;
-            "**/dist/**" =true;
-            "**/logs" =true;
-            "**/node_modules" =true;
-            "**/out/**" =true;
-            "**/package-lock.json" =true;
-            "**/pnpm-lock.yaml" =true;
-            "**/tmp" =true;
-            "**/yarn.lock" =true;
+          "search.exclude" = {
+            "**/.git" = true;
+            "**/.github" = true;
+            "**/.nuxt" = true;
+            "**/.output" = true;
+            "**/.pnpm" = true;
+            "**/.vscode" = true;
+            "**/.yarn" = true;
+            "**/bower_components" = true;
+            "**/dist/**" = true;
+            "**/logs" = true;
+            "**/node_modules" = true;
+            "**/out/**" = true;
+            "**/package-lock.json" = true;
+            "**/pnpm-lock.yaml" = true;
+            "**/tmp" = true;
+            "**/yarn.lock" = true;
           };
 
           "files.exclude" = {
@@ -781,7 +788,18 @@ in
           "go.toolsManagement.autoUpdate" = true;
           "go.docsTool" = "godoc";
           "go.formatTool" = "goimports";
+          "go.lintFlags" = [ "--disable-all" "--enable=golint" "--config=~/.gometalinter" ];
+
           "go.useLanguageServer" = true;
+          "go.coverOnSave" = true;
+          "go.coverageDecorator" = {
+            "type" = "gutter";
+            "coveredHighlightColor" = "rgba(64,128,128,0.5)";
+            "uncoveredHighlightColor" = "rgba(128,64,64,0.25)";
+            "coveredGutterStyle" = "blockgreen";
+            "uncoveredGutterStyle" = "blockred";
+          };
+          "go.coverOnSingleTest" = true;
 
           "javascript.validate.enable" = false;
           "javascript.updateImportsOnFileMove.enabled" = "always";
