@@ -143,8 +143,8 @@ in
               # https://www.vsixhub.com/vsix/73731/
               name = "gruvbox-material-icon-theme";
               publisher = "jonathanharty";
-              version = "1.1.4";
-              sha256 = "2865cc8f59a65e93ad8eefe08e0af7ff666ef5d2fa317494821980ae77bfabf5";
+              version = "1.1.5";
+              sha256 = "f3a51652e58a4fa69dc78870e0e270ddc499c5664a2c7e2e2d33be4ac83be606";
             }
             {
               name = "aws-toolkit-vscode";
@@ -163,8 +163,8 @@ in
               # https://www.vsixhub.com/vsix/32677/
               name = "tauri-vscode";
               publisher = "tauri-apps";
-              version = "0.1.6";
-              sha256 = "46ce91c29b9e567282fe0c39dad26cba85b00a0571fc7c8b268726b23d318ba6";
+              version = "0.2.6";
+              sha256 = "3bd37115e99482df579a12fa067340ae4a9b08db4782e49bbd5398c254f4ce0e";
             }
 
             {
@@ -174,22 +174,25 @@ in
               sha256 = "0xykf120j27s0bmbqj8grxc79dzkh4aclgrpp1jz5kkm39400z0f";
             }
             {
+              # https://www.vsixhub.com/vsix/1963/
               name = "rewrap";
               publisher = "stkb";
               version = "17.8.0";
               sha256 = "1y168ar01zxdd2x73ddsckbzqq0iinax2zv3d95nhwp9asjnbpgn";
             }
             {
+              # https://www.vsixhub.com/vsix/82111/
               name = "better-cpp-syntax";
               publisher = "jeff-hykin";
-              version = "1.15.19";
-              sha256 = "13v1lqqfvgkf5nm89b39hci65fnz4j89ngkg9p103l1p1fhncr41";
+              version = "1.15.10";
+              sha256 = "ee133551ada2f575d9f9d6ce08b73ab13abdda9f2a67391a3e1031afa70b148c";
             }
             {
+              #  https://www.vsixhub.com/vsix/88224/
               name = "remote-containers";
               publisher = "ms-vscode-remote";
-              version = "0.248.0";
-              sha256 = "147hcm98bbd5ww1xps9myay6324n4c5mj6f4zpkkb4c93k2ffxj3";
+              version = "0.232.5";
+              sha256 = "1e7763b7ad771339ed5ce02e0f1684a8ee98f97b935c3b2b5400d491fdc164db";
             }
             # {
             #   name = "cmake";
@@ -203,45 +206,51 @@ in
             #   version = "1.18.5";
             #   sha256 = "0cbmmhkbr4f1afk443sgdihp2q5zkzchbr2yhp7bm5qnv7xdv5l4";
             # }
-            {
-              publisher = "2gua";
-              name = "rainbow-brackets";
-              version = "0.0.6";
-              sha256 = "1m5c7jjxphawh7dmbzmrwf60dz4swn8c31svbzb5nhaazqbnyl2d";
+           {
+            # https://www.vsixhub.com/vsix/84687/
+              publisher = "tal7aouy";
+              name = "rainbow-bracket";
+              version = "1.0.2";
+              sha256 = "1f427d661cc7a49f7a7d6ec3ad5aa903db6a0202f670598cf56bbd493bb53146";
             }
             {
-              publisher = "bungcip";
+              # https://www.vsixhub.com/vsix/29718/
               name = "better-toml";
-              version = "0.3.2";
-              sha256 = "08lhzhrn6p0xwi0hcyp6lj9bvpfj87vr99klzsiy8ji7621dzql3";
+              publisher = "bungcip";
+              version = "0.19.2";
+              sha256 = "24a8fa9e88b67537b4d8fc57fe44b5d7b6615bcbbb0618f8428c1942224a3f61";
             }
             {
-              name = "gitignore";
-              publisher = "codezombiech";
-              version = "0.9.0";
-              sha256 = "0ww0x28m83fv5zdqkmz108rsxb60fyy5y0ksknb2xchirzwhayi0";
+              # https://www.vsixhub.com/vsix/31169/
+              name = "vscode-gitignore-generator";
+              publisher = "piotrpalarz";
+              version = "1.0.3";
+              sha256 = "7aa3639285d791c6ed303af69dd4e1a90daa4453f0d6e7108ba86fd1e081c379";
             }
             {
+              # https://www.vsixhub.com/vsix/47/
               name = "prettier-vscode";
               publisher = "esbenp";
-              version = "9.8.0";
-              sha256 = "1rkjzmcvmjzd7l6bi05ymr1sibps3c6lzxhbmjp0zpzv02wl9jgv";
+              version = "10.1.0";
+              sha256 = "490b9fd7926af3830a055a8ae94be22b4e2ea3b810c3dcaec3f5840445dc4007";
             }
             {
+              # https://www.vsixhub.com/vsix/4151/
               name = "vscode-test-explorer";
               publisher = "hbenl";
               version = "2.21.1";
               sha256 = "022lnkq278ic0h9ggpqcwb3x3ivpcqjimhgirixznq0zvwyrwz3w";
             }
             {
+              # https://www.vsixhub.com/vsix/3846/
               name = "restructuredtext";
               publisher = "lextudio";
-              version = "190.1.4";
-              sha256 = "1y25b2i16xjb1cbmkxd822jh10jdclk3h16hf62s65l00z69gfxv";
+              version = "190.1.16";
+              sha256 = "69dfb402e1d99f2f49740af52d32dd38b918a477392cf444835b3d35e5b4c1f4";
             }
             {
-              publisher = "lostintangent";
               name = "vsls-pomodoro";
+              publisher = "lostintangent";
               version = "0.1.0";
               sha256 = "1b73zbkhlhacvi18cx4g3n6randy3hw9cab1gkw5gzb3375w7w3p";
             }
@@ -252,29 +261,31 @@ in
               sha256 = "13xyi2bd4c4jfmad9bzjgvj60mrahdmfs1h2xsgiv286vpq6pk4a";
             }
             {
+              # https://www.vsixhub.com/vsix/129709/
               name = "rainbow-csv";
               publisher = "mechatroner";
-              version = "2.4.0";
-              sha256 = "0idl63rfn068zamyx5mw3524k3pb98gv32dfbrszxyrrx4kbh1fd";
+              version = "3.8.0";
+              sha256 = "4a9951332452093a711c339be8641dd2a24abe78bb53e45c6ede198241d0232b";
             }
-            {
+           {
               name = "nunjucks";
               publisher = "ronnidc";
               version = "0.3.1";
               sha256 = "0dlsri0dcligjz3x1ddpjhyvna6dmdswhb86c9k73y22r12fd1zd";
             }
-            {
-              name = "elm-ls-vscode";
-              publisher = "elmTooling";
-              version = "2.4.1";
-              sha256 = "1idhsrl9w8sc0qk58dvmyyjbmfznk3f4gz2zl6s9ksyz9d06vfrd";
-            }
+            # {
+            #   # https://www.vsixhub.com/vsix/573/
+            #   name = "elm-ls-vscode";
+            #   publisher = "elmTooling";
+            #   version = "2.7.2";
+            #   sha256 = "dfc7cb78c466c8ec2f84962881d521fdf89de6a014b5d11760ca662fedb56f46";
+            # }
             {
               # https://www.vsixhub.com/vsix/8048/
               name = "vscode-lldb";
               publisher = "vadimcn";
-              version = "1.7.4";
-              sha256 = "5c9c4db3b03cd48612f65d382340f9e5f2506ac3e6b7be65d74ca3de064d9978";
+              version = "1.10.0";
+              sha256 = "4402afec44b0d071bf6af04e3c4d424ebd131ec07b516c7485a25577f0e6f468";
             }
             # https://www.vsixhub.com/vsix/30/
             # {
@@ -311,7 +322,7 @@ in
 
           "editor.minimap.enabled" = false;
           "editor.codeLensFontFamily" = "'Zed Mono', \"FiraCode Nerd Font Mono\"; \"Noto Sans Mono CJK JP\"; monospace";
-          "editor.fontFamily" = "'MonoLisa Nerd Font Mono','Zed Mono', Mensch, Menlo, Consolas, Monaco, 'Courier New',\"FiraCode Nerd Font Mono\"; \"Noto Sans Mono CJK JP\"; monospace";
+          "editor.fontFamily" = "'Zed Mono', Mensch, Menlo, Consolas, Monaco, 'Courier New',\"FiraCode Nerd Font Mono\"; \"Noto Sans Mono CJK JP\"; monospace";
           "editor.fontLigatures" = "'ss01', 'ss02', 'ss03', 'ss06', 'zero'";
           "editor.tabSize" = 2; # Because I prefer smaller tab sizes.
           "editor.formatOnPaste" = false; # Do not mess with my code by default. Will trust automatic rules language by language.
@@ -398,8 +409,8 @@ in
           "workbench.statusBar.feedback.visible" = false;
           "workbench.activityBar.visible" = true;
           #"workbench.colorTheme" = "Gruvbox Light (Medium)";
-          "workbench.colorTheme" = "Vitesse Light";
-          #"workbench.iconTheme" = "Gruvbox Light";
+          #"workbench.colorTheme" = "Vitesse Light";
+          "workbench.colorTheme" = "Gruvbox Light";
           "workbench.editor.wrapTabs" = true;
           "workbench.editor.tabSizing" = "fit";
           "workbench.editor.decorations.colors" = true;
@@ -519,7 +530,7 @@ in
           "terminal.integrated.cursorStyle" = "line";
           "terminal.integrated.cursorBlinking" = true;
           "terminal.integrated.letterSpacing" = 1.0;
-          "terminal.integrated.lineHeight" = 1.2;
+          "terminal.integrated.lineHeight" = 1.3;
           "terminal.integrated.shell.linux" = "/bin/zsh";
           "terminal.integrated.profiles.windows" = {
             "PowerShell" = {
@@ -532,6 +543,19 @@ in
           "terminal.integrated.shellIntegration.decorationsEnabled" = "never";
           #"terminal.external.linuxExec" = "konsole";
           #"terminal.external.linuxExec" = "${alacritty}/bin/alacritty";
+
+          # @jasonekratz added
+          # This fixed the glyph issues I was having with Inconsolata Nerd Font.
+          "terminal.integrated.gpuAcceleration" = "canvas";
+
+          # @dalekurt added (belows which gives me the the fonts for the terminal and the icons from Nerd Font.)
+          "terminal.integrated.fontFamily" = "'Hack Nerd Font','Source Code Pro for Powerline','MesloLGS NF','Source Code Pro for Powerline','Hack Nerd Font'";
+
+          # @kaustuv added
+          # after the changing the font, still had some issues with the glyph spacing in the integrated terminal - fixed it with
+          # @ar2zee : fixed the problem for me.
+          # (deprecated)
+          "terminal.integrated.rendererType" = "canvas";
 
           "diffEditor.maxComputationTime" = 0;
           "diffEditor.wordWrap" = "off";
@@ -981,6 +1005,7 @@ in
           "CodeGPT.query.language" = "Chinese";
           "github.copilot.advanced" = {
             "debug.overrideChatEngine" = "gpt-4";
+            "authProvider" = "github-enterprise";
           };
           "github-enterprise.uri" = "https://cocopilot.org";
         };

@@ -31,7 +31,7 @@ in
 
         casks = [
           "swiftdefaultappsprefpane"
-          "eloston-chromium"
+          #"eloston-chromium"
         ];
 
         brews = [
