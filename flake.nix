@@ -49,10 +49,10 @@
 
     };
 
-    rust-overlay = {
-      url = "github:oxalica/rust-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    #rust-overlay = {
+    #  url = "github:oxalica/rust-overlay";
+    #  inputs.nixpkgs.follows = "nixpkgs";
+    #};
 
     zk = {
       url = "github:mickael-menu/zk";
@@ -147,7 +147,7 @@
               }
             )
             # nur.overlay
-            inputs.rust-overlay.overlays.default
+            #inputs.rust-overlay.overlays.default
           ];
         };
       };
