@@ -41,6 +41,9 @@
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
 
+     inputs.nixpkgs-mozilla.url = "github:mozilla/nixpkgs-mozilla";
+    inputs.nixpkgs-mozilla.flake = false;
+
     emacs.url = "github:cmacrae/emacs";
 
     agenix = {
@@ -49,24 +52,15 @@
 
     };
 
-    #rust-overlay = {
-    #  url = "github:oxalica/rust-overlay";
-    #  inputs.nixpkgs.follows = "nixpkgs";
-    #};
-
     zk = {
       url = "github:mickael-menu/zk";
       flake = false;
     };
 
-    eza = {
-      url = "https://flakehub.com/f/eza-community/eza/0.15.3.tar.gz";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
 
   };
 
-  outputs = { self, eza, ... }@inputs:
+  outputs = { self, ... }@inputs:
     let
       sharedHostsConfig = { config, pkgs, ... }: {
         nix = {
@@ -135,7 +129,6 @@
                 unstable = inputs.nixpkgs-unstable.legacyPackages.${prev.system}; # Make available unstable channel.
                 pragmatapro = prev.callPackage ./nix/pkgs/pragmatapro.nix { };
                 # zk = prev.callPackage ./nix/pkgs/zk.nix { source = inputs.zk; };
-                eza = inputs.eza.packages.${final.system}.default;
                 next-prayer = prev.callPackage
                   ./config/tmux/scripts/next-prayer/next-prayer.nix
                   { };
@@ -143,11 +136,9 @@
                 #pure-prompt = prev.pure-prompt.overrideAttrs (old: {
                 #patches = (old.patches or [ ]) ++ [ ./nix/hosts/pure-zsh.patch ];
                 #});
-
               }
             )
             # nur.overlay
-            #inputs.rust-overlay.overlays.default
           ];
         };
       };

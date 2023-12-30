@@ -30,14 +30,14 @@ alias npmlist="npm list --global --parseable --depth=0"
 
 (( $+commands[htop] )) && alias top=htop
 
-if (( $+commands[eza] )); then
-  alias ls="eza "
-  alias ll='eza --tree --group-directories-first -I "node_modules" '
+if (( $+commands[lsd] )); then
+  alias ls="lsd "
+  alias ll='lsd --tree --group-directories-first -I "node_modules" '
 elif (( $+commands[tree] )); then
   alias ll="type tree >/dev/null && tree --dirsfirst -a -L 1 || l -d .*/ */ "
   alias tree='tree -I  "node_modules" '
 else
-  alias ll="echo 'You have to install eza or tree'"
+  alias ll="echo 'You have to install lsd or tree'"
 fi
 
 if (( $+commands[jq] )) then;
