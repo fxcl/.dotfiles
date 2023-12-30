@@ -69,7 +69,6 @@ in
         # `brew install`
         brews = [
           "gcc"
-          "llvm"
           "libiconv"
           "mas"
           #"rustup-init"
@@ -83,17 +82,17 @@ in
           "gstreamer"
           {
             name = "emacs-mac";
-            args = [
-              #"HEAD"
-              "with-emacs-big-sur-icon"
-              "with-ctags"
-              "with-natural-title-bar"
-              "with-starter"
-              "with-mac-metal"
-              "with-native-compilation"
-              "with-xwidgets"
-              "with-unlimited-select"
-            ];
+            # args = [
+            #   #"HEAD"
+            #   "with-emacs-big-sur-icon"
+            #   "with-ctags"
+            #   "with-natural-title-bar"
+            #   "with-starter"
+            #   "with-mac-metal"
+            #   "with-native-compilation"
+            #   "with-xwidgets"
+            #   "with-unlimited-select"
+            # ];
           }
           "libtool"
           "llvm"

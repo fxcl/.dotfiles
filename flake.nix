@@ -41,8 +41,8 @@
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
 
-     inputs.nixpkgs-mozilla.url = "github:mozilla/nixpkgs-mozilla";
-    inputs.nixpkgs-mozilla.flake = false;
+    nixpkgs-mozilla.url = "github:mozilla/nixpkgs-mozilla";
+    nixpkgs-mozilla.flake = false;
 
     emacs.url = "github:cmacrae/emacs";
 
