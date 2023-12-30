@@ -27,24 +27,78 @@ in
           "homebrew/cask"
           "homebrew/core"
           "homebrew/services"
+          "homebrew/cask-fonts"
+          "homebrew/cask-versions"
+          "railwaycat/emacsmacport"
+          "chipsalliance/verible"
         ];
 
+        # `brew install --cask`
         casks = [
           "swiftdefaultappsprefpane"
+          "iina"
+          "mpv"
+          "keepingyouawake"
+          "keka"
+          "kekaexternalhelper"
           #"eloston-chromium"
+          "code-composer-studio"
+          #"crossover"
+          #"discord"
+          #"kitty"
+          #"league-of-legends"
+          #"microsoft-office"
+          #"microsoft-teams"
+          #"middleclick"
+          #"mos"
+          #"obs"
+          #"openemu"
+          #"spotify"
+          #"steam"
+          #"stremio"
+          #"syncthing"
+          #"teamviewer"
+          #"utm"
+          #"via"
+          "visual-studio-code-insiders"
+          #"xquartz"
+          #"xournal-plus-plus"
+          #"zoom"
         ];
 
+        # `brew install`
         brews = [
           "gcc"
           "llvm"
           "libiconv"
           "mas"
-          "rustup-init"
+          #"rustup-init"
           #"python3"
           #"cmake"
           #"openssl"
           # "libolm"
           "mysql-client"
+          "aspell"
+          "croc"
+          "gstreamer"
+          {
+            name = "emacs-mac";
+            args = [
+              #"HEAD"
+              "with-emacs-big-sur-icon"
+              "with-ctags"
+              "with-natural-title-bar"
+              "with-starter"
+              "with-mac-metal"
+              "with-native-compilation"
+              "with-xwidgets"
+              "with-unlimited-select"
+            ];
+          }
+          "libtool"
+          "llvm"
+          "libomp"
+          "verible"
         ];
 
         masApps = {
@@ -54,58 +108,37 @@ in
         };
       };
 
-       system = {
+      system = {
         # activationScripts are executed every time you boot the system or run `nixos-rebuild` / `darwin-rebuild`.
         activationScripts.postUserActivation.text = ''
           # activateSettings -u will reload the settings from the database and apply them to the current session,
           # so we do not need to logout and login again to make the changes take effect.
           /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
+          # disable Chrome native DNS resolver
+          if [ -d '/Applications/Google Chrome Canary.app' ]; then
+            defaults write com.google.Chrome BuiltInDnsClientEnabled -bool false
+          fi
+          # disable saving to keychain for GPG
+          defaults write org.gpgtools.common DisableKeychain -bool true
+          # reset the order of the launchpad and size of dock
+          defaults write com.apple.dock ResetLaunchPad -bool true
+          defaults write com.apple.dock tilesize -integer 64
+          defaults write com.apple.dock size-immutable -bool yes
+          killall Dock
+          # if Emacs.app exists, reset Emacs to /Applications
+          if [ -d /opt/homebrew/opt/emacs-mac/Emacs.app ]; then
+            rm -rf /Applications/Emacs.app
+            cp -r /opt/homebrew/opt/emacs-mac/Emacs.app /Applications
+          elif [ -d /Applications/Emacs.app ]; then
+            rm -rf /Applications/Emacs.app
+          fi
         '';
 
         defaults = {
-            menuExtraClock.Show24Hour = true; # show 24 hour clock
-            # ".GlobalPreferences".com.apple.sound.beep.sound = "Funk";
-            LaunchServices.LSQuarantine = false;
-            SoftwareUpdate.AutomaticallyInstallMacOSUpdates = true;
-            NSGlobalDomain = {
-            # `defaults read NSGlobalDomain "xxx"`
-            "com.apple.swipescrolldirection" = true; # enable natural scrolling(default to true)
-            "com.apple.sound.beep.feedback" = 0; # disable beep sound when pressing volume up/down key
-            AppleInterfaceStyle = "Dark"; # dark mode
-            AppleKeyboardUIMode = 3; # Mode 3 enables full keyboard control.
-            ApplePressAndHoldEnabled = false; # enable press and hold
-            # If you press and hold certain keyboard keys when in a text area, the key’s character begins to repeat.
-            # This is very useful for vim users, they use `hjkl` to move cursor.
-            # sets how long it takes before it starts repeating.
-            InitialKeyRepeat = 15; # normal minimum is 15 (225 ms), maximum is 120 (1800 ms)
-            # sets how fast it repeats once it starts.
-            KeyRepeat = 3; # normal minimum is 2 (30 ms), maximum is 120 (1800 ms)
-
-            NSAutomaticCapitalizationEnabled = false; # disable auto capitalization(自动大写)
-            NSAutomaticDashSubstitutionEnabled = false; # disable auto dash substitution(智能破折号替换)
-            NSAutomaticPeriodSubstitutionEnabled = false; # disable auto period substitution(智能句号替换)
-            NSAutomaticQuoteSubstitutionEnabled = false; # disable auto quote substitution(智能引号替换)
-            NSAutomaticSpellingCorrectionEnabled = false; # disable auto spelling correction(自动拼写检查)
-            NSNavPanelExpandedStateForSaveMode = true; # expand save panel by default(保存文件时的路径选择/文件名输入页)
-            NSNavPanelExpandedStateForSaveMode2 = true;
-
-            AppleFontSmoothing = 2;
-            AppleMeasurementUnits = "Centimeters";
-            AppleMetricUnits = 1;
-            AppleShowAllExtensions = true;
-            AppleShowScrollBars = "Automatic";
-            AppleTemperatureUnit = "Celsius";
-            NSDocumentSaveNewDocumentsToCloud = false;
-            NSTableViewDefaultSizeMode = 2;
-            NSTextShowsControlCharacters = true;
-            NSWindowResizeTime = 0.001;
-            PMPrintingExpandedStateForPrint = true;
-            PMPrintingExpandedStateForPrint2 = true;
-            _HIHideMenuBar = false;
-            # com.apple.mouse.tapBehavior = 1;
-            # com.apple.springing.delay = 0;
-            # com.apple.springing.enabled = true;
-          };
+          menuExtraClock.Show24Hour = true; # show 24 hour clock
+          SoftwareUpdate.AutomaticallyInstallMacOSUpdates = false;
+          # ".GlobalPreferences".com.apple.sound.beep.sound = "Funk";
+          LaunchServices.LSQuarantine = false;
 
           dock = {
             autohide = false;
@@ -128,6 +161,12 @@ in
             tilesize = 46;
             # Hot corners, reset them all.
             # Not supported in nix-darwin yet
+
+            wvous-tl-corner = 2;
+            wvous-tr-corner = 1;
+            wvous-bl-corner = 11;
+            wvous-br-corner = 1;
+
             #wvous-tl-corner = 2; # top-left - Mission Control
             #wvous-tr-corner = 13; # top-right - Lock Screen
             #wvous-bl-corner = 3; # bottom-left - Application Windows
@@ -135,9 +174,10 @@ in
           };
 
           finder = {
-           _FXShowPosixPathInTitle = true; # show full path in finder title
+            _FXShowPosixPathInTitle = true; # show full path in finder title
             AppleShowAllExtensions = true; # show all file extensions
-            FXEnableExtensionChangeWarning = false; # disable warning when changing file extension
+            FXEnableExtensionChangeWarning =
+              false; # disable warning when changing file extension
             QuitMenuItem = true; # enable quit menu item
             ShowPathbar = true; # show path bar
             ShowStatusBar = true; # show status bar
@@ -151,16 +191,68 @@ in
             TrackpadThreeFingerDrag = true; # enable three finger drag
           };
 
+          NSGlobalDomain = {
+            # `defaults read NSGlobalDomain "xxx"`
+            "com.apple.swipescrolldirection" =
+              true; # enable natural scrolling(default to true)
+            "com.apple.sound.beep.feedback" =
+              0; # disable beep sound when pressing volume up/down key
+            AppleInterfaceStyle = "Dark"; # dark mode
+            AppleKeyboardUIMode = 3; # Mode 3 enables full keyboard control.
+            ApplePressAndHoldEnabled = false; # enable press and hold
+            # If you press and hold certain keyboard keys when in a text area, the key’s character begins to repeat.
+            # This is very useful for vim users, they use `hjkl` to move cursor.
+            # sets how long it takes before it starts repeating.
+            InitialKeyRepeat =
+              15; # normal minimum is 15 (225 ms), maximum is 120 (1800 ms)
+            # sets how fast it repeats once it starts.
+            KeyRepeat =
+              3; # normal minimum is 2 (30 ms), maximum is 120 (1800 ms)
+            NSNavPanelExpandedStateForSaveMode =
+              true; # expand save panel by default(保存文件时的路径选择/文件名输入页)
+            NSNavPanelExpandedStateForSaveMode2 = true;
+
+            NSAutomaticCapitalizationEnabled =
+              false; # disable auto capitalization(自动大写)
+            NSAutomaticDashSubstitutionEnabled =
+              false; # disable auto dash substitution(智能破折号替换)
+            NSAutomaticPeriodSubstitutionEnabled =
+              false; # disable auto period substitution(智能句号替换)
+            NSAutomaticQuoteSubstitutionEnabled =
+              false; # disable auto quote substitution(智能引号替换)
+            NSAutomaticSpellingCorrectionEnabled =
+              false; # disable auto spelling correction(自动拼写检查)
+
+            AppleFontSmoothing = 2;
+            AppleMeasurementUnits = "Centimeters";
+            AppleMetricUnits = 1;
+            AppleShowAllExtensions = true;
+            AppleShowScrollBars = "Automatic";
+            AppleTemperatureUnit = "Celsius";
+            NSDocumentSaveNewDocumentsToCloud = false;
+            NSTableViewDefaultSizeMode = 2;
+            NSTextShowsControlCharacters = true;
+            NSWindowResizeTime = 1.0e-3;
+            PMPrintingExpandedStateForPrint = true;
+            PMPrintingExpandedStateForPrint2 = true;
+            _HIHideMenuBar = false;
+            # com.apple.mouse.tapBehavior = 1;
+            # com.apple.springing.delay = 0;
+            # com.apple.springing.enabled = true;
+          };
+
           # customize settings that not supported by nix-darwin directly
           # see the source code of https://github.com/rgcr/m-cli to get all the available options
           CustomUserPreferences = {
             ".GlobalPreferences" = {
+              "com.apple.mouse.linear" = 1;
               # automatically switch to a new space when switching to the application
               AppleSpacesSwitchOnActivate = true;
             };
             NSGlobalDomain = {
               # Add a context menu item for showing the Web Inspector in web views
               WebKitDeveloperExtras = true;
+              ApplePressAndHoldEnabled = false;
             };
             "com.apple.finder" = {
               ShowExternalHardDrivesOnDesktop = true;
@@ -185,9 +277,7 @@ in
               location = "~/Desktop";
               type = "png";
             };
-            "com.apple.AdLib" = {
-              allowApplePersonalizedAdvertising = false;
-            };
+            "com.apple.AdLib".allowApplePersonalizedAdvertising = false;
             # Prevent Photos from opening automatically when devices are plugged in
             "com.apple.ImageCapture".disableHotPlug = true;
           };

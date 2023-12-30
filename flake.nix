@@ -66,7 +66,7 @@
 
   };
 
-  outputs = { self,eza, ... }@inputs:
+  outputs = { self, eza, ... }@inputs:
     let
       sharedHostsConfig = { config, pkgs, ... }: {
         nix = {
@@ -112,7 +112,7 @@
 
         fonts = {
           fontDir.enable = true;
-          fonts = with pkgs; [  ] ++ (lib.optionals
+          fonts = with pkgs; [ ] ++ (lib.optionals
             pkgs.stdenv.isLinux [
             noto-fonts
             noto-fonts-cjk
@@ -138,7 +138,7 @@
                 eza = inputs.eza.packages.${final.system}.default;
                 next-prayer = prev.callPackage
                   ./config/tmux/scripts/next-prayer/next-prayer.nix
-                { };
+                  { };
 
                 #pure-prompt = prev.pure-prompt.overrideAttrs (old: {
                 #patches = (old.patches or [ ]) ++ [ ./nix/hosts/pure-zsh.patch ];

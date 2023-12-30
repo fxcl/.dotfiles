@@ -106,7 +106,7 @@ in
     # must already begin with pre-existing PATH. Also, can't use binDir here,
     # because it contains a nix store path.
     # my.env.PATH  = [ <bin> "$PATH" ];
-    my.env.PATH = ["$NODE_HOME/bin" "/Users/kelvin/.local/share/cargo/bin" "/Users/kelvin/.cache/npm/bin" "/Users/kelvin/.bin" "$XDG_BIN_HOME" "$GOBIN" "$PATH" ];
+    my.env.PATH = [ "$NODE_HOME/bin" "/Users/kelvin/.local/share/cargo/bin" "/Users/kelvin/.cache/npm/bin" "/Users/kelvin/.bin" "$XDG_BIN_HOME" "$GOBIN" "$PATH" ];
 
     # let nix manage home-manager profiles and use global nixpkgs
     home-manager = {

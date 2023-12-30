@@ -58,7 +58,8 @@ in {
                 license = licenses.mit;
               };
             };
-          in [
+          in
+          [
             vitesse-theme
             antfu.icons-carbon
             github.github-vscode-theme

@@ -9,10 +9,10 @@
     ./sudoers.nix
     ./lf.nix
     ./bat.nix
-     ./starship.nix
-     ./ripgrep.nix
-     ./tmux.nix
-     ./misc.nix
+    ./starship.nix
+    ./ripgrep.nix
+    ./tmux.nix
+    ./misc.nix
     # ./fonts.nix
     ./gui.nix
     ./git.nix

@@ -26,10 +26,6 @@ in
         homebrew.casks = [
           "iterm2"
           "notunes"
-          "keepingyouawake"
-          # "google-chrome"
-          "mpv"
-          "iina"
           "appcleaner"
           #"raycast"
           #"rectangle"

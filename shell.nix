@@ -3,7 +3,7 @@
 { pkgs ? import <nixpkgs> { }
 }:
 let
-  LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath [ pkgs.stdenv.cc.cc.lib pkgs.libiconv];
+  LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath [ pkgs.stdenv.cc.cc.lib pkgs.libiconv ];
   env-python = pkgs.python3;
   env-python-with-packages = env-python.withPackages (ps: with ps; [
     # pip
