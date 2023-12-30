@@ -41,6 +41,7 @@ in
           "keepingyouawake"
           "keka"
           "kekaexternalhelper"
+          "font-jetbrains-mono-nerd-font"
           #"eloston-chromium"
           "code-composer-studio"
           #"crossover"
@@ -80,20 +81,25 @@ in
           "aspell"
           "croc"
           "gstreamer"
-          {
-            name = "emacs-mac";
-            # args = [
-            #   #"HEAD"
-            #   "with-emacs-big-sur-icon"
-            #   "with-ctags"
-            #   "with-natural-title-bar"
-            #   "with-starter"
-            #   "with-mac-metal"
-            #   "with-native-compilation"
-            #   "with-xwidgets"
-            #   "with-unlimited-select"
-            # ];
-          }
+           "gnutls"
+           "jansson"
+           "libxml2"
+           "texinfo"
+           "imagemagick"
+        # {
+        #       name = "emacs-mac";
+        #     args = [
+        #       #"HEAD"
+        #       "with-emacs-big-sur-icon"
+        #       "with-ctags"
+        #       "with-natural-title-bar"
+        #       "with-starter"
+        #       "with-mac-metal"
+        #       "with-native-compilation"
+        #       "with-xwidgets"
+        #       "with-unlimited-select"
+        #     ];
+        #   }
           "libtool"
           "llvm"
           "libomp"

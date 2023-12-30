@@ -54,3 +54,32 @@ if [[ "$(uname)" == linux* ]]; then
   alias chmod='chmod --preserve-root -v'
   alias chown='chown --preserve-root -v'
 fi
+
+if [[ "$(uname)" == Darwin* ]]; then
+  alias finder='open -a Finder ./'
+  # emacs-mac
+  # brew tap railwaycat/emacsmacport
+  # brew install emacs-mac
+  # brew untap railwaycat/emacsmacport
+  alias emacs='/usr/local/opt/emacs-mac/Emacs.app/Contents/MacOS/Emacs --no-splash'
+  # emacs standard
+  # brew install emacs --with-cocoa
+  # alias emacs='/usr/local/opt/emacs/Emacs.app/Contents/MacOS/Emacs --no-splash --fullscreen'
+  # emacs cask
+  # brew install --cask emacs
+  # installed in /Applications but linked as /usr/local/bin/emacs
+  # also could work with:
+  # alias emacs='open -a Emacs' but with errors taking arguments :\
+
+  alias j17="export JAVA_HOME=`/usr/libexec/java_home -v 17`; java -version"
+  alias j11="export JAVA_HOME=`/usr/libexec/java_home -v 11.0.15`; java -version"
+  alias j8="export JAVA_HOME=`/usr/libexec/java_home -v 1.8`; java -version"
+
+  # Turn the prompt symbol red if the user is root
+  # if [ $( id -u ) -eq 0 ];
+  # then # you are root, make the prompt red
+  #     export PS1='\[\e[1;31m\]\u\[\e[0m\]@\[\e[1;32m\]\h\[\e[0m\]:\[\e[1;34m\]\w\[\e[0m\]\$ '
+  # else
+  #     export PS1='\[\e[1;32m\]\u\[\e[0m\]@\[\e[1;32m\]\h\[\e[0m\]:\[\e[1;34m\]\w\[\e[0m\]\$ '
+  # fi
+fi

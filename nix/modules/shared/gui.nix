@@ -29,7 +29,6 @@ in
           "appcleaner"
           #"raycast"
           #"rectangle"
-          "MisterTea/et/et"
           # "aria2"
           # "bitwarden"
           # "hammerspoon"
