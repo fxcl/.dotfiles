@@ -131,9 +131,9 @@ in
           defaults write com.apple.dock size-immutable -bool yes
           killall Dock
           # if Emacs.app exists, reset Emacs to /Applications
-          if [ -d /opt/homebrew/opt/emacs-mac/Emacs.app ]; then
+          if [ -d /usr/local/Cellar/emacs-mac/emacs-29.1-mac-10.0/Emacs.app ]; then
             rm -rf /Applications/Emacs.app
-            cp -r /opt/homebrew/opt/emacs-mac/Emacs.app /Applications
+            cp -r  /usr/local/Cellar/emacs-mac/emacs-29.1-mac-10.0/Emacs.app /Applications
           elif [ -d /Applications/Emacs.app ]; then
             rm -rf /Applications/Emacs.app
           fi
