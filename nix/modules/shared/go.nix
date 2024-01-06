@@ -19,6 +19,7 @@ in
       my.env = rec {
         GOPATH = "$XDG_DATA_HOME/go";
         GOBIN = "${GOPATH}/bin";
+        GOCACHE = "${GOPATH}/cache";
         GOROOT = "${pkgs.go_1_20}/share/go";
         GOPROXY = "https://goproxy.cn,direct";
         GO111MODULE = "on";
