@@ -77,6 +77,7 @@ in
           #"cmake"
           #"openssl"
           # "libolm"
+          "openinterminal"
           "mysql-client"
           "aspell"
           "croc"
@@ -86,20 +87,20 @@ in
            "libxml2"
            "texinfo"
            "imagemagick"
-        # {
-        #       name = "emacs-mac";
-        #     args = [
-        #       #"HEAD"
-        #       "with-emacs-big-sur-icon"
-        #       "with-ctags"
-        #       "with-natural-title-bar"
-        #       "with-starter"
-        #       "with-mac-metal"
-        #       "with-native-compilation"
-        #       "with-xwidgets"
-        #       "with-unlimited-select"
-        #     ];
-        #   }
+        {
+              name = "emacs-mac";
+            args = [
+              "HEAD"
+              "with-emacs-big-sur-icon"
+              "with-ctags"
+              "with-natural-title-bar"
+              "with-starter"
+              "with-mac-metal"
+              "with-native-compilation"
+              "with-xwidgets"
+              "with-unlimited-select"
+            ];
+          }
           "libtool"
           "llvm"
           "libomp"
