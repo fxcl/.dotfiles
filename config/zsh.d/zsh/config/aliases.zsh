@@ -57,6 +57,7 @@ fi
 
 if [[ "$(uname)" == Darwin* ]]; then
   alias finder='open -a Finder ./'
+  alias flushdns='sudo killall -HUP mDNSResponder'
   # emacs-mac
   # brew tap railwaycat/emacsmacport
   # brew install emacs-mac

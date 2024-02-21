@@ -116,6 +116,10 @@ in
             recursive = true;
             source = ../../../config/aria2;
           };
+            ".config/ghostty" = {
+            recursive = true;
+            source = ../../../config/ghostty;
+          };
           ".cargo/config" = {
             text = ''
               [source.crates-io]
