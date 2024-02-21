@@ -28,6 +28,15 @@ alias p="pnpm"
 alias kitty='SSL_CERT_FILE="/etc/ssl/certs/ca-certificates.crt" kitty '
 alias npmlist="npm list --global --parseable --depth=0"
 
+alias nrd="npm run dev"
+alias nrb="npm run build"
+alias gs="git status"
+alias gcm="git commit -m"
+alias ni="npm install"
+alias nu="npm uninstall"
+alias nr="npm run"
+alias nrp="npm run prisma:studio"
+
 (( $+commands[htop] )) && alias top=htop
 
 if (( $+commands[lsd] )); then

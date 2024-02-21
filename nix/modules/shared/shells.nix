@@ -111,7 +111,6 @@ in
             packages = with pkgs; [
               nixfmt
               tealdeer # rust implementation of `tldr`
-              ncdu
               bat
               fd
               ripgrep
