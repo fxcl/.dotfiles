@@ -24,8 +24,8 @@ in
       homebrew = {
         taps = [
           "homebrew/bundle"
-          "homebrew/cask"
-          "homebrew/core"
+          #"homebrew/cask"
+          #"homebrew/core"
           "homebrew/services"
           "homebrew/cask-fonts"
           "homebrew/cask-versions"
@@ -77,7 +77,6 @@ in
           #"cmake"
           #"openssl"
           # "libolm"
-          "openinterminal"
           "mysql-client"
           "aspell"
           "croc"
