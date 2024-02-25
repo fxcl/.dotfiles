@@ -1,7 +1,7 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 
-(setq user-full-name "Bruno Henriques"
-      user-mail-address "4727729+bphenriques@users.noreply.github.com")
+(setq user-full-name "fxcl"
+      user-mail-address "me@gnux.cn")
 
 (load! "+theme")
 (load! "+macos")
@@ -35,4 +35,3 @@
 (setq +ivy-buffer-preview t)
 
 (xterm-mouse-mode 1) ; Enable basic mouse support when running in the terminal
-

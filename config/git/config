@@ -1,6 +1,7 @@
 # vim:noexpandtab:ft=gitconfig
 
 [commit]
+	template  = ~/.config/git/gitmessage
 	verbose = true
 	gpgsign = true
 
@@ -62,6 +63,10 @@
 ; 	ignoreRevsFile = ".git-blame-ignore-revs"
 ; 	markIgnoredLines = true
 ; 	markUnblamableLines = true
+
+# Enforce SSH to clone repos
+[url "ssh://git@github.com/"]
+  insteadOf = https://github.com/
 
 [diff]
 	# Detect copies as well as renames
@@ -143,15 +148,32 @@
 	status = true
 
 [alias]
-	amend = commit --amend --no-edit --date now
-	force = push --force-with-lease
+		co        = checkout
+    s         = status -s
+		st = status -sb
+    cp        = cherry-pick
+    rb        = rebase
+		#rb = "!sh -c \"git rebase -i HEAD~$1\" -"
+    pushf     = push --force-with-lease
+    amend     = commit --amend
+		#amend = commit --amend --no-edit --date now
+    wip       = !git add --all && git commit -m "WIP"
+    wipp      = !git wip && git push
+
+    # Tools
+    patch   = !git --no-pager diff --no-color
+    fix-upstream = !git branch --set-upstream-to=origin/$(git rev-parse --abbrev-ref HEAD) $(git rev-parse --abbrev-ref HEAD)
+
+    # History
+    ls      = log --pretty=format:'%C(yellow)%h%d %Creset%s%Cblue [%cn] [%ar] %C(black)%C(bold)%cr%Creset' --decorate
+    graph   = log --graph --date=relative --pretty=tformat:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%an %ad)%Creset'
+
 	fam = "!f() { git add . && git amend && git force; }; f"
 	blm = blame -wMC
 	br = branch -vv --sort=-committerdate --format='%(HEAD) %(color:red)%(objectname:short)%(color:reset) %(if:equals=*)%(HEAD)%(then)%(color:cyan)%(end)%(align:15,left)%(refname:short)%(end)%(color:reset)%(align:21,left)%(color:green)%(committerdate:auto:human)%(color:reset)%(end)%(contents:subject)'
 	brs = br -a
 	cb = checkout -b
 	cm = commit -S
-	co = checkout
 	d = diff --patch-with-stat
 	dc = d --staged
 	dm = d --word-diff-regex=.
@@ -167,11 +189,10 @@
 	la = l --all --simplify-by-decoration
 	lastchange = log -p --follow -n 1
 	ll = log --cc
-	ls = l --show-signature
 	lnm = l --no-merges
 	patch = !git --no-pager diff --no-color | pbcopy | echo "Patch copied to clipboard"
-	rb = "!sh -c \"git rebase -i HEAD~$1\" -"
-	st = status -sb
+
+
 	stashes = stash list
 	track = push origin -u HEAD
 	undo = reset --soft HEAD^
