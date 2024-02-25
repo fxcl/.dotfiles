@@ -65,8 +65,8 @@
 ; 	markUnblamableLines = true
 
 # Enforce SSH to clone repos
-[url "ssh://git@github.com/"]
-  insteadOf = https://github.com/
+# [url "ssh://git@github.com/"]
+#   insteadOf = https://github.com/
 
 [diff]
 	# Detect copies as well as renames
@@ -191,7 +191,6 @@
 	ll = log --cc
 	lnm = l --no-merges
 	patch = !git --no-pager diff --no-color | pbcopy | echo "Patch copied to clipboard"
-
 
 	stashes = stash list
 	track = push origin -u HEAD
