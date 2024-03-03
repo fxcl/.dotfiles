@@ -72,7 +72,7 @@ in
           "gcc"
           "libiconv"
           "mas"
-          #"rustup-init"
+          "rustup-init"
           #"python3"
           #"cmake"
           #"openssl"
@@ -86,10 +86,16 @@ in
            "libxml2"
            "texinfo"
            "imagemagick"
+           "libtool"
+          "llvm"
+          "libomp"
+          "verible"
+          "libgccjit"
+          "icu4c"
+          "tree-sitter"
         {
               name = "emacs-mac";
             args = [
-              "HEAD"
               "with-emacs-big-sur-icon"
               "with-ctags"
               "with-natural-title-bar"
@@ -100,10 +106,7 @@ in
               "with-unlimited-select"
             ];
           }
-          "libtool"
-          "llvm"
-          "libomp"
-          "verible"
+
         ];
 
         masApps = {

@@ -36,7 +36,6 @@ in
           packages = with pkgs;
             [
               emacs
-
               # Doom emacs dependencies
               # https://github.com/hlissner/doom-emacs
               coreutils

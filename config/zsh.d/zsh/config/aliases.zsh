@@ -71,7 +71,7 @@ if [[ "$(uname)" == Darwin* ]]; then
   # brew tap railwaycat/emacsmacport
   # brew install emacs-mac
   # brew untap railwaycat/emacsmacport
-  alias emacs='/usr/local/opt/emacs-mac/Emacs.app/Contents/MacOS/Emacs --no-splash'
+  #alias emacs='/usr/local/opt/emacs-mac/Emacs.app/Contents/MacOS/Emacs --no-splash'
   # emacs standard
   # brew install emacs --with-cocoa
   # alias emacs='/usr/local/opt/emacs/Emacs.app/Contents/MacOS/Emacs --no-splash --fullscreen'

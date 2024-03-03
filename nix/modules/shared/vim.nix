@@ -59,7 +59,7 @@ in
           selene # Lua linter
           statix
           sumneko-lua-language-server
-          tree-sitter # required for treesitter "auto-install" option to work
+          #tree-sitter # required for treesitter "auto-install" option to work
           nil
           actionlint
         ];

@@ -19,7 +19,7 @@ in
       (if (builtins.hasAttr "homebrew" options) then {
         # TODO: (automate) Requires homebrew to be installed
         homebrew.taps = [
-          #"homebrew/cask"
+          "homebrew/cask"
           "homebrew/cask-versions"
           "homebrew/cask-fonts"
         ];
