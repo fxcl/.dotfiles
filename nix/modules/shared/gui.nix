@@ -27,7 +27,7 @@ in
           "iterm2"
           "notunes"
           "appcleaner"
-          #"raycast"
+          "raycast"
           #"rectangle"
           # "aria2"
           # "bitwarden"
