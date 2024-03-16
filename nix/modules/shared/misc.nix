@@ -27,6 +27,8 @@ in
         ".mailcap" = { source = ../../../config/.mailcap; };
         ".psqlrc" = { source = ../../../config/.psqlrc; };
         ".urlview" = { source = ../../../config/.urlview; };
+        ".condarc" = { source = ../../../config/.condarc; };
+        ".editorconfig" = { source = ../../../config/.editorconfig; };
       };
     };
 }

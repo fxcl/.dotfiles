@@ -124,6 +124,12 @@ fi
 eval "$(direnv hook zsh)"
 eval "$(zoxide init zsh --hook pwd)"
 
+# config micromamba
+if command -v micromamba >/dev/null 2>&1; then
+  eval "$(micromamba shell hook --shell zsh)"
+  export MAMBA_ROOT_PREFIX="$HOME/micromamba"
+fi
+
 ##############################################################
 # LOCAL.
 ##############################################################

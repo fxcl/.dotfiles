@@ -85,6 +85,14 @@ if [[ "$(uname)" == Darwin* ]]; then
   alias j11="export JAVA_HOME=`/usr/libexec/java_home -v 11.0.15`; java -version"
   alias j8="export JAVA_HOME=`/usr/libexec/java_home -v 1.8`; java -version"
 
+alias curl='curl --keepalive-time 60'
+alias envsm='micromamba env list '
+alias mm="micromamba"
+alias mma="micromamba activate"
+alias mmd="micromamba deactivate"
+
+alias rm="rm -I --preserve-root"
+
   # Turn the prompt symbol red if the user is root
   # if [ $( id -u ) -eq 0 ];
   # then # you are root, make the prompt red

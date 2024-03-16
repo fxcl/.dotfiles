@@ -21,26 +21,27 @@ in
         user = {
           packages = with pkgs;
             [
-              (python3.withPackages (ps:
-                with ps; [
-                  pip
+              micromamba
+              # (python3.withPackages (ps:
+              #   with ps; [
+              #     pip
 
-                  black # Code formatter
-                  setuptools
-                  pylint # Linter
-                  # poetry # Better package manager
-                  python-lsp-server
-                  # virtualenv
-                  flake8
-                  # ipython
-                  vobject # Mutt calendar script
-                  yamllint
-                  grip
-                  debugpy
-                ]))
-              # nixos.python38Packages.httpx
-              ruff
-              # nodePackages.pyright
+              #     black # Code formatter
+              #     setuptools
+              #     pylint # Linter
+              #     # poetry # Better package manager
+              #     python-lsp-server
+              #     # virtualenv
+              #     flake8
+              #     # ipython
+              #     vobject # Mutt calendar script
+              #     yamllint
+              #     grip
+              #     debugpy
+              #   ]))
+              # # nixos.python38Packages.httpx
+              # ruff
+              # # nodePackages.pyright
             ];
         };
 
