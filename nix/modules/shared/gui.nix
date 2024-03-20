@@ -120,6 +120,10 @@ in
             recursive = true;
             source = ../../../config/ghostty;
           };
+            "micromamba" = {
+            recursive = true;
+            source = ../../../config/micromamba;
+          };
           ".cargo/config" = {
             text = ''
               [source.crates-io]

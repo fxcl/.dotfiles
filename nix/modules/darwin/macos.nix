@@ -44,6 +44,7 @@ in
           "font-jetbrains-mono-nerd-font"
           #"eloston-chromium"
           "code-composer-studio"
+          "applite"
           #"crossover"
           #"discord"
           #"kitty"
@@ -69,6 +70,7 @@ in
 
         # `brew install`
         brews = [
+          "pinentry-mac"
           "gcc"
           "libiconv"
           "mas"
