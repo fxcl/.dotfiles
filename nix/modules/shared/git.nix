@@ -17,7 +17,7 @@ in
   config = with lib;
     mkIf cfg.enable {
       environment.systemPackages = with pkgs; [ git ];
-      homebrew.brews = [ "transcrypt" ];
+      homebrew.brews = [ "transcrypt"];
 
       my.user = {
         packages = with pkgs; [

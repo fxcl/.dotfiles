@@ -24,7 +24,6 @@ in
       homebrew = {
         taps = [
           "homebrew/bundle"
-          #"homebrew/cask"
           #"homebrew/core"
           "homebrew/services"
           "homebrew/cask-fonts"
@@ -75,7 +74,7 @@ in
           "libiconv"
           "mas"
           "rustup-init"
-          #"python3"
+          "python@3.12"
           #"cmake"
           #"openssl"
           # "libolm"
@@ -90,6 +89,7 @@ in
            "imagemagick"
            "libtool"
           "llvm"
+          "uv"
           "libomp"
           "verible"
           "libgccjit"

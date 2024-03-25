@@ -68,6 +68,7 @@ in
             PIP_LOG_FILE = "$XDG_DATA_HOME/pip/log";
             PYLINTHOME = "$XDG_DATA_HOME/pylint";
             PYTHON_EGG_CACHE = "$XDG_CACHE_HOME/python-eggs";
+            PYTHON_BUILD_MIRROR_URL="https://pyenv-mirror.vercel.app/api/pythons/";
 
             M2_HOME = "$XDG_CACHE_HOME/maven";
             NIX_PAGER = "less --RAW-CONTROL-CHARS --quit-if-one-screen";
