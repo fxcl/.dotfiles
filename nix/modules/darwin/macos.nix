@@ -37,7 +37,8 @@ in
           "swiftdefaultappsprefpane"
           "iina"
           "mpv"
-          "keepingyouawake"
+          # "keepingyouawake"
+          "chai"
           "keka"
           "kekaexternalhelper"
           "font-jetbrains-mono-nerd-font"
@@ -134,6 +135,10 @@ in
           defaults write com.apple.dock ResetLaunchPad -bool true
           defaults write com.apple.dock tilesize -integer 64
           defaults write com.apple.dock size-immutable -bool yes
+          defaults write com.apple.dock no-bouncing -bool true
+          defaults write com.flexibits.fantastical2.mac HideLocationSuggestions -bool yes
+          defaults write com.flexibits.fantastical2.mac AlwaysIgnoreLocation -bool yes
+          defaults write -g NSAutomaticWindowAnimationsEnabled -bool false
           killall Dock
           # if Emacs.app exists, reset Emacs to /Applications
           if [ -d /usr/local/Cellar/emacs-mac/emacs-29.1-mac-10.0/Emacs.app ]; then
@@ -242,7 +247,7 @@ in
             NSDocumentSaveNewDocumentsToCloud = false;
             NSTableViewDefaultSizeMode = 2;
             NSTextShowsControlCharacters = true;
-            NSWindowResizeTime = 1.0e-3;
+            NSWindowResizeTime = 0.001;
             PMPrintingExpandedStateForPrint = true;
             PMPrintingExpandedStateForPrint2 = true;
             _HIHideMenuBar = false;
