@@ -254,11 +254,11 @@
     "zk": {
       "flake": false,
       "locked": {
-        "lastModified": 1711706967,
-        "narHash": "sha256-XbS+8xo3Q+o11n7TIAQYSPaWkvRx0q7BXtnCRCu61jg=",
+        "lastModified": 1711883722,
+        "narHash": "sha256-pueEAzaYkcfeJrfWSyAWzqcIBHaxb4vX/t7HZzNYrVM=",
         "owner": "mickael-menu",
         "repo": "zk",
-        "rev": "b10d51dbc2344a56bc0c8a06da2284ce8014f285",
+        "rev": "05c50a70d50fad1f83e10bba6c714d5507bf713d",
         "type": "github"
       },
       "original": {
