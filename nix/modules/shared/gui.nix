@@ -115,11 +115,11 @@ in
             recursive = true;
             source = ../../../config/aria2;
           };
-            ".config/ghostty" = {
+          ".config/ghostty" = {
             recursive = true;
             source = ../../../config/ghostty;
           };
-            "micromamba" = {
+          "micromamba" = {
             recursive = true;
             source = ../../../config/micromamba;
           };

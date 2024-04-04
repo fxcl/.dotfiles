@@ -43,7 +43,7 @@ in
           "kekaexternalhelper"
           "font-jetbrains-mono-nerd-font"
           #"eloston-chromium"
-          "code-composer-studio"
+          # "code-composer-studio"
           #"crossover"
           #"discord"
           #"kitty"
@@ -69,6 +69,8 @@ in
 
         # `brew install`
         brews = [
+          # "ccache"
+          # "sccache"
           "pinentry-mac"
           "gcc"
           "libiconv"
@@ -82,12 +84,12 @@ in
           "aspell"
           "croc"
           "gstreamer"
-           "gnutls"
-           "jansson"
-           "libxml2"
-           "texinfo"
-           "imagemagick"
-           "libtool"
+          "gnutls"
+          "jansson"
+          "libxml2"
+          "texinfo"
+          "imagemagick"
+          "libtool"
           "llvm"
           "uv"
           "libomp"
@@ -95,8 +97,8 @@ in
           "libgccjit"
           "icu4c"
           "tree-sitter"
-        {
-              name = "emacs-mac";
+          {
+            name = "emacs-mac";
             args = [
               "with-emacs-big-sur-icon"
               "with-ctags"
