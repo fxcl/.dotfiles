@@ -29,7 +29,7 @@ in
           "homebrew/cask-fonts"
           "homebrew/cask-versions"
           "railwaycat/emacsmacport"
-          "chipsalliance/verible"
+          #"chipsalliance/verible"
         ];
 
         # `brew install --cask`
@@ -93,23 +93,23 @@ in
           "llvm"
           "uv"
           "libomp"
-          "verible"
+          #"verible"
           "libgccjit"
           "icu4c"
           "tree-sitter"
-          {
-            name = "emacs-mac";
-            args = [
-              "with-emacs-big-sur-icon"
-              "with-ctags"
-              "with-natural-title-bar"
-              "with-starter"
-              "with-mac-metal"
-              "with-native-compilation"
-              "with-xwidgets"
-              "with-unlimited-select"
-            ];
-          }
+         # {
+         #   name = "emacs-mac";
+         #   args = [
+         #     "with-emacs-big-sur-icon"
+         #     "with-ctags"
+         #     "with-natural-title-bar"
+         #     "with-starter"
+         #     "with-mac-metal"
+         #     "with-native-compilation"
+         #     "with-xwidgets"
+         #     "with-unlimited-select"
+         #   ];
+         # }
 
         ];
 
