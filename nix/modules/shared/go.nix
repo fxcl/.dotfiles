@@ -29,11 +29,11 @@ in
 
       my.user = {
         packages = with pkgs; [
-          go_1_20
-          godef
-          gopls
-          golint
-          delve
+          # go_1_20
+          # godef
+          # gopls
+          # golint
+          # delve
           # go-outline
           # gopkgs
           # gotools

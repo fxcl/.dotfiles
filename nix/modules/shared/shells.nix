@@ -187,6 +187,10 @@ in
                 ".vale.ini" = {
                   source = ../../../config/.vale.ini;
                 };
+                ".config/VSCodium" = {
+                  recursive = true;
+                  source = ../../../config/VSCodium;
+                };
               }
             ];
 

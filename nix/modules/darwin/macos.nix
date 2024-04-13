@@ -148,6 +148,9 @@ in
           elif [ -d /Applications/Emacs.app ]; then
             rm -rf /Applications/Emacs.app
           fi
+
+          ln -sfv ~/.config/VSCodium/settings.json ~/Library/Application\ Support/VSCodium/User/settings.json
+          ln -sfv ~/.config/VSCodium/keybindings.json ~/Library/Application\ Support/VSCodium/User/keybindings.json
         '';
 
         defaults = {
