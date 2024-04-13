@@ -1,12 +1,9 @@
 # https://nix-community.github.io/home-manager/options.html#opt-programs.starship.enable
-{ pkgs, lib, config, options, ... }:
+{ pkgs, lib, config, options, concatStrings, ... }:
 
-let
-  cfg = config.my.modules.starship;
+let cfg = config.my.modules.starship;
 
-in
-
-{
+in {
   options = with lib; {
     my.modules.starship = {
       enable = mkEnableOption ''
@@ -22,79 +19,102 @@ in
         enableZshIntegration = true;
 
         settings = {
-          format = "$character $directory$git_branch$git_commit$git_status$rust$nodejs$deno";
-          right_format = "$cmd_duration";
-          continuation_prompt = "[∙](bright-white) ";
-          add_newline = true;
-          line_break.disabled = true;
-          scan_timeout = 10;
+          format = concatStrings [
+            "$username"
+            "$hostname"
+            "$shlvl"
+            "$kubernetes"
+            "$directory"
+            "$vcsh"
+            "$git_branch"
+            "$git_commit"
+            "$git_state"
+            "$git_status"
+            "$hg_branch"
+            "$docker_context"
+            "$package"
+            "$cmake"
+            "$dart"
+            "$deno"
+            "$dotnet"
+            "$elixir"
+            "$elm"
+            "$erlang"
+            "$golang"
+            "$helm"
+            "$java"
+            "$julia"
+            "$kotlin"
+            "$nim"
+            "$nodejs"
+            "$ocaml"
+            "$perl"
+            "$php"
+            "$purescript"
+            "$python"
+            "$red"
+            "$ruby"
+            "$rust"
+            "$scala"
+            "$swift"
+            "$terraform"
+            "$vlang"
+            "$vagrant"
+            "$zig"
+            "$conda"
+            "$memory_usage"
+            "$openstack"
+            "$env_var"
+            "$crystal"
+            "$lua"
+            "$custom"
+            "$cmd_duration"
+            "$line_break"
+            "$jobs"
+            "$battery"
+            "$time"
+            "$shell"
+            "$character"
+            "$status"
+          ];
 
-          cmd_duration = {
-            min_time = 5000;
-            format = "[\\(](bold)⏱  [$duration](bold yellow)[\\)](bold) ";
-            show_milliseconds = false;
-          };
           character = {
-            format = "$symbol";
-            # ▶ ᗌ ᗎ 🧨 💥
-            success_symbol = "[➜](bold green)";
-            error_symbol = "[✶](bold red)";
-            vicmd_symbol = "[⌘](bold #ff33b8)";
-          };
-          nix_shell = {
-            format = "via [$symbol( $name)$state]($style) ";
-            impure_msg = " ";
-            pure_msg = "";
-            symbol = "❄ ";
+            success_symbol = "[\\$](bold cyan)";
+            error_symbol = "[✖](bold red)";
+            vicmd_symbol = "[\\$](bold cyan)";
           };
 
-          # directory = {
-          #   format = "[\\[](bold)[$path](bold 226)[$read_only](bold)[\\]](bold) ";
-          #   truncation_length = 2;
-          #   truncate_to_repo = false;
-          #   truncation_symbol = "…/";
-          # };
-          git_branch = {
-            symbol = "";
-            # format = "[\\(](bold)[$branch](bold 206) [:](bold) ";
-            format = "[\\($symbol](bold)[$branch](bold 206) ";
-            truncation_length = 15;
-            truncation_symbol = "…";
-            always_show_remote = true;
+          directory = {
+            format = " in [$path]($style)[$read_only]($read_only_style) ";
+            truncation_length = 1;
+            fish_style_pwd_dir_length = 1;
           };
+
           git_status = {
-            # format = '([$all_status](bold red)\) )';
-            format = "[:](bold) ([$all_status](bold red))[\\)](bold) ";
-            ahead = "⇡\${count}";
-            diverged = "⇕⇡\${ahead_count}⇣\${behind_count}";
-            behind = "⇣\${count}";
-          };
-          git_commit = {
-            commit_hash_length = 7;
-            # ⤠
-            format = "[ﰖ](bold) [$hash$tag](bold yellow underline) ";
-            tag_disabled = false;
-            tag_symbol = "🔖 ";
-          };
-          git_metrics = {
-            disabled = false;
-            only_nonzero_diffs = true;
-            added_style = "bold green";
-            deleted_style = "bold red";
-            format = "([+$added]($added_style) )([-$deleted]($deleted_style) )";
-            # format = "[+$added]($added_style)/[-$deleted]($deleted_style) ";
-          };
-          rust = {
-            format = "\\([$symbol$version](bold 208)\\) ";
-          };
-          nodejs = {
-            symbol = "⬢";
-            format = "[\\(](bold)[$symbol ($version )](bold 063)[\\)](bold) ";
-          };
-          battery = {
-            disabled = true;
+            format =
+              "([\\($staged$untracked$modified$renamed$deleted\\)]($style) )";
+            staged = "[\${count}s](fg:blue bold)";
+            untracked = "[\${count}a](fg:green bold)";
+            modified = "[\${count}m](fg:yellow bold)";
+            renamed = "[\${count}r](fg:purple bold)";
+            deleted = "[\${count}d](fg:red bold)";
+            style = "bold purple";
           };
 
+          hostname = {
+            format = " on [$hostname]($style)";
+            style = "bold green";
+            ssh_only = false;
+          };
+
+          nodejs = { detect_folders = [ ]; };
+
+          python = { python_binary = "python3"; };
+
+          username = {
+            format = "[$user]($style)";
+            show_always = true;
+          };
         };
       };
     };
