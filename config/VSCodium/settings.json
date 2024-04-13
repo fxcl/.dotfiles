@@ -599,7 +599,6 @@
   "workbench.editor.tabCloseButton": "left",
   "workbench.editor.tabSizing": "fit",
   "workbench.editor.untitled.experimentalLanguageDetection": true,
-  "workbench.editor.untitled.hint": "hidden",
   "workbench.editor.wrapTabs": true,
   "workbench.editorAssociations": {
     "*.ipynb": "jupyter.notebook.ipynb",
@@ -650,5 +649,6 @@
   "yaml.schemas": {
     "https://json.schemastore.org/github-workflow.json": ".github/workflows/*.yaml"
   },
-  "json.schemas": []
+  "json.schemas": [],
+  "workbench.editor.empty.hint": "hidden"
 }
