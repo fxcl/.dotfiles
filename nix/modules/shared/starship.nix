@@ -1,5 +1,5 @@
 # https://nix-community.github.io/home-manager/options.html#opt-programs.starship.enable
-{ pkgs, lib, config, options, concatStrings, ... }:
+{ pkgs, lib, config, options, ... }:
 
 let cfg = config.my.modules.starship;
 
@@ -19,39 +19,51 @@ in {
         enableZshIntegration = true;
 
         settings = {
-          format = concatStrings [
-            "$username"
+          format = lib.concatStrings [
+            "$character"
+            # "$username"
             "$hostname"
             "$shlvl"
-            "$kubernetes"
             "$directory"
-            "$vcsh"
-            "$git_branch"
-            "$git_commit"
-            "$git_state"
-            "$git_status"
-            "$hg_branch"
-            "$docker_context"
+          ];
+          # right_format = "$all";
+          right_format = lib.concatStrings [
+            "$status"
+            "$cmd_duration"
+            "$sudo"
             "$package"
+            "$c"
             "$cmake"
+            "$cobol"
+            "$daml"
             "$dart"
             "$deno"
             "$dotnet"
             "$elixir"
             "$elm"
             "$erlang"
+            "$fennel"
             "$golang"
+            "$guix_shell"
+            "$haskell"
+            "$haxe"
             "$helm"
             "$java"
             "$julia"
             "$kotlin"
+            "$gradle"
+            "$lua"
             "$nim"
             "$nodejs"
             "$ocaml"
+            "$opa"
             "$perl"
             "$php"
+            "$pulumi"
             "$purescript"
             "$python"
+            "$raku"
+            "$rlang"
             "$red"
             "$ruby"
             "$rust"
@@ -61,59 +73,136 @@ in {
             "$vlang"
             "$vagrant"
             "$zig"
+            "$buf"
+            "$nix_shell"
             "$conda"
+            "$meson"
+            "$spack"
             "$memory_usage"
+            "$aws"
+            "$gcloud"
             "$openstack"
+            "$azure"
             "$env_var"
             "$crystal"
-            "$lua"
-            "$custom"
-            "$cmd_duration"
-            "$line_break"
-            "$jobs"
-            "$battery"
+            "$git_branch"
+            "$git_commit"
+            "$git_state"
+            "$git_metrics"
+            "$git_status"
+            "$kubernetes"
             "$time"
-            "$shell"
-            "$character"
-            "$status"
+            "$battery"
           ];
+          add_newline = false;
+          scan_timeout = 100;
+          palette = "custom";
+          palettes.custom = {
+            blue = "#9db8e9";
+            green = "#98C379";
+            red = "#BF616A";
+            orange = "#FFCC80";
+            yellow = "#FFEB3B";
+          };
 
           character = {
-            success_symbol = "[\\$](bold cyan)";
-            error_symbol = "[✖](bold red)";
-            vicmd_symbol = "[\\$](bold cyan)";
+            success_symbol = "[➜](bold green)";
+            error_symbol = "[➜](bold red)";
           };
-
+          hostname = {
+            ssh_symbol = "󰌘";
+            format = "[$ssh_symbol$hostname ]($style)";
+            style = "bold orange";
+          };
+          shlvl = {
+            disabled = false;
+            symbol = "";
+            style = "dimmed blue";
+          };
           directory = {
-            format = " in [$path]($style)[$read_only]($read_only_style) ";
-            truncation_length = 1;
-            fish_style_pwd_dir_length = 1;
+            style = "bold blue";
+            truncate_to_repo = false;
+            before_repo_root_style = "dimmed";
+            repo_root_style = "bold bright-blue";
+            truncation_length = 6;
+            truncation_symbol = "…/";
           };
 
+          status = {
+            disabled = false;
+            format =
+              "[$symbol$common_meaning$maybe_int$signal_name$signal_number]($style) ";
+          };
+          cmd_duration = {
+            format = "[$duration]($style) ";
+            style = "dimmed";
+          };
+
+          package.format = "[$symbol($version)]($style) ";
+
+          crystal.format = "[$symbol($version)]($style) ";
+          elixir.format = "[$symbol($version)]($style) ";
+          erlang.format = "[$symbol($version)]($style) ";
+          golang.format = "[$symbol($version)]($style) ";
+          haskell.format = "[$symbol($version)]($style) ";
+          lua.format = "[$symbol($version)]($style) ";
+          python.format = "[$symbol($version)]($style) ";
+          rust.format = "[$symbol($version)]($style) ";
+
+          golang.symbol = " ";
+          elixir.symbol = " ";
+
+          elixir.detect_extensions = [ "ex" "exs" ];
+          erlang.detect_extensions = [ "erl" ];
+          nodejs.detect_extensions = [ "cjs" "cts" ];
+
+          nix_shell.disabled = true;
+
+          git_branch = {
+            style = "dimmed green";
+            symbol = "";
+            format = "[$symbol](dimmed)[$branch(:$remote_branch)]($style) ";
+          };
+          git_commit = { };
+          git_state = { };
+          git_metrics = { disabled = false; };
           git_status = {
             format =
-              "([\\($staged$untracked$modified$renamed$deleted\\)]($style) )";
-            staged = "[\${count}s](fg:blue bold)";
-            untracked = "[\${count}a](fg:green bold)";
-            modified = "[\${count}m](fg:yellow bold)";
-            renamed = "[\${count}r](fg:purple bold)";
-            deleted = "[\${count}d](fg:red bold)";
-            style = "bold purple";
+              "(\\[$staged$conflicted$deleted$renamed$modified$ahead_behind$untracked$stashed\\] )";
+
+            conflicted = "[󰘕$count](bright-red)";
+            ahead = "[⇡$count](dimmed green)";
+            behind = "[⇣$count](dimmed red)";
+            diverged = "[⇕⇡$ahead_count⇣$behind_count](red)";
+            untracked = "[󱀶$count](dimmed red)";
+            stashed = "[$count](dimmed yellow)";
+            modified = "[$count](orange)";
+            staged = "[$count](green)";
+            renamed = "[»$count](orange)";
+            deleted = "[✘$count](red)";
           };
 
-          hostname = {
-            format = " on [$hostname]($style)";
-            style = "bold green";
-            ssh_only = false;
+          kubernetes = {
+            disabled = false;
+            symbol = "󱃾";
+            format =
+              "[$symbol](bold blue)\\([$context](blue)(:[$namespace](dimmed blue))\\) ";
+            contexts = [{
+              context_pattern = "nucles";
+              context_alias = "";
+            }];
+            detect_extensions = [ "yaml" "cue" ];
+            # detect_folders = ["homelab"];
           };
 
-          nodejs = { detect_folders = [ ]; };
-
-          python = { python_binary = "python3"; };
-
-          username = {
-            format = "[$user]($style)";
-            show_always = true;
+          time = {
+            disabled = false;
+            format = "[$time]($style) ";
+            style = "dimmed";
+          };
+          battery = {
+            charging_symbol = "󰂄 "; # nf-md-battery_charging
+            discharging_symbol = "󰂃 "; # nf-md-battery_alert
           };
         };
       };
