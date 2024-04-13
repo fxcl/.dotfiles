@@ -2,98 +2,10 @@
   "CodeGPT.apiKey": "Google",
   "CodeGPT.model": "chat-bison-001",
   "CodeGPT.query.language": "Chinese",
+  "prettier.jsxSingleQuote": true,
   "RainbowBrackets.depreciation-notice": false,
-  "[c]": {
-    "editor.defaultFormatter": "ms-vscode.cpptools"
-  },
-  "[cpp]": {
-    "editor.defaultFormatter": "ccls-project.ccls"
-  },
-  "[csharp]": {
-    "editor.defaultFormatter": "csharpier.csharpier-vscode",
-    "editor.formatOnSave": true
-  },
-  "[css]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[elixir]": {
-    "editor.defaultFormatter": "JakeBecker.elixir-ls"
-  },
-  "[go]": {
-    "editor.defaultFormatter": "golang.go",
-    "editor.tabSize": 2
-  },
-  "[haskell]": {
-    "editor.defaultFormatter": "haskell.haskell"
-  },
-  "[html]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[ignore]": {
-    "editor.defaultFormatter": "foxundermoon.shell-format"
-  },
-  "[javascript]": {
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
-  },
-  "[json]": {
-    "editor.defaultFormatter": "vscode.json-language-features"
-  },
-  "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[markdown]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[markdown].editor.trimTrailingWhitespace": false,
-  "[nix]": {
-    "editor.defaultFormatter": "brettm12345.nixfmt-vscode",
-    "editor.tabSize": 2
-  },
-  "[properties]": {
-    "editor.defaultFormatter": "foxundermoon.shell-format"
-  },
-  "[python]": {
-    "editor.renderFinalNewline": "on",
-    "editor.rulers": [
-      88
-    ],
-    "editor.trimAutoWhitespace": true,
-    "files.insertFinalNewline": true,
-    "files.trimFinalNewlines": true,
-    "files.trimTrailingWhitespace": true
-  },
-  "[python].editor.rulers": [
-    72,
-    78
-  ],
-  "[rust]": {
-    "editor.defaultFormatter": "matklad.rust-analyzer",
-    "editor.fontLigatures": true,
-    "editor.formatOnSave": true,
-    "editor.renderFinalNewline": "on",
-    "editor.rulers": [
-      99
-    ],
-    "editor.trimAutoWhitespace": true,
-    "files.insertFinalNewline": true,
-    "files.trimFinalNewlines": true,
-    "files.trimTrailingWhitespace": true
-  },
-  "[shellscript]": {
-    "editor.defaultFormatter": "foxundermoon.shell-format",
-    "editor.tabSize": 2,
-    "files.eol": "\n"
-  },
-  "[typescript]": {
-    "editor.defaultFormatter": "vscode.typescript-language-features",
-    "editor.formatOnSave": true
-  },
-  "[typescriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[yaml]": {
-    "editor.wordBasedSuggestionsMode": "currentDocument"
-  },
+  "bracketPairColorizer.depreciation-notice": false,
+  "lldb.library": "/Library/Developer/CommandLineTools/Library/PrivateFrameworks/LLDB.framework/Versions/A/LLDB",
   "aws.profile": "profile:default",
   "aws.telemetry": false,
   "better-comments.highlightPlainText": true,
@@ -104,6 +16,7 @@
   "conventionalCommits.emojiFormat": "emoji",
   "conventionalCommits.showEditor": true,
   "css.validate": false,
+  "diffEditor.ignoreTrimWhitespace": false,
   "dart.flutterCreateAndroidLanguage": "kotlin",
   "dart.flutterCreateIOSLanguage": "swift",
   "dart.previewFlutterUiGuides": true,
@@ -121,7 +34,9 @@
     "https://deno.land": false
   },
   "deno.unstable": true,
-  "diffEditor.codeLens": true,
+  "deno.config": "",
+  "deno.importMap": "./import_map.json",
+  "diffEditor.codeLens": false,
   "diffEditor.diffAlgorithm": "experimental",
   "diffEditor.maxComputationTime": 0,
   "diffEditor.wordWrap": "off",
@@ -190,6 +105,10 @@
   "enable-proposed-api": [
     "github.copilot"
   ],
+  "editor.detectIndentation": false,
+  "editor.insertSpaces": false,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "extensions.ignoreRecommendations": true,
   "eslint.format.enable": true,
   "eslint.lintTask.enable": true,
   "evenBetterToml.formatter.alignEntries": true,
@@ -198,6 +117,118 @@
   "evenBetterToml.formatter.indentTables": true,
   "evenBetterToml.formatter.reorderKeys": false,
   "explorer.confirmDelete": false,
+  "typescript.format.enable": false,
+  "[c]": {
+    "editor.defaultFormatter": "ms-vscode.cpptools"
+  },
+  "[cpp]": {
+    "editor.defaultFormatter": "ccls-project.ccls"
+  },
+  "[csharp]": {
+    "editor.defaultFormatter": "csharpier.csharpier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[dockerfile]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  },
+  "[dotenv]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  },
+  "[elixir]": {
+    "editor.defaultFormatter": "JakeBecker.elixir-ls"
+  },
+  "[go]": {
+    "editor.defaultFormatter": "golang.go",
+    "editor.tabSize": 2
+  },
+  "[haskell]": {
+    "editor.defaultFormatter": "haskell.haskell"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[ignore]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+    // "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[java]": {
+    "editor.defaultFormatter": "redhat.java"
+  },
+  "[prisma]": {
+    "editor.defaultFormatter": "Prisma.prisma"
+  },
+  "metals.serverProperties": [],
+  "metals.javaHome": "/Users/spreston/.jabba/jdk/adopt@1.11.0-11/Contents/Home",
+  "[xml]": {
+    "editor.defaultFormatter": "DotJoshJohnson.xml"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[markdown].editor.trimTrailingWhitespace": false,
+  "[toml]": {
+    "editor.defaultFormatter": "tamasfe.even-better-toml"
+  },
+  "[properties]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  },
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.python",
+    "editor.renderFinalNewline": "on",
+    "editor.rulers": [
+      88
+    ],
+    "editor.trimAutoWhitespace": true,
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "files.trimTrailingWhitespace": true
+  },
+  "[python].editor.rulers": [
+    72,
+    78
+  ],
+  "[rust]": {
+    "editor.defaultFormatter": "rust-lang.rust-analyzer",
+    // "editor.defaultFormatter": "matklad.rust-analyzer",
+    "editor.fontLigatures": true,
+    "editor.formatOnSave": true,
+    "editor.renderFinalNewline": "on",
+    "editor.rulers": [
+      99
+    ],
+    "editor.trimAutoWhitespace": true,
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "files.trimTrailingWhitespace": true
+  },
+  "[shellscript]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format",
+    "editor.tabSize": 2,
+    "files.eol": "\n"
+  },
+  "[typescript]": {
+    // "editor.defaultFormatter": "vscode.typescript-language-features",
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[yaml]": {
+    "editor.wordBasedSuggestionsMode": "currentDocument"
+  },
   "explorer.confirmDragAndDrop": false,
   "explorer.excludeGitIgnore": true,
   "explorer.fileNesting.enabled": true,
@@ -273,9 +304,11 @@
     "vite.config.*": "*.env, .babelrc*, .codecov, .cssnanorc*, .env.*, .envrc, .htmlnanorc*, .lighthouserc.*, .mocha*, .postcssrc*, .terserrc*, api-extractor.json, ava.config.*, babel.config.*, contentlayer.config.*, cssnano.config.*, cypress.*, env.d.ts, formkit.config.*, formulate.config.*, histoire.config.*, htmlnanorc.*, jasmine.*, jest.config.*, jsconfig.*, karma*, lighthouserc.*, playwright.config.*, postcss.config.*, puppeteer.config.*, rspack.config.*, svgo.config.*, tailwind.config.*, tsconfig.*, tsdoc.*, uno.config.*, unocss.config.*, vitest.config.*, webpack.config.*, windi.config.*",
     "vue.config.*": "*.env, .babelrc*, .codecov, .cssnanorc*, .env.*, .envrc, .htmlnanorc*, .lighthouserc.*, .mocha*, .postcssrc*, .terserrc*, api-extractor.json, ava.config.*, babel.config.*, contentlayer.config.*, cssnano.config.*, cypress.*, env.d.ts, formkit.config.*, formulate.config.*, histoire.config.*, htmlnanorc.*, jasmine.*, jest.config.*, jsconfig.*, karma*, lighthouserc.*, playwright.config.*, postcss.config.*, puppeteer.config.*, rspack.config.*, svgo.config.*, tailwind.config.*, tsconfig.*, tsdoc.*, uno.config.*, unocss.config.*, vitest.config.*, webpack.config.*, windi.config.*"
   },
-  "extensions.ignoreRecommendations": true,
   "files.associations": {
-    "*.config": "makefile"
+    "*.config": "makefile",
+    "*.py": "python",
+    "*.cs": "csharp",
+    "*.sol": "solidity"
   },
   "files.autoSave": "onWindowChange",
   "files.enableTrash": false,
@@ -407,6 +440,11 @@
   "nix.enableLanguageServer": true,
   "nix.formatterPath": "/etc/profiles/per-user/kelvin/bin/nixpkgs-fmt",
   "nix.serverPath": "/nix/store/fp71aj8cwsw8zkf46jrh9nvn8mngzqp8-rnix-lsp-unstable-2022-11-27/bin/rnix-lsp",
+  "[nix]": {
+    "editor.defaultFormatter": "jnoortheen.nix-ide",
+    // "editor.defaultFormatter": "brettm12345.nixfmt-vscode",
+    "editor.tabSize": 2
+  },
   "npm.fetchOnlinePackageInfo": false,
   "pascal.format.indent": 4,
   "pascal.formatter.engine": "ptop",
@@ -552,7 +590,7 @@
     "editorBracketHighlight.foreground5": "#7CFC00",
     "editorBracketHighlight.foreground6": "#FF8C00"
   },
-  "workbench.colorTheme": "Gruvbox Light",
+  "workbench.colorTheme": "Default Dark+",
   "workbench.editor.decorations.badges": true,
   "workbench.editor.decorations.colors": true,
   "workbench.editor.enablePreview": false,
@@ -561,9 +599,11 @@
   "workbench.editor.tabCloseButton": "left",
   "workbench.editor.tabSizing": "fit",
   "workbench.editor.untitled.experimentalLanguageDetection": true,
+  "workbench.editor.untitled.hint": "hidden",
   "workbench.editor.wrapTabs": true,
   "workbench.editorAssociations": {
-    "*.ipynb": "jupyter.notebook.ipynb"
+    "*.ipynb": "jupyter.notebook.ipynb",
+    "*.so": "default"
   },
   "workbench.fontAliasing": "antialiased",
   "workbench.iconTheme": "file-icons",
