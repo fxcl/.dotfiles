@@ -405,7 +405,7 @@
   "markdown.preview.scrollPreviewWithEditor": true,
   "merge-conflict.autoNavigateNextConflict.enabled": true,
   "nix.enableLanguageServer": true,
-  "nix.formatterPath": "/nix/store/sf6b90ix1a8cqm4xia6lh3pxfmvqnn0g-nixpkgs-fmt-1.3.0/bin/nixpkgs-fmt",
+  "nix.formatterPath": "/etc/profiles/per-user/kelvin/bin/nixpkgs-fmt",
   "nix.serverPath": "/nix/store/fp71aj8cwsw8zkf46jrh9nvn8mngzqp8-rnix-lsp-unstable-2022-11-27/bin/rnix-lsp",
   "npm.fetchOnlinePackageInfo": false,
   "pascal.format.indent": 4,
