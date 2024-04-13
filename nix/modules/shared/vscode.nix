@@ -21,7 +21,7 @@ in {
         package = pkgs.vscodium;
         # Notes:
         # - Does not unistall extensions once removed.
-        # - Update using the following: export temp=$(mktemp) && curl -s https://raw.githubusercontent.com/NixOS/nixpkgs/master/pkgs/misc/vscode-extensions/update_installed_exts.sh > $temp && chmod +x $temp && $temp $(whereis codium)
+        # - Update using the following: export temp=$(mktemp) && curl -s https://raw.githubusercontent.com/NixOS/nixpkgs/master/pkgs/applications/editors/vscode/extensions/update_installed_exts.sh  > $temp && chmod +x $temp && $temp $(whereis codium)
         # https://github.com/NixOS/nixpkgs/blob/master/pkgs/misc/vscode-extensions/default.nix
         extensions = with pkgs.vscode-extensions;
           let
@@ -194,18 +194,7 @@ in {
               sha256 =
                 "1e7763b7ad771339ed5ce02e0f1684a8ee98f97b935c3b2b5400d491fdc164db";
             }
-            # {
-            #   name = "cmake";
-            #   publisher = "twxs";
-            #   version = "0.0.17";
-            #   sha256 = "11hzjd0gxkq37689rrr2aszxng5l9fwpgs9nnglq3zhfa1msyn08";
-            # }
-            # {
-            #   publisher = "vscodevim";
-            #   name = "vim";
-            #   version = "1.18.5";
-            #   sha256 = "0cbmmhkbr4f1afk443sgdihp2q5zkzchbr2yhp7bm5qnv7xdv5l4";
-            # }
+
             {
               # https://www.vsixhub.com/vsix/84687/
               publisher = "tal7aouy";
@@ -279,13 +268,6 @@ in {
               version = "0.3.1";
               sha256 = "0dlsri0dcligjz3x1ddpjhyvna6dmdswhb86c9k73y22r12fd1zd";
             }
-            # {
-            #   # https://www.vsixhub.com/vsix/573/
-            #   name = "elm-ls-vscode";
-            #   publisher = "elmTooling";
-            #   version = "2.7.2";
-            #   sha256 = "dfc7cb78c466c8ec2f84962881d521fdf89de6a014b5d11760ca662fedb56f46";
-            # }
             {
               # https://www.vsixhub.com/vsix/8048/
               name = "vscode-lldb";
@@ -294,6 +276,25 @@ in {
               sha256 =
                 "4402afec44b0d071bf6af04e3c4d424ebd131ec07b516c7485a25577f0e6f468";
             }
+            # {
+            #   # https://www.vsixhub.com/vsix/573/
+            #   name = "elm-ls-vscode";
+            #   publisher = "elmTooling";
+            #   version = "2.7.2";
+            #   sha256 = "dfc7cb78c466c8ec2f84962881d521fdf89de6a014b5d11760ca662fedb56f46";
+            # }
+            # {
+            #   name = "cmake";
+            #   publisher = "twxs";
+            #   version = "0.0.17";
+            #   sha256 = "11hzjd0gxkq37689rrr2aszxng5l9fwpgs9nnglq3zhfa1msyn08";
+            # }
+            # {
+            #   publisher = "vscodevim";
+            #   name = "vim";
+            #   version = "1.18.5";
+            #   sha256 = "0cbmmhkbr4f1afk443sgdihp2q5zkzchbr2yhp7bm5qnv7xdv5l4";
+            # }
             # https://www.vsixhub.com/vsix/30/
             # {
             #   name = "ccls";
