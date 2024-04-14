@@ -8,9 +8,19 @@ alias rm="${aliases[rm]:-rm} -i"
 alias mkdir="${aliases[mkdir]:-mkdir} -p"
 alias sudo="sudo "
 alias type='type -a'
+#alias ag="ag --color --color-line-number '0;35' --color-match '46;30' --color-path '4;36'"
+#alias aga="ag --hidden --color --color-line-number '0;35' --color-match '46;30' --color-path '4;36'"
+alias tree='tree -CAFa -I "CVS|*.*.package|.svn|.git|.hg|node_modules|bower_components" --dirsfirst'
+
+#curl
+alias curlh="curl -sILX GET"
+alias curld="curl -A \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36\""
+alias curlm="curl -A \"Mozilla/5.0 (iPhone; CPU iPhone OS 6_1_3 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) CriOS/28.0.1500.12 Mobile/10B329 Safari/8536.25\""
+
 
 alias c="clear "
 alias e='$EDITOR --listen /tmp/nvim.pipe'
+alias ec='nvim --cmd ":lua vim.g.noplugins=1" ' #nvim --clean
 alias cask="brew --cask "
 alias df="df -kh"
 alias du="du -kh"

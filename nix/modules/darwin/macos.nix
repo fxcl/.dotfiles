@@ -216,7 +216,7 @@ in
               true; # enable natural scrolling(default to true)
             "com.apple.sound.beep.feedback" =
               0; # disable beep sound when pressing volume up/down key
-            AppleInterfaceStyle = "Dark"; # dark mode
+            #AppleInterfaceStyle = "Light"; # dark mode
             AppleKeyboardUIMode = 3; # Mode 3 enables full keyboard control.
             ApplePressAndHoldEnabled = false; # enable press and hold
             # If you press and hold certain keyboard keys when in a text area, the key’s character begins to repeat.
