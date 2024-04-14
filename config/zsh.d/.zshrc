@@ -124,6 +124,11 @@ fi
 eval "$(direnv hook zsh)"
 eval "$(zoxide init zsh --hook pwd)"
 
+# starship isn't installed in all of my environments
+if [[ `command -v starship` ]]; then
+	  eval "$(starship init zsh)"
+fi
+
 # config micromamba
 if command -v micromamba >/dev/null 2>&1; then
   eval "$(micromamba shell hook --shell zsh)"
