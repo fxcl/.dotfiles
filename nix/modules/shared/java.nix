@@ -18,8 +18,8 @@ in
     mkIf cfg.enable {
       my.user = {
         packages = with pkgs; [
-          jdk8
-          maven
+          jdk21
+          (maven.override {jdk = pkgs.jdk21;})
           # gradle
           java-language-server
           # vagrant
@@ -84,19 +84,39 @@ in
             </settings>
           '';
         };
+
+        ".m2/toolchains.xml" = {
+          target = ".m2/toolchains.xml";
+          text = ''
+            <?xml version="1.0" encoding="UTF-8"?>
+            <toolchains>
+              <!-- JDK toolchains -->
+              <toolchain>
+                <type>jdk</type>
+                <provides>
+                  <version>8</version>
+                </provides>
+                <configuration>
+                  <jdkHome>${pkgs.jdk21}/lib/openjdk</jdkHome>
+                </configuration>
+              </toolchain>
+            </toolchains>
+          '';
+        };
+
       };
 
       environment = {
         systemPackages = [
         ];
         shellInit = ''
-          test -e ${pkgs.jdk8}/nix-support/setup-hook && source ${pkgs.jdk8}/nix-support/setup-hook
+          test -e ${pkgs.jdk21}/nix-support/setup-hook && source ${pkgs.jdk21}/nix-support/setup-hook
         '';
         variables = {
           LANG = "en_US.UTF-8";
           LC_TIME = "en_GB.UTF-8";
-          JAVA_HOME = ''${pkgs.jdk8.home}'';
-          JAVA_CPPFLAGS = ''-I${pkgs.jdk8}/include/'';
+          JAVA_HOME = ''${pkgs.jdk21.home}'';
+          JAVA_CPPFLAGS = ''-I${pkgs.jdk21}/include/'';
           MAVEN_OPTS = "-Djava.awt.headless=true -Dorg.slf4j.simpleLogger.showDateTime=true -Dorg.slf4j.simpleLogger.dateTimeFormat=HH:mm:ss,SSS";
         };
       };
