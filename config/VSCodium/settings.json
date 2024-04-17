@@ -2,6 +2,20 @@
   "CodeGPT.apiKey": "Google",
   "CodeGPT.model": "chat-bison-001",
   "CodeGPT.query.language": "Chinese",
+  "cSpell.userWords": [
+    "Besu",
+    "Blockscout",
+    "dayjs",
+    "exponentiated",
+    "fastify",
+    "Fastify",
+    "hyperledger",
+    "isbn",
+    "Levysdev",
+    "UNDELETABLE",
+    "uuid",
+    "xrpl"
+  ],
   "prettier.jsxSingleQuote": true,
   "RainbowBrackets.depreciation-notice": false,
   "bracketPairColorizer.depreciation-notice": false,
@@ -43,6 +57,7 @@
   "discord.workspaceExcludePatterns": [
     "nixpkgs"
   ],
+  "editor.parameterHints.enabled": false,
   "editor.acceptSuggestionOnEnter": "off",
   "editor.accessibilitySupport": "0ff",
   "editor.autoClosingBrackets": "always",
@@ -173,6 +188,7 @@
     "editor.defaultFormatter": "redhat.java"
   },
   "[prisma]": {
+    "editor.formatOnSave": true,
     "editor.defaultFormatter": "Prisma.prisma"
   },
   "metals.serverProperties": [],
@@ -438,8 +454,9 @@
   "http.proxy": "127.0.0.1:7890",
   "http.proxySupport": "on",
   "javascript.updateImportsOnFileMove.enabled": "always",
+  "typescript..enabled": "never",
   "javascript.validate.enable": false,
-  "liveServer.settings.donotShowInfoMsg": true,
+
   "markdown.preview.scrollEditorWithPreview": true,
   "markdown.preview.scrollPreviewWithEditor": true,
   "merge-conflict.autoNavigateNextConflict.enabled": true,
@@ -540,10 +557,15 @@
   "search.smartCase": true,
   "search.useGlobalIgnoreFiles": true,
   "search.useParentIgnoreFiles": true,
-  "security.workspace.trust.untrustedFiles": "open",
+  "security.workspace.trust.untrustedFiles": "newWindow",
+
   "settingsSync.keybindingsPerPlatform": false,
   "snapcode.transparentBackground": true,
   "tailwindCSS.includeLanguages": {
+    "html": "html",
+    "javascript": "javascript",
+    "typescript": "typescript",
+    "css": "css",
     "astro": "html"
   },
   "telemetry.enableCrashReporter": false,
@@ -574,6 +596,12 @@
   "terminal.integrated.shellIntegration.decorationsEnabled": "never",
   "testing.alwaysRevealTestOnStateChange": true,
   "typescript.updateImportsOnFileMove.enabled": "always",
+  "typescript.tsserver.log": "off",
+  "javascript.suggest.autoImports": true,
+  "typescript.suggest.autoImports": true,
+  "liveshare.featureSet": "insiders",
+  "liveServer.settings.donotShowInfoMsg": true,
+  "liveshare.presence": false,
   "update.mode": "none",
   "vetur.format.defaultFormatterOptions": {
     "js-beautify-html": {
@@ -588,6 +616,7 @@
   "window.menuBarVisibility": "toggle",
   "window.titleBarStyle": "custom",
   "window.zoomLevel": -1,
+  "workbench.statusBar.visible": true,
   "workbench.colorCustomizations": {
     "editorBracketHighlight.foreground1": "#FFD700",
     "editorBracketHighlight.foreground2": "#DA70D6",
