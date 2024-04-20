@@ -191,6 +191,9 @@ in
                   recursive = true;
                   source = ../../../config/VSCodium;
                 };
+                ".goneovim/setting.toml" = {
+                  source = ../../../config/goneovim/setting.toml;
+                };
               }
             ];
 

@@ -1,0 +1,115 @@
+[Editor]
+# Editor minimum width (>= 800)
+Width = 1600
+# Editor minimum height (>= 600)
+Height = 1024
+
+# Start maximized window
+StartMaximizedWindow = false
+
+# Start fullscreen
+StartFullscreen = false
+
+# Editor font-family, font-size, linespace.
+# FontFamily = "Monospace"
+FontFamily = "Courier 10 Pitch"
+FontSize = 15
+Linespace = 0
+
+# neovim extend UIfeature
+ExtCmdline = true
+ExtPopupmenu = false
+ExtTabline  = false
+ExtMessages  = true
+
+# Drawing window border instead of vertical split, statusline
+DrawBorder = true
+
+# Gonvim copy the yank text to clipboad
+Clipboard = false
+
+# Disable IME in Normal mode
+DisableImeInNormal = false
+
+# Transparent window alpha
+# Note: This setting also implicitly enables the Drawborder setting
+Transparent = 0.9
+
+# Draw indent guide
+IndentGuide = true
+
+# load vimscript after setting of g:gonvim_running=1
+GinitVim = '''
+"set guifont=Courier\ 10\ Pitch\ 16
+"set guifontwide=VL\ Gothic\ 13
+set wildmode=list:longest,full
+'''
+
+# fix drawing problem
+CachedDrawing = false
+
+[Statusline]
+Visible = false
+# textLabel / icon / background / none
+ModeIndicatorType = "textLabel"
+# Color setting per vim-modes, if you want to change
+NormalModeColor = "#3cabeb"
+CommandModeColor = "#5285b8"
+InsertModeColor = "#2abcb4"
+ReplaceModeColor = "#ff8c0a"
+VisualModeColor = "#9932cc"
+TerminalModeColor = "#778899"
+# Statusline component
+# Left = [ "mode", "filepath", "filename" ]
+# Right = [ "message", "git", "filetype", "fileformat", "fileencoding", "curpos", "lint" ]
+
+[Palette]
+Transparent = 0.9
+
+[Message]
+Transparent = 0.9
+
+
+[Popupmenu]
+# show detail column
+ShowDetail = true
+# total number to display item
+Total = 20
+# width of `menu` column
+MenuWidth = 400
+# width of `info` column
+InfoWidth = 1
+# width of `detail` column
+DetailWidth = 250
+
+[Tabline]
+Visible = false
+
+[Lint]
+Visible = false
+
+[ScrollBar]
+Visible = false
+
+[ActivityBar]
+Visible = false
+DropShadow = false
+
+[MiniMap]
+Visible = false
+
+[SideBar]
+Visible = false
+DropShadow = false
+Width = 300
+AccentColor = "#5596ea"
+
+[Workspace]
+# name: directoryname
+# full: /path/to/directoryname
+# minimum: /p/t/directoryname
+PathStyle = "minimum"
+# Restore session-information that was ended without being saved
+RestoreSession = false
+# File open command in gonvim file explorer
+FileExplorerOpenCmd = ":tabnew"

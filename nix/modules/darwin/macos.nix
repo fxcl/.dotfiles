@@ -62,6 +62,7 @@ in
           #"utm"
           #"via"
           "visual-studio-code-insiders"
+          "goneovim"
           #"xquartz"
           #"xournal-plus-plus"
           #"zoom"
