@@ -62,10 +62,16 @@ if (( $#commands[(i)lesspipe(|.sh)] )); then
   export LESSOPEN="| /usr/bin/env $commands[(i)lesspipe(|.sh)] %s 2>&-"
 fi
 
-if [ -f "$HOME/.asdf/asdf.sh" ]; then  
-  source "$HOME/.asdf/asdf.sh"
+# Use mise
+# https://github.com/jdxcode/mise
+if [ -x ~/.local/bin/mise ]; then
+    #eval "$(~/.local/bin/mise activate zsh)"
+    if ! [ -f /tmp/mise.cache ]; then
+        ~/.local/bin/mise activate zsh > /tmp/mise.cache
+        zcompile /tmp/mise.cache
+    fi
+    source /tmp/mise.cache
 fi
-
 
 ############### Temporary Files
 if [[ ! -d "$TMPDIR" ]]; then
