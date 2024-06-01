@@ -132,7 +132,7 @@ in {
               sha256 = "0i3fqzjgn5hdiflgjayx3v5s4h9kdcws6n7ck0ii921klnzvfxda";
             }
             {
-              name = "nixfmt-vscode";
+              name = "nixfmt-classic-vscode";
               publisher = "brettm12345";
               version = "0.0.1";
               sha256 = "07w35c69vk1l6vipnq3qfack36qcszqxn8j3v332bl0w6m02aa7k";
@@ -346,12 +346,6 @@ in {
               publisher = "ronnidc";
               version = "0.3.1";
               sha256 = "0dlsri0dcligjz3x1ddpjhyvna6dmdswhb86c9k73y22r12fd1zd";
-            }
-            {
-              name = "rust-analyzer";
-              publisher = "rust-lang";
-              version = "0.4.1921";
-              sha256 = "17isx6d41xyx7ph2df2ksgz16wnmzfrq56yjssca8rk22qwzv4k9";
             }
             {
               name = "crates";

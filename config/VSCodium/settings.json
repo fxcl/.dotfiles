@@ -490,7 +490,7 @@
   "nix.serverPath": "/nix/store/fp71aj8cwsw8zkf46jrh9nvn8mngzqp8-rnix-lsp-unstable-2022-11-27/bin/rnix-lsp",
   "[nix]": {
     "editor.defaultFormatter": "jnoortheen.nix-ide",
-    // "editor.defaultFormatter": "brettm12345.nixfmt-vscode",
+    // "editor.defaultFormatter": "brettm12345.nixfmt-classic-vscode",
     "editor.tabSize": 2
   },
   "npm.fetchOnlinePackageInfo": false,

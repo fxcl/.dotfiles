@@ -20,12 +20,12 @@
   description = "NixOS and Darwin configurations";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-23.11-darwin"; # Default to stable for most things.
+    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-24.05-darwin"; # Default to stable for most things.
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable"; # Unstable for some packages.
 
     # Home inputs
     homemanager = {
-      url = "github:nix-community/home-manager/release-23.11";
+      url = "github:nix-community/home-manager/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs"; # Ensure versions are consistent.
 
     };
