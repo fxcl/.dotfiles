@@ -28,6 +28,7 @@ in
           gitAndTools.gh # Need this too https://github.com/yusukebe/gh-markdown-preview
           gitAndTools.tig
           exiftool
+          git-lfs
         ];
       };
 
