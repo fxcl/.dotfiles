@@ -105,8 +105,8 @@
         };
 
         fonts = {
-          fontDir.enable = true;
-          fonts = with pkgs; [ ] ++ (lib.optionals
+          # fontDir.enable = true;
+          packages = with pkgs; [ ] ++ (lib.optionals
             pkgs.stdenv.isLinux [
             noto-fonts
             noto-fonts-cjk

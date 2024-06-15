@@ -9,6 +9,9 @@
 	# requires Git 2.28 or later
 	defaultBranch = main
 
+[credential]
+	helper = store
+
 [core]
 	editor = $EDITOR
 	commitGraph = true
@@ -83,6 +86,14 @@
 
 [difftool "vimdiff"]
 	cmd = $EDITOR -d $LOCAL $REMOTE
+
+[grep]
+	lineNumber = true
+
+[color "grep"]
+	lineNumber = yellow
+	match = red bold
+	filename = cyan
 
 [merge]
 	# Include summaries of merged commits in newly created merge commit messages
