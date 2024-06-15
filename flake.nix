@@ -15,7 +15,6 @@
 # https://serokell.io/blog/practical-nix-flakes
 # https://stephank.nl/p/2023-02-28-using-flakes-for-nixos-configs.html
 # https://zero-to-nix.com/
-
 {
   description = "NixOS and Darwin configurations";
 

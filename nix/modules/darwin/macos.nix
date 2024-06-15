@@ -161,7 +161,7 @@ in
           LaunchServices.LSQuarantine = false;
 
           dock = {
-            autohide = false;
+            autohide = true;
             autohide-delay = 0.0;
             autohide-time-modifier = 0.0;
             show-recents = false;
