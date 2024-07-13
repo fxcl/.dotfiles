@@ -51,7 +51,7 @@
     go.enable = lib.mkDefault true;
     cc.enable = lib.mkDefault true;
     kube.enable = lib.mkDefault false;
-    python.enable = lib.mkDefault true;
+    python.enable = lib.mkDefault false;
     vscode.enable = lib.mkDefault true;
     zk.enable = lib.mkDefault true;
     emacs.enable = lib.mkDefault false;

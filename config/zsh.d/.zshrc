@@ -135,6 +135,17 @@ if command -v micromamba >/dev/null 2>&1; then
   export MAMBA_ROOT_PREFIX="$HOME/micromamba"
 fi
 
+# config clang
+if command -v clang++ >/dev/null 2>&1; then
+export CXXFLAGS="-stdlib=libc++"
+export LDFLAGS="-stdlib=libc++"
+#export CXX=clang++
+fi
+
+
+
+
+
 ##############################################################
 # LOCAL.
 ##############################################################

@@ -77,7 +77,8 @@ in
           "libiconv"
           "mas"
           "rustup-init"
-          "python@3.12"
+          #"python@3.12"
+          "proto"
           #"cmake"
           #"openssl"
           # "libolm"
@@ -98,6 +99,7 @@ in
           "libgccjit"
           "icu4c"
           "tree-sitter"
+          #"shortcat"
          # {
          #   name = "emacs-mac";
          #   args = [

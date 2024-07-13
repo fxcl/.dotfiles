@@ -71,7 +71,7 @@ in
         };
 
         hm.file."npmrc".text = "
-          registry=https://registry.npmmirror.com
+          registry=https://registry.npmjs.org
           ELECTRON_MIRROR=https://npm.taobao.org/mirrors/electron/
           ELECTRON_CUSTOM_DIR=16.0.5
           disturl=https://npmmirror.com/dist/

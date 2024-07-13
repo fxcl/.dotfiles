@@ -64,14 +64,14 @@ fi
 
 # Use mise
 # https://github.com/jdxcode/mise
-if [ -x ~/.local/bin/mise ]; then
-    #eval "$(~/.local/bin/mise activate zsh)"
-    if ! [ -f /tmp/mise.cache ]; then
-        ~/.local/bin/mise activate zsh > /tmp/mise.cache
-        zcompile /tmp/mise.cache
-    fi
-    source /tmp/mise.cache
-fi
+if [ -x /usr/local/bin/proto ]; then
+    eval "$(/usr/local/bin/proto activate zsh)"
+    # if ! [ -f /tmp/mise.cache ]; then
+    #     ~/.local/bin/mise activate zsh > /tmp/mise.cache
+    #     zcompile /tmp/mise.cache
+    # fi
+    # source /tmp/mise.cache
+#fi
 
 ############### Temporary Files
 if [[ ! -d "$TMPDIR" ]]; then

@@ -46,6 +46,7 @@ alias nu="npm uninstall"
 alias nr="npm run"
 alias nrp="npm run prisma:studio"
 
+
 (( $+commands[htop] )) && alias top=htop
 
 if (( $+commands[lsd] )); then
