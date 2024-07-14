@@ -18,13 +18,15 @@
 	whitespace=fix,space-before-tab,tab-in-indent,trailing-space,cr-at-eol
 	; https://git-scm.com/docs/git-update-index#_untracked_cache
 	untrackedCache = true
-	; hash (#) conflicts with Markdown when I use hb to open PRs etc...
+	; hash (#) conflicts with Markdown when I use hub to open PRs etc...
 	commentChar = %
 	hooksPath = ~/.config/git/hooks
 	pager = delta_
+	; fsmonitor = true
 
 [interactive]
 	diffFilter = delta_ --color-only --features=interactive
+	singleKey = true
 
 [delta]
 	syntax-theme = ansi
@@ -36,9 +38,13 @@
 	file-renamed-label  = RENAMED:
 	features = labels
 
+[column]
+	ui = auto
+
 [branch]
 	autoSetupMerge = always
 	autoSetupRebase = always
+	sort = -committerdate
 
 [branch "main"]
 	rebase = true
@@ -121,7 +127,6 @@
 	color = true
 
 [tag]
-	forceSignAnnotated = true
 	gpgsign = true
 
 [apply]
@@ -159,32 +164,29 @@
 	status = true
 
 [alias]
-		co        = checkout
-    s         = status -s
-		st = status -sb
-    cp        = cherry-pick
-    rb        = rebase
-		#rb = "!sh -c \"git rebase -i HEAD~$1\" -"
-    pushf     = push --force-with-lease
-    amend     = commit --amend
-		#amend = commit --amend --no-edit --date now
-    wip       = !git add --all && git commit -m "WIP"
-    wipp      = !git wip && git push
-
-    # Tools
-    patch   = !git --no-pager diff --no-color
-    fix-upstream = !git branch --set-upstream-to=origin/$(git rev-parse --abbrev-ref HEAD) $(git rev-parse --abbrev-ref HEAD)
-
-    # History
-    ls      = log --pretty=format:'%C(yellow)%h%d %Creset%s%Cblue [%cn] [%ar] %C(black)%C(bold)%cr%Creset' --decorate
-    graph   = log --graph --date=relative --pretty=tformat:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%an %ad)%Creset'
-
+	s         = status -s
+	cp        = cherry-pick
+	#rb = "!sh -c \"git rebase -i HEAD~$1\" -"
+	pushf     = push --force-with-lease	
+	wip       = !git add --all && git commit -m "WIP"
+	wipp      = !git wip && git push
+	# Tools
+	patch   = !git --no-pager diff --no-color
+	fix-upstream = !git branch --set-upstream-to=origin/$(git rev-parse --abbrev-ref HEAD) $(git rev-parse --abbrev-ref HEAD)
+	# History
+	ls      = log --pretty=format:'%C(yellow)%h%d %Creset%s%Cblue [%cn] [%ar] %C(black)%C(bold)%cr%Creset' --decorate
+	graph   = log --graph --date=relative --pretty=tformat:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%an %ad)%Creset'
+	amend     = commit --amend
+	#amend = commit --amend --no-edit --date now
+	force = push --force-with-lease
 	fam = "!f() { git add . && git amend && git force; }; f"
+	blame = git blame -w -C -C -C
 	blm = blame -wMC
 	br = branch -vv --sort=-committerdate --format='%(HEAD) %(color:red)%(objectname:short)%(color:reset) %(if:equals=*)%(HEAD)%(then)%(color:cyan)%(end)%(align:15,left)%(refname:short)%(end)%(color:reset)%(align:21,left)%(color:green)%(committerdate:auto:human)%(color:reset)%(end)%(contents:subject)'
 	brs = br -a
 	cb = checkout -b
 	cm = commit -S
+	co = checkout
 	d = diff --patch-with-stat
 	dc = d --staged
 	dm = d --word-diff-regex=.
@@ -202,7 +204,8 @@
 	ll = log --cc
 	lnm = l --no-merges
 	patch = !git --no-pager diff --no-color | pbcopy | echo "Patch copied to clipboard"
-
+	rb = "!sh -c \"git rebase -i HEAD~$1\" -"
+	st = status -sb
 	stashes = stash list
 	track = push origin -u HEAD
 	undo = reset --soft HEAD^

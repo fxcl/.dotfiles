@@ -27,16 +27,18 @@ in
         # GOSUMDB = "off";
       };
 
+      # all tools from https://github.com/golang/vscode-go/blob/ed92a0c250e8941abb9adab973c129a263ba1e41/src/goToolsInformation.ts
       my.user = {
         packages = with pkgs; [
           # go_1_22
           # godef
           # gopls
           # golint
-          # delve
+          # delve # dlv
           # go-outline
           # gopkgs
-          # gotools
+          # gotools # staticcheck
+          # gotools # goimports
           # gotests
           # gomodifytags
           # go-migrate

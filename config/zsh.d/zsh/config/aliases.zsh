@@ -4,6 +4,7 @@
 alias cp="${aliases[cp]:-cp} -iv"
 alias ln="${aliases[ln]:-ln} -iv"
 alias mv="${aliases[mv]:-mv} -iv"
+alias rm="${aliases[rm]:-rm} -i"
 alias mkdir="${aliases[mkdir]:-mkdir} -p"
 alias sudo="sudo "
 alias type='type -a'
@@ -111,3 +112,8 @@ alias mmd="micromamba deactivate"
   #     export PS1='\[\e[1;32m\]\u\[\e[0m\]@\[\e[1;32m\]\h\[\e[0m\]:\[\e[1;34m\]\w\[\e[0m\]\$ '
   # fi
 fi
+
+# https://github.com/neomutt/neomutt/issues/4058#issuecomment-1751682305
+alias neomutt="TERM=xterm-direct neomutt"
+# https://github.com/direnv/direnv/wiki/Tmux
+alias tmux='direnv exec / tmux'

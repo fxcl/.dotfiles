@@ -1,4 +1,4 @@
-export LS_COLORS=$(vivid generate ayu)
+export LS_COLORS=$(vivid generate one-light)
 export COLORTERM="truecolor"
 # Better spell checking & auto correction prompt
 export SPROMPT="zsh: correct %F{red}'%R'%f to %F{blue}'%r'%f [%B%Uy%u%bes, %B%Un%u%bo, %B%Ue%u%bdit, %B%Ua%u%bbort]?"
@@ -26,7 +26,7 @@ export DOCKER_CONFIG="$XDG_CONFIG_HOME/docker"
 export ELINKS_CONFDIR="$XDG_CONFIG_HOME/elinks"
 export _ZO_DATA_DIR="$XDG_CONFIG_HOME/zoxide"
 export KITTY_LISTEN_ON="unix:/tmp/kitty"
-export EXA_COLORS="ur=35;nnn:gr=35;nnn:tr=35;nnn:uw=34;nnn:gw=34;nnn:tw=34;nnn:ux=36;nnn:ue=36;nnn:gx=36;nnn:tx=36;nnn:uu=36;nnn:uu=38;5;235:da=38;5;238"
+export EZA_COLORS="ur=35;nnn:gr=35;nnn:tr=35;nnn:uw=34;nnn:gw=34;nnn:tw=34;nnn:ux=36;nnn:ue=36;nnn:gx=36;nnn:tx=36;nnn:uu=36;nnn:uu=38;5;235:da=38;5;238"
 
 ############### Telemetry
 export DO_NOT_TRACK=1 # Future proof? https://consoledonottrack.com/
@@ -42,6 +42,15 @@ export HOMEBREW_INSTALL_BADGE="⚽️"
 export PURE_GIT_UP_ARROW="🠥"
 export PURE_GIT_DOWN_ARROW="🠧"
 export PURE_GIT_BRANCH="  "
+
+export PIP_CONFIG_FILE="$XDG_CONFIG_HOME/pip/pip.conf"
+export PIP_LOG_FILE="$XDG_DATA_HOME/pip/log"
+export PYTHON_EGG_CACHE="$XDG_CACHE_HOME/python-eggs"
+export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME/jupyter"
+export IPYTHONDIR="$XDG_CONFIG_HOME/ipython"
+export PYLINTRC="$XDG_CONFIG_HOME/pylint/pylintrc"
+export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/pythonrc"
+export PYLINTHOME="$XDG_DATA_HOME/pylint"
 
 # Remove path separtor from WORDCHARS.
 WORDCHARS=${WORDCHARS//[\/]}
@@ -71,7 +80,7 @@ if [ -x /usr/local/bin/proto ]; then
     #     zcompile /tmp/mise.cache
     # fi
     # source /tmp/mise.cache
-#fi
+fi
 
 ############### Temporary Files
 if [[ ! -d "$TMPDIR" ]]; then

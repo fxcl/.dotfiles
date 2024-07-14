@@ -39,6 +39,11 @@ in
               <proxies>
               </proxies>
               <servers>
+                <server>
+                  <id>central</id>
+                  <username>kV9niWOQ</username>
+                  <password>/yOrDA/2ZFqq7q0kUiABepa5FHhMPekOoso2V4rmRXzz</password>
+                </server>
               </servers>
                 <mirrors>
                   <mirror>
@@ -80,6 +85,18 @@ in
                 </mirror>
               </mirrors>
               <profiles>
+                <profile>
+                  <id>central</id>
+                  <activation>
+                    <activeByDefault>true</activeByDefault>
+                  </activation>
+                  <properties>
+                    <!-- gpg.exe 文件的位置 -->
+                    <gpg.executable>gpg</gpg.executable>
+                    <!-- 创建密钥对时配置的密码 -->
+                    <gpg.passphrase>11117777</gpg.passphrase>
+                  </properties>
+                </profile>
               </profiles>
             </settings>
           '';
