@@ -137,7 +137,7 @@ in
           defaults write org.gpgtools.common DisableKeychain -bool true
           # reset the order of the launchpad and size of dock
           defaults write com.apple.dock ResetLaunchPad -bool true
-          defaults write com.apple.dock tilesize -integer 64
+          defaults write com.apple.dock tilesize -integer 40
           defaults write com.apple.dock size-immutable -bool yes
           defaults write com.apple.dock no-bouncing -bool true
           defaults write com.flexibits.fantastical2.mac HideLocationSuggestions -bool yes
@@ -180,7 +180,6 @@ in
             show-process-indicators = false;
             showhidden = true;
             static-only = true;
-            tilesize = 46;
             # Hot corners, reset them all.
             # Not supported in nix-darwin yet
 

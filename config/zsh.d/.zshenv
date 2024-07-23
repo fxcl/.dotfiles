@@ -71,17 +71,6 @@ if (( $#commands[(i)lesspipe(|.sh)] )); then
   export LESSOPEN="| /usr/bin/env $commands[(i)lesspipe(|.sh)] %s 2>&-"
 fi
 
-# Use mise
-# https://github.com/jdxcode/mise
-if [ -x /usr/local/bin/proto ]; then
-    eval "$(/usr/local/bin/proto activate zsh)"
-    # if ! [ -f /tmp/mise.cache ]; then
-    #     ~/.local/bin/mise activate zsh > /tmp/mise.cache
-    #     zcompile /tmp/mise.cache
-    # fi
-    # source /tmp/mise.cache
-fi
-
 ############### Temporary Files
 if [[ ! -d "$TMPDIR" ]]; then
   export TMPDIR="/tmp/$LOGNAME"

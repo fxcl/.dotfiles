@@ -40,6 +40,7 @@ in
           par
           fd
           ripgrep
+          eza
           # editorconfig-checker # do I use it?
           hadolint # Docker linter
           dotenv-linter

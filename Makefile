@@ -32,7 +32,7 @@ clean: clean-build gc
 
 reset:
 	defaults write com.apple.dock ResetLaunchPad -bool true
-	defaults write com.apple.dock tilesize -integer 64
+	defaults write com.apple.dock tilesize -integer 48
 	defaults write com.apple.dock size-immutable -bool yes
 	killall Dock
 
