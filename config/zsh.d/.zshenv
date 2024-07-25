@@ -35,6 +35,7 @@ export GATSBY_TELEMETRY_DISABLED=1
 export NEXT_TELEMETRY_DISABLED=1
 export ADBLOCK="true"
 
+
 ############### Homebrew
 export HOMEBREW_INSTALL_BADGE="⚽️"
 
@@ -51,6 +52,15 @@ export IPYTHONDIR="$XDG_CONFIG_HOME/ipython"
 export PYLINTRC="$XDG_CONFIG_HOME/pylint/pylintrc"
 export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/pythonrc"
 export PYLINTHOME="$XDG_DATA_HOME/pylint"
+
+# Default env
+export USER_BIN_HOME="$HOME/.local/bin"
+export USER_ZSH_DATA="${XDG_DATA_HOME:-$HOME/.local/share}/zsh"
+export USER_ZSH_SITE_FUNCTIONS="$USER_ZSH_DATA/site-functions"
+
+# Proto
+export PROTO_HOME="$HOME/.proto"
+export PATH="$PROTO_HOME/shims:$PROTO_HOME/bin:$PATH"
 
 # Remove path separtor from WORDCHARS.
 WORDCHARS=${WORDCHARS//[\/]}

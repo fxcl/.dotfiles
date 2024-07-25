@@ -77,7 +77,6 @@ in
           "mas"
           "rustup-init"
           #"python@3.12"
-          "proto"
           #"cmake"
           #"openssl"
           # "libolm"

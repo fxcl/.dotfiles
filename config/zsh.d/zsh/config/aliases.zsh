@@ -47,16 +47,7 @@ alias nu="npm uninstall"
 alias nr="npm run"
 alias nrp="npm run prisma:studio"
 
-proto_activate() {
-    if [ -x /usr/local/bin/proto ]; then
-        eval "$(/usr/local/bin/proto activate zsh)"
-    else
-        echo "proto 不存在或不可执行"
-    fi
-    unset -f proto_activate  # 激活后删除这个函数
-}
-
-alias proto=proto_activate
+alias toolsup="echo $'Proto upgrade' ; proto upgrade ;"
 
 (( $+commands[htop] )) && alias top=htop
 

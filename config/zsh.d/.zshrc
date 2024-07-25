@@ -151,6 +151,15 @@ if [[ `command -v starship` ]]; then
 	  eval "$(starship init zsh)"
 fi
 
+# Download proto manager if missing.
+if [[ ! -e ${HOME}/.proto ]]; then
+  curl -fsSL https://moonrepo.dev/install/proto.sh | bash
+  #proto setup
+  #proto install node 20
+  #proto install yarn
+  #proto install pnpm
+fi
+
 # Initialize FZF (requires >=fzf@0.48.0)
 source <(fzf --zsh)
 
