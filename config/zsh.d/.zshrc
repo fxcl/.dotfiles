@@ -21,7 +21,7 @@
 
 # Per-function profiling:
 
-zmodload zsh/zprof
+# zmodload zsh/zprof
 
 typeset -g ZPLG_MOD_DEBUG=1
 declare -A ZINIT
@@ -31,7 +31,6 @@ declare -A ZINIT
 HISTSIZE=1000000
 SAVEHIST="$HISTSIZE"
 HISTFILE="${XDG_DATA_HOME}/.zsh_history"
-HISTDUP=erase
 
 fpath=(
   ${ZDOTDIR}/functions
@@ -66,33 +65,24 @@ source "$__ZINIT"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
+# zinit snippet OMZP::gpg-agent
 
-# Keybindings
-# Set editor default keymap to emacs (`-e`) or vi (`-v`)
-bindkey -v
-bindkey '^p' history-search-backward
-bindkey '^n' history-search-forward
-bindkey '^[w' kill-region
-
+PURE_SYMBOLS=("λ" "ϟ" "▲" "∴" "→" "»" "৸")
+# Arrays in zsh starts from 1
+export PURE_PROMPT_SYMBOL="${PURE_SYMBOLS[$RANDOM % ${#PURE_SYMBOLS[@]} + 1]}"
+zstyle :prompt:pure:path color 240
+zstyle :prompt:pure:git:branch color blue
+zstyle :prompt:pure:git:dirty color red
+zstyle :prompt:pure:git:action color 005
+zstyle :prompt:pure:prompt:success color 003
 
 # bind UP and DOWN keys
-#bindkey "${terminfo[kcuu1]}" history-substring-search-up
-#bindkey "${terminfo[kcud1]}" history-substring-search-down
+bindkey "${terminfo[kcuu1]}" history-substring-search-up
+bindkey "${terminfo[kcud1]}" history-substring-search-down
 
 # bind UP and DOWN arrow keys (compatibility fallback)
-#bindkey '^[[A' history-substring-search-up
-#bindkey '^[[B' history-substring-search-down
-
-#
-# zsh-history-substring-search
-#
-
-# Bind ^[[A/^[[B manually so up/down works both before and after zle-line-init
-for key ('^[[A' '^P' ${terminfo[kcuu1]}) bindkey ${key} history-substring-search-up
-for key ('^[[B' '^N' ${terminfo[kcud1]}) bindkey ${key} history-substring-search-down
-for key ('k') bindkey -M vicmd ${key} history-substring-search-up
-for key ('j') bindkey -M vicmd ${key} history-substring-search-down
-unset key
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
 
 # For speed:
 # https://github.com/zsh-users/zsh-autosuggestions#disabling-automatic-widget-re-binding
@@ -120,9 +110,9 @@ zinit light https://github.com/zsh-users/zsh-history-substring-search
 zinit ice wait blockf lucid atpull'zinit creinstall -q .'
 zinit light https://github.com/zsh-users/zsh-completions
 
-#zinit ice wait lucid atinit'ZINIT[COMPINIT_OPTS]=-C; zpcompinit; zpcdreplay' \
-# atload'unset "FAST_HIGHLIGHT[chroma-whatis]" "FAST_HIGHLIGHT[chroma-man]"'
-#zinit light https://github.com/zdharma-continuum/fast-syntax-highlighting
+zinit ice wait lucid atinit'ZINIT[COMPINIT_OPTS]=-C; zpcompinit; zpcdreplay' \
+ atload'unset "FAST_HIGHLIGHT[chroma-whatis]" "FAST_HIGHLIGHT[chroma-man]"'
+zinit light https://github.com/zdharma-continuum/fast-syntax-highlighting
 
 zinit ice wait lucid atload'_zsh_autosuggest_start'
 zinit light https://github.com/zsh-users/zsh-autosuggestions
@@ -147,9 +137,9 @@ eval "$(direnv hook zsh)"
 eval "$(zoxide init zsh --hook pwd)"
 
 # starship isn't installed in all of my environments
-if [[ `command -v starship` ]]; then
-	  eval "$(starship init zsh)"
-fi
+#if [[ `command -v starship` ]]; then
+#	  eval "$(starship init zsh)"
+#fi
 
 # Download proto manager if missing.
 if [[ ! -e ${HOME}/.proto ]]; then
@@ -162,6 +152,8 @@ fi
 
 # Initialize FZF (requires >=fzf@0.48.0)
 source <(fzf --zsh)
+
+
 
 # config micromamba
 if command -v micromamba >/dev/null 2>&1; then
