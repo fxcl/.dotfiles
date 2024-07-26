@@ -13,6 +13,8 @@
 	helper = store
 
 [core]
+	autocrlf = input
+	quotepath = false
 	editor = $EDITOR
 	commitGraph = true
 	whitespace=fix,space-before-tab,tab-in-indent,trailing-space,cr-at-eol
@@ -29,6 +31,12 @@
 	singleKey = true
 
 [delta]
+	#features = labels
+  features = mellow-barbet
+  dark = true
+  light = false
+  line-numbers = true
+  side-by-side = false
 	syntax-theme = ansi
 	navigate = true # use n and N to move between diff sections
 	hyperlinks = true
@@ -36,7 +44,6 @@
 	file-removed-label  = REMOVED:
 	file-added-label    = ADDED:
 	file-renamed-label  = RENAMED:
-	features = labels
 
 [column]
 	ui = auto
@@ -167,7 +174,7 @@
 	s         = status -s
 	cp        = cherry-pick
 	#rb = "!sh -c \"git rebase -i HEAD~$1\" -"
-	pushf     = push --force-with-lease	
+	pushf     = push --force-with-lease
 	wip       = !git add --all && git commit -m "WIP"
 	wipp      = !git wip && git push
 	# Tools

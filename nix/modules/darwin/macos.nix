@@ -72,6 +72,7 @@ in
           # "ccache"
           # "sccache"
           "pinentry-mac"
+          "tldr"
           "gcc"
           "libiconv"
           "mas"
