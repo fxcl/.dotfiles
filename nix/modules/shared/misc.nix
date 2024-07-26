@@ -29,6 +29,10 @@ in
         ".urlview" = { source = ../../../config/.urlview; };
         ".condarc" = { source = ../../../config/.condarc; };
         ".editorconfig" = { source = ../../../config/.editorconfig; };
+        ".config/tldr/config.toml" = {
+          recursive = true;
+          text = builtins.readFile ../../../config/tldr/config.toml;
+        };
       };
     };
 }
