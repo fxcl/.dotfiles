@@ -137,9 +137,9 @@ eval "$(direnv hook zsh)"
 eval "$(zoxide init zsh --hook pwd)"
 
 # starship isn't installed in all of my environments
-#if [[ `command -v starship` ]]; then
-#	  eval "$(starship init zsh)"
-#fi
+if [[ `command -v starship` ]]; then
+  eval "$(starship init zsh)"
+fi
 
 # Download proto manager if missing.
 if [[ ! -e ${HOME}/.proto ]]; then
