@@ -186,6 +186,9 @@
 	amend     = commit --amend
 	#amend = commit --amend --no-edit --date now
 	force = push --force-with-lease
+	prev = checkout HEAD^1
+	next = "!sh -c 'git log --reverse --pretty=%H master | awk \"/$(git rev-parse HEAD)/{getline;print}\" | xargs git checkout'"
+	rollback = reset HEAD^1
 	fam = "!f() { git add . && git amend && git force; }; f"
 	blame = git blame -w -C -C -C
 	blm = blame -wMC

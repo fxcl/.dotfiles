@@ -52,7 +52,7 @@ alias toolsup="echo $'Proto upgrade' ; proto upgrade ;"
 (( $+commands[htop] )) && alias top=htop
 
 if (( $+commands[lsd] )); then
-  alias ls="lsd "
+  alias ls="lsd -tr1lh"
   alias ll='lsd --tree --group-directories-first -I "node_modules" '
 elif (( $+commands[tree] )); then
   alias ll="type tree >/dev/null && tree --dirsfirst -a -L 1 || l -d .*/ */ "
