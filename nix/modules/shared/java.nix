@@ -41,8 +41,8 @@ in
               <servers>
                 <server>
                   <id>central</id>
-                  <username>kV9niWOQ</username>
-                  <password>/yOrDA/2ZFqq7q0kUiABepa5FHhMPekOoso2V4rmRXzz</password>
+                  <username>UU5CiLHH</username>
+                  <password>IECTu1hm+IaH6odmxccP7huObVFgjkJ/yfs5E7QveE+F</password>
                 </server>
               </servers>
                 <mirrors>

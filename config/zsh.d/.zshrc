@@ -153,14 +153,6 @@ fi
 # Initialize FZF (requires >=fzf@0.48.0)
 source <(fzf --zsh)
 
-
-
-# config micromamba
-if command -v micromamba >/dev/null 2>&1; then
-  eval "$(micromamba shell hook --shell zsh)"
-  export MAMBA_ROOT_PREFIX="$HOME/micromamba"
-fi
-
 # config clang
 if command -v clang++ >/dev/null 2>&1; then
 export CXXFLAGS="-stdlib=libc++"

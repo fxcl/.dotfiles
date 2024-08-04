@@ -95,7 +95,8 @@ in {
             "$battery"
           ];
           add_newline = false;
-          scan_timeout = 100;
+          command_timeout = 3600000;
+          scan_timeout = 500;
           palette = "custom";
           palettes.custom = {
             blue = "#9db8e9";

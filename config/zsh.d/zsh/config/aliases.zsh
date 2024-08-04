@@ -100,10 +100,6 @@ if [[ "$(uname)" == Darwin* ]]; then
 #  alias j8="export JAVA_HOME=`/usr/libexec/java_home -v 1.8`; java -version"
 alias code="/Applications/Visual\ Studio\ Code\ -\ Insiders.app/Contents/Resources/app/bin/code"
 alias curl='curl --keepalive-time 60'
-alias envsm='micromamba env list '
-alias mm="micromamba"
-alias mma="micromamba activate"
-alias mmd="micromamba deactivate"
 
   # Turn the prompt symbol red if the user is root
   # if [ $( id -u ) -eq 0 ];

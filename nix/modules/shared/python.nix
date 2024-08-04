@@ -21,7 +21,6 @@ in
         user = {
           packages = with pkgs;
             [
-              #micromamba
               # (python3.withPackages (ps:
               #   with ps; [
               #     pip

@@ -25,7 +25,7 @@ in
         homebrew.casks = [
           "iterm2"
           "notunes"
-          "appcleaner"
+          #"appcleaner"
           #"raycast"
           #"rectangle"
           # "aria2"
@@ -118,10 +118,6 @@ in
           ".config/ghostty" = {
             recursive = true;
             source = ../../../config/ghostty;
-          };
-          "micromamba" = {
-            recursive = true;
-            source = ../../../config/micromamba;
           };
           ".cargo/config" = {
             text = ''
