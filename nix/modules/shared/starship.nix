@@ -22,7 +22,7 @@ in {
           format = lib.concatStrings [
             "$character"
             # "$username"
-            "$hostname"
+            # "$hostname"
             "$shlvl"
             "$directory"
           ];
@@ -107,8 +107,9 @@ in {
           };
 
           character = {
-            success_symbol = "[➜](bold green)";
-            error_symbol = "[➜](bold red)";
+            success_symbol = "[➜](bold purple)";
+            error_symbol = "[✖](bold red)";
+            vicmd_symbol = "[◀◀ ](bold green)";
           };
           hostname = {
             ssh_symbol = "󰌘";
@@ -125,7 +126,7 @@ in {
             truncate_to_repo = false;
             before_repo_root_style = "dimmed";
             repo_root_style = "bold bright-blue";
-            truncation_length = 6;
+            truncation_length = 100;
             truncation_symbol = "…/";
           };
 

@@ -129,21 +129,253 @@ in
           # activateSettings -u will reload the settings from the database and apply them to the current session,
           # so we do not need to logout and login again to make the changes take effect.
           /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
+
+          echo 'Welcome to @tr1lhx installation script'
+          echo 'This script will configure macOS'
+
           # disable Chrome native DNS resolver
-          if [ -d '/Applications/Google Chrome Canary.app' ]; then
+          if [ -d '/Applications/Google Chrome.app' ]; then
             defaults write com.google.Chrome BuiltInDnsClientEnabled -bool false
           fi
-          # disable saving to keychain for GPG
-          defaults write org.gpgtools.common DisableKeychain -bool true
-          # reset the order of the launchpad and size of dock
-          defaults write com.apple.dock ResetLaunchPad -bool true
-          defaults write com.apple.dock tilesize -integer 48
-          defaults write com.apple.dock size-immutable -bool yes
-          defaults write com.apple.dock no-bouncing -bool true
-          defaults write com.flexibits.fantastical2.mac HideLocationSuggestions -bool yes
-          defaults write com.flexibits.fantastical2.mac AlwaysIgnoreLocation -bool yes
-          defaults write -g NSAutomaticWindowAnimationsEnabled -bool false
+
+          # Close any open System Preferences panes, to prevent them from overriding
+          # settings we’re about to change
+          osascript -e 'tell application "System Preferences" to quit'
+
+          # Ask for the administrator password upfront
+          sudo -v
+
+          # Keep-alive: update existing `sudo` time stamp until `macos-settings.sh` has finished
+          while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+
+          echo "Making system modifications:"
+
+          ###############################################################################
+          # General UI/UX                                                               #
+          ###############################################################################
+
+          # Set standby delay to 24 hours (default is 1 hour)
+          sudo pmset -a standbydelay 86400
+
+          # Display battery percentage
+          defaults write com.apple.menuextra.battery ShowPercent YES
+
+          # Expand save panel by default
+          defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
+          defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
+
+          # Expand print panel by default
+          defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
+          defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
+
+          # Save to disk (not to iCloud) by default
+          defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
+
+          # Automatically quit printer app once the print jobs complete
+          defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
+
+          # Disable the “Are you sure you want to open this application?” dialog
+          defaults write com.apple.LaunchServices LSQuarantine -bool false
+
+          # Disable the crash reporter
+          defaults write com.apple.CrashReporter DialogType -string "none"
+
+          # Reveal IP address, hostname, OS version, etc. when clicking the clock
+          # in the login window
+          sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName
+
+          # Disable confirmation of opening links in external applications from the browser
+          defaults write com.google.Chrome ExternalProtocolDialogShowAlwaysOpenCheckbox -bool true
+
+          # Set clock format
+          defaults write com.apple.menuextra.clock DateFormat -string "EEE d MMM HH:mm"
+
+          # Disable automatic capitalization as it’s annoying when typing code
+          defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
+
+          # Disable smart dashes as they’re annoying when typing code
+          defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
+
+          # Disable automatic period substitution as it’s annoying when typing code
+          defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool false
+
+          # Disable smart quotes as they’re annoying when typing code
+          defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
+
+          # Disable auto-correct
+          defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
+
+
+          ###############################################################################
+          # Trackpad, mouse, keyboard, Bluetooth accessories, and input                 #
+          ###############################################################################
+
+          # Trackpad: enable tap to click for this user and for the login screen
+          defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
+          defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+          defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+
+          # Use scroll gesture with the Ctrl (^) modifier key to zoom
+          defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool true
+          defaults write com.apple.universalaccess HIDScrollZoomModifierMask -int 262144
+
+          # Disable press-and-hold for keys in favor of key repeat
+          defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
+
+
+          ###############################################################################
+          # Screen                                                                      #
+          ###############################################################################
+
+          # Require password immediately after sleep or screen saver begins
+          defaults write com.apple.screensaver askForPassword -int 1
+          defaults write com.apple.screensaver askForPasswordDelay -int 0
+
+
+          ###############################################################################
+          # Finder                                                                      #
+          ###############################################################################
+
+          # Finder: allow quitting via ⌘ + Q; doing so will also hide desktop icons
+          defaults write com.apple.finder QuitMenuItem -bool true
+
+          # Set Desktop as the default location for new Finder windows
+          # For other paths, use `PfLo` and `file:///full/path/here/`
+          defaults write com.apple.finder NewWindowTarget -string "PfDe"
+          defaults write com.apple.finder NewWindowTargetPath -string "file://~/Desktop/"
+
+
+          # Finder: show hidden files by default
+          defaults write com.apple.finder AppleShowAllFiles -bool true
+
+          # Finder: show all filename extensions
+          defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+
+          # Finder: show status bar
+          defaults write com.apple.finder ShowStatusBar -bool true
+
+          # Finder: show path bar
+          defaults write com.apple.finder ShowPathbar -bool true
+
+          # Display full POSIX path as Finder window title
+          defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
+
+          # Keep folders on top when sorting by name
+          defaults write com.apple.finder _FXSortFoldersFirst -bool true
+
+          # When performing a search, search the current folder by default
+          defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
+
+          # Disable the warning when changing a file extension
+          defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
+
+          # Avoid creating .DS_Store files on network or USB volumes
+          defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+          defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
+
+          # Enable snap-to-grid for icons on the desktop and in other icon views
+          /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
+          /usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
+          /usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
+
+          # Increase grid spacing for icons on the desktop and in other icon views
+          /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:gridSpacing 100" ~/Library/Preferences/com.apple.finder.plist
+          /usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:gridSpacing 100" ~/Library/Preferences/com.apple.finder.plist
+          /usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:gridSpacing 100" ~/Library/Preferences/com.apple.finder.plist
+
+          # Show the ~/Library folder
+          chflags nohidden ~/Library
+
+          # Show the /Volumes folder
+          sudo chflags nohidden /Volumes
+
+          # Expand the following File Info panes:
+          # “General”, “Open with”, and “Sharing & Permissions”
+          defaults write com.apple.finder FXInfoPanesExpanded -dict \
+            General -bool true \
+            OpenWith -bool true \
+            Privileges -bool true
+
+          ###############################################################################
+          # Dock, Dashboard, and hot corners                                            #
+          ###############################################################################
+
+          # Change minimize/maximize window effect
+          defaults write com.apple.dock mineffect -string "scale"
+
+          # Minimize windows into their application’s icon
+          defaults write com.apple.dock minimize-to-application -bool true
+
+          # Enable spring loading for all Dock items
+          defaults write com.apple.dock enable-spring-load-actions-on-all-items -bool true
+
+          # Show indicator lights for open applications in the Dock
+          defaults write com.apple.dock show-process-indicators -bool true
+
+          # Make Dock icons of hidden applications translucent
+          defaults write com.apple.dock showhidden -bool true
+
+
+          # Add iOS & Watch Simulator to Launchpad
+          sudo ln -sf "/Applications/Xcode.app/Contents/Developer/Applications/Simulator.app" "/Applications/Simulator.app"
+
+
+          ###############################################################################
+          # Terminal                                                                    #
+          ###############################################################################
+
+          # Only use UTF-8 in Terminal.app
+          defaults write com.apple.terminal StringEncodings -array 4
+
+
+          ###############################################################################
+          # Activity Monitor                                                            #
+          ###############################################################################
+
+          # Show the main window when launching Activity Monitor
+          defaults write com.apple.ActivityMonitor OpenMainWindow -bool true
+
+          # Show all processes in Activity Monitor
+          defaults write com.apple.ActivityMonitor ShowCategory -int 0
+
+          # Sort Activity Monitor results by CPU usage
+          defaults write com.apple.ActivityMonitor SortColumn -string "CPUUsage"
+          defaults write com.apple.ActivityMonitor SortDirection -int 0
+
+
+          ###############################################################################
+          # Address Book, Dashboard, iCal, TextEdit, and Disk Utility                   #
+          ###############################################################################
+
+          # Use plain text mode for new TextEdit documents
+          defaults write com.apple.TextEdit RichText -int 0
+
+          # Open and save files as UTF-8 in TextEdit
+          defaults write com.apple.TextEdit PlainTextEncoding -int 4
+          defaults write com.apple.TextEdit PlainTextEncodingForWrite -int 4
+
+
+          ###############################################################################
+          # Mac App Store                                                               #
+          ###############################################################################
+
+          # Check for software updates daily, not just once per week
+          defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
+
+
+          ###############################################################################
+          # Photos                                                                      #
+          ###############################################################################
+
+          # Prevent Photos from opening automatically when devices are plugged in
+          defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true
+
+          ###############################################################################
+          # Kill affected applications                                                  #
+          ###############################################################################
           killall Dock
+          echo "Done. Note that some of these changes require a logout/restart to take effect."
+
           # if Emacs.app exists, reset Emacs to /Applications
           if [ -d /usr/local/Cellar/emacs-mac/emacs-29.1-mac-10.0/Emacs.app ]; then
             rm -rf /Applications/Emacs.app
@@ -155,165 +387,6 @@ in
           ln -sfv ~/.config/VSCodium/settings.json ~/Library/Application\ Support/VSCodium/User/settings.json
           ln -sfv ~/.config/VSCodium/keybindings.json ~/Library/Application\ Support/VSCodium/User/keybindings.json
         '';
-
-        defaults = {
-          menuExtraClock.Show24Hour = true; # show 24 hour clock
-          SoftwareUpdate.AutomaticallyInstallMacOSUpdates = false;
-          # ".GlobalPreferences".com.apple.sound.beep.sound = "Funk";
-          LaunchServices.LSQuarantine = false;
-
-          dock = {
-            autohide = true;
-            autohide-delay = 0.0;
-            autohide-time-modifier = 0.0;
-            show-recents = false;
-            # do not automatically rearrange spaces based on most recent use.
-            mru-spaces = false;
-
-            dashboard-in-overlay = true;
-            expose-animation-duration = 0.15;
-            expose-group-by-app = false;
-            launchanim = false;
-            mineffect = "genie";
-            minimize-to-application = true;
-            mouse-over-hilite-stack = true;
-            show-process-indicators = false;
-            showhidden = true;
-            static-only = true;
-            # Hot corners, reset them all.
-            # Not supported in nix-darwin yet
-
-            wvous-tl-corner = 2;
-            wvous-tr-corner = 1;
-            wvous-bl-corner = 11;
-            wvous-br-corner = 1;
-
-            #wvous-tl-corner = 2; # top-left - Mission Control
-            #wvous-tr-corner = 13; # top-right - Lock Screen
-            #wvous-bl-corner = 3; # bottom-left - Application Windows
-            #wvous-br-corner = 4; # bottom-right - Desktop
-          };
-
-          finder = {
-            _FXShowPosixPathInTitle = true; # show full path in finder title
-            AppleShowAllExtensions = true; # show all file extensions
-            FXEnableExtensionChangeWarning =
-              false; # disable warning when changing file extension
-            QuitMenuItem = true; # enable quit menu item
-            ShowPathbar = true; # show path bar
-            ShowStatusBar = true; # show status bar
-            FXPreferredViewStyle = "clmv";
-          };
-
-          trackpad = {
-            # tap - 轻触触摸板, click - 点击触摸板
-            Clicking = true; # enable tap to click(轻触触摸板相当于点击)
-            TrackpadRightClick = true; # enable two finger right click
-            TrackpadThreeFingerDrag = true; # enable three finger drag
-          };
-
-          NSGlobalDomain = {
-            # `defaults read NSGlobalDomain "xxx"`
-            "com.apple.swipescrolldirection" =
-              true; # enable natural scrolling(default to true)
-            "com.apple.sound.beep.feedback" =
-              0; # disable beep sound when pressing volume up/down key
-            #AppleInterfaceStyle = "Light"; # dark mode
-            AppleKeyboardUIMode = 3; # Mode 3 enables full keyboard control.
-            ApplePressAndHoldEnabled = false; # enable press and hold
-            # If you press and hold certain keyboard keys when in a text area, the key’s character begins to repeat.
-            # This is very useful for vim users, they use `hjkl` to move cursor.
-            # sets how long it takes before it starts repeating.
-            InitialKeyRepeat =
-              15; # normal minimum is 15 (225 ms), maximum is 120 (1800 ms)
-            # sets how fast it repeats once it starts.
-            KeyRepeat =
-              3; # normal minimum is 2 (30 ms), maximum is 120 (1800 ms)
-            NSNavPanelExpandedStateForSaveMode =
-              true; # expand save panel by default(保存文件时的路径选择/文件名输入页)
-            NSNavPanelExpandedStateForSaveMode2 = true;
-
-            NSAutomaticCapitalizationEnabled =
-              false; # disable auto capitalization(自动大写)
-            NSAutomaticDashSubstitutionEnabled =
-              false; # disable auto dash substitution(智能破折号替换)
-            NSAutomaticPeriodSubstitutionEnabled =
-              false; # disable auto period substitution(智能句号替换)
-            NSAutomaticQuoteSubstitutionEnabled =
-              false; # disable auto quote substitution(智能引号替换)
-            NSAutomaticSpellingCorrectionEnabled =
-              false; # disable auto spelling correction(自动拼写检查)
-
-            AppleFontSmoothing = 2;
-            AppleMeasurementUnits = "Centimeters";
-            AppleMetricUnits = 1;
-            AppleShowAllExtensions = true;
-            AppleShowScrollBars = "Automatic";
-            AppleTemperatureUnit = "Celsius";
-            NSDocumentSaveNewDocumentsToCloud = false;
-            NSTableViewDefaultSizeMode = 2;
-            NSTextShowsControlCharacters = true;
-            NSWindowResizeTime = 0.001;
-            PMPrintingExpandedStateForPrint = true;
-            PMPrintingExpandedStateForPrint2 = true;
-            _HIHideMenuBar = false;
-            # com.apple.mouse.tapBehavior = 1;
-            # com.apple.springing.delay = 0;
-            # com.apple.springing.enabled = true;
-          };
-
-          # customize settings that not supported by nix-darwin directly
-          # see the source code of https://github.com/rgcr/m-cli to get all the available options
-          CustomUserPreferences = {
-            ".GlobalPreferences" = {
-              "com.apple.mouse.linear" = 1;
-              # automatically switch to a new space when switching to the application
-              AppleSpacesSwitchOnActivate = true;
-            };
-            NSGlobalDomain = {
-              # Add a context menu item for showing the Web Inspector in web views
-              WebKitDeveloperExtras = true;
-              ApplePressAndHoldEnabled = false;
-            };
-            "com.apple.finder" = {
-              ShowExternalHardDrivesOnDesktop = true;
-              ShowHardDrivesOnDesktop = true;
-              ShowMountedServersOnDesktop = true;
-              ShowRemovableMediaOnDesktop = true;
-              _FXSortFoldersFirst = true;
-              # When performing a search, search the current folder by default
-              FXDefaultSearchScope = "SCcf";
-            };
-            "com.apple.desktopservices" = {
-              # Avoid creating .DS_Store files on network or USB volumes
-              DSDontWriteNetworkStores = true;
-              DSDontWriteUSBStores = true;
-            };
-            "com.apple.screensaver" = {
-              # Require password immediately after sleep or screen saver begins
-              askForPassword = 1;
-              askForPasswordDelay = 0;
-            };
-            "com.apple.screencapture" = {
-              location = "~/Desktop";
-              type = "png";
-            };
-            "com.apple.AdLib".allowApplePersonalizedAdvertising = false;
-            # Prevent Photos from opening automatically when devices are plugged in
-            "com.apple.ImageCapture".disableHotPlug = true;
-          };
-
-          loginwindow = {
-            GuestEnabled = false; # disable guest user
-            SHOWFULLNAME = true; # show full name in login window
-          };
-        };
-
-        keyboard = {
-          enableKeyMapping = true;
-          remapCapsLockToEscape = true;
-        };
-
       };
     };
 }

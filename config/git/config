@@ -9,6 +9,13 @@
 	# requires Git 2.28 or later
 	defaultBranch = main
 
+[web]
+	browser=google-chrome
+
+[rerere]
+	enabled=1
+	autoupdate=1
+
 [credential]
 	helper = store
 
@@ -93,6 +100,9 @@
 	compactionHeuristic = true
 	colorMoved = zebra
 
+[diff "bin"]
+	textconv = hexdump -v -C
+
 [difftool]
 	prompt = false
 	trustExitCode = true
@@ -100,7 +110,15 @@
 [difftool "vimdiff"]
 	cmd = $EDITOR -d $LOCAL $REMOTE
 
+[gitflow "prefix"]
+	feature=feature-
+	release=release-
+	hotfix=hotfix-
+	support=support-
+	versiontag=v
+
 [grep]
+	extendRegexp=true
 	lineNumber = true
 
 [color "grep"]
@@ -140,7 +158,10 @@
 	whitespace = nowarn
 
 [color]
-	ui = true
+	ui=true
+	branch=auto
+	diff=auto
+	status=auto
 
 [color "branch"]
 	current = yellow reverse
@@ -169,6 +190,9 @@
 [pager]
 	show-branch = true
 	status = true
+
+[svn]
+	rmdir = true
 
 [alias]
 	s         = status -s

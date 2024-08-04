@@ -142,12 +142,18 @@ if [[ `command -v starship` ]]; then
 fi
 
 # Download proto manager if missing.
-if [[ ! -e ${HOME}/.proto ]]; then
+
+if test ! $(which proto); then
+  echo "Installing proto..."
   curl -fsSL https://moonrepo.dev/install/proto.sh | bash
   #proto setup
-  #proto install node 20
+  #proto install node lts
   #proto install yarn
   #proto install pnpm
+  #proto install bun
+  #proto install rust
+
+  echo 'Done'
 fi
 
 # Initialize FZF (requires >=fzf@0.48.0)

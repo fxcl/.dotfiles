@@ -604,7 +604,7 @@
   "terminal.integrated.defaultProfile.osx": "zsh",
   "terminal.integrated.drawBoldTextInBrightColors": false,
   "terminal.integrated.experimentalUseTitleEvent": true,
-  "terminal.integrated.fontFamily": "'Hack Nerd Font','Source Code Pro for Powerline','MesloLGS NF','Source Code Pro for Powerline','Hack Nerd Font'",
+  "terminal.integrated.fontFamily": "'Monolisa', Hack Nerd Font','Source Code Pro for Powerline','MesloLGS NF','Source Code Pro for Powerline','Hack Nerd Font'",
   "terminal.integrated.gpuAcceleration": "canvas",
   "terminal.integrated.letterSpacing": 1.0,
   "terminal.integrated.lineHeight": 1.3,
