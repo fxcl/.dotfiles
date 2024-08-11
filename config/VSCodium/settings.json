@@ -70,9 +70,9 @@
   "editor.bracketPairColorization.enabled": true,
   "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
   "editor.codeActionsOnSave": {
-    "source.fixAll": false,
-    "source.fixAll.eslint": true,
-    "source.organizeImports": false
+    "source.fixAll": "never",
+    "source.fixAll.eslint": "explicit",
+    "source.organizeImports": "never"
   },
   "editor.codeLensFontFamily": "'Zed Mono', \"FiraCode Nerd Font Mono\"; \"Noto Sans Mono CJK JP\"; monospace",
   "editor.cursorSmoothCaretAnimation": "on",
@@ -487,7 +487,7 @@
   "merge-conflict.autoNavigateNextConflict.enabled": true,
   "nix.enableLanguageServer": true,
   "nix.formatterPath": "/etc/profiles/per-user/kelvin/bin/nixpkgs-fmt",
-  "nix.serverPath": "nixpkgs-fmt",
+  "nix.serverPath": "nixd",
   "[nix]": {
     "editor.defaultFormatter": "jnoortheen.nix-ide",
     // "editor.defaultFormatter": "brettm12345.nixfmt-classic-vscode",

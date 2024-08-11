@@ -25,7 +25,7 @@ in
         homebrew.casks = [
           "iterm2"
           "notunes"
-          #"appcleaner"
+          "appcleaner"
           #"raycast"
           #"rectangle"
           # "aria2"

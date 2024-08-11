@@ -45,6 +45,7 @@ in
           hadolint # Docker linter
           dotenv-linter
           nixpkgs-fmt
+          nixd
           vim-vint
           shellcheck
           shfmt # Doesn't work with zsh, only sh & bash
