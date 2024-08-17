@@ -27,6 +27,8 @@ in
           gitAndTools.hub
           gitAndTools.gh # Need this too https://github.com/yusukebe/gh-markdown-preview
           gitAndTools.tig
+          gitmoji-cli
+          gitu
           exiftool
           git-lfs
         ];

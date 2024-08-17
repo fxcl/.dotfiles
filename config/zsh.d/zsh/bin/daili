@@ -1,70 +1,67 @@
 #!/usr/bin/env bash
 
+# 定义全局变量
+DEFAULT_PROXY="http://127.0.0.1:7890"
+NO_PROXY_LIST="127.0.0.1,localhost,auiag.corp,iag.com.au,devlabs,192.168.2.0/24,localaddress,.localdomain.com,192.168.99.100,192.168.10.100,iagcloud.net,192.168.49.2,DB8B4788812536AC063DABFD95299A5C.gr7.ap-southeast-2.eks.amazonaws.com"
 
-# from https://wiki.archlinux.org/index.php/Proxy_settings
-function proxy_on() {
-    # 192.168.99.100 is for minikube
-    export no_proxy="127.0.0.1,localhost,auiag.corp,iag.com.au,devlabs,192.168.2.0/24,localaddress,.localdomain.com,192.168.99.100,192.168.10.100,iagcloud.net,192.168.49.2,DB8B4788812536AC063DABFD95299A5C.gr7.ap-southeast-2.eks.amazonaws.com"
-    export NO_PROXY=${no_proxy}
+# 通用的设置代理环境变量的函数
+set_proxy_vars() {
+    export http_proxy=$1
+    export https_proxy=$1
+    export ftp_proxy=$1
+    export rsync_proxy=$1
+    export HTTP_PROXY=$1
+    export HTTPS_PROXY=$1
+    export FTP_PROXY=$1
+    export RSYNC_PROXY=$1
+    #git config --global http.proxy "$1"
+    #git config --global https.proxy "$1"
+    echo "Proxy environment variables set to $1"
+}
 
-    if (( $# > 0 )); then
-        valid=$(echo $@ | sed -n 's/\([0-9]\{1,3\}.\)\{4\}:\([0-9]\+\)/&/p')
-        if [[ $valid != $@ ]]; then
-            >&2 echo "Invalid address"
+# 开启代理
+proxy_on() {
+    export no_proxy=$NO_PROXY_LIST
+    export NO_PROXY=$no_proxy
+
+    if [[ -n "$1" ]]; then
+        if [[ $1 =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:[0-9]+$ ]]; then
+            set_proxy_vars "http://$1/"
+        else
+            echo "Invalid address format. Expected format: IP:PORT"
             return 1
         fi
-
-        export http_proxy="http://$1/"
-        export https_proxy=$http_proxy
-        export ftp_proxy=$http_proxy
-        export rsync_proxy=$http_proxy
-        echo "Proxy environment variable set."
-        return 0
+    else
+        set_proxy_vars "$DEFAULT_PROXY"
     fi
-
-#    echo -n "username: "; read username
-#    if [[ $username != "" ]]; then
-#        echo -n "password: "
-#        read -es password
-#        local pre="$username:$password@"
-#    fi
-#
-#    echo -n "server: "; read server
-#    echo -n "port: "; read port
-#    export http_proxy="http://$pre$server:$port/"
-    export http_proxy="http://127.0.0.1:7890"
-    export https_proxy=$http_proxy
-    export ftp_proxy=$http_proxy
-    export rsync_proxy=$http_proxy
-    export HTTP_PROXY=$http_proxy
-    export HTTPS_PROXY=$http_proxy
-    export FTP_PROXY=$http_proxy
-    export RSYNC_PROXY=$http_proxy
-    git config --global http.proxy ${http_proxy}
-    git config --global https.proxy ${http_proxy}
-    echo -e "Proxy environment variables set."
 }
 
-function proxy_off(){
-    unset http_proxy
-    unset https_proxy
-    unset ftp_proxy
-    unset rsync_proxy
-    unset no_proxy
-    unset HTTP_PROXY
-    unset HTTPS_PROXY
-    unset FTP_PROXY
-    unset RSYNC_PROXY
-    unset NO_PROXY
-    git config --global --unset http.proxy
-    git config --global --unset https.proxy
-    echo -e "Proxy environment variables removed."
+# 关闭代理
+proxy_off() {
+    unset http_proxy https_proxy ftp_proxy rsync_proxy no_proxy HTTP_PROXY HTTPS_PROXY FTP_PROXY RSYNC_PROXY NO_PROXY
+    #git config --global --unset http.proxy
+    #git config --global --unset https.proxy
+    echo "Proxy environment variables removed."
 }
 
-if  [  "$1"  ==  "on"  ];  then
-     proxy_on
-elif  [  "$1"  ==  "off"  ];  then
-     proxy_off
-else
-     echo  "Invalid  parameter"
+# 处理脚本的参数和选项
+while getopts ":on:off:" opt; do
+  case ${opt} in
+    o)
+      proxy_on "$OPTARG"
+      ;;
+    f)
+      proxy_off
+      ;;
+    *)
+      echo "Usage: $0 -o [IP:PORT] | -f"
+      exit 1
+      ;;
+  esac
+done
+
+# 默认情况下处理命令行参数
+if [[ $# -eq 0 ]]; then
+    echo "Usage: $0 -o [IP:PORT] | -f"
+    exit 1
 fi

@@ -76,7 +76,7 @@ in
           "gcc"
           "libiconv"
           "mas"
-          "rustup-init"
+          "rustup"
           #"python@3.12"
           #"cmake"
           #"openssl"
