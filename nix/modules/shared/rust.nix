@@ -22,6 +22,7 @@ in
         RUSTUP_UPDATE_ROOT = "https://rsproxy.cn/rustup";
         RUSTUP_HOME = "$XDG_DATA_HOME/rustup";
         CARGO_HOME = "$XDG_DATA_HOME/cargo";
+        CARGO_TARGET_DIR="$XDG_DATA_HOME/cargo/cache";
       };
     };
 }

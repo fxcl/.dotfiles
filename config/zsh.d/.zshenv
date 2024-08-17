@@ -62,6 +62,21 @@ export USER_ZSH_SITE_FUNCTIONS="$USER_ZSH_DATA/site-functions"
 export PROTO_HOME="$HOME/.proto"
 export PATH="$PROTO_HOME/shims:$PROTO_HOME/bin:$PATH"
 
+#rustup
+# add rustup binaries to $PATH on macos
+if [[ $OSTYPE == "darwin"* && -d /usr/local/Cellar/rustup/1.27.1_1/bin/ ]]; then
+    export PATH=${PATH}:/usr/local/Cellar/rustup/1.27.1_1/bin
+fi
+
+#cargo
+if [ -d "${CARGO_HOME}/bin" ]; then
+  export PATH="${PATH}:${CARGO_HOME}/bin"
+  if [ -d "${RUSTUP_HOME}/bin" ]; then
+    export PATH="${PATH}:${RUSTUP_HOME}/bin"
+  fi
+  export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
+fi
+
 # Remove path separtor from WORDCHARS.
 WORDCHARS=${WORDCHARS//[\/]}
 
