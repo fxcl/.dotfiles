@@ -1,5 +1,6 @@
 # The minimal, blazing-fast, and infinitely customizable prompt
 # https://starship.rs
+palette = "catppuccin_mocha"
 
 [package]
 disabled = true
@@ -30,9 +31,7 @@ disabled = true
 
 [git_status]
 disabled = true
-
 # Sets user-defined palette
-palette = "catppuccin_mocha"
 
 [character]
 # Note the use of Catppuccin color 'maroon'

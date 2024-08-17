@@ -171,6 +171,29 @@ in
           # Save to disk (not to iCloud) by default
           defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 
+          # Set highlight color to green
+          defaults write NSGlobalDomain AppleHighlightColor -string "1.000000 0.937255 0.690196"
+
+          # Set sidebar icon size to medium
+          defaults write NSGlobalDomain NSTableViewDefaultSizeMode -int 2
+
+          # Always show scrollbars
+          defaults write NSGlobalDomain AppleShowScrollBars -string "WhenScrolling"
+          # Possible values: `WhenScrolling`, `Automatic` and `Always`
+
+          # Disable the over-the-top focus ring animation
+          defaults write NSGlobalDomain NSUseAnimatedFocusRing -bool false
+
+          # Disable smooth scrolling
+          # (Uncomment if you’re on an older Mac that messes up the animation)
+          #defaults write NSGlobalDomain NSScrollAnimationEnabled -bool false
+
+          # Increase window resize speed for Cocoa applications
+          defaults write NSGlobalDomain NSWindowResizeTime -float 0.001
+
+# Save to disk (not to iCloud) by default
+defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
+
           # Automatically quit printer app once the print jobs complete
           defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
 
@@ -205,6 +228,70 @@ in
           # Disable auto-correct
           defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 
+          # Remove duplicates in the “Open With” menu (also see `lscleanup` alias)
+          /System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user
+
+          # Display ASCII control characters using caret notation in standard text views
+          # Try e.g. `cd /tmp; unidecode "\x{0000}" > cc.txt; open -e cc.txt`
+          defaults write NSGlobalDomain NSTextShowsControlCharacters -bool true
+
+          # Disable Resume system-wide
+          defaults write com.apple.systempreferences NSQuitAlwaysKeepsWindows -bool false
+
+          # Disable automatic termination of inactive apps
+          defaults write NSGlobalDomain NSDisableAutomaticTermination -bool true
+
+          # Set Help Viewer windows to non-floating mode
+          defaults write com.apple.helpviewer DevMode -bool true
+
+
+          # Fix for the ancient UTF-8 bug in QuickLook (https://mths.be/bbo)
+          # Commented out, as this is known to cause problems in various Adobe apps :(
+          # See https://github.com/mathiasbynens/dotfiles/issues/237
+          #echo "0x08000100:0" > ~/.CFUserTextEncoding
+
+          # Restart automatically if the computer freezes
+          #sudo systemsetup -setrestartfreeze on
+
+          # Never go into computer sleep mode
+          #sudo systemsetup -setcomputersleep Off > /dev/null
+
+          # Disable Notification Center and remove the menu bar icon
+          launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2> /dev/null
+
+          # Enable full keyboard access for all controls
+          # (e.g. enable Tab in modal dialogs)
+          defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
+
+          # Use scroll gesture with the Ctrl (^) modifier key to zoom
+          # defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool true
+          # defaults write com.apple.universalaccess HIDScrollZoomModifierMask -int 262144
+          # Follow the keyboard focus while zoomed in
+          # defaults write com.apple.universalaccess closeViewZoomFollowsFocus -bool true
+
+          # Set a blazingly fast keyboard repeat rate
+          defaults write NSGlobalDomain KeyRepeat -int 1
+          defaults write NSGlobalDomain InitialKeyRepeat -int 10
+
+          # Set language and text formats
+          # Note: if you’re in the US, replace `EUR` with `USD`, `Centimeters` with
+          # `Inches`, `en_GB` with `en_US`, and `true` with `false`.
+          defaults write NSGlobalDomain AppleLanguages -array "en" "us"
+          defaults write NSGlobalDomain AppleLocale -string "en_us@currency=USD"
+          defaults write NSGlobalDomain AppleMeasurementUnits -string "Inches"
+          defaults write NSGlobalDomain AppleMetricUnits -bool false
+
+          # Show language menu in the top right corner of the boot screen
+          sudo defaults write /Library/Preferences/com.apple.loginwindow showInputMenu -bool true
+
+          # Set the timezone; see `sudo systemsetup -listtimezones` for other values
+          #sudo systemsetup -settimezone "America/Los_Angeles" > /dev/null
+
+
+          # Stop iTunes from responding to the keyboard media keys
+          #launchctl unload -w /System/Library/LaunchAgents/com.apple.rcd.plist 2> /dev/null
+
+
 
           ###############################################################################
           # Trackpad, mouse, keyboard, Bluetooth accessories, and input                 #
@@ -231,6 +318,22 @@ in
           defaults write com.apple.screensaver askForPassword -int 1
           defaults write com.apple.screensaver askForPasswordDelay -int 0
 
+          # Save screenshots to the desktop
+          defaults write com.apple.screencapture location -string "${HOME}/Desktop"
+
+          # Save screenshots in PNG format (other options: BMP, GIF, JPG, PDF, TIFF)
+          defaults write com.apple.screencapture type -string "png"
+
+          # Disable shadow in screenshots
+          defaults write com.apple.screencapture disable-shadow -bool true
+
+          # Enable subpixel font rendering on non-Apple LCDs
+          # Reference: https://github.com/kevinSuttle/macOS-Defaults/issues/17#issuecomment-266633501
+          defaults write NSGlobalDomain AppleFontSmoothing -int 1
+
+          # Enable HiDPI display modes (requires restart)
+          sudo defaults write /Library/Preferences/com.apple.windowserver DisplayResolutionEnabled -bool true
+
 
           ###############################################################################
           # Finder                                                                      #
@@ -239,11 +342,19 @@ in
           # Finder: allow quitting via ⌘ + Q; doing so will also hide desktop icons
           defaults write com.apple.finder QuitMenuItem -bool true
 
+          # Finder: disable window animations and Get Info animations
+          defaults write com.apple.finder DisableAllAnimations -bool true
+
           # Set Desktop as the default location for new Finder windows
           # For other paths, use `PfLo` and `file:///full/path/here/`
           defaults write com.apple.finder NewWindowTarget -string "PfDe"
           defaults write com.apple.finder NewWindowTargetPath -string "file://~/Desktop/"
 
+          # Show icons for hard drives, servers, and removable media on the desktop
+          defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool true
+          defaults write com.apple.finder ShowHardDrivesOnDesktop -bool true
+          defaults write com.apple.finder ShowMountedServersOnDesktop -bool true
+          defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true
 
           # Finder: show hidden files by default
           defaults write com.apple.finder AppleShowAllFiles -bool true
@@ -272,6 +383,15 @@ in
           # Avoid creating .DS_Store files on network or USB volumes
           defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
           defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
+
+
+
+          # Enable spring loading for directories
+          defaults write NSGlobalDomain com.apple.springing.enabled -bool true
+
+          # Remove the spring loading delay for directories
+          # defaults write NSGlobalDomain com.apple.springing.delay -float 0
+          defaults write NSGlobalDomain com.apple.springing.delay -float 1000
 
           # Enable snap-to-grid for icons on the desktop and in other icon views
           /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
