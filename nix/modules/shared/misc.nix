@@ -17,6 +17,7 @@ in
   config = with lib;
     mkIf cfg.enable {
       my.hm.file = {
+        ".config/starship.toml" = { source = ../../../config/starship.toml; };
         ".gemrc" = { source = ../../../config/.gemrc; };
         ".curlrc" = { source = ../../../config/.curlrc; };
         ".ignore" = { source = ../../../config/.ignore; };

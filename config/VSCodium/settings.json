@@ -15,6 +15,7 @@
     "UNDELETABLE",
     "uuid",
     "xrpl"
+    "Letterbook"
   ],
   "prettier.jsxSingleQuote": true,
   "RainbowBrackets.depreciation-notice": false,
@@ -30,7 +31,17 @@
   "conventionalCommits.emojiFormat": "emoji",
   "conventionalCommits.showEditor": true,
   "css.validate": false,
-  "diffEditor.ignoreTrimWhitespace": false,
+  "calva.evalOnSave": true,
+  "calva.fmt.newIndentEngine": true,
+  "calva.paredit.defaultKeyMap": "strict",
+  "calva.prettyPrintingOptions": {
+    "enabled": true,
+    "maxLength": 50,
+    "printEngine": "pprint",
+    "width": 120
+  },
+  "calva.statusColor": {},
+  "calva.keybindingsEnabled": true,
   "dart.flutterCreateAndroidLanguage": "kotlin",
   "dart.flutterCreateIOSLanguage": "swift",
   "dart.previewFlutterUiGuides": true,
@@ -54,6 +65,8 @@
   "deno.unstable": true,
   "deno.config": "",
   "deno.importMap": "./import_map.json",
+  "diffEditor.renderSideBySide": false,
+  "diffEditor.ignoreTrimWhitespace": false,
   "diffEditor.codeLens": false,
   "diffEditor.diffAlgorithm": "experimental",
   "diffEditor.maxComputationTime": 0,
@@ -74,6 +87,8 @@
     "source.fixAll.eslint": "explicit",
     "source.organizeImports": "never"
   },
+  "editor.cursorBlinking": "smooth",
+  "editor.cursorStyle": "line",
   "editor.codeLensFontFamily": "'Zed Mono', \"FiraCode Nerd Font Mono\"; \"Noto Sans Mono CJK JP\"; monospace",
   "editor.cursorSmoothCaretAnimation": "on",
   "editor.cursorSurroundingLines": 5,
@@ -112,6 +127,7 @@
   "editor.unicodeHighlight.invisibleCharacters": false,
   "editor.useTabStops": false,
   "editor.wordWrapColumn": 120,
+  "editor.wrappingIndent": "indent",
   "enable-proposed-api": [
     "github.copilot"
   ],
@@ -128,6 +144,7 @@
   "editor.guides.bracketPairs": true,
   "editor.inlineSuggest.enabled": true,
   "editor.lineHeight": 0,
+  "editor.matchBrackets": "near",
   "editor.minimap.enabled": false,
   "editor.quickSuggestions": {
     "other": true,
@@ -138,6 +155,9 @@
   "editor.renderLineHighlight": "all",
   "editor.renderWhitespace": "all",
   "editor.showFoldingControls": "always",
+  "editor.tokenColorCustomizations": {},
+  "explorer.": false,
+  "explorer.openEditors.visible": 0,
   "editor.tabSize": 2,
   "editor.unicodeHighlight.includeComments": true,
   "editor.wordSeparators": "`~!@#$%^&*()-=+[{]}\\|;:'\",.<>/?　、。！？「」【】『』（）",
@@ -194,18 +214,24 @@
   "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "[clojure]": {
+    "editor.wordSeparators": "\t ()\"':,;~@#$%^&{}[]`-./"
+  },
   "[ignore]": {
     "editor.defaultFormatter": "foxundermoon.shell-format"
   },
   "[javascript]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": "explicit"
+    },
     "editor.defaultFormatter": "vscode.typescript-language-features"
     // "editor.defaultFormatter": "dbaeumer.vscode-eslint"
   },
   "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "vscode.json-language-features"
   },
   "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "vscode.json-language-features"
   },
   "[java]": {
     "editor.defaultFormatter": "redhat.java"
@@ -214,15 +240,23 @@
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "Prisma.prisma"
   },
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   "metals.serverProperties": [],
   "metals.javaHome": "/Users/spreston/.jabba/jdk/adopt@1.11.0-11/Contents/Home",
   "[xml]": {
     "editor.defaultFormatter": "DotJoshJohnson.xml"
   },
   "[markdown]": {
+    "editor.quickSuggestions": {
+      "comments": false,
+      "other": false,
+      "strings": false
+    },
+    "editor.trimTrailingWhitespace": false,
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "[markdown].editor.trimTrailingWhitespace": false,
   "[toml]": {
     "editor.defaultFormatter": "tamasfe.even-better-toml"
   },
@@ -271,6 +305,9 @@
   },
   "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[astro]": {
+    "editor.defaultFormatter": "astro-build.astro-vscode"
   },
   "[yaml]": {
     "editor.wordBasedSuggestionsMode": "currentDocument"
@@ -354,7 +391,8 @@
     "*.config": "makefile",
     "*.py": "python",
     "*.cs": "csharp",
-    "*.sol": "solidity"
+    "*.sol": "solidity",
+    ".envrc": "shellscript"
   },
   "files.autoSave": "onWindowChange",
   "files.enableTrash": false,
@@ -383,7 +421,8 @@
     "**/shims-tsx.d.ts": true,
     "**/shims-vue.d.ts": true,
     "**/tsconfig.json": true,
-    "**/Thumbs.db": true
+    "**/Thumbs.db": true,
+    "**/.trunk/*out": true
   },
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
@@ -391,11 +430,25 @@
   "files.watcherExclude": {
     "**/.ammonite": true,
     "**/.bloop": true,
-    "**/.metals": true
+    "**/.metals": true,
+    "**/.trunk/*out": true
   },
+  // "fennel-lsx.server-version": "bundled",
+  // "vsc-fnlfmt.execPath": "fnlfmt",
+  // "parinfer.dimParenTrails": false,
   "git.autofetch": true,
   "git.confirmSync": false,
   "git.enableSmartCommit": true,
+  "git.allowForcePush": true,
+  "git.autoRepositoryDetection": "subFolders",
+  "git.fetchOnPull": true,
+  "git.path": "/usr/local/bin/git",
+  "git.suggestSmartCommit": false,
+  "gitlens.currentLine.enabled": false,
+  "gitlens.currentLine.pullRequests.enabled": false,
+  "gitlens.plusFeatures.enabled": false,
+  "gitlens.showWelcomeOnInstall": false,
+  "gitlens.showWhatsNewAfterUpgrades": false,
   "github-enterprise.uri": "https://cocopilot.org",
   "github.copilot.advanced": {
     "authProvider": "github-enterprise",
@@ -458,6 +511,10 @@
   },
   "gitlens.statusBar.alignment": "left",
   "gitlens.views.fileHistory.location": "explorer",
+  "go.autocompleteUnimportedPackages": true,
+  "go.languageServerExperimentalFeatures": {
+    "diagnostics": false
+  },
   "go.coverOnSave": true,
   "go.coverOnSingleTest": true,
   "go.coverageDecorator": {
@@ -476,12 +533,19 @@
   ],
   "go.toolsManagement.autoUpdate": true,
   "go.useLanguageServer": true,
+  "protoc": {
+    "options": [
+      "--proto_path=${workspaceRoot}/proto"
+    ],
+    "path": "protoc"
+  },
   "http.proxy": "127.0.0.1:7890",
   "http.proxySupport": "on",
   "javascript.updateImportsOnFileMove.enabled": "always",
   "typescript..enabled": "never",
   "javascript.validate.enable": false,
-
+  "javascript.suggest.enabled": false,
+  "typescript.suggest.enabled": false,
   "markdown.preview.scrollEditorWithPreview": true,
   "markdown.preview.scrollPreviewWithEditor": true,
   "merge-conflict.autoNavigateNextConflict.enabled": true,
@@ -598,6 +662,22 @@
   "telemetry.enableCrashReporter": false,
   "telemetry.enableTelemetry": false,
   "telemetry.telemetryLevel": "off",
+  "rest-client.fontSize": 13,
+  "scm.alwaysShowActions": true,
+  "scm.defaultViewMode": "tree",
+  "scm.inputFontFamily": "editor",
+  "terminal.external.osxExec": "Warp.app",
+  "terminal.integrated.confirmOnExit": "hasChildProcesses",
+  "terminal.integrated.fontWeightBold": "normal",
+  "terminal.integrated.persistentSessionReviveProcess": "never",
+  "terminal.integrated.profiles.osx": {
+    "fish": {
+      "icon": "terminal",
+      "path": "/opt/homebrew/bin/fish"
+    }
+  },
+  "terminal.integrated.scrollback": 10000,
+
   "terminal.integrated.cursorBlinking": true,
   "terminal.integrated.cursorStyle": "line",
   "terminal.integrated.defaultProfile.linux": "zsh",
@@ -630,6 +710,7 @@
   "typescript.updateImportsOnFileMove.enabled": "always",
   "typescript.tsserver.log": "off",
   "javascript.suggest.autoImports": true,
+  "javascript.format.semicolons": "remove",
   "typescript.suggest.autoImports": true,
   "liveshare.featureSet": "insiders",
   "liveServer.settings.donotShowInfoMsg": true,
@@ -647,7 +728,10 @@
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
   "window.menuBarVisibility": "toggle",
   "window.titleBarStyle": "custom",
-  "window.zoomLevel": -1,
+  "window.zoomLevel": 0.8,
+  "window.autoDetectHighContrast": false,
+  "window.commandCenter": false,
+  "window.newWindowDimensions": "inherit",
   "workbench.statusBar.visible": true,
   "workbench.colorCustomizations": {
     "editorBracketHighlight.foreground1": "#FFD700",
@@ -682,6 +766,10 @@
   "workbench.startupEditor": "newUntitledFile",
   "workbench.statusBar.feedback.visible": false,
   "workbench.tree.expandMode": "singleClick",
+  "workbench.editor.enablePreviewFromQuickOpen": true,
+  "workbench.editor.showTabs": "multiple",
+  "workbench.view.alwaysShowHeaderActions": true,
+  "workbench.activityBar.location": "hidden",
   "workbench.tree.indent": 10,
   "yaml.customTags": [
     "!And",
