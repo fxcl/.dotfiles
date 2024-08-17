@@ -487,9 +487,6 @@ defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
           # Disable the Launchpad gesture (pinch with thumb and three fingers)
           #defaults write com.apple.dock showLaunchpadGestureEnabled -int 0
 
-          # Reset Launchpad, but keep the desktop wallpaper intact
-          find "~/Library/Application Support/Dock" -name "*-*.db" -maxdepth 1 -delete
-
 
           # Add iOS & Watch Simulator to Launchpad
           sudo ln -sf "/Applications/Xcode.app/Contents/Developer/Applications/Simulator.app" "/Applications/Simulator.app"
