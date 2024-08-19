@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
-# 定义全局变量
+# Define global variables
 DEFAULT_PROXY="http://127.0.0.1:7890"
 NO_PROXY_LIST="127.0.0.1,localhost,auiag.corp,iag.com.au,devlabs,192.168.2.0/24,localaddress,.localdomain.com,192.168.99.100,192.168.10.100,iagcloud.net,192.168.49.2,DB8B4788812536AC063DABFD95299A5C.gr7.ap-southeast-2.eks.amazonaws.com"
 
-# 通用的设置代理环境变量的函数
+# Function to set proxy environment variables
 set_proxy_vars() {
     export http_proxy=$1
     export https_proxy=$1
@@ -19,7 +19,7 @@ set_proxy_vars() {
     echo "Proxy environment variables set to $1"
 }
 
-# 开启代理
+# Enable proxy
 proxy_on() {
     export no_proxy=$NO_PROXY_LIST
     export NO_PROXY=$no_proxy
@@ -36,7 +36,7 @@ proxy_on() {
     fi
 }
 
-# 关闭代理
+# Disable proxy
 proxy_off() {
     unset http_proxy https_proxy ftp_proxy rsync_proxy no_proxy HTTP_PROXY HTTPS_PROXY FTP_PROXY RSYNC_PROXY NO_PROXY
     #git config --global --unset http.proxy
@@ -44,24 +44,16 @@ proxy_off() {
     echo "Proxy environment variables removed."
 }
 
-# 处理脚本的参数和选项
-while getopts ":on:off:" opt; do
-  case ${opt} in
-    o)
-      proxy_on "$OPTARG"
-      ;;
-    f)
-      proxy_off
-      ;;
+# Handle script arguments and options
+case "$1" in
+    on)
+        proxy_on "$2"
+        ;;
+    off)
+        proxy_off
+        ;;
     *)
-      echo "Usage: $0 -o [IP:PORT] | -f"
-      exit 1
-      ;;
-  esac
-done
-
-# 默认情况下处理命令行参数
-if [[ $# -eq 0 ]]; then
-    echo "Usage: $0 -o [IP:PORT] | -f"
-    exit 1
-fi
+        echo "Usage: $0 {on [IP:PORT] | off}"
+        exit 1
+        ;;
+esac
