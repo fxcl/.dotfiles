@@ -62,6 +62,11 @@ export USER_ZSH_SITE_FUNCTIONS="$USER_ZSH_DATA/site-functions"
 export PROTO_HOME="$HOME/.proto"
 export PATH="$PROTO_HOME/shims:$PROTO_HOME/bin:$PATH"
 
+#proto node global
+if [ -d "${PROTO_HOME}/tools/node/globals/bin" ]; then
+  export PATH="${PATH}:${PROTO_HOME}/tools/node/globals/bin"
+fi
+
 #rustup
 # add rustup binaries to $PATH on macos
 if [[ $OSTYPE == "darwin"* && -d /usr/local/Cellar/rustup/1.27.1_1/bin/ ]]; then
@@ -107,6 +112,36 @@ TMPPREFIX="${TMPDIR%/}/zsh";
 
 # Ensure path arrays do not contain duplicates.
 typeset -gU cdpath fpath mailpath manpath path
+
+# Define global variables
+default_proxy="http://127.0.0.1:7890"
+no_proxy_list="127.0.0.1,localhost,auiag.corp,iag.com.au,devlabs,192.168.2.0/24,localaddress,.localdomain.com,192.168.99.100,192.168.10.100,iagcloud.net,192.168.49.2,DB8B4788812536AC063DABFD95299A5C.gr7.ap-southeast-2.eks.amazonaws.com"
+# Function to set proxy environment variables
+set_proxy_vars() {
+    export http_proxy=$1
+    export https_proxy=$1
+    export ftp_proxy=$1
+    export rsync_proxy=$1
+    echo "Proxy environment variables set to $1"
+}
+# Enable proxy
+proxy_on() {
+    export no_proxy=$no_proxy_list
+    export NO_PROXY=$no_proxy
+    # Use the default proxy if no argument is provided
+    local proxy_address=${1:-$default_proxy}
+    set_proxy_vars "$proxy_address"
+}
+# Disable proxy
+proxy_off() {
+    unset http_proxy
+    unset https_proxy
+    unset ftp_proxy
+    unset rsync_proxy
+    unset no_proxy
+    unset NO_PROXY
+    echo "Proxy environment variables cleared."
+}
 
 ##############################################################
 # PATH.

@@ -69,6 +69,8 @@ in
 
         # `brew install`
         brews = [
+          "lua"
+          "luajit"
           # "ccache"
           # "sccache"
           "pinentry-mac"
@@ -261,7 +263,7 @@ defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 
           # Enable full keyboard access for all controls
           # (e.g. enable Tab in modal dialogs)
-          defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
+          ##defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 
           # Use scroll gesture with the Ctrl (^) modifier key to zoom
           # defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool true
@@ -270,8 +272,8 @@ defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
           # defaults write com.apple.universalaccess closeViewZoomFollowsFocus -bool true
 
           # Set a blazingly fast keyboard repeat rate
-          defaults write NSGlobalDomain KeyRepeat -int 1
-          defaults write NSGlobalDomain InitialKeyRepeat -int 10
+          ##defaults write NSGlobalDomain KeyRepeat -int 1
+          ##defaults write NSGlobalDomain InitialKeyRepeat -int 10
 
           # Set language and text formats
           # Note: if you’re in the US, replace `EUR` with `USD`, `Centimeters` with
