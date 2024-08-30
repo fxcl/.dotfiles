@@ -11,9 +11,12 @@ indent_style=space
 indent_size=2
 max_line_length=80
 
+[*.{js,py,rb,ts,yaml,yml,proto}]
+indent_size = 2
+indent_style = space
+
 [Makefile]
 indent_style = tab
-indent_size = 4
 
 [*.nix]
 indent_style = space
