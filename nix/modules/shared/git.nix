@@ -68,6 +68,14 @@ in
           recursive = true;
           source = ../../../config/git;
         };
+        ".config/tig" = {
+          recursive = true;
+          source = ../../../config/tig;
+        };
+        ".config/gitu" = {
+          recursive = true;
+          source = ../../../config/gitu;
+        };
       };
     };
 }

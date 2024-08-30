@@ -1,29 +1,33 @@
-{ stdenv, requireFile, unzip, lib }:
+{ stdenvNoCC, requireFile, lib, pkgs }:
 
-stdenv.mkDerivation rec {
-  name = "pragmatapro-${version}";
-  version = "0.829";
+stdenvNoCC.mkDerivation rec {
+  name = "PragmataPro${version}";
+  version = "0.830";
+  dontBuild = true;
+  dontConfigure = true;
 
-  src = requireFile rec {
-    name = "PragmataPro${version}.zip";
-    url = "file://path/to/${name}";
-    sha256 = "0b1zyzh67fgjkx948m7f5gbvrnp7bzz830wlww2b1zg2q4w2qf7w";
+  src = requireFile {
+    url = "file://path/to/${name}.zip";
+    sha256 = "0cna4wavnhnb8j8vg119ap8mqkckx04z2gms2hsz4daywc51ghr8";
     message = ''
       ${name} font not found in nix store, to add it run:
-      $ nix-store --add-fixed sha256 /path/to/${name}
+      $ nix-store --add-fixed sha256 /path/to/${name}.zip
 
       Did you change the file? maybe you need to update the sha256
-      $ nix-hash --flat --base32 --type sha256 /path/to/${name}'';
+      $ nix-hash --flat --base32 --type sha256 /path/to/${name}.zip'';
   };
 
-  buildInputs = [ unzip ];
-  phases = [ "unpackPhase" "installPhase" ];
-  pathsToLink = [ "/share/fonts/truetype/" ];
+  buildInputs = [ pkgs.unzip ];
+
+  # Work around the "unpacker appears to have produced no directories"
+  # case that happens when the archive doesn't have a subdirectory.
   sourceRoot = ".";
+
   installPhase = ''
-    install_path=$out/share/fonts/truetype
+    install_path=$out/share/fonts/opentype
     mkdir -p $install_path
-    find -name "PragmataPro*.ttf" -exec cp {} $install_path \;
+
+    find -name "PragmataPro*.otf" -exec cp {} $install_path \;
   '';
 
   meta = with lib; {

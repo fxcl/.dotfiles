@@ -35,7 +35,6 @@ export GATSBY_TELEMETRY_DISABLED=1
 export NEXT_TELEMETRY_DISABLED=1
 export ADBLOCK="true"
 
-
 ############### Homebrew
 export HOMEBREW_INSTALL_BADGE="⚽️"
 

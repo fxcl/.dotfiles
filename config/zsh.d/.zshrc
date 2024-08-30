@@ -70,11 +70,11 @@ autoload -Uz _zinit
 PURE_SYMBOLS=("λ" "ϟ" "▲" "∴" "→" "»" "৸")
 # Arrays in zsh starts from 1
 export PURE_PROMPT_SYMBOL="${PURE_SYMBOLS[$RANDOM % ${#PURE_SYMBOLS[@]} + 1]}"
-zstyle :prompt:pure:path color 240
-zstyle :prompt:pure:git:branch color blue
-zstyle :prompt:pure:git:dirty color red
-zstyle :prompt:pure:git:action color 005
-zstyle :prompt:pure:prompt:success color 003
+# zstyle :prompt:pure:path color 240
+# zstyle :prompt:pure:git:branch color blue
+# zstyle :prompt:pure:git:dirty color red
+# zstyle :prompt:pure:git:action color 005
+# zstyle :prompt:pure:prompt:success color 003
 
 # bind UP and DOWN keys
 bindkey "${terminfo[kcuu1]}" history-substring-search-up

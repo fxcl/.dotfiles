@@ -1,6 +1,17 @@
 { pkgs, lib, config, options, ... }:
 
 {
+  # Auto upgrade nix package and the daemon service.
+  # affects nix.useDaemon
+  services.nix-daemon.enable = true;
+
+  nix-homebrew = {
+    enable = true;
+    enableRosetta = pkgs.stdenv.hostPlatform.isAarch64;
+    user = config.my.username;
+    autoMigrate = true;
+  };
+
   nix.configureBuildUsers = true;
 
   homebrew.enable = true;

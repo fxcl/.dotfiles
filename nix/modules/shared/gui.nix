@@ -106,14 +106,6 @@ in
             recursive = true;
             source = ../../../config/mpv;
           };
-          ".config/tig" = {
-            recursive = true;
-            source = ../../../config/tig;
-          };
-          ".config/gitu" = {
-            recursive = true;
-            source = ../../../config/gitu;
-          };
           ".config/aria2" = {
             recursive = true;
             source = ../../../config/aria2;

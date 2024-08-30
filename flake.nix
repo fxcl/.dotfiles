@@ -23,10 +23,19 @@
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable"; # Unstable for some packages.
 
     # Home inputs
-    homemanager = {
+    home-manager = {
       url = "github:nix-community/home-manager/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs"; # Ensure versions are consistent.
 
+    };
+
+    nix-homebrew = {
+      url = "github:zhaofengli-wip/nix-homebrew";
+      inputs = {
+        nix-darwin.follows = "darwin";
+        flake-utils.follows = "flake-utils";
+        nixpkgs.follows = "nixpkgs";
+      };
     };
 
     # MacOS inputs
@@ -59,20 +68,53 @@
 
   };
 
-  outputs = { self, ... }@inputs:
+  outputs = { self, flake-utils, ... }@inputs:
     let
-      sharedHostsConfig = { config, pkgs, ... }: {
-        nix = {
-          package = pkgs.nixFlakes;
+      darwinHosts = {
+        "tony" = "x86_64-darwin";
+        "vvh" = "aarch64-darwin";
+      };
 
+      darwinSystems = inputs.nixpkgs.lib.unique (inputs.nixpkgs.lib.attrValues darwinHosts);
+
+      linuxHosts = {
+        "nixos" = "x86_64-linux";
+      };
+
+      linuxSystems = inputs.nixpkgs.lib.unique (inputs.nixpkgs.lib.attrValues linuxHosts);
+
+      forAllSystems = f: inputs.nixpkgs.lib.genAttrs (linuxSystems ++ darwinSystems) f;
+
+      mapHosts = f: hostsMap: builtins.mapAttrs f hostsMap;
+
+      sharedConfiguration = { config, pkgs, ... }: {
+        system.configurationRevision = self.rev or self.dirtyRev or null;
+
+        nix = {
+          nixPath = {
+            inherit (inputs) nixpkgs;
+            inherit (inputs) darwin;
+            inherit (inputs) home-manager;
+          };
+
+          package = pkgs.nixVersions.git;
           extraOptions = ''
             experimental-features = nix-command flakes
           '';
 
           settings = {
+            trusted-users = [ "@admin" ];
+              experimental-features = [
+                "nix-command"
+                "flakes"
+              ];
+
             extra-trusted-substituters = [
               "https://nix-cache.status.im"
             ];
+
+            # disabled on Darwin because some buggy behaviour: https://github.com/NixOS/nix/issues/7273
+            auto-optimise-store = !pkgs.stdenv.isDarwin;
 
             substituters = [
               #"https://mirror.sjtu.edu.cn/nix-channels/store"
@@ -95,18 +137,25 @@
               "nix-linter.cachix.org-1:BdTne5LEHQfIoJh4RsoVdgvqfObpyHO5L0SCjXFShlE="
               "statix.cachix.org-1:Z9E/g1YjCjU117QOOt07OjhljCoRZddiAm4VVESvais="
             ];
+            # Recommended when using `direnv` etc.
+            keep-derivations = true;
+            keep-outputs = true;
           };
-
 
           gc = {
             automatic = true;
             options = "--delete-older-than 10d";
           };
+
+          optimise = {
+              # Enable store optimization because we can't set `auto-optimise-store` to true on macOS.
+              automatic = pkgs.stdenv.isDarwin;
+            };
         };
 
         fonts = {
           # fontDir.enable = true;
-          packages = with pkgs; [ ] ++ (lib.optionals
+          packages = with pkgs; [  ] ++ (lib.optionals
             pkgs.stdenv.isLinux [
             noto-fonts
             noto-fonts-cjk
@@ -127,7 +176,7 @@
             (
               final: prev: {
                 unstable = inputs.nixpkgs-unstable.legacyPackages.${prev.system}; # Make available unstable channel.
-                pragmatapro = prev.callPackage ./nix/pkgs/pragmatapro.nix { };
+                # pragmatapro = prev.callPackage ./nix/pkgs/pragmatapro.nix { };
                 # zk = prev.callPackage ./nix/pkgs/zk.nix { source = inputs.zk; };
                 next-prayer = prev.callPackage
                   ./config/tmux/scripts/next-prayer/next-prayer.nix
@@ -138,84 +187,91 @@
                 #});
               }
             )
+              # fix for swift 8
+              # https://github.com/NixOS/nixpkgs/issues/327836#issuecomment-2292084100
+              (final: prev:
+                let
+                  pkgsDarwin = import inputs.darwin-nixpkgs { inherit (prev) system; };
+                in
+                prev.lib.optionalAttrs prev.stdenv.hostPlatform.isDarwin {
+                  inherit (pkgsDarwin) swift;
+                })
             # nur.overlay
           ];
         };
+
+        system.stateVersion = if pkgs.stdenv.isDarwin then 4 else "24.05"; # Did you read the comment?
+
+        home-manager.users."${config.my.username}" = {
+            home = {
+              # Necessary for home-manager to work with flakes, otherwise it will
+              # look for a nixpkgs channel.
+              stateVersion =
+                if pkgs.stdenv.isDarwin then "24.05" else config.system.stateVersion;
+            };
+          };
       };
+
+      darwinConfigurations = mapHosts
+        (host: system: (inputs.darwin.lib.darwinSystem
+          {
+            # This gets passed to modules as an extra argument
+            specialArgs = { inherit inputs; };
+            inherit system;
+            modules = [
+              inputs.home-manager.darwinModules.home-manager
+              inputs.nix-homebrew.darwinModules.nix-homebrew
+              ./nix/modules/darwin
+              ./nix/modules/shared
+              sharedConfiguration
+              ./nix/hosts/${host}.nix
+            ];
+          }))
+        darwinHosts;
+
+      nixosConfigurations = mapHosts
+        (host: system: (
+          inputs.nixpkgs.lib.nixosSystem {
+            # This gets passed to modules as an extra argument
+            specialArgs = { inherit inputs; };
+            inherit system;
+            modules = [
+              inputs.home-manager.nixosModules.home-manager
+              ./nix/modules/shared
+              sharedConfiguration
+              ./nix/hosts/${host}
+            ];
+          }
+        ))
+        linuxHosts;
+
+
+        # @TODO: move the logic inside ./install here
+      devShells = forAllSystems (system:
+        let
+          pkgs = inputs.nixpkgs.legacyPackages.${system};
+        in
+        {
+          default = pkgs.mkShell {
+            name = "dotfiles";
+            buildInputs = with pkgs; [
+              go
+              gopls
+              go-tools # goimports, staticcheck, etc...
+            ];
+            # shellHook = ''echo "hi"'';
+          };
+        });
 
     in
     {
-
-      darwinConfigurations = {
-        tony = inputs.darwin.lib.darwinSystem {
-          system = "x86_64-darwin";
-          inherit inputs;
-
-          modules = [
-            inputs.homemanager.darwinModules.home-manager
-            inputs.agenix.nixosModules.age
-            sharedHostsConfig
-            ./nix/modules/shared
-            ./nix/modules/darwin
-            ./nix/hosts/tony
-          ];
-        };
-        vvh = inputs.darwin.lib.darwinSystem {
-          system = "x86_64-darwin";
-          inherit inputs;
-
-          modules = [
-            inputs.homemanager.darwinModules.home-manager
-            inputs.agenix.nixosModules.age
-            sharedHostsConfig
-            ./nix/modules/shared
-            ./nix/modules/darwin
-            ./nix/hosts/vvh.nix
-
-            ({ ... }: {
-              # 使用 nixos-cn flake 提供的包
-              # environment.systemPackages =
-              #   [ nixos-cn.legacyPackages.x86_64-linux.netease-cloud-music ];
-              # 使用 nixos-cn 的 binary cache
-              nix.binaryCaches = [
-                "https://nixos-cn.cachix.org"
-                "https://hydra.iohk.io"
-                "https://cachix.org/api/v1/cache/emacs"
-              ];
-              nix.binaryCachePublicKeys = [
-                "nixos-cn.cachix.org-1:L0jEaL6w7kwQOPlLoCR3ADx+E3Q8SEFEcB9Jaibl0Xg="
-                "hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ="
-                "emacs.cachix.org-1:b1SMJNLY/mZF6GxQE+eDBeps7WnkT0Po55TAyzwOxTY="
-              ];
-              nixpkgs.overlays = [
-                inputs.emacs.overlay
-              ];
-              # imports = [
-              #   # 将nixos-cn flake提供的registry添加到全局registry列表中
-              #   # 可在`nixos-rebuild switch`之后通过`nix registry list`查看
-              #   nixos-cn.nixosModules.nixos-cn-registries
-              #   # 引入nixos-cn flake提供的NixOS模块
-              #   nixos-cn.nixosModules.nixos-cn
-              # ];
-            })
-          ];
-        };
-      };
-
-      tony = self.darwinConfigurations.tony.system;
-      vvh = self.darwinConfigurations.vvh.system;
-
-      nixosConfigurations = {
-        "nixos" = inputs.nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = { inherit inputs; };
-          modules = [
-            inputs.home-manager.nixosModules.home-manager
-            ./nix/modules/shared
-            sharedHostsConfig
-            ./nix/hosts/nixos
-          ];
-        };
-      };
-    };
+      inherit darwinConfigurations nixosConfigurations;
+    } // mapHosts
+      # for convenience
+      # nix build './#darwinConfigurations.pandoras-box.system'
+      # vs
+      # nix build './#pandoras-box'
+      # Move them to `outputs.packages.<system>.name`
+      (host: _: self.darwinConfigurations.${host}.system)
+      darwinHosts;
 }
