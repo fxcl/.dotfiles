@@ -19,8 +19,10 @@
   description = "NixOS and Darwin configurations";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-24.05-darwin"; # Default to stable for most things.
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable"; # Unstable for some packages.
+    nixpkgs.url =
+      "github:nixos/nixpkgs/nixpkgs-24.05-darwin"; # Default to stable for most things.
+    nixpkgs-unstable.url =
+      "github:nixos/nixpkgs/nixpkgs-unstable"; # Unstable for some packages.
 
     # Home inputs
     home-manager = {
@@ -65,7 +67,6 @@
       flake = false;
     };
 
-
   };
 
   outputs = { self, flake-utils, ... }@inputs:
@@ -75,15 +76,16 @@
         "vvh" = "aarch64-darwin";
       };
 
-      darwinSystems = inputs.nixpkgs.lib.unique (inputs.nixpkgs.lib.attrValues darwinHosts);
+      darwinSystems =
+        inputs.nixpkgs.lib.unique (inputs.nixpkgs.lib.attrValues darwinHosts);
 
-      linuxHosts = {
-        "nixos" = "x86_64-linux";
-      };
+      linuxHosts = { "nixos" = "x86_64-linux"; };
 
-      linuxSystems = inputs.nixpkgs.lib.unique (inputs.nixpkgs.lib.attrValues linuxHosts);
+      linuxSystems =
+        inputs.nixpkgs.lib.unique (inputs.nixpkgs.lib.attrValues linuxHosts);
 
-      forAllSystems = f: inputs.nixpkgs.lib.genAttrs (linuxSystems ++ darwinSystems) f;
+      forAllSystems = f:
+        inputs.nixpkgs.lib.genAttrs (linuxSystems ++ darwinSystems) f;
 
       mapHosts = f: hostsMap: builtins.mapAttrs f hostsMap;
 
@@ -104,14 +106,9 @@
 
           settings = {
             trusted-users = [ "@admin" ];
-              experimental-features = [
-                "nix-command"
-                "flakes"
-              ];
+            experimental-features = [ "nix-command" "flakes" ];
 
-            extra-trusted-substituters = [
-              "https://nix-cache.status.im"
-            ];
+            extra-trusted-substituters = [ "https://nix-cache.status.im" ];
 
             # disabled on Darwin because some buggy behaviour: https://github.com/NixOS/nix/issues/7273
             auto-optimise-store = !pkgs.stdenv.isDarwin;
@@ -148,110 +145,105 @@
           };
 
           optimise = {
-              # Enable store optimization because we can't set `auto-optimise-store` to true on macOS.
-              automatic = pkgs.stdenv.isDarwin;
-            };
+            # Enable store optimization because we can't set `auto-optimise-store` to true on macOS.
+            automatic = pkgs.stdenv.isDarwin;
+          };
         };
 
         fonts = {
           # fontDir.enable = true;
-          packages = with pkgs; [  ] ++ (lib.optionals
-            pkgs.stdenv.isLinux [
-            noto-fonts
-            noto-fonts-cjk
-            noto-fonts-emoji
-            # liberation_ttf
-            fira-code
-            fira-code-symbols
-            mplus-outline-fonts
-            dina-font
-            proggyfonts
-            (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
-          ]);
+          packages = with pkgs;
+            [ ] ++ (lib.optionals pkgs.stdenv.isLinux [
+              noto-fonts
+              noto-fonts-cjk
+              noto-fonts-emoji
+              # liberation_ttf
+              fira-code
+              fira-code-symbols
+              mplus-outline-fonts
+              dina-font
+              proggyfonts
+              (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
+            ]);
         };
 
         nixpkgs = {
           config = { allowUnfree = true; };
           overlays = [
-            (
-              final: prev: {
-                unstable = inputs.nixpkgs-unstable.legacyPackages.${prev.system}; # Make available unstable channel.
-                # pragmatapro = prev.callPackage ./nix/pkgs/pragmatapro.nix { };
-                # zk = prev.callPackage ./nix/pkgs/zk.nix { source = inputs.zk; };
-                next-prayer = prev.callPackage
-                  ./config/tmux/scripts/next-prayer/next-prayer.nix
-                  { };
+            (final: prev: {
+              unstable =
+                inputs.nixpkgs-unstable.legacyPackages.${prev.system}; # Make available unstable channel.
+              # pragmatapro = prev.callPackage ./nix/pkgs/pragmatapro.nix { };
+              # zk = prev.callPackage ./nix/pkgs/zk.nix { source = inputs.zk; };
+              next-prayer = prev.callPackage
+                ./config/tmux/scripts/next-prayer/next-prayer.nix { };
 
-                #pure-prompt = prev.pure-prompt.overrideAttrs (old: {
-                #patches = (old.patches or [ ]) ++ [ ./nix/hosts/pure-zsh.patch ];
-                #});
-              }
-            )
-              # fix for swift 8
-              # https://github.com/NixOS/nixpkgs/issues/327836#issuecomment-2292084100
-              (final: prev:
-                let
-                  pkgsDarwin = import inputs.darwin-nixpkgs { inherit (prev) system; };
-                in
-                prev.lib.optionalAttrs prev.stdenv.hostPlatform.isDarwin {
-                  inherit (pkgsDarwin) swift;
-                })
+              #pure-prompt = prev.pure-prompt.overrideAttrs (old: {
+              #patches = (old.patches or [ ]) ++ [ ./nix/hosts/pure-zsh.patch ];
+              #});
+            })
+            # fix for swift 8
+            # https://github.com/NixOS/nixpkgs/issues/327836#issuecomment-2292084100
+            (final: prev:
+              let
+                pkgsDarwin =
+                  import inputs.darwin-nixpkgs { inherit (prev) system; };
+              in prev.lib.optionalAttrs prev.stdenv.hostPlatform.isDarwin {
+                inherit (pkgsDarwin) swift;
+              })
             # nur.overlay
           ];
         };
 
-        system.stateVersion = if pkgs.stdenv.isDarwin then 4 else "24.05"; # Did you read the comment?
+        system.stateVersion = if pkgs.stdenv.isDarwin then
+          4
+        else
+          "24.05"; # Did you read the comment?
 
         home-manager.users."${config.my.username}" = {
-            home = {
-              # Necessary for home-manager to work with flakes, otherwise it will
-              # look for a nixpkgs channel.
-              stateVersion =
-                if pkgs.stdenv.isDarwin then "24.05" else config.system.stateVersion;
-            };
+          home = {
+            # Necessary for home-manager to work with flakes, otherwise it will
+            # look for a nixpkgs channel.
+            stateVersion = if pkgs.stdenv.isDarwin then
+              "24.05"
+            else
+              config.system.stateVersion;
           };
+        };
       };
 
-      darwinConfigurations = mapHosts
-        (host: system: (inputs.darwin.lib.darwinSystem
-          {
-            # This gets passed to modules as an extra argument
-            specialArgs = { inherit inputs; };
-            inherit system;
-            modules = [
-              inputs.home-manager.darwinModules.home-manager
-              inputs.nix-homebrew.darwinModules.nix-homebrew
-              ./nix/modules/darwin
-              ./nix/modules/shared
-              sharedConfiguration
-              ./nix/hosts/${host}.nix
-            ];
-          }))
-        darwinHosts;
+      darwinConfigurations = mapHosts (host: system:
+        (inputs.darwin.lib.darwinSystem {
+          # This gets passed to modules as an extra argument
+          specialArgs = { inherit inputs; };
+          inherit system;
+          modules = [
+            inputs.home-manager.darwinModules.home-manager
+            inputs.nix-homebrew.darwinModules.nix-homebrew
+            ./nix/modules/darwin
+            ./nix/modules/shared
+            sharedConfiguration
+            ./nix/hosts/${host}.nix
+          ];
+        })) darwinHosts;
 
-      nixosConfigurations = mapHosts
-        (host: system: (
-          inputs.nixpkgs.lib.nixosSystem {
-            # This gets passed to modules as an extra argument
-            specialArgs = { inherit inputs; };
-            inherit system;
-            modules = [
-              inputs.home-manager.nixosModules.home-manager
-              ./nix/modules/shared
-              sharedConfiguration
-              ./nix/hosts/${host}
-            ];
-          }
-        ))
-        linuxHosts;
+      nixosConfigurations = mapHosts (host: system:
+        (inputs.nixpkgs.lib.nixosSystem {
+          # This gets passed to modules as an extra argument
+          specialArgs = { inherit inputs; };
+          inherit system;
+          modules = [
+            inputs.home-manager.nixosModules.home-manager
+            ./nix/modules/shared
+            sharedConfiguration
+            ./nix/hosts/${host}
+          ];
+        })) linuxHosts;
 
-
-        # @TODO: move the logic inside ./install here
+      # @TODO: move the logic inside ./install here
       devShells = forAllSystems (system:
-        let
-          pkgs = inputs.nixpkgs.legacyPackages.${system};
-        in
-        {
+        let pkgs = inputs.nixpkgs.legacyPackages.${system};
+        in {
           default = pkgs.mkShell {
             name = "dotfiles";
             buildInputs = with pkgs; [
@@ -263,15 +255,13 @@
           };
         });
 
-    in
-    {
+    in {
       inherit darwinConfigurations nixosConfigurations;
     } // mapHosts
-      # for convenience
-      # nix build './#darwinConfigurations.pandoras-box.system'
-      # vs
-      # nix build './#pandoras-box'
-      # Move them to `outputs.packages.<system>.name`
-      (host: _: self.darwinConfigurations.${host}.system)
-      darwinHosts;
+    # for convenience
+    # nix build './#darwinConfigurations.pandoras-box.system'
+    # vs
+    # nix build './#pandoras-box'
+    # Move them to `outputs.packages.<system>.name`
+    (host: _: self.darwinConfigurations.${host}.system) darwinHosts;
 }

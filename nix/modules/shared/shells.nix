@@ -11,9 +11,7 @@ let
   darwinPackages = with pkgs; [ openssl gawk gnused coreutils findutils ];
   nixosPackages = with pkgs; [ dwm dmenu xclip ];
 
-in
-
-{
+in {
   options = with lib; {
     my.modules.shells = {
       enable = mkEnableOption ''
@@ -58,14 +56,17 @@ in
             XDG_BIN_HOME = hm.binHome;
 
             #XDG_RUNTIME_DIR = "${home}/.local/run";
-            PYTHON_BUILD_MIRROR_URL = "https://pyenv-mirror.vercel.app/api/pythons/";
+            PYTHON_BUILD_MIRROR_URL =
+              "https://pyenv-mirror.vercel.app/api/pythons/";
 
             M2_HOME = "$XDG_CACHE_HOME/maven";
             NIX_PAGER = "less --RAW-CONTROL-CHARS --quit-if-one-screen";
 
             HOMEBREW_BREW_GIT_REMOTE = "https://mirrors.ustc.edu.cn/brew.git";
-            HOMEBREW_CORE_GIT_REMOTE = "https://mirrors.ustc.edu.cn/homebrew-core.git";
-            HOMEBREW_BOTTLE_DOMAIN = "https://mirrors.ustc.edu.cn/homebrew-bottles";
+            HOMEBREW_CORE_GIT_REMOTE =
+              "https://mirrors.ustc.edu.cn/homebrew-core.git";
+            HOMEBREW_BOTTLE_DOMAIN =
+              "https://mirrors.ustc.edu.cn/homebrew-bottles";
             HOMEBREW_INSTALL_CLEANUP = "1";
             HOMEBREW_NO_INSECURE_REDIRECT = "1";
             HOMEBREW_NO_ANALYTICS = "1";
@@ -77,7 +78,6 @@ in
 
             # https://github.blog/2022-04-12-git-security-vulnerability-announced/
             GIT_CEILING_DIRECTORIES = builtins.dirOf home;
-
 
           };
           systemPackages = with pkgs;
@@ -147,20 +147,16 @@ in
                 pager: true
                 # word-wrap at width
                 width: 80'';
-            in
 
-            lib.mkMerge [
+            in lib.mkMerge [
               (if pkgs.stdenv.isDarwin then {
                 "Library/Preferences/glow/glow.yml".text = glow_config;
-              } else
-                {
-                  ".config/glow/glow.yml".text = glow_config;
-                })
+              } else {
+                ".config/glow/glow.yml".text = glow_config;
+              })
 
               {
-                ".ssh/config" = {
-                  source = ../../../config/ssh/config;
-                };
+                ".ssh/config" = { source = ../../../config/ssh/config; };
                 ".config/zsh" = {
                   recursive = true;
                   source = ../../../config/zsh.d/zsh;
@@ -173,9 +169,7 @@ in
                   recursive = true;
                   source = ../../../config/vale;
                 };
-                ".vale.ini" = {
-                  source = ../../../config/.vale.ini;
-                };
+                ".vale.ini" = { source = ../../../config/.vale.ini; };
                 ".config/VSCodium" = {
                   recursive = true;
                   source = ../../../config/VSCodium;
@@ -183,6 +177,7 @@ in
                 ".goneovim/setting.toml" = {
                   source = ../../../config/goneovim/setting.toml;
                 };
+                ".config/zsh/.zimrc" = { source = ../../../config/.zimrc; };
               }
             ];
 
@@ -205,7 +200,8 @@ in
               FZF_CTRL_T_COMMAND =
                 "${pkgs.fd}/bin/fd --hidden --follow --no-ignore-vcs";
               FZF_ALT_C_COMMAND = "${FZF_CTRL_T_COMMAND} --type d .";
-              FZF_DEFAULT_OPTS = "--border --prompt='» ' --pointer='▶' --marker='✓ ' --reverse --tabstop 2 --multi --color=bg+:-1,marker:010 --separator='' --bind '?:toggle-preview'";
+              FZF_DEFAULT_OPTS =
+                "--border --prompt='» ' --pointer='▶' --marker='✓ ' --reverse --tabstop 2 --multi --color=bg+:-1,marker:010 --separator='' --bind '?:toggle-preview'";
               FZF_CTRL_T_OPTS =
                 "--preview '(${FZF_PREVIEW_COMMAND}) 2> /dev/null' --preview-window down:60%";
               FZF_CTRL_R_OPTS =
@@ -221,14 +217,14 @@ in
           echo ":: -> Running shell activationScript..."
           # Creating needed folders
           if [ ! -e "${local_zshrc}" ]; then
-          	mkdir -p $(dirname "${local_zshrc}")
-          	echo '# vim:ft=zsh:' > ${local_zshrc}
-          	echo '[[ -z "$GITHUB_TOKEN" ]] && echo "⚠ GITHUB_TOKEN is not set"' >> ${local_zshrc}
-          	# echo '[[ -z "$HOMEBREW_GITHUB_API_TOKEN" ]] && echo "⚠ HOMEBREW_GITHUB_API_TOKEN is not set"' >> ${local_zshrc}
-          	# echo '[[ -z "$WEECHAT_PASSPHRASE" ]] && echo "⚠ WEECHAT_PASSPHRASE is not set"' >> ${local_zshrc}
-          	# echo '[[ -z "$NPM_REGISTRY_TOKEN" ]] && echo "⚠ NPM_REGISTRY_TOKEN is not set"' >> ${local_zshrc}
-          	# echo '[[ -z "$GITHUB_REGISTRY_TOKEN" ]] && echo "⚠ GITHUB_REGISTRY_TOKEN is not set"' >> ${local_zshrc}
-          	# echo '[[ -z "$GH_PASS" ]] && echo "⚠ GH_PASS is not set"' >> ${local_zshrc}
+            mkdir -p $(dirname "${local_zshrc}")
+            echo '# vim:ft=zsh:' > ${local_zshrc}
+            echo '[[ -z "$GITHUB_TOKEN" ]] && echo "⚠ GITHUB_TOKEN is not set"' >> ${local_zshrc}
+            # echo '[[ -z "$HOMEBREW_GITHUB_API_TOKEN" ]] && echo "⚠ HOMEBREW_GITHUB_API_TOKEN is not set"' >> ${local_zshrc}
+            # echo '[[ -z "$WEECHAT_PASSPHRASE" ]] && echo "⚠ WEECHAT_PASSPHRASE is not set"' >> ${local_zshrc}
+            # echo '[[ -z "$NPM_REGISTRY_TOKEN" ]] && echo "⚠ NPM_REGISTRY_TOKEN is not set"' >> ${local_zshrc}
+            # echo '[[ -z "$GITHUB_REGISTRY_TOKEN" ]] && echo "⚠ GITHUB_REGISTRY_TOKEN is not set"' >> ${local_zshrc}
+            # echo '[[ -z "$GH_PASS" ]] && echo "⚠ GH_PASS is not set"' >> ${local_zshrc}
           fi
         '';
 
@@ -242,30 +238,24 @@ in
 
           # zshenv
           shellInit = lib.concatStringsSep "\n"
-            (map builtins.readFile [
-              ../../../config/zsh.d/.zshenv
-            ]);
-
+            (map builtins.readFile [ ../../../config/zsh.d/.zshenv ]);
 
           # zshrc
-          interactiveShellInit = lib.concatStringsSep "\n"
-            [
-              (lib.concatStringsSep "\n"
-                (map builtins.readFile [
-                  ../../../config/zsh.d/zsh/config/options.zsh
-                  ../../../config/zsh.d/zsh/config/input.zsh
-                  ../../../config/zsh.d/zsh/config/completion.zsh
-                  ../../../config/zsh.d/zsh/config/fzf-preview.zsh
-                  ../../../config/zsh.d/zsh/config/utility.zsh
-                  ../../../config/zsh.d/zsh/config/aliases.zsh
-                  #"${pkgs.grc}/etc/grc.zsh"
-                  "${pkgs.fzf}/share/fzf/completion.zsh"
-                  "${pkgs.fzf}/share/fzf/key-bindings.zsh"
-                  ../../../config/zsh.d/.zshrc
-                ]))
-              "fpath+=${pkgs.pure-prompt}/share/zsh/site-functions"
-            ];
-
+          interactiveShellInit = lib.concatStringsSep "\n" [
+            (lib.concatStringsSep "\n" (map builtins.readFile [
+              ../../../config/zsh.d/zsh/config/options.zsh
+              ../../../config/zsh.d/zsh/config/input.zsh
+              ../../../config/zsh.d/zsh/config/completion.zsh
+              ../../../config/zsh.d/zsh/config/fzf-preview.zsh
+              ../../../config/zsh.d/zsh/config/utility.zsh
+              ../../../config/zsh.d/zsh/config/aliases.zsh
+              #"${pkgs.grc}/etc/grc.zsh"
+              "${pkgs.fzf}/share/fzf/completion.zsh"
+              "${pkgs.fzf}/share/fzf/key-bindings.zsh"
+              ../../../config/zsh.d/.zshrc
+            ]))
+            "fpath+=${pkgs.pure-prompt}/share/zsh/site-functions"
+          ];
 
           promptInit = "autoload -U promptinit; promptinit; prompt pure";
         };

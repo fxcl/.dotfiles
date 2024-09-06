@@ -1,0 +1,14 @@
+# 安装 zsh-history-substring-search 插件
+zmodule zsh-users/zsh-history-substring-search
+
+# 安装 zsh-completions 插件
+zmodule zsh-users/zsh-completions
+
+# 安装 fast-syntax-highlighting 插件（已选择这个而不是 zsh-syntax-highlighting）
+zmodule zdharma-continuum/fast-syntax-highlighting
+
+# 安装 zsh-autosuggestions 插件
+zmodule zsh-users/zsh-autosuggestions
+
+# 安装 z.lua 插件
+zmodule skywind3000/z.lua

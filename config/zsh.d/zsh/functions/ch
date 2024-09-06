@@ -9,7 +9,7 @@ ch() {
   sep='{::}'
 
   if [[ "$OSTYPE" = "darwin"* ]]; then
-    google_history="$HOME/Library/Application Support/Google/Chrome Canary/Default/History"
+    google_history="$HOME/Library/Application Support/Google/Chrome/Default/History"
     open=open
   else
     google_history="$HOME/.config/google-chrome/Default/History"
