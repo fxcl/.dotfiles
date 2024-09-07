@@ -4,8 +4,7 @@ let
 
   cfg = config.my.modules.ripgrep;
 
-in
-{
+in {
   options = with lib; {
     my.modules.ripgrep = {
       enable = mkEnableOption ''

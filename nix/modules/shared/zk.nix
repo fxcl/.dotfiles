@@ -4,8 +4,7 @@ let
 
   cfg = config.my.modules.zk;
 
-in
-{
+in {
   options = with lib; {
     my.modules.zk = {
       enable = mkEnableOption ''

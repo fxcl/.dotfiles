@@ -4,8 +4,7 @@ let
 
   cfg = config.my.modules.zellij;
 
-in
-{
+in {
   options = with lib; {
     my.modules.zellij = {
       enable = mkEnableOption ''
@@ -16,11 +15,7 @@ in
 
   config = with lib;
     mkIf cfg.enable {
-      my.user = {
-        packages = with pkgs; [
-          zellij
-        ];
-      };
+      my.user = { packages = with pkgs; [ zellij ]; };
 
       my.hm.file = {
         ".config/zellij" = {

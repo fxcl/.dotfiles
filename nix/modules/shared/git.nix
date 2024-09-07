@@ -4,8 +4,7 @@ let
 
   cfg = config.my.modules.git;
 
-in
-{
+in {
   options = with lib; {
     my.modules.git = {
       enable = mkEnableOption ''
@@ -46,21 +45,21 @@ in
             useconfigonly = true
 
             ${optionalString (github_username != "") ''
-             [github]
-             	username = ${github_username}''}
+              [github]
+              username = ${github_username}''}
 
             [gpg]
-            	program = ${pkgs.gnupg}/bin/gpg
+            program = ${pkgs.gnupg}/bin/gpg
 
             [diff "exif"]
-            	textconv = ${pkgs.exiftool}/bin/exiftool
+            textconv = ${pkgs.exiftool}/bin/exiftool
 
             ${optionalString pkgs.stdenv.isDarwin ''
-             [diff "plist"]
-             	textconv = plutil -convert xml1 -o -''}
+            [diff "plist"]
+            textconv = plutil -convert xml1 -o -''}
 
             [include]
-            	path = ${hostConfigHome}/gitconfig
+            path = ${hostConfigHome}/gitconfig
           '';
         };
 

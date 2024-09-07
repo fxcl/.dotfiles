@@ -7,8 +7,7 @@ let
   cfg = config.my.modules.vim;
   inherit (config.my.user) home;
   inherit (config.my) hm;
-in
-{
+in {
   options = with lib; {
     my.modules.vim = {
       enable = mkEnableOption ''
@@ -20,10 +19,7 @@ in
   config = with lib;
     mkIf cfg.enable {
       environment.systemPackages = with pkgs;
-        [
-          vim
-          neovim-unwrapped
-        ] ++ (lib.optionals (!pkgs.stdenv.isDarwin) [
+        [ vim neovim-unwrapped ] ++ (lib.optionals (!pkgs.stdenv.isDarwin) [
           gcc # Requried for treesitter parsers
         ]);
 

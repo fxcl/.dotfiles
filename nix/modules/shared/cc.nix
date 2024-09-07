@@ -6,12 +6,9 @@
 
 { pkgs, lib, config, options, ... }:
 
-let
-  cfg = config.my.modules.cc;
+let cfg = config.my.modules.cc;
 
-in
-
-{
+in {
   options = with lib; {
     my.modules.cc = {
       enable = mkEnableOption ''
@@ -19,10 +16,10 @@ in
       '';
     };
   };
-#
-# I like C. I tolerate C++. I like++ C with a few choice C++ features tacked on.
-# Liking C/C++ seems to be an unpopular opinion, so it's my guilty secret.
-# Don't tell anyone pls.
+  #
+  # I like C. I tolerate C++. I like++ C with a few choice C++ features tacked on.
+  # Liking C/C++ seems to be an unpopular opinion, so it's my guilty secret.
+  # Don't tell anyone pls.
   config = with lib;
     mkIf cfg.enable {
       my = {

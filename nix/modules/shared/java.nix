@@ -1,11 +1,8 @@
 { pkgs, lib, config, options, ... }:
 
-let
-  cfg = config.my.modules.java;
+let cfg = config.my.modules.java;
 
-in
-
-{
+in {
   options = with lib; {
     my.modules.java = {
       enable = mkEnableOption ''
@@ -19,7 +16,7 @@ in
       my.user = {
         packages = with pkgs; [
           jdk21
-          (maven.override {jdk = pkgs.jdk21;})
+          (maven.override { jdk = pkgs.jdk21; })
           # gradle
           java-language-server
           # vagrant
@@ -47,17 +44,17 @@ in
               </servers>
                 <mirrors>
                   <mirror>
-                	<id>alimaven</id>
-                	<mirrorOf>central</mirrorOf>
-                	<name>aliyun maven</name>
-                	<url>http://maven.aliyun.com/nexus/content/repositories/central/</url>
+                    <id>alimaven</id>
+                    <mirrorOf>central</mirrorOf>
+                    <name>aliyun maven</name>
+                    <url>http://maven.aliyun.com/nexus/content/repositories/central/</url>
                 </mirror>
                 <!-- junit镜像地址 -->
                 <mirror>
-                	<id>junit</id>
-                	<name>junit Address/</name>
-                	<url>http://jcenter.bintray.com/</url>
-                	<mirrorOf>central</mirrorOf>
+                  <id>junit</id>
+                  <name>junit Address/</name>
+                  <url>http://jcenter.bintray.com/</url>
+                  <mirrorOf>central</mirrorOf>
                 </mirror>
                 <mirror>
                     <id>aliyunmaven</id>
@@ -124,17 +121,17 @@ in
       };
 
       environment = {
-        systemPackages = [
-        ];
+        systemPackages = [ ];
         shellInit = ''
           test -e ${pkgs.jdk21}/nix-support/setup-hook && source ${pkgs.jdk21}/nix-support/setup-hook
         '';
         variables = {
           LANG = "en_US.UTF-8";
           LC_TIME = "en_GB.UTF-8";
-          JAVA_HOME = ''${pkgs.jdk21.home}'';
-          JAVA_CPPFLAGS = ''-I${pkgs.jdk21}/include/'';
-          MAVEN_OPTS = "-Djava.awt.headless=true -Dorg.slf4j.simpleLogger.showDateTime=true -Dorg.slf4j.simpleLogger.dateTimeFormat=HH:mm:ss,SSS";
+          JAVA_HOME = "${pkgs.jdk21.home}";
+          JAVA_CPPFLAGS = "-I${pkgs.jdk21}/include/";
+          MAVEN_OPTS =
+            "-Djava.awt.headless=true -Dorg.slf4j.simpleLogger.showDateTime=true -Dorg.slf4j.simpleLogger.dateTimeFormat=HH:mm:ss,SSS";
         };
       };
     };

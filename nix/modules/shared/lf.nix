@@ -4,8 +4,7 @@ let
 
   cfg = config.my.modules.lf;
 
-in
-{
+in {
   options = with lib; {
     my.modules.lf = {
       enable = mkEnableOption ''

@@ -19,8 +19,7 @@ let
     '';
   };
 
-in
-{
+in {
   options = with lib; {
     my.modules.emacs = {
       enable = mkEnableOption ''
@@ -49,9 +48,8 @@ in
               plantuml # To export Plant UML diagrams.
               xapian # Notdeft's backend to index files.
               pandoc # Preview markdown.
-            ] ++ lib.optionals pkgs.stdenv.isDarwin [
-              pngpaste
-            ] ++ lib.optionals pkgs.stdenv.isLinux [
+            ] ++ lib.optionals pkgs.stdenv.isDarwin [ pngpaste ]
+            ++ lib.optionals pkgs.stdenv.isLinux [
               (makeDesktopItem {
                 name = "org-protocol";
                 exec = "emacsclient %u";

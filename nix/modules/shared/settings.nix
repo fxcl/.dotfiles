@@ -27,14 +27,12 @@ let
       example = true;
     };
 
-  home =
-    if pkgs.stdenv.isDarwin then
-      "/Users/${config.my.username}"
-    else
-      "/home/${config.my.username}";
+  home = if pkgs.stdenv.isDarwin then
+    "/Users/${config.my.username}"
+  else
+    "/home/${config.my.username}";
 
-in
-{
+in {
   options = with types; {
     my = {
       fullname = mkOptStr "Kelvin Zhao";
@@ -53,14 +51,19 @@ in
         file = mkOpt' attrs { } "Files to place directly in $HOME";
         configFile = mkOpt' attrs { } "Files to place in $XDG_CONFIG_HOME";
 
-        configHome = mkOpt' path "${home}/.config" "Absolute path to directory holding application configurations.";
-        cacheHome = mkOpt' path "${home}/.cache" "Absolute path to directory holding application caches.";
+        configHome = mkOpt' path "${home}/.config"
+          "Absolute path to directory holding application configurations.";
+        cacheHome = mkOpt' path "${home}/.cache"
+          "Absolute path to directory holding application caches.";
 
         dataFile = mkOpt' attrs { } "Files to place in $XDG_DATA_HOME";
-        dataHome = mkOpt' path "${home}/.local/share" "Absolute path to directory holding application data.";
+        dataHome = mkOpt' path "${home}/.local/share"
+          "Absolute path to directory holding application data.";
 
-        stateHome = mkOpt' path "${home}/.local/state" "Absolute path to directory holding application states.";
-        binHome = mkOpt' path "${home}/.local/bin" "Absolute path to directory holding application data.";
+        stateHome = mkOpt' path "${home}/.local/state"
+          "Absolute path to directory holding application states.";
+        binHome = mkOpt' path "${home}/.local/bin"
+          "Absolute path to directory holding application data.";
         programs = mkOpt' attrs { } "Programs to enable via home-manager";
         services = mkOpt' attrs { } "Services to enable via home-manager";
       };
@@ -100,7 +103,8 @@ in
       description = "Primary user account";
     };
 
-    my.hostConfigHome = "${config.my.hm.dataHome}/${config.networking.hostName}";
+    my.hostConfigHome =
+      "${config.my.hm.dataHome}/${config.networking.hostName}";
 
     # PATH should always start with its old value
     # must already begin with pre-existing PATH. Also, can't use binDir here,
@@ -110,11 +114,13 @@ in
       "$NODE_HOME/bin"
       "/Users/kelvin/.local/share/cargo/bin"
       "/Users/kelvin/.cache/npm/bin"
-      "/Users/kelvin/.bin" "$XDG_BIN_HOME"
+      "/Users/kelvin/.bin"
+      "$XDG_BIN_HOME"
       "$CARGO_HOME/bin"
       "$RUSTUP_HOME/bin"
       "$GOBIN"
-      "$PATH" ];
+      "$PATH"
+    ];
 
     # let nix manage home-manager profiles and use global nixpkgs
     home-manager = {
@@ -135,8 +141,10 @@ in
         home = {
           # Necessary for home-manager to work with flakes, otherwise it will
           # look for a nixpkgs channel.
-          stateVersion =
-            if pkgs.stdenv.isDarwin then "24.05" else config.system.stateVersion;
+          stateVersion = if pkgs.stdenv.isDarwin then
+            "24.05"
+          else
+            config.system.stateVersion;
           inherit (config.my) username;
           file = mkAliasDefinitions options.my.hm.file;
         };
@@ -163,15 +171,13 @@ in
 
     };
 
-
-    environment.extraInit =
-      let exportLines = mapAttrsToList (n: v: "export ${n}=\"${v}\"") config.my.env;
-      in
-      ''
-        # export XAUTHORITY=/tmp/Xauthority
-        # [ -e ~/.Xauthority ] && mv -f ~/.Xauthority "$XAUTHORITY"
-        ${concatStringsSep "\n" exportLines}
-      '';
+    environment.extraInit = let
+      exportLines = mapAttrsToList (n: v: ''export ${n}="${v}"'') config.my.env;
+    in ''
+      # export XAUTHORITY=/tmp/Xauthority
+      # [ -e ~/.Xauthority ] && mv -f ~/.Xauthority "$XAUTHORITY"
+      ${concatStringsSep "\n" exportLines}
+    '';
 
   };
 }

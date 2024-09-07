@@ -4,8 +4,7 @@ let
 
   cfg = config.my.modules.gui;
 
-in
-{
+in {
   options = with lib; {
     my.modules.gui = {
       enable = mkEnableOption ''
@@ -18,10 +17,7 @@ in
     mkIf cfg.enable (mkMerge [
       (if (builtins.hasAttr "homebrew" options) then {
         # TODO: (automate) Requires homebrew to be installed
-        homebrew.taps = [
-          "homebrew/cask-versions"
-          "homebrew/cask-fonts"
-        ];
+        homebrew.taps = [ "homebrew/cask-versions" "homebrew/cask-fonts" ];
         homebrew.casks = [
           "iterm2"
           "notunes"

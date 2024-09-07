@@ -1,11 +1,8 @@
 { pkgs, lib, config, options, ... }:
 
-let
-  cfg = config.my.modules.kube;
+let cfg = config.my.modules.kube;
 
-in
-
-{
+in {
   options = with lib; {
     my.modules.kube = {
       enable = mkEnableOption ''
@@ -20,7 +17,7 @@ in
         systemPackages = with pkgs; [
           # helm # The package manage
           # helm-docs # A tool for automatically generating markdown documentation for helm charts
-          argocd #Declarative continuous deployment for Kubernetes.
+          argocd # Declarative continuous deployment for Kubernetes.
           jsonnet
           jsonnet-bundler # A jsonnet package manager.
           k9s # Kubernetes CLI To Manage Your Clusters In Style!

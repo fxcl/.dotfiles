@@ -11,10 +11,11 @@ in {
     };
   };
 
-  config = with lib; mkIf cfg.enable {
-    my.hm.programs.starship = {
-      enable = true;
-      enableZshIntegration = true;
+  config = with lib;
+    mkIf cfg.enable {
+      my.hm.programs.starship = {
+        enable = true;
+        enableZshIntegration = true;
+      };
     };
-  };
 }

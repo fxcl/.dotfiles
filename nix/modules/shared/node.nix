@@ -3,8 +3,7 @@
 let
 
   cfg = config.my.modules.node;
-in
-{
+in {
   options = with lib; {
     my.modules.node = {
       enable = mkEnableOption ''
@@ -70,26 +69,8 @@ in
           ];
         };
 
-        hm.file."npmrc".text = "
-          registry=https://registry.npmjs.org
-          ELECTRON_MIRROR=https://npm.taobao.org/mirrors/electron/
-          ELECTRON_CUSTOM_DIR=16.0.5
-          disturl=https://npmmirror.com/dist/
-          sharp_binary_host=https://npmmirror.com/mirrors/sharp
-          sharp_libvips_binary_host=https://npmmirror.com/mirrors/sharp-libvips
-          profiler_binary_host_mirror=https://npmmirror.com/mirrors/node-inspector/
-          fse_binary_host_mirror=https://npmmirror.com/mirrors/fsevents
-          node_sqlite3_binary_host_mirror=https://npmmirror.com/mirrors
-          sqlite3_binary_host_mirror=https://npmmirror.com/mirrors
-          sqlite3_binary_site=https://npmmirror.com/mirrors/sqlite3
-          electron_mirror=https://npmmirror.com/mirrors/electron/
-          puppeteer_download_host=https://npmmirror.com/mirrors
-          chromedriver_cdnurl=https://npmmirror.com/mirrors/chromedriver
-          operadriver_cdnurl=https://npmmirror.com/mirrors/operadriver
-          phantomjs_cdnurl=https://npmmirror.com/mirrors/phantomjs
-          python_mirror=https://npmmirror.com/mirrors/python
-          sass_binary_site=https://npmmirror.com/mirrors/node-sass
-        ";
+        hm.file."npmrc".text =
+          "\n          registry=https://registry.npmjs.org\n          ELECTRON_MIRROR=https://npm.taobao.org/mirrors/electron/\n          ELECTRON_CUSTOM_DIR=16.0.5\n          disturl=https://npmmirror.com/dist/\n          sharp_binary_host=https://npmmirror.com/mirrors/sharp\n          sharp_libvips_binary_host=https://npmmirror.com/mirrors/sharp-libvips\n          profiler_binary_host_mirror=https://npmmirror.com/mirrors/node-inspector/\n          fse_binary_host_mirror=https://npmmirror.com/mirrors/fsevents\n          node_sqlite3_binary_host_mirror=https://npmmirror.com/mirrors\n          sqlite3_binary_host_mirror=https://npmmirror.com/mirrors\n          sqlite3_binary_site=https://npmmirror.com/mirrors/sqlite3\n          electron_mirror=https://npmmirror.com/mirrors/electron/\n          puppeteer_download_host=https://npmmirror.com/mirrors\n          chromedriver_cdnurl=https://npmmirror.com/mirrors/chromedriver\n          operadriver_cdnurl=https://npmmirror.com/mirrors/operadriver\n          phantomjs_cdnurl=https://npmmirror.com/mirrors/phantomjs\n          python_mirror=https://npmmirror.com/mirrors/python\n          sass_binary_site=https://npmmirror.com/mirrors/node-sass\n        ";
       };
     };
 }

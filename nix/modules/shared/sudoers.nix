@@ -1,11 +1,8 @@
 { pkgs, lib, config, options, ... }:
 
-let
-  cfg = config.my.modules.sudoers;
+let cfg = config.my.modules.sudoers;
 
-in
-
-{
+in {
   options = with lib; {
     my.modules.sudoers = {
       enable = mkEnableOption ''

@@ -3,8 +3,8 @@
 ###############################################################
 
 # Use smart URL pasting and escaping.
-autoload -Uz bracketed-paste-url-magic && zle -N bracketed-paste bracketed-paste-url-magic
-autoload -Uz url-quote-magic && zle -N self-insert url-quote-magic
+# autoload -Uz bracketed-paste-url-magic && zle -N bracketed-paste bracketed-paste-url-magic
+# autoload -Uz url-quote-magic && zle -N self-insert url-quote-magic
 
 setopt AUTO_RESUME          # Treat single word simple commands without redirection as candidates for resumption of an existing job.
 setopt INTERACTIVE_COMMENTS # Allow comments starting with `#` even in interactive shells.

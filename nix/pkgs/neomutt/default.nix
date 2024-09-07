@@ -1,37 +1,8 @@
-{ lib
-, stdenv
-, fetchFromGitHub
-, gettext
-, makeWrapper
-, tcl
-, which
-, ncurses
-, perl
-, cyrus_sasl
-, gss
-, gpgme
-, libkrb5
-, libidn
-, libxml2
-, notmuch
-, openssl
-, lua
-, lmdb
-, libxslt
-, docbook_xsl
-, docbook_xml_dtd_42
-, w3m
-, mailcap
-, sqlite
-, zlib
-, lndir
-, pkg-config
-, zstd
-, enableZstd ? true
-, enableMixmaster ? false
-, enableLua ? false
-, withContrib ? true
-}:
+{ lib, stdenv, fetchFromGitHub, gettext, makeWrapper, tcl, which, ncurses, perl
+, cyrus_sasl, gss, gpgme, libkrb5, libidn, libxml2, notmuch, openssl, lua, lmdb
+, libxslt, docbook_xsl, docbook_xml_dtd_42, w3m, mailcap, sqlite, zlib, lndir
+, pkg-config, zstd, enableZstd ? true, enableMixmaster ? false
+, enableLua ? false, withContrib ? true }:
 
 stdenv.mkDerivation rec {
   version = "20230407";
@@ -62,9 +33,7 @@ stdenv.mkDerivation rec {
     lmdb
     mailcap
     sqlite
-  ]
-  ++ lib.optional enableZstd zstd
-  ++ lib.optional enableLua lua;
+  ] ++ lib.optional enableZstd zstd ++ lib.optional enableLua lua;
 
   nativeBuildInputs = [
     docbook_xsl
@@ -114,17 +83,16 @@ stdenv.mkDerivation rec {
     # https://github.com/neomutt/neomutt/pull/2367
     "--disable-include-path-in-cflags"
     "--zlib"
-  ]
-  ++ lib.optional enableZstd "--zstd"
-  ++ lib.optional enableLua "--lua"
-  ++ lib.optional enableMixmaster "--mixmaster";
+  ] ++ lib.optional enableZstd "--zstd" ++ lib.optional enableLua "--lua"
+    ++ lib.optional enableMixmaster "--mixmaster";
 
   postInstall = ''
     wrapProgram "$out/bin/neomutt" --prefix PATH : "$out/libexec/neomutt"
   ''
-  # https://github.com/neomutt/neomutt-contrib
-  # Contains vim-keys, keybindings presets and more.
-  + lib.optionalString withContrib "${lib.getExe lndir} ${passthru.contrib} $out/share/doc/neomutt";
+    # https://github.com/neomutt/neomutt-contrib
+    # Contains vim-keys, keybindings presets and more.
+    + lib.optionalString withContrib
+    "${lib.getExe lndir} ${passthru.contrib} $out/share/doc/neomutt";
 
   doCheck = true;
 

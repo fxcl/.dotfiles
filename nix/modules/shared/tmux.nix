@@ -4,8 +4,7 @@ let
 
   cfg = config.my.modules.tmux;
 
-in
-{
+in {
   options = with lib; {
     my.modules.tmux = {
       enable = mkEnableOption ''
@@ -17,11 +16,12 @@ in
   config = with lib;
     mkIf cfg.enable {
       my.user = {
-        packages = with pkgs; [
-          tmux
-          #tmuxPlugins.urlview
-          #next-prayer
-        ];
+        packages = with pkgs;
+          [
+            tmux
+            #tmuxPlugins.urlview
+            #next-prayer
+          ];
       };
 
       my.hm.file = {

@@ -1,11 +1,8 @@
 { pkgs, lib, config, options, ... }:
 
-let
-  cfg = config.my.modules.nix;
+let cfg = config.my.modules.nix;
 
-in
-
-{
+in {
   options = with lib; {
     my.modules.nix = {
       enable = mkEnableOption ''
@@ -15,11 +12,5 @@ in
   };
 
   config = with lib;
-    mkIf cfg.enable {
-      services = {
-        nix-daemon = {
-          enable = true;
-        };
-      };
-    };
+    mkIf cfg.enable { services = { nix-daemon = { enable = true; }; }; };
 }

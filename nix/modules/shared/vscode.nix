@@ -58,8 +58,7 @@ in {
                 license = licenses.mit;
               };
             };
-          in
-          [
+          in [
             vitesse-theme
             # vadimcn.vscode-lldb
             timonwong.shellcheck
