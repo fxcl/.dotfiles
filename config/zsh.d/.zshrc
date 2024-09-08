@@ -67,14 +67,11 @@ if [[ "$OSTYPE" = "darwin"* ]]; then
     if [ -e /usr/local/share/zsh/site-functions/_git ]; then
       command mv -f /usr/local/share/zsh/site-functions/{,disabled.}_git
     fi
-  ) &!
+  )
 fi
 
-eval "$(direnv hook zsh)"
-eval "$(zoxide init zsh --hook pwd)"
-
 # starship isn't installed in all of my environments
-if [[ `command -v starship` ]]; then
+if [[ $(command -v starship) ]]; then
   eval "$(starship init zsh)"
 fi
 
@@ -98,23 +95,22 @@ source <(fzf --zsh)
 
 # config clang
 if command -v clang++ >/dev/null 2>&1; then
-export CXXFLAGS="-stdlib=libc++"
-export LDFLAGS="-stdlib=libc++"
-#export CXX=clang++
+  export CXXFLAGS="-stdlib=libc++"
+  export LDFLAGS="-stdlib=libc++"
+  # export CXX=clang++
 fi
-
 
 ##############################################################
 # LOCAL.
 ##############################################################
 
 if [ -f $HOST_CONFIGS/zshrc ]; then
-	source $HOST_CONFIGS/zshrc
+  source $HOST_CONFIGS/zshrc
 fi
 
 if [ -e /etc/motd ]; then
   if ! cmp -s ${HOME}/.hushlogin /etc/motd; then
-    tee ${HOME}/.hushlogin < /etc/motd
+    tee ${HOME}/.hushlogin </etc/motd
   fi
 fi
 

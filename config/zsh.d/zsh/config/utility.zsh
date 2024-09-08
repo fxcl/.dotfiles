@@ -47,7 +47,6 @@ if (( terminfo[colors] >= 8 )); then
   fi
 fi
 
-
 #
 # File Downloads
 #

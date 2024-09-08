@@ -51,22 +51,22 @@ alias neomutt="TERM=xterm-direct neomutt"
 alias tmux='direnv exec / tmux'
 
 # Check for command availability
-(( $+commands[htop] )) && alias top=htop
-(( $+commands[bat] )) && alias cat='bat '
-(( $+commands[fd] )) && alias fd='fd --hidden '
-(( $+commands[yarn] )) && alias y=yarn
+(($ + commands[htop])) && alias top=htop
+(($ + commands[bat])) && alias cat='bat '
+(($ + commands[fd])) && alias fd='fd --hidden '
+(($ + commands[yarn])) && alias y=yarn
 
-if (( $+commands[lsd] )); then
+if (($ + commands[lsd])); then
   alias ls="lsd -tr1lh"
   alias ll='lsd --tree --group-directories-first -I "node_modules" '
-elif (( $+commands[tree] )); then
+elif (($ + commands[tree])); then
   alias ll="type tree >/dev/null && tree --dirsfirst -a -L 1 || l -d .*/ */ "
   alias tree='tree -I  "node_modules" '
 else
   alias ll="echo 'You have to install lsd or tree'"
 fi
 
-if (( $+commands[jq] )); then
+if (($ + commands[jq])); then
   alias formatJSON='jq .'
 else
   alias formatJSON='python -m json.tool'

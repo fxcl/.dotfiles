@@ -94,6 +94,12 @@ if (( ! ${+PAGER} )); then
   fi
 fi
 
+
+if [[ -d "$HOME/.proto/tools/python/3.11.9/install/lib/python3.11/site-packages" ]]; then
+    export PYTHONPATH="$HOME/.proto/tools/python/3.11.9/install/lib/python3.11/site-packages"
+    export PATH="$HOME/.proto/tools/python/3.11.9/install/bin:$PATH"
+fi
+
 # Set the Less input preprocessor.
 # Try both `lesspipe` and `lesspipe.sh` as either might exist on a system.
 if (( $#commands[(i)lesspipe(|.sh)] )); then
