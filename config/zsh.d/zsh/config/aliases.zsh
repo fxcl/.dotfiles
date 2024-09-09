@@ -1,17 +1,3 @@
-# vim:ft=zsh:
-
-# Useful
-alias cp="${aliases[cp]:-cp} -iv"
-alias ln="${aliases[ln]:-ln} -iv"
-alias mv="${aliases[mv]:-mv} -iv"
-alias rm="${aliases[rm]:-rm} -i"
-alias mkdir="${aliases[mkdir]:-mkdir} -p"
-alias sudo="sudo "
-alias type='type -a'
-#alias ag="ag --color --color-line-number '0;35' --color-match '46;30' --color-path '4;36'"
-#alias aga="ag --hidden --color --color-line-number '0;35' --color-match '46;30' --color-path '4;36'"
-alias tree='tree -CAFa -I "CVS|*.*.package|.svn|.git|.hg|node_modules|bower_components" --dirsfirst'
-
 # curl
 alias curlh="curl -sILX GET"
 alias curld="curl -A \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36\""
@@ -51,22 +37,22 @@ alias neomutt="TERM=xterm-direct neomutt"
 alias tmux='direnv exec / tmux'
 
 # Check for command availability
-(( $+commands[htop] )) && alias top=htop
-(( $+commands[bat] )) && alias cat='bat '
-(( $+commands[fd] )) && alias fd='fd --hidden '
-(( $+commands[yarn] )) && alias y=yarn
+command -v htop &>/dev/null && alias top=htop
+command -v bat &>/dev/null && alias cat='bat '
+command -v fd &>/dev/null && alias fd='fd --hidden '
+command -v yarn &>/dev/null && alias y=yarn
 
-if (( $+commands[lsd] )); then
+if command -v lsd &>/dev/null; then
   alias ls="lsd -tr1lh"
   alias ll='lsd --tree --group-directories-first -I "node_modules" '
-elif (( $+commands[tree] )); then
+elif command -v tree &>/dev/null; then
   alias ll="type tree >/dev/null && tree --dirsfirst -a -L 1 || l -d .*/ */ "
   alias tree='tree -I  "node_modules" '
 else
   alias ll="echo 'You have to install lsd or tree'"
 fi
 
-if (( $+commands[jq] )); then
+if command -v jq &>/dev/null; then
   alias formatJSON='jq .'
 else
   alias formatJSON='python -m json.tool'
