@@ -68,6 +68,7 @@ if [[ "$(uname)" == Darwin* ]]; then
   alias flushdns='sudo killall -HUP mDNSResponder'
   alias code="/Applications/Visual\ Studio\ Code\ -\ Insiders.app/Contents/Resources/app/bin/code"
   alias curl='curl --keepalive-time 60'
+  alias zed='/Applications/Zed.app/Contents/MacOS/zed'
 
   # emacs-mac
   # brew tap railwaycat/emacsmacport
