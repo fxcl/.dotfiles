@@ -28,7 +28,7 @@ vim.g.did_install_default_menus = 1
 
 -- vim.opt. them directly if they are installed, otherwise disable them. To avoid the then
 -- runtime check cost, which can be slow.
--- Python This must be here becasue it makes loading vim VERY SLOW otherwise
+-- Python This must be here because it makes loading vim VERY SLOW otherwise
 vim.g.python_host_skip_check = 1
 -- Disable python2 provider
 vim.g.loaded_python_provider = 0
@@ -70,8 +70,6 @@ vim.opt.shiftwidth = 2
 vim.opt.expandtab = false
 
 vim.opt.signcolumn = 'yes'
-
-vim.opt.cmdheight = 0
 
 vim.opt.emoji = false
 
@@ -131,10 +129,7 @@ vim.opt.splitright = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
--- fix slight delay after pressing ESC then O http://ksjoberg.com/vim-esckeys.html
--- vim.opt.timeout timeoutlen=500 ttimeoutlen=100
-vim.opt.timeoutlen = 1000
-vim.opt.ttimeoutlen = 0
+vim.opt.timeoutlen = 300
 
 vim.opt.formatoptions:append 'n'
 vim.opt.formatoptions:append 'r1'
@@ -153,7 +148,7 @@ vim.opt.sidescrolloff = 5
 vim.opt.sidescroll = 3
 
 -- yank and paste with the system clipboard
-vim.opt.clipboard = 'unnamed'
+vim.opt.clipboard = 'unnamedplus'
 
 -- show trailing whitespace
 vim.opt.list = true
@@ -176,18 +171,28 @@ vim.opt.concealcursor = 'n'
 
 vim.opt.fillchars = {
 	diff = '⣿', -- BOX DRAWINGS
-	vert = '┃', -- HEAVY VERTICAL (U+2503, UTF-8: E2 94 83)
-	fold = '─',
 	msgsep = '‾',
 	eob = ' ', -- Hide end of buffer ~
+	fold = '─',
 	foldopen = '▾',
-	foldsep = '│',
+	foldsep = ' ',
 	foldclose = '▸',
+	stl = '⣿',
+	stlnc = '⣿',
+	horiz = '━',
+	horizup = '┻',
+	horizdown = '┳',
+	vert = '┃', -- HEAVY VERTICAL (U+2503, UTF-8: E2 94 83)
+	vertleft = '┫',
+	vertright = '┣',
+	verthoriz = '╋',
 }
 
-vim.opt.foldlevelstart = 99 -- start unfolded
-
+vim.opt.foldcolumn = '0'
+vim.opt.foldlevel = 99
+vim.opt.foldnestmax = 4
 vim.opt.foldmethod = 'expr'
+-- So slow on large files?
 vim.opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
 
 vim.opt.linebreak = true
@@ -238,8 +243,7 @@ vim.opt.swapfile = false
 vim.opt.directory = string.format('%s%s', vim.fn.stdpath 'state', '/swap//') -- keep swap files out of the way
 vim.opt.directory:append '.'
 
-vim.opt.updatetime = 1000
-vim.opt.updatecount = 0 -- update swapfiles every 80 typed chars (I don't use swap files anymore)
+vim.opt.updatetime = 250
 
 if root then
 	vim.opt.undofile = false -- don't create root-owned files
@@ -268,18 +272,17 @@ else
 	})
 end
 
-if not vim.fn.has 'nvim-0.6' then
-	vim.opt.inccommand = 'nosplit' -- incremental command live feedback"
-end
-
 -- cursor behavior:
 --   - no blinking in normal/visual mode
 --   - blinking in insert-mode
 vim.opt.guicursor:append 'n-v-c:blinkon0,i-ci:ver25-Cursor/lCursor-blinkwait30-blinkoff100-blinkon100'
-
+vim.opt.smoothscroll = true
 -------------------------------------------------------------------------------
 -- PLUGINS {{{1
 -------------------------------------------------------------------------------
+-- Fix markdown indentation settings
+vim.g.markdown_recommended_style = 0
+
 vim.g.markdown_fenced_languages = {
 	'css',
 	'erb=eruby',

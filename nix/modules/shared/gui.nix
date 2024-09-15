@@ -110,7 +110,7 @@ in {
             recursive = true;
             source = ../../../config/ghostty;
           };
-          ".cargo/config" = {
+          ".cargo/config.toml" = {
             text = ''
               [source.crates-io]
               replace-with = 'rsproxy-sparse'

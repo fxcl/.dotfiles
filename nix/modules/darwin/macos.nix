@@ -102,6 +102,7 @@ in {
           "icu4c"
           "tree-sitter"
           #"shortcat"
+          "typos-cli"
           # {
           #   name = "emacs-mac";
           #   args = [

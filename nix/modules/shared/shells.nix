@@ -113,12 +113,12 @@ in {
               lsd
               shellcheck
               shfmt # Doesn't work with zsh, only sh & bash
-              lnav # System Log file navigator
+              #lnav # System Log file navigator
               pandoc
               scc
               tokei
               #_1password # CLI
-              docker
+              # docker
               rename
               glow
               # buku

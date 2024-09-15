@@ -1,6 +1,6 @@
-local utils = require '_.utils'
 local au = require '_.utils.au'
 local hl = require '_.utils.highlight'
+local utils = require '_.utils'
 
 ---------------------------------------------------------------------------------
 -- Helpers
@@ -99,14 +99,22 @@ local function readonly()
 	return string.format('%%5* %s %%w %%*', line)
 end
 
-local mode_table = {
+-- Custom `^V` and `^S` symbols to make this file appropriate for copy-paste
+-- (otherwise those symbols are not displayed and when managed to display them they turn the file into a binary format).
+-- file --mime-type statusline.lua -> application/octet-stream
+local CTRL_S = vim.keycode '<C-S>'
+local CTRL_V = vim.keycode '<C-V>'
+
+local MODES = setmetatable({
 	no = 'N-Operator Pending',
+	nov = 'N-Operator Block',
+	noV = 'N-Operator Line',
 	v = 'V.',
 	V = 'V·Line',
-	[''] = 'V·Block', -- this is not ^V, but it's , they're different
+	[CTRL_V] = 'V·Block',
 	s = 'S.',
 	S = 'S·Line',
-	[''] = 'S·Block',
+	[CTRL_S] = 'S·Block',
 	i = 'I.',
 	ic = 'I·Compl',
 	ix = 'I·X-Compl',
@@ -117,12 +125,18 @@ local mode_table = {
 	c = 'Command',
 	cv = 'Vim Ex',
 	ce = 'Ex',
-	r = 'Propmt',
+	r = 'Prompt',
 	rm = 'More',
 	['r?'] = 'Confirm',
 	['!'] = 'Sh',
 	t = 'T.',
-}
+	nt = 'TN.',
+}, {
+	-- By default return 'Unknown' but this shouldn't be needed
+	__index = function()
+		return 'Unknown'
+	end,
+})
 
 local function mode()
 	local current_mode = vim.api.nvim_get_mode().mode
@@ -131,7 +145,7 @@ local function mode()
 		return ''
 	end
 
-	return mode_table[current_mode] or 'NOT IN MAP'
+	return MODES[current_mode]
 end
 
 local function rhs()
@@ -175,10 +189,6 @@ local function word_count()
 	return ''
 end
 
-local function filetype()
-	return vim.bo.filetype
-end
-
 local function orgmode()
 	return _G.orgmode
 			and type(_G.orgmode.statusline) == 'function'
@@ -186,7 +196,7 @@ local function orgmode()
 		or ''
 end
 
-local function lsp()
+local function lsp_diagnostics()
 	local count = {}
 	local levels = {
 		errors = vim.diagnostic.severity.ERROR,
@@ -236,7 +246,97 @@ local function lsp()
 		)
 	end
 
-	return string.format('%s %s %s %s%%*', errors, warnings, hints, info)
+	return string.format(
+		'%s %s %s %s%%*',
+		errors ~= '' and ' ' .. errors or errors,
+		warnings,
+		hints,
+		info
+	)
+end
+
+local function git_conflicts()
+	if vim.bo.filetype == 'ministarter' then
+		return ''
+	end
+
+	local ok, git_conflict = pcall(require, 'git-conflict')
+
+	if not ok then
+		return ''
+	end
+
+	local count = git_conflict.conflict_count(0)
+
+	if count == 0 then
+		return ''
+	end
+
+	return string.format(
+		'%%#DiagnosticSignError#%s %s %%*',
+		utils.get_icon 'conflict',
+		count
+	)
+end
+
+local function copilot()
+	if vim.bo.filetype == 'ministarter' then
+		return ''
+	end
+
+	local ok, supermaven = pcall(require, 'supermaven-nvim.api')
+
+	local highlighted_icon = '%%#MoreMsg#%s%%* '
+
+	if ok then
+		return supermaven.is_running()
+				and string.format(
+					highlighted_icon,
+					require('mini.icons').get('lsp', 'supermaven')
+				)
+			or ''
+	end
+
+	return vim.g.loaded_copilot == 1
+			and string.format(
+				highlighted_icon,
+				require('mini.icons').get('lsp', 'copilot')
+			)
+		or ''
+end
+
+---Mostly taken from https://github.com/MariaSolOs/dotfiles/blob/34c5df39e6576357a2b90e25673e44f4d33afe38/.config/nvim/lua/statusline.lua#L121-L172
+---@type table<string, string?>
+local progress_status = {
+	client = nil,
+	kind = nil,
+	title = nil,
+}
+
+local function lsp_progress_component()
+	local lsp_icon = require('mini.icons').get('lsp', 'event')
+
+	if not progress_status.client or not progress_status.title then
+		local ok, clients = pcall(vim.lsp.get_clients)
+
+		if ok and type(clients) == 'table' and #clients >= 1 then
+			return lsp_icon .. ' '
+		end
+
+		return ''
+	end
+
+	-- Avoid noisy messages while typing.
+	if vim.startswith(vim.api.nvim_get_mode().mode, 'i') then
+		return ''
+	end
+
+	return string.format(
+		'%s %s %%#DiagnosticSignInfo#%s',
+		'%#DiagnosticSignWarn#' .. lsp_icon .. ' %*',
+		progress_status.client,
+		progress_status.title
+	)
 end
 
 ---------------------------------------------------------------------------------
@@ -246,19 +346,22 @@ local M = {}
 
 __.statusline = M
 
-function M.get_active_statusline()
+function M.render_active()
 	local line = table.concat {
 		filepath(),
 		word_count(),
 		readonly(),
-		'%9*%=%* ',
+		'%= ',
 		mode(),
-		' %*',
+		'%*',
 		paste(),
 		spell(),
 		orgmode(),
-		lsp(),
+		lsp_progress_component(),
+		lsp_diagnostics(),
+		git_conflicts(),
 		file_info(),
+		copilot(),
 		rhs(),
 	}
 
@@ -277,31 +380,57 @@ function M.get_active_statusline()
 	}
 end
 
-function M.get_inactive_statusline()
+function M.render_inactive()
 	local line = '%#StatusLineNC#%f%*'
 
 	return line
 end
 
-function M.activate()
-	au.augroup('MyStatusLine', {
-		{
-			event = { 'WinEnter', 'BufEnter' },
-			pattern = '*',
-			callback = function()
-				vim.opt_local.statusline =
-					[[%!luaeval("__.statusline.get_active_statusline()")]]
-			end,
-		},
-		{
-			event = { 'WinLeave', 'BufLeave' },
-			pattern = '*',
-			callback = function()
-				vim.opt_local.statusline =
-					[[%!luaeval("__.statusline.get_inactive_statusline()")]]
-			end,
-		},
-	})
-end
+-- https://www.reddit.com/r/neovim/comments/11215fn/comment/j8hs8vj/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
+-- FWIW if you use vim.o.statuscolumn = '%{%StatusColFunc()%}' emphasis on the percent signs,
+-- then you can just use nvim_get_current_buf() and in the context of StatusColFunc that will be equal to get_buf(statusline_winid) trick.
+-- You can see :help stl-%{ but essentially in the context of %{} the buffer is changed to that of the window for which the status(line/col)
+-- is being drawn and the extra %} is so that the StatusColFunc can return things like %t and that gets evaluated to the filename
+au.augroup('MyStatusLine', {
+	{
+		event = 'LspProgress',
+		pattern = { 'begin', 'end' },
+		desc = 'Update LSP progress in statusline',
+		callback = function(args)
+			-- This should in theory never happen, but I've seen weird errors.
+			if not args.data then
+				return
+			end
 
-__.statusline.activate()
+			progress_status = {
+				client = vim.lsp.get_client_by_id(args.data.client_id).name,
+				kind = args.data.params.value.kind,
+				title = args.data.params.value.title,
+			}
+
+			if progress_status.kind == 'end' then
+				progress_status.title = nil
+				-- Wait a bit before clearing the status.
+				vim.defer_fn(function()
+					vim.cmd.redrawstatus()
+				end, 3000)
+			else
+				vim.cmd.redrawstatus()
+			end
+		end,
+	},
+	{
+		event = { 'WinEnter', 'BufEnter' },
+		pattern = '*',
+		callback = function()
+			vim.opt_local.statusline = '%!v:lua.__.statusline.render_active()'
+		end,
+	},
+	{
+		event = { 'WinLeave', 'BufLeave' },
+		pattern = '*',
+		callback = function()
+			vim.opt_local.statusline = '%!v:lua.__.statusline.render_inactive()'
+		end,
+	},
+})

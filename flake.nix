@@ -19,14 +19,11 @@
   description = "NixOS and Darwin configurations";
 
   inputs = {
-    nixpkgs.url =
-      "github:nixos/nixpkgs/nixpkgs-24.05-darwin"; # Default to stable for most things.
-    nixpkgs-unstable.url =
-      "github:nixos/nixpkgs/nixpkgs-unstable"; # Unstable for some packages.
+    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
     # Home inputs
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.05";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs"; # Ensure versions are consistent.
 
     };
@@ -198,14 +195,14 @@
         system.stateVersion = if pkgs.stdenv.isDarwin then
           4
         else
-          "24.05"; # Did you read the comment?
+          "24.11"; # Did you read the comment?
 
         home-manager.users."${config.my.username}" = {
           home = {
             # Necessary for home-manager to work with flakes, otherwise it will
             # look for a nixpkgs channel.
             stateVersion = if pkgs.stdenv.isDarwin then
-              "24.05"
+              "24.11"
             else
               config.system.stateVersion;
           };

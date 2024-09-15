@@ -47,11 +47,12 @@ if (( terminfo[colors] >= 8 )); then
   fi
 fi
 
+
 #
 # File Downloads
 #
 
-# order of preference: aria2c, axel, wget, curl. This order is derrived from speed based on personal tests.
+# order of preference: aria2c, axel, wget, curl. This order is derived from speed based on personal tests.
 if (( ${+commands[aria2c]} )); then
   alias get='aria2c --max-connection-per-server=5 --continue'
 elif (( ${+commands[axel]} )); then

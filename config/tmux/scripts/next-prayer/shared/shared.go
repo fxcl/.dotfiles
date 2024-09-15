@@ -46,6 +46,14 @@ func get_field(v *ApiData, field string) string {
 	return string(f.String())
 }
 
+// @TODO
+// CHange how we cache the data so we can check if the location changed and
+// update the cache accordingly.
+//
+// Also we need to define what does a location change mean, lat/long can change
+// easily instead we want to check the city and/or country
+//
+// So cache key should probably be the city and country like this "city_country"
 func get_data(source Source, now time.Time) ([]byte, error) {
 	today_date := now.Format("02-01-2006")
 	cache := path.Join(os.TempDir(), "."+today_date+".json")
@@ -74,7 +82,7 @@ func get_data(source Source, now time.Time) ([]byte, error) {
 }
 
 // @TODO
-// Revist this whole time parsing logic
+// Revisit this whole time parsing logic
 // the times I get from the APIs are in local timezone depending on the location
 // so I building a time object and then converting it to the local timezone
 // this will not always work. It's better to convert to UTC and then convert it to the local timezone
@@ -102,12 +110,12 @@ func Get_prayer(source Source) Output {
 		prayer_time_formatted, _ := get_prayer_time(fmt.Sprintf("%s %s", nowFormatted, prayer_time))
 
 		if prayer_time_formatted.After(now) {
-			time_remaning := prayer_time_formatted.Sub(now)
-			time_remaning_diff := (time_remaning).Minutes()
+			time_remaining := prayer_time_formatted.Sub(now)
+			time_remaining_diff := (time_remaining).Minutes()
 
 			return Output{
 				Item:          fmt.Sprintf("%s: %s", prayer, prayer_time),
-				TimeRemaining: int(time_remaning_diff),
+				TimeRemaining: int(time_remaining_diff),
 			}
 		}
 	}

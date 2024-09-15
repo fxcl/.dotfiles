@@ -54,7 +54,7 @@ vim.keymap.set({ 'i' }, '<down>', '<nop>', { remap = true })
 vim.keymap.set({ 'i' }, '<left>', '<nop>', { remap = true })
 vim.keymap.set({ 'i' }, '<right>', '<nop>', { remap = true })
 
--- Make arrowkey do something usefull, resize the viewports accordingly
+-- Make arrowkey do something useful, resize the viewports accordingly
 vim.keymap.set({ 'n' }, '<Right>', ':vertical resize -2<CR>')
 vim.keymap.set({ 'n' }, '<Left>', ':vertical resize +2<CR>')
 vim.keymap.set({ 'n' }, '<Down>', ':resize -2<CR>')
@@ -94,7 +94,7 @@ vim.keymap.set({ 'v' }, '.', ':norm.<CR>', { desc = 'Repeat in visual mode' })
 -- nnoremap <leader>t  :vsplit +terminal<cr>
 vim.keymap.set(
 	{ 't' },
-	'<esc>',
+	'<Esc>',
 	[[&filetype == 'fzf' ? "\<esc>" : "\<c-\>\<c-n>"]],
 	{ expr = true }
 )
@@ -114,33 +114,15 @@ au.augroup('__MyTerm__', {
 	{ event = 'TermClose', pattern = 'term://*', command = 'stopinsert' },
 })
 
-vim.keymap.set({ 'n' }, '<leader>z', ':call utils#ZoomToggle()<cr>', {
-	silent = true,
-	desc = 'Toggle buffer [z]ooming',
-})
+vim.keymap.set({ 'n' }, '<Localleader> g', function()
+	local result = vim.treesitter.get_captures_at_cursor(0)
+	print(vim.inspect(result))
+end, { desc = 'Show treesitter capture group for textobject under cursor.' })
 
--- Do I need this? seems like not useful with treesitter
-vim.keymap.set(
-	{ 'n' },
-	'<c-g>',
-	':call utils#SynStack()<cr>',
-	{ desc = 'Show highlighting groups for current word' }
-)
-
-vim.keymap.set({ 'v' }, '<Leader>hu', ':call utils#HtmlUnEscape()<cr>', {
-	remap = true,
-	silent = true,
-	desc = '[H]tml [U]nescape',
-})
-
-vim.keymap.set({ 'v' }, '<Leader>he', ':call utils#HtmlEscape()<cr>', {
-	remap = true,
-	silent = true,
-	desc = '[H]tml [E]scape',
-})
-
--- maintain the same shortcut as vim-gtfo becasue it's in my muscle memory.
-vim.keymap.set({ 'n' }, 'gof', ':call utils#OpenFileFolder()<cr>', {
+-- maintain the same shortcut as vim-gtfo because it's in my muscle memory.
+vim.keymap.set({ 'n' }, 'gof', function()
+	vim.ui.open(vim.fn.expand '%:p:h:~')
+end, {
 	silent = true,
 	desc = '[G]o [o]pen [f]older',
 })
@@ -159,14 +141,6 @@ vim.keymap.set(
 	{ desc = 'Execute macro over visual range' }
 )
 
--- Conflicts with LSP K, LSP takes precenedence, so this is a fallback?
-vim.keymap.set(
-	{ 'n' },
-	'K',
-	[[:<C-U>exe 'help '. utils#helptopic()<CR>]],
-	{ silent = true, buffer = true, desc = 'Show help topic if available' }
-)
-
 -- Quick note taking per project
 vim.keymap.set(
 	{ 'n' },
@@ -177,12 +151,35 @@ vim.keymap.set(
 
 -- More easier increment/decrement mappings
 vim.keymap.set({ 'n' }, '+', '<C-a>')
-vim.keymap.set({ 'n' }, '-', '<C-x>')
+vim.keymap.set({ 'n' }, '_', '<C-x>')
 vim.keymap.set({ 'x' }, '+', 'g<C-a>')
-vim.keymap.set({ 'x' }, '-', 'g<C-x>')
+vim.keymap.set({ 'x' }, '_', 'g<C-x>')
 
 -- Execute "q" macro over visual line selections
 vim.keymap.set({ 'x' }, 'Q', [[:'<,'>:normal @q<CR>]])
 
 -- Use / to search inside a visual selection
 vim.keymap.set('x', '/', '<Esc>/\\%V')
+
+vim.keymap.set(
+	'n',
+	'<Esc>',
+	vim.g.LoupeLoaded == 1 and '<Plug>(LoupeClearHighlight)'
+		or '<cmd>nohlsearch<CR>',
+	{ remap = true, desc = 'Clear Search highlight' }
+)
+
+-- Diagnostic keymaps
+vim.keymap.set('n', '<leader>ld', function()
+	vim.diagnostic.open_float(nil, {
+		focusable = false,
+		source = 'if_many',
+	})
+end, { desc = 'Show diagnostic [E]rror messages' })
+
+vim.keymap.set(
+	'n',
+	'<leader>q',
+	vim.diagnostic.setloclist,
+	{ desc = 'Open diagnostic [Q]uickfix list' }
+)

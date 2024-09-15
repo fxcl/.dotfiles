@@ -16,7 +16,7 @@ in {
       my.user = {
         packages = with pkgs; [
           jdk21
-          (maven.override { jdk = pkgs.jdk21; })
+          # (maven.override { jdk = pkgs.jdk21; })
           # gradle
           java-language-server
           # vagrant
