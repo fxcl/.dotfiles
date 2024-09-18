@@ -1,6 +1,9 @@
 # vim:ft=zsh:
 # setopt warn_create_global
 
+# Set editor default keymap to emacs (`-e`) or vi (`-v`)
+bindkey -e
+
 ##############################################################
 # Profiling.
 ##############################################################
@@ -47,6 +50,7 @@ export PURE_PROMPT_SYMBOL="${PURE_SYMBOLS[$RANDOM % ${#PURE_SYMBOLS[@]} + 1]}"
 export ZSH_AUTOSUGGEST_MANUAL_REBIND=1
 export ZSH_AUTOSUGGEST_USE_ASYNC="true"
 export ZSH_AUTOSUGGEST_STRATEGY=("match_prev_cmd" "completion")
+export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 
 # Note that this will only ensure unique history if we supply a prefix
 # before hitting "up" (ie. we perform a "search"). HIST_FIND_NO_DUPS
@@ -126,3 +130,5 @@ fi
 # Per-function profiling:
 
 # zprof
+
+unset key

@@ -36,6 +36,9 @@ alias neomutt="TERM=xterm-direct neomutt"
 # https://github.com/direnv/direnv/wiki/Tmux
 alias tmux='direnv exec / tmux'
 
+alias pp='xsel --clipboard --input'
+alias reload='exec $SHELL -l'
+
 # Check for command availability
 command -v htop &>/dev/null && alias top=htop
 command -v bat &>/dev/null && alias cat='bat '

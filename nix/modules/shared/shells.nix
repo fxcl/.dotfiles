@@ -177,6 +177,9 @@ in {
                 ".goneovim/setting.toml" = {
                   source = ../../../config/goneovim/setting.toml;
                 };
+                ".config/mods/mods.yml" = {
+                  source = ../../../config/mods/mods.yml;
+                };
                 ".config/zsh/.zimrc" = { source = ../../../config/.zimrc; };
               }
             ];

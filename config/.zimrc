@@ -6,7 +6,9 @@
 zmodule zsh-users/zsh-syntax-highlighting
 # Fish-like history search (up arrow) for Zsh.
 # zsh-users/zsh-history-substring-search must be sourced after zsh-users/zsh-syntax-highlighting
+zmodule zdharma-continuum/fast-syntax-highlighting --source F-Sy-H.plugin.zsh
 zmodule zsh-users/zsh-history-substring-search
+
 # Fish-like autosuggestions for Zsh.
 zmodule zsh-users/zsh-autosuggestions
 #zmodule spaceship-prompt/spaceship-prompt --name spaceship --no-submodules
@@ -26,7 +28,7 @@ zmodule homebrew
 zmodule archive
 zmodule direnv
 # Adds aliases and better defaults for exa.
-zmodule exa
+#zmodule exa
 # Provides handy git aliases and functions.
 #zmodule git
 # Exposes git repository status information to prompts.
@@ -45,10 +47,12 @@ zmodule joke/zim-github-cli
 #zmodule ohmyzsh/ohmyzsh --root plugins/sudo
 
 # Theme
-zmodule eriner
+zmodule prompt-pwd
+# zmodule eriner
 
 # Completion
 # --------------------------------------------------------------------------------------------------
+zmodule fzf
 # Additional completion definitions for Zsh.
 zmodule zsh-users/zsh-completions --fpath src
 # Enables and configures smart and extensive tab completion.
@@ -60,4 +64,5 @@ zmodule completion
 #zmodule zdharma-continuum/fast-syntax-highlighting
 
 zmodule zx2c4/password-store --fpath src/completion
+
 # }}} End configuration added by Zim install

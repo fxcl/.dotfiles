@@ -43,7 +43,7 @@ in {
             ${optionalString (username != "") "  name = ${username}"}
             ${optionalString (email != "") "  email = ${email}"}
             useconfigonly = true
-
+            signingkey = "8C4289679FB4FC86"
             ${optionalString (github_username != "") ''
               [github]
               username = ${github_username}''}
@@ -55,8 +55,8 @@ in {
             textconv = ${pkgs.exiftool}/bin/exiftool
 
             ${optionalString pkgs.stdenv.isDarwin ''
-            [diff "plist"]
-            textconv = plutil -convert xml1 -o -''}
+              [diff "plist"]
+              textconv = plutil -convert xml1 -o -''}
 
             [include]
             path = ${hostConfigHome}/gitconfig

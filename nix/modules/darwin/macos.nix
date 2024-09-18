@@ -28,6 +28,7 @@ in {
           "homebrew/cask-fonts"
           "homebrew/cask-versions"
           "railwaycat/emacsmacport"
+          "charmbracelet/tap"
           #"chipsalliance/verible"
         ];
 
@@ -103,6 +104,7 @@ in {
           "tree-sitter"
           #"shortcat"
           "typos-cli"
+          "charmbracelet/tap/mods"
           # {
           #   name = "emacs-mac";
           #   args = [

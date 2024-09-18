@@ -20,9 +20,30 @@ confirm_quit.enabled = false
 # section_header = { fg = "#808080" }
 # section_header = { bg = "light green", mods = "UNDERLINED|ITALIC" }
 
-section_header = { fg = "yellow" }
-file_header = { fg = "magenta" }
-hunk_header = { fg = "blue" }
+section_header.fg = "yellow"
+file_header.fg = "magenta"
+hunk_header.fg = "blue"
+
+line_added.fg = "green"
+line_removed.fg = "red"
+line_highlight.changed.mods = "BOLD"
+line_highlight.unchanged.mods = "DIM"
+
+selection_line.mods = "BOLD"
+selection_bar.fg = "blue"
+selection_bar.mods = "DIM"
+# You may want to set `selection_area.bg` to a nice background color.
+# Looks horrible with regular terminal colors, so is therefore not set.
+selection_area.bg = "reset"
+
+hash.fg = "yellow"
+branch.fg = "green"
+remote.fg = "red"
+tag.fg = "yellow"
+
+command.fg = "blue"
+command.mods = "BOLD"
+hotkey.fg = "magenta"
 
 diff_highlight.tag_old = { fg = "red", mods = "BOLD" }
 diff_highlight.tag_new = { fg = "green", mods = "BOLD" }

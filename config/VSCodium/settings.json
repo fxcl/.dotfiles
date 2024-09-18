@@ -14,8 +14,7 @@
     "Levysdev",
     "UNDELETABLE",
     "uuid",
-    "xrpl"
-    "Letterbook"
+    "xrpl""Letterbook"
   ],
   "prettier.jsxSingleQuote": true,
   "RainbowBrackets.depreciation-notice": false,
@@ -56,8 +55,7 @@
   "debug.inlineValues": true,
   "debug.internalConsoleOptions": "openOnSessionStart",
   "debug.openDebug": "openOnSessionStart",
-
-  "deno.enable": true,
+  "deno.enable": false,
   "deno.lint": true,
   "deno.suggest.imports.hosts": {
     "https://deno.land": false
@@ -76,7 +74,7 @@
   "editor.parameterHints.enabled": false,
   "editor.acceptSuggestionOnEnter": "off",
   "editor.accessibilitySupport": "off",
-  "editor.autoClosingBrackets":true,
+  "editor.autoClosingBrackets": true,
   "editor.autoClosingDelete": "always",
   "editor.autoClosingOvertype": "always",
   "editor.autoClosingQuotes": "always",
@@ -100,18 +98,17 @@
   "editor.fontLigatures": "'ss01', 'ss02', 'ss03', 'ss06', 'zero'",
   "editor.fontSize": 18,
   "editor.formatOnSave": false,
-  "editor.guides.indentation":  true,
+  "editor.guides.indentation": true,
   "editor.linkedEditing": true,
   "editor.lineNumbers": "relative",
-  "editor.semanticHighlighting.enabled":true,
+  "editor.semanticHighlighting.enabled": true,
   "editor.showUnused": true,
-  "editor.smoothScrolling":true,
+  "editor.smoothScrolling": true,
   "editor.tabCompletion": "on",
   "editor.trimAutoWhitespace": true,
   "editor.hover.sticky": true,
   "editor.letterSpacing": 1.0,
   "editor.maxTokenizationLineLength": 10000,
-
   "editor.rulers": [
     72,
     80,
@@ -135,7 +132,6 @@
   "editor.insertSpaces": false,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "extensions.ignoreRecommendations": true,
-
   "editor.copyWithSyntaxHighlighting": false,
   "editor.dragAndDrop": false,
   "editor.fontFamily": "UDEV Gothic 35 JPDOC",
@@ -178,7 +174,7 @@
   "[cpp]": {
     "editor.defaultFormatter": "ccls-project.ccls"
   },
-"[csv]": {
+  "[csv]": {
     "editor.wordWrap": "off"
   },
   "[log]": {
@@ -677,7 +673,6 @@
     }
   },
   "terminal.integrated.scrollback": 10000,
-
   "terminal.integrated.cursorBlinking": true,
   "terminal.integrated.cursorStyle": "line",
   "terminal.integrated.defaultProfile.linux": "zsh",

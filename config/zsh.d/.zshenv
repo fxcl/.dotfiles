@@ -72,6 +72,9 @@ if [[ $OSTYPE == "darwin"* && -d /usr/local/Cellar/rustup/1.27.1_1/bin/ ]]; then
     export PATH=${PATH}:/usr/local/Cellar/rustup/1.27.1_1/bin
 fi
 
+export LIBRARY_PATH="/usr/local/opt/libiconv/lib:$LIBRARY_PATH"
+export CPATH="/usr/local/opt/libiconv/include:$CPATH"
+
 #cargo
 if [ -d "${CARGO_HOME}/bin" ]; then
   export PATH="${PATH}:${CARGO_HOME}/bin"
@@ -81,19 +84,19 @@ if [ -d "${CARGO_HOME}/bin" ]; then
   export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 fi
 
+
 # Remove path separtor from WORDCHARS.
 WORDCHARS=${WORDCHARS//[\/]}
 
 ############### PAGER
 # Set less or more as the default pager.
-if (( ! ${+PAGER} )); then
-  if (( ${+commands[less]} )); then
-    export PAGER=less
-  else
-    export PAGER=more
-  fi
+if [[ -z ${PAGER+x} ]]; then
+    if [[ -n ${commands[less]} ]]; then
+        export PAGER=less
+    else
+        export PAGER=more
+    fi
 fi
-
 
 if [[ -d "$HOME/.proto/tools/python/3.11.9/install/lib/python3.11/site-packages" ]]; then
     export PYTHONPATH="$HOME/.proto/tools/python/3.11.9/install/lib/python3.11/site-packages"
@@ -102,9 +105,13 @@ fi
 
 # Set the Less input preprocessor.
 # Try both `lesspipe` and `lesspipe.sh` as either might exist on a system.
-if (( $#commands[(i)lesspipe(|.sh)] )); then
-  export LESSOPEN="| /usr/bin/env $commands[(i)lesspipe(|.sh)] %s 2>&-"
-fi
+for command in lesspipe lesspipe.sh; do
+    if [[ -n ${commands[$command]} ]]; then
+        export LESSOPEN="| /usr/bin/env ${commands[$command]} %s 2>/dev/null"
+        break
+    fi
+done
+
 
 ############### Temporary Files
 if [[ ! -d "$TMPDIR" ]]; then
@@ -148,14 +155,73 @@ proxy_off() {
     echo "Proxy environment variables cleared."
 }
 
+# https://www.m3tech.blog/entry/dotfiles-bonsai
+# [[ --
+docker() {
+    if [ "$1" = "compose" ] || ! command -v "docker-$1" >/dev/null; then
+        command docker "${@:1}"
+    else
+        "docker-$1" "${@:2}"
+    fi
+}
+
+# docker clean
+docker-clean() {
+    command docker ps -aqf status=exited | xargs -r docker rm --
+}
+
+# docker cleani
+docker-cleani() {
+    command docker images -qf dangling=true | xargs -r docker rmi --
+}
+
+# docker rm
+docker-rm() {
+    if [ "$#" -eq 0 ]; then
+        command docker ps -a | fzf --exit-0 --multi --header-lines=1 | awk '{ print $1 }' | xargs -r docker rm --
+    else
+        command docker rm "$@"
+    fi
+}
+
+# docker rmi
+docker-rmi() {
+    if [ "$#" -eq 0 ]; then
+        command docker images | fzf --exit-0 --multi --header-lines=1 | awk '{ print $3 }' | xargs -r docker rmi --
+    else
+        command docker rmi "$@"
+    fi
+}
+
+# enter an interactive chat conversation using mods
+chat() {
+  # pick a model alias from your config
+  model=$(yq -r .apis[].models[].aliases[0] ~/.config/mods/mods.yml \
+    | gum choose --height 8 --header "Pick model to chat with:" --no-show-help)
+  if [[ -z $model ]]; then
+    gum format "  :pensive:  cancelled, no model picked." -t emoji
+    return 1
+  fi
+  # first invocation starts a new conversation
+  mods --model "$model" --prompt-args || return $?
+  # after that enter a loop until user quits
+  while mods --model "$model" --prompt-args --continue-last; do :; done
+  return $?;
+}
+
 ##############################################################
 # ZimFW https://github.com/zimfw/zimfw
 ##############################################################
 ZIM_HOME=~/.cache/zim
 # Download zimfw plugin manager if missing.
 if [[ ! -e ${ZIM_HOME}/zimfw.zsh ]]; then
+  if (( ${+commands[curl]} )); then
     curl -fsSL --create-dirs -o ${ZIM_HOME}/zimfw.zsh \
-    https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh
+        https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh
+  else
+    mkdir -p ${ZIM_HOME} && wget -nv -O ${ZIM_HOME}/zimfw.zsh \
+        https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh
+  fi
 fi
 
 # Install missing modules, and update ${ZIM_HOME}/init.zsh if missing or outdated.
@@ -165,6 +231,22 @@ fi
 
 # Initialize modules.
 source ${ZIM_HOME}/init.zsh
+
+# ------------------------------
+# Post-init module configuration
+# ------------------------------
+
+#
+# zsh-history-substring-search
+#
+
+zmodload -F zsh/terminfo +p:terminfo
+# Bind ^[[A/^[[B manually so up/down works both before and after zle-line-init
+for key ('^[[A' '^P' ${terminfo[kcuu1]}) bindkey ${key} history-substring-search-up
+for key ('^[[B' '^N' ${terminfo[kcud1]}) bindkey ${key} history-substring-search-down
+for key ('k') bindkey -M vicmd ${key} history-substring-search-up
+for key ('j') bindkey -M vicmd ${key} history-substring-search-down
+unset key
 
 ##############################################################
 # PATH.
