@@ -1,68 +1,42 @@
 # Start configuration added by Zim install {{{
+
 # Modules
 # --------------------------------------------------------------------------------------------------
-# Fish-like syntax highlighting for Zsh.
-# zsh-users/zsh-syntax-highlighting must be sourced after completion
-zmodule zsh-users/zsh-syntax-highlighting
-# Fish-like history search (up arrow) for Zsh.
-# zsh-users/zsh-history-substring-search must be sourced after zsh-users/zsh-syntax-highlighting
-zmodule zdharma-continuum/fast-syntax-highlighting --source F-Sy-H.plugin.zsh
+# Syntax highlighting and autosuggestions
+zmodule zdharma-continuum/fast-syntax-highlighting --source fast-syntax-highlighting.plugin.zsh
 zmodule zsh-users/zsh-history-substring-search
-
-# Fish-like autosuggestions for Zsh.
 zmodule zsh-users/zsh-autosuggestions
-#zmodule spaceship-prompt/spaceship-prompt --name spaceship --no-submodules
 
-# Prompt
-# --------------------------------------------------------------------------------------------------
-# Sets sane Zsh built-in environment options.
+# Prompt and environment
 zmodule environment
-# Applies correct bindkeys for input events.
 zmodule input
-# Shown when there is no command and user presses ENTER.
-# zmodule magic-enter
+zmodule termtitle
 zmodule run-help
+zmodule git
+zmodule git-info
 
-
+# Utilities and tools
+zmodule utility
 zmodule homebrew
 zmodule archive
 zmodule direnv
-# Adds aliases and better defaults for exa.
-#zmodule exa
-# Provides handy git aliases and functions.
-#zmodule git
-# Exposes git repository status information to prompts.
-#zmodule git-info
-zmodule sunlei/zsh-ssh
-# Sets a custom terminal title.
-zmodule termtitle
-# Utility aliases and functions. Adds colour to ls, grep and less.
-zmodule utility
+zmodule fzf
 zmodule Aloxaf/fzf-tab
 zmodule wookayin/fzf-fasd
-zmodule wfxr/forgit
+zmodule sunlei/zsh-ssh
+#zmodule wfxr/forgit
 zmodule MichaelAquilina/zsh-you-should-use
 zmodule greymd/docker-zsh-completion
 zmodule joke/zim-github-cli
-#zmodule ohmyzsh/ohmyzsh --root plugins/sudo
 
 # Theme
+zmodule eriner
 zmodule prompt-pwd
-# zmodule eriner
 
-# Completion
+# Completion
 # --------------------------------------------------------------------------------------------------
-zmodule fzf
-# Additional completion definitions for Zsh.
 zmodule zsh-users/zsh-completions --fpath src
-# Enables and configures smart and extensive tab completion.
-# completion must be sourced after all modules that add completion definitions.
 zmodule completion
-
-# Fish-like syntax highlighting for Zsh.
-# zdharma-continuum/fast-syntax-highlighting must be sourced after completion
-#zmodule zdharma-continuum/fast-syntax-highlighting
-
 zmodule zx2c4/password-store --fpath src/completion
 
 # }}} End configuration added by Zim install
