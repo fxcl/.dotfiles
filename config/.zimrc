@@ -1,42 +1,49 @@
 # Start configuration added by Zim install {{{
 
+#
 # Modules
-# --------------------------------------------------------------------------------------------------
-# Syntax highlighting and autosuggestions
-zmodule zdharma-continuum/fast-syntax-highlighting --source fast-syntax-highlighting.plugin.zsh
-zmodule zsh-users/zsh-history-substring-search
-zmodule zsh-users/zsh-autosuggestions
+#
 
-# Prompt and environment
-zmodule environment
-zmodule input
-zmodule termtitle
-zmodule run-help
-zmodule git
-zmodule git-info
+zmodule environment   # Sets sane Zsh built-in environment options.
+zmodule git           # Provides handy git aliases and functions.
+zmodule input         # Applies correct bindkeys for input events.
+zmodule termtitle     # Sets a custom terminal title.
+zmodule utility       # Utility aliases and functions. Adds color to ls, grep, and less.
 
-# Utilities and tools
-zmodule utility
-zmodule homebrew
-zmodule archive
-zmodule direnv
-zmodule fzf
-zmodule Aloxaf/fzf-tab
-zmodule wookayin/fzf-fasd
-zmodule sunlei/zsh-ssh
-#zmodule wfxr/forgit
-zmodule MichaelAquilina/zsh-you-should-use
-zmodule greymd/docker-zsh-completion
-zmodule joke/zim-github-cli
+#
+# Prompt
+#
 
-# Theme
-zmodule eriner
-zmodule prompt-pwd
+zmodule duration-info # Exposes to prompts how long the last command took to execute, used by asciiship.
+zmodule git-info      # Exposes git repository status information to prompts, used by asciiship.
+zmodule asciiship     # A heavily reduced, ASCII-only version of the Spaceship and Starship prompts.
 
+#
 # Completion
-# --------------------------------------------------------------------------------------------------
-zmodule zsh-users/zsh-completions --fpath src
-zmodule completion
-zmodule zx2c4/password-store --fpath src/completion
+#
+
+zmodule zsh-users/zsh-completions --fpath src  # Additional completion definitions for Zsh.
+zmodule completion                            # Enables and configures smart and extensive tab completion.
+zmodule Aloxaf/fzf-tab --source fzf-tab.plugin.zsh  # fzf-tab
+
+#
+# Modules that must be initialized last
+#
+
+# zmodule zsh-users/zsh-syntax-highlighting        # Fish-like syntax highlighting for Zsh.
+zmodule z-shell/F-Sy-H
+zmodule zsh-users/zsh-history-substring-search   # Fish-like history search (up arrow) for Zsh.
+zmodule zsh-users/zsh-autosuggestions            # Fish-like autosuggestions for Zsh.
 
 # }}} End configuration added by Zim install
+
+# Additional Modules
+zmodule archive
+# zmodule exa
+zmodule fzf
+# zmodule pacman
+# zmodule ruby
+zmodule run-help
+zmodule ssh
+# zmodule romkatv/powerlevel10k --use degit
+zmodule skywind3000/z.lua --cmd 'export _ZL_HYPHEN=1' --cmd 'eval "$(lua {}/z.lua --init zsh enhanced)"'
