@@ -26,7 +26,11 @@ export DOCKER_CONFIG="$XDG_CONFIG_HOME/docker"
 export ELINKS_CONFDIR="$XDG_CONFIG_HOME/elinks"
 export _ZO_DATA_DIR="$XDG_CONFIG_HOME/zoxide"
 export KITTY_LISTEN_ON="unix:/tmp/kitty"
-export EZA_COLORS="ur=35;nnn:gr=35;nnn:tr=35;nnn:uw=34;nnn:gw=34;nnn:tw=34;nnn:ux=36;nnn:ue=36;nnn:gx=36;nnn:tx=36;nnn:uu=36;nnn:uu=38;5;235:da=38;5;238"
+
+# Use cyan colour scaling for the dates column, as the default blue is difficult to read.
+if command -v eza &>/dev/null; then
+  export EZA_COLORS="ur=35;nnn:gr=35;nnn:tr=35;nnn:uw=34;nnn:gw=34;nnn:tw=34;nnn:ux=36;nnn:due=36;nnn:gx=36;nnn:tx=36;nnn:uu=36;nnn:uu=38;5;235:da=38;5;238"
+fi
 
 ############### Telemetry
 export DO_NOT_TRACK=1 # Future proof? https://consoledonottrack.com/
@@ -69,7 +73,7 @@ fi
 #rustup
 # add rustup binaries to $PATH on macos
 if [[ $OSTYPE == "darwin"* && -d /usr/local/Cellar/rustup/1.27.1_1/bin/ ]]; then
-    export PATH=${PATH}:/usr/local/Cellar/rustup/1.27.1_1/bin
+  export PATH=${PATH}:/usr/local/Cellar/rustup/1.27.1_1/bin
 fi
 
 export LIBRARY_PATH="/usr/local/opt/libiconv/lib:$LIBRARY_PATH"
@@ -84,34 +88,32 @@ if [ -d "${CARGO_HOME}/bin" ]; then
   export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 fi
 
-
 # Remove path separator from WORDCHARS.
-WORDCHARS=${WORDCHARS//[\/]}
+WORDCHARS=${WORDCHARS//[\/]/}
 
 ############### PAGER
 # Set less or more as the default pager.
 if [[ -z ${PAGER+x} ]]; then
-    if [[ -n ${commands[less]} ]]; then
-        export PAGER=less
-    else
-        export PAGER=more
-    fi
+  if [[ -n ${commands[less]} ]]; then
+    export PAGER=less
+  else
+    export PAGER=more
+  fi
 fi
 
 if [[ -d "$HOME/.proto/tools/python/3.11.9/install/lib/python3.11/site-packages" ]]; then
-    export PYTHONPATH="$HOME/.proto/tools/python/3.11.9/install/lib/python3.11/site-packages"
-    export PATH="$HOME/.proto/tools/python/3.11.9/install/bin:$PATH"
+  export PYTHONPATH="$HOME/.proto/tools/python/3.11.9/install/lib/python3.11/site-packages"
+  export PATH="$HOME/.proto/tools/python/3.11.9/install/bin:$PATH"
 fi
 
 # Set the Less input preprocessor.
 # Try both `lesspipe` and `lesspipe.sh` as either might exist on a system.
 for command in lesspipe lesspipe.sh; do
-    if [[ -n ${commands[$command]} ]]; then
-        export LESSOPEN="| /usr/bin/env ${commands[$command]} %s 2>/dev/null"
-        break
-    fi
+  if [[ -n ${commands[$command]} ]]; then
+    export LESSOPEN="| /usr/bin/env ${commands[$command]} %s 2>/dev/null"
+    break
+  fi
 done
-
 
 ############### Temporary Files
 if [[ ! -d "$TMPDIR" ]]; then
@@ -119,8 +121,7 @@ if [[ ! -d "$TMPDIR" ]]; then
   mkdir -p -m 700 "$TMPDIR"
 fi
 
-TMPPREFIX="${TMPDIR%/}/zsh";
-
+TMPPREFIX="${TMPDIR%/}/zsh"
 
 # Ensure path arrays do not contain duplicates.
 typeset -gU cdpath fpath mailpath manpath path
@@ -130,74 +131,74 @@ default_proxy="http://127.0.0.1:7890"
 no_proxy_list="127.0.0.1,localhost,auiag.corp,iag.com.au,devlabs,192.168.2.0/24,localaddress,.localdomain.com,192.168.99.100,192.168.10.100,iagcloud.net,192.168.49.2,DB8B4788812536AC063DABFD95299A5C.gr7.ap-southeast-2.eks.amazonaws.com"
 # Function to set proxy environment variables
 set_proxy_vars() {
-    export http_proxy=$1
-    export https_proxy=$1
-    export ftp_proxy=$1
-    export rsync_proxy=$1
-    echo "Proxy environment variables set to $1"
+  export http_proxy=$1
+  export https_proxy=$1
+  export ftp_proxy=$1
+  export rsync_proxy=$1
+  echo "Proxy environment variables set to $1"
 }
 # Enable proxy
 proxy_on() {
-    export no_proxy=$no_proxy_list
-    export NO_PROXY=$no_proxy
-    # Use the default proxy if no argument is provided
-    local proxy_address=${1:-$default_proxy}
-    set_proxy_vars "$proxy_address"
+  export no_proxy=$no_proxy_list
+  export NO_PROXY=$no_proxy
+  # Use the default proxy if no argument is provided
+  local proxy_address=${1:-$default_proxy}
+  set_proxy_vars "$proxy_address"
 }
 # Disable proxy
 proxy_off() {
-    unset http_proxy
-    unset https_proxy
-    unset ftp_proxy
-    unset rsync_proxy
-    unset no_proxy
-    unset NO_PROXY
-    echo "Proxy environment variables cleared."
+  unset http_proxy
+  unset https_proxy
+  unset ftp_proxy
+  unset rsync_proxy
+  unset no_proxy
+  unset NO_PROXY
+  echo "Proxy environment variables cleared."
 }
 
 # https://www.m3tech.blog/entry/dotfiles-bonsai
 # [[ --
 docker() {
-    if [ "$1" = "compose" ] || ! command -v "docker-$1" >/dev/null; then
-        command docker "${@:1}"
-    else
-        "docker-$1" "${@:2}"
-    fi
+  if [ "$1" = "compose" ] || ! command -v "docker-$1" >/dev/null; then
+    command docker "${@:1}"
+  else
+    "docker-$1" "${@:2}"
+  fi
 }
 
 # docker clean
 docker-clean() {
-    command docker ps -aqf status=exited | xargs -r docker rm --
+  command docker ps -aqf status=exited | xargs -r docker rm --
 }
 
 # docker cleani
 docker-cleani() {
-    command docker images -qf dangling=true | xargs -r docker rmi --
+  command docker images -qf dangling=true | xargs -r docker rmi --
 }
 
 # docker rm
 docker-rm() {
-    if [ "$#" -eq 0 ]; then
-        command docker ps -a | fzf --exit-0 --multi --header-lines=1 | awk '{ print $1 }' | xargs -r docker rm --
-    else
-        command docker rm "$@"
-    fi
+  if [ "$#" -eq 0 ]; then
+    command docker ps -a | fzf --exit-0 --multi --header-lines=1 | awk '{ print $1 }' | xargs -r docker rm --
+  else
+    command docker rm "$@"
+  fi
 }
 
 # docker rmi
 docker-rmi() {
-    if [ "$#" -eq 0 ]; then
-        command docker images | fzf --exit-0 --multi --header-lines=1 | awk '{ print $3 }' | xargs -r docker rmi --
-    else
-        command docker rmi "$@"
-    fi
+  if [ "$#" -eq 0 ]; then
+    command docker images | fzf --exit-0 --multi --header-lines=1 | awk '{ print $3 }' | xargs -r docker rmi --
+  else
+    command docker rmi "$@"
+  fi
 }
 
 # enter an interactive chat conversation using mods
 chat() {
   # pick a model alias from your config
-  model=$(yq -r .apis[].models[].aliases[0] ~/.config/mods/mods.yml \
-    | gum choose --height 8 --header "Pick model to chat with:" --no-show-help)
+  model=$(yq -r .apis[].models[].aliases[0] ~/.config/mods/mods.yml |
+    gum choose --height 8 --header "Pick model to chat with:" --no-show-help)
   if [[ -z $model ]]; then
     gum format "  :pensive:  cancelled, no model picked." -t emoji
     return 1
@@ -206,7 +207,7 @@ chat() {
   mods --model "$model" --prompt-args || return $?
   # after that enter a loop until user quits
   while mods --model "$model" --prompt-args --continue-last; do :; done
-  return $?;
+  return $?
 }
 
 ##############################################################
@@ -215,18 +216,18 @@ chat() {
 ZIM_HOME=~/.cache/zim
 # Download zimfw plugin manager if missing.
 if [[ ! -e ${ZIM_HOME}/zimfw.zsh ]]; then
-  if (( ${+commands[curl]} )); then
-    curl -fsSL --create-dirs -o ${ZIM_HOME}/zimfw.zsh \
-        https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh
+  if command -v curl &>/dev/null; then
+    curl -fsSL --create-dirs -o "${ZIM_HOME}/zimfw.zsh" \
+      https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh
   else
-    mkdir -p ${ZIM_HOME} && wget -nv -O ${ZIM_HOME}/zimfw.zsh \
-        https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh
+    mkdir -p "${ZIM_HOME}" && wget -nv -O "${ZIM_HOME}/zimfw.zsh" \
+      https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh
   fi
 fi
 
 # Install missing modules, and update ${ZIM_HOME}/init.zsh if missing or outdated.
 if [[ ! ${ZIM_HOME}/init.zsh -nt ${ZDOTDIR:-${HOME}}/.zimrc ]]; then
-    source ${ZIM_HOME}/zimfw.zsh init -q
+  source ${ZIM_HOME}/zimfw.zsh init -q
 fi
 
 # Initialize modules.
@@ -242,10 +243,18 @@ source ${ZIM_HOME}/init.zsh
 
 zmodload -F zsh/terminfo +p:terminfo
 # Bind ^[[A/^[[B manually so up/down works both before and after zle-line-init
-for key ('^[[A' '^P' ${terminfo[kcuu1]}) bindkey ${key} history-substring-search-up
-for key ('^[[B' '^N' ${terminfo[kcud1]}) bindkey ${key} history-substring-search-down
-for key ('k') bindkey -M vicmd ${key} history-substring-search-up
-for key ('j') bindkey -M vicmd ${key} history-substring-search-down
+for key in '^[[A' '^P' ${terminfo[kcuu1]}; do
+  bindkey ${key} history-substring-search-up
+done
+for key in '^[[B' '^N' ${terminfo[kcud1]}; do
+  bindkey ${key} history-substring-search-down
+done
+for key in 'k'; do
+  bindkey -M vicmd ${key} history-substring-search-up
+done
+for key in 'j'; do
+  bindkey -M vicmd ${key} history-substring-search-down
+done
 unset key
 
 ##############################################################
@@ -263,9 +272,11 @@ unset key
 
 path=(
   ${ZDOTDIR}/bin
-  ${HOME}/.local/bin(N-/)
-  # ${CARGO_HOME}/bin(N-/)
-  ${GOBIN}(N-/)
+  ${HOME}/.local/bin
+  #${HOME}/.local/bin(N-/)
+  #${CARGO_HOME}/bin(N-/)
+  #${GOBIN}(N-/)
+  ${GOBIN}
   $path
   #/opt/homebrew/bin(N-/) # For M1/2 machines
   /usr/local/{bin,sbin}
