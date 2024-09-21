@@ -85,7 +85,7 @@ if [ -d "${CARGO_HOME}/bin" ]; then
 fi
 
 
-# Remove path separtor from WORDCHARS.
+# Remove path separator from WORDCHARS.
 WORDCHARS=${WORDCHARS//[\/]}
 
 ############### PAGER
