@@ -47,7 +47,6 @@ in {
           # "code-composer-studio"
           #"crossover"
           #"discord"
-          #"kitty"
           #"league-of-legends"
           #"microsoft-office"
           #"microsoft-teams"

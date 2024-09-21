@@ -25,7 +25,6 @@ export AWS_CONFIG_FILE="$XDG_CONFIG_HOME/aws/config"
 export DOCKER_CONFIG="$XDG_CONFIG_HOME/docker"
 export ELINKS_CONFDIR="$XDG_CONFIG_HOME/elinks"
 export _ZO_DATA_DIR="$XDG_CONFIG_HOME/zoxide"
-export KITTY_LISTEN_ON="unix:/tmp/kitty"
 
 # Use cyan colour scaling for the dates column, as the default blue is difficult to read.
 if command -v eza &>/dev/null; then

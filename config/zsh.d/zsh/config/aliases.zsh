@@ -18,8 +18,6 @@ alias jobs="jobs -l "
 alias play='mx ϟ'
 alias y="yarn"
 alias p="pnpm"
-# https://github.com/kovidgoyal/kitty/issues/3936
-alias kitty='SSL_CERT_FILE="/etc/ssl/certs/ca-certificates.crt" kitty '
 alias npmlist="npm list --global --parseable --depth=0"
 alias nrd="npm run dev"
 alias nrb="npm run build"

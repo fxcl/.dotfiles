@@ -41,7 +41,6 @@ in {
       website = mkOptStr "https://gabri.me";
       github_username = mkOptStr "fxcl";
       email = mkOptStr "me@gnux.cn";
-      terminal = mkOptStr "kitty";
 
       nix_managed = mkOptStr
         "vim: set nomodifiable : Nix managed - DO NOT EDIT - see source inside ~/.dotfiles or use `:set modifiable` to force.";

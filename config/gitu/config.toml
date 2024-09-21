@@ -29,23 +29,9 @@ line_removed.fg = "red"
 line_highlight.changed.mods = "BOLD"
 line_highlight.unchanged.mods = "DIM"
 
-selection_line.mods = "BOLD"
-selection_bar.fg = "blue"
-selection_bar.mods = "DIM"
 # You may want to set `selection_area.bg` to a nice background color.
 # Looks horrible with regular terminal colors, so is therefore not set.
-selection_area.bg = "reset"
 
-hash.fg = "yellow"
-branch.fg = "green"
-remote.fg = "red"
-tag.fg = "yellow"
-
-command.fg = "blue"
-command.mods = "BOLD"
-hotkey.fg = "magenta"
-
-diff_highlight.tag_old = { fg = "red", mods = "BOLD" }
 diff_highlight.tag_new = { fg = "green", mods = "BOLD" }
 diff_highlight.unchanged_old = { mods = "DIM" }
 diff_highlight.unchanged_new = { mods = "DIM" }
@@ -81,7 +67,7 @@ selection_bar = { symbol = "▌", fg = "blue", mods = "DIM" }
 selection_line = { mods = "BOLD" }
 # You may want to set `selection_area.bg` to a nice background color.
 # Looks horrible with regular terminal colors, so is therefore not set.
-selection_area = {}
+selection_area.bg = "reset"
 
 hash = { fg = "yellow" }
 branch = { fg = "green" }
