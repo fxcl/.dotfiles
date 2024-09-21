@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="gragent">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/Groovy/lib/agent/gragent.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>

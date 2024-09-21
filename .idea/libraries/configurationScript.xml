@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="configurationScript">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/configurationScript/lib/configurationScript.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>

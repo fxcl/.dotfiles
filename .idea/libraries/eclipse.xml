@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="eclipse">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/java/lib/ecj/eclipse.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>

@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="maven-model">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/maven-model/lib/maven-model.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>

@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="completionMlRanking">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/result/Applications/IDEA.app/Contents/plugins/completionMlRanking/lib/completionMlRanking.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>
