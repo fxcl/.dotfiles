@@ -174,8 +174,8 @@ in {
                   recursive = true;
                   source = ../../../config/VSCodium;
                 };
-                ".goneovim/setting.toml" = {
-                  source = ../../../config/goneovim/setting.toml;
+                ".config/goneovim/settings.toml" = {
+                  source = ../../../config/goneovim/settings.toml;
                 };
                 ".config/mods/mods.yml" = {
                   source = ../../../config/mods/mods.yml;

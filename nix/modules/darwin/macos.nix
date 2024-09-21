@@ -42,6 +42,7 @@ in {
           "keka"
           "kekaexternalhelper"
           "font-jetbrains-mono-nerd-font"
+          "font-mononoki-nerd-font"
           #"eloston-chromium"
           # "code-composer-studio"
           #"crossover"
