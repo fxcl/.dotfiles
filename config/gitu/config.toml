@@ -3,11 +3,13 @@
 # `~/.config/gitu/config.toml`
 
 [general]
+# Always show help menu
 always_show_help.enabled = true
+# Confirm before quitting the application
 confirm_quit.enabled = false
 
 [style]
-# fg / bg can be either of:
+# Foreground (fg) and Background (bg) color options:
 # - a hex value: "#707070"
 # - an ansi color name: "light blue"
 # - an ansi color index: "255"
@@ -20,65 +22,111 @@ confirm_quit.enabled = false
 # section_header = { fg = "#808080" }
 # section_header = { bg = "light green", mods = "UNDERLINED|ITALIC" }
 
+# Style for section headers
 section_header.fg = "yellow"
+# Style for file headers
 file_header.fg = "magenta"
+# Style for hunk headers
 hunk_header.fg = "blue"
 
+# Style for added lines
 line_added.fg = "green"
+# Style for removed lines
 line_removed.fg = "red"
+# Style for highlighted changed lines
 line_highlight.changed.mods = "BOLD"
+# Style for highlighted unchanged lines
 line_highlight.unchanged.mods = "DIM"
 
 # You may want to set `selection_area.bg` to a nice background color.
 # Looks horrible with regular terminal colors, so is therefore not set.
 
+# Style for new tags in diff highlights
 diff_highlight.tag_new = { fg = "green", mods = "BOLD" }
+# Style for unchanged old lines in diff highlights
 diff_highlight.unchanged_old = { mods = "DIM" }
+# Style for unchanged new lines in diff highlights
 diff_highlight.unchanged_new = { mods = "DIM" }
+# Style for changed old lines in diff highlights
 diff_highlight.changed_old = { fg = "red" }
+# Style for changed new lines in diff highlights
 diff_highlight.changed_new = { fg = "green" }
 
+# Enable syntax highlighting
 syntax_highlight.enabled = true
+# Style for attributes in syntax highlighting
 syntax_highlight.attribute = { fg = "yellow" }
+# Style for comments in syntax highlighting
 syntax_highlight.comment = { fg = "gray" }
+# Style for built-in constants in syntax highlighting
 syntax_highlight.constant_builtin = {}
+# Style for constants in syntax highlighting
 syntax_highlight.constant = {}
+# Style for constructors in syntax highlighting
 syntax_highlight.constructor = {}
+# Style for embedded code in syntax highlighting
 syntax_highlight.embedded = {}
+# Style for built-in functions in syntax highlighting
 syntax_highlight.function_builtin = { fg = "cyan" }
+# Style for functions in syntax highlighting
 syntax_highlight.function = { fg = "blue" }
+# Style for keywords in syntax highlighting
 syntax_highlight.keyword = { fg = "magenta" }
+# Style for numbers in syntax highlighting
 syntax_highlight.number = {}
+# Style for modules in syntax highlighting
 syntax_highlight.module = { fg = "cyan" }
+# Style for properties in syntax highlighting
 syntax_highlight.property = {}
+# Style for operators in syntax highlighting
 syntax_highlight.operator = {}
+# Style for bracket punctuation in syntax highlighting
 syntax_highlight.punctuation_bracket = {}
+# Style for delimiter punctuation in syntax highlighting
 syntax_highlight.punctuation_delimiter = {}
+# Style for special strings in syntax highlighting
 syntax_highlight.string_special = { fg = "yellow" }
+# Style for strings in syntax highlighting
 syntax_highlight.string = { fg = "yellow" }
+# Style for tags in syntax highlighting
 syntax_highlight.tag = {}
+# Style for types in syntax highlighting
 syntax_highlight.type = { fg = "yellow" }
+# Style for built-in types in syntax highlighting
 syntax_highlight.type_builtin = { fg = "yellow" }
+# Style for built-in variables in syntax highlighting
 syntax_highlight.variable_builtin = {}
+# Style for parameter variables in syntax highlighting
 syntax_highlight.variable_parameter = {}
 
+# Style for the cursor
 cursor = { symbol = "▌", fg = "blue" }
+# Style for the selection bar
 selection_bar = { symbol = "▌", fg = "blue", mods = "DIM" }
+# Style for the selection line
 selection_line = { mods = "BOLD" }
 # You may want to set `selection_area.bg` to a nice background color.
 # Looks horrible with regular terminal colors, so is therefore not set.
 selection_area.bg = "reset"
 
+# Style for commit hashes
 hash = { fg = "yellow" }
+# Style for branch names
 branch = { fg = "green" }
+# Style for remote names
 remote = { fg = "red" }
+# Style for tags
 tag = { fg = "yellow" }
 
+# Style for commands
 command = { fg = "blue", mods = "BOLD" }
+# Style for active arguments
 active_arg = { fg = "light red", mods = "BOLD" }
+# Style for hotkeys
 hotkey = { fg = "magenta" }
 
 [bindings]
+# Key bindings for the root context
 root.quit = ["q", "<esc>"]
 root.refresh = ["g"]
 root.toggle_section = ["<tab>"]
@@ -98,14 +146,17 @@ root.stage = ["s"]
 root.unstage = ["u"]
 root.copy_hash = ["y"]
 
+# Key bindings for the help menu
 root.help_menu = ["h"]
 help_menu.quit = ["q", "<esc>"]
 
+# Key bindings for the branch menu
 root.branch_menu = ["b"]
 branch_menu.checkout = ["b"]
 branch_menu.checkout_new_branch = ["c"]
 branch_menu.quit = ["q", "<esc>"]
 
+# Key bindings for the commit menu
 root.commit_menu = ["c"]
 commit_menu.--all = ["-a"]
 commit_menu.--allow-empty = ["-e"]
@@ -119,6 +170,7 @@ commit_menu.commit_fixup = ["f"]
 commit_menu.commit_instant_fixup = ["F"]
 commit_menu.quit = ["q", "<esc>"]
 
+# Key bindings for the fetch menu
 root.fetch_menu = ["f"]
 fetch_menu.--prune = ["-p"]
 fetch_menu.--tags = ["-t"]
@@ -126,6 +178,7 @@ fetch_menu.fetch_all = ["a"]
 fetch_menu.quit = ["q", "<esc>"]
 fetch_menu.fetch_elsewhere = ["e"]
 
+# Key bindings for the log menu
 root.log_menu = ["l"]
 log_menu.log_current = ["l"]
 log_menu.log_other = ["o"]
@@ -133,12 +186,14 @@ log_menu.quit = ["q", "<esc>"]
 log_menu.-n = ["-n"]
 log_menu.--grep = ["-F"]
 
+# Key bindings for the pull menu
 root.pull_menu = ["F"]
 pull_menu.--rebase = ["-r"]
 pull_menu.pull = ["p"]
 pull_menu.pull_elsewhere = ["e"]
 pull_menu.quit = ["q", "<esc>"]
 
+# Key bindings for the push menu
 root.push_menu = ["P"]
 push_menu.--force-with-lease = ["-f"]
 push_menu.--force = ["-F"]
@@ -148,6 +203,7 @@ push_menu.push = ["p"]
 push_menu.push_elsewhere = ["e"]
 push_menu.quit = ["q", "<esc>"]
 
+# Key bindings for the rebase menu
 root.rebase_menu = ["r"]
 rebase_menu.--keep-empty = ["-k"]
 rebase_menu.--preserve-merges = ["-p"]
@@ -163,12 +219,14 @@ rebase_menu.rebase_elsewhere = ["e"]
 rebase_menu.rebase_autosquash = ["f"]
 rebase_menu.quit = ["q", "<esc>"]
 
+# Key bindings for the reset menu
 root.reset_menu = ["X"]
 reset_menu.reset_soft = ["s"]
 reset_menu.reset_mixed = ["m"]
 reset_menu.reset_hard = ["h"]
 reset_menu.quit = ["q", "<esc>"]
 
+# Key bindings for the revert menu
 root.revert_menu = ["V"]
 revert_menu.--edit = ["-e"]
 revert_menu.--no-edit = ["-E"]
@@ -178,6 +236,7 @@ revert_menu.revert_continue = ["c"]
 revert_menu.revert_commit = ["V"]
 revert_menu.quit = ["q", "<esc>"]
 
+# Key bindings for the stash menu
 root.stash_menu = ["z"]
 stash_menu.--all = ["-a"]
 stash_menu.--include-untracked = ["-u"]
