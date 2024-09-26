@@ -126,7 +126,7 @@ TMPPREFIX="${TMPDIR%/}/zsh"
 typeset -gU cdpath fpath mailpath manpath path
 
 # Define global variables
-default_proxy="http://127.0.0.1:7890"
+default_proxy="http://127.0.0.1:2333"
 no_proxy_list="127.0.0.1,localhost,auiag.corp,iag.com.au,devlabs,192.168.2.0/24,localaddress,.localdomain.com,192.168.99.100,192.168.10.100,iagcloud.net,192.168.49.2,DB8B4788812536AC063DABFD95299A5C.gr7.ap-southeast-2.eks.amazonaws.com"
 # Function to set proxy environment variables
 set_proxy_vars() {
