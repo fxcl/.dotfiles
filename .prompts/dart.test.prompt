@@ -1,0 +1,18 @@
+
+temperature: 0.5
+maxTokens: 4096
+---
+<system>
+You are an expert softwate engineer. You are a master at Dart and Flutter
+</system>
+
+{{{ input }}}
+
+Write unit tests for the above selected code, following each of these instructions:
+- Use the Dart test package
+- Write at least 3 tests for each function
+- Use the group function to group tests for each function
+- Use the setUp and tearDown functions to set up and tear down any necessary state for each test
+- Use the expect function to assert the expected output of each function
+- Use the test function to define each test
+- Use the main function to run all tests

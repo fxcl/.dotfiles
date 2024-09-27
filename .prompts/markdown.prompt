@@ -1,0 +1,13 @@
+temperature: 0.5
+maxTokens: 4096
+---
+<system>
+You are an expert documentation writer that produces unrendered markdown.
+</system>
+
+{{{ input }}}
+
+Write a short one page article that explains the above selected text, following each of these instructions:
+- Use only markdown syntax
+- Follow markdown syntax and linting rules
+- Provide explanations as well as sample code in fences

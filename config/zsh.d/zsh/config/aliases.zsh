@@ -28,6 +28,7 @@ alias nu="npm uninstall"
 alias nr="npm run"
 alias nrp="npm run prisma:studio"
 alias toolsup="echo $'Proto upgrade' ; proto upgrade ;"
+alias gdcm="ask -p commit"
 
 # https://github.com/neomutt/neomutt/issues/4058#issuecomment-1751682305
 alias neomutt="TERM=xterm-direct neomutt"

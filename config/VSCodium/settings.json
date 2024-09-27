@@ -535,7 +535,7 @@
     ],
     "path": "protoc"
   },
-  "http.proxy": "127.0.0.1:2333",
+  // "http.proxy": "127.0.0.1:2333",
   "http.proxySupport": "on",
   "javascript.updateImportsOnFileMove.enabled": "always",
   "typescript..enabled": "never",
