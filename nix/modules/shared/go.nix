@@ -16,12 +16,12 @@ in {
   config = with lib;
     mkIf cfg.enable {
       my.env = rec {
-        GOPATH = "$XDG_DATA_HOME/go";
-        GOBIN = "${GOPATH}/bin";
-        GOCACHE = "${GOPATH}/cache";
-        GOROOT = "${pkgs.go_1_22}/share/go";
+        #GOPATH = "$XDG_DATA_HOME/go";
+        #GOBIN = "${GOPATH}/bin";
+        #GOCACHE = "${GOPATH}/cache";
+        #GOROOT = "${pkgs.go_1_22}/share/go";
         GOPROXY = "https://goproxy.cn,direct";
-        GO111MODULE = "on";
+        #GO111MODULE = "on";
         # GOSUMDB = "goproxy.cn/sumdb/sum.golang.org";
         # GOSUMDB = "off";
       };
@@ -30,7 +30,7 @@ in {
       my.user = {
         packages = with pkgs;
           [
-            # go_1_22
+            # go_1_23
             # godef
             # gopls
             # golint
