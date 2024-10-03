@@ -28,6 +28,7 @@ alias nu="npm uninstall"
 alias nr="npm run"
 alias nrp="npm run prisma:studio"
 alias toolsup="echo $'Proto upgrade' ; proto upgrade ;"
+alias gdcm="git diff HEAD | ask cm"
 
 # https://github.com/neomutt/neomutt/issues/4058#issuecomment-1751682305
 alias neomutt="TERM=xterm-direct neomutt"
@@ -67,7 +68,7 @@ fi
 if [[ "$(uname)" == Darwin* ]]; then
   alias finder='open -a Finder ./'
   alias flushdns='sudo killall -HUP mDNSResponder'
-  alias code="/Applications/Visual\ Studio\ Code\ -\ Insiders.app/Contents/Resources/app/bin/code"
+  alias code="/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code"
   alias curl='curl --keepalive-time 60'
   alias zed='/Applications/Zed.app/Contents/MacOS/zed'
 
