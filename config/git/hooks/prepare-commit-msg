@@ -1,0 +1,99 @@
+#!/bin/bash
+
+COMMIT_FILE=$1
+
+# Collecting changes
+CHANGES=$(git diff HEAD | sed 's/"/\\"/g') # Escaping double quotes
+
+# Reading the prompt from git config
+PROJECT_GOAL=$(git config --get commit.goal)
+
+# Setting a default prompt if none is configured
+if [ -z "$PROJECT_GOAL" ]; then
+  PROJECT_GOAL="develop new software"
+fi
+
+# Define commit types with corresponding emojis
+declare -A TYPES
+TYPES=(
+  ["feat"]="🌟 feat"
+  ["fix"]="🐞 fix"
+  ["doc"]="📖 doc"
+  ["docs"]="📖 docs"
+  ["chore"]="💄 chore"
+  ["style"]="🎨 style"
+  ["type"]="🆎 type"
+  ["test"]="⛑ test"
+  ["refactor"]="🐝 refactor"
+  ["website"]="🌍 website"
+  ["revert"]="🔙 revert"
+  ["clean"]="💊 clean"
+  ["perf"]="📈 perf"
+  ["ci"]="💢 ci"
+  ["build"]="🧯 build"
+)
+
+# Create a string of commit types and emojis for the prompt
+TYPE_EMOJI_LIST=""
+for key in "${!TYPES[@]}"; do
+  TYPE_EMOJI_LIST+="\n- ${TYPES[$key]}: ${key}"
+done
+
+# Construct the prompt with specified format
+PROMPT="You are a smart git commit message creator software. Your task is to generate Git commit messages that follow a specific format with predefined types and corresponding emojis. The project goal is to $PROJECT_GOAL. The commit messages you generate aim to explain why the changes were introduced.
+
+### Commit Message Format:
+\`<emoji> \`<type>\`(<scope>): <short summary>\`
+
+- **\<emoji\>**: Corresponding emoji for the commit type.
+- **\<type\>**: One of the predefined commit types.
+- **\<scope\>**: The area of the codebase affected (optional).
+- **\<short summary\>**: A concise description of the changes, in present tense, not exceeding 72 characters.
+
+### Commit Types and Emojis:
+$TYPE_EMOJI_LIST
+
+### Changes:
+$CHANGES
+
+### Instructions:
+1. **Start with one of the specified emojis and commit types.**
+2. **Include an optional scope in parentheses.**
+3. **Provide a short summary no longer than 72 characters.**
+4. **Follow with a detailed description after two newline characters.**
+5. **Ensure the detailed message is well-structured and each line does not exceed 72 characters.**
+
+### Example:
+🌟 \`feat(Button): add type props\`
+
+Add a new \`type\` property to the Button component to allow for different button styles.
+
+"
+
+# Use jq to safely turn it into a JSON string
+JSON_ENCODED_PROMPT=$(jq -Rn --arg var "$PROMPT" '$var')
+
+# Sending request to OpenAI and getting the message
+MESSAGE_TEXT=$(
+  curl -s -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $SILICONFLOW_API_KEY" \
+    -d @- https://api.siliconflow.cn/v1/chat/completions <<JSON | jq -r '.choices[0].message.content'
+{
+    "model": "deepseek-ai/DeepSeek-V2.5",
+    "messages": [{"role": "system", "content": $JSON_ENCODED_PROMPT}],
+    "max_tokens": 200
+}
+JSON
+)
+
+# Extracting and formatting the summary and body
+SUMMARY=$(echo "$MESSAGE_TEXT" | head -n1)
+BODY=$(echo "$MESSAGE_TEXT" | sed '1d' | fold -s -w 72)
+
+# Constructing the commit message
+echo "$SUMMARY" >"$COMMIT_FILE"
+echo "" >>"$COMMIT_FILE"
+echo "$BODY" >>"$COMMIT_FILE"
+
+# Optionally, perform the commit (uncomment the following line if desired)
+# git commit -F "$COMMIT_FILE"
