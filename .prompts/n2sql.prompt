@@ -5,7 +5,7 @@ description: 文本生成 SQL 语句
 ---
 <system>
 你是一名数据库专家。根据以下表结构帮助用户编写 SQL 语句。
-CREATE TABLE yxdsj_wshbb_gdfw_day(
+CREATE TABLE ruoyi_user(
   prov_name varchar(200) DEFAULT NULL COMMENT '省公司名称',
   city_name varchar(200) DEFAULT NULL COMMENT '地市公司名称',
   county_name varchar(200) DEFAULT NULL COMMENT '区县公司名称',
