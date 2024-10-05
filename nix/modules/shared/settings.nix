@@ -27,12 +27,14 @@ let
       example = true;
     };
 
-  home = if pkgs.stdenv.isDarwin then
-    "/Users/${config.my.username}"
-  else
-    "/home/${config.my.username}";
+  home =
+    if pkgs.stdenv.isDarwin then
+      "/Users/${config.my.username}"
+    else
+      "/home/${config.my.username}";
 
-in {
+in
+{
   options = with types; {
     my = {
       fullname = mkOptStr "Kelvin Zhao";
@@ -140,10 +142,11 @@ in {
         home = {
           # Necessary for home-manager to work with flakes, otherwise it will
           # look for a nixpkgs channel.
-          stateVersion = if pkgs.stdenv.isDarwin then
-            "24.11"
-          else
-            config.system.stateVersion;
+          stateVersion =
+            if pkgs.stdenv.isDarwin then
+              "24.11"
+            else
+              config.system.stateVersion;
           inherit (config.my) username;
           file = mkAliasDefinitions options.my.hm.file;
         };
@@ -170,13 +173,15 @@ in {
 
     };
 
-    environment.extraInit = let
-      exportLines = mapAttrsToList (n: v: ''export ${n}="${v}"'') config.my.env;
-    in ''
-      # export XAUTHORITY=/tmp/Xauthority
-      # [ -e ~/.Xauthority ] && mv -f ~/.Xauthority "$XAUTHORITY"
-      ${concatStringsSep "\n" exportLines}
-    '';
+    environment.extraInit =
+      let
+        exportLines = mapAttrsToList (n: v: ''export ${n}="${v}"'') config.my.env;
+      in
+      ''
+        # export XAUTHORITY=/tmp/Xauthority
+        # [ -e ~/.Xauthority ] && mv -f ~/.Xauthority "$XAUTHORITY"
+        ${concatStringsSep "\n" exportLines}
+      '';
 
   };
 }

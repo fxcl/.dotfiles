@@ -4,7 +4,8 @@ let
 
   cfg = config.my.modules.zellij;
 
-in {
+in
+{
   options = with lib; {
     my.modules.zellij = {
       enable = mkEnableOption ''

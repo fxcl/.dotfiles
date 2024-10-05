@@ -20,7 +20,8 @@ let
       #python-olm
     ]);
 
-in pkgs.mkShell {
+in
+pkgs.mkShell {
   name = "python-environment";
   buildInputs = [ pkgs.stdenv.cc.cc.lib env-python env-python-with-packages ];
   shellHook = ''

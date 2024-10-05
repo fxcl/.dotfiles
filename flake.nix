@@ -173,7 +173,8 @@
               # pragmatapro = prev.callPackage ./nix/pkgs/pragmatapro.nix { };
               # zk = prev.callPackage ./nix/pkgs/zk.nix { source = inputs.zk; };
               next-prayer = prev.callPackage
-                ./config/tmux/scripts/next-prayer/next-prayer.nix { };
+                ./config/tmux/scripts/next-prayer/next-prayer.nix
+                { };
 
               #pure-prompt = prev.pure-prompt.overrideAttrs (old: {
               #patches = (old.patches or [ ]) ++ [ ./nix/hosts/pure-zsh.patch ];
@@ -185,57 +186,64 @@
               let
                 pkgsDarwin =
                   import inputs.darwin-nixpkgs { inherit (prev) system; };
-              in prev.lib.optionalAttrs prev.stdenv.hostPlatform.isDarwin {
+              in
+              prev.lib.optionalAttrs prev.stdenv.hostPlatform.isDarwin {
                 inherit (pkgsDarwin) swift;
               })
             # nur.overlay
           ];
         };
 
-        system.stateVersion = if pkgs.stdenv.isDarwin then
-          4
-        else
-          "24.11"; # Did you read the comment?
+        system.stateVersion =
+          if pkgs.stdenv.isDarwin then
+            4
+          else
+            "24.11"; # Did you read the comment?
 
         home-manager.users."${config.my.username}" = {
           home = {
             # Necessary for home-manager to work with flakes, otherwise it will
             # look for a nixpkgs channel.
-            stateVersion = if pkgs.stdenv.isDarwin then
-              "24.11"
-            else
-              config.system.stateVersion;
+            stateVersion =
+              if pkgs.stdenv.isDarwin then
+                "24.11"
+              else
+                config.system.stateVersion;
           };
         };
       };
 
-      darwinConfigurations = mapHosts (host: system:
-        (inputs.darwin.lib.darwinSystem {
-          # This gets passed to modules as an extra argument
-          specialArgs = { inherit inputs; };
-          inherit system;
-          modules = [
-            inputs.home-manager.darwinModules.home-manager
-            inputs.nix-homebrew.darwinModules.nix-homebrew
-            ./nix/modules/darwin
-            ./nix/modules/shared
-            sharedConfiguration
-            ./nix/hosts/${host}.nix
-          ];
-        })) darwinHosts;
+      darwinConfigurations = mapHosts
+        (host: system:
+          (inputs.darwin.lib.darwinSystem {
+            # This gets passed to modules as an extra argument
+            specialArgs = { inherit inputs; };
+            inherit system;
+            modules = [
+              inputs.home-manager.darwinModules.home-manager
+              inputs.nix-homebrew.darwinModules.nix-homebrew
+              ./nix/modules/darwin
+              ./nix/modules/shared
+              sharedConfiguration
+              ./nix/hosts/${host}.nix
+            ];
+          }))
+        darwinHosts;
 
-      nixosConfigurations = mapHosts (host: system:
-        (inputs.nixpkgs.lib.nixosSystem {
-          # This gets passed to modules as an extra argument
-          specialArgs = { inherit inputs; };
-          inherit system;
-          modules = [
-            inputs.home-manager.nixosModules.home-manager
-            ./nix/modules/shared
-            sharedConfiguration
-            ./nix/hosts/${host}
-          ];
-        })) linuxHosts;
+      nixosConfigurations = mapHosts
+        (host: system:
+          (inputs.nixpkgs.lib.nixosSystem {
+            # This gets passed to modules as an extra argument
+            specialArgs = { inherit inputs; };
+            inherit system;
+            modules = [
+              inputs.home-manager.nixosModules.home-manager
+              ./nix/modules/shared
+              sharedConfiguration
+              ./nix/hosts/${host}
+            ];
+          }))
+        linuxHosts;
 
       # @TODO: move the logic inside ./install here
       devShells = forAllSystems (system:
@@ -252,13 +260,15 @@
           };
         });
 
-    in {
+    in
+    {
       inherit darwinConfigurations nixosConfigurations;
     } // mapHosts
-    # for convenience
-    # nix build './#darwinConfigurations.pandoras-box.system'
-    # vs
-    # nix build './#pandoras-box'
-    # Move them to `outputs.packages.<system>.name`
-    (host: _: self.darwinConfigurations.${host}.system) darwinHosts;
+      # for convenience
+      # nix build './#darwinConfigurations.pandoras-box.system'
+      # vs
+      # nix build './#pandoras-box'
+      # Move them to `outputs.packages.<system>.name`
+      (host: _: self.darwinConfigurations.${host}.system)
+      darwinHosts;
 }

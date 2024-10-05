@@ -4,7 +4,8 @@ let
 
   cfg = config.my.modules.git;
 
-in {
+in
+{
   options = with lib; {
     my.modules.git = {
       enable = mkEnableOption ''

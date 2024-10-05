@@ -19,7 +19,8 @@ let
     '';
   };
 
-in {
+in
+{
   options = with lib; {
     my.modules.emacs = {
       enable = mkEnableOption ''

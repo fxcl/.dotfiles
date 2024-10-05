@@ -11,7 +11,8 @@ let
   darwinPackages = with pkgs; [ openssl gawk gnused coreutils findutils ];
   nixosPackages = with pkgs; [ dwm dmenu xclip ];
 
-in {
+in
+{
   options = with lib; {
     my.modules.shells = {
       enable = mkEnableOption ''
@@ -148,7 +149,8 @@ in {
                 # word-wrap at width
                 width: 80'';
 
-            in lib.mkMerge [
+            in
+            lib.mkMerge [
               (if pkgs.stdenv.isDarwin then {
                 "Library/Preferences/glow/glow.yml".text = glow_config;
               } else {
