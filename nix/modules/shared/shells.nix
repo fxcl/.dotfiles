@@ -98,7 +98,7 @@ in
 
         my = {
           user = {
-            shell = if pkgs.stdenv.isDarwin then [ pkgs.zsh ] else pkgs.zsh;
+            shell = pkgs.zsh;
             packages = with pkgs; [
               nixfmt-classic
               tealdeer # rust implementation of `tldr`
