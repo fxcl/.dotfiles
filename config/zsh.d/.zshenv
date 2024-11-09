@@ -31,6 +31,15 @@ if command -v eza &>/dev/null; then
   export EZA_COLORS="ur=35;nnn:gr=35;nnn:tr=35;nnn:uw=34;nnn:gw=34;nnn:tw=34;nnn:ux=36;nnn:due=36;nnn:gx=36;nnn:tx=36;nnn:uu=36;nnn:uu=38;5;235:da=38;5;238"
 fi
 
+# Canonical hex dump; some systems have this symlinked
+command -v hd >/dev/null || alias hd="hexdump -C"
+
+# macOS has no `md5sum`, so use `md5` as a fallback
+command -v md5sum >/dev/null || alias md5sum="md5"
+
+# macOS has no `sha1sum`, so use `shasum` as a fallback
+command -v sha1sum >/dev/null || alias sha1sum="shasum"
+
 ############### Telemetry
 export DO_NOT_TRACK=1 # Future proof? https://consoledonottrack.com/
 export HOMEBREW_NO_ANALYTICS=1
@@ -191,6 +200,39 @@ docker-rmi() {
   else
     command docker rmi "$@"
   fi
+}
+
+# `tre` is a shorthand for `tree` with hidden files and color enabled, ignoring
+# the `.git` directory, listing directories first. The output gets piped into
+# `less` with options to preserve color and line numbers, unless the output is
+# small enough for one screen.
+function tre() {
+  tree -aC -I '.git|node_modules|bower_components' --dirsfirst "$@" | less -FRNX
+}
+
+# Go to main branch and get latest code
+mm() {
+  local main_branch=$(git rev-parse --abbrev-ref HEAD)
+  if [[ "$main_branch" != "main" && "$main_branch" != "master" ]]; then
+    main_branch=$(git remote show origin | sed -n '/HEAD branch/s/.*: //p')
+  fi
+  git stash && git checkout $main_branch && git pull --rebase origin $main_branch
+}
+
+# Open the listed files or directories in Visual Studio Code
+open_in_vscode() {
+  if [ $# -eq 0 ]; then
+    echo "Usage: open_in_vscode <directory_or_file> [<directory_or_file> ...]"
+    return 1
+  fi
+
+  for item in "$@"; do
+    if [ -e "$item" ]; then
+      code "$item"
+    else
+      echo "Warning: '$item' does not exist. Skipping."
+    fi
+  done
 }
 
 # enter an interactive chat conversation using mods
