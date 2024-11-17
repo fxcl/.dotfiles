@@ -38,8 +38,8 @@ in {
               <servers>
                 <server>
                   <id>central</id>
-                  <username>UU5CiLHH</username>
-                  <password>IECTu1hm+IaH6odmxccP7huObVFgjkJ/yfs5E7QveE+F</password>
+                  <username>FMQ1x5XJ</username>
+                  <password>DYB5MitSne+xePP9UKDa7IGIbOpg6/IOwz691sK6Meeh</password>
                 </server>
               </servers>
                 <mirrors>

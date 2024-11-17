@@ -19,7 +19,7 @@
   description = "NixOS and Darwin configurations";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/release-24.11";
 
     # Home inputs
     home-manager = {

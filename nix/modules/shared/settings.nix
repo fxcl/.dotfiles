@@ -183,5 +183,7 @@ in
         ${concatStringsSep "\n" exportLines}
       '';
 
+    # Suppress the warning about mismatched Home Manager and Nixpkgs versions
+    home.enableNixpkgsReleaseCheck = true;
   };
 }
