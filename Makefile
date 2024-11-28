@@ -11,7 +11,7 @@ format:
 	nixpkgs-fmt ./
 
 deploy:
-	NIX_BUILD_FLAGS="--no-check" nix build .#darwinConfigurations.tony.system \
+	NIX_BUILD_FLAGS="--no-check" nix build .#darwinConfigurations.tony.system  --show-trace\
 	  --extra-experimental-features 'nix-command flakes'
 	./result/sw/bin/darwin-rebuild switch --flake .#tony
 

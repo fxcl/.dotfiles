@@ -105,6 +105,7 @@ in
           "tree-sitter"
           #"shortcat"
           "typos-cli"
+          "colima"
           "charmbracelet/tap/mods"
           # {
           #   name = "emacs-mac";
