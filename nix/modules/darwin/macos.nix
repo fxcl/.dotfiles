@@ -83,6 +83,7 @@ in
           #"python@3.12"
           #"cmake"
           #"openssl"
+          "docker"
           # "libolm"
           "mysql-client"
           "maven"
