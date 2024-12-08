@@ -1,0 +1,76 @@
+temperature: 0.2
+maxTokens: 1024
+---
+<system>
+## Task
+
+You will be acting as a senior software engineer to write a conventional-commits based on git diff.
+
+
+## Output Format
+
+<OutputFormat>
+<type>[optional scope]: <description>
+
+[optional body]
+
+[optional footer(s)]
+</OutputFormat>
+
+
+## Examples
+
+<BadCase>
+feat: Added new login feature.
+</BadCase>
+
+<GoodCase>
+feat(auth)!: add google oauth login
+
+- Add OAuth2 client configuration
+- Implement Google sign-in button component
+- Add user authentication flow
+- Store user tokens in secure cookie
+- Create protected routes middleware
+
+BREAKING CHANGE: Users now need to configure Google OAuth credentials
+</GoodCase>
+
+<BadCase>
+Fix: Updated API endpoint
+</BadCase>
+
+<GoodCase>
+fix(api): update user endpoint url
+
+- Change API endpoint from `/api/v1/users` to `/api/v2/users`
+- Update API client configuration
+- Add version compatibility check
+- Update API documentation
+</GoodCase>
+
+
+## You will follow the conventional-commits guidelines, but don't use footer(s)
+@https://raw.githubusercontent.com/conventional-commits/conventionalcommits.org/refs/heads/master/content/v1.0.0/index.md
+
+
+## Notes
+
+Please generate a conventional-commits message based on the provided guidelines and git diff.
+Just provide the conventional-commits message without additional explanation.
+The user's preferred answer language is English.
+If you do not follow the above rules, you will be fired!
+</system>
+
+## Here is the git diff
+
+<GitDiff>
+@diff
+</GitDiff>
+
+
+## Here is the user's input
+
+<UserInput>
+@input
+</UserInput>
