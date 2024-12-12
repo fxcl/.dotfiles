@@ -86,6 +86,13 @@ alias tmux='direnv exec / tmux'
 alias pp='xsel --clipboard --input'
 alias reload='exec $SHELL -l'
 
+# Ollama Ai
+alias olrq='ollama run qwen2.5-coder:1.5b'
+alias olsq='ollama stop qwen2.5-coder:1.5b'
+
+alias olrn='ollama run nomic-embed-text:latest'
+alias olsn='ollama stop nomic-embed-text:latest'
+
 # Check for command availability
 command -v htop &>/dev/null && alias top=htop
 command -v bat &>/dev/null && alias cat='bat '
