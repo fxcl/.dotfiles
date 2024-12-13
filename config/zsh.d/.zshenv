@@ -164,43 +164,37 @@ proxy_off() {
   echo "Proxy environment variables cleared."
 }
 
+# Start Colima & docker
+IS_COLIMA_NOT_RUNNING=$(colima status 2>&1 | grep "not running" || true)
+if [ "$IS_COLIMA_NOT_RUNNING" ]; then
+  echo "Start Colima VM"
+  colima start --runtime docker --cpu 4 --memory 8
+else
+  echo "Skip starting of Colima VM, because already running"
+fi
+
+# IS_COLIMA_AMD64_EMULATOR_RUNNING=`docker run --privileged --rm tonistiigi/binfmt | grep linux/amd64 || true`
+# if [ "$IS_COLIMA_AMD64_EMULATOR_RUNNING" ]
+# then
+#   echo "Skip starting of amd64 emulator, because already running"
+# else
+#   echo "Start amd64 emulator in docker"
+#   docker run --privileged --rm tonistiigi/binfmt --install amd64
+# fi
+
 # https://www.m3tech.blog/entry/dotfiles-bonsai
-# [[ --
-docker() {
-  if [ "$1" = "compose" ] || ! command -v "docker-$1" >/dev/null; then
-    command docker "${@:1}"
-  else
-    "docker-$1" "${@:2}"
-  fi
+dockerrm() {
+  docker container stop $(docker container ls -aq)
+  docker ps -aq | xargs docker rm -f
+  docker container prune -f
+  docker images -aq | xargs docker rmi -f
+  docker image prune -a -f
+  docker volume prune -f
+  docker network prune -f
+  docker system prune -a -f
 }
 
-# docker clean
-docker-clean() {
-  command docker ps -aqf status=exited | xargs -r docker rm --
-}
-
-# docker cleani
-docker-cleani() {
-  command docker images -qf dangling=true | xargs -r docker rmi --
-}
-
-# docker rm
-docker-rm() {
-  if [ "$#" -eq 0 ]; then
-    command docker ps -a | fzf --exit-0 --multi --header-lines=1 | awk '{ print $1 }' | xargs -r docker rm --
-  else
-    command docker rm "$@"
-  fi
-}
-
-# docker rmi
-docker-rmi() {
-  if [ "$#" -eq 0 ]; then
-    command docker images | fzf --exit-0 --multi --header-lines=1 | awk '{ print $3 }' | xargs -r docker rmi --
-  else
-    command docker rmi "$@"
-  fi
-}
+alias dockerrm="dockerrm"
 
 # `tre` is a shorthand for `tree` with hidden files and color enabled, ignoring
 # the `.git` directory, listing directories first. The output gets piped into

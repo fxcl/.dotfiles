@@ -83,7 +83,10 @@ in
           #"python@3.12"
           #"cmake"
           #"openssl"
+          "colima"
           "docker"
+          "docker-compose"
+          "qemu"
           # "libolm"
           "mysql-client"
           "maven"
@@ -106,7 +109,6 @@ in
           "tree-sitter"
           #"shortcat"
           "typos-cli"
-          "colima"
           "charmbracelet/tap/mods"
           # {
           #   name = "emacs-mac";
