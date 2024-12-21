@@ -168,7 +168,9 @@ proxy_off() {
 IS_COLIMA_NOT_RUNNING=$(colima status 2>&1 | grep "not running" || true)
 if [ "$IS_COLIMA_NOT_RUNNING" ]; then
   echo "Start Colima VM"
-  colima start --runtime docker --cpu 4 --memory 8
+  # colima start --runtime docker --cpu 4 --memory 8
+  # colima start --arch x86_64 --cpu 2 --memory 8 --vm-type qemu
+  colima start --cpu 2 --memory 8 --arch x86_64 --vm-type vz --mount-type=virtiofs --network-address
 else
   echo "Skip starting of Colima VM, because already running"
 fi
