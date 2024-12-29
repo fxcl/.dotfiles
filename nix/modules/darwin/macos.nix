@@ -36,7 +36,7 @@ in
         # `brew install --cask`
         casks = [
           "swiftdefaultappsprefpane"
-          "iina"
+          #"iina"
           "mpv"
           # "keepingyouawake"
           "chai"
@@ -124,7 +124,8 @@ in
           #     "with-unlimited-select"
           #   ];
           # }
-
+          "dprint"
+          "swift-format"
         ];
 
         masApps = {

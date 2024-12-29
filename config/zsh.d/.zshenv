@@ -215,6 +215,19 @@ mm() {
   git stash && git checkout $main_branch && git pull --rebase origin $main_branch
 }
 
+# venv() {
+#   echo "loading venv"
+#   if [ ! -d '.venv' ]; then
+#     python -m venv .venv
+#     . .venv/bin/activate
+#     red "venv created and loaded"
+
+#   else
+#     . .venv/bin/activate
+#     echo "venv loaded"
+#   fi
+# }
+
 # Open the listed files or directories in Visual Studio Code
 open_in_vscode() {
   if [ $# -eq 0 ]; then

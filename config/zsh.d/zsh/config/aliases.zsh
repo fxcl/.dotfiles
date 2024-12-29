@@ -115,6 +115,32 @@ else
   alias formatJSON='python -m json.tool'
 fi
 
+# check size
+alias \
+  dcap="df -h /" \
+  sizeof="du -sh"
+
+# counting folders and files
+alias count="ls -a | wc -l"
+
+# python aliases
+alias \
+  cvenv='[ ! -d .venv ] && python -m venv .venv; . ./.venv/bin/activate' \
+  dvenv='type deactivate >/dev/null && deactivate' \
+  rvenv='type deactivate >/dev/null; deactivate; rm -rf .venv' \
+  pip='python -m pip' \
+  upip='pip --disable-pip-version-check list --outdated --format=json | jq -r ".[].name" | xargs -I{} pip install --no-cache-dir -U "{}"' \
+  pyprofile='python -m cProfile -o profile' \
+  pytest='python -m pytest'
+
+# network
+alias \
+  check-ciphers="nmap -sV --script ssl-enum-ciphers"
+
+## commands
+alias \
+  dpsi='docker ps --format="{{.Image}} -> {{.Names}}"'
+
 if [[ "$(uname)" == linux* ]]; then
   alias chmod='chmod --preserve-root -v'
   alias chown='chown --preserve-root -v'

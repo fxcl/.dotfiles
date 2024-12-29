@@ -1,0 +1,96 @@
+// SPDX-License-Identifier: MIT
+// Copyright 2023 Beslogic Inc.
+//
+// If using the `beslogic/json-like` preset with eslint-config-beslogic, use "dprint-json-like.json" instead.
+{
+  // https://dprint.dev/config/#global-configuration
+  "lineWidth": 100,
+  "indentWidth": 2,
+  "newLineKind": "auto",
+  "useTabs": false,
+  // https://dprint.dev/plugins/typescript/config/
+  "typescript": {
+    "quoteStyle": "preferSingle",
+    "quoteProps": "asNeeded",
+    "semiColons": "asi",
+    "arrowFunction.useParentheses": "preferNone",
+    "binaryExpression.linePerExpression": true,
+    // Not convinced yet
+    // "memberExpression.linePerExpression": true,
+    "typeLiteral.separatorKind": "comma",
+    "enumDeclaration.memberSpacing": "newLine",
+    "importDeclaration.forceSingleLine": true,
+    // conflicts with simple-import-sort/imports
+    "module.sortImportDeclarations": "maintain",
+    "module.sortExportDeclarations": "maintain"
+  },
+  // https://dprint.dev/plugins/json/config/
+  "json": {
+    "associations": [
+      "*.json",
+      "*.jsonc",
+      "*.json5",
+      "*.nswag",
+      "*.dmw"
+    ]
+  },
+  "yaml": {
+    "printWidth": 100,
+    "ignoreCommentDirective": "dprint-ignore"
+  },
+  "malva": {
+    "printWidth": 100,
+    "hexCase": "upper",
+    "hexColorLength": "long",
+    "operatorLinebreak": "before",
+    "trailingComma": true,
+    "formatComments": true,
+    "linebreakInPseudoParens": true,
+    "declarationOrder": "concentric",
+    "keyframeSelectorNotation": "keyword",
+    "selectorOverrideCommentDirective": "dprint-selector-override",
+    "ignoreCommentDirective": "dprint-ignore"
+  },
+  "markup": {
+    "printWidth": 100,
+    "formatComments": true,
+    "scriptIndent": true,
+    "styleIndent": true,
+    // TODO: Ask for a "selfClosing" shorthand
+    "component.selfClosing": true,
+    "svg.selfClosing": true,
+    "mathml.selfClosing": true,
+    // Self-closing tags on non-void elements aren't valid pure HTML. Let framework-specific linters handle them
+    "html.normal.selfClosing": false,
+    "html.void.selfClosing": true,
+    // Shorthand styles unspecified since we don't use Vue, Svelte or Astro
+    "strictSvelteAttr": true,
+    "ignoreCommentDirective": "dprint-ignore"
+  },
+  "plugins": [
+    "https://plugins.dprint.dev/typescript-0.93.3.wasm",
+    "https://plugins.dprint.dev/json-0.19.4.wasm",
+    "https://plugins.dprint.dev/markdown-0.17.8.wasm",
+    "https://plugins.dprint.dev/toml-0.6.3.wasm",
+    "https://plugins.dprint.dev/g-plane/pretty_yaml-v0.5.0.wasm",
+    "https://plugins.dprint.dev/dockerfile-0.3.2.wasm",
+    "https://plugins.dprint.dev/g-plane/malva-v0.11.1.wasm",
+    "https://plugins.dprint.dev/g-plane/markup_fmt-v0.18.0.wasm"
+  ],
+  "excludes": [
+    "**/node_modules",
+    "**/*-lock.json",
+    "**/.yalc",
+    "**/coverage", // created on install by nx
+    "**/build",
+    "**/cache",
+    "**/dist",
+    "**/tmp",
+    "**/obj",
+    "**/.storybook/documentation.json",
+    "**/storybook-static",
+    // capacitor folders
+    "**/*/android/app",
+    "**/*/ios/App"
+  ]
+}
