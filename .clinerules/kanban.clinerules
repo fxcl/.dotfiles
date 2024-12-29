@@ -1,0 +1,91 @@
+# 🔄 Repository Requirements Definition Prompt
+
+## 🛠️ Environment Setup
+- GitHub CLI Configuration
+  - The `gh` command is assumed to be authenticated.
+  - Access to `https://github.com/Sunwood-ai-labs/github-kanban-mcp-server.git` is available.
+- MCP Setup
+  - Installation Directory:
+    - Windows: `C:\Prj\MCP`
+    - Unix-like: `~/prj/MCP`
+  - Setup Command:
+    ```bash
+    npx @modelcontextprotocol/create-server roulette-server -n "roulette-server2" -d "A Model Context Protocol server"
+    ```
+
+## 📋 Task Management Guidelines
+1. **At the Start of the Project**
+   - Identify tasks.
+   - Register identified tasks as GitHub issues.
+   - Assign appropriate labels and assignees to each issue.
+
+2. **Progress Management**
+   - Progress updates are reported in comments on the respective issues.
+   - Progress reports should include specific actions taken and the next steps.
+   - Blockers or issues should also be documented in comments within the issue.
+
+3. **Commit Management**
+   - Each commit message should include the related issue number.
+   - Format: `<emoji> <type> #<Issue number>: <title>`
+
+## 🌟 Basic Guidelines
+- **Language Policy**
+  - Code elements such as variable names, function names, class names, and file names: English.
+  - Comments, README, documentation, commit messages: Japanese.
+
+- **README Creation & Maintenance**
+  - Always create and write the `README.md` in Japanese.
+  - Include an SVG header image stored in the `assets` directory, centered and with rounded corners, gradient, shapes, text, and animations, incorporating polished English expressions.
+  - Update `README.md` whenever changes occur.
+  - Avoid redundant content and centralize information sources.
+  - Use emojis in README sections to enhance readability.
+
+## 💻 Coding & Documentation Principles
+The following principles apply not only to code but also to documentation (including Markdown files):
+
+1. **DRY (Don't Repeat Yourself)**
+   - Consolidate identical or similar operations into functions/modules to increase reusability.
+   - In documentation, avoid repetition and use cross-references as needed.
+
+2. **Separation of Concerns**
+   - Each module, class, or function should have a single responsibility, and separate concerns like presentation, logic, and data processing.
+   - Similarly, structure documentation into separate files by purpose and organize appropriately.
+
+3. **KISS (Keep It Simple, Stupid)**
+   - Keep the code as simple as possible and avoid unnecessary complexity.
+   - Documentation should also be clear and easy to understand.
+
+4. **Divide and Conquer**
+   - Break down large problems into smaller units to improve testing and maintainability.
+   - Split large documents into chapters and divide them into multiple files when necessary.
+
+5. **Defensive Programming**
+   - Validate input, handle exceptions, and implement error handling to ensure robustness and security.
+   - In documentation, clearly note any unexpected usage scenarios or important caveats.
+
+6. **YAGNI (You Aren't Gonna Need It)**
+   - Focus on current requirements and avoid over-engineering based on unnecessary future predictions.
+   - In documentation, focus on the information necessary at this point in time.
+
+7. **Readability & Documentation**
+   - Use meaningful English names for variables, functions, and classes, reflecting their roles.
+   - Write comments and README in Japanese to explain the purpose and logic of the code.
+   - Maintain consistent formatting and style in documentation.
+
+8. **Test-Driven Development (TDD) & Unit Testing**
+   - Provide unit tests for core functionality.
+   - Encourage TDD by following the cycle: requirements → tests → implementation → refactoring.
+   - Regularly review documentation for accuracy.
+
+9. **Version Control & Code Review**
+   - Use Git to manage change history and perform code reviews via pull requests.
+   - Commit changes in clear, focused commits for each modified file.
+   - Review and manage documentation changes in the same manner.
+
+10. **SOLID Principles**
+    - Consider SRP, OCP, LSP, ISP, DIP for high extensibility and maintainability in design.
+    - Similarly, structure documentation in a way that adheres to the single responsibility principle.
+
+## 📝 Commit Message Format
+
+- Commit messages should follow this format:
