@@ -14,7 +14,8 @@
     "Levysdev",
     "UNDELETABLE",
     "uuid",
-    "xrpl""Letterbook"
+    "xrpl",
+    "Letterbook"
   ],
   "prettier.jsxSingleQuote": true,
   "RainbowBrackets.depreciation-notice": false,

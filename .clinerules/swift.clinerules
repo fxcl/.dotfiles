@@ -1,0 +1,118 @@
+# .clinerules
+
+## 1. Code Quality & Testing
+
+1. **Test Coverage**
+   - Always ensure any code changes have appropriate test coverage before finalizing.
+   - Run automated tests (e.g., `swift test` or `xcodebuild test`) to confirm there are no regressions.
+   - Do not submit changes if tests are failing or coverage has dropped.
+
+2. **Compiler / Linter Warnings**
+   - Strive to keep the workspace free of compiler/linter warnings.
+   - If a change introduces a new warning, fix it or explicitly document why it should be suppressed.
+
+3. **Performance Checks**
+   - For indexing or search-related code, watch for performance regressions.
+   - If needed, add a short performance test or note any complexity concerns in your commit message or PR description.
+
+## 2. Git Commits
+
+1. **Descriptive Commit Messages**
+   - Use a **conventional commit style** (e.g., `feat:`, `fix:`, `chore:`, etc.).
+   - Summarize changes succinctly and reference any related issues (e.g., “fix: resolve indexing crash (#12)”).
+
+2. **Commit After Tasks**
+   - When a feature or bug-fix is complete, end with a `git commit -m` command that includes:
+     - A descriptive commit header
+     - An optional extended description or bullet points for clarity
+
+3. **Branch & Merge Etiquette**
+   - If branching off `main`, keep your commits atomic and rebase as needed.
+   - Avoid merging untested code into `main`.
+
+## 3. Documentation
+
+1. **README & Project Docs**
+   - Update `README.md` whenever you:
+     - Add new features
+     - Change existing functionality
+     - Add new dependencies
+     - Update system requirements or usage steps
+   - Provide usage examples or instructions for significant features.
+
+2. **Sync Code & Docs**
+   - Keep docstrings, inline comments, and higher-level docs consistent with code changes.
+   - For major changes, add or update relevant `.md` files (like `project_plan.md` or `CHANGELOG.md`).
+
+3. **Examples & Clarity**
+   - Where possible, add code snippets or examples to illustrate new or updated features.
+   - Keep explanations concise yet thorough.
+
+## 4. Adding a New Setting
+
+_Use this section whenever you add a persistent setting to the extension or UI (inspired by the example best practices)._
+
+### 4.1 For All Settings
+1. **ExtensionMessage.ts**
+   - Add the setting to the `ExtensionState` interface.
+   - Ensure correct typing (`required` vs. `optional`) and a sensible default if needed.
+2. **Test Coverage**
+   - Add the setting to `mockState` in `ClineProvider.test.ts`.
+   - Write or update tests to ensure the setting is persisted and updated correctly.
+   - Do not finalize changes until all tests pass.
+
+### 4.2 For Checkbox Settings
+1. **WebviewMessage.ts**
+   - Add the new setting’s name to the WebviewMessage `type` union.
+2. **ExtensionStateContext.tsx**
+   - Add the setting and a setter function to the interface.
+   - Include it in the initial `useState` and pass it through the context.
+3. **ClineProvider.ts**
+   - Add a case in `setWebviewMessageListener` for the new setting’s message type.
+   - Update `getState` and `getStateToPostToWebview` to include the default and the current value.
+4. **SettingsView.tsx**
+   - Add a `VSCodeCheckbox` (or relevant UI component) that reflects the setting’s current state and updates on change.
+   - Ensure the setting is posted back to the extension upon “Done”.
+
+### 4.3 For Select/Dropdown Settings
+1. **WebviewMessage.ts**
+   - Add the setting name to the `WebviewMessage` type union (e.g., `"preferredLanguage"`).
+2. **ExtensionStateContext.tsx**
+   - Add the setting and a setter to the context interface.
+   - Use an initial default in `useState`.
+3. **ClineProvider.ts**
+   - Extend `GlobalStateKey`, `getState`, and `setWebviewMessageListener` similarly to checkbox settings.
+4. **SettingsView.tsx**
+   - Create a `<select>` or another UI element with labeled options.
+   - Make sure it dispatches a `vscode.postMessage` on “Done”.
+
+## 5. SwiftSearch-Specific Guidelines
+
+1. **Privacy-Focused Development**
+   - Do not embed or rely on MCP servers inside SwiftSearch itself—MCP is strictly for Roo-Cline’s dev assistance.
+   - Avoid collecting user data. Indexing and search must remain local unless explicitly stated otherwise.
+
+2. **Incremental Indexing & Performance**
+   - Ensure file-watcher logic does not degrade system performance.
+   - Document any performance constraints in the relevant `.md` files if discovered.
+
+3. **UX & Accessibility**
+   - Always confirm that new UI components for SwiftSearch (e.g., search bar, filters) work with VoiceOver or similar tools.
+   - Provide a test plan for UI changes, especially if they affect the user workflow or theming.
+
+4. **Release & Notarization**
+   - For major releases, note or script any code-signing / notarization steps.
+   - Provide a short usage or install note for testers in `README.md` or `project_plan.md`.
+
+## 6. Enforcement
+
+1. **Human Approval**
+   - For high-impact operations (file deletions, database migrations, etc.), request explicit human approval through the extension’s GUI.
+2. **Modifications**
+   - If you must deviate from these rules, document the reasons in your commit message or an inline code comment.
+
+---
+
+**This `.clinerules` file ensures code changes align with SwiftSearch’s privacy-focused vision, maintain robust test coverage, follow a consistent Git strategy, and keep documentation up to date.** If you need additional constraints or clarifications, simply edit or extend these rules.
+
+Enjoy coding, and happy searching!
