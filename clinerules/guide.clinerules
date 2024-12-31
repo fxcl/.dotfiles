@@ -1,0 +1,122 @@
+# Development Guidelines
+
+## Project Structure
+
+src/
+├── api/              # API endpoints and routing
+│   └── routes.ts
+├── services/         # Business logic
+│   └── user-service.ts
+├── models/           # Data models and types
+│   └── user.model.ts
+├── config/           # Configuration
+│   └── config.ts
+├── utils/            # Utilities
+│   └── logger.ts
+└── index.ts         # Application entry point
+
+## Code Conventions
+
+### File Naming
+- Use kebab-case for all files
+- Files should end with their type (e.g., .model.ts, .service.ts)
+- One file should contain one primary responsibility
+- Keep files under 100 lines where possible
+
+### TypeScript & Types
+- Interfaces must start with 'I' and use PascalCase
+- Types must start with 'T' and use PascalCase
+- No 'any' type allowed
+- Always define return types for functions
+- Use readonly for interface properties
+- Use unknown instead of any for untyped data
+
+### Functions
+- Maximum 3 parameters per function
+- Maximum 30 lines per function
+- Maximum complexity of 5
+- Use async/await for promises
+- Always type return values
+- One function should do one thing
+
+### Variables
+- Use camelCase for variables
+- Use UPPER_CASE for constants
+- Use const by default, let only when necessary
+- No unused variables allowed
+- Descriptive naming required
+
+### Error Handling
+- Always use typed errors
+- Log all errors with proper context
+- Return consistent error response structures
+- Handle all promise rejections
+- No throwing of raw strings
+
+## API Guidelines
+
+### Routes
+- Use RESTful conventions
+- Group related endpoints
+- Version all endpoints
+- Consistent error responses
+- Validate all inputs
+
+### Response Format
+- Consistent response structure
+- Always include success/error status
+- Type all response bodies
+- Use proper HTTP status codes
+
+## Development Process
+
+### Before Committing
+1. Run linting: `npm run lint`
+2. Run type checking: `npm run type-check`
+3. Ensure no console.logs
+4. Check for unused imports
+5. Verify error handling
+
+### Git Practices
+- Branch naming: feature/, bugfix/, hotfix/
+- Commits must follow conventional commits
+- Pull requests required for all changes
+- No direct commits to main branch
+
+### Code Review Requirements
+1. Follows naming conventions
+2. Proper type usage
+3. Error handling implemented
+4. No any types
+5. Files properly organized
+6. Functions are focused
+7. Consistent response formats
+
+## Commands
+```bash
+npm run dev         # Development
+npm run lint        # Check code style
+npm run lint:fix    # Fix code style
+npm run type-check  # Check types
+npm run build       # Build for production
+npm start          # Run production
+
+## Common Mistakes to Avoid
+Using any type
+Skipping error handling
+Inconsistent file naming
+Complex functions
+Untyped responses
+Direct use of external data
+Missing readonly on interfaces
+Implicit return types
+
+## Best Practices
+Keep functions small and focused
+Use proper type narrowing
+Handle all error cases
+Use dependency injection
+Consistent error responses
+Proper logging
+Input validation
+Immutable data patterns

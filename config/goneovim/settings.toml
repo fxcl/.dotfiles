@@ -1,0 +1,98 @@
+[Editor]
+IgnoreSaveConfirmationWithCloseButton = false
+ManualFontFallback = true
+BorderlessWindow = true
+HideTitlebar = true
+Margin = 10
+StartMaximizedWindow = true
+RestoreWindowGeometry = true
+Clipboard = true
+HideMouseWhenTyping = true
+DrawWindowSeparator = true
+WindowSeparatorTheme = "dark"
+WindowSeparatorColor = "#1f2425"
+
+CharsScaledLineHeight = ["▄", "▀", "▌", "▐", "█", "▗", "▖", "▝", "▘", "🭳"]
+SmoothScroll = true
+SmoothScrollDuration = 100
+
+# Pattern that fills the diff background
+# Change the background pattern used for diff display.
+# This option allows you to use a visual effect pattern such as Dense, Diagonal Stripe instead of a regular solid pattern.
+# The available patterns are all Qt brush styles. For more information, See: https://doc.qt.io/qt-5/qbrush.html#details
+# // -- diffpattern enum --
+# // SolidPattern             1
+# // Dense1Pattern            2
+# // Dense2Pattern            3
+# // Dense3Pattern            4
+# // Dense4Pattern            5
+# // Dense5Pattern            6
+# // Dense6Pattern            7
+# // Dense7Pattern            8
+# // HorPattern               9
+# // VerPattern               10
+# // CrossPattern             11
+# // BDiagPattern             12
+# // FDiagPattern             13
+# // DiagCrossPattern         14
+# // LinearGradientPattern    15
+# // RadialGradientPattern    16
+# // ConicalGradientPattern   17
+# // TexturePattern           24
+# DiffAddPattern = 16
+DiffDeletePattern = 1
+DiffChangePattern = 1
+
+[Editor.DockmenuActions]
+hoge = "-u NONE"
+fuga = "-u NORC"
+
+Ginitvim = '''
+  vim.g.goneovim = "true"
+'''
+
+[Cursor]
+SmoothMove = true
+Duration = 55
+
+[ScrollBar]
+## Specifies whether to show the external scrollbar or not.
+# Visible = false
+
+
+[MiniMap]
+## To view the minimap, launch an additional nvim instance;
+## setting Disable to true will not launch this additional nvim instance
+## and will completely disable the minimap feature.
+# Disable = false
+
+## Specifies whether to show the minimap or not.
+# Visible = false
+
+## Specifies the width of the minimap.
+# Width = 100
+
+[SideBar]
+## Specifies whether to show the external sidebar or not.
+Visible = false
+
+## Specify the sidebar width
+# Width = 200
+
+## Specify whether or not to draw a shadow under the sidebar.
+# DropShadow = false
+
+## Specify the color to use when selecting items in the sidebar or palette in hexadecimal format
+# AccentColor = "#5596ea"
+[FileExplore]
+## Specify the maximum number of items to be displayed in the file explorer.
+# MaxDisplayItems = 30
+[Workspace]
+## This setting sets the format of the path string of CWD in the sidebar.
+##  name: directoryname
+##  full: /path/to/directoryname
+##  minimum: /p/t/directoryname
+# PathStyle = "minimum"
+
+## Specifies whether the last exited session should be restored at the next startup.
+# RestoreSession = false

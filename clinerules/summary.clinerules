@@ -1,0 +1,19 @@
+# Cline Rules
+
+- Using a markdown file named .clinelog.md log every change you make. Include a summary and a list of files you changed for each log entry. If the file does not exist, create it and add it to .gitignore.
+- Use the following format for the log entry:
+
+``` markdown
+## [Date] [Time]
+[Summary]
+
+### Files Changed
+- [File 1] - Brief description of changes
+- [File 2] - Brief description of changes
+- [File 3] - Brief description of changes
+```
+
+- After every task, update the README.md file for the project. If one does not exist, create it.
+- After every task, update unit tests to cover the new functionality. Maintain 100% coverage.
+- After every task, run the tests to ensure they pass. Fix any errors you find.
+- Use debug statements in the function source and function test to fix errors and failed tests. Always remove debug statements when all tests pass.

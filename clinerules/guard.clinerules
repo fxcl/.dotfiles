@@ -1,0 +1,148 @@
+# Cline rules configuration file
+version: "1.0.0"
+
+# Version Control
+version_control:
+  branch_patterns:
+    - "feature/*"
+    - "bugfix/*"
+    - "release/*"
+  commit_conventions:
+    - type: "feat"
+      description: "New feature"
+    - type: "fix"
+      description: "Bug fix"
+    - type: "docs"
+      description: "Documentation"
+    - type: "refactor"
+      description: "Code refactoring"
+
+# Project Context Integration
+context_files:
+  - "project_context/static_context.json"     # Human-readable context
+  - "project_context/static_context_ai.json"  # AI-optimized context
+  - "project_context/README.md"               # Usage documentation
+
+# AI Analysis Instructions
+ai_guidelines:
+  pre_analysis:
+    - "Review project_context/static_context_ai.json for semantic structure"
+    - "Check component dependencies and relationships"
+    - "Understand data flows and validation rules"
+    - "Note security and testing requirements"
+
+  during_analysis:
+    - "Validate changes against documented patterns"
+    - "Consider impact on critical paths"
+    - "Maintain test coverage requirements"
+    - "Follow type naming conventions"
+
+  post_analysis:
+    - "Update context documentation if needed"
+    - "Verify security considerations"
+    - "Ensure changes align with project conventions"
+    - "Check performance metrics"
+    - "Validate test coverage thresholds"
+
+# Performance thresholds
+performance:
+  bundle_size_limit: "500kb"
+  load_time_target: "300ms"
+  memory_limit: "50mb"
+
+# Testing requirements
+testing:
+  coverage_threshold: 80
+  required_test_types:
+    - "unit"
+    - "integration"
+    - "e2e"
+  test_naming_pattern: "*.test.ts"
+
+# Task Planning Guidelines
+task_planning:
+  effort_estimation:
+    - "Break tasks into components"
+    - "Estimate tokens per component"
+    - "Account for ripple effects"
+    - "Add 20% buffer for unknowns"
+
+  ripple_effect_analysis:
+    - "Identify dependent services"
+    - "List affected test files"
+    - "Document required updates"
+    - "Track configuration changes"
+    - "Note build process impacts"
+
+  task_structure:
+    - "Divide into phases"
+    - "Prioritize core functionality"
+    - "Group related changes"
+    - "Maintain context between tasks"
+    - "Document dependencies"
+
+  token_limits:
+    - "Max per task: 4000 tokens"
+    - "Max context: 8000 tokens"
+    - "Optimize for efficiency"
+    - "Use pagination when needed"
+    - "Monitor usage during execution"
+
+# Project-specific patterns
+ignore_patterns:
+  # Build and dependency directories
+  - "node_modules/"
+  - "dist/"
+  - "build/"
+  - ".git/"
+  - "coverage/"
+
+  # Security sensitive
+  - "**/*.env"
+  - "**/*.pem"
+  - "**/*.key"
+  - "**/secrets.*"
+
+  # Obsidian plugin specific
+  - "data.json"          # Obsidian plugin data
+  - "main.js"           # Compiled plugin file
+  - "*.map"             # Source maps
+
+  # Development files
+  - "coverage/"         # Test coverage reports
+  - ".vscode/"          # Editor settings
+  - ".idea/"            # IDE settings
+  - "*.log"             # Log files
+
+  # Temporary files
+  - ".DS_Store"         # macOS system files
+  - "*.tmp"             # Temporary files
+  - "*.temp"            # Temporary files
+
+# File type patterns to analyze
+analyze_patterns:
+  # Source code
+  - "src/**/*.ts"       # TypeScript source files
+  - "*.json"            # Configuration files
+  - "*.css"             # Styles
+  - "*.md"              # Documentation
+
+# Critical paths requiring special attention
+critical_paths:
+  - "src/main.ts"              # Plugin entry point
+  - "src/settings.ts"          # Settings management
+  - "project_context/*.json"   # Project context files
+
+# Analysis priorities
+analysis_priorities:
+  - "Security considerations"
+  - "Type safety"
+  - "Data validation"
+  - "Error handling"
+  - "Performance impact"
+
+# System Requirements
+system:
+  operating_system: "Windows"
+  terminal_syntax: "PowerShell"
+  command_separator: ";"

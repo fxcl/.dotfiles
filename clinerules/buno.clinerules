@@ -1,0 +1,4 @@
+* This project uses bun, not npm or node.
+* That means no ts-node or anything like that needed. Bun's got it all!
+* The onvif stuff in npm is still in javascript and types don't seem to be available. OK, that sucks, but just work with it gradually.
+* After major changes and before handing it back to the user, run the typecheck script to typecheck and fix all typing errors.

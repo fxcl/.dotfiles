@@ -1,0 +1,4 @@
+#!/bin/sh
+
+git wip --no-verify
+git push --force --no-verify

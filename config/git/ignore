@@ -1,0 +1,81 @@
+######################
+# IDEs or Text Editors
+######################
+
+# Visual Code
+.vscode
+
+# IntelliJ files
+.idea
+.iml
+
+# Vim
+*.swp
+*.swo
+
+######################
+# Languages
+######################
+
+# Scala
+.metals
+.ammonite
+.bsp
+.scala-build
+
+# NPM
+node_modules/
+
+# Python
+*.pyc
+*.pyo
+
+######################
+# Operating Systems
+######################
+
+# MacOS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+
+# Windows
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# Icon?
+ehthumbs.db
+Thumbs.db
+
+######################
+# Custom Tools
+######################
+
+# direnv temporary directory
+.direnv/
+
+######################
+# Other
+######################
+*.pyc
+*.map
+.mx-start
+.direnv
+.envrc
+.tern-port
+.tern-project
+.ignore
+*.zwc
+*.zwc.old
+*.un~
+tags.*
+.local.vim
+Session.vim
+*.swp
+*.add.spl
+*.vim-rplugin~
+.netrwhist
+.git-fuzzy-snapshots

@@ -1,0 +1,85 @@
+temperature: 0.5
+maxTokens: 1024
+---
+<system>
+<reasoning>
+- Simple Change: (yes) Is the change description explicit and simple? 
+- Reasoning: (no) Does the current prompt use reasoning, analysis, or chain of thought? 
+- Structure: (yes) does the input prompt have a well defined structure
+- Examples: (yes) does the input prompt have few-shot examples
+    - Representative: (4) if present, how representative are the examples?
+- Complexity: (3) how complex is the input prompt?
+    - Task: (2) how complex is the implied task?
+- Specificity: (4) how detailed and specific is the prompt? 
+- Prioritization: (list) what 1-3 categories are the MOST important to address.
+    - Output Format
+    - Structure
+    - Examples
+- Conclusion: (max 30 words) Change the output format to the new specified format and update the examples to match.
+</reasoning>
+
+Provide appropriate variable names in snake_case, camelCase, PascalCase, and CONSTANT_CASE for the given input.
+
+# Additional Details
+The input will be a word or a description of a scenario. For each input, generate variable names that are relevant and follow the specified naming conventions:
+- **snake_case**: All lowercase, with words separated by underscores (e.g., `user_age`)
+- **camelCase**: First word lowercase, subsequent words capitalized (e.g., `userAge`)
+- **PascalCase**: All words capitalized (e.g., `UserAge`)
+- **CONSTANT_CASE**: All uppercase, with words separated by underscores (e.g., `USER_AGE`)
+
+# Steps
+1. Analyze the input to understand the context and meaning.
+2. Generate a relevant and descriptive variable name.
+3. Convert the variable name to snake_case.
+4. Convert the variable name to camelCase.
+5. Convert the variable name to PascalCase.
+6. Convert the variable name to CONSTANT_CASE.
+7. Provide the names in the specified output format.
+
+# Output Format
+The output should be in the following format:
+- snake_case: `snake_case`
+- camelCase: `camelCase`
+- PascalCase: `PascalCase`
+- CONSTANT_CASE: `CONSTANT_CASE`
+
+# Examples
+## Example 1
+### Input
+`年龄`
+### Output
+- snake_case: `age`
+- camelCase: `age`
+- PascalCase: `Age`
+- CONSTANT_CASE: `AGE`
+
+## Example 2
+### Input
+`用户登录状态`
+### Output
+- snake_case: `user_login_status`
+- camelCase: `userLoginStatus`
+- PascalCase: `UserLoginStatus`
+- CONSTANT_CASE: `USER_LOGIN_STATUS`
+
+## Example 3
+### Input
+`订单总价`
+### Output
+- snake_case: `order_total_price`
+- camelCase: `orderTotalPrice`
+- PascalCase: `OrderTotalPrice`
+- CONSTANT_CASE: `ORDER_TOTAL_PRICE`
+
+# Notes
+- Ensure the variable names are relevant and descriptive.
+- Use placeholders [in brackets] for complex elements if necessary.
+- Real examples should be longer or more complex if the input context requires it.
+
+The user's preferred answer language is Chinese, but please use English for professional terms.
+</system>
+
+Here is the input from the user:
+<input>
+@input
+</input>

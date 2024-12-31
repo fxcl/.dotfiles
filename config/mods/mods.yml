@@ -1,0 +1,164 @@
+# Default model (gpt-3.5-turbo, gpt-4, ggml-gpt4all-j...).
+# default-model: mistralai/mistral-medium #:ixtral-8x7b-32768
+# default-model: smc
+#default-model: mixtral-8x7b-32768
+default-model: gpt-4o-mini  #llama-3-sonar-small-32k-online
+
+# Text to append when using the -f flag.
+format-text:
+  markdown: 'Format the response as markdown without enclosing backticks.'
+  json: 'Format the response as json without enclosing backticks.'
+# List of predefined system messages that can be used as roles.
+roles:
+  "default": []
+# Ask for the response to be formatted as markdown unless otherwise set.
+format: true
+# System role to use.
+role: "default"
+# Render output as raw text when connected to a TTY.
+raw: false
+# Quiet mode (hide the spinner while loading and stderr messages for success).
+quiet: false
+# Temperature (randomness) of results, from 0.0 to 2.0.
+temp: 1.0
+# TopP, an alternative to temperature that narrows response, from 0.0 to 1.0.
+topp: 1.0
+# Turn off the client-side limit on the size of the input into the model.
+no-limit: false
+# Wrap formatted output at specific width (default is 80)
+word-wrap: 80
+# Include the prompt from the arguments in the response.
+include-prompt-args: false
+# Include the prompt from the arguments and stdin, truncate stdin to specified number of lines.
+include-prompt: 0
+# Maximum number of times to retry API calls.
+max-retries: 1
+# Your desired level of fanciness.
+fanciness: 10
+# Text to show while generating.
+status-text: Generating
+# Default character limit on input to model.
+max-input-chars: 12250
+# Maximum number of tokens in response.
+max-tokens: 1000
+# Aliases and endpoints for OpenAI compatible REST API.
+apis:
+  openai:
+    base-url: https://api.deepbricks.ai/v1
+    api-key-env: OPENAI_API_KEY
+    models:
+      gpt-4o:
+        aliases: ["openai:gpt-4o-mini"]
+        max-input-chars: 124500
+      gpt-4:
+        aliases: ["openai:gpt-4"]
+        max-input-chars: 124500
+      gpt-4-0125-preview:
+        aliases: ["openai:gpt-4-0125-preview"]
+        max-input-chars: 1392000
+      gpt-4-32k:
+        aliases: ["openai:gpt-4-32k"]
+        max-input-chars: 98000
+      gpt-3.5-turbo:
+        aliases: ["openai:gpt-3.5-turbo"]
+        max-input-chars: 12250
+      gpt-3.5:
+        aliases: ["35"]
+        max-input-chars: 12250
+  localai:
+    # LocalAI setup instructions: https://github.com/go-skynet/LocalAI#example-use-gpt4all-j-model
+    base-url: http://localhost:8000
+    api-key: "IGNORED"
+    models:
+      ollama:
+        aliases: ["local"]
+        max-input-chars: 12250
+        fallback:
+  azure:
+    # Set to 'azure-ad' to use Active Directory
+    # Azure OpenAI setup: https://learn.microsoft.com/en-us/azure/cognitive-services/openai/how-to/create-resource
+    base-url: https://gpt-4o-lite.openai.azure.com
+    api-key-env: AZURE_OPENAI_KEY
+    models:
+      gpt-4o-mini:
+        aliases: ["az4"]
+        max-input-chars: 24500
+        fallback: gpt-35-turbo
+      gpt-35-turbo:
+        aliases: ["az35t"]
+        max-input-chars: 12250
+        fallback: gpt-35
+      gpt-35:
+        aliases: ["az35"]
+        max-input-chars: 12250
+        fallback:
+  anthropic:
+    base-url: https://api.anthropic.com/v1
+    api-key-env: CLAUDE_KEY
+    models:
+      claude-3-haiku-20240307:
+        aliases: ["anthropic:claude-3-haiku"]
+        max-input-chars: 16384
+      claude-3-sonnet-20240229:
+        aliases: ["anthropic:claude-3-sonnet"]
+        max-input-chars: 16384
+      claude-3-opus-20240229:
+        aliases: ["anthropic:claude-3-opus"]
+        max-input-chars: 16384
+  perplexity:
+    base-url: https://api.perplexity.ai
+    api-key:
+    api-key-env: PERPLEXITY_API_KEY
+    models:
+      llama-3-sonar-small-32k:
+        max-input-chars: 16384
+      llama-3-sonar-small-32k-online:
+        max-input-chars: 16384
+        fallback: gpt-4o
+      llama-3-sonar-large-32k-chat:
+        max-input-chars: 16384
+      llama-3-sonar-large-32k-online:
+        max-input-chars: 16384
+      llama-3-8b-instruct:
+        max-input-chars: 16384
+      llama-3-70b-instruct:
+        max-input-chars: 16384
+      mixtral-8x7b-instruct:
+        max-input-chars: 16384
+  groq:
+    base-url: https://api.groq.com/openai/v1
+    api-key-env: GROQ_API_KEY
+    models:
+      mixtral-8x7b-32768:
+        aliases: ["groq:mixtral-8x32k"]
+        max-input-chars: 98000
+      gemma-7b-it:
+        aliases: ["groq:gemma-7b"]
+        max-input-chars: 98000
+      llama3-70b-8192:
+        aliases: ["groq:llama3-70b"]
+        max-input-chars: 98000
+      llama2-70b-4096:
+        aliases: ["groq:llama2-70b"]
+        max-input-chars: 12250
+  ollama:
+    base-url: http://localhost:11434/api
+    models:
+     llama3:
+        aliases: ["ollama3"]
+        max-input-chars: 650000
+     gemma:
+        aliases: ["ogemma"]
+        max-input-chars: 650000
+  openrouter:
+    # Set to 'azure-ad' to use Active Directory
+    # Azure OpenAI setup: https://learn.microsoft.com/en-us/azure/cognitive-services/openai/how-to/create-resource
+    base-url: https://openrouter.ai/api/v1
+    api-key-env: OPENROUTER_KEY
+    models:
+      mistralai/mistral-large:
+        max-input-chars: 114500
+      mistralai/mistral-medium:
+        max-input-chars: 12250
+      mistralai/mistral-tiny:
+        max-input-chars: 12250

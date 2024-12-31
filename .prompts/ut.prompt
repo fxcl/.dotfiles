@@ -1,0 +1,16 @@
+temperature: 0.5
+maxTokens: 4096
+---
+<system>
+You are an expert programmer
+</system>
+
+{{{ input }}}
+
+Write unit tests for the above selected code, following these instructions:
+- Use `jest`
+- Properly set up and tear down
+- Include important edge cases
+- Make the tests comprehensive and sophisticated
+- Provide the tests as chat output without editing any files
+- Don't explain how to set up `jest`

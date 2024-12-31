@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+add_mirrors() {
+	local REMOTE_URL
+	REMOTE_URL=$(git config --get remote.origin.url)
+
+	local REMOTE_REPO
+	REMOTE_REPO=$(basename -s .git "$REMOTE_URL")
+
+	local REPO=${REMOTE_REPO:-$1}
+
+	if [ -z "$REPO" ]; then
+		echo "Can't get the proper git repo name, you have to pass one"
+		exit 1
+	fi
+
+	local MIRROS=("bitbucket" "gitlab")
+
+	git remote set-url --add --push origin "$REMOTE_URL"
+
+	for mirror in "${MIRROS[@]}"; do
+		git remote set-url --add --push origin "git@$mirror.com:${GITHUB_USER:-fxcl}/${REPO}.git"
+	done
+
+	echo "--------------------------------------------------------"
+	echo "${MIRROS[*]} were added as push tagrets to origin remote"
+	echo "--------------------------------------------------------"
+	git remote --verbose
+}
+
+add_mirrors "$@"

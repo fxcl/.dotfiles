@@ -1,0 +1,866 @@
+L5 Criteria:
+
+Learning Outcomes:
+
+Learning Outcomes Level 5
+On successful completion of level five you will have:
+
+
+Knowledge and
+
+Understanding
+
+
+Cognitive Skills
+
+
+Subject Specific
+
+Skills
+
+
+Key/transferable
+
+Skills
+
+A1. Expressed and employed knowledge and critical understanding of essential facts, concepts, principles and theories relating to specialisms in computing
+
+B1. Used knowledge and understanding in the modelling and design of computer-based systems for the purposes of comprehension, communication, prediction and the understanding of trade-offs
+
+C1. Deployed appropriate theory, practices and tools for the specification, design, implementation and evaluation of computer-based systems
+
+D1. Evidenced the qualities and transferable skills necessary for employment requiring the exercise of personal responsibility and decision making
+
+A2. Expressed knowledge and skills in computing technologies, with the ability to specify technical solutions
+
+B2. Recognised and analysed criteria and specifications appropriate to specific problems and planned strategies for their solutions
+
+C2. Recognised the professional and economic issues in the exploitation of computing
+
+D2. Identified appropriate practices considering equality, diversity, and inclusion (EDI) as well as any economic, social, and environmental impact
+
+A3. Understood the management techniques used to achieve objectives within a computing context
+
+B3. Analysed the extent to which a system meets the criteria defined for its current use and future development
+
+C3. Selected and used effectively appropriate tools for the provision and maintenance of computer systems to solve practical problems
+
+
+
+
+
+
+
+C4. Demonstrated the ability to plan and manage projects to deliver computing systems within constraints of requirements, timescale and budget
+
+
+
+
+
+-
+
+Assessment module grading criteria
+
+Knowledge and critical understanding of well-established concepts and principles of the subject(s)	High quality work showing detailed understanding of the established concepts and principles of the subject(s).
+
+Cognitive and intellectual skills
+
+
+	Use of excellent critical, analytical and evaluative skills in order to develop highly logical and coherent
+judgements / arguments, supported by a range of relevant evidence. Evidence of independent thinking and creativity. Explicit discussion of other stances and a strong awareness of the limits of their knowledge.
+Application of theory to practice (for courses with a professional practice element)	Excellent application of theory to practice, with the student making highly appropriate, developed and articulated links between the two.
+
+Reading and referencing	Critical engagement with a wide range of relevant reading, including research-informed literature where relevant. Consistently accurate application of referencing.
+Presentation, style and structure *	Highly effective presentation of work that is coherently structured and clearly expressed throughout.
+
+
+
+
+
+
+
+
+--------------------------------
+
+Software Engineering Project Assessment:
+
+What is required?
+
+•	FIVE distinct elements, each weighted at 20% of the total marks
+•	(1) A requirements specification and supporting requirements modelling material, which may include use cases, activity diagrams, class-based modelling, CRCs, control flow, data flow and/or behavioural models.
+•	(2) A design specification which will include design documentation and diagrams
+•	(3) software implementation, which will include all code
+•	(4) tests and test results, which will include a suite of verification and validation tests, and appropriate screenshots
+•	(5) A reflective essay of up to 1,000 words discussing and justifying the key design, implementation and testing techniques used. Word count limits apply to the essay
+
+Learning outcomes to be assessed:
+
+1.	Demonstrate proficiency in their knowledge and understanding of software engineering;
+2.	Demonstrate proficiency in their knowledge and understanding of modern software development techniques;
+3.	Selection of appropriate techniques and tools to plan, design, implement, test and manage software projects, including software engineering methods, data structures and algorithms, object-oriented tools (e.g. UML) and appropriate user interfaces
+4.	Produce a software solution to meet the requirements of an enterprise, demonstrating its quality through effective design, efficient implementation, and sound testing
+
+Assessment & Grading Criteria:
+1.	Demonstrated proficiency in the knowledge and understanding of software engineering;
+2.	Demonstrated proficiency in the knowledge and understanding of modern software development techniques
+3.	Demonstrated the ability to select appropriate techniques and tools to plan, design, implement, test and manage a software project, utilising appropriate software engineering methods, data structures and algorithms, modelling techniques and appropriate user interfaces
+4.	Produced a software solution that meets the requirements of an enterprise, demonstrating its quality through effective design, efficient implementation and sound testing
+
+------
+
+Assignment Brief:
+
+1.	This assignment normally involves the creation of a software solution to the enterprise needs explored in the database module. Thus if your database was an ecommerce database, you would develop the back-end logic, database interface and front-end interface in the assignment for this module. Your interface may be web-based or desktop-based.
+
+2.	If you are repeating the module from last year (when it was known as Software Design Development and Engineering), you will be exceptionally allowed to reuse materials and the project concept from last year.
+
+3.	Now consider the needs of the enterprise from the perspective of its business logic and what are the services it provides to the users/customers. Use sound requirements elicitation and modelling techniques to identify, analyse and record the functional and non-functional requirements of a software system to satisfy the enterprise needs. Create a requirements specification document with appropriate requirements models (which may include any or all of use cases, activity diagrams, class-based modelling, CRCs, control flow, data flow and/or behavioural models) as you deem appropriate to render the requirements explicit. Justify chosen requirements and modelling choices with appropriate rationale.
+
+4.	Using your requirements specification, create a design that satisfies the requirements. You will find it helpful to stepwise refine the diagrams and models produced in the requirements specification into a design-level representation of the classes, methods and other components required for later implementation (this may include UML diagrams, flowcharts, decision tables pseudocode, etc.)
+
+5.	Using your created design, implement it as executable source code using appropriate modern object-oriented and procedural programming techniques for classes, methods and other components.
+
+6.	Design, develop and undertake a suitable set of tests to demonstrate that your implemented code satisfies the requirements specification and functions as expected.
+
+7.	You should submit a requirements specification, a set of design documents, the final source code, your test set and test results (including screenshots of correctly and incorrectly functioning code and features) – note these are FOUR separate elements.
+
+8.	In addition, you should write a reflective essay of up to 1,000 words discussing and justifying your approach to the task in terms of key requirements, design, implementation and testing techniques. This is the FIFTH element of the assignment.
+
+
+------
+
+- apply the whole software engineering design and development process to this project
+- complete the software engineering assessment based on this context i have given you (pdf).
+- and by the way, it should be for a hotel management system as it mentioned the relational database module, here are the uploads for the hotel database
+- i have uploaded the software engineering assessment as well as the context for my hotel management system relational database that will help you complete the assessment. create a plan to tackle the assignment in a clear and logical format, breaking the project down into tasks and individual steps. then start executing on the plan outline, ensuring all details are accounted for. you will need many responses where i will prompt you to "continue"
+
+What would you like ChatGPT to know about you to provide better responses?
+I am working on a Level 5 Software Engineering module focusing on designing, implementing, and testing a software solution based on enterprise needs. I aim to produce professional-quality requirements documentation, designs, code, and reflective essays that demonstrate critical thinking, technical depth, and adherence to established software engineering principles.
+
+How would you like ChatGPT to respond?
+Please provide responses that are formal, precise, and tailored to software engineering practices. Structure responses into distinct sections (e.g., Requirements, Design, Code, Testing, Reflection) with clear subsections where necessary. Ensure all technical explanations are detailed, with examples, diagrams, or pseudocode to clarify complex concepts. When discussing methodologies or models, provide justifications and highlight trade-offs or alternatives. Responses should align with academic expectations for technical accuracy, coherence, and depth.
+
+
+-
+
+What would you like ChatGPT to know about you to provide better responses?
+I am a student working on a Level 5 Software Engineering module with a focus on creating, implementing, and testing a software solution based on enterprise needs. My work involves producing detailed requirements specifications, designing system architectures, coding solutions, and conducting thorough testing. Additionally, I aim to demonstrate critical thinking, technical depth, and professional presentation in a reflective essay and other documentation. My goal is to align my submissions with academic standards for software engineering assessments.
+
+How would you like ChatGPT to respond?
+Please respond with formal, structured, and precise content tailored to software engineering practices.
+
+Documentation Support: Provide clear guidance for developing requirements specifications, including functional and non-functional requirements, use case diagrams, activity diagrams, UML diagrams, and justifications for modeling choices.
+Design Phase: Offer stepwise explanations for creating detailed system designs, including class diagrams, flowcharts, pseudocode, and other necessary artifacts. Justify design decisions based on best practices and the assessment criteria.
+Code Implementation: Deliver technical advice on modern programming standards for object-oriented and procedural techniques, with a focus on clean, modular, and well-documented code. Include example snippets or templates where appropriate.
+Testing: Assist with creating robust testing plans, including test case designs, expected results, and documentation of outcomes (e.g., annotated screenshots for pass/fail results). Discuss validation strategies for ensuring the software meets specified requirements.
+Reflective Writing: Guide reflective essay writing, focusing on critically evaluating requirements gathering, design decisions, implementation approaches, testing strategies, and lessons learned. Ensure the reflection demonstrates analytical depth and aligns with academic expectations.
+Formatting and Presentation: Offer advice on presenting work professionally, including bundling files for submission, ensuring consistent formatting, and using appropriate naming conventions.
+Visuals: Provide guidance on using diagrams, tables, and annotations to enhance clarity and professionalism. Ensure these elements are effectively integrated and referenced in the text.
+Responses should be comprehensive, well-organized, and clearly aligned with the expectations of the assessment criteria. Use formal language and ensure all content demonstrates technical and academic rigor.
+
+Writing Style Based on School of Technology, Business, and Arts - Software Engineering Assessment
+Tone and Language:
+
+Maintain a professional and formal academic tone throughout the submission.
+Write with precision and clarity, ensuring technical accuracy and a logical flow of ideas.
+Avoid conversational language; instead, use objective phrasing and concise technical descriptions.
+Structure:
+
+Requirements Specification:
+
+Detail functional and non-functional requirements.
+Use established modeling techniques (e.g., use cases, activity diagrams, UML diagrams).
+Provide justification for chosen methods and approaches.
+Design Documentation:
+
+Include progressively refined diagrams, flowcharts, and pseudocode.
+Ensure all design elements map directly to specified requirements.
+Implementation:
+
+Present clean, readable, and properly commented source code.
+Follow modern object-oriented and procedural programming standards.
+Include documentation for each class, method, and module.
+Testing Evidence:
+
+Demonstrate the system's functionality using a comprehensive test plan.
+Include test cases, results (both pass and fail scenarios), and annotated screenshots.
+Reflective Essay:
+
+Critically evaluate and justify the requirements, design, implementation, and testing choices.
+Discuss challenges, solutions, and lessons learned.
+Structure the essay with an introduction, key discussion points, and a conclusion.
+Presentation:
+
+Bundle all elements (requirements, design, code, tests, and essay) into a single, properly named zip file.
+Ensure consistent formatting, such as proper use of headings, numbering, and labeling for diagrams and sections.
+Critical Thinking and Analysis:
+
+Justify each design and implementation decision with evidence or references to established practices.
+Highlight strengths and weaknesses in the approach, discussing alternatives where relevant.
+Evaluate how well the final product meets the requirements.
+Technical and Visual Components:
+
+Integrate diagrams, charts, and flow representations where necessary.
+Ensure visuals are clear, labeled, and referenced in the text.
+Use concise legends and annotations to clarify purpose and functionality
+
+
+---
+
+relevant information from my relational database project to support the software engineering project:
+
+
+ 
+Contents
+
+1 Introduction	2
+2 Key Requirements	2
+3 Conceptual design	3
+4 Logical design	4
+5 Normalisation	5
+5.1 First Normal Form (1NF)	5
+5.2 Second Normal Form (2NF)	6
+5.3 Third Normal Form (3NF)	7
+5.4 Boyce-Codd Normal Form (BCNF)	8
+6 Normalised Logical Design	9
+7 Physical Design	10
+8 Data Dictionary	11
+9 Keys, relationships of entities, cardinality	14
+10 Example Queries	14
+11 Privacy and Security considerations	15
+12 Conclusion	15
+References	16
+Appendices	17
+Appendix A - Analysis of the entity relationships of the conceptual design	17
+Appendix B - Candidate Keys of the room_clean table and the BCNF violation	19
+Appendix C – Sample Data	20
+
+ 
+1 Introduction
+This project will design a relational database to replace a paper-based system used by a hotel. The Hotel Database will hold information about the rooms, reservations, guests, staff, and other information required to effectively manage and promote the hotel.
+
+A relational database is a computer-based system that organises data into tables, consisting of columns and rows. This structure allows for efficient data manipulation and retrieval. It maintains data integrity by applying constraints. (Codd, 1970)
+
+
+2 Key Requirements
+Receptionists need the database to:
+•	provide room availability
+•	support guest reservation/check-in/check-out
+•	log complaints
+•	support a guest/company relationship
+Management requirements:
+•	report on reservation history and promotion usage
+•	find patterns in complaints and room preferences
+•	generate a marketing list
+•	maintain a room cleaning rota
+
+The main entities required to fulfil the requirements were identified – see Table 1.
+
+
+Entity	Purpose
+room	Tracks the rooms, their types, features and pricing
+guest	Holds guest details
+company account	Links corporate guests to their company accounts for billing
+reservation	Manages room bookings, including check-in and check-out information and can be used to gather room booking history
+complaint	Records guest complaints for management to address
+invoice	Holds the room charges for a reservation and amount paid
+staff	Holds the employees’ names, roles and link to their manager
+promotion	Stores promotional discounts that can be applied to reservations
+marketing	Holds information about what type of information a guest would like to receive and by what method
+room clean	Holds the cleaning rota for the rooms. The date, time, type of clean, who cleans it and which master key they used
+
+ 
+3 Conceptual design
+An Entity Relationship Diagram (ERD) was created using Visual Paradigm.
+
+
+
+See Appendix A for an analysis of relationships of the conceptual design
+
+ 
+4 Logical design
+
+
+ 
+5 Normalisation
+Normalisation aims to ensure database efficiency and organisation. It progressively improves the design by eliminating redundancy and reducing risk of insert/update/deletion anomalies. A good design will reduce NULLs in the tuples which improves data integrity. (Date, 2012, Harrington, 2016)
+
+5.1 First Normal Form (1NF)
+
+To comply with 1NF, all tables must only contain atomic values and have a primary key. (Elmasri & Navathe, 2015, Coronel & Morris, 2019)
+
+The design was normalised to meet 1NF standards as detailed in Table 2
+
+Tables changed	Reason	Figure
+guest, company_account	name attribute not atomic.
+Split into: title, first_name, last_name attributes.	3
+guest,  company_account	address attribute not atomic.
+Split into: address_line1, address_line2, city, county, postcode attributes.	3
+complaint	No primary key.
+The reservation_id and the date/time the complaint is opened are a suitable composite primary key to uniquely identify the row.	4
+complaint	Resolution information will be captured at a different time so caused the need for excess NULLs.
+The complaint_resolution table was created to solve this.	4
+staff	name attribute not atomic.
+Split into: title, first_name, last_name attributes.	5
+reservation	Check-in and Check-out will be captured at different times requiring NULLs in the reservation table and risking data integrity issues.
+New check-in and check-out tables were created to solve this.	5
+
+
+
+
+
+
+
+5.2 Second Normal Form (2NF)
+
+2NF focuses on eliminating partial dependencies, these occur when non-prime attributes depend on only part of a composite key. 2NF prevents modification anomalies and improves data integrity, making the design more robust and scalable. (Connolly & Begg, 2014).
+The hotel database had three attributes that were dependant on part of a key which failed 2NF – see Table 3.
+
+Tables changed	Reason	Figure
+room_info	maximum_guests is only dependent on room_type_code and not the bathroom type.
+The attribute was moved to room_type table to meet 2NF.	6
+room_info	separate_shower and bath attributes were moved into a new bathroom_type table. This separation ensured that non-prime attributes only depended on the entire primary key of the table.
+	6
+room_info	Table was renamed as room_price now that its purpose is more defined.	6
+
+
+
+5.3 Third Normal Form (3NF)
+
+3NF aims to eliminate transitive dependencies, they occur when a non-prime attribute is indirectly dependent on the primary key via another non-prime attribute (Silberschatz, Korth, & Sudarshan, 2011).
+
+In the hotel database, transitive dependencies were present in tables containing address information. The street, city and county being dependent on postcode, which was itself dependent on the primary key. The design was changed to prevent redundancy issues and ensure consistent data updates (Garcia-Molina, 2008) – see Table 4.
+
+Tables changed	Reason	Figure
+complaint	category_name and severity attributes were dependent on category_code rather than the primary key of the complaint table. The attributes were moved to a new complaint_category table and linked via a foreign key.	7
+guest & company_account	Address attributes had transitive dependency via postcode. A new address table was created with postcode as the primary key. Tables using an address were updated to use postcode as a foreign key.	8
+
+
+5.4 Boyce-Codd Normal Form (BCNF)
+
+BCNF is an extension of 3NF that addresses more complex forms of functional dependencies. A violation of BCNF occurs when a non-prime attribute is functionally dependent on only part of a candidate key rather than an entire candidate key. (Wikipedia, 2023. Boyce–Codd normal form)
+
+The room_clean table complied with 1NF,2NF & 3NF but violated BCNF (see Appendix B)
+
+Tables changed	Reason	Figure
+room_clean	allocated_master_key was not dependent on an entire candidate key so was moved into a new cleaning_session table with date_of_clean and staff_id as the primary key	9
+
+
+
+
+6 Normalised Logical Design
+
+
+
+7 Physical Design
+8 Data Dictionary
+The data dictionary details the database tables with their attributes, data types, formats, constraints, and relationships.
+When choosing data types and lengths, storage requirements were considered.
+•	tinyint and smallint were used when the maximum value didn’t require integer.
+•	varchar was used when text of variable length would be entered
+•	char was used for fixed length codes.
+Primary keys of each table are UNIQUE and most attributes can use the NOT NULL constraint to improve data integrity.
+Appendix C shows sample data for these attributes.
+
+
+
+
+
+
+
+
+
+9 Keys, relationships of entities, cardinality
+Tables use Primary keys to uniquely identify a row. Foreign keys are used to form a relation between one table and another table’s primary key (Connolly & Begg, 2014). Most tables in this design use a single attribute as the primary key. Composite keys were used when appropriate – e.g. room_price table where a room is priced based on the type of room & type of bathroom combined. The reservation table is the centre of the database; it uses foreign keys to reference other main tables, each which use foreign keys, as required, to reference other supporting tables.
+
+One-to-many cardinality was the most used in the design (Date, 2012). e.g. guest has a one-to-many relationship with reservation, where each guest may book multiple reservations in a year, but each reservation is linked to only one guest. The concept of room cleaning would have required a many-to-many relationship between staff & room but the room_clean table acts as a link table to avoid this.
+Some relationships are optional (zero or more) rather than mandatory (one or more). This is necessary as tables slowly populate with data about a reservation over time. e.g. When a guest reserves a room, only the guest, address and reservation tables would be used. When a price is agreed a row in the invoice table would be added. Later check-in, then check-out, and perhaps complaint tables would be used.
+10 Example Queries
+•	Find a guest’s room number.
+•	Find available rooms of a specific type between certain dates.
+•	Report on guest complaints split by category_code.
+•	Discover which companies and/or guests have booked the most nights.
+•	Find reservations that have checked-out without settling the invoice.
+•	Report on total revenue by type of room and their occupancy percentage.
+•	Which promotion codes have been effective?
+•	Report on the number of reservations/check-ins/check-outs processed by each member of staff.
+
+11 Privacy and Security considerations
+The database contains guest and company contact information that is sensitive; it must comply with the Data Protection Act (DPA, 2018). Data isn’t shared with a third-party without explicit consent. The hotel uses a third-party for payment processing and won’t hold credit card information in the database.
+Access to data will be determined by staff role. Only managers can run long-term reports. Where possible sensitive data will be anonymised.
+Encryption will secure the data; a strict password policy will limit access.
+Internet security software will be installed on devices to protect against malware and viruses.
+The contents of the database is important for the business, so regular encrypted backups must be taken and kept off-site. (Date, 2004)
+To comply with the General Data Protection Regulation (GDPR), guest data will only be stored for as long as necessary. Guests will have the right to request deletion from the database.
+
+12 Conclusion
+The design stage was challenging, hotel reservations are complex. As the design expanded, the time constraints of this project became limiting.
+Research was required to discover which data types should be used (along with size and format) for common attributes such as phone numbers, postcodes, email addresses and financial values.
+The payment/invoice section of the database is limited and would need improvement for real world application. The database would need to provide support for room service and additional chargeable items.
+Even with those limitations, this design would create a useful hotel management database. It meets the key requirements and can support the example queries.
+
+ 
+References
+Codd, E. F. (1970). A Relational Model of Data for Large Shared Data Banks. Communications of the ACM
+Connolly, T., & Begg, C. (2014). Database Systems: A Practical Approach to Design, Implementation, and Management (6th ed.). Pearson Education.
+Elmasri, R., & Navathe, S. (2015). Fundamentals of Database Systems (7th ed.). Pearson.
+Silberschatz, A., Korth, H. F., & Sudarshan, S. (2011). Database System Concepts (6th ed.). McGraw-Hill.
+Garcia-Molina, H., Ullman, J. D., & Widom, J. (2008). Database Systems: The Complete Book (2nd ed.). Pearson.
+Date, C. J. (2004). An Introduction to Database Systems (8th ed.). Addison-Wesley.
+Date, C. J. (2012). Database Design and Relational Theory: Normal Forms and All That Jazz. O'Reilly Media.
+Harrington, J.L., (2016). Relational Database Design and Implementation: Clearly Explained. 4th ed. Amsterdam: Morgan Kaufmann.
+Coronel, C. & Morris, S., (2019). Database System Design, Implementation and Management. 12th ed. Cengage Learning
+DPA (2018). Data Protection Act 2018. Retrieved from: https://www.legislation.gov.uk/ukpga/2018/12/contents/enacted
+Wikipedia contributors. (2023). Boyce–Codd normal form. In Wikipedia, The Free Encyclopaedia. Retrieved from https://en.wikipedia.org/wiki/Boyce%E2%80%93Codd_normal_form
+ 
+
+Appendices
+Appendix A - Analysis of the entity relationships of the conceptual design
+‘From’ table	‘To’ table	‘To’ end Cardinality	Relationship (From → To)
+guest	company_account	0 or 1	A guest may belong to a company
+guest	marketing	0 or 1	A guest may have agreed to receive marketing information
+guest	reservation	1 or more 	A guest makes one or more reservations over time
+reservation	complaint	0 or more	A reservation may have one or more complaints raised during a guest’s stay
+reservation	guest	1	A reservation is made by one guest
+reservation	promotion	0 or 1	A reservation may have used a promotional discount code
+reservation	invoice	0 or 1	A reservation will have an invoice created once the price is agreed or any payment has been made
+reservation	room	1	A reservation books one room
+reservation	staff	1	1 member of staff creates the reservation to reserves the room.
+reservation	staff	0 or 1	Two separate optional relationships from reservation to staff entity:
+1 member of staff processes the check-in if guest arrives.
+1 member of staff processes the check-out if guest has previously checked-in.
+complaint	reservation	0 or 1	If a complaint is raised during the occupancy of room defined by one reservation.
+complaint	staff	1	A complaint will be opened by one member of staff.
+complaint	staff	0 or 1	A complaint, if resolved, will be resolved by one member of staff.
+staff	staff	0 or more	A member of staff may manage other staff and they themselves will be managed by one other member of staff. Apart from the owner who does not have a manager.
+staff	complaint	0 or more	A member of staff may open or resolve a complaint.
+staff	room_clean	0 or more	A member of staff may be booked to clean one or more rooms.
+staff	reservation	0 or more	A member of staff may reserve a room, check-in a guest, check-out a guest
+company_account	guest	0 or more	A company account can be created in advance of guest bookings. It may send multiple guests to the hotel.
+marketing	guest	1	A marketing record will be created for a guest that agrees to receive marketing information.
+promotion	reservation	0 or more	A promotion code may not have been used yet, but could be used by many reservations.
+invoice	reservation	1	Once created, an invoice is linked to a single reservation.
+room	reservation	0 or more	A room exists before the first reservation. It is likely to be reserved multiple times over a year.
+room	room_clean	0 or more	A room exists before the first cleaning, but a room will be cleaned multiple times over a year.
+room_clean	room	1	A room cleaning booking occurring at a specific date and time will clean one room.
+room_clean	staff	1	A room cleaning booking occurring at a specific date and time will be cleaned by one member of staff.
+
+
+Appendix B - Candidate Keys of the room_clean table and the BCNF violation
+Background
+•	A hotel room is cleaned once a day (either a light clean or a full clean).
+•	A member of staff can clean multiple rooms in a day but will be allocated a master key for the whole day to give them access to all the rooms.
+•	The room_clean table contains data to show which rooms are to be cleaned (including the type of clean required) at what time on what day by which member of staff, and what key they are using.
+Table Attributes
+•	room_number
+•	date_of_clean
+•	staff_id
+•	time_of_clean
+•	allocated_master_key
+•	type_of_clean
+
+Functional dependencies (Fd)
+Fd	Attributes making the functional dependency	Candidate Key
+1	{ room_number, date_of_clean  →  time_of_clean, staff_id, allocated_master_key, type_of_clean }	Y
+2	{ staff_id, date_of_clean  →  room_number, time_of_clean, allocated_master_key, type_of_clean }	Y
+3	{ allocated_master_key, date_of_clean, time_of_clean  →  room_number, staff_id, type_of_clean }	Y
+4	{ date_of_clean, staff_id  →  allocated_master_key }	N
+
+Therefore, only type_of_clean is a non-prime attribute.
+
+Normalisation
+•	The table passes 1NF checks - it has a primary key and has only atomic attributes.
+•	The table passes 2NF checks - the only non-prime attribute depends on entire candidate keys. (Fd1, Fd2 & Fd3)
+•	The table passes 3NF checks - there is only one non-prime attribute, so it cannot have transitive dependency on another non-prime attribute.
+•	The table violates BCNF - Fd4, which determines allocated_master_key, is not itself a candidate key because {date_of_clean, staff_id} cannot uniquely identify a row.
+
+
+
+ 
+Contents
+
+1 Introduction	3
+2 Database creation	3
+3 Changes from Assignment 1 design	7
+4 Test data	8
+5 Using the data	8
+6 Testing database constraints	21
+7 Advanced SQL features	22
+8 Deployment considerations	27
+9 Conclusion	28
+References	29
+Appendices	30
+Appendix A – Updated Physical Design Model	30
+
+ 
+1 Introduction
+This document describes the process of implementing the hotel database, designed in Assignment 1. Implementation and testing were performed using MySQL Workbench 8.0 and all screenshots are taken from that tool.
+
+2 Database creation
+The script database_creation.sql contains the SQL commands that create the hotel_DB database including the tables, views, triggers, stored procedures.  It first drops any existing database before using CREATE DATABASE.
+
+The script continues with CREATE TABLE commands based on the physical design model. They define tables (with column names, data types, and primary key). When the design linked tables together, a FOREIGN KEY constraint is defined to reference the other table. Foreign key ‘actions’ define what happens when referenced data is deleted.
+Action	Description
+ON DELETE SET NULL	When a row in the table, referenced by the foreign key, is deleted, the reference in this table is set to NULL
+ON DELETE RESTRICT	MySQL will prevent deletion of any row in the foreign table that is currently being referenced by this table.
+ON DELETE CASCADE	When a row in the table, referenced by the foreign key, is deleted, the row in this table that is referencing it will also be deleted.
+ON DELETE SET DEFAULT	When a row in the table, referenced by the foreign key, is deleted, the reference in this table is set to its default value.
+
+ 
+The order of table creation is important. When declaring a foreign key, the table being referenced must already exist – see Table 2.
+Creation Order	Table	Other tables referenced
+1	Staff	staff
+2	room_type	-
+3	bathroom_type	-
+4	room_price	room_type, bathroom_type
+5	Room	room_price
+6	Address	-
+7	company_account	address
+8	Guest	address, company_account
+9	Marketing	guest
+10	Invoice	-
+11	Promotion	-
+12	Reservation	invoice, promotion, guest
+13	check_in	staff, reservation
+14	check_out	staff, reservation
+15	complaint_category	-
+16	Complaint	reservation,  complaint_category, staff
+17	complaint_resolution	complaint, staff
+18	cleaning_session	staff
+19	room_clean	room, cleaning_session
+
+
+
+
+
+
+
+
+
+
+
+CHECK constraints were added to limit CHAR codes to a defined set of values or to enforce data format. DEFAULT value was set when appropriate.
+A trigger was created to demonstrate they provide more customised error messages than a regular CHECK.
+MySQL automatically indexes the primary key of a table. Query execution time was significantly improved by creating additional indexes. Using indexes is a balance, as they improve query performance but can introduce overhead when modifying data in large datasets (Silberschatz, 2011).
+Views were used to combine commonly used data together by using table JOINs. Views allow extra values to be derived and make query design less complex. (Connolly, 2015)
+Stored procedures were used to implement two complicated queries.
+Finally, the script configures the access control by defining Roles, Users and GRANTs.
+Table 3 highlights certain aspects of the database creation.
+Section	Screenshot and Comments
+room_price & room table creation	The room_price table is created with a Composite Primary Key. Each of the columns have been marked as NOT NULL as providing the data is mandatory. It is linked to two other tables via Foreign Key constraints.
+
+status in the room table uses DEFAULT to default the room as ACT (active). The other possible values are declared in a COMMENT. A CHECK command has been used to enforce the possible values of status.
+
+company_account	The company id is automatically allocated and incremented by the database to ensure uniqueness.
+The postcode uses ON UPDATE CASCADE to ensure a change of postcode in the address table updates this table too.
+A REGEXP CHECK constraint has been applied to the e-mail address to check it contains valid characters before and after the @ sign and has a domain name with a full stop and at least two characters after that.
+An index was added to improve performance of searches by company_name.
+
+
+reservation_with_
+end_date_view	This view enhances the data stored in the reservation table by deriving the date of the end of stay in the hotel and the date of the last night.
+
+
+room_cleaning
+_view	Cleaning staff in the hotel are given very limited access to the database and are only allowed to view the data combined into this one view.
+
+Admin phone number validation	This stored procedure and these insert/update triggers show how a custom error message can be displayed if a telephone number of incorrect length is entered into the table. See test results in Section 6.
+
+
+
+
+Access control	This section shows the creation of different Roles and user accounts. The manager is given access to all tables. The receptionists can view everything and modify tables necessary for daily operation. The cleaning staff are limited to the single view.
+
+
+
+
+3 Changes from Assignment 1 design
+A UK postcode format requires a space separator, so postcode columns were changed from 7 to 8 characters and a REGEXP format CHECK was added (MySQL, 8.0)
+The invoice table contained a free-form text column for method of payment which risked data entry inconsistencies, potentially harming payment reporting accuracy. It was replaced with a payment_code column and a new payment_method lookup table. A payment_reference column was also added so that payments can be linked with a payment processor (e.g Stripe).
+See Appendix 1 for updated physical design.
+
+4 Test data
+The script test_data_population.sql INSERTs example data from assignment along with additional randomly generated test data which can be used to fully exercise the example queries. Emphasis was given to realistic room reservations and associated data aiming to show active hotel usage during Autumn 2024.
+5 Using the data
+The file select_script_of_example_queries.sql implements Assignment 1’s example queries and others required to test database functionality. The method of table joining was carefully chosen considering the possibility of NULL table rows. Table 4 explains the queries, highlights usage of different SQL keywords and shows test results.
+Query Id	Purpose / Evidence / Comments
+1	Select all rows from reservation_with_end_date_view to check it shows all reservations.  SELECT * was used to choose all columns from the table.
+SUCCESSFUL
+
+2	Select all rows from room_details_view where the status is Active to test the view shows the correct rooms with all their details and is sorted by room_number.
+Uses a WHERE statement to filter by status and ORDER BY to sort ascending.
+SUCCESSFUL
+
+3	Select all rows from reservation_with_end_date_view that are marked as currently checked-in to check it shows the correct information.
+SUCCESSFUL
+
+4	Select the reservations that checked out on 19th November to check the correct information is returned.
+Uses two clauses AND’d together in the WHERE statement to filter both by status code and date.
+SUCCESSFUL
+
+5	Retrieve the names (with ids) of guests that have made a reservation in the last week.
+Specific columns were named in the SELECT statement to return just the data required.
+Makes use of a subquery. The nested query gets the guest ids matching the date criteria (using current date and some date arithmetic) and the top query uses those ids to extract the names from the guest table.
+SUCCESSFUL
+
+
+6	Retrieve the names of guests that use a Hotmail email address.
+Uses the LIKE string-matching feature of MySQL.
+SUCCESSFUL
+
+7	Find the room number of a guest currently booked into the hotel searching by their last name.
+USING is used to join two tables as they both have guest_id columns.
+CONCAT is used to build the guest’s full name from component attributes.
+DATE_ADD is used to derive the last day the guest will stay in the hotel and BETWEEN is used to check that today’s date is in that booking time window.
+SUCCESSFUL
+
+
+8	Use a stored procedure to find reserved/occupied rooms between 1st Dec and 5th Dec.
+The stored procedure call is simple, requiring just two dates, but the stored procedure itself may get multiple matches for the same room in the time window, so uses DISTINCT to report each room only once.
+SUCCESSFUL
+
+Note: Stored procedure is defined in the database_creation.sql script
+
+
+
+
+9	Use a stored procedure to find available rooms between 1st Dec and 5th Dec.
+The stored procedure call is simple, requiring just two dates, but the stored procedure itself uses a nested query to find Active rooms that are NOT already reserved in the time window. Full details about the room are returned to help the receptionist discuss a possible booking with a customer.
+SUCCESSFUL
+
+Note: Stored procedure is defined in the database_creation.sql script
+
+
+10	Report on the complaints raised by guests. Joins to the complaint_category table to be able to report with a meaningful description and the severity rating. The results are ordered descending from the greatest number of complaints to least. The results are first GROUPed BY category_code and then COUNT is used total the number of each complaint type.
+SUCCESSFUL
+
+
+11	Report on the guests that have booked the most nights.
+GROUP_BY is used to group the data so that the results of each guest are together, then SUM is used to calculate the total_nights. Finally LIMIT is used to report on just the top eight guests.
+SUCCESSFUL
+
+12	Like above, this time reporting on the top 3 companies whose guests have booked the most nights.
+Inner JOINs are used to insist that there are matching rows in all three tables.
+SUCCESSFUL
+
+13	Report on reservations that checked out more than a week ago and still haven’t settled their invoice.
+DATEDIFF is used to calculate the number of days since check-out.
+SUCCESSFUL
+
+
+14	Calculate the smallest and largest invoice amounts.
+Uses MIN and MAX to find those values.
+SUCCESSFUL
+
+
+15	Report the total revenue by type of room sorted from highest to lowest.
+SUCCESSFUL
+
+
+16	Report on the occupancy of each room for a two month window.
+LEAST and GREATEST were used to limit the number of days counted from a booking that partially overlaps the reporting dates.
+SUCCESSFUL
+
+
+
+16b	Report room occupancy by room type and provide an average of the occupied days and the percentage of the total possible days that the rooms of those types were occupied.
+This is achieved by wrapping the (16) query in another query. AVG and ROUND are used to calculate the required values.
+SUCCESSFUL
+
+
+17	Report on which promotion codes have been most effective.
+Results show that, as expected, no promotion code was used for many bookings, but that the 10% company discount was the most used.
+SUCCESSFUL
+
+
+18	Report on the number of reservations, check-ins, check-outs have been processed by each member of staff.
+COUNT(DISTINCT ) was used to achieve this. AS was used to name the counted values.
+LEFT_JOIN was used to be sure that staff wouldn’t be ignored from the results even if they hadn’t processed any reservations. LIKE was used to make sure the member of staff was a type of receptionist. (Coronel, Morris, Rob, 2020)
+SUCCESSFUL
+
+
+18b	Similar to Query 18, but the results were filtered so that only staff processing more than 100 check-ins were shown. The HAVING feature was used to implement the greater than 100 filter.
+SUCCESSFUL
+
+
+19	Used a CROSS JOIN to report on all possible combinations between room_type and bathroom_type.
+SUCCESSFUL
+
+
+20	Report on guests that wish to receive a phone call about discounts available.
+Uses a NATURAL JOIN to link the two tables as MySQL will realise that both have guest_id in common.
+SUCCESSFUL
+
+
+21	Show a room cleaning rota for a specific day. This is a query that the users of the database with a ‘cleaner’ role will be able to run as they are GRANTed to SELECT from the room_cleaning_view.
+SUCCESSFUL
+
+
+
+
+ 
+6 Testing database constraints
+The file invalid_data_to_test_constraints.sql is designed to fail and is used to prove the CHECK constraints are functional. Figure 3 shows the invalid data being used and the MySQL errors. Note #3 which uses the trigger to display a custom error message.
+
+ 
+7 Advanced SQL features
+The file advanced_script.sql tested various advanced features of MySQL beyond simple SELECT statements, including data insertion/deletion and table modification. Each stage of the tests is documented in Table 5.
+Test Id	Purpose / Evidence / Comments
+1	Demonstrate the behaviour of an ON UPDATE CASCADE foreign key constraint. In this example the guest and address tables are used.
+SELECT statements are used to show the same postcode in both tables.
+
+
+
+
+
+
+
+
+UPDATE with a WHERE clause is used to update the postcode in the address table and show how the UPDATE cascades to the guest table
+
+
+
+
+
+SUCCESSFUL
+
+2	Demonstrate the behaviour of an ON DELETE CASCADE foreign key constraint. In this example the guest and marketing tables are used.
+
+Guest 50 is INSERTed into both tables.
+
+
+
+
+
+
+Then DELETE FROM is used to delete from the guest table and prove the marketing row is also removed.
+
+
+
+
+
+SUCCESSFUL
+
+3	Use ALTER TABLE to implement a Soft Delete flag on the guest table to help maintain data integrity of reservation information when a guest needs to be deleted.
+
+
+
+
+
+Soft delete guest 7 by using UPDATE and setting the deleted column to 1.
+Use SELECT to prove guest 7 can be removed from the results and yet the reservations remain for reporting.
+
+
+
+
+
+SUCCESSFUL
+
+4	Demonstrate table creation, renaming, data replacement and dropping
+
+A table is CREATEd and RENAMEd.
+
+
+
+
+The table is ALTERed to rename a column. DESC is used to describe the table.
+
+
+
+
+
+Test data is INSERTed.
+
+
+
+
+
+REPLACE is used to change an age value.
+
+
+
+
+
+The age column is removed by using DROP.
+
+
+
+
+
+TRUNCATE is used to empty the table and reset the auto increment
+
+
+
+
+More data is added to show the id starts at 1 again and finally DROP is used to delete this demo table from the database.
+
+
+
+
+
+SUCCESSFUL
+
+5	To optimise a query the EXPLAIN command is used.
+
+
+
+
+The ‘ALL’ in the first row of the results shows that a full table scan was required, so add an index to the room_type_name column to improve the performance.
+
+
+
+Running EXPLAIN again shows that the index is being used.
+
+
+
+SUCCESSFUL
+6	Demonstrate the use of Transaction to allow an address change to be rolled back if there is a problem with the creation of the guest record.
+
+First the transaction is started and the new address added.
+
+
+
+
+
+Then a guest with an invalid phone number is inserted (MySQL shows an error) so the ROLLBACK command is used. Finally, the address table is searched to prove that the address that was added has been rolled back.
+
+
+
+SUCCESSFUL
+
+
+8 Deployment considerations
+If the database was deployed in a real hotel further consideration and enhancement would be required to address the following points:
+Software - MySQL Enterprise Edition is recommended for additional performance monitoring and security features.
+Concurrency Control - ensures that multiple users can access and modify the hotel database simultaneously without data conflicts or integrity issues. E.g. when two receptionists attempt to assign the last available room, mechanisms like locking can be used to ensure only one transaction succeeds preventing double-booking.
+Encryption – The database contains information about its guests. Data in specific columns could be encrypted using AES_ENCRYPT & AES_DECRYPT (Elmasri & Navathe, 2016). MySQL Enterprise Edition allows database files to be fully encrypted using MySQL Enterprise Transparent Data Encryption (MySQL-TDE, 2024)
+Backups - contents of the database is vital for the hotel business, so regular encrypted backups must be taken and kept off-site. (Bradford, 2012). Full backups could be made each week using mysqldump. Incremental backups, that record changes since full backup could be captured daily or hourly. This can be achieved by capturing the mySQL binary logs; restored using mysqlbinlog.
+Database maintenance – It will be important to follow best practice advice and regularly check logs and apply database patches. Performance monitoring tools can be used to check for CPU or Storage bottlenecks (GeeksForGeeks, 2024). Individual queries could be optimised using EXPLAIN and applying indexes.
+Partitioning – can be used to improve performance as the database becomes large over time. It splits-up the data in the tables. Horizontal partitioning divides the table rows based on conditions (so reservations could be divided by year). Vertical partitioning splits a table into two smaller tables by grouping columns, the primary key being shared across partitions.
+Security - This implementation already makes use of roles & granted access control, but more refinement may be required. Audit logging can be used to detect potential security breaches. Tools like MySQL’s AUDIT plugin can be configured to log activity by user/timestamp.
+GDPR (Data Protection Act, 2018) - If a guest requests deletion from the database, a soft delete will not suffice, and a hard delete would harm reporting and data integrity. A solution is that their data be overwritten with dummy values to removes their details but maintain data integrity.
+PCI DSS (PCI Security Standards Council, 2024) – care needs to be taken when handling payment information. PCI defines the safeguards companies must use. This database does not hold payment information. A third-party payment processor (such as Stripe) will need to be used who themselves will be compliant with the required security standards.
+
+9 Conclusion
+Reflecting back on this project, I feel it has given me valuable experience in database implementation and the use of MySQL Workbench. I significantly underestimated the amount of time the design would take to implement and test, however the end result is good and meets all the objectives of the initial design.
+If this database was to be used in a production environment I would want to monitor the performance of each of the queries and optimise as required. I would need to gain experience of the Enterprise Edition of MySQL Workbench to be confident using it in production.
+
+ 
+References
+Silberschatz, A., Korth, H. F., & Sudarshan, S. (2011). Database System Concepts (6th ed.). McGraw-Hill.
+Connolly, T., & Begg, C. (2015). Database Systems: A Practical Approach to Design, Implementation, and Management (6th ed.). Pearson Education.
+MySQL (8.0) Documentation. (n.d.). MySQL 8.0 Reference Manual. Retrieved from https://dev.mysql.com/doc/refman/8.0/en/
+Elmasri, R., & Navathe, S. (2016). Fundamentals of Database Systems (7th ed.). Pearson.
+Coronel, C., Morris, S., & Rob, P. (2020). Database Systems: Design, Implementation, & Management. 13th ed. Cengage Learning.
+MySQL Enterprise Transparent Data Encryption (MySQL-TDE, 2024) https://www.mysql.com/products/enterprise/tde.html
+Bradford, R. (2012). Effective MySQL Backup and Recovery (Oracle Press). McGraw Hill.
+GeeksForGeeks, 2024). MySQL Database Maintenance Best Practices. https://www.geeksforgeeks.org/mysql-database-maintenance-best-practices/
+Data Protection Act (2018). UK General Data Protection Regulation (GDPR). Available at https://www.gov.uk/data-protection
+PCI Security Standards Council (2024). PCI DSS Requirements and Standards. Retrieved from https://pcisecuritystandards.org/
+
+Appendices
+Appendix A – Updated Physical Design Model
+
+This updated model shows:
+•	the invoice table using the new payment_method table
+•	postcode columns having a length of 8 characters.

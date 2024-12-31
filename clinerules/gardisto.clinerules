@@ -1,0 +1,127 @@
+# Gardisto
+
+Everytime you choose to apply a rule(s), explicitly state the rule(s) in the output. You can abbreviate the rule description to a single word or phrase.
+
+## Project Context
+
+Gardisto is a TypeScript utility for automatically checking and verifying environment variables in projects. Key features include:
+- Automatic environment variable detection
+- Flexible configuration options
+- Developer-friendly outputs
+- CI/CD integration capabilities
+
+## Code Style and Structure
+- Write clean, maintainable TypeScript code
+- Follow functional programming principles
+- Use meaningful variable and function names
+- Implement comprehensive error handling
+- Structure repository files as follows:
+📦 gardisto/
+├── src/                        # Source code
+│   ├── envVariableChecker.ts   # Core checking logic
+│   ├── errors.ts              # Custom error definitions
+│   ├── fileUtils.ts           # File handling utilities
+│   ├── gardisto.ts            # Main entry point
+│   ├── index.ts               # Public API exports
+│   ├── logger.ts              # Logging functionality
+│   └── types.ts               # TypeScript types
+├── __tests__/                 # Test files
+├── example/                   # Example implementation
+│   └── src/                   # Example source code
+└── docs/                      # Documentation
+
+## Tech Stack
+- **TypeScript** - Main programming language
+- **Node.js** - Runtime environment
+- **Jest** - Testing framework
+- **Biome** - Code formatting and linting
+- **tsup** - TypeScript bundler
+
+## TypeScript Guidelines
+- Enable strict mode in tsconfig.json
+- Use explicit type annotations
+- Prefer interfaces over type aliases
+- Use union types for variants
+- Implement proper error types
+- Avoid any type
+- Use generics when appropriate
+- Document public APIs with JSDoc
+
+## Naming Conventions
+- Use PascalCase for types and interfaces
+- Use camelCase for functions and variables
+- Use UPPER_SNAKE_CASE for constants
+- Use descriptive names that reflect purpose
+- Add Type suffix for type aliases
+- Use verb prefixes for functions (e.g., check, validate)
+- Follow consistent file naming (kebab-case)
+
+## Testing Standards
+- Write unit tests in __tests__ directory
+- Use descriptive test names
+- Follow AAA pattern (Arrange-Act-Assert)
+- Mock file system operations
+- Test edge cases and error conditions
+- Maintain high coverage
+- Use Jest for testing framework
+
+## Documentation
+- Maintain clear README.md
+- Document all public APIs
+- Include usage examples
+- Document configuration options
+- Keep ROADMAP.md updated
+- Include TypeScript definitions
+
+## Error Handling
+- Use custom error classes from errors.ts
+- Provide meaningful error messages
+- Include error contexts
+- Handle edge cases
+- Use logger.ts for consistent logging
+- Support debugging mode
+
+## Performance
+- Optimize file scanning
+- Cache results where appropriate
+- Minimize memory usage
+- Handle large codebases efficiently
+- Support async operations
+
+## Code Quality
+- Use Biome for formatting and linting
+- Follow .npmignore guidelines
+- Write clear commit messages
+- Review pull requests thoroughly
+- Keep dependencies updated
+- Follow semantic versioning
+
+## Test Driven Development (TDD)
+- Follow Red-Green-Refactor cycle:
+  1. Red: Write failing test first
+  2. Green: Write minimal code to pass test
+  3. Refactor: Improve code while keeping tests green
+- Test Structure:
+  - Group tests by feature/function
+  - Use descriptive test names that explain behavior
+  - Follow "Given-When-Then" pattern in test descriptions
+- TDD Workflow:
+  - Write one test at a time
+  - Run tests frequently
+  - Commit after each successful cycle
+  - Keep tests and production code in sync
+- Test Design:
+  - Start with simple cases
+  - Add edge cases incrementally
+  - Test one behavior per test
+  - Use setup functions for common test data
+- Best Practices:
+  - Keep tests simple and focused
+  - Avoid test interdependence
+  - Mock external dependencies
+  - Use test doubles appropriately
+  - Maintain test readability
+
+## DEVBOOK
+
+Always update the DEVBOOK.md file after modifications to track the development progress of Gardisto following Test-Driven Development principles.

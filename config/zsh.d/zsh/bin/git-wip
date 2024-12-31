@@ -1,0 +1,9 @@
+#!/bin/sh
+
+toplevel=$(git rev-parse --show-toplevel)
+pushd "${toplevel}" || exit 1
+git add .
+popd || exit 1
+
+git commit -m 'WIP.' "$@"
+main "$@"
