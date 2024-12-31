@@ -6,4 +6,3 @@ git add .
 popd || exit 1
 
 git commit -m 'WIP.' "$@"
-main "$@"
