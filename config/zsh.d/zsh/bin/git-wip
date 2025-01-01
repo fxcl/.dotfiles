@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env sh
 
 toplevel=$(git rev-parse --show-toplevel)
 pushd "${toplevel}" || exit 1

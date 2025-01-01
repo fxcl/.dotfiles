@@ -102,9 +102,9 @@
 ; 	markUnblamableLines = true
 
 # Enforce SSH to clone repos
-[url "git@github.com:"]
-	insteadOf = git://github.com/
-	insteadOf = https://github.com/
+# [url "git@github.com:"]
+# 	insteadOf = git://github.com/
+# 	insteadOf = https://github.com/
 
 [diff]
 	# Tells Git to detect renames. If set to "true", it will enable basic
