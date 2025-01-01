@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+
+default_branch=$(git remote show origin | sed -n '/HEAD branch/s/.*: //p')
+ancestor_commit=$(git merge-base HEAD "${default_branch}")
+
+git reset "${ancestor_commit}"

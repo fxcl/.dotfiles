@@ -1,0 +1,14 @@
+#!/usr/bin/env sh
+
+set -x
+
+default_branch=$(git remote show origin | sed -n '/HEAD branch/s/.*: //p')
+
+git clean -fd
+git checkout -- .
+git stash clear
+git checkout "${default_branch}"
+git branch | grep -v '\*' | sed 's/ //g' | xargs -I {} git branch -D {}
+git gc
+git prune
+git fetch && git pull origin "${default_branch}"

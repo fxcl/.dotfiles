@@ -24,9 +24,23 @@
 	quotepath = false
 	editor = $EDITOR
 	commitGraph = true
+  # Treat spaces before tabs and all kinds of trailing whitespace as an error.
+	# [default] trailing-space: looks for spaces at the end of a line
+	# [default] space-before-tab: looks for spaces before tabs at the beginning of a line
+	# whitespace = space-before-tab,-indent-with-non-tab,trailing-space
 	whitespace=fix,space-before-tab,tab-in-indent,trailing-space,cr-at-eol
-	; https://git-scm.com/docs/git-update-index#_untracked_cache
-	untrackedCache = true
+	# Enable parallel I/O for operations like "git diff".
+	# See http://stackoverflow.com/q/18257622/276478
+	preloadindex = true
+
+  # Use 12 characters for the abbreviated commit hash.
+	# See http://blog.cuviper.com/2013/11/10/how-short-can-git-abbreviate/
+	abbrev = 12
+
+  ; https://git-scm.com/docs/git-update-index#_untracked_cache
+
+  untrackedCache = true
+
 	; hash (#) conflicts with Markdown when I use hub to open PRs etc...
 	commentChar = %
 	hooksPath = ~/.config/git/hooks
@@ -88,12 +102,16 @@
 ; 	markUnblamableLines = true
 
 # Enforce SSH to clone repos
-# [url "ssh://git@github.com/"]
-#   insteadOf = https://github.com/
+# [url "git@github.com:"]
+# 	insteadOf = git://github.com/
+# 	insteadOf = https://github.com/
 
 [diff]
-	# Detect copies as well as renames
+	# Tells Git to detect renames. If set to "true", it will enable basic
+	# rename detection. If set to "copies", it will detect copies, as well.
 	renames = copies
+  # Use more time to create better diffs. E.g. matching opening/closing braces
+	# from neighbour functions.
 	algorithm = histogram
 	tool = vimdiff
 	indentHeuristic = true
@@ -148,6 +166,7 @@
 	date = local
 
 [status]
+  showuntrackedfiles = all
 	submodulesummary = true
 	color = true
 
@@ -197,7 +216,6 @@
 [alias]
 	s         = status -s
 	cp        = cherry-pick
-	#rb = "!sh -c \"git rebase -i HEAD~$1\" -"
 	pushf     = push --force-with-lease
 	wip       = !git add --all && git commit -m "WIP"
 	wipp      = !git wip && git push
@@ -208,8 +226,7 @@
 	ls      = log --pretty=format:'%C(yellow)%h%d %Creset%s%Cblue [%cn] [%ar] %C(black)%C(bold)%cr%Creset' --decorate
 	graph   = log --graph --date=relative --pretty=tformat:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%an %ad)%Creset'
 	amend     = commit --amend
-	#amend = commit --amend --no-edit --date now
-	force = push --force-with-lease
+force = push --force-with-lease
 	prev = checkout HEAD^1
 	next = "!sh -c 'git log --reverse --pretty=%H master | awk \"/$(git rev-parse HEAD)/{getline;print}\" | xargs git checkout'"
 	rollback = reset HEAD^1
@@ -269,6 +286,16 @@
 	# https://twitter.com/mitsuhiko/status/1554562650645864448
 	mainalias = "!f() { if (git show-ref --verify -q refs/heads/main && !git show-ref --verify -q refs/heads/master); then (git symbolic-ref refs/heads/master refs/heads/main); else (git symbolic-ref refs/heads/main refs/heads/master); fi }; f"
 
+  # Custom workflow aliases
+	# See https://stackoverflow.com/a/25915221
+	wip = !git-wip && :
+	squash = !git-squash && :
+	pr = !git-pr && :
+	yeet = !git-yeet && :
+	nuke = !git-nuke && :
+	merge-default = !git-merge-default && :
+	reset-default = !git-reset-default && :
+
 [filter "media"]
 	clean = git-media-clean %f
 	smudge = git-media-smudge %f
@@ -296,3 +323,12 @@
 	# Dynamic/Host specific config is stored here
 	path = config-nix
 	path = ~/.gitconfig.local
+
+
+# Dynamically include configuration files based on the working directory
+[includeIf "gitdir:~/projects/"]
+path = ~/.gitconfig.projects
+
+# Dynamically include configuration files based on the remote repository URL
+[includeIf "hasconfig:remote.*.url:https://github.com/"]
+path = ~/.gitconfig.github

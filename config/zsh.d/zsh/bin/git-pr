@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+
+current_branch=$(git rev-parse --abbrev-ref HEAD)
+default_branch=$(git remote show origin | sed -n '/HEAD branch/s/.*: //p')
+origin=$(git remote get-url origin | sed -e "s/^git@github.com://" -e "s/^https:\/\/github.com\///" -e "s/.git$//")
+
+open "https://github.com/${origin}/compare/${default_branch}...${current_branch}"
