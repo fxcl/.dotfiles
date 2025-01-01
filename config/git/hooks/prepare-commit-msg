@@ -13,30 +13,31 @@ if [ -z "$PROJECT_GOAL" ]; then
   PROJECT_GOAL="develop new software"
 fi
 
-# Define commit types with corresponding emojis
-declare -A TYPES
+# Define commit types with corresponding emojis as a regular array
 TYPES=(
-  ["feat"]="🌟 feat"
-  ["fix"]="🐞 fix"
-  ["doc"]="📖 doc"
-  ["docs"]="📖 docs"
-  ["chore"]="💄 chore"
-  ["style"]="🎨 style"
-  ["type"]="🆎 type"
-  ["test"]="⛑ test"
-  ["refactor"]="🐝 refactor"
-  ["website"]="🌍 website"
-  ["revert"]="🔙 revert"
-  ["clean"]="💊 clean"
-  ["perf"]="📈 perf"
-  ["ci"]="💢 ci"
-  ["build"]="🧯 build"
+  "feat:🌟 feat"
+  "fix:🐞 fix"
+  "doc:📖 doc"
+  "docs:📖 docs"
+  "chore:💄 chore"
+  "style:🎨 style"
+  "type:🆎 type"
+  "test:⛑ test"
+  "refactor:🐝 refactor"
+  "website:🌍 website"
+  "revert:🔙 revert"
+  "clean:💊 clean"
+  "perf:📈 perf"
+  "ci:💢 ci"
+  "build:🧯 build"
 )
 
 # Create a string of commit types and emojis for the prompt
 TYPE_EMOJI_LIST=""
-for key in "${!TYPES[@]}"; do
-  TYPE_EMOJI_LIST+="\n- ${TYPES[$key]}: ${key}"
+for type in "${TYPES[@]}"; do
+  key="${type%%:*}"
+  value="${type#*:}"
+  TYPE_EMOJI_LIST+="\n- $value: $key"
 done
 
 # Construct the prompt with specified format

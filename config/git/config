@@ -216,7 +216,6 @@
 [alias]
 	s         = status -s
 	cp        = cherry-pick
-	#rb = "!sh -c \"git rebase -i HEAD~$1\" -"
 	pushf     = push --force-with-lease
 	wip       = !git add --all && git commit -m "WIP"
 	wipp      = !git wip && git push
@@ -227,8 +226,7 @@
 	ls      = log --pretty=format:'%C(yellow)%h%d %Creset%s%Cblue [%cn] [%ar] %C(black)%C(bold)%cr%Creset' --decorate
 	graph   = log --graph --date=relative --pretty=tformat:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%an %ad)%Creset'
 	amend     = commit --amend
-	#amend = commit --amend --no-edit --date now
-	force = push --force-with-lease
+force = push --force-with-lease
 	prev = checkout HEAD^1
 	next = "!sh -c 'git log --reverse --pretty=%H master | awk \"/$(git rev-parse HEAD)/{getline;print}\" | xargs git checkout'"
 	rollback = reset HEAD^1
