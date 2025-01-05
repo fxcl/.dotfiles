@@ -197,6 +197,7 @@ dockerrm() {
 }
 
 alias dockerrm="dockerrm"
+alias colima:repair="colima stop -f && rm -rf /Users/$USER/.colima/_lima/_networks && colima start"
 
 # `tre` is a shorthand for `tree` with hidden files and color enabled, ignoring
 # the `.git` directory, listing directories first. The output gets piped into
