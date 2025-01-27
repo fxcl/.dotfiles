@@ -260,11 +260,13 @@ fi
 if [[ "$(uname)" == Darwin* ]]; then
   alias finder='open -a Finder ./'
   alias flushdns='sudo killall -HUP mDNSResponder'
-  alias code="/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code"
+  # alias code="/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code"
   alias curl='curl --keepalive-time 60'
   alias zed='/Applications/Zed.app/Contents/MacOS/zed'
   alias chrome='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome'
   alias canary='/Applications/Google\ Chrome\ Canary.app/Contents/MacOS/Google\ Chrome\ Canary'
+
+  code() { VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args $*; }
 
   # emacs-mac
   # brew tap railwaycat/emacsmacport

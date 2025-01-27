@@ -1,0 +1,24 @@
+-Log every change you make with a summary and files you have changed in a log file named changes.md if it doesnt exist then create it.
+
+1. Test Coverage:
+    -   Before attempting completion, always make sure that any code changes have test coverage
+    -   Ensure all tests pass before submitting changes
+
+2. Git Commits:
+    -   When finishing a task, automatically execute `git add .` and `git commit` with a descriptive commit message that follows conventional commit format.
+
+3. Documentation:
+    -   Update README.md when making significant changes, such as:
+        *   Adding new features or settings
+        *   Changing existing functionality
+        *   Updating system requirements
+        *   Adding new dependencies
+    -   Include clear descriptions of new features and how to use them
+    -   Keep the documentation in sync with the codebase
+    -   Add examples where appropriate
+
+4. Lint Rules:
+    -   Never disable any lint rules without explicit user approval
+    -   If a lint rule needs to be disabled, ask the user first and explain why
+    -   Prefer fixing the underlying issue over disabling the lint rule
+    -   Document any approved lint rule disabling with a comment explaining the reason

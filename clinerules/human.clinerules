@@ -1,0 +1,243 @@
+# M4300 API Helpers - Simplified Project Rules
+
+## Core Principles
+
+1. Always validate before acting:
+   - Before using any tool:
+     * Verify tool parameters are correct
+     * Ensure tool is appropriate for task
+     * Check potential impact
+     * Have error handling plan
+
+   - Before running any command:
+     * Verify command syntax
+     * Check command safety
+     * Ensure proper permissions
+     * Consider potential side effects
+
+   - Before starting any sequence:
+     * Verify steps are in correct order
+     * Ensure prerequisites are met
+     * Check for dependencies
+     * Have rollback plan
+
+   - General validation rules:
+     * Never assume success without verification
+     * Document validation results
+     * Handle all error cases
+     * Test with real data when possible
+
+2. Trust testing over documentation:
+   - Live API testing is the source of truth
+   - Document any differences from official docs
+   - Always test with a real switch
+   - Keep our own API documentation updated
+
+3. Follow the OODA workflow for all tasks:
+   - Observe: Gather facts and current state
+   - Orient: Analyze information and impact
+   - Decide: Plan approach and steps
+   - Ask: Before executing any actions, ask for confirmation
+   - Act: Execute steps and validate results
+
+## Development Requirements
+
+1. API Helper Modules:
+   - Must implement all core modules:
+     * Authentication
+     * Device Management
+     * Diagnostics
+     * LAG
+     * Logging
+     * Multicast
+     * PoE
+     * Port Management
+     * QoS
+     * Routing
+     * STP
+     * VLAN Management
+   - Each module requires:
+     * Live API validation
+     * Complete testing
+     * Error handling
+     * MCP integration
+     * Documentation
+     * Example code
+
+2. Code Standards:
+   - Use Poetry for dependency management
+   - Include type hints
+   - Write docstrings
+   - Follow PEP 8
+   - No global variables
+   - No bare except clauses
+   - Handle all errors properly
+
+3. Testing Requirements:
+   - Unit tests for all helpers
+   - Integration tests with real responses
+   - Test all error cases
+   - Validate all configurations
+   - No failing tests in main branch
+
+4. Documentation Needs:
+   - README with setup guide
+   - Module documentation
+   - Configuration examples
+   - Error handling guide
+   - API behavior notes
+   - Track any API deviations
+
+5. Security Rules:
+   - Validate all inputs
+   - Handle sensitive data properly
+   - Implement rate limiting
+   - No hardcoded credentials
+   - No debug mode in production
+
+## Development Workflow
+
+1. Environment Setup:
+   - Use Poetry virtual environment
+   - Enable pre-commit hooks
+   - Configure VSCode integration
+
+2. Version Control:
+   - Write clear commit messages
+   - Use feature branches
+   - No direct commits to main
+   - No merges with main unless all tests pass
+
+3. Sequential Changes:
+   - Make only one code change per testing cycle
+   - Complete testing of current change before making another
+   - No batching of multiple changes together
+   - Address only one error at a time
+   - Complete fix and validation for current error before moving to next
+   - No parallel error fixing
+   - Each error gets its own complete testing cycle
+   - Document each change and its validation results
+
+   Validation Script Usage:
+   - Run validate_endpoint.sh before implementing any endpoint
+     * Validates API behavior
+     * Documents actual responses
+     * Identifies discrepancies from docs
+
+   - Run validate_helper.sh as completion checkpoint
+     * Verifies module structure
+     * Checks code requirements (dataclasses, type hints, docstrings)
+     * Validates test coverage (unit and integration)
+     * Confirms documentation completeness
+     * Verifies MCP integration
+     * Must pass ALL checks before moving to next endpoint
+
+   - General Validation Rules:
+     * Save all validation outputs for reference
+     * Address any failures immediately
+     * Fix all warnings, no exceptions
+     * Never skip validation steps
+     * No moving forward until checkpoint passes
+
+   MCP Operations:
+   - Execute only one MCP operation at a time
+   - Validate all parameters before using MCP tools
+   - Wait for confirmation after each operation
+   - Handle all MCP errors explicitly
+   - Document all MCP interactions
+   - No chaining of MCP operations without validation
+
+   Version Control Workflow:
+   - Create one branch per endpoint being implemented/fixed
+   - Use clear, searchable commit messages: [endpoint] what changed
+   - Commit before making any changes to preserve state
+   - Commit after each successful change
+   - Use git reset --hard HEAD to revert problematic changes
+   - Complete endpoint validation before merging to main
+   - Delete branch after successful merge
+
+   Scope Control:
+   - Stay focused on current endpoint implementation/fix
+   - No parallel feature development
+   - No infrastructure changes while fixing endpoints
+   - Propose major changes as separate tasks
+   - Keep changes minimal and focused
+
+   Troubleshooting Workflow:
+   - Before Making Changes:
+     * Create a snapshot of working state (git commit or backup)
+     * Document the specific issue being addressed
+     * Write down why this change should fix it
+     * List any code areas that might be affected
+     * Map dependencies of the change
+
+   - Error Classification:
+     * Categorize each error (syntax, logic, integration, etc.)
+     * Prioritize fundamental errors over dependent ones
+     * Maintain an error log with categories and relationships
+     * Fix independent issues before dependent ones
+
+   - Testing Process:
+     * Define minimum test requirements for each change
+     * Include both positive and negative test cases
+     * Test the specific fix
+     * Test potentially affected areas
+     * Verify no regression in working features
+
+   - Verification Steps:
+     * Run unit tests for changed code
+     * Run integration tests if interfaces affected
+     * Verify error is actually fixed
+     * Check error logs for new issues
+     * Document test results
+
+   - If New Issues Appear:
+     * Stop immediately
+     * Document new issues
+     * Revert to last working state
+     * Reassess approach
+     * Start process over with new understanding
+
+4. Implementation Process:
+   - Validate API endpoints first
+   - Document actual responses
+   - Create helper module
+   - Write tests
+   - Update documentation
+
+5. Release Process:
+   - Verify all helpers work
+   - Ensure tests pass
+   - Check documentation
+   - Validate security
+   - Test example code
+   - Tag version
+   - Lock dependencies
+   - Update README and changelog
+
+## Deferred Features
+
+The following features are planned for post-release:
+- Performance monitoring
+- Extended documentation
+- Container support
+- CI/CD pipeline
+- OWASP compliance
+- Accessibility features
+- Load testing
+
+## Communication Guidelines
+
+1. Questions and Responses:
+   - Treat questions as information requests only
+   - Provide analysis without immediate action
+   - Wait for explicit action directives
+   - Keep responses concise when possible
+   - Use OODA format for complex problems only
+
+2. Documentation Updates:
+   - Keep API documentation current
+   - Document all limitations
+   - Note any undocumented features
+   - Track all API deviations
+   - Include practical examples
