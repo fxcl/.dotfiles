@@ -27,4 +27,4 @@
 📏 The character limit for the .windsurfrules file is 6,000 characters.
 
 ## 📜 License
-⚖️ Released under the MIT License. See the LICENSE file for details.
+⚖️ Released under the MIT License. See the [LICENSE](https://github.com/fxcl/.dotfiles/blob/main/windsurfrules/LICENSE) file for details.
