@@ -1,0 +1,155 @@
+# AI Coding Assistant Guidelines for Stock Portfolio Project
+
+## 1. Project Information
+
+### Overview
+
+The Stock Portfolio project is a full-stack application developed using AI tools. It serves as a comprehensive example of AI-assisted software development, with detailed documentation of the development process in the `cline` folder.
+
+### Main Features
+
+- Create, view, and manage stock portfolios
+- Track stock holdings and transactions
+- View stock quotes and historical data
+- User-friendly interface for portfolio management
+- Real-time market data integration
+- Secure authentication and authorization
+
+### Technology Stack
+
+- **Frontend**: TypeScript with React
+- **Middleware**: NodeJS with ExpressJS (REST API)
+- **Database**: PostgreSQL
+- **Authentication**: JWT (Keycloak)
+- **External APIs**: Yahoo Finance integration
+- **Testing**: Mocha framework
+
+## 2. Architectural and Design Guidelines
+
+### Database Layer
+
+- **ORM**:
+  - The db repositories use the prisma client to make the db access.
+  - The prisma schema of the DB layer is located in db/prisma/schema.prisma.
+- **Patterns**: Repository Pattern with Strategy/Adapter, Plugin Pattern
+- **Providers**: PostgreSQL (primary), SQLite (secondary)
+- **Key Features**:
+  - Connection pooling for performance
+  - Robust data validation
+  - Secure data handling with encryption
+  - Migration management system
+  - Comprehensive testing strategy
+- **Error Handling**:
+  - Centralized error handling module
+  - Custom error types
+  - Consistent error responses
+- **Transaction Management**:
+  - Defined at service layer
+  - Appropriate isolation levels
+  - Timeout implementation
+
+### BFF (Backend-For-Frontend) Layer
+
+- **Architecture**:
+  - Express.js with TypeScript
+  - REST API principles
+  - JWT authentication with Keycloak
+  - Comprehensive middleware stack
+- **Key Components**:
+  - Controllers for HTTP requests
+  - Services for business logic
+  - Models for type-safe data handling
+  - Middleware for auth, validation, and error handling
+- **API Design**:
+  - RESTful endpoints for all major operations
+  - Versioned API endpoints
+  - Consistent response formats
+  - Comprehensive error handling
+- **Misc**: The BFF layer uses the repositories of the DB layer for db access.
+
+## 3. TypeScript Coding Guidelines
+
+### General Principles
+
+- Use strict type checking (`strict: true` in tsconfig)
+- Prefer interfaces over types for object shapes
+- Use readonly for immutable properties
+- Avoid any type
+- Use union and intersection types appropriately
+
+### Code Organization
+
+- Follow the project's layered architecture
+- Keep files focused and single-purpose
+- Use barrel files for cleaner imports
+- Group related functionality in modules
+
+### Error Handling
+
+- Use custom error classes
+- Implement type-safe error handling
+- Use discriminated unions for error states
+- Document error cases in function signatures
+
+### Testing
+
+- Write comprehensive unit tests
+- Use type-safe mocks
+- Test edge cases and error conditions
+- Maintain high test coverage
+
+### Best Practices
+
+- Use async/await for asynchronous code
+- Implement proper type guards
+- Use generics for reusable components
+- Leverage utility types (Partial, Pick, Omit)
+- Use decorators judiciously
+
+## 4. General Instructions for Coding Assistant
+
+### General Guidelines
+
+- **Think Step by Step Before Acting**: Break down tasks into smaller steps. Consider each step carefully before proceeding.
+- **Communicate Clearly**: If you encounter any issues or have questions, communicate them clearly and promptly.
+- **Follow Instructions Closely**: Adhere strictly to the given instructions and requirements.
+- **Documentation**: Write clear and concise documentation for the application, including setup instructions and API documentation. Document decisions and trade-offs.
+- If you are not able to retrieve the command output from the Terminal, always ask the user to share the ouput.
+
+### Project Understanding
+
+- Review existing documentation before making changes
+- Understand the layered architecture
+- Follow established patterns and conventions
+- Maintain consistency with existing code
+
+### Development Process
+
+- Make small, focused changes
+- Write tests for new functionality
+- Document changes in the appropriate files
+- Follow the project's version control practices
+
+### Code Quality
+
+- Write clean, maintainable code
+- Follow SOLID principles
+- Keep functions small and focused
+- Use meaningful names for variables and functions
+- Write self-documenting code
+
+### Security Considerations
+
+- Validate all inputs
+- Use parameterized queries
+- Implement proper authentication and authorization
+- Follow secure coding practices
+- Keep dependencies up-to-date
+
+### Performance
+
+- Optimize database queries
+- Use caching where appropriate
+- Implement pagination for large datasets
+- Monitor resource usage
+- Profile and optimize critical paths
