@@ -1,0 +1,208 @@
+# Windsurf: Python Project
+
+# 1. Basic Operating Principles
+basic_operation_principles:
+  - name: instruction_reception
+    description: "Capture user specs, clarify unknowns."
+  - name: analysis_planning
+    description: "Analyze tasks/risks, form phased plan."
+  - name: incremental_implementation
+    description: "Implement → test → review in small steps."
+  - name: continuous_feedback
+    description: "Share progress, address key issues quickly."
+
+# 2. Technology Stack and Version Control
+tech_stack:
+  language: Python
+  version: ">= 3.9"
+  venv_manager: "poetry"
+version_policy:
+  require_approval_for_major_upgrade: true
+
+# 3. Project Structure Conventions
+project_structure:
+  python_app:
+    root_dir: "py-app/"
+    layers:
+      domain: { allowed_imports: [] }
+      usecase: { allowed_imports: [domain] }
+      interface: { allowed_imports: [usecase] }
+    protected_files:
+      - "py-app/core/config.py"
+      - "py-app/core/security.py"
+
+# 4. List of Defined Rules
+
+### 4.1: PEP8 & Pythonic Style
+rule1_idiomatic_python:
+  command: "PEP8 / Pythonic compliance"
+  priority: Critical
+  description: "Use PEP8, Black, isort, flake8 for idiomatic code."
+  depends_on: []
+  enforcement: strict
+
+### 4.2: Clean Architecture
+rule2_clean_architecture:
+  command: "Layered design (domain/usecase/interface)"
+  priority: High
+  description: "Use one-way external→internal deps, isolate domain logic."
+  depends_on: [rule1_idiomatic_python]
+  enforcement: strict
+
+### 4.3: Dependency Management
+rule3_dependency_management:
+  command: "Use Poetry/Pipenv for packages"
+  priority: High
+  description: "Sync pyproject.toml & poetry.lock for reproducible builds."
+  depends_on: []
+  config:
+    python_version: "3.9+"
+  enforcement: strict
+
+### 4.4: Test Strategy
+rule4_testing:
+  command: "Comprehensive tests & coverage"
+  priority: Critical
+  description: "Use pytest/unittest/coverage. Parametrize."
+  config:
+    coverage_target: 85
+  depends_on: [rule1_idiomatic_python]
+  enforcement: strict
+
+### 4.5: Error Handling
+rule5_error_handling:
+  command: "Standardize exception handling"
+  priority: High
+  description: "Use custom exceptions, log/traces for root causes."
+  config:
+    classification:
+      transient: { retries: 3 }
+      fatal: { logging: CRITICAL }
+  depends_on: [rule4_testing]
+  enforcement: strict
+
+### 4.6: Log Management
+rule6_logging:
+  command: "Structured logging & levels"
+  priority: Medium
+  description: "JSON/dict logs (e.g., structlog) for easier analysis."
+  config:
+    levels: [DEBUG, INFO, WARN, ERROR]
+  depends_on: [rule5_error_handling]
+  enforcement: strict
+
+### 4.7: Security Measures
+rule7_security:
+  command: "OWASP & bandit scans"
+  priority: Critical
+  description: "Validate inputs, ensure CSRF, run checks."
+  depends_on: [rule5_error_handling, rule4_testing]
+  enforcement: strict
+
+### 4.8: Concurrency & Performance
+rule8_concurrency_performance:
+  command: "Multi-process/threads/async & optimization"
+  priority: Medium
+  description: "Consider GIL, use multiprocessing/asyncio, cProfile for bottlenecks."
+  depends_on: [rule4_testing]
+  enforcement: advisory
+
+### 4.9: SOLID / Refactoring
+rule9_solid_refactor:
+  command: "Single Responsibility & code clarity"
+  priority: High
+  description: "Avoid bloated classes/functions, keep design clean."
+  depends_on: [rule2_clean_architecture]
+  enforcement: advisory
+
+### 4.10: Documentation Guidelines
+rule10_documentation:
+  command: "Docstrings/Sphinx/ADR"
+  priority: Medium
+  description: "Add docstrings, record key design in ADR."
+  depends_on: [rule2_clean_architecture]
+  enforcement: strict
+
+### 4.11: Configuration
+rule11_configuration:
+  command: "12-factor config management"
+  priority: High
+  description: "Use env vars safely, avoid production lock-in."
+  depends_on: [rule3_dependency_management]
+  enforcement: strict
+
+### 4.12: Observability
+rule12_observability:
+  command: "Logs, metrics, traces integration"
+  priority: High
+  description: "Use logging/metrics/tracing for root-cause analysis."
+  depends_on: [rule6_logging, rule5_error_handling]
+  enforcement: strict
+
+# 5. Execution Policy
+execution_policy:
+  modes:
+    strict:
+      rules: all
+      resource: high
+    balanced:
+      rules: [1,2,3,4,5,7,11]
+      resource: medium
+    lenient:
+      rules: [1,4,5,6,8]
+      resource: low
+
+  context_profiles:
+    new_feature:
+      focus: [2,4,7,9,10]
+      suppress: [8]
+    bug_fix:
+      focus: [4,5,7]
+      suppress: [10]
+    refactor:
+      focus: [9]
+      suppress: [7]
+
+# 6. Exceptions
+exceptions:
+  legacy_code:
+    markers: ["#legacy", "#LEGACY"]
+    rules: [4,9]
+    action: warn
+  experimental:
+    markers: ["#experimental", "#beta"]
+    rules: [8,7]
+    action: notify
+  vendor_third_party:
+    paths: ["/venv/", "/site-packages/", "/third_party/"]
+    rules: all
+    action: suppress
+
+# 7. Implementation Process & Error Handling Protocol
+implementation_process:
+  - phase: "initial_analysis"
+    tasks:
+      - "Gather specs/constraints"
+      - "Assess risks/domain"
+  - phase: "implementation"
+    tasks:
+      - "Incremental dev → pytest"
+      - "Check style with flake8/Black/isort"
+  - phase: "verification"
+    tasks:
+      - "Integration/performance tests"
+      - "Check coverage vs target"
+  - phase: "final_check"
+    tasks:
+      - "Docstring finalization (Sphinx)"
+      - "Security scan & review"
+
+error_handling_protocol:
+  - step: "Identify problem"
+    detail: "Analyze exceptions, define scope"
+  - step: "Devise solution"
+    detail: "Evaluate options, choose best"
+  - step: "Implement & verify"
+    detail: "Apply fix, confirm no recurrence"
+  - step: "Document"
+    detail: "Share cause/solution, propose prevention"

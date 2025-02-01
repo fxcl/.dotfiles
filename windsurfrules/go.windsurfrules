@@ -1,0 +1,209 @@
+# Windsurf: Go Project
+
+# 1. Basic Operating Principles
+basic_operation_principles:
+  - name: instruction_reception
+    description: "Accurately capture requirements and clarify questions."
+  - name: analysis_planning
+    description: "Assess risks, review architecture, and plan phased implementation."
+  - name: incremental_implementation
+    description: "Refine quality via small coding → test → review cycles."
+  - name: continuous_feedback
+    description: "Share progress and swiftly resolve issues."
+
+# 2. Technology Stack and Version Control
+tech_stack:
+  language: Go
+  version: ">= 1.21"
+  modules: { private: true }
+  # Approval required for version changes
+version_policy:
+  require_approval_for_major_upgrade: true
+
+# 3. Project Structure Conventions
+project_structure:
+  go_app:
+    root_dir: "go-app/"
+    layers:
+      domain: { allowed_imports: [] }
+      usecase: { allowed_imports: [domain] }
+      interface: { allowed_imports: [usecase] }
+    # Protected files example
+    protected_files:
+      - "go-app/internal/api/client.go"
+      - "go-app/internal/api/config.go"
+
+# 4. List of Defined Rules
+
+### 4.1: Idiomatic Go
+rule1_idiomatic_go:
+  command: "Adhere to idiomatic patterns"
+  priority: Critical
+  description: "Use gofmt, goimports, concise naming, and fmt.Errorf(\"%w\", ...)."
+  depends_on: []
+  enforcement: strict
+
+### 4.2: Clean Architecture
+rule2_clean_architecture:
+  command: "Layer dependency order"
+  priority: High
+  description: "Outer → inner only. Keep domain logic standalone."
+  depends_on: [rule1_idiomatic_go]
+  enforcement: strict
+
+### 4.3: Go Modules Management
+rule3_go_modules:
+  command: "Dependency and version control"
+  priority: High
+  description: "Maintain go.mod/sum accurately; run go mod tidy regularly."
+  depends_on: []
+  enforcement: strict
+
+### 4.4: Test Strategy
+rule4_testing:
+  command: "Comprehensive testing & coverage"
+  priority: Critical
+  description: "Table-driven tests, mocks, target 80-85% coverage."
+  depends_on: [rule1_idiomatic_go]
+  config:
+    coverage_target: 85
+  enforcement: strict
+
+### 4.5: Error Handling
+rule5_error_handling:
+  command: "Unified error handling"
+  priority: High
+  description: "Use errors.Is/As, fmt.Errorf(\"%w\", err) to propagate causes."
+  depends_on: [rule4_testing]
+  config:
+    classification:
+      transient: { retries: 3 }
+      fatal: { logging: CRITICAL }
+  enforcement: strict
+
+### 4.6: Log Management
+rule6_logging:
+  command: "Structured logging"
+  priority: Medium
+  description: "Use JSON, manage log levels, integrate tracing."
+  depends_on: [rule5_error_handling]
+  config:
+    format: json
+    levels: [INFO, WARN, ERROR]
+  enforcement: strict
+
+### 4.7: Security Measures
+rule7_security:
+  command: "Vulnerability scanning & OWASP"
+  priority: Critical
+  description: "Validate inputs, multi-layer defense, regular scans."
+  depends_on: [rule5_error_handling, rule4_testing]
+  enforcement: strict
+
+### 4.8: Concurrency & Performance
+rule8_concurrency_performance:
+  command: "Concurrency/performance monitoring"
+  priority: Medium
+  description: "Use race detector, pprof for bottlenecks."
+  depends_on: [rule4_testing]
+  enforcement: advisory
+
+### 4.9: SOLID / Technical Debt
+rule9_solid_techdebt:
+  command: "Single Responsibility/SOLID, remove duplication"
+  priority: High
+  description: "Refactor for maintainability."
+  depends_on: [rule2_clean_architecture]
+  enforcement: advisory
+
+### 4.10: Documentation Guidelines
+rule10_documentation:
+  command: "GoDoc & ADR usage"
+  priority: Medium
+  description: "Add GoDoc to functions/structs, record key decisions."
+  depends_on: [rule2_clean_architecture]
+  enforcement: strict
+
+### 4.11: Configuration
+rule11_configuration:
+  command: "12-factor style config management"
+  priority: High
+  description: "Use env variables/files for portability."
+  depends_on: [rule3_go_modules]
+  enforcement: strict
+
+### 4.12: Observability
+rule12_observability:
+  command: "Integrate logs, metrics, traces"
+  priority: High
+  description: "Enable easier root-cause analysis."
+  depends_on: [rule6_logging, rule5_error_handling]
+  enforcement: strict
+
+# 5. Execution Policy
+execution_policy:
+  modes:
+    strict:
+      rules: all
+      resource: high
+    balanced:
+      rules: [1,2,3,4,5,7,11]
+      resource: medium
+    lenient:
+      rules: [1,4,5,6,8]
+      resource: low
+
+  context_profiles:
+    new_feature:
+      focus: [2,4,7,9,10]
+      suppress: [8]
+    bug_fix:
+      focus: [4,5,7]
+      suppress: [10]
+    refactor:
+      focus: [9]
+      suppress: [7]
+
+# 6. Exception Handling
+exceptions:
+  legacy_code:
+    markers: ["// LEGACY", "#legacy"]
+    rules: [4,9]
+    action: warn
+  experimental:
+    markers: ["// EXPERIMENTAL", "#beta"]
+    rules: [8,7]
+    action: notify
+  vendor_third_party:
+    paths: ["/vendor/", "/third_party/"]
+    rules: all
+    action: suppress
+
+# 7. Implementation Process & Error Handling Protocol
+implementation_process:
+  - phase: "initial_analysis"
+    tasks:
+      - "Confirm requirements & constraints"
+      - "Risk assessment & domain understanding"
+  - phase: "implementation"
+    tasks:
+      - "Iterative coding → unit testing"
+      - "GoFmt/GoLint/coverage checks"
+  - phase: "verification"
+    tasks:
+      - "Integration/load testing"
+      - "Check coverage vs target"
+  - phase: "final_check"
+    tasks:
+      - "Finalize GoDoc/ADR"
+      - "Security scan & review"
+
+error_handling_protocol:
+  - step: "Identify problem"
+    detail: "Check error messages, define scope"
+  - step: "Devise solution"
+    detail: "Consider options, evaluate risk, choose best"
+  - step: "Implement & verify"
+    detail: "Apply fix, ensure no recurrence"
+  - step: "Document"
+    detail: "Share cause and resolution, plan prevention"
