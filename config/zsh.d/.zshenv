@@ -26,6 +26,9 @@ export DOCKER_CONFIG="$XDG_CONFIG_HOME/docker"
 export ELINKS_CONFDIR="$XDG_CONFIG_HOME/elinks"
 export _ZO_DATA_DIR="$XDG_CONFIG_HOME/zoxide"
 
+#ollama amd gpu
+export HSA_OVERRIDE_GFX_VERSION="10.3.0"
+
 # Use cyan colour scaling for the dates column, as the default blue is difficult to read.
 if command -v eza &>/dev/null; then
   export EZA_COLORS="ur=35;nnn:gr=35;nnn:tr=35;nnn:uw=34;nnn:gw=34;nnn:tw=34;nnn:ux=36;nnn:due=36;nnn:gx=36;nnn:tx=36;nnn:uu=36;nnn:uu=38;5;235:da=38;5;238"
@@ -198,6 +201,7 @@ dockerrm() {
 
 alias dockerrm="dockerrm"
 alias colima:repair="colima stop -f && rm -rf /Users/$USER/.colima/_lima/_networks && colima start"
+alias mgrey='mint run igorkulman/ChangeMenuBarColor Gradient "#000000" "#a39a9e" "/Users/kelvin/Pictures/pap.er/2429230316888522752.heic"'
 
 # `tre` is a shorthand for `tree` with hidden files and color enabled, ignoring
 # the `.git` directory, listing directories first. The output gets piped into

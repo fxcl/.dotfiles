@@ -110,6 +110,8 @@ in
           "tree-sitter"
           #"shortcat"
           "typos-cli"
+          "mint"
+		  "huggingface-cli"
           "charmbracelet/tap/mods"
           # {
           #   name = "emacs-mac";
