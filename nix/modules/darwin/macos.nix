@@ -31,6 +31,7 @@ in
           "railwaycat/emacsmacport"
           "charmbracelet/tap"
           #"chipsalliance/verible"
+          #" FelixKratz/formulae"
         ];
 
         # `brew install --cask`
@@ -111,8 +112,10 @@ in
           #"shortcat"
           "typos-cli"
           "mint"
-		  "huggingface-cli"
+		      "huggingface-cli"
           "charmbracelet/tap/mods"
+       # "font-sketchybar-app-font"
+        "sketchybar"
           # {
           #   name = "emacs-mac";
           #   args = [
