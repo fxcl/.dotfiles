@@ -14,6 +14,12 @@ export PROJECTS="$HOME/Sites/personal/dev"
 export WORK="$HOME/Sites/work"
 export PERSONAL_STORAGE="$HOME/Sync"
 export NOTES_DIR="$PERSONAL_STORAGE/notes"
+
+export CLICOLOR=1
+export GPG_TTY="${GPG_TTY:-$(tty)}"
+export HOMEBREW_NO_AUTO_UPDATE=1
+export RUST_BACKTRACE=1
+
 # I use a single zk notes dir, so set it and forget
 export ZK_NOTEBOOK_DIR=$NOTES_DIR
 # export HOST_CONFIGS="$XDG_DATA_HOME/$(hostname)"
@@ -73,8 +79,104 @@ export USER_ZSH_DATA="${XDG_DATA_HOME:-$HOME/.local/share}/zsh"
 export USER_ZSH_SITE_FUNCTIONS="$USER_ZSH_DATA/site-functions"
 
 # Proto
-export PROTO_HOME="$HOME/.proto"
-export PATH="$PROTO_HOME/shims:$PROTO_HOME/bin:$PATH"
+# https://moonrepo.dev/proto
+# https://github.com/moonrepo
+#
+# Alternative to Mise, Volta, asdf
+# Uses Shims, like Volta and asdf
+if [ -d "$HOME/.proto" ]; then
+  export PROTO_HOME="$HOME/.proto"
+  export PATH="$PROTO_HOME/shims:$PROTO_HOME/bin:$PATH"
+  export PROTO_AUTO_INSTALL=true
+  #  eval "$(proto activate zsh -c global)"
+  eval "$(proto activate zsh --no-bin --no-shim)"
+  # alias puse="proto pin --resolve --global"
+  alias plist="proto list --aliases"
+  alias psearch="proto list-remote --aliases"
+  alias pupgrade="proto upgrade"
+
+  function pinstall() {
+    if [[ $# -eq 1 ]]; then
+      echo -e "\033[0;33mWarning: No version provided. Using 'latest' as version tag.\033[0m"
+      echo
+      proto install --pin global $1 latest
+    else
+      proto install --pin global $1 $2
+    fi
+  }
+  function prm() {
+    if [[ $# -eq 1 ]]; then
+      echo -e "\033[0;33mWarning: No version provided. Using 'latest' as version tag.\033[0m"
+      echo
+      proto uninstall $1 latest
+    else
+      proto uninstall $1 $2
+    fi
+  }
+  function puse() {
+    if [[ $# -eq 1 ]]; then
+      echo -e "\033[0;33mWarning: No version provided. Using 'latest' as version tag.\033[0m"
+      echo
+      proto pin --resolve --global $1 latest
+    else
+      proto pin --resolve --global $1 $2
+    fi
+  }
+  function poutdated() {
+    if [[ -f .prototools ]]; then
+      proto outdated
+    elif [[ $# -eq 0 ]]; then
+      echo -e "\033[0;33mWarning: No argument provided. Checking global tools...\033[0m"
+      echo
+      (cd $PROTO_HOME && proto outdated)
+    elif [[ -d $1 ]]; then
+      (cd $1 && proto outdated)
+    else
+      echo -e "\033[0;31mInvalid argument: $1\033[0m"
+    fi
+  }
+  function ptools() {
+    if [[ -f .prototools ]]; then
+      proto status
+    elif [[ $# -eq 0 ]]; then
+      echo -e "\033[0;33mWarning: No argument provided. Checking global tools...\033[0m"
+      echo
+      (cd $PROTO_HOME && proto status)
+    elif [[ -d $1 ]]; then
+      (cd $1 && proto status)
+    else
+      echo -e "\033[0;31mInvalid argument: $1\033[0m"
+    fi
+  }
+
+  function phelp() {
+    echo "Custom commands for Proto."
+    echo
+    echo "Usage: <P-COMMAND> [OPTIONS]"
+    echo
+    echo "Commands:"
+    echo "    puse <TOOL> <[VERSION]>      - Use <TOOL> at <[VERSION]> ."
+    echo "                                   If <[VERSION]>  is not provided, it will be set to 'latest'."
+    echo "    pinstall <TOOL> <[VERSION]>  - Install <TOOL> at <[VERSION]> ."
+    echo "                                   If <[VERSION]>  is not provided, it will be set to 'latest'."
+    echo "    prm <TOOL> <[VERSION]>       - Uninstall <TOOL> at <[VERSION]> ."
+    echo "                                   If <[VERSION]>  is not provided, it will be set to 'latest'."
+    echo "    plist <TOOL>                 - List all installed versions of <TOOL>."
+    echo "    psearch <TOOL>               - Search for available versions of <TOOL>."
+    echo "    pupgrade                     - Upgrade proto itself."
+    echo "    poutdated <[DIRECTORY]>      - Show outdated tools in <directory>."
+    echo "                                   If <[DIRECTORY]> is not provided, it will be set to '$PROTO_HOME'."
+    echo "    ptools <[DIRECTORY]>         - List all installed tools in <directory>."
+    echo "                                   If <[DIRECTORY]> is not provided, it will be set to '$PROTO_HOME'."
+  }
+fi
+
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# Using Proto
+[ -s "$HOME/.proto/bin/bun/_bun" ] && source "$HOME/.proto/bin/bun/_bun"
+# alias bun='sde -chip-check-disable -- bun'
 
 #proto node global
 if [ -d "${PROTO_HOME}/tools/node/globals/bin" ]; then
@@ -168,15 +270,16 @@ proxy_off() {
 }
 
 # Start Colima & docker
-IS_COLIMA_NOT_RUNNING=$(colima status 2>&1 | grep "not running" || true)
-if [ "$IS_COLIMA_NOT_RUNNING" ]; then
-  echo "Start Colima VM"
-  # colima start --runtime docker --cpu 4 --memory 8
-  # colima start --arch x86_64 --cpu 2 --memory 8 --vm-type qemu
-  colima start --cpu 2 --memory 8 --arch x86_64 --vm-type vz --mount-type=virtiofs --network-address
-else
-  echo "Skip starting of Colima VM, because already running"
-fi
+# IS_COLIMA_NOT_RUNNING=$(colima status 2>&1 | grep "not running" || true)
+# if [ "$IS_COLIMA_NOT_RUNNING" ]; then
+#   echo "Start Colima VM"
+#   # colima start --runtime docker --cpu 4 --memory 8
+#   # colima start --arch x86_64 --cpu 2 --memory 8 --vm-type qemu
+#   colima start --cpu 2 --memory 8 --arch x86_64 --vm-type vz --mount-type=virtiofs --network-address
+# else
+#   echo "Skip starting of Colima VM, because already running"
+# fi
+alias colimastart="colima start --cpu 2 --memory 8 --arch x86_64 --vm-type vz --mount-type=virtiofs --network-address"
 
 # IS_COLIMA_AMD64_EMULATOR_RUNNING=`docker run --privileged --rm tonistiigi/binfmt | grep linux/amd64 || true`
 # if [ "$IS_COLIMA_AMD64_EMULATOR_RUNNING" ]
@@ -268,7 +371,8 @@ chat() {
 ##############################################################
 # ZimFW https://github.com/zimfw/zimfw
 ##############################################################
-ZIM_HOME=~/.cache/zim
+#ZIM_HOME=~/.cache/zim
+ZIM_HOME="$ZDOTDIR"
 # Download zimfw plugin manager if missing.
 if [[ ! -e ${ZIM_HOME}/zimfw.zsh ]]; then
   if command -v curl &>/dev/null; then

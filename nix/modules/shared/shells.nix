@@ -266,8 +266,7 @@ in
             ]))
             "fpath+=${pkgs.pure-prompt}/share/zsh/site-functions"
           ];
-
-          promptInit = "autoload -U promptinit; promptinit; prompt pure";
+          #promptInit = "autoload -U promptinit; promptinit; prompt pure";
         };
       }
     ]);

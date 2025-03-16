@@ -16,15 +16,15 @@ function time_since_last_commit() {
 }
 
 # Hack because otherwise compdef doesn't work with zinit for some reason.
-autoload -Uz compinit compdef && compinit -C -d "${ZDOTDIR}/${zcompdump_file:-.zcompdump}"
+#autoload -Uz compinit compdef && compinit -C -d "${ZDOTDIR}/${zcompdump_file:-.zcompdump}"
 
 function g() {
   local __CMD=""
 
-  if (( $+commands[hub] )); then
+  if (($ + commands[hub])); then
     compdef g=hub
     __CMD=$commands[hub]
-  elif (( $+commands[git] )); then
+  elif (($ + commands[git])); then
     compdef g=git
     __CMD=$commands[git]
   fi
@@ -33,7 +33,7 @@ function g() {
 
   if [ $# -eq 0 ]; then
     printf "%s\n\n" "$(time_since_last_commit)"
-    "$__CMD" st 2> /dev/null || "$__CMD" status --short --branch
+    "$__CMD" st 2>/dev/null || "$__CMD" status --short --branch
   else
     "$__CMD" "$@"
   fi
