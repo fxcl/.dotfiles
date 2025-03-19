@@ -129,7 +129,6 @@ in
           #     "with-unlimited-select"
           #   ];
           # }
-          "dprint"
           "swift-format"
         ];
 

@@ -29,7 +29,7 @@
     };
 
     nix-homebrew = {
-      url = "github:zhaofengli-wip/nix-homebrew";
+      url = "github:zhaofengli/nix-homebrew";
       inputs = {
         nix-darwin.follows = "darwin";
         flake-utils.follows = "flake-utils";
@@ -172,11 +172,11 @@
                 inputs.nixpkgs-unstable.legacyPackages.${prev.system}; # Make available unstable channel.
               # pragmatapro = prev.callPackage ./nix/pkgs/pragmatapro.nix { };
               # zk = prev.callPackage ./nix/pkgs/zk.nix { source = inputs.zk; };
-              next-prayer = prev.callPackage
+                next-prayer = prev.callPackage
                 ./config/tmux/scripts/next-prayer/next-prayer.nix
                 { };
 
-              #pure-prompt = prev.pure-prompt.overrideAttrs (old: {
+				      #pure-prompt = prev.pure-prompt.overrideAttrs (old: {
               #patches = (old.patches or [ ]) ++ [ ./nix/hosts/pure-zsh.patch ];
               #});
             })
@@ -189,6 +189,19 @@
               in
               prev.lib.optionalAttrs prev.stdenv.hostPlatform.isDarwin {
                 inherit (pkgsDarwin) swift;
+              })
+              (final: prev: {
+                zimfw = prev.zimfw.overrideAttrs (oldAttrs: rec {
+                  version = "1.15.0";
+                  src = prev.fetchFromGitHub {
+                    owner = "zimfw";
+                    repo = "zimfw";
+                    rev = "v${version}";
+                    ## zim only needs this one file to be installed.
+                    sparseCheckout = [ "zimfw.zsh" ];
+                    sha256 = "sha256-8GnxUhBvMy7fhDILDKYEf/9Mhgzz7suaiZ5elRZmT0o=";
+                  };
+                });
               })
             # nur.overlay
           ];

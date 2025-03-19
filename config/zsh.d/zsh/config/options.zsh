@@ -25,24 +25,23 @@ setopt NO_BEEP              # Don't beep on erros (overrides /etc/zshrc in Catal
 HISTORY_IGNORE='(clear|c|pwd|exit|* —help|[bf]g *|less *|cd ..|cd -)'
 
 setopt SHAREHISTORY
-setopt BANG_HIST                 # Perform textual history expansion, csh-style, treating the character ‘!’ specially.
-setopt EXTENDED_HISTORY          # Write the history file in the ':start:elapsed;command' format.
-setopt INC_APPEND_HISTORY        # Write to the history file immediately, not when the shell exits.
-setopt SHARE_HISTORY             # Share history between all sessions.
-setopt HIST_EXPIRE_DUPS_FIRST    # Expire a duplicate event first when trimming history.
-setopt HIST_IGNORE_DUPS          # Do not record an event that was just recorded again.
-setopt HIST_IGNORE_ALL_DUPS      # Delete an old recorded event if a new event is a duplicate.
-setopt HIST_FIND_NO_DUPS         # Do not display a previously found event.
-setopt HIST_IGNORE_SPACE         # Do not record an event starting with a space.
-setopt HIST_SAVE_NO_DUPS         # Do not write a duplicate event to the history file.
-setopt HIST_VERIFY               # Do not execute immediately upon history expansion.
-setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks from each command line being added to the history list.
-setopt APPEND_HISTORY            # append to history file
-setopt HIST_NO_STORE             # Don't store history commands
-setopt HIST_NO_FUNCTIONS         # Don't store function definitions
-setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks from each command line being added to the history list.
-setopt HIST_BEEP                 # Beep when accessing nonexistent history.
-
+setopt BANG_HIST              # Perform textual history expansion, csh-style, treating the character ‘!’ specially.
+setopt EXTENDED_HISTORY       # Write the history file in the ':start:elapsed;command' format.
+setopt INC_APPEND_HISTORY     # Write to the history file immediately, not when the shell exits.
+setopt SHARE_HISTORY          # Share history between all sessions.
+setopt HIST_EXPIRE_DUPS_FIRST # Expire a duplicate event first when trimming history.
+setopt HIST_IGNORE_DUPS       # Do not record an event that was just recorded again.
+setopt HIST_IGNORE_ALL_DUPS   # Delete an old recorded event if a new event is a duplicate.
+setopt HIST_FIND_NO_DUPS      # Do not display a previously found event.
+setopt HIST_IGNORE_SPACE      # Do not record an event starting with a space.
+setopt HIST_SAVE_NO_DUPS      # Do not write a duplicate event to the history file.
+setopt HIST_VERIFY            # Do not execute immediately upon history expansion.
+setopt HIST_REDUCE_BLANKS     # Remove superfluous blanks from each command line being added to the history list.
+setopt APPEND_HISTORY         # append to history file
+setopt HIST_NO_STORE          # Don't store history commands
+setopt HIST_NO_FUNCTIONS      # Don't store function definitions
+setopt HIST_REDUCE_BLANKS     # Remove superfluous blanks from each command line being added to the history list.
+setopt HIST_BEEP              # Beep when accessing nonexistent history.
 
 ##############################################################
 # Directory navigation options
@@ -59,6 +58,14 @@ setopt AUTOPARAMSLASH    # tab completing directory appends a slash
 # Globbing and fds
 #
 
-setopt EXTENDED_GLOB     # Treat the ‘#’, ‘~’ and ‘^’ characters as part of patterns for filename generation, etc. (An initial unquoted ‘~’ always produces named directory expansion.)
-setopt MULTIOS           # Perform implicit tees or cats when multiple redirections are attempted.
-setopt NO_CLOBBER        # Disallow ‘>’ redirection to overwrite existing files. ‘>|’ or ‘>!’ must be used to overwrite a file.
+setopt EXTENDED_GLOB # Treat the ‘#’, ‘~’ and ‘^’ characters as part of patterns for filename generation, etc. (An initial unquoted ‘~’ always produces named directory expansion.)
+setopt MULTIOS       # Perform implicit tees or cats when multiple redirections are attempted.
+setopt NO_CLOBBER    # Disallow ‘>’ redirection to overwrite existing files. ‘>|’ or ‘>!’ must be used to overwrite a file.
+
+#
+# zsh options
+#
+setopt ALWAYS_TO_END # If a completion is performed with the cursor within a word, and a full completion is inserted, the cursor is moved to the end of the word
+setopt PATH_DIRS     # Perform a path search even on command names with slashes in them.
+unsetopt CASE_GLOB   # Make globbing (filename generation) not sensitive to case.
+unsetopt LIST_BEEP   # Don't beep on an ambiguous completion.

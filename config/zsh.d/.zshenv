@@ -88,8 +88,8 @@ if [ -d "$HOME/.proto" ]; then
   export PROTO_HOME="$HOME/.proto"
   export PATH="$PROTO_HOME/shims:$PROTO_HOME/bin:$PATH"
   export PROTO_AUTO_INSTALL=true
-  #  eval "$(proto activate zsh -c global)"
-  eval "$(proto activate zsh --no-bin --no-shim)"
+  eval "$(proto activate zsh -c global)"
+  #eval "$(proto activate zsh --no-bin --no-shim)"
   # alias puse="proto pin --resolve --global"
   alias plist="proto list --aliases"
   alias psearch="proto list-remote --aliases"
@@ -170,13 +170,6 @@ if [ -d "$HOME/.proto" ]; then
     echo "                                   If <[DIRECTORY]> is not provided, it will be set to '$PROTO_HOME'."
   }
 fi
-
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-
-# Using Proto
-[ -s "$HOME/.proto/bin/bun/_bun" ] && source "$HOME/.proto/bin/bun/_bun"
-# alias bun='sde -chip-check-disable -- bun'
 
 #proto node global
 if [ -d "${PROTO_HOME}/tools/node/globals/bin" ]; then
@@ -372,7 +365,8 @@ chat() {
 # ZimFW https://github.com/zimfw/zimfw
 ##############################################################
 #ZIM_HOME=~/.cache/zim
-ZIM_HOME="$ZDOTDIR"
+#ZIM_HOME="$ZDOTDIR"
+ZIM_HOME=${ZDOTDIR:-${HOME}}/.zim
 # Download zimfw plugin manager if missing.
 if [[ ! -e ${ZIM_HOME}/zimfw.zsh ]]; then
   if command -v curl &>/dev/null; then
@@ -391,6 +385,27 @@ fi
 
 # Initialize modules.
 source ${ZIM_HOME}/init.zsh
+
+# setup_zim() {
+#   typeset -gx ZIM_HOME=~/.zim
+
+#   if [[ ! -e ${ZIM_HOME}/zimfw.zsh ]]; then
+#     set -o xtrace
+#     echo "%F{33}▓▒░ %F{220}Installing zim...%f"
+#     curl -fsSL --create-dirs -o ${ZIM_HOME}/zimfw.zsh \
+#       https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh
+#     set +o xtrace
+#   fi
+
+#   if [[ ! ${ZIM_HOME}/init.zsh -nt ${ZDOTDIR:-${HOME}}/.zimrc ]]; then
+#     source ${ZIM_HOME}/zimfw.zsh init -q
+#   fi
+#   source ${ZIM_HOME}/init.zsh
+
+#   setopt PROMPT_SUBST
+# }
+
+# setup_zim
 
 # ------------------------------
 # Post-init module configuration

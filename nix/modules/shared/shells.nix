@@ -110,7 +110,7 @@ in
               hyperfine
               jq
               #grc
-              pure-prompt
+              #pure-prompt
               lsd
               shellcheck
               shfmt # Doesn't work with zsh, only sh & bash
@@ -237,15 +237,17 @@ in
 
 
         '';
-
+        programs.bash.enable = false;
+        programs.fish.enable = false;
         programs.zsh = {
           enable = true;
-          enableCompletion = true;
-
+          # this is necessary to work with zimfw
+          enableCompletion = false;
+         #enableGlobalCompInit = false;
+         #enableSyntaxHighlighting = false;
           ########################################################################
           # Instead of sourcing, I can read the files & save startiup time instead
           ########################################################################
-
           # zshenv
           shellInit = lib.concatStringsSep "\n"
             (map builtins.readFile [ ../../../config/zsh.d/.zshenv ]);
@@ -259,14 +261,14 @@ in
               ../../../config/zsh.d/zsh/config/fzf-preview.zsh
               ../../../config/zsh.d/zsh/config/utility.zsh
               ../../../config/zsh.d/zsh/config/aliases.zsh
-              #"${pkgs.grc}/etc/grc.zsh"
               "${pkgs.fzf}/share/fzf/completion.zsh"
               "${pkgs.fzf}/share/fzf/key-bindings.zsh"
               ../../../config/zsh.d/.zshrc
             ]))
-            "fpath+=${pkgs.pure-prompt}/share/zsh/site-functions"
           ];
-          #promptInit = "autoload -U promptinit; promptinit; prompt pure";
+          promptInit = ''
+          eval "$(${pkgs.starship}/bin/starship init zsh)"
+          '';
         };
       }
     ]);

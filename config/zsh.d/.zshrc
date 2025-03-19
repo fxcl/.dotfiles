@@ -47,6 +47,9 @@ export PURE_PROMPT_SYMBOL="${PURE_SYMBOLS[$RANDOM % ${#PURE_SYMBOLS[@]} + 1]}"
 
 # For speed:
 # https://github.com/zsh-users/zsh-autosuggestions#disabling-automatic-widget-re-binding
+
+# Can be set when `zsh-users/zsh-autosuggestions`
+# is the last module in `~/.zimrc`.
 export ZSH_AUTOSUGGEST_MANUAL_REBIND=1
 export ZSH_AUTOSUGGEST_USE_ASYNC="true"
 export ZSH_AUTOSUGGEST_STRATEGY=("match_prev_cmd" "completion")
@@ -72,11 +75,6 @@ if [[ "$OSTYPE" = "darwin"* ]]; then
       command mv -f /usr/local/share/zsh/site-functions/{,disabled.}_git
     fi
   )
-fi
-
-# starship isn't installed in all of my environments
-if [[ $(command -v starship) ]]; then
-  eval "$(starship init zsh)"
 fi
 
 # Download proto manager if missing.
@@ -117,18 +115,3 @@ if [ -e /etc/motd ]; then
     tee ${HOME}/.hushlogin </etc/motd
   fi
 fi
-
-#
-# End profiling (uncomment when necessary)
-#
-
-# Per-command profiling:
-
-# unsetopt xtrace
-# exec 2>&3 3>&-
-
-# Per-function profiling:
-
-# zprof
-
-unset key

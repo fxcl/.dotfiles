@@ -1,5 +1,6 @@
 # Skip unavailable external modules
 
+# Modules
 xmodule() {
   if [ -d "$1" ]; then
     zmodule "$@" --fpath site-functions

@@ -43,7 +43,6 @@ if (( ${+functions[git-info]} )); then
     add-zsh-hook precmd git-info
 fi
 
-#
 # Completion enhancements
 #
 
@@ -56,15 +55,6 @@ fi
 if [[ ${TERM} == 'dumb' ]]; then
   return 1
 fi
-
-#
-# zsh options
-#
-
-setopt ALWAYS_TO_END # If a completion is performed with the cursor within a word, and a full completion is inserted, the cursor is moved to the end of the word
-setopt PATH_DIRS     # Perform a path search even on command names with slashes in them.
-unsetopt CASE_GLOB   # Make globbing (filename generation) not sensitive to case.
-unsetopt LIST_BEEP   # Don't beep on an ambiguous completion.
 
 #
 # completion module options
@@ -83,10 +73,8 @@ zstyle ':completion:*' format '%F{yellow}-- %d --%f'
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' verbose yes
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' '+r:|?=**'
-
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
-
 zstyle ':completion:*:*:cd:*' tag-order local-directories directory-stack path-directories
 zstyle ':completion:*:*:cd:*:directory-stack' menu yes select
 zstyle ':completion:*:-tilde-:*' group-order 'named-directories' 'path-directories' 'expand'

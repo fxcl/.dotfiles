@@ -2,6 +2,19 @@
 alias curlh="curl -sILX GET"
 alias curld="curl -A \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36\""
 alias curlm="curl -A \"Mozilla/5.0 (iPhone; CPU iPhone OS 6_1_3 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) CriOS/28.0.1500.12 Mobile/10B329 Safari/8536.25\""
+# HTTP requests with cURL
+# -i to include HTTP-header in output, make GET request
+alias curl-get="curl -i -X GET"
+# -d == --data, command followed by json data, url as args (ex. '{"user":"bob","pass":"123"}' http://hostname/resource)
+alias curl-post="curl -X POST -d"
+# -f == --form, command followed by file path, url as args (ex. 'fileupload=@filename.txt' http://hostname/resource)
+alias curl-post-file="curl -X POST -f"
+# -d == --data, command followed by json data, url as args (ex. '{"user":"bob","pass":"123"}' http://hostname/resource)
+alias curl-put="curl -X PUT -d"
+# get server Headers, takes url as args
+alias curl-fetch-header='curl -I'
+# checks if remote server supports gzip / mod_deflate or not, takes url as args
+alias curl-fetch-header-check-compression='curl -I --compress'
 
 alias c="clear "
 alias e='$EDITOR --listen /tmp/nvim.pipe'
@@ -17,35 +30,9 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
-alias ~="cd ~" # `cd` is probably faster to type though
+# `cd` is probably faster to type though
+alias ~="cd ~"
 alias -- -="cd -"
-
-# Detect which `ls` flavor is in use
-# if ls --color >/dev/null 2>&1; then # GNU `ls`
-#   colorflag="--color"
-#   export LS_COLORS='no=00:fi=00:di=01;31:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.gz=01;31:*.bz2=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.avi=01;35:*.fli=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.ogg=01;35:*.mp3=01;35:*.wav=01;35:'
-# else # macOS `ls`
-#   colorflag="-G"
-#   export LSCOLORS='BxBxhxDxfxhxhxhxhxcxcx'
-# fi
-
-# # List all files colorized in long format
-# alias l="ls -lF ${colorflag}"
-
-# # List all files colorized in long format, excluding . and ..
-# alias la="ls -lAF ${colorflag}"
-
-# # List only directories
-# alias lsd="ls -lF ${colorflag} | grep --color=never '^d'"
-
-# # Always use color output for `ls`
-# alias ls="command ls ${colorflag}"
-
-# Always enable colored `grep` output
-# Note: `GREP_OPTIONS="--color=auto"` is deprecated, hence the alias usage.
-# alias grep='grep --color=auto'
-# alias fgrep='fgrep --color=auto'
-# alias egrep='egrep --color=auto'
 
 # Get macOS Software Updates, and update installed Ruby gems, Homebrew, npm, and their installed packages
 #alias update='sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup; npm install npm -g; npm update -g; sudo gem update --system; sudo gem update; sudo gem cleanup'
@@ -57,6 +44,33 @@ alias listdir='find ${1:-.} -type f -not -path "*/.*/*" -print0 | xargs -0 -I {}
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias localip="ipconfig getifaddr en0"
 alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
+
+# Clipboard
+alias pbunformat="pbpaste | textutil -convert txt -stdin -stdout -encoding 30 | pbcopy"
+alias pb-tab-to-pace="pbpaste | expand | pbcopy"
+alias pb-sort="pbpaste | sort | pbcopy"
+alias pb-dedup="pbpaste | uniq | pbcopy"
+alias pb-sort-dedup="pbpaste | sort | uniq | pbcopy"
+alias pwdc="pwd | tr -d '\n' | pbcopy"
+
+# Ctags
+alias ctags-make="ctags -R ." # creates tags using universal-ctags from brew
+
+# Stack for Haskell
+alias ghci="stack --silent ghci --ghci-options -v0" # ghci without loading messages
+alias gghci='stack ghci'                            # default ghci
+alias ghc="ghci-color"                              # ghci-color in ~/.dotfiles/bin, NOTE: do not alias to 'ghci', causes Haskell prompt to halt when printing specific values (ex. [":)"])
+# alias sb='stack build' # Stack build
+
+# Maven
+alias mvnd="mvnDebug" # runs Maven in debug mode (allows remote debugger to attach at port 8000)
+alias mci="mvn clean install"
+alias mcid="mvn clean install -DskipTests"
+alias mcp="mvn clean package"
+alias mcv="mvn clean verify"
+alias mct="mvn clean test"
+alias mvn-ls-deps="mvn dependency:tree"
+alias run-spring="mvn spring-boot:run"
 
 # Gradle
 alias gw='./gradlew'
@@ -70,10 +84,45 @@ alias cgt='cargo test'
 alias cgb='cargo build'
 alias cgc='cargo check'
 
-# IP addresses
-alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
-alias localip="ipconfig getifaddr en0"
-alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
+# Node
+alias ns="npm start"
+alias ni="npm install"
+alias nl="npm list --depth=0"     # show only top-level modules
+alias nlg="npm list -g --depth=0" # show only top-level global modules
+alias prettify="prettier --write" # use Prettier (under ./node_modules) to lint/format Javascript file
+# alias ni="npm install"
+# alias nr="npm run-script"
+
+# System info
+alias mem-info='free -m -l -t'         # pass options to free
+alias ps-mem='ps -axf | sort -nr -k 4' # get top process by memory usage
+alias ps-mem10='ps -axf | sort -nr -k 4 | head -10'
+alias ps-cpu='ps -axf | sort -nr -k 3' # get top process by cpu usage
+alias ps-cpu10='ps -axf | sort -nr -k 3 | head -10'
+alias cpu-info='lscpu' # get server cpu info
+
+# zimfw update
+alias zu="zimfw upgrade && zimfw update && echo 'zsh: updated Zim with: zmanage update'" # update Zim
+
+# History
+alias h="history"    # use 1st arg to specify starting index of history
+alias ha="history 1" # show all history (1 is the index of first history)
+alias hd="dirs -v"   # show history of directories visited in current shell session
+# alias htop='history | sort -rn | head' # TODO: realias and reenable
+alias hg='history 1 | grep' # search for string in history with grep
+alias hag='history 1 | ag'  # search for string in history with ag
+
+# Youtube
+alias yd="youtube-dl"
+alias yd-movie="youtube-dl --ignore-errors --output '~/Movies/%(title)s.%(ext)s'"                                                                                          # download video with audio-format defaulted to best, skip unavailable songs when downloading a playlist
+alias yd-music="youtube-dl --ignore-errors --extract-audio --audio-format mp3 --output '~/Library/Mobile Documents/com~apple~CloudDocs/Music/New Songs/%(title)s.%(ext)s'" # download audio as mp3 format, skip unavailable videos when downloading a playlist
+
+# TODO: add aliases/functions to control AirDrop
+
+# Weather
+alias weather="curl 'wttr.in/?0'"  # show current weather
+alias weather-month='curl wttr.in' # shows today, tomorrow, and day-after's weather
+alias weather-help='curl wttr.in/:help'
 
 # Show active network interfaces
 # alias ifactive="ifconfig | pcregrep -M -o '^[^\t:]+:([^\n]|\n\t)*status: active'"
@@ -92,6 +141,51 @@ command -v md5sum >/dev/null || alias md5sum="md5"
 
 # macOS has no `sha1sum`, so use `shasum` as a fallback
 command -v sha1sum >/dev/null || alias sha1sum="shasum"
+
+# macOS
+# TODO: verify if 'make-finder-alias' creates Finder Alias that's compatible with iTunes
+alias top-cpu='top -o cpu'   # sort by cpu
+alias top-mem='top -o rsize' # sort by memory
+alias getmod="stat -f %A"    # prints the permission of $1 in octal
+alias finder-utils"cd /System/Library/CoreServices/Finder.app/Contents/Applications/"
+alias make-finder-alias='mkalias -c' # -c omit copying source file's icon to target alias, requires 'osxutils' from Brew, creates a macOS Finder Alias (similar, but not same as soft/hard symlinks)
+alias hide='chflags hidden'          # make file/dir invisible in Finder (still visible in shell)
+alias unhide='chflags nohidden'      # make file/dir visible in Finder (still visible in shell)
+alias sudo-='sudo $SHELL -c "$(fc -ln -1)"'
+alias quit-all="open ~/.dotfiles/config/macos/QuitAll.app" # quits all active applications
+alias paths-env='env | grep PATH'
+alias battery-settings='pmset -g'
+alias dns-clear-local-cache="sudo killall -HUP mDNSResponder"
+alias clear-dir-acls="sudo chmod -RN" # clear ACLs for passed in path to folder
+alias ip-en="ipconfig getifaddr en0"  # wifi (en1) or ethernet (en0), use en0 if not wired connection
+alias ip-lan="ipconfig getifaddr en1" # usually wifi
+alias ip-external="curl ifconfig.me"
+alias password-generate-secure-to-clipboard="LC_ALL=C tr -dc \"[:alpha:][:alnum:]\" < /dev/urandom | head -c 20 | pbcopy"
+alias shutdown="sudo shutdown -h now"
+alias restart="sudo shutdown -r now"
+alias sip-status="csrutil status" # show System Integrity Protection status
+alias restart-notification-center="killall NotificationCenter"
+alias clear-asl-logs="sudo rm -rf /private/var/log/asl/*.asl" # clear Apple System Logs to speed up Terminal
+alias disks="diskutil list"
+alias net="netstat"
+alias apps="find /Applications -path '*Contents/_MASReceipt/receipt' -maxdepth 4 -print |\sed 's#.app/Contents/_MASReceipt/receipt#.app#g; s#/Applications/##'" # via find
+alias spotlight="mdfind kMDItemAppStoreHasReceipt=1"                                                                                                            # via Spotlight
+alias plistbuddy="/usr/libexec/PlistBuddy"
+alias reload="exec $SHELL -l" # Reload the shell (i.e. invoke as a login shell)
+alias power="pmset -g batt"
+alias power-remaining="pmset -g ps  |  sed -n 's/.*[[:blank:]]+*\(.*%\).*/\1/p'"
+alias power-settings='pmset -g'
+alias mute="osascript -e 'set volume output muted true'"
+alias lock="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
+alias screen-saver="open /System/Library/Frameworks/ScreenSaver.framework/Versions/A/Resources/ScreenSaverEngine.app"
+alias cpu='top -F -R -o cpu'
+alias sleep='pmset sleepnow'
+alias airdrop-enable-all="defaults write com.apple.NetworkBrowser BrowseAllInterfaces -bool true"
+alias airdrop-enable="defaults remove com.apple.NetworkBrowser DisableAirDrop"
+alias airdrop-disable="defaults write com.apple.NetworkBrowser DisableAirDrop -bool YES"
+alias apps-update-all="sudo softwareupdate -ia"
+alias apps-update-ls="sudo softwareupdate -l"
+alias macos-system-icons="open /System/Library/CoreServices/CoreTypes.bundle/Contents/Resources/" # NOTE: .icns in here must be copied to another folder and chmod to 777 to be usable as folder icons
 
 # JavaScriptCore REPL
 jscbin="/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources/jsc"
