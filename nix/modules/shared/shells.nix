@@ -11,13 +11,10 @@ let
   darwinPackages = with pkgs; [ openssl gawk gnused coreutils findutils ];
   nixosPackages = with pkgs; [ dwm dmenu xclip ];
 
-in
-{
+in {
   options = with lib; {
     my.modules.shells = {
-      enable = mkEnableOption ''
-        Whether to enable shells module
-      '';
+      enable = mkEnableOption "	Whether to enable shells module\n";
     };
   };
 
@@ -149,8 +146,7 @@ in
                 # word-wrap at width
                 width: 80'';
 
-            in
-            lib.mkMerge [
+            in lib.mkMerge [
               (if pkgs.stdenv.isDarwin then {
                 "Library/Preferences/glow/glow.yml".text = glow_config;
               } else {
@@ -219,32 +215,30 @@ in
 
         # TODO: look at this later, because it's ugly
         system.activationScripts.postUserActivation.text = ''
-            echo ":: -> Running shell activationScript..."
-            # Creating needed folders
-           if [ ! -e "${local_zshrc}" ]; then
-            mkdir -p "$(dirname "${local_zshrc}")"
-            {
-                echo '# vim:ft=zsh:'
-                echo "[[ -z \"\$GITHUB_TOKEN\" ]] && echo \"⚠ GITHUB_TOKEN is not set\""
-                echo "[[ -z \"\$HOMEBREW_GITHUB_API_TOKEN\" ]] && echo \"⚠ HOMEBREW_GITHUB_API_TOKEN is not set\""
-                echo "[[ -z \"\$WEECHAT_PASSPHRASE\" ]] && echo \"⚠ WEECHAT_PASSPHRASE is not set\""
-                echo "[[ -z \"\$NPM_REGISTRY_TOKEN\" ]] && echo \"⚠ NPM_REGISTRY_TOKEN is not set\""
-                echo "[[ -z \"\$GITHUB_REGISTRY_TOKEN\" ]] && echo \"⚠ GITHUB_REGISTRY_TOKEN is not set\""
-                echo "[[ -z \"\$GH_PASS\" ]] && echo \"⚠ GH_PASS is not set\""
-            } > "${local_zshrc}"
+          	echo ":: -> Running shell activationScript..."
+          	# Creating needed folders
+          	if [ ! -e "${local_zshrc}" ]; then
+          	mkdir -p "$(dirname "${local_zshrc}")"
+          	{
+          		echo '# vim:ft=zsh:'
+          		echo "[[ -z \"\$GITHUB_TOKEN\" ]] && echo \"⚠ GITHUB_TOKEN is not set\""
+          		echo "[[ -z \"\$HOMEBREW_GITHUB_API_TOKEN\" ]] && echo \"⚠ HOMEBREW_GITHUB_API_TOKEN is not set\""
+          		echo "[[ -z \"\$WEECHAT_PASSPHRASE\" ]] && echo \"⚠ WEECHAT_PASSPHRASE is not set\""
+          		echo "[[ -z \"\$NPM_REGISTRY_TOKEN\" ]] && echo \"⚠ NPM_REGISTRY_TOKEN is not set\""
+          		echo "[[ -z \"\$GITHUB_REGISTRY_TOKEN\" ]] && echo \"⚠ GITHUB_REGISTRY_TOKEN is not set\""
+          		echo "[[ -z \"\$GH_PASS\" ]] && echo \"⚠ GH_PASS is not set\""
+          	} > "${local_zshrc}"
           fi
-
-
-
         '';
+
         programs.bash.enable = false;
         programs.fish.enable = false;
         programs.zsh = {
           enable = true;
           # this is necessary to work with zimfw
           enableCompletion = false;
-         #enableGlobalCompInit = false;
-         #enableSyntaxHighlighting = false;
+          #enableGlobalCompInit = false;
+          #enableSyntaxHighlighting = false;
           ########################################################################
           # Instead of sourcing, I can read the files & save startiup time instead
           ########################################################################
@@ -265,9 +259,32 @@ in
               "${pkgs.fzf}/share/fzf/key-bindings.zsh"
               ../../../config/zsh.d/.zshrc
             ]))
+
+            (lib.concatStringsSep "\n" (map builtins.readFile [
+              ../../../config/zsh.d/zsh/config/options.zsh
+              ../../../config/zsh.d/zsh/config/input.zsh
+              ../../../config/zsh.d/zsh/config/completion.zsh
+              ../../../config/zsh.d/zsh/config/fzf-preview.zsh
+              ../../../config/zsh.d/zsh/config/utility.zsh
+              ../../../config/zsh.d/zsh/config/aliases.zsh
+              "${pkgs.fzf}/share/fzf/completion.zsh"
+              "${pkgs.fzf}/share/fzf/key-bindings.zsh"
+              ../../../config/zsh.d/.zshrc
+            ]))
+
+            # Add Rust Zsh completions if rustc is installed
+            ''
+              if (( $+commands[rustc] )); then
+                fpath+="$(rustc --print sysroot)/share/zsh/site-functions"
+              fi
+            ''
+
           ];
           promptInit = ''
-          eval "$(${pkgs.starship}/bin/starship init zsh)"
+            #export STARSHIP_LOG=error
+            #echo "[DEBUG] Shell init started at $(date +%T)"
+            eval "$(starship init zsh)"
+            #echo "[DEBUG] Shell init completed at $(date +%T)"
           '';
         };
       }

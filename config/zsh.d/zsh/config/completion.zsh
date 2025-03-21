@@ -103,3 +103,6 @@ zstyle ':completion:*:history-words' menu yes
 # ignore multiple entries.
 zstyle ':completion:*:(rm|kill|diff):*' ignore-line other
 zstyle ':completion:*:rm:*' file-patterns '*:all-files'
+# autoload -Uz compinit
+# compinit
+# End of lines added by compinstall
