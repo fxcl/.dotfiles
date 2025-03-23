@@ -9,7 +9,6 @@
     ./sudoers.nix
     ./lf.nix
     ./bat.nix
-    ./starship.nix
     ./ripgrep.nix
     ./tmux.nix
     ./misc.nix
@@ -37,7 +36,6 @@
     sudoers.enable = lib.mkDefault true;
     lf.enable = lib.mkDefault true;
     bat.enable = lib.mkDefault true;
-    starship.enable = lib.mkDefault true;
     ripgrep.enable = lib.mkDefault true;
     tmux.enable = lib.mkDefault true;
     misc.enable = lib.mkDefault true;

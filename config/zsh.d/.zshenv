@@ -274,15 +274,6 @@ proxy_off() {
 # fi
 alias colimastart="colima start --cpu 2 --memory 8 --arch x86_64 --vm-type vz --mount-type=virtiofs --network-address"
 
-# IS_COLIMA_AMD64_EMULATOR_RUNNING=`docker run --privileged --rm tonistiigi/binfmt | grep linux/amd64 || true`
-# if [ "$IS_COLIMA_AMD64_EMULATOR_RUNNING" ]
-# then
-#   echo "Skip starting of amd64 emulator, because already running"
-# else
-#   echo "Start amd64 emulator in docker"
-#   docker run --privileged --rm tonistiigi/binfmt --install amd64
-# fi
-
 # https://www.m3tech.blog/entry/dotfiles-bonsai
 dockerrm() {
   docker container stop $(docker container ls -aq)

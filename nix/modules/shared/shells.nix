@@ -107,7 +107,7 @@ in {
               hyperfine
               jq
               #grc
-              #pure-prompt
+              pure-prompt
               lsd
               shellcheck
               shfmt # Doesn't work with zsh, only sh & bash
@@ -271,6 +271,7 @@ in {
               "${pkgs.fzf}/share/fzf/key-bindings.zsh"
               ../../../config/zsh.d/.zshrc
             ]))
+            "fpath+=${pkgs.pure-prompt}/share/zsh/site-functions"
 
             # Add Rust Zsh completions if rustc is installed
             ''
@@ -281,10 +282,8 @@ in {
 
           ];
           promptInit = ''
-            #export STARSHIP_LOG=error
-            #echo "[DEBUG] Shell init started at $(date +%T)"
-            eval "$(starship init zsh)"
-            #echo "[DEBUG] Shell init completed at $(date +%T)"
+            #eval "$(starship init zsh)"
+            autoload -U promptinit; promptinit; prompt pure
           '';
         };
       }

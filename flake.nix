@@ -110,11 +110,13 @@
             # disabled on Darwin because some buggy behaviour: https://github.com/NixOS/nix/issues/7273
             auto-optimise-store = !pkgs.stdenv.isDarwin;
 
-            substituters = [
+            substituters = pkgs.lib.mkForce[
+            "https://cache.garnix.io"
+              https://mirrors.cernet.edu.cn/nix-channels/store
               #"https://mirror.sjtu.edu.cn/nix-channels/store"
               #"https://mirrors.ustc.edu.cn/nix-channels/store"
               "https://cache.nixos.org"
-              "https://nix-mirror.freetls.fastly.net"
+              #"https://nix-mirror.freetls.fastly.net"
               "https://nix-community.cachix.org"
               "https://nixpkgs.cachix.org"
               "https://srid.cachix.org"
@@ -123,6 +125,7 @@
             ];
 
             trusted-public-keys = [
+              "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
               "nix-cache.status.im-1:x/93lOfLU+duPplwMSBR+OlY4+mo+dCN7n0mr4oPwgY="
               "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
               "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
@@ -176,9 +179,9 @@
                 ./config/tmux/scripts/next-prayer/next-prayer.nix
                 { };
 
-				      #pure-prompt = prev.pure-prompt.overrideAttrs (old: {
-              #patches = (old.patches or [ ]) ++ [ ./nix/hosts/pure-zsh.patch ];
-              #});
+				      pure-prompt = prev.pure-prompt.overrideAttrs (old: {
+              patches = (old.patches or [ ]) ++ [ ./nix/hosts/pure-zsh.patch ];
+              });
             })
             # fix for swift 8
             # https://github.com/NixOS/nixpkgs/issues/327836#issuecomment-2292084100
