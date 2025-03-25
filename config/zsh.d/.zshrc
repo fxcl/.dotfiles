@@ -1,6 +1,14 @@
 # vim:ft=zsh:
 # setopt warn_create_global
 
+# VSCode极简模式
+if [[ -n "$VSCODE_PID" ]]; then
+  # 禁用所有非核心功能
+  export ZSH_MINIMAL=1
+  # 确保shell集成初始化优先
+  printf '\x1b]633;A\x07'
+fi
+
 # Performance measurement
 if [[ -n "$ZSH_PROFILE" ]]; then
   zmodload zsh/zprof
@@ -18,9 +26,15 @@ bindkey -e
 # typeset -g ZPLG_MOD_DEBUG=1
 
 # History configuration (optimized for performance)
-HISTSIZE=1000000                  # Number of history entries to keep in memory
-SAVEHIST=$HISTSIZE                # Number of history entries to save to disk
-HISTFILE="${XDG_DATA_HOME:-$HOME/.local/share}/zsh/history"  # XDG compliant path
+if [[ -z "$ZSH_MINIMAL" ]]; then
+  HISTSIZE=1000000                # Number of history entries to keep in memory
+  SAVEHIST=$HISTSIZE              # Number of history entries to save to disk
+  HISTFILE="${XDG_DATA_HOME:-$HOME/.local/share}/zsh/history"  # XDG compliant path
+else
+  # 极简模式下使用更保守的设置
+  HISTSIZE=1000
+  SAVEHIST=500
+fi
 
 # History options
 setopt extended_history          # Record timestamp and duration
@@ -44,12 +58,21 @@ export PURE_PROMPT_SYMBOL="${PURE_SYMBOLS[$RANDOM % ${#PURE_SYMBOLS[@]} + 1]}"
 # For speed:
 # https://github.com/zsh-users/zsh-autosuggestions#disabling-automatic-widget-re-binding
 
-# Can be set when `zsh-users/zsh-autosuggestions`
-# is the last module in `~/.zimrc`.
+# Optimize zsh-autosuggestions for performance
 export ZSH_AUTOSUGGEST_MANUAL_REBIND=1
 export ZSH_AUTOSUGGEST_USE_ASYNC="true"
-export ZSH_AUTOSUGGEST_STRATEGY=("match_prev_cmd" "completion")
-export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
+export ZSH_AUTOSUGGEST_STRATEGY=("match_prev_cmd")
+export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=30
+export ZSH_AUTOSUGGEST_HISTORY_IGNORE="?(#c50,)"
+export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main)
+
+# Additional optimizations for VSCode
+if [[ -n "$VSCODE_PID" ]]; then
+  export ZSH_AUTOSUGGEST_STRATEGY=("match_prev_cmd")
+  export ZSH_AUTOSUGGEST_USE_ASYNC="true"
+  export ZSH_AUTOSUGGEST_PARTIAL_ACCEPT_WIDGETS=()
+  export ZSH_AUTOSUGGEST_COMPLETION_IGNORE="*"
+fi
 
 # Note that this will only ensure unique history if we supply a prefix
 # before hitting "up" (ie. we perform a "search"). HIST_FIND_NO_DUPS
@@ -111,9 +134,10 @@ fi
 # LOCAL.
 ##############################################################
 
-if [ -f $HOST_CONFIGS/zshrc ]; then
-  source $HOST_CONFIGS/zshrc
-fi
+# Disabled host-specific config for better VSCode compatibility
+# if [ -f $HOST_CONFIGS/zshrc ]; then
+#   source $HOST_CONFIGS/zshrc
+# fi
 
 if [ -e /etc/motd ]; then
   if ! cmp -s ${HOME}/.hushlogin /etc/motd; then
