@@ -1,38 +1,34 @@
 # vim:ft=zsh:
 # setopt warn_create_global
 
+# Performance measurement
+if [[ -n "$ZSH_PROFILE" ]]; then
+  zmodload zsh/zprof
+  zmodload zsh/datetime
+  setopt promptsubst
+  PS4='+$EPOCHREALTIME %N:%i> '
+  exec 3>&2 2> "${TMPDIR}/zshstart.$$"
+  setopt xtrace
+fi
+
 # Set editor default keymap to emacs (`-e`) or vi (`-v`)
 bindkey -e
 
-##############################################################
-# Profiling.
-##############################################################
+# Zim module debug (disable by default)
+# typeset -g ZPLG_MOD_DEBUG=1
 
-# Start profiling (uncomment when necessary)
-#
-# See: https://stackoverflow.com/a/4351664/2103996
+# History configuration (optimized for performance)
+HISTSIZE=1000000                  # Number of history entries to keep in memory
+SAVEHIST=$HISTSIZE                # Number of history entries to save to disk
+HISTFILE="${XDG_DATA_HOME:-$HOME/.local/share}/zsh/history"  # XDG compliant path
 
-# Per-command profiling:
-
-# zmodload zsh/datetime
-# setopt promptsubst
-# PS4='+$EPOCHREALTIME %N:%i> '
-# # More human readable
-# PS4=$'%D{%S.%.} %N:%i> '
-# exec 3>&2 2> startlog.$$
-# setopt xtrace prompt_subst
-
-# Per-function profiling:
-
-# zmodload zsh/zprof
-
-typeset -g ZPLG_MOD_DEBUG=1
-
-# https://gist.github.com/matthewmccullough/787142
-# https://unix.stackexchange.com/questions/273861/unlimited-history-in-zsh
-HISTSIZE=1000000
-SAVEHIST="$HISTSIZE"
-HISTFILE="${XDG_DATA_HOME}/.zsh_history"
+# History options
+setopt extended_history          # Record timestamp and duration
+setopt hist_expire_dups_first    # Expire duplicate commands first
+setopt hist_ignore_dups          # Don't store duplicate commands
+setopt hist_ignore_space         # Ignore commands starting with space
+setopt hist_verify               # Show command before executing
+setopt share_history             # Share history between sessions
 
 fpath=(
   ${ZDOTDIR}/functions
@@ -92,8 +88,17 @@ if test ! $(which proto); then
   echo 'Done'
 fi
 
-# Initialize FZF (requires >=fzf@0.48.0)
-source <(fzf --zsh)
+# Initialize FZF asynchronously if not in VSCode
+if [[ -z "$VSCODE_PID" ]]; then
+  source <(fzf --zsh)
+fi
+
+# VSCode shell integration optimization
+if [[ -n "$VSCODE_PID" ]]; then
+  # Disable slow initialization for VSCode
+  export ZSH_AUTOSUGGEST_MANUAL_REBIND=1
+  export ZSH_HIGHLIGHT_MAXLENGTH=512
+fi
 
 # config clang
 if command -v clang++ >/dev/null 2>&1; then

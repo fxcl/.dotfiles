@@ -695,7 +695,8 @@
   },
   "terminal.integrated.rendererType": "canvas",
   "terminal.integrated.shell.linux": "/bin/zsh",
-  "terminal.integrated.shellIntegration.decorationsEnabled": "never",
+  "terminal.integrated.shellIntegration.decorationsEnabled": "always",
+  "terminal.integrated.shellIntegration.enabled": true,
   "terminal.integrated.env.osx": {
     "FIG_NEW_SESSION": "1"
   },

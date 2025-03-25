@@ -95,79 +95,97 @@ if [ -d "$HOME/.proto" ]; then
   alias psearch="proto list-remote --aliases"
   alias pupgrade="proto upgrade"
 
+  # Cache proto command path and versions
+  typeset -g _PROTO_CMD=$(command -v proto)
+  typeset -gA _PROTO_VERSION_CACHE=()
+
+  # Handle version argument with caching
+  function _proto_handle_version() {
+    local cache_key="$1:$2"
+    if [[ -n "${_PROTO_VERSION_CACHE[$cache_key]}" ]]; then
+      echo "${_PROTO_VERSION_CACHE[$cache_key]}"
+      return
+    fi
+
+    if [[ -z $2 ]]; then
+      echo -e "\033[0;33mWarning: No version provided for $1. Using 'latest'.\033[0m\n" >&2
+      _PROTO_VERSION_CACHE[$cache_key]="latest"
+    else
+      _PROTO_VERSION_CACHE[$cache_key]="$2"
+    fi
+    
+    echo "${_PROTO_VERSION_CACHE[$cache_key]}"
+  }
+
+  # Clear version cache
+  function pclear-cache() {
+    _PROTO_VERSION_CACHE=()
+    echo "Proto version cache cleared"
+  }
+
   function pinstall() {
-    if [[ $# -eq 1 ]]; then
-      echo -e "\033[0;33mWarning: No version provided. Using 'latest' as version tag.\033[0m"
-      echo
-      proto install --pin global $1 latest
-    else
-      proto install --pin global $1 $2
-    fi
+    [[ $# -eq 0 ]] && { echo "Usage: pinstall <tool> [version]" >&2; return 1; }
+    $_PROTO_CMD install --pin global $1 $(_proto_handle_version $1 $2)
   }
+
   function prm() {
-    if [[ $# -eq 1 ]]; then
-      echo -e "\033[0;33mWarning: No version provided. Using 'latest' as version tag.\033[0m"
-      echo
-      proto uninstall $1 latest
-    else
-      proto uninstall $1 $2
-    fi
+    [[ $# -eq 0 ]] && { echo "Usage: prm <tool> [version]" >&2; return 1; }
+    $_PROTO_CMD uninstall $1 $(_proto_handle_version $1 $2)
   }
+
   function puse() {
-    if [[ $# -eq 1 ]]; then
-      echo -e "\033[0;33mWarning: No version provided. Using 'latest' as version tag.\033[0m"
-      echo
-      proto pin --resolve --global $1 latest
-    else
-      proto pin --resolve --global $1 $2
-    fi
+    [[ $# -eq 0 ]] && { echo "Usage: puse <tool> [version]" >&2; return 1; }
+    $_PROTO_CMD pin --resolve --global $1 $(_proto_handle_version $1 $2)
   }
-  function poutdated() {
+  # Handle directory argument with default $PROTO_HOME
+  function _proto_handle_directory() {
+    local arg=$1
     if [[ -f .prototools ]]; then
-      proto outdated
-    elif [[ $# -eq 0 ]]; then
-      echo -e "\033[0;33mWarning: No argument provided. Checking global tools...\033[0m"
-      echo
-      (cd $PROTO_HOME && proto outdated)
-    elif [[ -d $1 ]]; then
-      (cd $1 && proto outdated)
+      echo "."
+    elif [[ -z $arg ]]; then
+      echo -e "\033[0;33mWarning: No directory provided. Checking global tools...\033[0m\n"
+      echo "$PROTO_HOME"
+    elif [[ -d $arg ]]; then
+      echo "$arg"
     else
-      echo -e "\033[0;31mInvalid argument: $1\033[0m"
-    fi
-  }
-  function ptools() {
-    if [[ -f .prototools ]]; then
-      proto status
-    elif [[ $# -eq 0 ]]; then
-      echo -e "\033[0;33mWarning: No argument provided. Checking global tools...\033[0m"
-      echo
-      (cd $PROTO_HOME && proto status)
-    elif [[ -d $1 ]]; then
-      (cd $1 && proto status)
-    else
-      echo -e "\033[0;31mInvalid argument: $1\033[0m"
+      echo -e "\033[0;31mError: Invalid directory '$arg'\033[0m" >&2
+      return 1
     fi
   }
 
+  function poutdated() {
+    local dir=$(_proto_handle_directory $1) || return $?
+    (cd $dir && proto outdated)
+  }
+
+  function ptools() {
+    local dir=$(_proto_handle_directory $1) || return $?
+    (cd $dir && proto status)
+  }
+
   function phelp() {
-    echo "Custom commands for Proto."
+    echo "Proto Tool Manager - Custom Commands"
     echo
-    echo "Usage: <P-COMMAND> [OPTIONS]"
+    echo "Usage: p<command> [arguments]"
     echo
-    echo "Commands:"
-    echo "    puse <TOOL> <[VERSION]>      - Use <TOOL> at <[VERSION]> ."
-    echo "                                   If <[VERSION]>  is not provided, it will be set to 'latest'."
-    echo "    pinstall <TOOL> <[VERSION]>  - Install <TOOL> at <[VERSION]> ."
-    echo "                                   If <[VERSION]>  is not provided, it will be set to 'latest'."
-    echo "    prm <TOOL> <[VERSION]>       - Uninstall <TOOL> at <[VERSION]> ."
-    echo "                                   If <[VERSION]>  is not provided, it will be set to 'latest'."
-    echo "    plist <TOOL>                 - List all installed versions of <TOOL>."
-    echo "    psearch <TOOL>               - Search for available versions of <TOOL>."
-    echo "    pupgrade                     - Upgrade proto itself."
-    echo "    poutdated <[DIRECTORY]>      - Show outdated tools in <directory>."
-    echo "                                   If <[DIRECTORY]> is not provided, it will be set to '$PROTO_HOME'."
-    echo "    ptools <[DIRECTORY]>         - List all installed tools in <directory>."
-    echo "                                   If <[DIRECTORY]> is not provided, it will be set to '$PROTO_HOME'."
+    echo "Core Commands:"
+    echo "  puse <tool> [version]       Pin tool version (default: latest)"
+    echo "  pinstall <tool> [version]   Install tool version (default: latest)"
+    echo "  prm <tool> [version]        Uninstall tool version (default: latest)"
+    echo
+    echo "Info Commands:"
+    echo "  plist [tool]                List installed versions"
+    echo "  psearch <tool>              Search available versions"
+    echo "  pupgrade                    Upgrade Proto itself"
+    echo
+    echo "Project Commands:"
+    echo "  poutdated [dir]             Check for outdated tools (default: global)"
+    echo "  ptools [dir]                List installed tools (default: global)"
+    echo
+    echo "Examples:"
+    echo "  pinstall node 20.0.0        # Install specific version"
+    echo "  puse node                   # Use latest version"
+    echo "  poutdated ~/projects/my-app # Check project tools"
   }
 fi
 
@@ -435,14 +453,24 @@ unset key
 #  t   : tail of the path
 ##############################################################
 
+# PATH configuration (optimized for performance)
+typeset -U path  # Ensure PATH entries are unique
+
+# System paths (absolute paths only)
 path=(
-  ${ZDOTDIR}/bin
-  ${HOME}/.local/bin
-  #${HOME}/.local/bin(N-/)
-  #${CARGO_HOME}/bin(N-/)
-  #${GOBIN}(N-/)
-  ${GOBIN}
+  /usr/local/bin
+  /usr/local/sbin
+  /usr/bin
+  /bin
+  /usr/sbin
+  /sbin
   $path
-  #/opt/homebrew/bin(N-/) # For M1/2 machines
-  /usr/local/{bin,sbin}
 )
+
+# User paths (only add if directories exist)
+[[ -d "${ZDOTDIR}/bin" ]] && path=("${ZDOTDIR}/bin" $path)
+[[ -d "${HOME}/.local/bin" ]] && path=("${HOME}/.local/bin" $path)
+[[ -n "${GOBIN}" && -d "${GOBIN}" ]] && path=("${GOBIN}" $path)
+
+# M1/M2 Homebrew paths
+[[ -d "/opt/homebrew/bin" ]] && path=("/opt/homebrew/bin" $path)
