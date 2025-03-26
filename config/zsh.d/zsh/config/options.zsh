@@ -71,7 +71,6 @@ setopt NUMERIC_GLOB_SORT # Sort numeric filenames numerically
 setopt ALWAYS_TO_END    # Move cursor to end after completion
 setopt PATH_DIRS        # Perform path search on commands with slashes
 setopt COMPLETE_IN_WORD # Complete within words
-setopt EXTENDED_GLOB    # Enhanced globbing
 setopt PROMPT_SUBST     # Enable prompt expansion
 unsetopt CASE_GLOB      # Case-insensitive globbing
 unsetopt LIST_BEEP      # Disable completion beep
