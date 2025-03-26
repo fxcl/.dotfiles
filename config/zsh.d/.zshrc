@@ -26,23 +26,38 @@ bindkey -e
 # typeset -g ZPLG_MOD_DEBUG=1
 
 # History configuration (optimized for performance)
-if [[ -z "$ZSH_MINIMAL" ]]; then
-  HISTSIZE=1000000                # Number of history entries to keep in memory
-  SAVEHIST=$HISTSIZE              # Number of history entries to save to disk
-  HISTFILE="${XDG_DATA_HOME:-$HOME/.local/share}/zsh/history"  # XDG compliant path
-else
-  # 极简模式下使用更保守的设置
-  HISTSIZE=1000
-  SAVEHIST=500
-fi
+() {
+  local -A history_settings=(
+    expire  "1"   # Days to keep history
+    maxsize "64"  # MB
+    minsize "4"    # MB
+  )
 
-# History options
-setopt extended_history          # Record timestamp and duration
-setopt hist_expire_dups_first    # Expire duplicate commands first
-setopt hist_ignore_dups          # Don't store duplicate commands
-setopt hist_ignore_space         # Ignore commands starting with space
-setopt hist_verify               # Show command before executing
-setopt share_history             # Share history between sessions
+  if [[ -z "$ZSH_MINIMAL" ]]; then
+    HISTSIZE=50000                # 内存中保存的历史记录数量
+    SAVEHIST=100000               # 磁盘保存的历史记录数量
+    HISTFILE="${XDG_DATA_HOME}/zsh/history"
+  else
+    HISTSIZE=1000
+    SAVEHIST=2000
+  fi
+
+  # 使用更高效的历史记录选项组合
+  setopt EXTENDED_HISTORY        # 记录时间戳和持续时间
+  setopt HIST_EXPIRE_DUPS_FIRST  # 优先删除重复记录
+  setopt HIST_IGNORE_ALL_DUPS    # 完全去重
+  setopt HIST_FIND_NO_DUPS       # 搜索时不显示重复
+  setopt HIST_REDUCE_BLANKS      # 删除多余空白
+  setopt HIST_SAVE_NO_DUPS       # 保存时去重
+  setopt SHARE_HISTORY           # 实时共享历史
+  setopt HIST_IGNORE_SPACE       # 忽略空格开头的命令
+
+  # 设置历史文件大小限制
+  [[ -f "$HISTFILE" ]] && touch "$HISTFILE"
+  (( $+commands[truncate] )) && {
+    truncate -s ${history_settings[maxsize]}M "$HISTFILE" 2>/dev/null
+  }
+}
 
 fpath=(
   ${ZDOTDIR}/functions
