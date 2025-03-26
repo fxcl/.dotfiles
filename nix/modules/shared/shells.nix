@@ -259,31 +259,28 @@ in {
               "${pkgs.fzf}/share/fzf/key-bindings.zsh"
               ../../../config/zsh.d/.zshrc
             ]))
-
-            (lib.concatStringsSep "\n" (map builtins.readFile [
-              ../../../config/zsh.d/zsh/config/options.zsh
-              ../../../config/zsh.d/zsh/config/input.zsh
-              ../../../config/zsh.d/zsh/config/completion.zsh
-              ../../../config/zsh.d/zsh/config/fzf-preview.zsh
-              ../../../config/zsh.d/zsh/config/utility.zsh
-              ../../../config/zsh.d/zsh/config/aliases.zsh
-              "${pkgs.fzf}/share/fzf/completion.zsh"
-              "${pkgs.fzf}/share/fzf/key-bindings.zsh"
-              ../../../config/zsh.d/.zshrc
-            ]))
             "fpath+=${pkgs.pure-prompt}/share/zsh/site-functions"
-
             # Add Rust Zsh completions if rustc is installed
             ''
               if (( $+commands[rustc] )); then
                 fpath+="$(rustc --print sysroot)/share/zsh/site-functions"
               fi
             ''
-
           ];
           promptInit = ''
             #eval "$(starship init zsh)"
             autoload -U promptinit; promptinit; prompt pure
+			# iTerm2 shell integration
+			[[ -f "~/.iterm2_shell_integration.zsh" ]] && source "~/.iterm2_shell_integration.zsh"
+			# see https://github.com/cline/cline/wiki/Troubleshooting-%E2%80%90-Shell-Integration-Unavailable#still-having-trouble
+			if [[ "$TERM_PROGRAM" == "vscode" ]]; then
+				if [[ -z "$(which code)" ]]; then
+					source "$(code --locate-shell-integration-path zsh)"
+				fi
+				if [[ -z "$(which cursor)" ]]; then
+					source "$(cursor --locate-shell-integration-path zsh)"
+				fi
+			fi
           '';
         };
       }

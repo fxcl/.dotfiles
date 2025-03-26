@@ -25,7 +25,8 @@ in
         ]);
 
       my.env = {
-        EDITOR = "${pkgs.neovim-unwrapped}/bin/nvim";
+        #EDITOR = "${pkgs.neovim-unwrapped}/bin/nvim";
+		EDITOR = "vim";
         VISUAL = "$EDITOR";
         GIT_EDITOR = "$EDITOR";
         MANPAGER = "$EDITOR +Man!";

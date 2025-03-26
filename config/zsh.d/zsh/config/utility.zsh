@@ -3,10 +3,9 @@
 #
 
 #
-# Colours
+# Colours (skip in minimal mode)
 #
-
-if (( terminfo[colors] >= 8 )); then
+if [[ -z "$ZSH_MINIMAL" ]] && (( terminfo[colors] >= 8 )); then
 
   # ls Colours
   if (( ${+commands[dircolors]} )); then

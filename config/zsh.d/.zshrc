@@ -59,13 +59,11 @@ export PURE_PROMPT_SYMBOL="${PURE_SYMBOLS[$RANDOM % ${#PURE_SYMBOLS[@]} + 1]}"
 # https://github.com/zsh-users/zsh-autosuggestions#disabling-automatic-widget-re-binding
 
 # Optimize zsh-autosuggestions for performance
-export ZSH_AUTOSUGGEST_MANUAL_REBIND=1
 export ZSH_AUTOSUGGEST_USE_ASYNC="true"
 export ZSH_AUTOSUGGEST_STRATEGY=("match_prev_cmd")
 export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=30
 export ZSH_AUTOSUGGEST_HISTORY_IGNORE="?(#c50,)"
-export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main)
-
+export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 # Additional optimizations for VSCode
 if [[ -n "$VSCODE_PID" ]]; then
   export ZSH_AUTOSUGGEST_STRATEGY=("match_prev_cmd")
@@ -135,9 +133,9 @@ fi
 ##############################################################
 
 # Disabled host-specific config for better VSCode compatibility
-# if [ -f $HOST_CONFIGS/zshrc ]; then
-#   source $HOST_CONFIGS/zshrc
-# fi
+if [ -f $HOST_CONFIGS/zshrc ]; then
+  source $HOST_CONFIGS/zshrc
+fi
 
 if [ -e /etc/motd ]; then
   if ! cmp -s ${HOME}/.hushlogin /etc/motd; then
