@@ -1,57 +1,55 @@
-#
-# Utility Functions and Options
-#
+# ==============================================
+# Terminal Color Configuration
+# ==============================================
 
-#
-# Colours (skip in minimal mode)
-#
+# Skip color setup in minimal mode or if terminal doesn't support at least 8 colors
 if [[ -z "$ZSH_MINIMAL" ]] && (( terminfo[colors] >= 8 )); then
 
-  # ls Colours
+  # LS Colors - Different settings for GNU and BSD systems
   if (( ${+commands[dircolors]} )); then
-    # GNU
-
-    (( ! ${+LS_COLORS} )) && if [[ -s ${HOME}/.dir_colors ]]; then
-      eval "$(dircolors --sh ${HOME}/.dir_colors)"
-    else
-      export LS_COLORS='di=1;34:ln=35:so=32:pi=33:ex=31:bd=1;36:cd=1;33:su=30;41:sg=30;46:tw=30;42:ow=30;43'
-    fi
-
-  else
-    # BSD
-
-    (( ! ${+LSCOLORS} )) && export LSCOLORS='ExfxcxdxbxGxDxabagacad'
-  fi
-
-  # grep Colours
-  (( ! ${+GREP_COLOR} )) && export GREP_COLOR='37;45'               #BSD
-  (( ! ${+GREP_COLORS} )) && export GREP_COLORS="mt=${GREP_COLOR}"  #GNU
-  if [[ "$(uname)" == openbsd* ]]; then
-    if (( ${+commands[ggrep]} )); then
-      alias grep='ggrep --color=auto'
+    # GNU ls colors
+    if [[ ! -v LS_COLORS ]]; then
+      if [[ -s ${HOME}/.dir_colors ]]; then
+        eval "$(dircolors --sh ${HOME}/.dir_colors)"
+      else
+        export LS_COLORS='di=1;34:ln=35:so=32:pi=33:ex=31:bd=1;36:cd=1;33:su=30;41:sg=30;46:tw=30;42:ow=30;43'
+      fi
     fi
   else
-   alias grep='grep --color=auto'
+    # BSD ls colors
+    [[ ! -v LSCOLORS ]] && export LSCOLORS='ExfxcxdxbxGxDxabagacad'
   fi
 
-  # less Colours
+  # Grep colors - Set both BSD (GREP_COLOR) and GNU (GREP_COLORS) variants
+  [[ ! -v GREP_COLOR ]] && export GREP_COLOR='37;45'
+  [[ ! -v GREP_COLORS ]] && export GREP_COLORS="mt=${GREP_COLOR}"
+
+  # Configure grep alias with color support
+  if [[ "$(uname)" == openbsd* ]] && (( ${+commands[ggrep]} )); then
+    alias grep='ggrep --color=auto'
+  else
+    alias grep='grep --color=auto'
+  fi
+
+  # Less pager colors - Only set if less is the current pager
   if [[ ${PAGER} == 'less' ]]; then
-    (( ! ${+LESS_TERMCAP_mb} )) && export LESS_TERMCAP_mb=$'\E[1;31m'   # Begins blinking.
-    (( ! ${+LESS_TERMCAP_md} )) && export LESS_TERMCAP_md=$'\E[1;31m'   # Begins bold.
-    (( ! ${+LESS_TERMCAP_me} )) && export LESS_TERMCAP_me=$'\E[0m'      # Ends mode.
-    (( ! ${+LESS_TERMCAP_se} )) && export LESS_TERMCAP_se=$'\E[0m'      # Ends standout-mode.
-    (( ! ${+LESS_TERMCAP_so} )) && export LESS_TERMCAP_so=$'\E[7m'      # Begins standout-mode.
-    (( ! ${+LESS_TERMCAP_ue} )) && export LESS_TERMCAP_ue=$'\E[0m'      # Ends underline.
-    (( ! ${+LESS_TERMCAP_us} )) && export LESS_TERMCAP_us=$'\E[1;32m'   # Begins underline.
+    # Terminal capability strings for less
+    [[ ! -v LESS_TERMCAP_mb ]] && export LESS_TERMCAP_mb=$'\E[1;31m'  # Blinking text
+    [[ ! -v LESS_TERMCAP_md ]] && export LESS_TERMCAP_md=$'\E[1;31m'  # Bold text
+    [[ ! -v LESS_TERMCAP_me ]] && export LESS_TERMCAP_me=$'\E[0m'     # End all modes
+    [[ ! -v LESS_TERMCAP_se ]] && export LESS_TERMCAP_se=$'\E[0m'     # End standout mode
+    [[ ! -v LESS_TERMCAP_so ]] && export LESS_TERMCAP_so=$'\E[7m'     # Standout mode
+    [[ ! -v LESS_TERMCAP_ue ]] && export LESS_TERMCAP_ue=$'\E[0m'     # End underline
+    [[ ! -v LESS_TERMCAP_us ]] && export LESS_TERMCAP_us=$'\E[1;32m'  # Underline text
   fi
 fi
 
+# ==============================================
+# Download Utility Configuration
+# ==============================================
 
-#
-# File Downloads
-#
-
-# order of preference: aria2c, axel, wget, curl. This order is derived from speed based on personal tests.
+# Define 'get' alias using the fastest available download tool
+# Preference order: aria2c > axel > wget > curl
 if (( ${+commands[aria2c]} )); then
   alias get='aria2c --max-connection-per-server=5 --continue'
 elif (( ${+commands[axel]} )); then

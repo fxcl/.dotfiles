@@ -1,96 +1,72 @@
-#
-# Editor and input char assignment
-#
+# Zsh input configuration and key bindings
 
+# Exit if terminal doesn't support advanced features
+[[ ${TERM} == 'dumb' ]] && return 1
 
-# Return if requirements are not found.
-if [[ ${TERM} == 'dumb' ]]; then
-  return 1
-fi
-
+# Enable vi mode
 bindkey -v
 
-# Use human-friendly identifiers.
+# Load terminal capabilities and setup key mappings
 zmodload -F zsh/terminfo +b:echoti +p:terminfo
-typeset -gA key_info
-key_info=(
-  'Control'      '\C-'
-  'ControlLeft'  '\e[1;5D \e[5D \e\e[D \eOd \eOD'
-  'ControlRight' '\e[1;5C \e[5C \e\e[C \eOc \eOC'
-  'Escape'       '\e'
-  'Meta'         '\M-'
-  'Backspace'    ${terminfo[kbs]}
-  'BackTab'      ${terminfo[kcbt]}
-  'Left'         ${terminfo[kcub1]}
-  'Down'         ${terminfo[kcud1]}
-  'Right'        ${terminfo[kcuf1]}
-  'Up'           ${terminfo[kcuu1]}
-  'Delete'       ${terminfo[kdch1]}
-  'End'          ${terminfo[kend]}
-  'F1'           ${terminfo[kf1]}
-  'F2'           ${terminfo[kf2]}
-  'F3'           ${terminfo[kf3]}
-  'F4'           ${terminfo[kf4]}
-  'F5'           ${terminfo[kf5]}
-  'F6'           ${terminfo[kf6]}
-  'F7'           ${terminfo[kf7]}
-  'F8'           ${terminfo[kf8]}
-  'F9'           ${terminfo[kf9]}
-  'F10'          ${terminfo[kf10]}
-  'F11'          ${terminfo[kf11]}
-  'F12'          ${terminfo[kf12]}
-  'Home'         ${terminfo[khome]}
-  'Insert'       ${terminfo[kich1]}
-  'PageDown'     ${terminfo[knp]}
-  'PageUp'       ${terminfo[kpp]}
+
+typeset -gA key_info=(
+  # Modifier keys
+  'Control'   '\C-'
+  'Escape'    '\e'
+  'Meta'      '\M-'
+
+  # Navigation keys
+  'Left'      ${terminfo[kcub1]}
+  'Right'     ${terminfo[kcuf1]}
+  'Up'        ${terminfo[kcuu1]}
+  'Down'      ${terminfo[kcud1]}
+  'Home'      ${terminfo[khome]}
+  'End'       ${terminfo[kend]}
+
+  # Editing keys
+  'Backspace' ${terminfo[kbs]}
+  'Delete'    ${terminfo[kdch1]}
+  'Insert'    ${terminfo[kich1]}
+
+  # Function keys
+  'F1'        ${terminfo[kf1]}
+  'F2'        ${terminfo[kf2]}
+  'F3'        ${terminfo[kf3]}
+  'F4'        ${terminfo[kf4]}
+  'F5'        ${terminfo[kf5]}
+  'F6'        ${terminfo[kf6]}
+  'F7'        ${terminfo[kf7]}
+  'F8'        ${terminfo[kf8]}
+  'F9'        ${terminfo[kf9]}
+  'F10'       ${terminfo[kf10]}
+  'F11'       ${terminfo[kf11]}
+  'F12'       ${terminfo[kf12]}
+
+  # Special keys
+  'BackTab'   ${terminfo[kcbt]}
+  'PageUp'    ${terminfo[kpp]}
+  'PageDown'  ${terminfo[knp]}
 )
 
-# Bind the keys
-
+# Enable double-dot expansion if configured
 if [[ ${zdouble_dot_expand} == 'true' ]]; then
   double-dot-expand() {
-    if [[ ${LBUFFER} == *.. ]]; then
-      LBUFFER+='/..'
-    else
-      LBUFFER+='.'
-    fi
+    [[ ${LBUFFER} == *.. ]] && LBUFFER+='/..' || LBUFFER+='.'
   }
   zle -N double-dot-expand
   bindkey '.' double-dot-expand
 fi
 
-# Expandpace.
-bindkey ' ' magic-space
+# Key bindings
+bindkey ' ' magic-space                     # Smart space expansion
+bindkey "${key_info[Control]}L" clear-screen # Ctrl+L to clear screen
+[[ -n ${key_info[BackTab]} ]] && bindkey ${key_info[BackTab]} reverse-menu-complete # Shift+Tab for reverse completion
 
-# Clear
-bindkey "${key_info[Control]}L" clear-screen
-
-# Bind Shift + Tab to go to the previous menu item.
-[[ -n ${key_info[BackTab]} ]] && bindkey ${key_info[BackTab]} reverse-menu-complete
-
-# autoload -Uz is-at-least && if ! is-at-least 5.3; then
-#   # Redisplay after completing, and avoid blank prompt after <Tab><Tab><Ctrl-C>
-#   expand-or-complete-with-redisplay() {
-#     print -Pn '...'
-#     zle expand-or-complete
-#     zle redisplay
-#   }
-#   zle -N expand-or-complete-with-redisplay
-#   bindkey "${key_info[Control]}I" expand-or-complete-with-redisplay
-# fi
-
-# Put into application mode and validate ${terminfo}
-zle-line-init() {
-  (( ${+terminfo[smkx]} )) && echoti smkx
-}
-zle-line-finish() {
-  (( ${+terminfo[rmkx]} )) && echoti rmkx
-}
+# Terminal application mode handling
+zle-line-init() { (( ${+terminfo[smkx]} )) && echoti smkx }
+zle-line-finish() { (( ${+terminfo[rmkx]} )) && echoti rmkx }
 zle -N zle-line-init
 zle -N zle-line-finish
 
+# Vi mode timeout (1/100 sec)
 export KEYTIMEOUT=1
-
-# autoload -Uz edit-command-line
-# zle -N edit-command-line
-# bindkey -M vicmd '!' edit-command-line
