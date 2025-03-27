@@ -2,9 +2,6 @@
 # Terminal Color Configuration
 # ==============================================
 
-# Skip color setup in minimal mode or if terminal doesn't support at least 8 colors
-if [[ -z "$ZSH_MINIMAL" ]] && (( terminfo[colors] >= 8 )); then
-
   # LS Colors - Different settings for GNU and BSD systems
   if (( ${+commands[dircolors]} )); then
     # GNU ls colors
@@ -12,7 +9,7 @@ if [[ -z "$ZSH_MINIMAL" ]] && (( terminfo[colors] >= 8 )); then
       if [[ -s ${HOME}/.dir_colors ]]; then
         eval "$(dircolors --sh ${HOME}/.dir_colors)"
       else
-        export LS_COLORS='di=1;34:ln=35:so=32:pi=33:ex=31:bd=1;36:cd=1;33:su=30;41:sg=30;46:tw=30;42:ow=30;43'
+        export c='di=1;34:ln=35:so=32:pi=33:ex=31:bd=1;36:cd=1;33:su=30;41:sg=30;46:tw=30;42:ow=30;43'
       fi
     fi
   else
@@ -41,7 +38,6 @@ if [[ -z "$ZSH_MINIMAL" ]] && (( terminfo[colors] >= 8 )); then
     [[ ! -v LESS_TERMCAP_so ]] && export LESS_TERMCAP_so=$'\E[7m'     # Standout mode
     [[ ! -v LESS_TERMCAP_ue ]] && export LESS_TERMCAP_ue=$'\E[0m'     # End underline
     [[ ! -v LESS_TERMCAP_us ]] && export LESS_TERMCAP_us=$'\E[1;32m'  # Underline text
-  fi
 fi
 
 # ==============================================

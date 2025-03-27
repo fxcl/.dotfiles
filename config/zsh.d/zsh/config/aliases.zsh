@@ -1,18 +1,18 @@
 # ======================
-# cURL Related Aliases
+# cURL Related Functions (Lazy Loaded)
 # ======================
 # Basic curl commands
-alias curlh="curl -sILX GET"
-alias curld="curl -A \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36\""
-alias curlm="curl -A \"Mozilla/5.0 (iPhone; CPU iPhone OS 6_1_3 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) CriOS/28.0.1500.12 Mobile/10B329 Safari/8536.25\""
+curlh() { curl -sILX GET "$@" }
+curld() { curl -A "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36" "$@" }
+curlm() { curl -A "Mozilla/5.0 (iPhone; CPU iPhone OS 6_1_3 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) CriOS/28.0.1500.12 Mobile/10B329 Safari/8536.25" "$@" }
 
 # HTTP request methods
-alias curl-get="curl -i -X GET"  # Include HTTP headers in output
-alias curl-post="curl -X POST -d"  # POST request with JSON data and URL
-alias curl-post-file="curl -X POST -f"  # File upload with file path and URL
-alias curl-put="curl -X PUT -d"  # PUT request with JSON data and URL
-alias curl-fetch-header='curl -I'  # Get server headers
-alias curl-fetch-header-check-compression='curl -I --compress'  # Check server compression support
+curl-get() { curl -i -X GET "$@" }
+curl-post() { curl -X POST -d "$@" }
+curl-post-file() { curl -X POST -f "$@" }
+curl-put() { curl -X PUT -d "$@" }
+curl-fetch-header() { curl -I "$@" }
+curl-fetch-header-check-compression() { curl -I --compress "$@" }
 
 # ======================
 # System Navigation & Operations
@@ -205,6 +205,21 @@ command -v htop &>/dev/null && alias top=htop
 command -v bat &>/dev/null && alias cat='bat '
 command -v fd &>/dev/null && alias fd='fd --hidden '
 command -v yarn &>/dev/null && alias y=yarn
+command -v hd >/dev/null || alias hd="hexdump -C"	# Canonical hex dump; some systems have this symlinked
+command -v md5sum >/dev/null || alias md5sum="md5" # macOS has no `md5sum`, so use `md5` as a fallback
+command -v sha1sum >/dev/null || alias sha1sum="shasum" # macOS has no `sha1sum`, so use `shasum` as a fallback
+
+# Remove path separator from WORDCHARS.
+WORDCHARS=${WORDCHARS//[\/]/}
+
+# Set the Less input preprocessor.
+# Try both `lesspipe` and `lesspipe.sh` as either might exist on a system.
+for command in lesspipe lesspipe.sh; do
+  if [[ -n ${commands[$command]} ]]; then
+    export LESSOPEN="| /usr/bin/env ${commands[$command]} %s 2>/dev/null"
+    break
+  fi
+done
 
 # File listing
 if command -v lsd &>/dev/null; then

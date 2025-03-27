@@ -1,7 +1,7 @@
 export LS_COLORS=$(vivid generate one-light)
 export COLORTERM="truecolor"
 # Better spell checking & auto correction prompt
-export SPROMPT="zsh: correct %F{red}'%R'%f to %F{blue}'%r'%f [%B%Uy%u%bes, %B%Un%u%bo, %B%Ue%u%bdit, %B%Ua%u%bbort]?"
+export  SPROMPT="zsh: correct %F{red}'%R'%f to %F{blue}'%r'%f [%B%Uy%u%bes, %B%Un%u%bo, %B%Ue%u%bdit, %B%Ua%u%bbort]?"
 # Set the default Less options.
 # Mouse-wheel scrolling has been disabled by -X (disable screen clearing).
 # Remove -X and -F (exit if the content fits on one screen) to enable it.
@@ -34,27 +34,6 @@ export _ZO_DATA_DIR="$XDG_CONFIG_HOME/zoxide"
 
 #ollama amd gpu
 export HSA_OVERRIDE_GFX_VERSION="10.3.0"
-
-# Canonical hex dump; some systems have this symlinked
-command -v hd >/dev/null || alias hd="hexdump -C"
-
-# macOS has no `md5sum`, so use `md5` as a fallback
-command -v md5sum >/dev/null || alias md5sum="md5"
-
-# macOS has no `sha1sum`, so use `shasum` as a fallback
-command -v sha1sum >/dev/null || alias sha1sum="shasum"
-
-# Remove path separator from WORDCHARS.
-WORDCHARS=${WORDCHARS//[\/]/}
-
-# Set the Less input preprocessor.
-# Try both `lesspipe` and `lesspipe.sh` as either might exist on a system.
-for command in lesspipe lesspipe.sh; do
-  if [[ -n ${commands[$command]} ]]; then
-    export LESSOPEN="| /usr/bin/env ${commands[$command]} %s 2>/dev/null"
-    break
-  fi
-done
 
 # Ensure path arrays do not contain duplicates.
 typeset -gU cdpath fpath mailpath manpath path

@@ -12,83 +12,60 @@ if [[ -n "$ZSH_PROFILE" ]]; then
 fi
 
 # Initialize ZimFW (delayed loading)
-ZIM_HOME=${ZDOTDIR:-${HOME}}/.zim
-if [[ ! -e ${ZIM_HOME}/zimfw.zsh ]]; then
-  if command -v curl &>/dev/null; then
-    curl -fsSL --create-dirs -o "${ZIM_HOME}/zimfw.zsh" \
-      https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh
+export ZIM_HOME=${ZDOTDIR:-${HOME}}/.zim
+if [[ -s ${ZIM_HOME}/zimfw.zsh ]]; then
+  if [[ ${ZIM_HOME}/init.zsh -ot ${ZDOTDIR:-${HOME}}/.zimrc ]]; then
+    # Update static initialization script if it's outdated, before sourcing it
+    source ${ZIM_HOME}/zimfw.zsh init -q
+  fi
+  source ${ZIM_HOME}/init.zsh
+else
+  echo "No Zim Fixing this crap..."
+  # Download zimfw script
+  local -r ztarget=${ZIM_HOME}/zimfw.zsh
+  if (
+    command mkdir -p ${ZIM_HOME} || return 1
+    local -r zurl=https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh
+    if (( ${+commands[curl]} )); then
+      command curl -fsSL -o ${ztarget} ${zurl} || return 1
+    elif (( ${+commands[wget]} )); then
+      command wget -nv -O ${ztarget} ${zurl} || return 1
+    else
+      print -u2 -P '%F{red}x Either %Bcurl%b or %Bwget%b are required to download the Zim script.%f'
+      return 1
+    fi
+  ); then
+    print -PR "%F{green})%f Downloaded the Zim script to %B${ztarget}%b"
   else
-    mkdir -p "${ZIM_HOME}" && wget -nv -O "${ZIM_HOME}/zimfw.zsh" \
-      https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh
+    command rm -rf ${ZIM_HOME}
+    print -u2 -PR "%F{red}x Could not download the Zim script to %B${ztarget}%b%f"
+    return 1
   fi
 fi
-
-if [[ ! ${ZIM_HOME}/init.zsh -nt ${ZDOTDIR:-${HOME}}/.zimrc ]]; then
-  source ${ZIM_HOME}/zimfw.zsh init -q
-fi
-source ${ZIM_HOME}/init.zsh
+# Zim module debug (disable by default)
+# typeset -g ZPLG_MOD_DEBUG=1
 
 # Set editor default keymap to emacs (`-e`) or vi (`-v`)
 bindkey -e
 
-# Zim module debug (disable by default)
-# typeset -g ZPLG_MOD_DEBUG=1
-
 # History configuration (optimized for performance)
-() {
-  local -A history_settings=(
-    expire  "1"   # Days to keep history
-    maxsize "64"  # MB
-    minsize "4"    # MB
-  )
-
-  if [[ -z "$ZSH_MINIMAL" ]]; then
-    HISTSIZE=50000                # 内存中保存的历史记录数量
-    SAVEHIST=100000               # 磁盘保存的历史记录数量
-  else
-    HISTSIZE=1000
-    SAVEHIST=2000
-  fi
-
-  # 使用更高效的历史记录选项组合
-  setopt EXTENDED_HISTORY        # 记录时间戳和持续时间
-  setopt HIST_EXPIRE_DUPS_FIRST  # 优先删除重复记录
-  setopt HIST_IGNORE_ALL_DUPS    # 完全去重
-  setopt HIST_FIND_NO_DUPS       # 搜索时不显示重复
-  setopt HIST_REDUCE_BLANKS      # 删除多余空白
-  setopt HIST_SAVE_NO_DUPS       # 保存时去重
-  setopt SHARE_HISTORY           # 实时共享历史
-  setopt HIST_IGNORE_SPACE       # 忽略空格开头的命令
-
-  # 设置历史文件大小限制
-  [[ -f "$HISTFILE" ]] && touch "$HISTFILE"
-  (( $+commands[truncate] )) && {
-    truncate -s ${history_settings[maxsize]}M "$HISTFILE" 2>/dev/null
-  }
-}
+HISTSIZE=50000
+SAVEHIST=100000
+# 使用更高效的历史记录选项组合
+setopt EXTENDED_HISTORY        # 记录时间戳和持续时间
+setopt HIST_EXPIRE_DUPS_FIRST  # 优先删除重复记录
+setopt HIST_IGNORE_ALL_DUPS    # 完全去重
+setopt HIST_FIND_NO_DUPS       # 搜索时不显示重复
+setopt HIST_REDUCE_BLANKS      # 删除多余空白
+setopt HIST_SAVE_NO_DUPS       # 保存时去重
+setopt SHARE_HISTORY           # 实时共享历史
+setopt HIST_IGNORE_SPACE       # 忽略空格开头的命令
 
 fpath=(
   ${ZDOTDIR}/functions
   $fpath
 )
-
 autoload -Uz ${ZDOTDIR}/functions/**/*(N:t)
-
-# Initialize history-substring-search
-zmodload -F zsh/terminfo +p:terminfo
-for key in '^[[A' '^P' ${terminfo[kcuu1]}; do
-  bindkey ${key} history-substring-search-up
-done
-for key in '^[[B' '^N' ${terminfo[kcud1]}; do
-  bindkey ${key} history-substring-search-down
-done
-for key in 'k'; do
-  bindkey -M vicmd ${key} history-substring-search-up
-done
-for key in 'j'; do
-  bindkey -M vicmd ${key} history-substring-search-down
-done
-unset key
 
 PURE_SYMBOLS=("λ" "ϟ" "▲" "∴" "→" "»" "৸")
 # Arrays in zsh starts from 1
@@ -102,6 +79,9 @@ export ZSH_AUTOSUGGEST_USE_ASYNC="true"
 export ZSH_AUTOSUGGEST_STRATEGY=("match_prev_cmd")
 export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=30
 export ZSH_AUTOSUGGEST_HISTORY_IGNORE="?(#c50,)"
+
+# Set what highlighters will be used.
+# See https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/docs/highlighters.md
 export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 
 # Note that this will only ensure unique history if we supply a prefix
@@ -151,12 +131,10 @@ export ADBLOCK="true"
 ############### Homebrew
 export HOMEBREW_INSTALL_BADGE="⚽️"
 
-
 # Use cyan colour scaling for the dates column, as the default blue is difficult to read.
 if command -v eza &>/dev/null; then
   export EZA_COLORS="ur=35;nnn:gr=35;nnn:tr=35;nnn:uw=34;nnn:gw=34;nnn:tw=34;nnn:ux=36;nnn:due=36;nnn:gx=36;nnn:tx=36;nnn:uu=36;nnn:uu=38;5;235:da=38;5;238"
 fi
-
 
 ############### Temporary Files
 if [[ ! -d "$TMPDIR" ]]; then
@@ -180,8 +158,6 @@ if test ! $(which proto); then
 
   echo 'Done'
 fi
-
-
 
 # Proto
 # https://moonrepo.dev/proto

@@ -1,12 +1,17 @@
 # Zsh input configuration and key bindings
+# =======================================
 
+# [Terminal Capability Check]
 # Exit if terminal doesn't support advanced features
 [[ ${TERM} == 'dumb' ]] && return 1
 
-# Enable vi mode
+# [Vi Mode Configuration]
+# Enable vi mode with shorter timeout (1/100 sec)
 bindkey -v
+export KEYTIMEOUT=1
 
-# Load terminal capabilities and setup key mappings
+# [Terminal Key Info Setup]
+# Load terminal capabilities and define key mappings
 zmodload -F zsh/terminfo +b:echoti +p:terminfo
 
 typeset -gA key_info=(
@@ -48,6 +53,7 @@ typeset -gA key_info=(
   'PageDown'  ${terminfo[knp]}
 )
 
+# [Smart Expansion Features]
 # Enable double-dot expansion if configured
 if [[ ${zdouble_dot_expand} == 'true' ]]; then
   double-dot-expand() {
@@ -57,16 +63,23 @@ if [[ ${zdouble_dot_expand} == 'true' ]]; then
   bindkey '.' double-dot-expand
 fi
 
-# Key bindings
+# [Key Bindings]
+# General bindings
 bindkey ' ' magic-space                     # Smart space expansion
 bindkey "${key_info[Control]}L" clear-screen # Ctrl+L to clear screen
 [[ -n ${key_info[BackTab]} ]] && bindkey ${key_info[BackTab]} reverse-menu-complete # Shift+Tab for reverse completion
 
-# Terminal application mode handling
-zle-line-init() { (( ${+terminfo[smkx]} )) && echoti smkx }
+# Vi mode specific bindings
+bindkey -M vicmd '?' history-incremental-search-backward
+bindkey -M vicmd '/' history-incremental-search-forward
+bindkey -M vicmd 'v' edit-command-line
+
+# [Terminal Application Mode]
+# Handle terminal application mode switching
+zle-line-init() {
+  (( ${+terminfo[smkx]} )) && echoti smkx
+  zle -K viins  # Start in insert mode
+}
 zle-line-finish() { (( ${+terminfo[rmkx]} )) && echoti rmkx }
 zle -N zle-line-init
 zle -N zle-line-finish
-
-# Vi mode timeout (1/100 sec)
-export KEYTIMEOUT=1
