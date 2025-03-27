@@ -35,8 +35,8 @@ if which zstyle &> /dev/null; then
 	zstyle ':zim:input' double-dot-expand yes
 	zstyle ':zim:module' zsh-autosuggestions 'url' 'zsh-users/zsh-autosuggestions'
 	zstyle ':zim:module' zsh-syntax-highlighting 'url' 'zsh-users/zsh-syntax-highlighting'
-	zstyle ':zim:module' minimal2 'url' 'PatTheMav/minimal2'
-	zstyle ':zim:module' insult 'url' 'Plloi/zim-insult'
+	# zstyle ':zim:module' minimal2 'url' 'PatTheMav/minimal2'
+	# zstyle ':zim:module' insult 'url' 'Plloi/zim-insult'
 
 	# Set a custom terminal title format using prompt expansion escape sequences.
 	# See http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html#Simple-Prompt-Escapes
@@ -44,21 +44,20 @@ if which zstyle &> /dev/null; then
 	# zstyle ':zim:termtitle' hooks 'preexec' 'precmd'
 	# zstyle ':zim:termtitle:preexec' format '${${(A)=1}[1]}'
 	# zstyle ':zim:termtitle:precmd'  format '%1~'
-	zstyle ':zim:termtitle' hooks 'preexec' 'chpwd' 'periodic' 'precmd' 'zshaddhistory'
-	zstyle ':zim:termtitle' format '${TAB_TITLE:-%1~}'
-
-	zstyle ':zim:git-info:clean' format '%F{green}✓'
-	zstyle ':zim:git-info:dirty' format '%F{yellow}✓'
+	# zstyle ':zim:termtitle' hooks 'preexec' 'chpwd' 'periodic' 'precmd' 'zshaddhistory'
+	# zstyle ':zim:termtitle' format '${TAB_TITLE:-%1~}'
+	# zstyle ':zim:git-info:clean' format '%F{green}✓'
+	# zstyle ':zim:git-info:dirty' format '%F{yellow}✓'
 
 	#
 	# git-info
 	#
-	setopt nopromptbang prompt{cr,percent,sp,subst}
-	zstyle ':zim:git-info:branch' format '%F{252}%b%f'
-	zstyle ':zim:git-info:dirty' format '%F{166}●%f'
-	zstyle ':zim:git-info:commit' format '%F{252}%c%f'
-	zstyle ':zim:git-info:keys' format 'prompt' '%F{252}[%f%b%c%D%F{252}]%f '
-	autoload -Uz add-zsh-hook && add-zsh-hook precmd git-info
+	# setopt nopromptbang prompt{cr,percent,sp,subst}
+	# zstyle ':zim:git-info:branch' format '%F{252}%b%f'
+	# zstyle ':zim:git-info:dirty' format '%F{166}●%f'
+	# zstyle ':zim:git-info:commit' format '%F{252}%c%f'
+	# zstyle ':zim:git-info:keys' format 'prompt' '%F{252}[%f%b%c%D%F{252}]%f '
+	# autoload -Uz add-zsh-hook && add-zsh-hook precmd git-info
 fi
 
 # typeset -gA git_info

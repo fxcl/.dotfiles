@@ -268,10 +268,7 @@ in {
             ''
           ];
           promptInit = ''
-            #eval "$(starship init zsh)"
             autoload -U promptinit; promptinit; prompt pure
-			# iTerm2 shell integration
-			[[ -f "~/.iterm2_shell_integration.zsh" ]] && source "~/.iterm2_shell_integration.zsh"
 			# see https://github.com/cline/cline/wiki/Troubleshooting-%E2%80%90-Shell-Integration-Unavailable#still-having-trouble
 			if [[ "$TERM_PROGRAM" == "vscode" ]]; then
 				if [[ -z "$(which code)" ]]; then

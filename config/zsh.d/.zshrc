@@ -79,19 +79,7 @@ export ZSH_AUTOSUGGEST_USE_ASYNC="true"
 export ZSH_AUTOSUGGEST_STRATEGY=("match_prev_cmd")
 export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=30
 export ZSH_AUTOSUGGEST_HISTORY_IGNORE="?(#c50,)"
-
-# Set what highlighters will be used.
-# See https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/docs/highlighters.md
-export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
-
-# Note that this will only ensure unique history if we supply a prefix
-# before hitting "up" (ie. we perform a "search"). HIST_FIND_NO_DUPS
-# won't prevent dupes from appearing when just hitting "up" without a
-# prefix (ie. that's "zle up-line-or-history" and not classified as a
-# "search"). So, we have HIST_IGNORE_DUPS to make life bearable for that
-# case.
-#
-# https://superuser.com/a/1494647/322531
+export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main)
 export HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=1
 
 ############### Misc
@@ -141,11 +129,9 @@ if [[ ! -d "$TMPDIR" ]]; then
   export TMPDIR="/tmp/$LOGNAME"
   mkdir -p -m 700 "$TMPDIR"
 fi
-
 TMPPREFIX="${TMPDIR%/}/zsh"
 
 # Download proto manager if missing.
-
 if test ! $(which proto); then
   echo "Installing proto..."
   curl -fsSL https://moonrepo.dev/install/proto.sh | bash
@@ -155,7 +141,6 @@ if test ! $(which proto); then
   #proto install pnpm
   #proto install bun
   #proto install rust
-
   echo 'Done'
 fi
 
