@@ -2,7 +2,6 @@ export LS_COLORS=$(vivid generate one-light)
 export COLORTERM="truecolor"
 # Better spell checking & auto correction prompt
 #export  SPROMPT="zsh: correct %F{red}'%R'%f to %F{blue}'%r'%f [%B%Uy%u%bes, %B%Un%u%bo, %B%Ue%u%bdit, %B%Ua%u%bbort]?"
-export PROMPT='%~ %F{green} $(git_branch)%f %# '
 # Set the default Less options.
 # Mouse-wheel scrolling has been disabled by -X (disable screen clearing).
 # Remove -X and -F (exit if the content fits on one screen) to enable it.

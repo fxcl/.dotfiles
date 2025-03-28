@@ -268,7 +268,7 @@ in {
             ''
           ];
           promptInit = ''
-            autoload -U promptinit; promptinit; prompt pure
+		   # autoload -U promptinit; promptinit; prompt pure
 			# see https://github.com/cline/cline/wiki/Troubleshooting-%E2%80%90-Shell-Integration-Unavailable#still-having-trouble
 			if [[ "$TERM_PROGRAM" == "vscode" ]]; then
 				if [[ -z "$(which code)" ]]; then

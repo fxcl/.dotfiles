@@ -11,46 +11,9 @@ if [[ -n "$ZSH_PROFILE" ]]; then
   setopt xtrace
 fi
 
-# Initialize ZimFW (delayed loading)
-export ZIM_HOME=${ZDOTDIR:-${HOME}}/.zim
-if [[ -s ${ZIM_HOME}/zimfw.zsh ]]; then
-  if [[ ${ZIM_HOME}/init.zsh -ot ${ZDOTDIR:-${HOME}}/.zimrc ]]; then
-    # Update static initialization script if it's outdated, before sourcing it
-    source ${ZIM_HOME}/zimfw.zsh init -q
-  fi
-  source ${ZIM_HOME}/init.zsh
-else
-  echo "No Zim Fixing this crap..."
-  # Download zimfw script
-  local -r ztarget=${ZIM_HOME}/zimfw.zsh
-  if (
-    command mkdir -p ${ZIM_HOME} || return 1
-    local -r zurl=https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh
-    if (( ${+commands[curl]} )); then
-      command curl -fsSL -o ${ztarget} ${zurl} || return 1
-    elif (( ${+commands[wget]} )); then
-      command wget -nv -O ${ztarget} ${zurl} || return 1
-    else
-      print -u2 -P '%F{red}x Either %Bcurl%b or %Bwget%b are required to download the Zim script.%f'
-      return 1
-    fi
-  ); then
-    print -PR "%F{green})%f Downloaded the Zim script to %B${ztarget}%b"
-  else
-    command rm -rf ${ZIM_HOME}
-    print -u2 -PR "%F{red}x Could not download the Zim script to %B${ztarget}%b%f"
-    return 1
-  fi
-fi
-# Zim module debug (disable by default)
-# typeset -g ZPLG_MOD_DEBUG=1
-
 # Set editor default keymap to emacs (`-e`) or vi (`-v`)
 bindkey -e
 
-# History configuration (optimized for performance)
-HISTSIZE=50000
-SAVEHIST=100000
 # 使用更高效的历史记录选项组合
 setopt EXTENDED_HISTORY        # 记录时间戳和持续时间
 setopt HIST_EXPIRE_DUPS_FIRST  # 优先删除重复记录
@@ -58,7 +21,6 @@ setopt HIST_IGNORE_ALL_DUPS    # 完全去重
 setopt HIST_FIND_NO_DUPS       # 搜索时不显示重复
 setopt HIST_REDUCE_BLANKS      # 删除多余空白
 setopt HIST_SAVE_NO_DUPS       # 保存时去重
-setopt SHARE_HISTORY           # 实时共享历史
 setopt HIST_IGNORE_SPACE       # 忽略空格开头的命令
 
 fpath=(
@@ -397,3 +359,37 @@ if [ -e /etc/motd ]; then
     tee ${HOME}/.hushlogin </etc/motd
   fi
 fi
+
+# Initialize ZimFW (delayed loading)
+export ZIM_HOME=${ZDOTDIR:-${HOME}}/.zim
+if [[ -s ${ZIM_HOME}/zimfw.zsh ]]; then
+  if [[ ${ZIM_HOME}/init.zsh -ot ${ZDOTDIR:-${HOME}}/.zimrc ]]; then
+    # Update static initialization script if it's outdated, before sourcing it
+    source ${ZIM_HOME}/zimfw.zsh init -q
+  fi
+  source ${ZIM_HOME}/init.zsh
+else
+  echo "No Zim Fixing this crap..."
+  # Download zimfw script
+  local -r ztarget=${ZIM_HOME}/zimfw.zsh
+  if (
+    command mkdir -p ${ZIM_HOME} || return 1
+    local -r zurl=https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh
+    if (( ${+commands[curl]} )); then
+      command curl -fsSL -o ${ztarget} ${zurl} || return 1
+    elif (( ${+commands[wget]} )); then
+      command wget -nv -O ${ztarget} ${zurl} || return 1
+    else
+      print -u2 -P '%F{red}x Either %Bcurl%b or %Bwget%b are required to download the Zim script.%f'
+      return 1
+    fi
+  ); then
+    print -PR "%F{green})%f Downloaded the Zim script to %B${ztarget}%b"
+  else
+    command rm -rf ${ZIM_HOME}
+    print -u2 -PR "%F{red}x Could not download the Zim script to %B${ztarget}%b%f"
+    return 1
+  fi
+fi
+# Zim module debug (disable by default)
+# typeset -g ZPLG_MOD_DEBUG=1
