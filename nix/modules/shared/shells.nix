@@ -107,7 +107,7 @@ in {
               hyperfine
               jq
               #grc
-             # pure-prompt
+             pure-prompt
               lsd
               shellcheck
               shfmt # Doesn't work with zsh, only sh & bash
@@ -258,7 +258,7 @@ in {
               "${pkgs.fzf}/share/fzf/key-bindings.zsh"
               ../../../config/zsh.d/.zshrc
             ]))
-           # "fpath+=${pkgs.pure-prompt}/share/zsh/site-functions"
+            "fpath+=${pkgs.pure-prompt}/share/zsh/site-functions"
             # Add Rust Zsh completions if rustc is installed
             ''
               if (( $+commands[rustc] )); then
@@ -267,7 +267,7 @@ in {
             ''
           ];
           promptInit = ''
-		   # autoload -U promptinit; promptinit; prompt pure
+		    autoload -U promptinit; promptinit; prompt pure
 			# see https://github.com/cline/cline/wiki/Troubleshooting-%E2%80%90-Shell-Integration-Unavailable#still-having-trouble
 			if [[ "$TERM_PROGRAM" == "vscode" ]]; then
 				if [[ -z "$(which code)" ]]; then
