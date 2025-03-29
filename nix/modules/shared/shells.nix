@@ -107,7 +107,7 @@ in {
               hyperfine
               jq
               #grc
-              pure-prompt
+             # pure-prompt
               lsd
               shellcheck
               shfmt # Doesn't work with zsh, only sh & bash
@@ -178,7 +178,6 @@ in {
                 ".config/mods/mods.yml" = {
                   source = ../../../config/mods/mods.yml;
                 };
-                ".config/zsh/.zimrc" = { source = ../../../config/.zimrc; };
               }
             ];
 
@@ -259,7 +258,7 @@ in {
               "${pkgs.fzf}/share/fzf/key-bindings.zsh"
               ../../../config/zsh.d/.zshrc
             ]))
-            "fpath+=${pkgs.pure-prompt}/share/zsh/site-functions"
+           # "fpath+=${pkgs.pure-prompt}/share/zsh/site-functions"
             # Add Rust Zsh completions if rustc is installed
             ''
               if (( $+commands[rustc] )); then
