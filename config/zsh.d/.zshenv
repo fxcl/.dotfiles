@@ -1,14 +1,20 @@
 # Static environment variables for appearance and behavior
-export COLORTERM="truecolor"
+# Group related exports together to reduce individual export calls
+{
+  export COLORTERM="truecolor"
+  export KEYTIMEOUT="1"
+  export SPROMPT="zsh: correct %F{red}'%R'%f to %F{blue}'%r'%f [%B%Uy%u%bes, %B%Un%u%bo, %B%Ue%u%bdit, %B%Ua%u%bbort]?"
+  export LESS="-F -g -i -M -R -S -w -X -z-4"
+}
+
 # Cache the LS_COLORS value to avoid executing external command on every shell startup
-if [[ ! -f "${XDG_CACHE_HOME:-$HOME/.cache}/ls_colors_cache" ]]; then
+# Use parameter expansion for cache path to reduce string operations
+local _ls_colors_cache="${XDG_CACHE_HOME:-$HOME/.cache}/ls_colors_cache"
+if [[ ! -f "$_ls_colors_cache" ]]; then
   mkdir -p "${XDG_CACHE_HOME:-$HOME/.cache}"
-  vivid generate one-light > "${XDG_CACHE_HOME:-$HOME/.cache}/ls_colors_cache"
+  vivid generate one-light > "$_ls_colors_cache"
 fi
-export LS_COLORS="$(cat "${XDG_CACHE_HOME:-$HOME/.cache}/ls_colors_cache")"
-export KEYTIMEOUT="1"
-export SPROMPT="zsh: correct %F{red}'%R'%f to %F{blue}'%r'%f [%B%Uy%u%bes, %B%Un%u%bo, %B%Ue%u%bdit, %B%Ua%u%bbort]?"
-export LESS="-F -g -i -M -R -S -w -X -z-4"
+export LS_COLORS="$(cat "$_ls_colors_cache")"
 
 # Core directory paths
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
