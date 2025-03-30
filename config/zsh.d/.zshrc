@@ -130,6 +130,9 @@ if ! (( $+commands[proto] )); then
   curl -fsSL https://moonrepo.dev/install/proto.sh | bash
 fi
 
+# Source proto setup script from dotfiles
+[[ -f "$ZDOTDIR/zsh/bin/proto" ]] && source "$ZDOTDIR/zsh/bin/proto"
+
 # Configure C++ environment if clang++ is available
 if (( $+commands[clang++] )); then
   export CXXFLAGS="-stdlib=libc++"

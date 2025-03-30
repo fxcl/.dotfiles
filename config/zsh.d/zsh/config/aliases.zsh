@@ -1,5 +1,6 @@
 # CURL - HTTP request shortcuts
-# Basic curl shortcuts with different user agents and options
+# Optimized curl aliases for different user agents and HTTP methods
+# Basic curl shortcuts with different user agents
 alias curlh="curl -sILX GET"                                                                                                                                             # Silent mode with headers
 alias curld="curl -A \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36\""                                      # Desktop user agent
 alias curlm="curl -A \"Mozilla/5.0 (iPhone; CPU iPhone OS 6_1_3 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) CriOS/28.0.1500.12 Mobile/10B329 Safari/8536.25\"" # Mobile user agent
@@ -22,6 +23,7 @@ alias du="du -kh"
 alias dt='du -sh * | sort -rh | awk '\''{sum+=$1; print} END {print "Total Size: " sum}'\'
 
 # Directory navigation shortcuts
+# Quick directory traversal aliases
 alias ..="cd .."             # Go up one directory
 alias ...="cd ../.."         # Go up two directories
 alias ....="cd ../../.."     # Go up three directories
@@ -35,18 +37,20 @@ alias -- -="cd -"            # Go to previous directory
 # List all files in a directory, excluding hidden files and directories, in a sorted manner
 alias listdir='find ${1:-.} -type f -not -path "*/.*/*" -print0 | xargs -0 -I {} bash -c '\''echo "$(dirname "{}")/$(basename "{}")"'\'' | sort -t/ -k2 -k3'
 
-# IP addresses
-alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
-alias localip="ipconfig getifaddr en0"
-alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
+# Network utilities
+# IP address information shortcuts
+alias ip="dig +short myip.opendns.com @resolver1.opendns.com"                                                                                                  # Get public IP address
+alias localip="ipconfig getifaddr en0"                                                                                                                         # Get local IP address (en0 interface)
+alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'" # List all IP addresses
 
-# Clipboard
-alias pbunformat="pbpaste | textutil -convert txt -stdin -stdout -encoding 30 | pbcopy"
-alias pb-tab-to-pace="pbpaste | expand | pbcopy"
-alias pb-sort="pbpaste | sort | pbcopy"
-alias pb-dedup="pbpaste | uniq | pbcopy"
-alias pb-sort-dedup="pbpaste | sort | uniq | pbcopy"
-alias pwdc="pwd | tr -d '\n' | pbcopy"
+# Clipboard utilities
+# Clipboard manipulation shortcuts for text processing
+alias pbunformat="pbpaste | textutil -convert txt -stdin -stdout -encoding 30 | pbcopy" # Remove formatting from clipboard text
+alias pb-tab-to-pace="pbpaste | expand | pbcopy"                                        # Convert tabs to spaces in clipboard
+alias pb-sort="pbpaste | sort | pbcopy"                                                 # Sort clipboard content
+alias pb-dedup="pbpaste | uniq | pbcopy"                                                # Remove duplicate lines from clipboard
+alias pb-sort-dedup="pbpaste | sort | uniq | pbcopy"                                    # Sort and remove duplicates from clipboard
+alias pwdc="pwd | tr -d '\n' | pbcopy"                                                  # Copy current directory path to clipboard
 
 # Ctags
 alias ctags-make="ctags -R ." # creates tags using universal-ctags from brew
@@ -79,14 +83,17 @@ alias cgt='cargo test'
 alias cgb='cargo build'
 alias cgc='cargo check'
 
-# Node
-alias ns="npm start"
-alias ni="npm install"
-alias nl="npm list --depth=0"     # show only top-level modules
-alias nlg="npm list -g --depth=0" # show only top-level global modules
-alias prettify="prettier --write" # use Prettier (under ./node_modules) to lint/format Javascript file
-# alias ni="npm install"
-# alias nr="npm run-script"
+# Node.js development aliases
+# NPM shortcuts for common operations
+alias ns="npm start"              # Start npm script
+alias ni="npm install"            # Install dependencies
+alias nl="npm list --depth=0"     # List only top-level modules
+alias nlg="npm list -g --depth=0" # List only top-level global modules
+alias prettify="prettier --write" # Format code with Prettier
+alias nr="npm run"                # Run npm script
+alias nu="npm uninstall"          # Uninstall package
+alias nrd="npm run dev"           # Run development server
+alias nrb="npm run build"         # Build project
 
 # System info
 alias mem-info='free -m -l -t'         # pass options to free
@@ -125,14 +132,11 @@ alias flush="dscacheutil -flushcache && killall -HUP mDNSResponder"
 # Clean up LaunchServices to remove duplicates in the “Open With” menu
 alias lscleanup="/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user && killall Finder"
 
-# Canonical hex dump; some systems have this symlinked
-command -v hd >/dev/null || alias hd="hexdump -C"
-
-# macOS has no `md5sum`, so use `md5` as a fallback
-command -v md5sum >/dev/null || alias md5sum="md5"
-
-# macOS has no `sha1sum`, so use `shasum` as a fallback
-command -v sha1sum >/dev/null || alias sha1sum="shasum"
+# Cross-platform command fallbacks
+# Set up fallbacks for commands that might not exist on all systems
+{ command -v hd >/dev/null || alias hd="hexdump -C"; } 2>/dev/null       # Canonical hex dump fallback
+{ command -v md5sum >/dev/null || alias md5sum="md5"; } 2>/dev/null      # md5sum fallback for macOS
+{ command -v sha1sum >/dev/null || alias sha1sum="shasum"; } 2>/dev/null # sha1sum fallback for macOS
 
 # macOS
 # TODO: verify if 'make-finder-alias' creates Finder Alias that's compatible with iTunes
@@ -282,27 +286,27 @@ alias olrn='ollama run nomic-embed-text:latest'  # Run Nomic embedding model
 alias olsn='ollama stop nomic-embed-text:latest' # Stop Nomic embedding model
 
 # Conditional aliases based on command availability
-# More efficient command checking with single redirection
-{ command -v htop >/dev/null && alias top=htop; } 2>/dev/null
-{ command -v bat >/dev/null && alias cat='bat '; } 2>/dev/null
-{ command -v fd >/dev/null && alias fd='fd --hidden '; } 2>/dev/null
-{ command -v yarn >/dev/null && alias y=yarn; } 2>/dev/null
+# Efficiently set up aliases only when commands are available
 
-if command -v lsd &>/dev/null; then
+# Enhanced tools - apply only when available
+(command -v htop >/dev/null && alias top=htop) || true
+(command -v bat >/dev/null && alias cat='bat') || true
+(command -v fd >/dev/null && alias fd='fd --hidden') || true
+(command -v yarn >/dev/null && alias y=yarn) || true
+
+# File listing enhancements
+if command -v lsd >/dev/null 2>&1; then
   alias ls="lsd -tr1lh"
-  alias ll='lsd --tree --group-directories-first -I "node_modules" '
-elif command -v tree &>/dev/null; then
-  alias ll="type tree >/dev/null && tree --dirsfirst -a -L 1 || l -d .*/ */ "
-  alias tree='tree -I  "node_modules" '
+  alias ll='lsd --tree --group-directories-first -I "node_modules"'
+elif command -v tree >/dev/null 2>&1; then
+  alias ll="tree --dirsfirst -a -L 1 2>/dev/null || ls -la"
+  alias tree='tree -I "node_modules"'
 else
-  alias ll="echo 'You have to install lsd or tree'"
+  alias ll="ls -la"
 fi
 
-if command -v jq &>/dev/null; then
-  alias formatJSON='jq .'
-else
-  alias formatJSON='python -m json.tool'
-fi
+# JSON formatting
+(command -v jq >/dev/null && alias formatJSON='jq .') || alias formatJSON='python -m json.tool'
 
 # check size
 alias \
@@ -312,15 +316,38 @@ alias \
 # counting folders and files
 alias count="ls -a | wc -l"
 
-# python aliases
-alias \
-  cvenv='[ ! -d .venv ] && python -m venv .venv; . ./.venv/bin/activate' \
-  dvenv='type deactivate >/dev/null && deactivate' \
-  rvenv='type deactivate >/dev/null; deactivate; rm -rf .venv' \
-  pip='python -m pip' \
-  upip='pip --disable-pip-version-check list --outdated --format=json | jq -r ".[].name" | xargs -I{} pip install --no-cache-dir -U "{}"' \
-  pyprofile='python -m cProfile -o profile' \
-  pytest='python -m pytest'
+# Python development utilities
+# Virtual environment management and Python tools
+
+# Convert complex aliases to functions for better performance
+python_venv_create() {
+  [ ! -d .venv ] && python -m venv .venv
+  . ./.venv/bin/activate
+}
+
+python_venv_deactivate() {
+  type deactivate >/dev/null && deactivate
+}
+
+python_venv_remove() {
+  python_venv_deactivate
+  [ -d .venv ] && rm -rf .venv
+}
+
+python_pip_upgrade() {
+  python -m pip --disable-pip-version-check list --outdated --format=json |
+    jq -r ".[].name" 2>/dev/null |
+    xargs -I{} python -m pip install --no-cache-dir -U "{}"
+}
+
+# Set up aliases to the functions
+alias cvenv='python_venv_create'
+alias dvenv='python_venv_deactivate'
+alias rvenv='python_venv_remove'
+alias pip='python -m pip'
+alias upip='python_pip_upgrade'
+alias pyprofile='python -m cProfile -o profile'
+alias pytest='python -m pytest'
 
 # network
 alias \
@@ -335,40 +362,23 @@ if [[ "$(uname)" == linux* ]]; then
   alias chown='chown --preserve-root -v'
 fi
 
+# macOS specific aliases and functions
+# Only load these on macOS systems
 if [[ "$(uname)" == Darwin* ]]; then
-  alias finder='open -a Finder ./'
-  alias flushdns='sudo killall -HUP mDNSResponder'
-  # alias code="/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code"
-  alias curl='curl --keepalive-time 60'
-  alias zed='/Applications/Zed.app/Contents/MacOS/zed'
-  alias chrome='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome'
-  alias canary='/Applications/Google\ Chrome\ Canary.app/Contents/MacOS/Google\ Chrome\ Canary'
+  # File and application shortcuts
+  alias finder='open -a Finder ./'                 # Open current directory in Finder
+  alias flushdns='sudo killall -HUP mDNSResponder' # Clear DNS cache
+  alias curl='curl --keepalive-time 60'            # Curl with keepalive
 
-  code() { VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args $*; }
+  # Application launchers
+  alias zed='/Applications/Zed.app/Contents/MacOS/zed'                                          # Launch Zed editor
+  alias chrome='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome'                 # Launch Chrome
+  alias canary='/Applications/Google\ Chrome\ Canary.app/Contents/MacOS/Google\ Chrome\ Canary' # Launch Chrome Canary
 
-  # emacs-mac
-  # brew tap railwaycat/emacsmacport
-  # brew install emacs-mac
-  # brew untap railwaycat/emacsmacport
-  #alias emacs='/usr/local/opt/emacs-mac/Emacs.app/Contents/MacOS/Emacs --no-splash'
-  # emacs standard
-  # brew install emacs --with-cocoa
-  # alias emacs='/usr/local/opt/emacs/Emacs.app/Contents/MacOS/Emacs --no-splash --fullscreen'
-  # emacs cask
-  # brew install --cask emacs
-  # installed in /Applications but linked as /usr/local/bin/emacs
-  # also could work with:
-  # alias emacs='open -a Emacs' but with errors taking arguments :\
+  # VSCode launcher function with proper working directory
+  code() {
+    VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args "$@"
+  }
 
-  # alias j17="export JAVA_HOME=`/usr/libexec/java_home -v 17`; java -version"
-  # alias j11="export JAVA_HOME=`/usr/libexec/java_home -v 11.0.15`; java -version"
-  # alias j8="export JAVA_HOME=`/usr/libexec/java_home -v 1.8`; java -version"
-
-  # Turn the prompt symbol red if the user is root
-  # if [ $( id -u ) -eq 0 ];
-  # then # you are root, make the prompt red
-  #  export PS1='\[\e[1;31m\]\u\[\e[0m\]@\[\e[1;32m\]\h\[\e[0m\]:\[\e[1;34m\]\w\[\e[0m\]\$ '
-  # else
-  #  export PS1='\[\e[1;32m\]\u\[\e[0m\]@\[\e[1;32m\]\h\[\e[0m\]:\[\e[1;34m\]\w\[\e[0m\]\$ '
-  # fi
+  # Removed commented out aliases and configurations to improve loading speed
 fi
