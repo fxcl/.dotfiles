@@ -110,8 +110,8 @@
             # disabled on Darwin because some buggy behaviour: https://github.com/NixOS/nix/issues/7273
             auto-optimise-store = !pkgs.stdenv.isDarwin;
 
-            substituters = pkgs.lib.mkForce[
-            "https://cache.garnix.io"
+            substituters = pkgs.lib.mkForce [
+              "https://cache.garnix.io"
               https://mirrors.cernet.edu.cn/nix-channels/store
               #"https://mirror.sjtu.edu.cn/nix-channels/store"
               #"https://mirrors.ustc.edu.cn/nix-channels/store"
@@ -175,11 +175,11 @@
                 inputs.nixpkgs-unstable.legacyPackages.${prev.system}; # Make available unstable channel.
               # pragmatapro = prev.callPackage ./nix/pkgs/pragmatapro.nix { };
               # zk = prev.callPackage ./nix/pkgs/zk.nix { source = inputs.zk; };
-                next-prayer = prev.callPackage
+              next-prayer = prev.callPackage
                 ./config/tmux/scripts/next-prayer/next-prayer.nix
                 { };
-				pure-prompt = prev.pure-prompt.overrideAttrs (old: {
-					patches = (old.patches or [ ]) ++ [ ./nix/hosts/pure-zsh.patch ];
+              pure-prompt = prev.pure-prompt.overrideAttrs (old: {
+                patches = (old.patches or [ ]) ++ [ ./nix/hosts/pure-zsh.patch ];
               });
             })
             # fix for swift 8
@@ -192,19 +192,19 @@
               prev.lib.optionalAttrs prev.stdenv.hostPlatform.isDarwin {
                 inherit (pkgsDarwin) swift;
               })
-              (final: prev: {
-                zimfw = prev.zimfw.overrideAttrs (oldAttrs: rec {
-                  version = "1.15.0";
-                  src = prev.fetchFromGitHub {
-                    owner = "zimfw";
-                    repo = "zimfw";
-                    rev = "v${version}";
-                    ## zim only needs this one file to be installed.
-                    sparseCheckout = [ "zimfw.zsh" ];
-                    sha256 = "sha256-8GnxUhBvMy7fhDILDKYEf/9Mhgzz7suaiZ5elRZmT0o=";
-                  };
-                });
-              })
+            (final: prev: {
+              zimfw = prev.zimfw.overrideAttrs (oldAttrs: rec {
+                version = "1.15.0";
+                src = prev.fetchFromGitHub {
+                  owner = "zimfw";
+                  repo = "zimfw";
+                  rev = "v${version}";
+                  ## zim only needs this one file to be installed.
+                  sparseCheckout = [ "zimfw.zsh" ];
+                  sha256 = "sha256-8GnxUhBvMy7fhDILDKYEf/9Mhgzz7suaiZ5elRZmT0o=";
+                };
+              });
+            })
             # nur.overlay
           ];
         };

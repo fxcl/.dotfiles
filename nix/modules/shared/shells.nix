@@ -11,7 +11,8 @@ let
   darwinPackages = with pkgs; [ openssl gawk gnused coreutils findutils ];
   nixosPackages = with pkgs; [ dwm dmenu xclip ];
 
-in {
+in
+{
   options = with lib; {
     my.modules.shells = {
       enable = mkEnableOption "	Whether to enable shells module\n";
@@ -107,7 +108,7 @@ in {
               hyperfine
               jq
               #grc
-             pure-prompt
+              pure-prompt
               lsd
               shellcheck
               shfmt # Doesn't work with zsh, only sh & bash
@@ -146,7 +147,8 @@ in {
                 # word-wrap at width
                 width: 80'';
 
-            in lib.mkMerge [
+            in
+            lib.mkMerge [
               (if pkgs.stdenv.isDarwin then {
                 "Library/Preferences/glow/glow.yml".text = glow_config;
               } else {
@@ -267,16 +269,16 @@ in {
             ''
           ];
           promptInit = ''
-		    autoload -U promptinit; promptinit; prompt pure
-			# see https://github.com/cline/cline/wiki/Troubleshooting-%E2%80%90-Shell-Integration-Unavailable#still-having-trouble
-			if [[ "$TERM_PROGRAM" == "vscode" ]]; then
-				if [[ -z "$(which code)" ]]; then
-					source "$(code --locate-shell-integration-path zsh)"
-				fi
-				if [[ -z "$(which cursor)" ]]; then
-					source "$(cursor --locate-shell-integration-path zsh)"
-				fi
-			fi
+            		    autoload -U promptinit; promptinit; prompt pure
+            			# see https://github.com/cline/cline/wiki/Troubleshooting-%E2%80%90-Shell-Integration-Unavailable#still-having-trouble
+            			if [[ "$TERM_PROGRAM" == "vscode" ]]; then
+            				if [[ -z "$(which code)" ]]; then
+            					source "$(code --locate-shell-integration-path zsh)"
+            				fi
+            				if [[ -z "$(which cursor)" ]]; then
+            					source "$(cursor --locate-shell-integration-path zsh)"
+            				fi
+            			fi
           '';
         };
       }

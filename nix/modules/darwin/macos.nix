@@ -112,10 +112,10 @@ in
           #"shortcat"
           "typos-cli"
           "mint"
-		      "huggingface-cli"
+          "huggingface-cli"
           "charmbracelet/tap/mods"
-       # "font-sketchybar-app-font"
-        "sketchybar"
+          # "font-sketchybar-app-font"
+          "sketchybar"
           # {
           #   name = "emacs-mac";
           #   args = [

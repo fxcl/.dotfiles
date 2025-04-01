@@ -103,8 +103,8 @@ in
             recursive = true;
             source = ../../../config/mpv;
           };
-         # ".config/aria2" = {
-         #   recursive = true;
+          # ".config/aria2" = {
+          #   recursive = true;
           #  source = ../../../config/aria2;
           #};
           ".config/ghostty" = {
