@@ -1,7 +1,68 @@
 #!/usr/bin/env sh
 
+# # Check for nodejs plugin
+# if [[ "$(proto list node)" == *"No versions installed"* ]]
+# then
+#   echo "  Nodejs proto plugin is being installed"
+#   proto install node
+# fi
+
+# # Check for pnpm plugin
+# if [[ "$(proto list pnpm)" == *"No versions installed"* ]]
+# then
+#   echo "  Pnpm proto plugin is being installed"
+#   proto install pnpm
+# fi
+
+# # Check for yarn plugin
+# if [[ "$(proto list yarn)" == *"No versions installed"* ]]
+# then
+#   echo "  Yarn proto plugin is being installed"
+#   proto install yarn
+# fi
+
+# # Check for moon plugin
+# if [[ "$(proto list moon)" == *"proto::tool::unknown"* ]]
+# then
+#   echo "  Moon proto plugin is being added"
+#   proto plugin add moon "https://raw.githubusercontent.com/moonrepo/moon/master/proto-plugin.toml"
+# fi
+
+# # Check for moon plugin
+# if [[ "$(proto list moon)" == *"No versions installed"* ]]
+# then
+#   echo "  Moon proto plugin is being installed"
+#   proto install moon
+# fi
+
+# proto
 export PROTO_HOME="$HOME/.proto"
-export PATH="$PROTO_HOME/shims:$PROTO_HOME/bin:/opt/homebrew/sbin:$PATH"
+#export PATH="$PROTO_HOME/shims:$PROTO_HOME/bin:/opt/homebrew/sbin:$PATH"
+export PATH="$PROTO_HOME/shims:$PROTO_HOME/bin:$PATH"
+# proto end
+
+# pnpm
+export PNPM_HOME="$PROTO_HOME/shims/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+# pnpm end
+
+# yarn
+export YARN_HOME="$PROTO_HOME/shims/yarn"
+export PATH="$YARN_HOME:$PATH"
+# yarn end
+
+# moon
+export MOON_HOME="$PROTO_HOME/shims/moon"
+export PATH="$MOON_HOME:$PATH"
+# moon end
+
+# node
+export NODE_HOME="$PROTO_HOME/shims/node"
+export PATH="$NODE_HOME:$PATH"
+if [[ -d "$PROTO_HOME/tools/node/globals/bin" ]]; then
+  export PATH="$PROTO_HOME/tools/node/globals/bin:$PATH"
+fi
+# node end
 
 alias plist="proto list --aliases"
 alias psearch="proto list-remote --aliases"

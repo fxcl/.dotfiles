@@ -131,7 +131,7 @@ if ! (( $+commands[proto] )); then
 fi
 
 # Source proto setup script from dotfiles
-[[ -f "$ZDOTDIR/zsh/bin/proto" ]] && source "$ZDOTDIR/zsh/bin/proto"
+[[ -f "$ZDOTDIR/bin/proto" ]] && source "$ZDOTDIR/bin/proto"
 
 # Configure C++ environment if clang++ is available
 if (( $+commands[clang++] )); then

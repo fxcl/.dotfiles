@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 add_mirrors() {
 	local REMOTE_URL
