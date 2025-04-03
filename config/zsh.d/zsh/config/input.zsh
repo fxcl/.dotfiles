@@ -79,13 +79,9 @@ autoload -Uz is-at-least && if ! is-at-least 5.3; then
   bindkey "${key_info[Control]}I" expand-or-complete-with-redisplay
 fi
 
-# Put into application mode and validate ${terminfo}
-zle-line-init() {
-  (( ${+terminfo[smkx]} )) && echoti smkx
-}
-zle-line-finish() {
-  (( ${+terminfo[rmkx]} )) && echoti rmkx
-}
+# Simplified terminal mode handling
+zle-line-init() { (( ${+terminfo[smkx]} )) && echoti smkx }
+zle-line-finish() { (( ${+terminfo[rmkx]} )) && echoti rmkx }
 zle -N zle-line-init
 zle -N zle-line-finish
 

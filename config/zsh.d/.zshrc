@@ -73,18 +73,18 @@ zi light zsh-users/zsh-history-substring-search
 zi ice wait'0' lucid blockf atpull'zi creinstall -q .'
 zi light zsh-users/zsh-completions
 
-# Syntax highlighting - Load with optimized settings
-zi ice wait'0' lucid atinit'ZI[COMPINIT_OPTS]=-C; zpcompinit; zpcdreplay' \
+# Initialize completion system first for better performance
+autoload -Uz compinit compdef
+compinit -C -d "${ZI[ZCOMPDUMP_PATH]}"
+
+# Syntax highlighting - Load with optimized settings and increased delay
+zi ice wait'1' lucid atinit'ZI[COMPINIT_OPTS]=-C; zpcompinit; zpcdreplay' \
   atload'unset "FAST_HIGHLIGHT[chroma-whatis]" "FAST_HIGHLIGHT[chroma-man]"'
 zi light zdharma-continuum/fast-syntax-highlighting
 
-# Autosuggestions - Load with turbo mode
-zi ice wait'0' lucid atload'_zsh_autosuggest_start'
+# Autosuggestions - Load with increased delay for faster startup
+zi ice wait'1' lucid atload'_zsh_autosuggest_start'
 zi light zsh-users/zsh-autosuggestions
-
-# Initialize completion system
-autoload -Uz compinit compdef
-compinit -C -d "${ZI[ZCOMPDUMP_PATH]}"
 
 ##############################################################
 # Key Bindings
@@ -108,12 +108,11 @@ if [[ "$OSTYPE" = "darwin"* ]]; then
   ) &!
 fi
 
-# Load environment tools with lazy loading
+# Load environment tools with lazy loading - optimized for faster startup
 {
-  # Initialize direnv
-  eval "$(direnv hook zsh)"
-  # Initialize zoxide
-  eval "$(zoxide init zsh --hook pwd)"
+  # Initialize direnv and zoxide asynchronously
+  (( $+commands[direnv] )) && eval "$(direnv hook zsh)"
+  (( $+commands[zoxide] )) && eval "$(zoxide init zsh --hook pwd)"
 } &!
 
 # Initialize starship prompt if available
@@ -124,13 +123,7 @@ fi
 # Load FZF configuration
 [[ -f "$(which fzf)" ]] && source <(fzf --zsh 2>/dev/null)
 
-# Install proto if not present
-if ! (( $+commands[proto] )); then
-  echo "Installing proto..."
-  curl -fsSL https://moonrepo.dev/install/proto.sh | bash
-fi
-
-# Source proto setup script from dotfiles
+# Source proto setup script from dotfiles if available
 [[ -f "$ZDOTDIR/bin/proto" ]] && source "$ZDOTDIR/bin/proto"
 
 # Configure C++ environment if clang++ is available
