@@ -6,7 +6,7 @@
 # Colours
 #
 
-# 颜色设置已在.zshenv中配置，避免重复检查和设置
+# Color settings are already configured in .zshenv, avoid duplicate checks and settings
 if (( terminfo[colors] >= 8 )); then
 
   # grep Colours
