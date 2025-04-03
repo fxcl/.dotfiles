@@ -24,11 +24,12 @@ autoload -Uz ${ZDOTDIR}/functions/**/*(N:t)
 typeset -g ZI_MOD_DEBUG=0  # Disable debug mode for better performance
 declare -A ZI
 
-# Set ZI paths
+# Set ZI paths with optimized cache settings
 ZI[HOME_DIR]="$XDG_CACHE_HOME/zsh/zi"
 ZI[BIN_DIR]="$ZI[HOME_DIR]/bin"
 ZI[PLUGINS_DIR]="$ZI[HOME_DIR]/plugins"
 ZI[ZCOMPDUMP_PATH]="${ZDOTDIR}/.zcompdump"
+ZI[COMPINIT_OPTS]="-C"  # Skip security check for faster startup
 ZPFX="$ZI[HOME_DIR]/polaris"
 
 local __ZI="${ZI[BIN_DIR]}/zi.zsh"
@@ -55,7 +56,8 @@ autoload -Uz _zi
 PURE_SYMBOLS=("λ" "ϟ" "▲" "∴" "→" "»" "৸")
 export PURE_PROMPT_SYMBOL="${PURE_SYMBOLS[$RANDOM % ${#PURE_SYMBOLS[@]} + 1]}"
 
-zi ice wait'!' lucid compile'(pure|async).zsh' pick'async.zsh' src'pure.zsh'
+# 使用wait'0'而不是wait'!'可以稍微延迟加载主题，但不会影响视觉体验
+zi ice wait'0' lucid compile'(pure|async).zsh' pick'async.zsh' src'pure.zsh'
 zi light sindresorhus/pure
 
 # Theme styling
@@ -73,17 +75,22 @@ zi light zsh-users/zsh-history-substring-search
 zi ice wait'0' lucid blockf atpull'zi creinstall -q .'
 zi light zsh-users/zsh-completions
 
-# Initialize completion system first for better performance
+# 优化completion系统初始化 - 只在必要时重新生成zcompdump
+# 检查缓存是否需要重建（每天只检查一次）
 autoload -Uz compinit compdef
-compinit -C -d "${ZI[ZCOMPDUMP_PATH]}"
+if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
+  compinit -d "${ZI[ZCOMPDUMP_PATH]}"
+else
+  compinit -C -d "${ZI[ZCOMPDUMP_PATH]}"
+fi
 
 # Syntax highlighting - Load with optimized settings and increased delay
-zi ice wait'1' lucid atinit'ZI[COMPINIT_OPTS]=-C; zpcompinit; zpcdreplay' \
-  atload'unset "FAST_HIGHLIGHT[chroma-whatis]" "FAST_HIGHLIGHT[chroma-man]"'
+zi ice wait'2' lucid atinit'ZI[COMPINIT_OPTS]=-C; zpcompinit; zpcdreplay' \
+  atload'unset "FAST_HIGHLIGHT[chroma-whatis]" "FAST_HIGHLIGHT[chroma-man]" "FAST_HIGHLIGHT[chroma-which]"'
 zi light zdharma-continuum/fast-syntax-highlighting
 
 # Autosuggestions - Load with increased delay for faster startup
-zi ice wait'1' lucid atload'_zsh_autosuggest_start'
+zi ice wait'2' lucid atload'_zsh_autosuggest_start'
 zi light zsh-users/zsh-autosuggestions
 
 ##############################################################
