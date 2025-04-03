@@ -71,6 +71,22 @@ zstyle :prompt:pure:prompt:success color 003
 zi ice wait lucid
 zi light zsh-users/zsh-history-substring-search
 
+# 优化zstyle配置 - 在compinit之前设置以提高性能
+# 设置补全缓存
+zstyle ':completion::complete:*' use-cache on
+zstyle ':completion::complete:*' cache-path "${ZDOTDIR}/.zcompcache"
+
+# 优化补全匹配和性能
+zstyle ':completion:*' accept-exact '*(N)'
+zstyle ':completion:*' accept-exact-dirs 'yes'
+zstyle ':completion:*' special-dirs true
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+
+# 限制补全列表大小以提高性能
+zstyle ':completion:*' list-packed yes
+zstyle ':completion:*' file-sort modification
+zstyle ':completion:*:functions' ignored-patterns '(_*|pre(cmd|exec)|prompt_*)'
+
 # Completion system - Load with turbo mode
 zi ice wait'0' lucid blockf atpull'zi creinstall -q .'
 zi light zsh-users/zsh-completions

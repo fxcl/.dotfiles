@@ -46,11 +46,24 @@ zstyle ':completion:*:*:cd:*:directory-stack' menu yes select
 zstyle ':completion:*:-tilde-:*' group-order 'named-directories' 'path-directories' 'expand'
 zstyle ':completion:*' squeeze-slashes true
 
-# enable caching with optimized settings
+# 启用并优化补全缓存设置
 zstyle ':completion::complete:*' use-cache on
 zstyle ':completion::complete:*' cache-path "${ZDOTDIR}/.zcompcache"
 zstyle ':completion:*' accept-exact '*(N)'
 zstyle ':completion:*' accept-exact-dirs 'yes'
+
+# 优化补全性能
+zstyle ':completion:*' rehash true
+zstyle ':completion:*' list-packed yes
+zstyle ':completion:*' file-sort modification
+zstyle ':completion:*' menu select=5 interactive
+zstyle ':completion:*' special-dirs true
+
+# 优化补全匹配策略
+zstyle ':completion:*' completer _complete _match _approximate
+zstyle ':completion:*:match:*' original only
+zstyle ':completion:*:approximate:*' max-errors 1 numeric
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
 # ignore useless commands and functions
 zstyle ':completion:*:functions' ignored-patterns '(_*|pre(cmd|exec)|prompt_*)'

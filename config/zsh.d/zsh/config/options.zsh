@@ -2,6 +2,11 @@
 # generic options and environment settings
 ###############################################################
 
+# 性能优化设置
+setopt HASH_CMDS     # 缓存命令位置以减少PATH搜索
+setopt HASH_DIRS     # 缓存目录位置以减少PATH搜索
+setopt GLOB_COMPLETE # 在补全时展开通配符而不是在命令行上
+
 # Use smart URL pasting and escaping.
 autoload -Uz bracketed-paste-url-magic && zle -N bracketed-paste bracketed-paste-url-magic
 autoload -Uz url-quote-magic && zle -N self-insert url-quote-magic
