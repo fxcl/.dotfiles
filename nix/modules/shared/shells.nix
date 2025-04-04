@@ -15,9 +15,7 @@ in
 {
   options = with lib; {
     my.modules.shells = {
-      enable = mkEnableOption ''
-        Whether to enable shells module
-      '';
+      enable = mkEnableOption "	Whether to enable shells module\n";
     };
   };
 
@@ -182,7 +180,6 @@ in
                 ".config/mods/mods.yml" = {
                   source = ../../../config/mods/mods.yml;
                 };
-                ".config/zsh/.zimrc" = { source = ../../../config/.zimrc; };
               }
             ];
 
@@ -219,33 +216,33 @@ in
 
         # TODO: look at this later, because it's ugly
         system.activationScripts.postUserActivation.text = ''
-            echo ":: -> Running shell activationScript..."
-            # Creating needed folders
-           if [ ! -e "${local_zshrc}" ]; then
-            mkdir -p "$(dirname "${local_zshrc}")"
-            {
-                echo '# vim:ft=zsh:'
-                echo "[[ -z \"\$GITHUB_TOKEN\" ]] && echo \"⚠ GITHUB_TOKEN is not set\""
-                echo "[[ -z \"\$HOMEBREW_GITHUB_API_TOKEN\" ]] && echo \"⚠ HOMEBREW_GITHUB_API_TOKEN is not set\""
-                echo "[[ -z \"\$WEECHAT_PASSPHRASE\" ]] && echo \"⚠ WEECHAT_PASSPHRASE is not set\""
-                echo "[[ -z \"\$NPM_REGISTRY_TOKEN\" ]] && echo \"⚠ NPM_REGISTRY_TOKEN is not set\""
-                echo "[[ -z \"\$GITHUB_REGISTRY_TOKEN\" ]] && echo \"⚠ GITHUB_REGISTRY_TOKEN is not set\""
-                echo "[[ -z \"\$GH_PASS\" ]] && echo \"⚠ GH_PASS is not set\""
-            } > "${local_zshrc}"
+          	echo ":: -> Running shell activationScript..."
+          	# Creating needed folders
+          	if [ ! -e "${local_zshrc}" ]; then
+          	mkdir -p "$(dirname "${local_zshrc}")"
+          	{
+          		echo '# vim:ft=zsh:'
+          		echo "[[ -z \"\$GITHUB_TOKEN\" ]] && echo \"⚠ GITHUB_TOKEN is not set\""
+          		echo "[[ -z \"\$HOMEBREW_GITHUB_API_TOKEN\" ]] && echo \"⚠ HOMEBREW_GITHUB_API_TOKEN is not set\""
+          		echo "[[ -z \"\$WEECHAT_PASSPHRASE\" ]] && echo \"⚠ WEECHAT_PASSPHRASE is not set\""
+          		echo "[[ -z \"\$NPM_REGISTRY_TOKEN\" ]] && echo \"⚠ NPM_REGISTRY_TOKEN is not set\""
+          		echo "[[ -z \"\$GITHUB_REGISTRY_TOKEN\" ]] && echo \"⚠ GITHUB_REGISTRY_TOKEN is not set\""
+          		echo "[[ -z \"\$GH_PASS\" ]] && echo \"⚠ GH_PASS is not set\""
+          	} > "${local_zshrc}"
           fi
-
-
-
         '';
 
+        programs.bash.enable = false;
+        programs.fish.enable = false;
         programs.zsh = {
           enable = true;
-          enableCompletion = true;
-
+          # this is necessary to work with zimfw
+          enableCompletion = false;
+          #enableGlobalCompInit = false;
+          #enableSyntaxHighlighting = false;
           ########################################################################
           # Instead of sourcing, I can read the files & save startiup time instead
           ########################################################################
-
           # zshenv
           shellInit = lib.concatStringsSep "\n"
             (map builtins.readFile [ ../../../config/zsh.d/.zshenv ]);
@@ -259,15 +256,30 @@ in
               ../../../config/zsh.d/zsh/config/fzf-preview.zsh
               ../../../config/zsh.d/zsh/config/utility.zsh
               ../../../config/zsh.d/zsh/config/aliases.zsh
-              #"${pkgs.grc}/etc/grc.zsh"
               "${pkgs.fzf}/share/fzf/completion.zsh"
               "${pkgs.fzf}/share/fzf/key-bindings.zsh"
               ../../../config/zsh.d/.zshrc
             ]))
             "fpath+=${pkgs.pure-prompt}/share/zsh/site-functions"
+            # Add Rust Zsh completions if rustc is installed
+            ''
+              if (( $+commands[rustc] )); then
+                fpath+="$(rustc --print sysroot)/share/zsh/site-functions"
+              fi
+            ''
           ];
-
-          promptInit = "autoload -U promptinit; promptinit; prompt pure";
+          promptInit = ''
+            		    autoload -U promptinit; promptinit; prompt pure
+            			# see https://github.com/cline/cline/wiki/Troubleshooting-%E2%80%90-Shell-Integration-Unavailable#still-having-trouble
+            			if [[ "$TERM_PROGRAM" == "vscode" ]]; then
+            				if [[ -z "$(which code)" ]]; then
+            					source "$(code --locate-shell-integration-path zsh)"
+            				fi
+            				if [[ -z "$(which cursor)" ]]; then
+            					source "$(cursor --locate-shell-integration-path zsh)"
+            				fi
+            			fi
+          '';
         };
       }
     ]);

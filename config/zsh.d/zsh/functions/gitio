@@ -1,8 +1,12 @@
 # Create a git.io short URL
 function gitio() {
-	if [ -z "${1}" -o -z "${2}" ]; then
-		echo "Usage: \`gitio slug url\`";
-		return 1;
-	fi;
-	curl -i https://git.io/ -F "url=${2}" -F "code=${1}";
+  local GIT_IO_URL="https://git.io/"
+  
+  if [[ -z "$1" || -z "$2" ]]; then
+    echo "Usage: gitio <slug> <url>" >&2
+    echo "Example: gitio my-short https://github.com/user/repo" >&2
+    return 1
+  fi
+
+  curl -i "$GIT_IO_URL" -F "url=$2" -F "code=$1"
 }

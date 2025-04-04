@@ -1,7 +1,17 @@
-# curl
-alias curlh="curl -sILX GET"
-alias curld="curl -A \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36\""
-alias curlm="curl -A \"Mozilla/5.0 (iPhone; CPU iPhone OS 6_1_3 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) CriOS/28.0.1500.12 Mobile/10B329 Safari/8536.25\""
+# CURL - HTTP request shortcuts
+# Optimized curl aliases for different user agents and HTTP methods
+# Basic curl shortcuts with different user agents
+alias curlh="curl -sILX GET"                                                                                                                                             # Silent mode with headers
+alias curld="curl -A \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36\""                                      # Desktop user agent
+alias curlm="curl -A \"Mozilla/5.0 (iPhone; CPU iPhone OS 6_1_3 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) CriOS/28.0.1500.12 Mobile/10B329 Safari/8536.25\"" # Mobile user agent
+
+# HTTP method shortcuts
+alias curl-get="curl -i -X GET"                                # Include headers in output
+alias curl-post="curl -X POST -d"                              # POST with data payload
+alias curl-post-file="curl -X POST -f"                         # POST with file upload
+alias curl-put="curl -X PUT -d"                                # PUT with data payload
+alias curl-fetch-header='curl -I'                              # Get headers only
+alias curl-fetch-header-check-compression='curl -I --compress' # Check compression support
 
 alias c="clear "
 alias e='$EDITOR --listen /tmp/nvim.pipe'
@@ -12,40 +22,14 @@ alias du="du -kh"
 # List the size of all files in a directory, excluding hidden files and directories, in a sorted manner
 alias dt='du -sh * | sort -rh | awk '\''{sum+=$1; print} END {print "Total Size: " sum}'\'
 
-# Easier navigation: .., ..., ...., ....., ~ and -
-alias ..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../.."
-alias .....="cd ../../../.."
-alias ~="cd ~" # `cd` is probably faster to type though
-alias -- -="cd -"
-
-# Detect which `ls` flavor is in use
-# if ls --color >/dev/null 2>&1; then # GNU `ls`
-#   colorflag="--color"
-#   export LS_COLORS='no=00:fi=00:di=01;31:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.gz=01;31:*.bz2=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.avi=01;35:*.fli=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.ogg=01;35:*.mp3=01;35:*.wav=01;35:'
-# else # macOS `ls`
-#   colorflag="-G"
-#   export LSCOLORS='BxBxhxDxfxhxhxhxhxcxcx'
-# fi
-
-# # List all files colorized in long format
-# alias l="ls -lF ${colorflag}"
-
-# # List all files colorized in long format, excluding . and ..
-# alias la="ls -lAF ${colorflag}"
-
-# # List only directories
-# alias lsd="ls -lF ${colorflag} | grep --color=never '^d'"
-
-# # Always use color output for `ls`
-# alias ls="command ls ${colorflag}"
-
-# Always enable colored `grep` output
-# Note: `GREP_OPTIONS="--color=auto"` is deprecated, hence the alias usage.
-# alias grep='grep --color=auto'
-# alias fgrep='fgrep --color=auto'
-# alias egrep='egrep --color=auto'
+# Directory navigation shortcuts
+# Quick directory traversal aliases
+alias ..="cd .."             # Go up one directory
+alias ...="cd ../.."         # Go up two directories
+alias ....="cd ../../.."     # Go up three directories
+alias .....="cd ../../../.." # Go up four directories
+alias ~="cd ~"               # Go to home directory
+alias -- -="cd -"            # Go to previous directory
 
 # Get macOS Software Updates, and update installed Ruby gems, Homebrew, npm, and their installed packages
 #alias update='sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup; npm install npm -g; npm update -g; sudo gem update --system; sudo gem update; sudo gem cleanup'
@@ -53,10 +37,39 @@ alias -- -="cd -"
 # List all files in a directory, excluding hidden files and directories, in a sorted manner
 alias listdir='find ${1:-.} -type f -not -path "*/.*/*" -print0 | xargs -0 -I {} bash -c '\''echo "$(dirname "{}")/$(basename "{}")"'\'' | sort -t/ -k2 -k3'
 
-# IP addresses
-alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
-alias localip="ipconfig getifaddr en0"
-alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
+# Network utilities
+# IP address information shortcuts
+alias ip="dig +short myip.opendns.com @resolver1.opendns.com"                                                                                                  # Get public IP address
+alias localip="ipconfig getifaddr en0"                                                                                                                         # Get local IP address (en0 interface)
+alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'" # List all IP addresses
+
+# Clipboard utilities
+# Clipboard manipulation shortcuts for text processing
+alias pbunformat="pbpaste | textutil -convert txt -stdin -stdout -encoding 30 | pbcopy" # Remove formatting from clipboard text
+alias pb-tab-to-pace="pbpaste | expand | pbcopy"                                        # Convert tabs to spaces in clipboard
+alias pb-sort="pbpaste | sort | pbcopy"                                                 # Sort clipboard content
+alias pb-dedup="pbpaste | uniq | pbcopy"                                                # Remove duplicate lines from clipboard
+alias pb-sort-dedup="pbpaste | sort | uniq | pbcopy"                                    # Sort and remove duplicates from clipboard
+alias pwdc="pwd | tr -d '\n' | pbcopy"                                                  # Copy current directory path to clipboard
+
+# Ctags
+alias ctags-make="ctags -R ." # creates tags using universal-ctags from brew
+
+# Stack for Haskell
+alias ghci="stack --silent ghci --ghci-options -v0" # ghci without loading messages
+alias gghci='stack ghci'                            # default ghci
+alias ghc="ghci-color"                              # ghci-color in ~/.dotfiles/bin, NOTE: do not alias to 'ghci', causes Haskell prompt to halt when printing specific values (ex. [":)"])
+# alias sb='stack build' # Stack build
+
+# Maven
+alias mvnd="mvnDebug" # runs Maven in debug mode (allows remote debugger to attach at port 8000)
+alias mci="mvn clean install"
+alias mcid="mvn clean install -DskipTests"
+alias mcp="mvn clean package"
+alias mcv="mvn clean verify"
+alias mct="mvn clean test"
+alias mvn-ls-deps="mvn dependency:tree"
+alias run-spring="mvn spring-boot:run"
 
 # Gradle
 alias gw='./gradlew'
@@ -70,10 +83,45 @@ alias cgt='cargo test'
 alias cgb='cargo build'
 alias cgc='cargo check'
 
-# IP addresses
-alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
-alias localip="ipconfig getifaddr en0"
-alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
+# Node.js development aliases
+# NPM shortcuts for common operations
+alias ns="npm start"              # Start npm script
+alias ni="npm install"            # Install dependencies
+alias nl="npm list --depth=0"     # List only top-level modules
+alias nlg="npm list -g --depth=0" # List only top-level global modules
+alias prettify="prettier --write" # Format code with Prettier
+alias nr="npm run"                # Run npm script
+alias nu="npm uninstall"          # Uninstall package
+alias nrd="npm run dev"           # Run development server
+alias nrb="npm run build"         # Build project
+
+# System info
+alias mem-info='free -m -l -t'         # pass options to free
+alias ps-mem='ps -axf | sort -nr -k 4' # get top process by memory usage
+alias ps-mem10='ps -axf | sort -nr -k 4 | head -10'
+alias ps-cpu='ps -axf | sort -nr -k 3' # get top process by cpu usage
+alias ps-cpu10='ps -axf | sort -nr -k 3 | head -10'
+alias cpu-info='lscpu' # get server cpu info
+
+# History
+alias h="history"    # use 1st arg to specify starting index of history
+alias ha="history 1" # show all history (1 is the index of first history)
+alias hd="dirs -v"   # show history of directories visited in current shell session
+# alias htop='history | sort -rn | head' # TODO: realias and reenable
+alias hg='history 1 | grep' # search for string in history with grep
+alias hag='history 1 | ag'  # search for string in history with ag
+
+# Youtube
+alias yd="youtube-dl"
+alias yd-movie="youtube-dl --ignore-errors --output '~/Movies/%(title)s.%(ext)s'"                                                                                          # download video with audio-format defaulted to best, skip unavailable songs when downloading a playlist
+alias yd-music="youtube-dl --ignore-errors --extract-audio --audio-format mp3 --output '~/Library/Mobile Documents/com~apple~CloudDocs/Music/New Songs/%(title)s.%(ext)s'" # download audio as mp3 format, skip unavailable videos when downloading a playlist
+
+# TODO: add aliases/functions to control AirDrop
+
+# Weather
+alias weather="curl 'wttr.in/?0'"  # show current weather
+alias weather-month='curl wttr.in' # shows today, tomorrow, and day-after's weather
+alias weather-help='curl wttr.in/:help'
 
 # Show active network interfaces
 # alias ifactive="ifconfig | pcregrep -M -o '^[^\t:]+:([^\n]|\n\t)*status: active'"
@@ -84,14 +132,56 @@ alias flush="dscacheutil -flushcache && killall -HUP mDNSResponder"
 # Clean up LaunchServices to remove duplicates in the “Open With” menu
 alias lscleanup="/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user && killall Finder"
 
-# Canonical hex dump; some systems have this symlinked
-command -v hd >/dev/null || alias hd="hexdump -C"
+# Cross-platform command fallbacks
+# Set up fallbacks for commands that might not exist on all systems
+{ command -v hd >/dev/null || alias hd="hexdump -C"; } 2>/dev/null       # Canonical hex dump fallback
+{ command -v md5sum >/dev/null || alias md5sum="md5"; } 2>/dev/null      # md5sum fallback for macOS
+{ command -v sha1sum >/dev/null || alias sha1sum="shasum"; } 2>/dev/null # sha1sum fallback for macOS
 
-# macOS has no `md5sum`, so use `md5` as a fallback
-command -v md5sum >/dev/null || alias md5sum="md5"
-
-# macOS has no `sha1sum`, so use `shasum` as a fallback
-command -v sha1sum >/dev/null || alias sha1sum="shasum"
+# macOS
+# TODO: verify if 'make-finder-alias' creates Finder Alias that's compatible with iTunes
+alias top-cpu='top -o cpu'   # sort by cpu
+alias top-mem='top -o rsize' # sort by memory
+alias getmod="stat -f %A"    # prints the permission of $1 in octal
+alias finder-utils"cd /System/Library/CoreServices/Finder.app/Contents/Applications/"
+alias make-finder-alias='mkalias -c' # -c omit copying source file's icon to target alias, requires 'osxutils' from Brew, creates a macOS Finder Alias (similar, but not same as soft/hard symlinks)
+alias hide='chflags hidden'          # make file/dir invisible in Finder (still visible in shell)
+alias unhide='chflags nohidden'      # make file/dir visible in Finder (still visible in shell)
+alias sudo-='sudo $SHELL -c "$(fc -ln -1)"'
+alias quit-all="open ~/.dotfiles/config/macos/QuitAll.app" # quits all active applications
+alias paths-env='env | grep PATH'
+alias battery-settings='pmset -g'
+alias dns-clear-local-cache="sudo killall -HUP mDNSResponder"
+alias clear-dir-acls="sudo chmod -RN" # clear ACLs for passed in path to folder
+alias ip-en="ipconfig getifaddr en0"  # wifi (en1) or ethernet (en0), use en0 if not wired connection
+alias ip-lan="ipconfig getifaddr en1" # usually wifi
+alias ip-external="curl ifconfig.me"
+alias password-generate-secure-to-clipboard="LC_ALL=C tr -dc \"[:alpha:][:alnum:]\" < /dev/urandom | head -c 20 | pbcopy"
+alias shutdown="sudo shutdown -h now"
+alias restart="sudo shutdown -r now"
+alias sip-status="csrutil status" # show System Integrity Protection status
+alias restart-notification-center="killall NotificationCenter"
+alias clear-asl-logs="sudo rm -rf /private/var/log/asl/*.asl" # clear Apple System Logs to speed up Terminal
+alias disks="diskutil list"
+alias net="netstat"
+alias apps="find /Applications -path '*Contents/_MASReceipt/receipt' -maxdepth 4 -print |\sed 's#.app/Contents/_MASReceipt/receipt#.app#g; s#/Applications/##'" # via find
+alias spotlight="mdfind kMDItemAppStoreHasReceipt=1"                                                                                                            # via Spotlight
+alias plistbuddy="/usr/libexec/PlistBuddy"
+alias reload="exec $SHELL -l" # Reload the shell (i.e. invoke as a login shell)
+alias power="pmset -g batt"
+alias power-remaining="pmset -g ps  |  sed -n 's/.*[[:blank:]]+*\(.*%\).*/\1/p'"
+alias power-settings='pmset -g'
+alias mute="osascript -e 'set volume output muted true'"
+alias lock="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
+alias screen-saver="open /System/Library/Frameworks/ScreenSaver.framework/Versions/A/Resources/ScreenSaverEngine.app"
+alias cpu='top -F -R -o cpu'
+alias sleep='pmset sleepnow'
+alias airdrop-enable-all="defaults write com.apple.NetworkBrowser BrowseAllInterfaces -bool true"
+alias airdrop-enable="defaults remove com.apple.NetworkBrowser DisableAirDrop"
+alias airdrop-disable="defaults write com.apple.NetworkBrowser DisableAirDrop -bool YES"
+alias apps-update-all="sudo softwareupdate -ia"
+alias apps-update-ls="sudo softwareupdate -l"
+alias macos-system-icons="open /System/Library/CoreServices/CoreTypes.bundle/Contents/Resources/" # NOTE: .icns in here must be copied to another folder and chmod to 777 to be usable as folder icons
 
 # JavaScriptCore REPL
 jscbin="/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources/jsc"
@@ -117,15 +207,10 @@ alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && kil
 alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
 alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
 
+# HTTP method shortcuts using lwp-request
 for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
   alias "${method}"="lwp-request -m '${method}'"
 done
-
-alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl; sqlite3 ~/Library/Preferences/com.apple.LaunchServices.QuarantineEventsV* 'delete from LSQuarantineEvent'"
-
-# Hide/show all desktop icons (useful when presenting)
-alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
-alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
 
 alias urlencode='python -c "import sys, urllib as ul; print ul.quote_plus(sys.argv[1]);"'
 
@@ -165,11 +250,9 @@ alias chromekill="ps ux | grep '[C]hrome Helper --type=renderer' | grep -v exten
 # Lock the screen (when going AFK)
 alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
 
-# Reload the shell (i.e. invoke as a login shell)
-alias reload="exec ${SHELL} -l"
-
-# Print each PATH entry on a separate line
-alias path='echo -e ${PATH//:/\\n}'
+# Shell and environment utilities
+alias reload="exec ${SHELL} -l"     # Reload the shell as a login shell
+alias path='echo -e ${PATH//:/\\n}' # Print each PATH entry on a separate line
 
 alias fd="fd --hidden "
 alias fs="stat -f '%z bytes'"
@@ -195,36 +278,35 @@ alias neomutt="TERM=xterm-direct neomutt"
 alias tmux='direnv exec / tmux'
 
 alias pp='xsel --clipboard --input'
-alias reload='exec $SHELL -l'
 
-# Ollama Ai
-alias olrq='ollama run qwen2.5-coder:1.5b'
-alias olsq='ollama stop qwen2.5-coder:1.5b'
+# Ollama AI model management
+alias olrq='ollama run qwen2.5-coder:1.5b'       # Run Qwen coder model
+alias olsq='ollama stop qwen2.5-coder:1.5b'      # Stop Qwen coder model
+alias olrn='ollama run nomic-embed-text:latest'  # Run Nomic embedding model
+alias olsn='ollama stop nomic-embed-text:latest' # Stop Nomic embedding model
 
-alias olrn='ollama run nomic-embed-text:latest'
-alias olsn='ollama stop nomic-embed-text:latest'
+# Conditional aliases based on command availability
+# Efficiently set up aliases only when commands are available
 
-# Check for command availability
-command -v htop &>/dev/null && alias top=htop
-command -v bat &>/dev/null && alias cat='bat '
-command -v fd &>/dev/null && alias fd='fd --hidden '
-command -v yarn &>/dev/null && alias y=yarn
+# Enhanced tools - apply only when available
+(command -v htop >/dev/null && alias top=htop) || true
+(command -v bat >/dev/null && alias cat='bat') || true
+(command -v fd >/dev/null && alias fd='fd --hidden') || true
+(command -v yarn >/dev/null && alias y=yarn) || true
 
-if command -v lsd &>/dev/null; then
+# File listing enhancements
+if command -v lsd >/dev/null 2>&1; then
   alias ls="lsd -tr1lh"
-  alias ll='lsd --tree --group-directories-first -I "node_modules" '
-elif command -v tree &>/dev/null; then
-  alias ll="type tree >/dev/null && tree --dirsfirst -a -L 1 || l -d .*/ */ "
-  alias tree='tree -I  "node_modules" '
+  alias ll='lsd --tree --group-directories-first -I "node_modules"'
+elif command -v tree >/dev/null 2>&1; then
+  alias ll="tree --dirsfirst -a -L 1 2>/dev/null || ls -la"
+  alias tree='tree -I "node_modules"'
 else
-  alias ll="echo 'You have to install lsd or tree'"
+  alias ll="ls -la"
 fi
 
-if command -v jq &>/dev/null; then
-  alias formatJSON='jq .'
-else
-  alias formatJSON='python -m json.tool'
-fi
+# JSON formatting
+(command -v jq >/dev/null && alias formatJSON='jq .') || alias formatJSON='python -m json.tool'
 
 # check size
 alias \
@@ -234,15 +316,38 @@ alias \
 # counting folders and files
 alias count="ls -a | wc -l"
 
-# python aliases
-alias \
-  cvenv='[ ! -d .venv ] && python -m venv .venv; . ./.venv/bin/activate' \
-  dvenv='type deactivate >/dev/null && deactivate' \
-  rvenv='type deactivate >/dev/null; deactivate; rm -rf .venv' \
-  pip='python -m pip' \
-  upip='pip --disable-pip-version-check list --outdated --format=json | jq -r ".[].name" | xargs -I{} pip install --no-cache-dir -U "{}"' \
-  pyprofile='python -m cProfile -o profile' \
-  pytest='python -m pytest'
+# Python development utilities
+# Virtual environment management and Python tools
+
+# Convert complex aliases to functions for better performance
+python_venv_create() {
+  [ ! -d .venv ] && python -m venv .venv
+  . ./.venv/bin/activate
+}
+
+python_venv_deactivate() {
+  type deactivate >/dev/null && deactivate
+}
+
+python_venv_remove() {
+  python_venv_deactivate
+  [ -d .venv ] && rm -rf .venv
+}
+
+python_pip_upgrade() {
+  python -m pip --disable-pip-version-check list --outdated --format=json |
+    jq -r ".[].name" 2>/dev/null |
+    xargs -I{} python -m pip install --no-cache-dir -U "{}"
+}
+
+# Set up aliases to the functions
+alias cvenv='python_venv_create'
+alias dvenv='python_venv_deactivate'
+alias rvenv='python_venv_remove'
+alias pip='python -m pip'
+alias upip='python_pip_upgrade'
+alias pyprofile='python -m cProfile -o profile'
+alias pytest='python -m pytest'
 
 # network
 alias \
@@ -257,40 +362,23 @@ if [[ "$(uname)" == linux* ]]; then
   alias chown='chown --preserve-root -v'
 fi
 
+# macOS specific aliases and functions
+# Only load these on macOS systems
 if [[ "$(uname)" == Darwin* ]]; then
-  alias finder='open -a Finder ./'
-  alias flushdns='sudo killall -HUP mDNSResponder'
-  # alias code="/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code"
-  alias curl='curl --keepalive-time 60'
-  alias zed='/Applications/Zed.app/Contents/MacOS/zed'
-  alias chrome='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome'
-  alias canary='/Applications/Google\ Chrome\ Canary.app/Contents/MacOS/Google\ Chrome\ Canary'
+  # File and application shortcuts
+  alias finder='open -a Finder ./'                 # Open current directory in Finder
+  alias flushdns='sudo killall -HUP mDNSResponder' # Clear DNS cache
+  alias curl='curl --keepalive-time 60'            # Curl with keepalive
 
-  code() { VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args $*; }
+  # Application launchers
+  alias zed='/Applications/Zed.app/Contents/MacOS/zed'                                          # Launch Zed editor
+  alias chrome='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome'                 # Launch Chrome
+  alias canary='/Applications/Google\ Chrome\ Canary.app/Contents/MacOS/Google\ Chrome\ Canary' # Launch Chrome Canary
 
-  # emacs-mac
-  # brew tap railwaycat/emacsmacport
-  # brew install emacs-mac
-  # brew untap railwaycat/emacsmacport
-  #alias emacs='/usr/local/opt/emacs-mac/Emacs.app/Contents/MacOS/Emacs --no-splash'
-  # emacs standard
-  # brew install emacs --with-cocoa
-  # alias emacs='/usr/local/opt/emacs/Emacs.app/Contents/MacOS/Emacs --no-splash --fullscreen'
-  # emacs cask
-  # brew install --cask emacs
-  # installed in /Applications but linked as /usr/local/bin/emacs
-  # also could work with:
-  # alias emacs='open -a Emacs' but with errors taking arguments :\
+  # VSCode launcher function with proper working directory
+  code() {
+    VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args "$@"
+  }
 
-  # alias j17="export JAVA_HOME=`/usr/libexec/java_home -v 17`; java -version"
-  # alias j11="export JAVA_HOME=`/usr/libexec/java_home -v 11.0.15`; java -version"
-  # alias j8="export JAVA_HOME=`/usr/libexec/java_home -v 1.8`; java -version"
-
-  # Turn the prompt symbol red if the user is root
-  # if [ $( id -u ) -eq 0 ];
-  # then # you are root, make the prompt red
-  #  export PS1='\[\e[1;31m\]\u\[\e[0m\]@\[\e[1;32m\]\h\[\e[0m\]:\[\e[1;34m\]\w\[\e[0m\]\$ '
-  # else
-  #  export PS1='\[\e[1;32m\]\u\[\e[0m\]@\[\e[1;32m\]\h\[\e[0m\]:\[\e[1;34m\]\w\[\e[0m\]\$ '
-  # fi
+  # Removed commented out aliases and configurations to improve loading speed
 fi

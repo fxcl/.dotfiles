@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 # Modified version of the generated one from `curl wttr.in/:bash.function`
 #

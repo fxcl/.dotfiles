@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 # Intentionally not setting -e because we want the script to continue if CoreLocationCLI fails.
 set -u -o pipefail

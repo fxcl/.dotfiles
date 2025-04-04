@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 change_background() {
   # change background to the given mode. If mode is missing,
