@@ -123,14 +123,14 @@ bindkey '^[[B' history-substring-search-down
 # Load external tools and environment configurations
 ##############################################################
 # macOS specific configuration - Handle completion conflicts
-if [[ "$OSTYPE" = "darwin"* ]]; then
-  (
-    if [ -e /usr/local/share/zsh/site-functions/_git ]; then
-      command mv -f /usr/local/share/zsh/site-functions/{,disabled.}_git
-    fi
-  ) &!
+# Disable git completion on macOS if it exists in homebrew location
+if [[ "$OSTYPE" = darwin* ]]; then
+  if [[ -e /usr/local/share/zsh/site-functions/_git ]]; then
+    # Run synchronously but quickly since we're just moving one file
+    command mv -f /usr/local/share/zsh/site-functions/_git \
+    /usr/local/share/zsh/site-functions/disabled._git 2>/dev/null
+  fi
 fi
-
 # Load environment tools with lazy loading - optimized for faster startup
 {
   # Initialize direnv and zoxide asynchronously

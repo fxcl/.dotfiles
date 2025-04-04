@@ -56,6 +56,8 @@ export MOON_HOME="$PROTO_HOME/shims/moon"
 export PATH="$MOON_HOME:$PATH"
 # moon end
 
+
+
 # node
 export NODE_HOME="$PROTO_HOME/shims/node"
 export PATH="$NODE_HOME:$PATH"
@@ -63,6 +65,22 @@ if [[ -d "$PROTO_HOME/tools/node/globals/bin" ]]; then
   export PATH="$PROTO_HOME/tools/node/globals/bin:$PATH"
 fi
 # node end
+
+# go
+if which go > /dev/null 2>&1; then
+  if [ ! -d "$HOME/go" ]; then
+    mkdir -p $HOME/go
+  fi
+export GO111MODULE=on
+export GOPROXY="https://goproxy.cn,direct"
+export GOOS=darwin
+export GOARCH=amd64
+export GOROOT=$PROTO_HOME/tools/go/1.24.2
+export GOPATH=$HOME/go
+export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+export PATH=$PATH:$(go env GOPATH)/bin
+fi
+# go end
 
 alias plist="proto list --aliases"
 alias psearch="proto list-remote --aliases"
