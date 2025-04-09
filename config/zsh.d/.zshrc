@@ -60,7 +60,7 @@ autoload -Uz _zi
 PURE_SYMBOLS=("λ" "ϟ" "▲" "∴" "→" "»" "৸")
 export PURE_PROMPT_SYMBOL="${PURE_SYMBOLS[$RANDOM % ${#PURE_SYMBOLS[@]} + 1]}"
 
-# 使用wait'0'而不是wait'!'可以稍微延迟加载主题，但不会影响视觉体验
+# Using wait'0' instead of wait'!' slightly delays theme loading without affecting visual experience
 zi ice wait'0' lucid compile'(pure|async).zsh' pick'async.zsh' src'pure.zsh'
 zi light sindresorhus/pure
 
@@ -75,18 +75,18 @@ zstyle :prompt:pure:prompt:success color 003
 zi ice wait lucid
 zi light zsh-users/zsh-history-substring-search
 
-# 优化zstyle配置 - 在compinit之前设置以提高性能
-# 设置补全缓存
+# Optimize zstyle configuration - Set before compinit for better performance
+# Configure completion cache
 zstyle ':completion::complete:*' use-cache on
 zstyle ':completion::complete:*' cache-path "${ZDOTDIR}/.zcompcache"
 
-# 优化补全匹配和性能
+# Optimize completion matching and performance
 zstyle ':completion:*' accept-exact '*(N)'
 zstyle ':completion:*' accept-exact-dirs 'yes'
 zstyle ':completion:*' special-dirs true
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
-# 限制补全列表大小以提高性能
+# Limit completion list size for better performance
 zstyle ':completion:*' list-packed yes
 zstyle ':completion:*' file-sort modification
 zstyle ':completion:*:functions' ignored-patterns '(_*|pre(cmd|exec)|prompt_*)'
@@ -95,8 +95,8 @@ zstyle ':completion:*:functions' ignored-patterns '(_*|pre(cmd|exec)|prompt_*)'
 zi ice wait'0' lucid blockf atpull'zi creinstall -q .'
 zi light zsh-users/zsh-completions
 
-# 优化completion系统初始化 - 只在必要时重新生成zcompdump
-# 检查缓存是否需要重建（每天只检查一次）
+# Optimize completion system initialization - Only regenerate zcompdump when necessary
+# Check if cache needs rebuilding (only checks once per day)
 # Cross-platform stat command to get file modification time
 stat_mtime() {
   local file=$1
