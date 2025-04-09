@@ -71,6 +71,7 @@ in
 
         # `brew install`
         brews = [
+          "cppcheck"
           "lua"
           "luajit"
           # "ccache"

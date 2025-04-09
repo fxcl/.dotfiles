@@ -14,6 +14,10 @@ fpath=(
   $fpath
 )
 
+if whence brew >/dev/null; then
+  fpath=($(brew --prefix)/share/zsh/site-functions $fpath)
+fi
+
 # Load all functions from ZDOTDIR/functions
 autoload -Uz ${ZDOTDIR}/functions/**/*(N:t)
 
@@ -21,7 +25,7 @@ autoload -Uz ${ZDOTDIR}/functions/**/*(N:t)
 # ZI Configuration (https://wiki.zshell.dev)
 # Initialize ZI package manager with optimized settings
 ##############################################################
-typeset -g ZI_MOD_DEBUG=0  # Disable debug mode for better performance
+typeset -g ZI_MOD_DEBUG=0 # Disable debug mode for better performance
 declare -A ZI
 
 # Set ZI paths with optimized cache settings
@@ -29,14 +33,14 @@ ZI[HOME_DIR]="$XDG_CACHE_HOME/zsh/zi"
 ZI[BIN_DIR]="$ZI[HOME_DIR]/bin"
 ZI[PLUGINS_DIR]="$ZI[HOME_DIR]/plugins"
 ZI[ZCOMPDUMP_PATH]="${ZDOTDIR}/.zcompdump"
-ZI[COMPINIT_OPTS]="-C"  # Skip security check for faster startup
+ZI[COMPINIT_OPTS]="-C" # Skip security check for faster startup
 ZPFX="$ZI[HOME_DIR]/polaris"
 
 local __ZI="${ZI[BIN_DIR]}/zi.zsh"
 
 # Install zi if not present
 if [[ ! -f "$__ZI" ]]; then
-  if (( $+commands[git] )); then
+  if whence git >/dev/null; then
     git clone --depth 1 https://github.com/z-shell/zi.git "${ZI[BIN_DIR]}"
   else
     print -P "%F{red}Git is not installed, cannot install zi%f" >&2
@@ -46,7 +50,7 @@ fi
 
 source "$__ZI"
 autoload -Uz _zi
-(( ${+_comps} )) && _comps[zi]=_zi
+[[ -v _comps ]] && typeset -gA _comps && _comps[zi]=_zi
 
 ##############################################################
 # Plugin Configuration
@@ -93,8 +97,31 @@ zi light zsh-users/zsh-completions
 
 # 优化completion系统初始化 - 只在必要时重新生成zcompdump
 # 检查缓存是否需要重建（每天只检查一次）
+# Cross-platform stat command to get file modification time
+stat_mtime() {
+  local file=$1
+  local mtime=0
+
+  # Try BSD stat first (macOS)
+  if mtime=$(stat -f %m "$file" 2>/dev/null); then
+    echo $mtime
+    return 0
+  fi
+
+  # Try GNU stat if BSD stat failed
+  if mtime=$(stat -c %Y "$file" 2>/dev/null); then
+    echo $mtime
+    return 0
+  fi
+
+  # Fallback to current time if stat fails
+  mtime=$(date +%s)
+  echo $mtime
+  return 0
+}
+
 autoload -Uz compinit compdef
-if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
+if [[ -f "${ZDOTDIR}/.zcompdump" ]] && (($(stat_mtime "${ZDOTDIR}/.zcompdump") <= ($(date +%s) - 86400))); then
   compinit -d "${ZI[ZCOMPDUMP_PATH]}"
 else
   compinit -C -d "${ZI[ZCOMPDUMP_PATH]}"
@@ -128,18 +155,21 @@ if [[ "$OSTYPE" = darwin* ]]; then
   if [[ -e /usr/local/share/zsh/site-functions/_git ]]; then
     # Run synchronously but quickly since we're just moving one file
     command mv -f /usr/local/share/zsh/site-functions/_git \
-    /usr/local/share/zsh/site-functions/disabled._git 2>/dev/null
+      /usr/local/share/zsh/site-functions/disabled._git 2>/dev/null
   fi
 fi
 # Load environment tools with lazy loading - optimized for faster startup
-{
-  # Initialize direnv and zoxide asynchronously
-  (( $+commands[direnv] )) && eval "$(direnv hook zsh)"
-  (( $+commands[zoxide] )) && eval "$(zoxide init zsh --hook pwd)"
-} &!
+# Initialize direnv and zoxide asynchronously
+# Initialize direnv and zoxide with proper error handling
+if whence direnv >/dev/null; then
+  eval "$(direnv hook zsh 2>/dev/null)" || echo "Failed to initialize direnv"
+fi
+if whence zoxide >/dev/null; then
+  eval "$(zoxide init zsh --hook pwd 2>/dev/null)" || echo "Failed to initialize zoxide"
+fi
 
 # Initialize starship prompt if available
-if (( $+commands[starship] )); then
+if whence starship >/dev/null; then
   eval "$(starship init zsh)"
 fi
 
@@ -150,7 +180,7 @@ fi
 [[ -f "$ZDOTDIR/bin/proto" ]] && source "$ZDOTDIR/bin/proto"
 
 # Configure C++ environment if clang++ is available
-if (( $+commands[clang++] )); then
+if whence clang++ >/dev/null; then
   export CXXFLAGS="-stdlib=libc++"
   export LDFLAGS="-stdlib=libc++"
 fi
@@ -160,4 +190,4 @@ fi
 # Load host-specific configurations
 ##############################################################
 [[ -f $HOST_CONFIGS/zshrc ]] && source $HOST_CONFIGS/zshrc
-[[ -e /etc/motd ]] && ! cmp -s ${HOME}/.hushlogin /etc/motd ]] && tee ${HOME}/.hushlogin < /etc/motd
+[[ -e /etc/motd ]] && [[ ! -f ${HOME}/.hushlogin ]] && tee ${HOME}/.hushlogin </etc/motd

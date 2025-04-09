@@ -68,7 +68,7 @@ johnpapa.vscode-peacock
 keyhr.42-c-format
 kisstkondoros.vscode-codemetrics
 liamhammett.inline-parameters
-llvm-vs-code-extensions.vscode-clangd
+#llvm-vs-code-extensions.vscode-clangd
 localizely.flutter-intl
 matepek.vscode-catch2-test-adapter
 matt-meyers.vscode-dbml
