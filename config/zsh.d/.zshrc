@@ -5,24 +5,19 @@ has() {
   whence "$1" >/dev/null
 }
 
-# macOS specific setup - moved to function
-setup_macos() {
+# Combined initialization function
+init_env() {
+  # macOS specific setup
   if [[ "$OSTYPE" = darwin* ]]; then
-    # Disable git completion conflict
     [[ -e /usr/local/share/zsh/site-functions/_git ]] &&
       command mv -f /usr/local/share/zsh/site-functions/_git \
         /usr/local/share/zsh/site-functions/disabled._git 2>/dev/null
-
-    # Setup C++ environment if clang++ available
     has clang++ && export CXXFLAGS="-stdlib=libc++" LDFLAGS="-stdlib=libc++"
   fi
-}
 
-# Initialize external tools
-init_tools() {
-  # Initialize direnv and zoxide with error handling
-  has direnv && eval "$(direnv hook zsh 2>/dev/null)" || echo "Failed to initialize direnv"
-  has zoxide && eval "$(zoxide init zsh --hook pwd 2>/dev/null)" || echo "Failed to initialize zoxide"
+  # Initialize external tools silently
+  has direnv && eval "$(direnv hook zsh 2>/dev/null)"
+  has zoxide && eval "$(zoxide init zsh --hook pwd 2>/dev/null)"
   has starship && eval "$(starship init zsh)"
   has fzf && source <(fzf --zsh 2>/dev/null)
 }
@@ -49,36 +44,27 @@ fi
 # Load all functions from ZDOTDIR/functions
 autoload -Uz ${ZDOTDIR}/functions/**/*(N:t)
 
-##############################################################
-# ZI Configuration (https://wiki.zshell.dev)
-# Initialize ZI package manager with optimized settings
-##############################################################
-typeset -g ZI_MOD_DEBUG=0 # Disable debug mode for better performance
-declare -A ZI
-
-# Set ZI paths with optimized cache settings
-ZI[HOME_DIR]="$XDG_CACHE_HOME/zsh/zi"
-ZI[BIN_DIR]="$ZI[HOME_DIR]/bin"
-ZI[PLUGINS_DIR]="$ZI[HOME_DIR]/plugins"
-ZI[ZCOMPDUMP_PATH]="${ZDOTDIR}/.zcompdump"
-ZI[COMPINIT_OPTS]="-C" # Skip security check for faster startup
+# Optimized ZI configuration
+typeset -gA ZI=(
+  [HOME_DIR]="$XDG_CACHE_HOME/zsh/zi"
+  [BIN_DIR]="$XDG_CACHE_HOME/zsh/zi/bin"
+  [PLUGINS_DIR]="$XDG_CACHE_HOME/zsh/zi/plugins"
+  [ZCOMPDUMP_PATH]="${ZDOTDIR}/.zcompdump"
+  [COMPINIT_OPTS]="-C"
+)
 ZPFX="$ZI[HOME_DIR]/polaris"
 
-local __ZI="${ZI[BIN_DIR]}/zi.zsh"
-
-# Install zi if not present
-if [[ ! -f "$__ZI" ]]; then
-  if has git; then
-    git clone --depth 1 https://github.com/z-shell/zi.git "${ZI[BIN_DIR]}"
-  else
-    print -P "%F{red}Git is not installed, cannot install zi%f" >&2
-    exit 1
-  fi
+# Load ZI if available, otherwise install it
+if [[ -f "${ZI[BIN_DIR]}/zi.zsh" ]]; then
+  source "${ZI[BIN_DIR]}/zi.zsh"
+  autoload -Uz _zi
+  [[ -v _comps ]] && _comps[zi]=_zi
+elif has git; then
+  git clone --depth 1 https://github.com/z-shell/zi.git "${ZI[BIN_DIR]}" &&
+    source "${ZI[BIN_DIR]}/zi.zsh" &&
+    autoload -Uz _zi &&
+    [[ -v _comps ]] && _comps[zi]=_zi
 fi
-
-source "$__ZI"
-autoload -Uz _zi
-[[ -v _comps ]] && typeset -gA _comps && _comps[zi]=_zi
 
 ##############################################################
 # Plugin Configuration
@@ -119,13 +105,11 @@ zstyle ':completion:*' list-packed yes
 zstyle ':completion:*' file-sort modification
 zstyle ':completion:*:functions' ignored-patterns '(_*|pre(cmd|exec)|prompt_*)'
 
-# Completion system - Load with turbo mode
-zi ice wait'0' lucid blockf atpull'zi creinstall -q .'
+# Optimized completion loading
+zi ice wait'0' lucid blockf
 zi light zsh-users/zsh-completions
 
-# Optimize completion system initialization - Only regenerate zcompdump when necessary
-# Check if cache needs rebuilding (only checks once per day)
-# Cross-platform stat command to get file modification time
+# Optimized compinit logic with cross-platform stat
 stat_mtime() {
   local file=$1
   local mtime=0
@@ -148,8 +132,8 @@ stat_mtime() {
   return 0
 }
 
-autoload -Uz compinit compdef
-if [[ -f "${ZDOTDIR}/.zcompdump" ]] && (($(stat_mtime "${ZDOTDIR}/.zcompdump") <= ($(date +%s) - 86400))); then
+autoload -Uz compinit
+if [[ -f "${ZI[ZCOMPDUMP_PATH]}" ]] && (($(stat_mtime "${ZI[ZCOMPDUMP_PATH]}") <= ($(date +%s) - 86400))); then
   compinit -d "${ZI[ZCOMPDUMP_PATH]}"
 else
   compinit -C -d "${ZI[ZCOMPDUMP_PATH]}"
@@ -177,9 +161,8 @@ bindkey '^[[B' history-substring-search-down
 # Other Tool Configurations
 # Load external tools and environment configurations
 ##############################################################
-# Initialize tools and macOS-specific setup
-init_tools
-setup_macos
+# Initialize environment
+init_env
 
 # Source proto setup script from dotfiles if available
 [[ -f "$ZDOTDIR/bin/proto" ]] && source "$ZDOTDIR/bin/proto"
