@@ -1,5 +1,10 @@
 # vim:ft=zsh:
 
+# Helper function to check command availability
+has() {
+  whence "$1" >/dev/null
+}
+
 ##############################################################
 # Basic Configuration
 # Optimize history settings and function loading
@@ -14,7 +19,7 @@ fpath=(
   $fpath
 )
 
-if whence brew >/dev/null; then
+if has brew; then
   fpath=($(brew --prefix)/share/zsh/site-functions $fpath)
 fi
 
@@ -40,7 +45,7 @@ local __ZI="${ZI[BIN_DIR]}/zi.zsh"
 
 # Install zi if not present
 if [[ ! -f "$__ZI" ]]; then
-  if whence git >/dev/null; then
+  if has git; then
     git clone --depth 1 https://github.com/z-shell/zi.git "${ZI[BIN_DIR]}"
   else
     print -P "%F{red}Git is not installed, cannot install zi%f" >&2
@@ -161,15 +166,15 @@ fi
 # Load environment tools with lazy loading - optimized for faster startup
 # Initialize direnv and zoxide asynchronously
 # Initialize direnv and zoxide with proper error handling
-if whence direnv >/dev/null; then
+if has direnv; then
   eval "$(direnv hook zsh 2>/dev/null)" || echo "Failed to initialize direnv"
 fi
-if whence zoxide >/dev/null; then
+if has zoxide; then
   eval "$(zoxide init zsh --hook pwd 2>/dev/null)" || echo "Failed to initialize zoxide"
 fi
 
 # Initialize starship prompt if available
-if whence starship >/dev/null; then
+if has starship; then
   eval "$(starship init zsh)"
 fi
 
@@ -180,7 +185,7 @@ fi
 [[ -f "$ZDOTDIR/bin/proto" ]] && source "$ZDOTDIR/bin/proto"
 
 # Configure C++ environment if clang++ is available
-if whence clang++ >/dev/null; then
+if has clang++; then
   export CXXFLAGS="-stdlib=libc++"
   export LDFLAGS="-stdlib=libc++"
 fi
