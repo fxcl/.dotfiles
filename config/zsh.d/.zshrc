@@ -1,8 +1,30 @@
 # vim:ft=zsh:
 
-# Helper function to check command availability
+# Helper functions
 has() {
   whence "$1" >/dev/null
+}
+
+# macOS specific setup - moved to function
+setup_macos() {
+  if [[ "$OSTYPE" = darwin* ]]; then
+    # Disable git completion conflict
+    [[ -e /usr/local/share/zsh/site-functions/_git ]] &&
+      command mv -f /usr/local/share/zsh/site-functions/_git \
+        /usr/local/share/zsh/site-functions/disabled._git 2>/dev/null
+
+    # Setup C++ environment if clang++ available
+    has clang++ && export CXXFLAGS="-stdlib=libc++" LDFLAGS="-stdlib=libc++"
+  fi
+}
+
+# Initialize external tools
+init_tools() {
+  # Initialize direnv and zoxide with error handling
+  has direnv && eval "$(direnv hook zsh 2>/dev/null)" || echo "Failed to initialize direnv"
+  has zoxide && eval "$(zoxide init zsh --hook pwd 2>/dev/null)" || echo "Failed to initialize zoxide"
+  has starship && eval "$(starship init zsh)"
+  has fzf && source <(fzf --zsh 2>/dev/null)
 }
 
 ##############################################################
@@ -19,6 +41,7 @@ fpath=(
   $fpath
 )
 
+# Setup fpath with brew if available
 if has brew; then
   fpath=($(brew --prefix)/share/zsh/site-functions $fpath)
 fi
@@ -154,41 +177,12 @@ bindkey '^[[B' history-substring-search-down
 # Other Tool Configurations
 # Load external tools and environment configurations
 ##############################################################
-# macOS specific configuration - Handle completion conflicts
-# Disable git completion on macOS if it exists in homebrew location
-if [[ "$OSTYPE" = darwin* ]]; then
-  if [[ -e /usr/local/share/zsh/site-functions/_git ]]; then
-    # Run synchronously but quickly since we're just moving one file
-    command mv -f /usr/local/share/zsh/site-functions/_git \
-      /usr/local/share/zsh/site-functions/disabled._git 2>/dev/null
-  fi
-fi
-# Load environment tools with lazy loading - optimized for faster startup
-# Initialize direnv and zoxide asynchronously
-# Initialize direnv and zoxide with proper error handling
-if has direnv; then
-  eval "$(direnv hook zsh 2>/dev/null)" || echo "Failed to initialize direnv"
-fi
-if has zoxide; then
-  eval "$(zoxide init zsh --hook pwd 2>/dev/null)" || echo "Failed to initialize zoxide"
-fi
-
-# Initialize starship prompt if available
-if has starship; then
-  eval "$(starship init zsh)"
-fi
-
-# Load FZF configuration
-[[ -f "$(which fzf)" ]] && source <(fzf --zsh 2>/dev/null)
+# Initialize tools and macOS-specific setup
+init_tools
+setup_macos
 
 # Source proto setup script from dotfiles if available
 [[ -f "$ZDOTDIR/bin/proto" ]] && source "$ZDOTDIR/bin/proto"
-
-# Configure C++ environment if clang++ is available
-if has clang++; then
-  export CXXFLAGS="-stdlib=libc++"
-  export LDFLAGS="-stdlib=libc++"
-fi
 
 ##############################################################
 # Local Configuration
