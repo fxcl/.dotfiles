@@ -1,7 +1,6 @@
 #
-# Completion enhancements
+# Completion enhancements - Optimized for speed
 #
-
 
 #
 # initialization
@@ -30,17 +29,19 @@ zstyle ':completion:*:*:*:*:*' menu select
 zstyle ':completion:*:matches' group yes
 zstyle ':completion:*:options' description yes
 zstyle ':completion:*:options' auto-description '%d'
-zstyle ':completion:*:corrections' format '%F{green}-- %d (errors: %e) --%f'
-zstyle ':completion:*:descriptions' format '%F{yellow}-- %d --%f'
-zstyle ':completion:*:messages' format '%F{purple}-- %d --%f'
-zstyle ':completion:*:warnings' format '%F{red}-- no matches found --%f'
-zstyle ':completion:*' format '%F{yellow}-- %d --%f'
+# Simplified format styles for performance
+zstyle ':completion:*:corrections' format ' -- %d (errors: %e) --'
+zstyle ':completion:*:descriptions' format ' -- %d --'
+zstyle ':completion:*:messages' format ' -- %d --'
+zstyle ':completion:*:warnings' format ' -- no matches found --'
+zstyle ':completion:*' format ' -- %d --'
 zstyle ':completion:*' group-name ''
-zstyle ':completion:*' verbose yes
-zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' '+r:|?=**'
+# Reduced verbosity to improve speed
+zstyle ':completion:*' verbose no
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 
-zstyle ":completion:*" list-colors "${(s.:.)LS_COLORS}"
-zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+zstyle ":completion:*" list-colors '${(s.:.)LS_COLORS}'
+zstyle ':completion:*:default' list-colors '${(s.:.)LS_COLORS}'
 zstyle ':completion:*:*:cd:*' tag-order local-directories directory-stack path-directories
 zstyle ':completion:*:*:cd:*:directory-stack' menu yes select
 zstyle ':completion:*:-tilde-:*' group-order 'named-directories' 'path-directories' 'expand'
@@ -52,18 +53,20 @@ zstyle ':completion::complete:*' cache-path "${ZDOTDIR}/.zcompcache"
 zstyle ':completion:*' accept-exact '*(N)'
 zstyle ':completion:*' accept-exact-dirs 'yes'
 
-# 优化补全性能
+# Optimize completion performance
 zstyle ':completion:*' rehash true
 zstyle ':completion:*' list-packed yes
 zstyle ':completion:*' file-sort modification
-zstyle ':completion:*' menu select=5 interactive
+# Limit menu selection for faster response
+zstyle ':completion:*' menu select=5
 zstyle ':completion:*' special-dirs true
 
-# 优化补全匹配策略
-zstyle ':completion:*' completer _complete _match _approximate
+# Optimize completion matching strategy
+zstyle ':completion:*' completer _complete
 zstyle ':completion:*:match:*' original only
 zstyle ':completion:*:approximate:*' max-errors 1 numeric
-zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+# Simplified matcher list for better performance
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 
 # ignore useless commands and functions
 zstyle ':completion:*:functions' ignored-patterns '(_*|pre(cmd|exec)|prompt_*)'
