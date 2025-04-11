@@ -3,7 +3,7 @@
 #
 
 #
-# initialization
+# Initialize completion settings
 #
 
 # if it's a dumb terminal, return.
@@ -12,7 +12,7 @@ if [[ ${TERM} == 'dumb' ]]; then
 fi
 
 #
-# zsh options
+# Zsh completion options
 #
 
 setopt ALWAYS_TO_END # If a completion is performed with the cursor within a word, and a full completion is inserted, the cursor is moved to the end of the word
@@ -21,7 +21,7 @@ unsetopt CASE_GLOB   # Make globbing (filename generation) not sensitive to case
 unsetopt LIST_BEEP   # Don't beep on an ambiguous completion.
 
 #
-# completion module options
+# Completion module options
 #
 
 # group matches and describe.
@@ -47,7 +47,7 @@ zstyle ':completion:*:*:cd:*:directory-stack' menu yes select
 zstyle ':completion:*:-tilde-:*' group-order 'named-directories' 'path-directories' 'expand'
 zstyle ':completion:*' squeeze-slashes true
 
-# 启用并优化补全缓存设置
+# Enable and optimize completion cache settings
 zstyle ':completion::complete:*' use-cache on
 zstyle ':completion::complete:*' cache-path "${ZDOTDIR}/.zcompcache"
 zstyle ':completion:*' accept-exact '*(N)'
@@ -74,11 +74,11 @@ zstyle ':completion:*:functions' ignored-patterns '(_*|pre(cmd|exec)|prompt_*)'
 # completion sorting
 zstyle ':completion:*:*:-subscript-:*' tag-order indexes parameters
 
-# Man
+# Man page completions
 zstyle ':completion:*:manuals' separate-sections true
 zstyle ':completion:*:manuals.(^1*)' insert-sections true
 
-# history
+# History search completions
 zstyle ':completion:*:history-words' stop yes
 zstyle ':completion:*:history-words' remove-all-dups yes
 zstyle ':completion:*:history-words' list false
