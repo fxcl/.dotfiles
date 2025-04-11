@@ -2,10 +2,8 @@
 # Editor and input char assignment
 #
 
-
-# Return if requirements are not found.
-if [[ ${TERM} == 'dumb' ]]; then
-  return 1
+if [ -t 0 ]; then
+  stty -ixon # allow C-s and C-q to be used for things
 fi
 
 bindkey -v
@@ -14,35 +12,35 @@ bindkey -v
 zmodload -F zsh/terminfo +b:echoti +p:terminfo
 typeset -gA key_info
 key_info=(
-  'Control'      '\C-'
-  'ControlLeft'  '\e[1;5D \e[5D \e\e[D \eOd \eOD'
+  'Control' '\C-'
+  'ControlLeft' '\e[1;5D \e[5D \e\e[D \eOd \eOD'
   'ControlRight' '\e[1;5C \e[5C \e\e[C \eOc \eOC'
-  'Escape'       '\e'
-  'Meta'         '\M-'
-  'Backspace'    ${terminfo[kbs]}
-  'BackTab'      ${terminfo[kcbt]}
-  'Left'         ${terminfo[kcub1]}
-  'Down'         ${terminfo[kcud1]}
-  'Right'        ${terminfo[kcuf1]}
-  'Up'           ${terminfo[kcuu1]}
-  'Delete'       ${terminfo[kdch1]}
-  'End'          ${terminfo[kend]}
-  'F1'           ${terminfo[kf1]}
-  'F2'           ${terminfo[kf2]}
-  'F3'           ${terminfo[kf3]}
-  'F4'           ${terminfo[kf4]}
-  'F5'           ${terminfo[kf5]}
-  'F6'           ${terminfo[kf6]}
-  'F7'           ${terminfo[kf7]}
-  'F8'           ${terminfo[kf8]}
-  'F9'           ${terminfo[kf9]}
-  'F10'          ${terminfo[kf10]}
-  'F11'          ${terminfo[kf11]}
-  'F12'          ${terminfo[kf12]}
-  'Home'         ${terminfo[khome]}
-  'Insert'       ${terminfo[kich1]}
-  'PageDown'     ${terminfo[knp]}
-  'PageUp'       ${terminfo[kpp]}
+  'Escape' '\e'
+  'Meta' '\M-'
+  'Backspace' ${terminfo[kbs]}
+  'BackTab' ${terminfo[kcbt]}
+  'Left' ${terminfo[kcub1]}
+  'Down' ${terminfo[kcud1]}
+  'Right' ${terminfo[kcuf1]}
+  'Up' ${terminfo[kcuu1]}
+  'Delete' ${terminfo[kdch1]}
+  'End' ${terminfo[kend]}
+  'F1' ${terminfo[kf1]}
+  'F2' ${terminfo[kf2]}
+  'F3' ${terminfo[kf3]}
+  'F4' ${terminfo[kf4]}
+  'F5' ${terminfo[kf5]}
+  'F6' ${terminfo[kf6]}
+  'F7' ${terminfo[kf7]}
+  'F8' ${terminfo[kf8]}
+  'F9' ${terminfo[kf9]}
+  'F10' ${terminfo[kf10]}
+  'F11' ${terminfo[kf11]}
+  'F12' ${terminfo[kf12]}
+  'Home' ${terminfo[khome]}
+  'Insert' ${terminfo[kich1]}
+  'PageDown' ${terminfo[knp]}
+  'PageUp' ${terminfo[kpp]}
 )
 
 # Bind the keys
@@ -78,14 +76,6 @@ autoload -Uz is-at-least && if ! is-at-least 5.3; then
   zle -N expand-or-complete-with-redisplay
   bindkey "${key_info[Control]}I" expand-or-complete-with-redisplay
 fi
-
-# Simplified terminal mode handling
-zle-line-init() { (( ${+terminfo[smkx]} )) && echoti smkx }
-zle-line-finish() { (( ${+terminfo[rmkx]} )) && echoti rmkx }
-zle -N zle-line-init
-zle -N zle-line-finish
-
-export KEYTIMEOUT=1
 
 autoload -Uz edit-command-line
 zle -N edit-command-line

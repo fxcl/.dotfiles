@@ -31,6 +31,19 @@ alias .....="cd ../../../.." # Go up four directories
 alias ~="cd ~"               # Go to home directory
 alias -- -="cd -"            # Go to previous directory
 
+
+# order of preference: aria2c, axel, wget, curl. This order is derived from speed based on personal tests.
+if (( ${+commands[aria2c]} )); then
+  alias get='aria2c --max-connection-per-server=5 --continue'
+elif (( ${+commands[axel]} )); then
+  alias get='axel --num-connections=5 --alternate'
+elif (( ${+commands[wget]} )); then
+  alias get='wget --continue --progress=bar --timestamping'
+elif (( ${+commands[curl]} )); then
+  alias get='curl --continue-at - --location --progress-bar --remote-name --remote-time'
+fi
+
+
 # Get macOS Software Updates, and update installed Ruby gems, Homebrew, npm, and their installed packages
 #alias update='sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup; npm install npm -g; npm update -g; sudo gem update --system; sudo gem update; sudo gem cleanup'
 
