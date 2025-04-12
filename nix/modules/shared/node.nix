@@ -19,9 +19,9 @@ in
 
       my = {
         env = with config.my; {
-          NODE_HOME = "${pkgs.nodejs}";
+          NODE_HOME = "${pkgs.nodejs_22}";
           NPM_CONFIG_USERCONFIG = "$XDG_CONFIG_HOME/npm/config";
-          NPM_CONFIG_TMP = "$XDG_RUNTIME_DIR/npm";
+          # NPM_CONFIG_TMP = "$XDG_RUNTIME_DIR/npm";
           NPM_CONFIG_CACHE = "$XDG_CACHE_HOME/npm";
           NPM_CONFIG_PREFIX = "$XDG_CACHE_HOME/npm";
           NODE_REPL_HISTORY = "$XDG_CACHE_HOME/node_repl_history";
@@ -43,30 +43,36 @@ in
         # TODO prettier-eslint-cli
         user = {
           packages = with pkgs; [
-            nodejs
+            nodejs_22
+            nodePackages.npm
+            nodePackages.bash-language-server
+            nodePackages.dockerfile-language-server-nodejs
+            nodePackages.javascript-typescript-langserver
+            nodePackages.typescript-language-server
+            nodePackages.vue-language-server
+            nodePackages.yaml-language-server
+            nodePackages.prettier
+            nodePackages.typescript
             nodePackages.npm-check-updates
             nodePackages.create-react-app
             nodePackages.eslint
             nodePackages.eslint_d
-            nodePackages.javascript-typescript-langserver
-            nodePackages.webpack-cli
-            nodePackages."@vue/cli"
             nodePackages.js-beautify
-            nodePackages."@prisma/language-server"
             nodePackages.mermaid-cli
+            nodePackages.jsonlint
+            nodePackages.yarn
+            nodePackages.vscode-langservers-extracted # html, css, json, eslint
 
-            # nodePackages.bash-language-server
-            # nodePackages.dockerfile-language-server-nodejs
-            # nodePackages.yaml-language-server
-            # nodePackages.vls
-            # nodePackages.vim-language-server
-            # nodePackages.pyright
-            # nodePackages.svelte-language-server
-            # haskellPackages.dhall-lsp-server
-            # sumneko-lua-language-server
-            # nodePackages.lerna
-            # nodePackages.prisma
-            # yarn
+            # Task Runners
+            nodePackages.grunt-cli
+            nodePackages.gulp
+            nodePackages.jake
+
+            # Bundlers
+            nodePackages.webpack
+            nodePackages.browserify
+            nodePackages.rollup
+            nodePackages.parcel-bundler
           ];
         };
 

@@ -84,7 +84,7 @@ in
           "rustup"
           #"python@3.12"
           #"cmake"
-          #"openssl"
+          "openssl"
           "colima"
           "docker"
           "docker-compose"
