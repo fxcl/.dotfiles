@@ -169,10 +169,11 @@
 
         nixpkgs = {
           config = { allowUnfree = true; };
-          overlays = [
+            overlays = [
             (final: prev: {
               unstable =
                 inputs.nixpkgs-unstable.legacyPackages.${prev.system}; # Make available unstable channel.
+              nodejs = prev.nodejs-24_x; # Use Node.js 24.x which has better OpenSSL 3.x support
               # pragmatapro = prev.callPackage ./nix/pkgs/pragmatapro.nix { };
               # zk = prev.callPackage ./nix/pkgs/zk.nix { source = inputs.zk; };
               next-prayer = prev.callPackage
@@ -181,6 +182,12 @@
               pure-prompt = prev.pure-prompt.overrideAttrs (old: {
                 patches = (old.patches or [ ]) ++ [ ./nix/hosts/pure-zsh.patch ];
               });
+            })
+             (final: prev: rec {
+              nodejs = prev.nodejs_22;
+              nodePackages = prev.nodePackages.override { inherit nodejs;   };
+              pnpm = (prev.pnpm.override { inherit nodejs; });
+              yarn = (prev.yarn.override { inherit nodejs; });
             })
             # fix for swift 8
             # https://github.com/NixOS/nixpkgs/issues/327836#issuecomment-2292084100
@@ -255,7 +262,6 @@
               inputs.home-manager.nixosModules.home-manager
               ./nix/modules/shared
               sharedConfiguration
-              ./nix/hosts/${host}
             ];
           }))
         linuxHosts;

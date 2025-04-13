@@ -19,7 +19,7 @@ in
 
       my = {
         env = with config.my; {
-          NODE_HOME = "${pkgs.nodejs_22}";
+          NODE_HOME = "${pkgs.nodejs}";
           NPM_CONFIG_USERCONFIG = "$XDG_CONFIG_HOME/npm/config";
           # NPM_CONFIG_TMP = "$XDG_RUNTIME_DIR/npm";
           NPM_CONFIG_CACHE = "$XDG_CACHE_HOME/npm";
@@ -43,7 +43,7 @@ in
         # TODO prettier-eslint-cli
         user = {
           packages = with pkgs; [
-            nodejs_22
+            nodejs
             nodePackages.npm
             nodePackages.bash-language-server
             nodePackages.dockerfile-language-server-nodejs
