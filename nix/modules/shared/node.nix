@@ -25,7 +25,7 @@ in
           NPM_CONFIG_CACHE = "$XDG_CACHE_HOME/npm";
           NPM_CONFIG_PREFIX = "$XDG_CACHE_HOME/npm";
           NODE_REPL_HISTORY = "$XDG_CACHE_HOME/node_repl_history";
-          NODE_OPTIONS = "--dns-result-order=ipv4first";
+          NODE_OPTIONS = "--dns-result-order=ipv4first --max-old-space-size=4096";
           # Allow 32³ entries; the default is 1000.
           NODE_REPL_HISTORY_SIZE = "32768";
           # Use sloppy mode by default, matching web browsers.
@@ -37,6 +37,7 @@ in
           NPM_CONFIG_INIT_AUTHOR_URL = website;
           NPM_CONFIG_INIT_LICENSE = "MIT";
           NPM_CONFIG_INIT_VERSION = "0.0.0";
+          NPX_PROXY="http://127.0.0.1:2333";
         };
 
         # TODO gatsby-cli
