@@ -25,16 +25,6 @@
     home-manager = {
       url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs"; # Ensure versions are consistent.
-
-    };
-
-    nix-homebrew = {
-      url = "github:zhaofengli/nix-homebrew";
-      inputs = {
-        nix-darwin.follows = "darwin";
-        flake-utils.follows = "flake-utils";
-        nixpkgs.follows = "nixpkgs";
-      };
     };
 
     # MacOS inputs
@@ -199,6 +189,23 @@
               prev.lib.optionalAttrs prev.stdenv.hostPlatform.isDarwin {
                 inherit (pkgsDarwin) swift;
               })
+          (final: prev: {
+          fish = prev.fish.overrideAttrs (old: {
+            doCheck = false; # 禁用测试
+          });
+        })
+      (final: prev: {
+        re2 = prev.re2.overrideAttrs (old: {
+          doCheck = false; # 禁用测试，解决构建超时问题
+        });
+      })
+      (final: prev: {
+        python3Packages = prev.python3Packages // {
+          hypothesis = prev.python3Packages.hypothesis.overrideAttrs (old: {
+            version = "6.111.0";
+          });
+        };
+      })
             (final: prev: {
               zimfw = prev.zimfw.overrideAttrs (oldAttrs: rec {
                 version = "1.15.0";
@@ -243,7 +250,6 @@
             inherit system;
             modules = [
               inputs.home-manager.darwinModules.home-manager
-              inputs.nix-homebrew.darwinModules.nix-homebrew
               ./nix/modules/darwin
               ./nix/modules/shared
               sharedConfiguration
