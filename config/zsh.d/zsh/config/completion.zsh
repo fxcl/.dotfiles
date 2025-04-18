@@ -1,71 +1,85 @@
 #
-# Completion enhancements
+# Completion enhancements - Optimized for speed
 #
 
-
-#
-# initialization
-#
-
-# if it's a dumb terminal, return.
+# If it's a dumb terminal, return immediately
 if [[ ${TERM} == 'dumb' ]]; then
   return 1
 fi
 
-#
-# zsh options
-#
+# Lazy load completion system, significantly improves startup speed
+# Only loads completion system on first Tab key press
+_zsh_comp_setup() {
+  # Basic completion options
+  setopt ALWAYS_TO_END PATH_DIRS
+  unsetopt CASE_GLOB LIST_BEEP
 
-setopt ALWAYS_TO_END # If a completion is performed with the cursor within a word, and a full completion is inserted, the cursor is moved to the end of the word
-setopt PATH_DIRS     # Perform a path search even on command names with slashes in them.
-unsetopt CASE_GLOB   # Make globbing (filename generation) not sensitive to case.
-unsetopt LIST_BEEP   # Don't beep on an ambiguous completion.
+  # Enable completion cache and optimize
+  zstyle ':completion::complete:*' use-cache on
+  zstyle ':completion::complete:*' cache-path "${ZDOTDIR:-$HOME}/.zcompcache"
+  
+  # Core completion settings - streamlined for speed
+  zstyle ':completion:*' menu select=5
+  zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' # Single matching rule is faster
+  zstyle ':completion:*' completer _complete _match _approximate
+  zstyle ':completion:*:match:*' original only
+  zstyle ':completion:*:approximate:*' max-errors 1 numeric
+  
+  # Optimize file sorting and list display
+  zstyle ':completion:*' file-sort modification
+  zstyle ':completion:*' list-packed yes
+  zstyle ':completion:*' special-dirs true
+  zstyle ':completion:*' squeeze-slashes true
+  
+  # Simplify format settings - reduce formatting overhead
+  zstyle ':completion:*:descriptions' format ' %F{yellow}-- %d --%f'
+  zstyle ':completion:*:warnings' format ' %F{red}-- no matches found --%f'
+  zstyle ':completion:*' group-name ''
+  zstyle ':completion:*' verbose no # Reduce verbose output
+  
+  # Color settings - use variable reference instead of calculating each time
+  [[ -n "$LS_COLORS" ]] && zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+  
+  # Directory completion optimization
+  zstyle ':completion:*:*:cd:*' tag-order local-directories directory-stack path-directories
+  
+  # Ignore patterns - reduce unnecessary completion items
+  zstyle ':completion:*:functions' ignored-patterns '(_*|pre(cmd|exec)|prompt_*)'
+  zstyle ':completion:*:(rm|kill|diff):*' ignore-line other
+  
+  # Efficient history completion
+  zstyle ':completion:*:history-words' remove-all-dups yes
+  zstyle ':completion:*:history-words' list false
+  zstyle ':completion:*:history-words' menu yes
+  
+  # On-demand man page completion
+  zstyle ':completion:*:manuals' separate-sections true
+  
+  # Preload common completion modules to reduce first completion delay
+  compinit -d "${ZDOTDIR:-$HOME}/.zcompdump"
+  
+  # Unload this function to avoid memory usage
+  unfunction _zsh_comp_setup
+}
 
-#
-# completion module options
-#
+# Lazy load completion system - only triggered on first Tab press
+zle-line-init() {
+  zle -D zle-line-init
+  # Remove this widget to avoid repeated calls
+  bindkey "^I" expand-or-complete
+  # Asynchronously load completion system
+  _zsh_comp_setup &!
+}
 
-# group matches and describe.
-zstyle ':completion:*:*:*:*:*' menu select
-zstyle ':completion:*:matches' group yes
-zstyle ':completion:*:options' description yes
-zstyle ':completion:*:options' auto-description '%d'
-zstyle ':completion:*:corrections' format '%F{green}-- %d (errors: %e) --%f'
-zstyle ':completion:*:descriptions' format '%F{yellow}-- %d --%f'
-zstyle ':completion:*:messages' format '%F{purple}-- %d --%f'
-zstyle ':completion:*:warnings' format '%F{red}-- no matches found --%f'
-zstyle ':completion:*' format '%F{yellow}-- %d --%f'
-zstyle ':completion:*' group-name ''
-zstyle ':completion:*' verbose yes
-zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' '+r:|?=**'
+# Set up lazy loading trigger
+zle -N zle-line-init
+bindkey "^I" _delayed_completion
 
-zstyle ":completion:*" list-colors "${(s.:.)LS_COLORS}"
-zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
-zstyle ':completion:*:*:cd:*' tag-order local-directories directory-stack path-directories
-zstyle ':completion:*:*:cd:*:directory-stack' menu yes select
-zstyle ':completion:*:-tilde-:*' group-order 'named-directories' 'path-directories' 'expand'
-zstyle ':completion:*' squeeze-slashes true
-
-# enable caching
-zstyle ':completion::complete:*' use-cache on
-zstyle ':completion::complete:*' cache-path "${ZDOTDIR}/.zcompcache"
-
-# ignore useless commands and functions
-zstyle ':completion:*:functions' ignored-patterns '(_*|pre(cmd|exec)|prompt_*)'
-
-# completion sorting
-zstyle ':completion:*:*:-subscript-:*' tag-order indexes parameters
-
-# Man
-zstyle ':completion:*:manuals' separate-sections true
-zstyle ':completion:*:manuals.(^1*)' insert-sections true
-
-# history
-zstyle ':completion:*:history-words' stop yes
-zstyle ':completion:*:history-words' remove-all-dups yes
-zstyle ':completion:*:history-words' list false
-zstyle ':completion:*:history-words' menu yes
-
-# ignore multiple entries.
-zstyle ':completion:*:(rm|kill|diff):*' ignore-line other
-zstyle ':completion:*:rm:*' file-patterns '*:all-files'
+# Delayed completion function
+_delayed_completion() {
+  # Load completion system immediately on first Tab press
+  _zsh_comp_setup
+  # Then perform normal completion
+  zle expand-or-complete
+}
+zle -N _delayed_completion

@@ -42,32 +42,48 @@ export PATH="$PROTO_HOME/shims:$PROTO_HOME/bin:$PATH"
 # proto end
 
 # pnpm
-export PNPM_HOME="$PROTO_HOME/shims/pnpm"
-export PATH="$PNPM_HOME:$PATH"
+# export PNPM_HOME="$PROTO_HOME/shims/pnpm"
+# export PATH="$PNPM_HOME:$PATH"
 # pnpm end
 
 # yarn
-export YARN_HOME="$PROTO_HOME/shims/yarn"
-export PATH="$YARN_HOME:$PATH"
+# export YARN_HOME="$PROTO_HOME/shims/yarn"
+# export PATH="$YARN_HOME:$PATH"
 # yarn end
 
 # moon
-export MOON_HOME="$PROTO_HOME/shims/moon"
-export PATH="$MOON_HOME:$PATH"
+# export MOON_HOME="$PROTO_HOME/shims/moon"
+# export PATH="$MOON_HOME:$PATH"
 # moon end
 
 # node
-export NODE_HOME="$PROTO_HOME/shims/node"
-export PATH="$NODE_HOME:$PATH"
-if [[ -d "$PROTO_HOME/tools/node/globals/bin" ]]; then
-  export PATH="$PROTO_HOME/tools/node/globals/bin:$PATH"
-fi
+# export NODE_HOME="$PROTO_HOME/shims/node"
+# export PATH="$NODE_HOME:$PATH"
+# if [[ -d "$PROTO_HOME/tools/node/globals/bin" ]]; then
+#   export PATH="$PROTO_HOME/tools/node/globals/bin:$PATH"
+# fi
 # node end
+
+# go
+if which go >/dev/null 2>&1; then
+  if [ ! -d "$HOME/go" ]; then
+    mkdir -p $HOME/go
+  fi
+  export GO111MODULE=on
+  export GOPROXY="https://goproxy.cn,direct"
+  export GOOS=darwin
+  export GOARCH=amd64
+  export GOROOT=$PROTO_HOME/tools/go/1.24.2
+  export GOPATH=$HOME/go
+  export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+  export PATH=$PATH:$(go env GOPATH)/bin
+fi
+# go end
 
 alias plist="proto list --aliases"
 alias psearch="proto list-remote --aliases"
 alias pupgrade="proto upgrade"
-function pinstall() {
+pinstall() {
   if [[ $# -eq 1 ]]; then
     echo -e "\033[0;33mWarning: No version provided. Using 'latest' as version tag.\033[0m"
     echo
@@ -76,7 +92,7 @@ function pinstall() {
     proto install --pin global $1 $2
   fi
 }
-function prm() {
+prm() {
   if [[ $# -eq 1 ]]; then
     echo -e "\033[0;33mWarning: No version provided. Using 'latest' as version tag.\033[0m"
     echo
@@ -85,7 +101,7 @@ function prm() {
     proto uninstall $1 $2
   fi
 }
-function puse() {
+puse() {
   if [[ $# -eq 1 ]]; then
     echo -e "\033[0;33mWarning: No version provided. Using 'latest' as version tag.\033[0m"
     echo
@@ -94,7 +110,7 @@ function puse() {
     proto pin --resolve --global $1 $2
   fi
 }
-function poutdated() {
+poutdated() {
   if [[ -f .prototools ]]; then
     proto outdated
   elif [[ $# -eq 0 ]]; then
@@ -107,7 +123,7 @@ function poutdated() {
     echo -e "\033[0;31mInvalid argument: $1\033[0m"
   fi
 }
-function ptools() {
+ptools() {
   if [[ -f .prototools ]]; then
     proto status
   elif [[ $# -eq 0 ]]; then
@@ -121,7 +137,7 @@ function ptools() {
   fi
 }
 
-function phelp() {
+phelp() {
   echo "Custom commands for Proto."
   echo
   echo "Usage: <P-COMMAND> [OPTIONS]"

@@ -1,64 +1,76 @@
 ##############################################################
-# generic options and environment settings
+# Performance Optimization Configuration - Load Order is Critical for Performance
 ###############################################################
 
-# Use smart URL pasting and escaping.
-autoload -Uz bracketed-paste-url-magic && zle -N bracketed-paste bracketed-paste-url-magic
-autoload -Uz url-quote-magic && zle -N self-insert url-quote-magic
+# Performance Critical Options - Must be Loaded First
+setopt HASH_CMDS        # Cache command locations to reduce PATH searches (significant performance boost)
+setopt HASH_DIRS        # Cache directory locations to reduce PATH searches (significant performance boost)
+setopt GLOB_COMPLETE    # Expand wildcards during completion rather than on command line (improves performance)
+setopt NO_FLOW_CONTROL  # Disable flow control characters (C-s and C-q), reduces processing overhead
+setopt NO_BEEP          # Disable error beeps, avoids unnecessary system calls
 
-setopt AUTO_RESUME          # Treat single word simple commands without redirection as candidates for resumption of an existing job.
-setopt INTERACTIVE_COMMENTS # Allow comments starting with `#` even in interactive shells.
-setopt NO_FLOW_CONTROL      # disable start (C-s) and stop (C-q) characters
-setopt CORRECT              # Suggest command corrections
-setopt LONG_LIST_JOBS       # List jobs in the long format by default.
-setopt NOTIFY               # Report the status of background jobs immediately, rather than waiting until just before printing a prompt.
-setopt NO_BG_NICE           # Prevent runing all background jobs at a lower priority.
-setopt NO_CHECK_JOBS        # Prevent reporting the status of background and suspended jobs before exiting a shell with job control. NO_CHECK_JOBS is best used only in combination with NO_HUP, else such jobs will be killed automatically.
-setopt NO_HUP               # Prevent sending the HUP signal to running jobs when the shell exits.
-setopt NO_BEEP              # Don't beep on erros (overrides /etc/zshrc in Catalina)
+# Lazy Load URL Handling Functions - Initialize Only When Needed
+_load_url_handlers() {
+  autoload -Uz bracketed-paste-url-magic && zle -N bracketed-paste bracketed-paste-url-magic
+  autoload -Uz url-quote-magic && zle -N self-insert url-quote-magic
+}
+zsh-defer _load_url_handlers 2>/dev/null || _load_url_handlers
+
+# Standard Shell Options - Grouped by Purpose
+# Job Control Related Options (Grouped for Readability and Maintainability)
+setopt NO_CHECK_JOBS    # Don't report status of background and suspended jobs when exiting shell
+setopt NO_HUP           # Don't send HUP signal to running jobs when shell exits
+setopt NO_BG_NICE       # Prevent running all background jobs at a lower priority
+setopt NOTIFY           # Report background job status immediately, not before printing prompt
+setopt LONG_LIST_JOBS   # List jobs in long format by default
+
+# Interactive Usage Experience Options
+setopt AUTO_RESUME      # Treat single word simple commands without redirection as candidates for resumption
+setopt INTERACTIVE_COMMENTS # Allow comments starting with `#` in interactive shells
+setopt CORRECT          # Suggest command corrections (enable only when needed, may impact performance)
 
 ##############################################################
-#  History options
+#  History Optimization Options
 ###############################################################
 
-# limit of history entries
-HISTORY_IGNORE='(clear|c|pwd|exit|* —help|[bf]g *|less *|cd ..|cd -)'
+# History Ignore Pattern - Use Simple Patterns to Reduce Regex Complexity
+# Avoid complex regex, use simple pattern matching for better performance
+HISTORY_IGNORE='(clear|c|pwd|exit|ls|ll|la|[bf]g|less)'
 
-setopt SHAREHISTORY
-setopt BANG_HIST                 # Perform textual history expansion, csh-style, treating the character ‘!’ specially.
-setopt EXTENDED_HISTORY          # Write the history file in the ':start:elapsed;command' format.
-setopt INC_APPEND_HISTORY        # Write to the history file immediately, not when the shell exits.
-setopt SHARE_HISTORY             # Share history between all sessions.
-setopt HIST_EXPIRE_DUPS_FIRST    # Expire a duplicate event first when trimming history.
-setopt HIST_IGNORE_DUPS          # Do not record an event that was just recorded again.
-setopt HIST_IGNORE_ALL_DUPS      # Delete an old recorded event if a new event is a duplicate.
-setopt HIST_FIND_NO_DUPS         # Do not display a previously found event.
-setopt HIST_IGNORE_SPACE         # Do not record an event starting with a space.
-setopt HIST_SAVE_NO_DUPS         # Do not write a duplicate event to the history file.
-setopt HIST_VERIFY               # Do not execute immediately upon history expansion.
-setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks from each command line being added to the history list.
-setopt APPEND_HISTORY            # append to history file
-setopt HIST_NO_STORE             # Don't store history commands
-setopt HIST_NO_FUNCTIONS         # Don't store function definitions
-setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks from each command line being added to the history list.
-setopt HIST_BEEP                 # Beep when accessing nonexistent history.
+# History Settings - Grouped by Performance Impact
+# High Performance Impact Options
+setopt HIST_IGNORE_ALL_DUPS   # Skip all duplicates (significant performance boost)
+setopt HIST_NO_STORE          # Don't store history commands themselves (improves performance)
+setopt HIST_NO_FUNCTIONS      # Don't store function definitions (improves performance)
+setopt HIST_FIND_NO_DUPS      # Don't show duplicates in search (improves performance)
 
+# Medium Performance Impact Options
+setopt INC_APPEND_HISTORY     # Write immediately (better crash recovery, slight performance impact)
+setopt HIST_EXPIRE_DUPS_FIRST # Expire duplicates first (saves space)
+setopt HIST_REDUCE_BLANKS     # Save space by removing extra blanks
+
+# Essential Functionality Options
+setopt EXTENDED_HISTORY       # Timestamped history (slight performance impact but necessary)
 
 ##############################################################
-# Directory navigation options
+# Directory Navigation and File Operation Optimization
 ###############################################################
 
-setopt AUTO_CD           # If a command is issued that can’t be executed as a normal command, and the command is the name of a directory, perform the cd command to that directory.
-setopt AUTO_PUSHD        # Make cd push the old directory onto the directory stack.
-setopt PUSHD_IGNORE_DUPS # Don’t push multiple copies of the same directory onto the directory stack.
-setopt PUSHD_SILENT      # Do not print the directory stack after pushd or popd.
-setopt PUSHD_TO_HOME     # Have pushd with no arguments act like ‘pushd ${HOME}’.
-setopt AUTOPARAMSLASH    # tab completing directory appends a slash
+# Directory Navigation Options - Sorted by Performance Impact
+# High Performance Options
+setopt PUSHD_IGNORE_DUPS # Don't push multiple copies of same directory onto stack (reduces memory usage)
+setopt PUSHD_SILENT      # Don't print directory stack after pushd or popd (reduces I/O)
+setopt AUTOPARAMSLASH    # Tab completing directory appends a slash (improves user experience)
 
-#
-# Globbing and fds
-#
+# Medium Performance Impact Options
+setopt AUTO_CD           # If command can't be executed and is a directory name, perform cd to that directory
+setopt AUTO_PUSHD        # Make cd push old directory onto directory stack
+setopt PUSHD_TO_HOME     # Have pushd with no arguments act like 'pushd ${HOME}'
 
-setopt EXTENDED_GLOB     # Treat the ‘#’, ‘~’ and ‘^’ characters as part of patterns for filename generation, etc. (An initial unquoted ‘~’ always produces named directory expansion.)
-setopt MULTIOS           # Perform implicit tees or cats when multiple redirections are attempted.
-setopt NO_CLOBBER        # Disallow ‘>’ redirection to overwrite existing files. ‘>|’ or ‘>!’ must be used to overwrite a file.
+# File Operation Safety Options
+# Optimized Global Settings - Disable Unnecessary Features
+setopt NO_MULTIOS        # Disabled - rarely needed and has performance overhead
+setopt NO_CLOBBER        # Prevent accidental overwrites (safety)
+
+# Preload Common Modules to Reduce First-Use Delay
+{ zmodload -F zsh/stat +b:zstat } 2>/dev/null

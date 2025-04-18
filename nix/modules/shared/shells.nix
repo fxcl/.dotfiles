@@ -254,7 +254,6 @@ in
               ../../../config/zsh.d/zsh/config/input.zsh
               ../../../config/zsh.d/zsh/config/completion.zsh
               ../../../config/zsh.d/zsh/config/fzf-preview.zsh
-              ../../../config/zsh.d/zsh/config/utility.zsh
               ../../../config/zsh.d/zsh/config/aliases.zsh
               "${pkgs.fzf}/share/fzf/completion.zsh"
               "${pkgs.fzf}/share/fzf/key-bindings.zsh"

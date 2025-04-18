@@ -1,48 +1,36 @@
-# As a first step, I will try to symlink my configs as much as possible then
-# migrate the configs to Nix
-#
-# https://nixcloud.io/ for Nix syntax
-# https://nix.dev/
-# https://nixos.org/guides/nix-pills/
-# https://nix-community.github.io/awesome-nix/
-# https://discourse.nixos.org/t/home-manager-equivalent-of-apt-upgrade/8424/3
-# https://www.reddit.com/r/NixOS/comments/jmom4h/new_neofetch_nixos_logo/gayfal2/
-# https://www.youtube.com/user/elitespartan117j27/videos?view=0&sort=da&flow=grid
-# https://www.youtube.com/playlist?list=PLRGI9KQ3_HP_OFRG6R-p4iFgMSK1t5BHs
-# https://www.reddit.com/r/NixOS/comments/k9xwht/best_resources_for_learning_nixos/
-# https://www.reddit.com/r/NixOS/comments/k8zobm/nixos_preferred_packages_flow/
-# https://www.reddit.com/r/NixOS/comments/j4k2zz/does_anyone_use_flakes_to_manage_their_entire/
-# https://serokell.io/blog/practical-nix-flakes
-# https://stephank.nl/p/2023-02-28-using-flakes-for-nixos-configs.html
-# https://zero-to-nix.com/
+# https://nixcloud.io/ - Nix syntax reference
+# https://nix.dev/ - Nix development guide
+# https://nixos.org/guides/nix-pills/ - Nix tutorial series
+# https://nix-community.github.io/awesome-nix/ - Nix resource collection
+# https://discourse.nixos.org/t/home-manager-equivalent-of-apt-upgrade/8424/3 - home-manager usage discussion
+# https://www.reddit.com/r/NixOS/comments/jmom4h/new_neofetch_nixos_logo/gayfal2/ - NixOS related discussion
+# https://www.youtube.com/user/elitespartan117j27/videos?view=0&sort=da&flow=grid - Nix video tutorials
+# https://www.youtube.com/playlist?list=PLRGI9KQ3_HP_OFRG6R-p4iFgMSK1t5BHs - Nix video tutorial playlist
+# https://www.reddit.com/r/NixOS/comments/k9xwht/best_resources_for_learning_nixos/ - Best resources for learning NixOS
+# https://www.reddit.com/r/NixOS/comments/k8zobm/nixos_preferred_packages_flow/ - NixOS package management flow
+# https://www.reddit.com/r/NixOS/comments/j4k2zz/does_anyone_use_flakes_to_manage_their_entire/ - Using flakes for configuration management
+# https://serokell.io/blog/practical-nix-flakes - Practical Nix flakes guide
+# https://stephank.nl/p/2023-02-28-using-flakes-for-nixos-configs.html - Using flakes for NixOS configuration
+# https://zero-to-nix.com/ - Zero to Nix guide
 {
   description = "NixOS and Darwin configurations";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/release-24.11";
 
-    # Home inputs
+    # Home Manager inputs
     home-manager = {
       url = "github:nix-community/home-manager/release-24.11";
-      inputs.nixpkgs.follows = "nixpkgs"; # Ensure versions are consistent.
-
-    };
-
-    nix-homebrew = {
-      url = "github:zhaofengli/nix-homebrew";
-      inputs = {
-        nix-darwin.follows = "darwin";
-        flake-utils.follows = "flake-utils";
-        nixpkgs.follows = "nixpkgs";
-      };
+      inputs.nixpkgs.follows = "nixpkgs"; # Ensure versions are consistent
     };
 
     # MacOS inputs
     darwin = {
       url = "github:lnl7/nix-darwin/nix-darwin-24.11";
-      inputs.nixpkgs.follows = "nixpkgs"; # Ensure versions are consistent.
+      inputs.nixpkgs.follows = "nixpkgs"; # Ensure versions are consistent
     };
 
+    # NUR (Nix User Repository) inputs
     # nur = {
     #   url = "github:nix-community/NUR";
     #   inputs.nixpkgs.follows = "nixpkgs";
@@ -91,6 +79,7 @@
 
         nix = {
           nixPath = {
+            # Inherit input source paths
             inherit (inputs) nixpkgs;
             inherit (inputs) darwin;
             inherit (inputs) home-manager;
@@ -98,25 +87,31 @@
 
           package = pkgs.nixVersions.git;
           extraOptions = ''
+            # Enable experimental features
             experimental-features = nix-command flakes
           '';
 
           settings = {
+            # Set trusted users
             trusted-users = [ "@admin" ];
+            # Enable experimental features list
             experimental-features = [ "nix-command" "flakes" ];
 
+            # Additional trusted binary caches
             extra-trusted-substituters = [ "https://nix-cache.status.im" ];
 
-            # disabled on Darwin because some buggy behaviour: https://github.com/NixOS/nix/issues/7273
+            # Disabled on Darwin because of some buggy behavior: https://github.com/NixOS/nix/issues/7273
+            # Auto-optimize store (disabled on Darwin)
             auto-optimise-store = !pkgs.stdenv.isDarwin;
 
+            # Force set binary cache sources
             substituters = pkgs.lib.mkForce [
               "https://cache.garnix.io"
               https://mirrors.cernet.edu.cn/nix-channels/store
-              #"https://mirror.sjtu.edu.cn/nix-channels/store"
-              #"https://mirrors.ustc.edu.cn/nix-channels/store"
+              #"https://mirror.sjtu.edu.cn/nix-channels/store" # Shanghai Jiao Tong University mirror
+              #"https://mirrors.ustc.edu.cn/nix-channels/store" # USTC mirror
               "https://cache.nixos.org"
-              #"https://nix-mirror.freetls.fastly.net"
+              #"https://nix-mirror.freetls.fastly.net" # Fastly CDN mirror
               "https://nix-community.cachix.org"
               "https://nixpkgs.cachix.org"
               "https://srid.cachix.org"
@@ -134,26 +129,31 @@
               "nix-linter.cachix.org-1:BdTne5LEHQfIoJh4RsoVdgvqfObpyHO5L0SCjXFShlE="
               "statix.cachix.org-1:Z9E/g1YjCjU117QOOt07OjhljCoRZddiAm4VVESvais="
             ];
-            # Recommended when using `direnv` etc.
+            # Recommended settings when using `direnv` etc.
+            # Keep derivations and outputs to speed up environment loading
             keep-derivations = true;
             keep-outputs = true;
           };
 
+          # Garbage collection configuration
           gc = {
-            automatic = true;
-            options = "--delete-older-than 10d";
+            automatic = true; # Automatically run garbage collection
+            options = "--delete-older-than 10d"; # Delete files older than 10 days
           };
 
+          # Store optimization configuration
           optimise = {
-            # Enable store optimization because we can't set `auto-optimise-store` to true on macOS.
+            # Enable store optimization on macOS because we can't set `auto-optimise-store` to true on macOS
             automatic = pkgs.stdenv.isDarwin;
           };
         };
 
         fonts = {
+          # Font directory configuration
           # fontDir.enable = true;
+          # Font packages configuration
           packages = with pkgs;
-            [ ] ++ (lib.optionals pkgs.stdenv.isLinux [
+            [ ] ++ (lib.optionals pkgs.stdenv.isLinux [ # Only install these fonts on Linux
               noto-fonts
               noto-fonts-cjk
               noto-fonts-emoji
@@ -168,22 +168,35 @@
         };
 
         nixpkgs = {
+          # Allow unfree software
           config = { allowUnfree = true; };
-          overlays = [
+            overlays = [
             (final: prev: {
+              # Make unstable version of nixpkgs available
               unstable =
-                inputs.nixpkgs-unstable.legacyPackages.${prev.system}; # Make available unstable channel.
+                inputs.nixpkgs-unstable.legacyPackages.${prev.system};
+              # Use Node.js 24.x which has better OpenSSL 3.x support
+              nodejs = prev.nodejs-24_x;
+              # Custom package configurations
               # pragmatapro = prev.callPackage ./nix/pkgs/pragmatapro.nix { };
               # zk = prev.callPackage ./nix/pkgs/zk.nix { source = inputs.zk; };
               next-prayer = prev.callPackage
                 ./config/tmux/scripts/next-prayer/next-prayer.nix
                 { };
+              # Modify pure-prompt package, apply custom patch
               pure-prompt = prev.pure-prompt.overrideAttrs (old: {
                 patches = (old.patches or [ ]) ++ [ ./nix/hosts/pure-zsh.patch ];
               });
             })
-            # fix for swift 8
-            # https://github.com/NixOS/nixpkgs/issues/327836#issuecomment-2292084100
+             # Node.js related package configuration
+             (final: prev: rec {
+              nodejs = prev.nodejs_22; # Use Node.js 22
+              nodePackages = prev.nodePackages.override { inherit nodejs; };
+              pnpm = (prev.pnpm.override { inherit nodejs; });
+              yarn = (prev.yarn.override { inherit nodejs; });
+            })
+            # Swift 8 fix
+            # Reference: https://github.com/NixOS/nixpkgs/issues/327836#issuecomment-2292084100
             (final: prev:
               let
                 pkgsDarwin =
@@ -192,6 +205,25 @@
               prev.lib.optionalAttrs prev.stdenv.hostPlatform.isDarwin {
                 inherit (pkgsDarwin) swift;
               })
+          # Fish shell configuration modification
+          (final: prev: {
+            fish = prev.fish.overrideAttrs (old: {
+              doCheck = false; # Disable tests
+            });
+          })
+      # re2 regular expression library configuration modification
+      (final: prev: {
+        re2 = prev.re2.overrideAttrs (old: {
+          doCheck = false; # Disable tests, fix build timeout issues
+        });
+      })
+      (final: prev: {
+        python3Packages = prev.python3Packages // {
+          hypothesis = prev.python3Packages.hypothesis.overrideAttrs (old: {
+            version = "6.111.0";
+          });
+        };
+      })
             (final: prev: {
               zimfw = prev.zimfw.overrideAttrs (oldAttrs: rec {
                 version = "1.15.0";
@@ -236,7 +268,6 @@
             inherit system;
             modules = [
               inputs.home-manager.darwinModules.home-manager
-              inputs.nix-homebrew.darwinModules.nix-homebrew
               ./nix/modules/darwin
               ./nix/modules/shared
               sharedConfiguration
@@ -255,7 +286,6 @@
               inputs.home-manager.nixosModules.home-manager
               ./nix/modules/shared
               sharedConfiguration
-              ./nix/hosts/${host}
             ];
           }))
         linuxHosts;

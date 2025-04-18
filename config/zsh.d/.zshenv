@@ -1,6 +1,6 @@
 # Static environment variables for appearance and behavior
 export COLORTERM="truecolor"
-export LS_COLORS=$(vivid generate one-light)
+# export LS_COLORS=$(vivid generate one-light)
 export KEYTIMEOUT="1"
 export SPROMPT="zsh: correct %F{red}'%R'%f to %F{blue}'%r'%f [%B%Uy%u%bes, %B%Un%u%bo, %B%Ue%u%bdit, %B%Ua%u%bbort]?"
 export LESS="-F -g -i -M -R -S -w -X -z-4"
@@ -95,6 +95,7 @@ fi
   mkdir -p -m 700 "$TMPDIR"
 }
 TMPPREFIX="${TMPDIR%/}/zsh"
+
 
 # Ensure path arrays don't contain duplicates
 typeset -gU cdpath fpath mailpath manpath path

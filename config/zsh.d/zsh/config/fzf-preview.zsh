@@ -11,7 +11,7 @@ _fzf_comprun() {
   shift
 
   case "$command" in
-  cd) fzf --preview 'eza --tree --level=2 --color=always --git {} | head -200' "$@" ;;
+  cd) fzf --preview 'eza --tree --level=2 --color=always --git {} | head -50' "$@" ;; # Reduced output for faster previews
   export | unset) fzf --preview "eval 'echo \$'{}" "$@" ;;
   ssh) fzf --preview 'dig {}' "$@" ;;
   *) fzf --preview 'less {}' "$@" ;;
