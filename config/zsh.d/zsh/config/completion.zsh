@@ -1,85 +1,128 @@
-#
-# Completion enhancements - Optimized for speed
-#
+###############################################################################
+# ZSH Completion Configuration - Optimized for Performance
+###############################################################################
 
-# If it's a dumb terminal, return immediately
-if [[ ${TERM} == 'dumb' ]]; then
-  return 1
+# Early return for non-interactive or dumb terminals
+if [[ ${TERM} == 'dumb' || ! -o interactive ]]; then
+  return 0
 fi
 
-# Lazy load completion system, significantly improves startup speed
-# Only loads completion system on first Tab key press
+# Lazy-load completion system to improve shell startup time
+# This function is called only on first tab press
 _zsh_comp_setup() {
-  # Basic completion options
-  setopt ALWAYS_TO_END PATH_DIRS
-  unsetopt CASE_GLOB LIST_BEEP
-
-  # Enable completion cache and optimize
-  zstyle ':completion::complete:*' use-cache on
-  zstyle ':completion::complete:*' cache-path "${ZDOTDIR:-$HOME}/.zcompcache"
+  # Performance: Local variables are faster than globals
+  local cache_dir="${ZDOTDIR:-$HOME}/.zcompcache"
+  local dump_file="${ZDOTDIR:-$HOME}/.zcompdump"
   
-  # Core completion settings - streamlined for speed
+  ###############################################################################
+  # Core Options - Minimal set for better performance
+  ###############################################################################
+  setopt ALWAYS_TO_END    # Move cursor to end of completed word
+  setopt PATH_DIRS        # Perform path search even on command names with slashes
+  unsetopt CASE_GLOB      # Case insensitive globbing
+  unsetopt LIST_BEEP      # Don't beep on ambiguous completion
+
+  ###############################################################################
+  # Cache Configuration - Reduces disk I/O
+  ###############################################################################
+  zstyle ':completion::complete:*' use-cache on
+  zstyle ':completion::complete:*' cache-path "$cache_dir"
+  
+  ###############################################################################
+  # Completion Behavior - Optimized for speed and usability
+  ###############################################################################
+  # Only show menu when there are at least 5 items
   zstyle ':completion:*' menu select=5
-  zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' # Single matching rule is faster
+  
+  # Case-insensitive matching (single rule for better performance)
+  zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+  
+  # Limit completion strategies to essential ones
   zstyle ':completion:*' completer _complete _match _approximate
   zstyle ':completion:*:match:*' original only
   zstyle ':completion:*:approximate:*' max-errors 1 numeric
   
-  # Optimize file sorting and list display
+  ###############################################################################
+  # Display Optimization - Reduces formatting overhead
+  ###############################################################################
+  # Sort files by modification time (most recent first)
   zstyle ':completion:*' file-sort modification
+  
+  # Compact display settings
   zstyle ':completion:*' list-packed yes
   zstyle ':completion:*' special-dirs true
   zstyle ':completion:*' squeeze-slashes true
   
-  # Simplify format settings - reduce formatting overhead
+  # Minimal formatting with essential visual cues
   zstyle ':completion:*:descriptions' format ' %F{yellow}-- %d --%f'
   zstyle ':completion:*:warnings' format ' %F{red}-- no matches found --%f'
   zstyle ':completion:*' group-name ''
-  zstyle ':completion:*' verbose no # Reduce verbose output
+  zstyle ':completion:*' verbose no
   
-  # Color settings - use variable reference instead of calculating each time
+  # Use LS_COLORS for file coloring (if available)
   [[ -n "$LS_COLORS" ]] && zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
   
-  # Directory completion optimization
+  ###############################################################################
+  # Context-Specific Optimizations
+  ###############################################################################
+  # Directory navigation prioritization
   zstyle ':completion:*:*:cd:*' tag-order local-directories directory-stack path-directories
   
-  # Ignore patterns - reduce unnecessary completion items
+  # Skip internal/helper functions in completion
   zstyle ':completion:*:functions' ignored-patterns '(_*|pre(cmd|exec)|prompt_*)'
+  
+  # Avoid suggesting words from current line for certain commands
   zstyle ':completion:*:(rm|kill|diff):*' ignore-line other
   
-  # Efficient history completion
+  # History word completion settings
   zstyle ':completion:*:history-words' remove-all-dups yes
   zstyle ':completion:*:history-words' list false
   zstyle ':completion:*:history-words' menu yes
   
-  # On-demand man page completion
+  # Load man page sections separately (on-demand loading)
   zstyle ':completion:*:manuals' separate-sections true
   
-  # Preload common completion modules to reduce first completion delay
-  compinit -d "${ZDOTDIR:-$HOME}/.zcompdump"
+  ###############################################################################
+  # Initialize Completion System
+  ###############################################################################
+  # Initialize completion (creates/updates dump file)
+  compinit -d "$dump_file"
   
-  # Unload this function to avoid memory usage
+  # Clean up: Remove this function to free memory after initialization
   unfunction _zsh_comp_setup
 }
 
-# Lazy load completion system - only triggered on first Tab press
+###############################################################################
+# Lazy Loading Implementation
+###############################################################################
+
+# Hook that runs when a new command line is initialized
+# Replaces itself with normal completion after first run
 zle-line-init() {
+  # Remove this widget to prevent future calls
   zle -D zle-line-init
-  # Remove this widget to avoid repeated calls
+  
+  # Restore normal tab completion behavior
   bindkey "^I" expand-or-complete
-  # Asynchronously load completion system
+  
+  # Load completion system asynchronously
   _zsh_comp_setup &!
 }
 
-# Set up lazy loading trigger
+# Register the line initialization hook
 zle -N zle-line-init
+
+# Bind tab key to delayed completion initially
 bindkey "^I" _delayed_completion
 
-# Delayed completion function
+# Function called on first tab press
 _delayed_completion() {
-  # Load completion system immediately on first Tab press
+  # Initialize completion system immediately
   _zsh_comp_setup
-  # Then perform normal completion
+  
+  # Execute normal completion
   zle expand-or-complete
 }
+
+# Register the delayed completion function
 zle -N _delayed_completion
