@@ -1,396 +1,148 @@
-local au = require '_.utils.au'
 local utils = require '_.utils'
-local map_opts = { buffer = true, silent = true }
 
-local capabilities =
-	vim.tbl_deep_extend('force', vim.lsp.protocol.make_client_capabilities(), {
-		textDocument = {
-			completion = {
-				completionItem = {
-					snippetSupport = true,
-					resolveSupport = {
-						properties = {
-							'documentation',
-							'detail',
-							'additionalTextEdits',
-						},
-					},
-				},
+return {
+	{
+		'https://github.com/SmiteshP/nvim-navic',
+		event = 'LspAttach',
+		init = function()
+			vim.opt.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
+		end,
+		opts = {
+			click = true,
+			highlight = true,
+			lsp = {
+				auto_attach = true,
 			},
 		},
-	})
-
-if pcall(require, 'cmp_nvim_lsp') then
-	capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
-end
-
-local handlers = {
-	[vim.lsp.protocol.Methods.textDocument_hover] = vim.lsp.with(
-		vim.lsp.handlers.hover,
-		{ focusable = true, silent = true, border = 'rounded' }
-	),
-	[vim.lsp.protocol.Methods.textDocument_signatureHelp] = vim.lsp.with(
-		vim.lsp.handlers.hover,
-		{ focusable = false, silent = true, border = 'rounded' }
-	),
-}
-
-local shared = {
-	capabilities = capabilities,
-	handlers = handlers,
-	flags = {
-		debounce_text_changes = 150,
-	},
-}
-
-local mappings = {
-	{
-		{ 'n' },
-		'<leader>a',
-		vim.lsp.buf.code_action,
-		{ desc = 'Code [A]ctions' },
 	},
 	{
-		{ 'n' },
-		'<leader>f',
-		vim.lsp.buf.references,
-		{ desc = 'Show Re[f]erences' },
+		'https://github.com/nvimtools/none-ls.nvim',
+		dependencies = {
+			'https://github.com/nvim-lua/plenary.nvim',
+		},
+		event = 'LspAttach',
+		config = function()
+			local nls = require 'null-ls'
+
+			nls.setup {
+				debug = false,
+				debounce = 150,
+				sources = {
+					nls.builtins.diagnostics.zsh,
+					nls.builtins.diagnostics.hadolint,
+					nls.builtins.diagnostics.statix,
+					nls.builtins.diagnostics.selene,
+					nls.builtins.diagnostics.dotenv_linter.with {
+						filetypes = { 'dotenv' },
+						extra_args = { '--skip', 'UnorderedKey' },
+					},
+					nls.builtins.diagnostics.actionlint.with {
+						condition = function()
+							local cwd = vim.fn.expand '%:p:.'
+							return cwd:find '.github/'
+						end,
+					},
+				},
+			}
+		end,
 	},
 	{
-		{ 'n' },
-		'<leader>r',
-		vim.lsp.buf.rename,
-		{ desc = '[R]ename Symbol' },
+		'https://github.com/folke/lazydev.nvim',
+		dependencies = {
+			{ 'https://github.com/Bilal2453/luvit-meta', lazy = true }, -- optional `vim.uv` typings
+		},
+		ft = 'lua',
+		enabled = function(root_dir)
+			return (vim.g.lazydev_enabled == nil and true or vim.g.lazydev_enabled)
+				-- disable when a .luarc.json file is found
+				or not vim.uv.fs_stat(root_dir .. '/.luarc.json')
+		end,
+		opts = {
+			library = {
+				{
+					path = vim.env.HOME
+						.. '/.hammerspoon/Spoons/EmmyLua.spoon/annotations',
+					words = { 'hs' },
+				},
+				-- Only load luvit types when the `vim.uv` word is found
+				{ path = 'luvit-meta/library', words = { 'vim%.uv' } },
+				{ path = 'snacks.nvim', words = { 'Snacks' } },
+			},
+		},
 	},
 	{
-		{ 'n' },
-		'<leader>D',
-		vim.lsp.buf.declaration,
-		{ desc = 'Go to [D]eclaration' },
+		'https://github.com/zk-org/zk-nvim',
+		ft = { 'markdown' },
+		config = function()
+			require('zk').setup {
+				picker = 'fzf_lua',
+			}
+		end,
 	},
+	{ 'https://github.com/b0o/SchemaStore.nvim' },
 	{
-		{ 'n' },
-		'<leader>i',
-		vim.lsp.buf.implementation,
-		{ desc = 'Go to [I]mplementation' },
-	},
-}
+		'https://github.com/neovim/nvim-lspconfig',
+		event = utils.LazyFile,
+		config = function()
+			-- for debugging
+			-- :lua print(vim.inspect(vim.lsp.buf_get_clients()))
+			-- :lua print(vim.lsp.get_log_path())
+			-- :lua print(vim.inspect(vim.tbl_keys(vim.lsp.callbacks)))
 
-local function getBorder(highlight)
-	return {
-		{ '╭', highlight or 'FloatBorder' },
-		{ '─', highlight or 'FloatBorder' },
-		{ '╮', highlight or 'FloatBorder' },
-		{ '│', highlight or 'FloatBorder' },
-		{ '╯', highlight or 'FloatBorder' },
-		{ '─', highlight or 'FloatBorder' },
-		{ '╰', highlight or 'FloatBorder' },
-		{ '│', highlight or 'FloatBorder' },
-	}
-end
-
--- globally override borders
--- https://github.com/neovim/nvim-lspconfig/wiki/UI-Customization#borders
-local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
-
----@diagnostic disable-next-line: duplicate-set-field
-function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
-	opts = opts or {}
-	opts.border = opts.border or getBorder()
-	return orig_util_open_floating_preview(contents, syntax, opts, ...)
-end
-
--- wrap open_float to inspect diagnostics and use the severity color for border
--- https://neovim.discourse.group/t/lsp-diagnostics-how-and-where-to-retrieve-severity-level-to-customise-border-color/1679
-vim.diagnostic.open_float = (function(orig)
-	return function(bufnr, options)
-		local lnum = vim.api.nvim_win_get_cursor(0)[1] - 1
-		local opts = options or {}
-		-- A more robust solution would check the "scope" value in `opts` to
-		-- determine where to get diagnostics from, but if you're only using
-		-- this for your own purposes you can make it as simple as you like
-		local diagnostics = vim.diagnostic.get(opts.bufnr or 0, { lnum = lnum })
-		local max_severity = vim.diagnostic.severity.HINT
-
-		for _, d in ipairs(diagnostics) do
-			-- Equality is "less than" based on how the severities are encoded
-			if d.severity < max_severity then
-				max_severity = d.severity --[[@as integer]]
-			end
-		end
-
-		local border_color = ({
-			[vim.diagnostic.severity.HINT] = 'DiagnosticHint',
-			[vim.diagnostic.severity.INFO] = 'DiagnosticInfo',
-			[vim.diagnostic.severity.WARN] = 'DiagnosticWarn',
-			[vim.diagnostic.severity.ERROR] = 'DiagnosticError',
-		})[max_severity]
-
-		opts.border = getBorder(border_color)
-
-		orig(bufnr, opts)
-	end
-end)(vim.diagnostic.open_float)
-
-vim.diagnostic.config {
-	severity_sort = true,
-	virtual_text = {
-		-- source = 'always',
-		spacing = 2,
-		prefix = '', -- Could be '●', '▎', 'x'
-		format = function(diagnostic)
-			local source = diagnostic.source
-
-			if source then
-				local icon =
-					utils.get_icon(vim.diagnostic.severity[diagnostic.severity]:lower())
-
-				return string.format(
-					'%s %s %s',
-					icon,
-					source,
-					'['
-						.. (diagnostic.code ~= nil and diagnostic.code or diagnostic.message)
-						.. ']'
+			-- require('vim.lsp.log').set_level 'debug'
+			-- require('vim.lsp.log').set_format_func(vim.inspect)
+			local au = require '_.utils.au'
+			local map_opts = { buffer = true, silent = true }
+			local web_roots = function(_bufnr, on_dir)
+				on_dir(
+					vim.fs.root(
+						0,
+						{ 'package.json', '.git', vim.api.nvim_buf_get_name(0) }
+					)
 				)
 			end
 
-			return string.format('%s ', diagnostic.message)
-		end,
-	},
-	float = {
-		source = 'if_many',
-		focusable = false,
-		prefix = function(diag)
-			local level = vim.diagnostic.severity[diag.severity]
-			local icon = utils.get_icon(level:lower())
-			local prefix = string.format(' %s ', icon)
-
-			return prefix, 'Diagnostic' .. level:gsub('^%l', string.upper)
-		end,
-	},
-	signs = {
-		text = {
-			[vim.diagnostic.severity.ERROR] = utils.get_icon 'error',
-			[vim.diagnostic.severity.WARN] = utils.get_icon 'warn',
-			[vim.diagnostic.severity.HINT] = utils.get_icon 'hint',
-			[vim.diagnostic.severity.INFO] = utils.get_icon 'info',
-		},
-	},
-}
-
-au.autocmd {
-	event = 'LspAttach',
-	desc = 'LSP actions',
-	callback = function(event)
-		local client = vim.lsp.get_client_by_id(event.data.client_id)
-
-		-- ---------------
-		-- GENERAL
-		-- ---------------
-		if client ~= nil then
-			client.flags.allow_incremental_sync = true
-		end
-
-		-- ---------------
-		-- MAPPINGS
-		-- ---------------
-		for _, item in ipairs(mappings) do
-			local extra_opts = table.remove(item, 4)
-			local merged_opts = vim.tbl_extend('force', map_opts, extra_opts)
-
-			table.insert(item, 4, merged_opts)
-
-			local modes, lhs, rhs, opts = item[1], item[2], item[3], item[4]
-
-			vim.keymap.set(modes, lhs, rhs, opts)
-		end
-
-		-- ---------------
-		-- AUTOCMDS
-		-- ---------------
-		--
-		if
-			client ~= nil
-			and client.supports_method(
-				vim.lsp.protocol.Methods.textDocument_documentHighlight
-			)
-		then
-			au.augroup('__LSP_HIGHLIGHTS__', {
-				{
-					event = { 'CursorHold', 'CursorHoldI' },
-					callback = vim.lsp.buf.document_highlight,
-					buffer = event.buf,
+			vim.lsp.config('*', {
+				capabilities = {
+					workspace = {
+						didChangeWatchedFiles = {
+							dynamicRegistration = true,
+						},
+					},
+					textDocument = {
+						completion = {
+							completionItem = {
+								snippetSupport = true,
+								resolveSupport = {
+									properties = {
+										'documentation',
+										'detail',
+										'additionalTextEdits',
+									},
+								},
+							},
+						},
+					},
 				},
-				{
-					event = { 'CursorMoved', 'CursorMovedI' },
-					callback = vim.lsp.buf.clear_references,
-					buffer = event.buf,
+				flags = {
+					debounce_text_changes = 150,
 				},
+				root_markers = { '.git' },
 			})
-		end
 
-		if
-			client ~= nil
-			and client.supports_method(vim.lsp.protocol.Methods.textDocument_codeLens)
-		then
-			au.augroup('__LSP_CODELENS__', {
-				{
-					event = { 'CursorHold', 'BufEnter', 'InsertLeave' },
-					callback = function()
-						vim.lsp.codelens.refresh { bufnr = event.buf }
-					end,
-					buffer = event.buf,
-				},
+			vim.lsp.config('cssls', {
+				root_dir = web_roots,
 			})
-		end
-	end,
-}
 
-return {
-	'https://github.com/neovim/nvim-lspconfig',
-	event = { 'BufReadPre' },
-	dependencies = {
-		{
-			'https://github.com/pmizio/typescript-tools.nvim',
-			event = {
-				'BufReadPost *.ts,*.mts,*.cts,*.tsx,*.js,*.mjs,*.cjs,*.jsx',
-				'BufNewFile *.ts,*.mts,*.cts,*.tsx,*.js,*.mjs,*.cjs,*.jsx',
-			},
-			dependencies = {
-				'https://github.com/nvim-lua/plenary.nvim',
-			},
-			opts = {
-				single_file_support = false,
-				handlers = shared.handlers,
-				root_dir = function()
-					return not vim.fs.root(
-						0,
-						{ '.flowconfig', 'deno.json', 'deno.jsonc' }
-					) and vim.fs.root(0, {
-						'tsconfig.json',
-						'jsconfig.json',
-						'package.json',
-						'.git',
-						vim.api.nvim_buf_get_name(0),
-					})
-				end,
-				settings = {
-					tsserver_file_preferences = {
-						includeCompletionsForModuleExports = true,
-						includeInlayParameterNameHints = 'all',
-						includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-						includeInlayFunctionParameterTypeHints = true,
-						includeInlayVariableTypeHints = true,
-						includeInlayPropertyDeclarationTypeHints = true,
-						includeInlayFunctionLikeReturnTypeHints = true,
-						includeInlayEnumMemberValueHints = true,
-					},
-				},
-			},
-		},
-		{
-			'https://github.com/nvimtools/none-ls.nvim',
-			dependencies = {
-				'https://github.com/nvim-lua/plenary.nvim',
-			},
-			event = 'LspAttach',
-			config = function()
-				local nls = require 'null-ls'
+			vim.lsp.config('stylelint_lsp', {
+				root_dir = web_roots,
+			})
 
-				nls.setup {
-					debug = false,
-					debounce = 150,
-					sources = {
-						-- nixlinter,
-						nls.builtins.diagnostics.hadolint,
-						nls.builtins.diagnostics.vint,
-						nls.builtins.diagnostics.statix,
-						nls.builtins.diagnostics.dotenv_linter.with {
-							filetypes = { 'dotenv' },
-							extra_args = { '--skip', 'UnorderedKey' },
-						},
-						nls.builtins.diagnostics.actionlint.with {
-							condition = function()
-								local cwd = vim.fn.expand '%:p:.'
-								return cwd:find '.github/'
-							end,
-						},
-					},
-				}
-			end,
-		},
-		{
-			'https://github.com/folke/trouble.nvim',
-			cmd = { 'Trouble' },
-			opts = {},
-		},
-		{
-			'https://github.com/folke/lazydev.nvim',
-			-- dependencies = {
-			-- 	{ 'https://github.com/Bilal2453/luvit-meta', lazy = true }, -- optional `vim.uv` typings
-			-- },
-			ft = 'lua',
-			opts = {
-				library = {
-					{ path = 'wezterm-types', mods = { 'wezterm' } },
-					{
-						path = vim.env.HOME
-							.. '/.hammerspoon/Spoons/EmmyLua.spoon/annotations',
-						words = { 'hs' },
-					},
-				},
-			},
-		},
-		{
-			'https://github.com/zk-org/zk-nvim',
-			event = 'LspAttach',
-			config = function()
-				require('zk').setup {
-					picker = 'fzf',
-					lsp = {
-						-- `config` is passed to `vim.lsp.start_client(config)`
-						config = vim.tbl_deep_extend('force', shared, {
-							-- cmd = { 'zk', 'lsp', '--log', '/tmp/zk-lsp.log' },
-							cmd = { 'zk', 'lsp' },
-							name = 'zk',
-							-- root_dir = nvim_lsp.util.path.dirname,
-						}),
+			vim.lsp.config('html', {
+				root_dir = web_roots,
+			})
 
-						auto_attach = {
-							enabled = true,
-							filetypes = { 'markdown' },
-						},
-					},
-				}
-
-				local cmds = require 'zk.commands'
-			end,
-		},
-		{
-			'https://github.com/b0o/SchemaStore.nvim',
-		},
-	},
-	config = function()
-		-- for debugging
-		-- :lua print(vim.inspect(vim.lsp.buf_get_clients()))
-		-- :lua print(vim.lsp.get_log_path())
-		-- :lua print(vim.inspect(vim.tbl_keys(vim.lsp.callbacks)))
-
-		-- require('vim.lsp.log').set_level 'debug'
-		-- require('vim.lsp.log').set_format_func(vim.inspect)
-
-		local servers = {
-			cssls = {},
-			html = {},
-			bashls = {},
-			vimls = {
-				init_options = { isNeovim = true },
-			},
-			dockerls = {},
-			clojure_lsp = {},
-			eslint = {},
-			pyright = {
+			vim.lsp.config('pyright', {
 				settings = {
 					pyright = {
 						-- Using Ruff's import organizer
@@ -403,34 +155,26 @@ return {
 						},
 					},
 				},
-			},
-			ruff_lsp = {
+			})
+
+			vim.lsp.config('ruff', {
 				init_options = {
-					settings = {},
-				},
-			},
-			-- marksman = {},
-			tailwindcss = {
-				init_options = {
-					userLanguages = {
-						eruby = 'erb',
-						eelixir = 'html-eex',
-						['javascript.jsx'] = 'javascriptreact',
-						['typescript.tsx'] = 'typescriptreact',
+					settings = {
+						configurationPreference = 'filesystemFirst',
+						fixAll = true,
+						organizeImports = true,
+						lint = {
+							enable = true,
+							preview = true,
+						},
+						format = {
+							preview = true,
+						},
 					},
 				},
-				handlers = {
-					['tailwindcss/getConfiguration'] = function(_, _, context)
-						-- tailwindcss lang server waits for this response before providing hover
-						vim.lsp.buf_notify(
-							context.bufnr,
-							'tailwindcss/getConfigurationResponse',
-							{ _id = context.params._id }
-						)
-					end,
-				},
-			},
-			lua_ls = {
+			})
+
+			vim.lsp.config('lua_ls', {
 				settings = {
 					Lua = {
 						codeLens = { enable = true },
@@ -443,18 +187,6 @@ return {
 						},
 						diagnostics = {
 							disable = { 'trailing-space' },
-							globals = {
-								'vim',
-								'describe',
-								'it',
-								'before_each',
-								'after_each',
-								'pending',
-								'teardown',
-								'packer_plugins',
-								'spoon',
-								'hs',
-							},
 							unusedLocalExclude = { '_*' },
 						},
 						workspace = {
@@ -462,12 +194,16 @@ return {
 								'.direnv',
 							},
 						},
-						completion = { keywordSnippet = 'Replace', callSnippet = 'Replace' },
+						completion = {
+							keywordSnippet = 'Replace',
+							callSnippet = 'Replace',
+						},
 						telemetry = { enable = false },
 					},
 				},
-			},
-			rust_analyzer = {
+			})
+
+			vim.lsp.config('rust_analyzer', {
 				settings = {
 					['rust-analyzer'] = {
 						imports = {
@@ -477,6 +213,7 @@ return {
 							prefix = 'self',
 						},
 						cargo = {
+							allFeatures = true,
 							buildScripts = {
 								enable = true,
 							},
@@ -485,21 +222,53 @@ return {
 							enable = true,
 						},
 						checkOnSave = {
+							-- default: `cargo check`
 							command = 'clippy',
+							allFeatures = true,
+						},
+						assist = {
+							importEnforceGranularity = true,
+							importPrefix = 'create',
+						},
+						inlayHints = {
+							lifetimeElisionHints = {
+								enable = true,
+								useParameterNames = true,
+							},
 						},
 					},
 				},
-			},
-			gopls = {
-				cmd = { 'gopls', 'serve' },
+			})
+
+			vim.lsp.config('gopls', {
 				settings = {
 					gopls = {
 						experimentalPostfixCompletions = true,
 						analyses = {
 							unusedparams = true,
 							shadow = true,
+
+							fieldalignment = false, -- find structs that would use less memory if their fields were sorted
+							nilness = true,
+							unusedwrite = true,
+							useany = true,
 						},
-						staticcheck = true,
+						-- DISABLED: staticcheck
+						--
+						-- gopls doesn't invoke the staticcheck binary.
+						-- Instead it imports the analyzers directly.
+						-- This means it can report on issues the binary can't.
+						-- But it's not a good thing (like it initially sounds).
+						-- You can't then use line directives to ignore issues.
+						--
+						-- Instead of using staticcheck via gopls.
+						-- We have golangci-lint execute it instead.
+						--
+						-- For more details:
+						-- https://github.com/golang/go/issues/36373#issuecomment-570643870
+						-- https://github.com/golangci/golangci-lint/issues/741#issuecomment-1488116634
+						--
+						-- staticcheck = true,
 						hints = {
 							assignVariableTypes = true,
 							compositeLiteralFields = true,
@@ -509,37 +278,173 @@ return {
 							parameterNames = true,
 							rangeVariableTypes = true,
 						},
+						codelenses = {
+							gc_details = false,
+							generate = true,
+							regenerate_cgo = true,
+							run_govulncheck = true,
+							test = true,
+							tidy = true,
+							upgrade_dependency = true,
+							vendor = true,
+						},
+						gofumpt = true,
+						semanticTokens = true,
+						usePlaceholders = true,
 					},
 				},
 				init_options = {
 					usePlaceholders = true,
 				},
-				root_dir = function()
-					return vim.fs.root(
-						0,
-						{ 'go.mod', '.git', vim.api.nvim_buf_get_name(0) }
+				root_dir = function(_bufnr, on_dir)
+					on_dir(
+						vim.fs.root(0, { 'go.mod', '.git', vim.api.nvim_buf_get_name(0) })
 					)
 				end,
-			},
-			denols = {
-				root_dir = function()
-					return vim.fs.root(0, { 'deno.json', 'deno.jsonc' })
+			})
+
+			-- Use the same settings for JS and TS.
+			local lang_settings = {
+				suggest = { completeFunctionCalls = true },
+				inlayHints = {
+					functionLikeReturnTypes = { enabled = true },
+					parameterNames = { enabled = 'literals' },
+					variableTypes = { enabled = true },
+				},
+			}
+
+			vim.lsp.config('vtsls', {
+				root_dir = function(_bufnr, on_dir)
+					on_dir(
+						not vim.fs.root(0, { '.flowconfig', 'deno.json', 'deno.jsonc' })
+							and vim.fs.root(0, {
+								'tsconfig.json',
+								'jsconfig.json',
+								'package.json',
+								'.git',
+								vim.api.nvim_buf_get_name(0),
+							})
+					)
 				end,
-			},
-			nil_ls = {},
-			ast_grep = {},
-			jsonls = {
-				filetypes = { 'json', 'jsonc' },
 				settings = {
-					json = {
-						schemas = require('schemastore').json.schemas {},
-						validate = { enable = true },
+					typescript = vim.tbl_deep_extend('force', lang_settings, {
+						tsserver = { maxTsServerMemory = 12288 },
+					}),
+					javascript = lang_settings,
+					vtsls = {
+						-- Automatically use workspace version of TypeScript lib on startup.
+						autoUseWorkspaceTsdk = true,
+						experimental = {
+							-- Inlay hint truncation.
+							maxInlayHintLength = 30,
+							-- For completion performance.
+							completion = {
+								enableServerSideFuzzyMatch = true,
+							},
+						},
+					},
+					-- tsserver_file_preferences = {
+					-- 	includeCompletionsForModuleExports = true,
+					-- 	includeInlayParameterNameHints = 'all',
+					-- 	includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+					-- 	includeInlayFunctionParameterTypeHints = true,
+					-- 	includeInlayVariableTypeHints = true,
+					-- 	includeInlayPropertyDeclarationTypeHints = true,
+					-- 	includeInlayFunctionLikeReturnTypeHints = true,
+					-- 	includeInlayEnumMemberValueHints = true,
+					-- },
+				},
+			})
+
+			vim.lsp.config('denols', {
+				root_dir = function(_bufnr, on_dir)
+					on_dir(vim.fs.root(0, { 'deno.json', 'deno.jsonc' }))
+				end,
+			})
+
+			vim.lsp.config('oxlint', {
+				cmd = { utils.get_lsp_bin 'oxc_language_server' },
+			})
+
+			vim.lsp.config('nixd', {
+				-- https://github.com/nix-community/nixvim/issues/2390#issuecomment-2408101568
+				-- offset_encoding = 'utf-8',
+				settings = {
+					nixd = {
+						nixpkgs = {
+							expr = vim.fs.root(0, { 'shell.nix' }) ~= nil
+									and 'import <nixpkgs> { }'
+								or string.format(
+									'import (builtins.getFlake "%s").inputs.nixpkgs { }',
+									vim.fs.root(0, { 'flake.nix' }) or vim.fn.expand '$DOTFILES'
+								),
+						},
+						formatting = {
+							command = { 'alejandra' },
+						},
+						options = vim.tbl_extend('force', {
+							-- home_manager = {
+							-- 	expr = string.format(
+							-- 		'(builtins.getFlake "%s").homeConfigurations.%s.options',
+							-- 		vim.fn.expand '$DOTFILES',
+							-- 		vim.fn.hostname()
+							-- 	),
+							-- },
+						}, vim.fn.has 'macunix' and {
+							['nix-darwin'] = {
+								expr = string.format(
+									'(builtins.getFlake "%s").darwinConfigurations.%s.options',
+									vim.fn.expand '$DOTFILES',
+									vim.fn.hostname()
+								),
+							},
+						} or {
+							nixos = {
+								expr = string.format(
+									'(builtins.getFlake "%s").nixosConfigurations.%s.options',
+									vim.fn.expand '$DOTFILES',
+									vim.fn.hostname()
+								),
+							},
+						}),
 					},
 				},
-			},
-			-- TOML
-			taplo = {},
-			yamlls = {
+			})
+
+			vim.lsp.config('ast_grep', {
+				cmd = { utils.get_lsp_bin 'ast-grep', 'lsp' },
+			})
+
+			vim.lsp.config('taplo', {
+				settings = {
+					-- Use the defaults that the VSCode extension uses: https://github.com/tamasfe/taplo/blob/2e01e8cca235aae3d3f6d4415c06fd52e1523934/editors/vscode/package.json
+					taplo = {
+						configFile = { enabled = true },
+						schema = {
+							enabled = true,
+							catalogs = {
+								'https://www.schemastore.org/api/json/catalog.json',
+							},
+							cache = {
+								memoryExpiration = 60,
+								diskExpiration = 600,
+							},
+						},
+					},
+				},
+			})
+
+			vim.lsp.config('jsonls', {
+				settings = {
+					json = {
+						validate = { enable = true },
+						format = { enable = true },
+						schemas = require('schemastore').json.schemas {},
+					},
+				},
+			})
+
+			vim.lsp.config('yamlls', {
 				settings = {
 					yaml = {
 						schemaStore = {
@@ -557,8 +462,9 @@ return {
 						},
 					},
 				},
-			},
-			typos_lsp = {
+			})
+
+			vim.lsp.config('typos_lsp', {
 				cmd_env = { RUST_LOG = 'error' },
 				init_options = {
 					-- Custom config. Used together with a config file found in the workspace or its parents,
@@ -569,18 +475,308 @@ return {
 					-- Defaults to error.
 					diagnosticSeverity = 'Error',
 				},
-			},
-		}
+			})
 
-		for server, config in pairs(servers) do
-			local server_disabled = (config.disabled ~= nil and config.disabled)
-				or false
+			local servers = {
+				'cssls',
+				'stylelint_lsp',
+				'html',
+				-- 'eslint',
+				-- 'oxlint',
+				'vtsls',
+				'denols',
+				-- 'tailwindcss',
 
-			if not server_disabled then
-				require('lspconfig')[server].setup(
-					vim.tbl_deep_extend('force', shared, config)
-				)
+				'dockerls',
+				'docker_compose_language_service',
+
+				'pyright',
+				'ruff',
+
+				'bashls',
+				'lua_ls',
+				'rust_analyzer',
+				'gopls',
+				'nixd',
+				'ast_grep',
+				'taplo',
+				'jsonls',
+				'yamlls',
+				'typos_lsp',
+				'mutt_ls',
+				'tmux_ls',
+			}
+
+			vim.lsp.enable(servers)
+
+			-- @NOTE LEGACY: will be removed when the LSP are migrated, check
+			-- https://github.com/neovim/nvim-lspconfig/issues/3705
+			local legacy_servers = {
+				eslint = {},
+				oxlint = {
+					cmd = { utils.get_lsp_bin 'oxc_language_server' },
+				},
+				tailwindcss = {},
+			}
+
+			local capabilities = vim.lsp.protocol.make_client_capabilities()
+
+			if pcall(require, 'blink.cmp') then
+				capabilities = require('blink.cmp').get_lsp_capabilities(capabilities)
 			end
-		end
-	end,
+
+			local shared = {
+				capabilities = vim.tbl_deep_extend('force', capabilities, {
+					workspace = {
+						didChangeWatchedFiles = {
+							dynamicRegistration = true,
+						},
+					},
+					textDocument = {
+						completion = {
+							completionItem = {
+								snippetSupport = true,
+								resolveSupport = {
+									properties = {
+										'documentation',
+										'detail',
+										'additionalTextEdits',
+									},
+								},
+							},
+						},
+					},
+				}),
+				flags = {
+					debounce_text_changes = 150,
+				},
+			}
+
+			for server, config in pairs(legacy_servers) do
+				local server_disabled = (config.disabled ~= nil and config.disabled)
+					or false
+
+				if not server_disabled then
+					require('lspconfig')[server].setup(
+						vim.tbl_deep_extend('force', shared, config)
+					)
+				end
+			end
+
+			-- END LEGACY
+
+			au.autocmd {
+				event = 'LspAttach',
+				desc = 'LSP actions',
+				callback = function(event)
+					local bufnr = event.buf
+					local client = assert(
+						vim.lsp.get_client_by_id(event.data.client_id),
+						'must have valid client'
+					)
+
+					-- ---------------
+					-- GENERAL
+					-- ---------------
+					client.flags.allow_incremental_sync = true
+
+					-- ---------------
+					-- MAPPINGS
+					-- ---------------
+					for _, item in ipairs {
+						{
+							{ 'n' },
+							'<C-]>',
+							function()
+								require('fzf-lua').lsp_definitions {
+									-- https://github.com/ibhagwan/fzf-lua/wiki#lsp-jump-to-location-for-single-result
+									jump1 = true,
+								}
+							end,
+							{ desc = 'Go to Definition' },
+						},
+						{
+							{ 'n' },
+							'<leader>a',
+							function()
+								require('fzf-lua').lsp_code_actions {
+									winopts = {
+										preview = { hidden = 'hidden' },
+										relative = 'cursor',
+										row = 1.01,
+										col = 0,
+										height = 0.2,
+										width = 0.4,
+									},
+								}
+							end,
+							{ desc = 'Code [A]ctions' },
+						},
+						{
+							{ 'n' },
+							'<leader>f',
+							function()
+								require('fzf-lua').lsp_references {
+									-- https://github.com/ibhagwan/fzf-lua/wiki#lsp-references-ignore-current-line
+									ignore_current_line = true,
+									-- https://github.com/ibhagwan/fzf-lua/wiki#lsp-references-ignore-declaration
+									-- includeDeclaration = false
+								}
+							end,
+							{ desc = 'Show Re[f]erences' },
+						},
+						{
+							{ 'n' },
+							'<leader>r',
+							vim.lsp.buf.rename,
+							{ desc = '[R]ename Symbol' },
+						},
+						{
+							{ 'n' },
+							'<leader>D',
+							function()
+								require('fzf-lua').lsp_declarations {}
+							end,
+							{ desc = 'Go to [D]eclaration' },
+						},
+						{
+							{ 'n' },
+							'<leader>i',
+							function()
+								require('fzf-lua').lsp_implementations {}
+							end,
+							{ desc = 'Go to [I]mplementation' },
+						},
+						{
+							{ 'n' },
+							'<leader>dq',
+							vim.diagnostic.setloclist,
+							{ desc = 'Open diagnostics list' },
+						},
+						{
+							{ 'n' },
+							']e',
+							function()
+								vim.diagnostic.jump {
+									count = 1,
+									severity = vim.diagnostic.severity.ERROR,
+								}
+							end,
+							{ desc = 'Next [E]rror' },
+						},
+						{
+							{ 'n' },
+							'[e',
+							function()
+								vim.diagnostic.jump {
+									count = -1,
+									severity = vim.diagnostic.severity.ERROR,
+								}
+							end,
+							{ desc = 'Previous [E]rror' },
+						},
+					} do
+						local extra_opts = table.remove(item, 4)
+						local merged_opts = vim.tbl_extend('force', map_opts, extra_opts)
+
+						table.insert(item, 4, merged_opts)
+
+						local modes, lhs, rhs, opt = item[1], item[2], item[3], item[4]
+
+						vim.keymap.set(modes, lhs, rhs, opt)
+					end
+
+					-- ---------------
+					-- AUTOCMDS
+					-- ---------------
+
+					if
+						client:supports_method(
+							vim.lsp.protocol.Methods.textDocument_documentHighlight,
+							bufnr
+						)
+					then
+						local group = '__LSP_HIGHLIGHTS__'
+						vim.api.nvim_create_augroup(group, {
+							clear = false,
+						})
+						vim.api.nvim_clear_autocmds {
+							buffer = bufnr,
+							group = group,
+						}
+						vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
+							group = group,
+							buffer = bufnr,
+							callback = vim.lsp.buf.document_highlight,
+						})
+						vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
+							group = group,
+							buffer = bufnr,
+							callback = vim.lsp.buf.clear_references,
+						})
+					end
+
+					if
+						client:supports_method(
+							vim.lsp.protocol.Methods.textDocument_codeLens,
+							bufnr
+						)
+					then
+						au.augroup('__LSP_CODELENS__', {
+							{
+								event = { 'CursorHold', 'BufEnter', 'InsertLeave' },
+								callback = function()
+									vim.lsp.codelens.refresh { bufnr = bufnr }
+								end,
+								buffer = bufnr,
+							},
+						})
+					end
+
+					if
+						client:supports_method(
+							vim.lsp.protocol.Methods.textDocument_foldingRange,
+							bufnr
+						)
+					then
+						local win = vim.api.nvim_get_current_win()
+						vim.wo[win][0].foldexpr = 'v:lua.vim.lsp.foldexpr()'
+					end
+
+					if
+						client:supports_method(
+							vim.lsp.protocol.Methods.textDocument_completion,
+							bufnr
+						) and not package.loaded['blink.cmp']
+					then
+						vim.lsp.completion.enable(
+							true,
+							client.id,
+							bufnr,
+							{ autotrigger = true }
+						)
+					end
+
+					if
+						client.name == 'gopls'
+						and not client.server_capabilities.semanticTokensProvider
+					then
+						local semantic =
+							client.config.capabilities.textDocument.semanticTokens
+
+						assert(semantic, "doesn't support semantic tokens")
+
+						client.server_capabilities.semanticTokensProvider = {
+							full = true,
+							legend = {
+								tokenModifiers = semantic.tokenModifiers,
+								tokenTypes = semantic.tokenTypes,
+							},
+							range = true,
+						}
+					end
+				end,
+			}
+		end,
+	},
 }

@@ -24,7 +24,7 @@ if vim.fn.exists 'syntax_on' then
 end
 
 -- Enable terminal true-color support.
-vim.o.termguicolors = true
+vim.opt.termguicolors = true
 
 vim.g.colors_name = 'plain'
 
@@ -70,7 +70,7 @@ local themes = {
 		comment = light_gray,
 		selection = dark_yellow,
 		selection_fg = black,
-		ok = light_green,
+		ok = dark_green,
 		-- warning = yellow,
 		error = light_red,
 		purple = light_purple,
@@ -105,7 +105,7 @@ local themes = {
 	},
 }
 
-local colors = themes[vim.opt.background:get()] or themes.dark
+local colors = themes[vim.o.background] or themes.dark
 
 -- __Normal__
 highlight('Normal', { fg = colors.norm, bg = colors.bg })
@@ -421,23 +421,20 @@ highlight('@variable.parameter', { link = 'Statement' })
 highlight('@variable.parameter.reference', { link = 'Statement' }) -- ???
 
 -- nvim-cmp menu
--- matched item (what you typed until present)
-highlight('CmpItemAbbrMatch', { link = 'DiffAdd', bold = true, italic = true })
 
 -- type of completion snippet, function, etc... can also be highlighted
 -- separately if needed
 highlight('CmpItemKind', { link = 'NonText' })
 
--- the source of the completion
-highlight('CmpItemMenu', { link = 'NonText' })
-
 -- uncompleted item that may be good for completion
 highlight('CmpItemAbbr', { link = 'NonText' })
 
 highlight('CmpItemAbbrDeprecated', { strikethrough = true })
-highlight('CmpItemAbbrMatch', { bold = true })
-highlight('CmpItemAbbrMatchFuzzy', { bold = true })
-highlight('CmpItemMenu', { italic = true })
+-- matched item (what you typed until present)
+highlight('CmpItemAbbrMatch', { link = 'DiffAdd', bold = true, italic = true })
+highlight('CmpItemAbbrMatchFuzzy', { link = 'CmpItemAbbrMatch' })
+-- the source of the completion
+highlight('CmpItemMenu', { link = 'NonText' })
 
 highlight('CmpItemKindField', { fg = light_red })
 highlight('CmpItemKindProperty', { fg = light_red })
@@ -472,6 +469,38 @@ highlight('CmpItemKindInterface', { fg = light_cyan })
 highlight('CmpItemKindColor', { fg = light_cyan })
 highlight('CmpItemKindTypeParameter', { fg = light_cyan })
 
+-- blink.cmp
+highlight('BlinkCmpLabelDeprecated', { strikethrough = true })
+highlight('BlinkCmpMenuSelection', { link = 'CursorLine' })
+highlight('BlinkCmpLabel', { link = 'CmpItemAbbr' })
+highlight('BlinkCmpLabelMatch', { link = 'CmpItemAbbrMatch' })
+highlight('BlinkCmpKind', { link = 'CmpItemKind' })
+highlight('BlinkCmpKindField', { link = 'CmpItemKindField' })
+highlight('BlinkCmpKindProperty', { link = 'CmpItemKindProperty' })
+highlight('BlinkCmpKindEvent', { link = 'CmpItemKindEvent' })
+highlight('BlinkCmpKindText', { link = 'CmpItemKindText' })
+highlight('BlinkCmpKindEnum', { link = 'CmpItemKindEnum' })
+highlight('BlinkCmpKindKeyword', { link = 'CmpItemKindKeyword' })
+highlight('BlinkCmpKindConstant', { link = 'CmpItemKindConstant' })
+highlight('BlinkCmpKindConstructor', { link = 'CmpItemKindConstructor' })
+highlight('BlinkCmpKindReference', { link = 'CmpItemKindReference' })
+highlight('BlinkCmpKindFunction', { link = 'CmpItemKindFunction' })
+highlight('BlinkCmpKindStruct', { link = 'CmpItemKindStruct' })
+highlight('BlinkCmpKindClass', { link = 'CmpItemKindClass' })
+highlight('BlinkCmpKindModule', { link = 'CmpItemKindModule' })
+highlight('BlinkCmpKindOperator', { link = 'CmpItemKindOperator' })
+highlight('BlinkCmpKindVariable', { link = 'CmpItemKindVariable' })
+highlight('BlinkCmpKindFile', { link = 'CmpItemKindFile' })
+highlight('BlinkCmpKindUnit', { link = 'CmpItemKindUnit' })
+highlight('BlinkCmpKindSnippet', { link = 'CmpItemKindSnippet' })
+highlight('BlinkCmpKindFolder', { link = 'CmpItemKindFolder' })
+highlight('BlinkCmpKindMethod', { link = 'CmpItemKindMethod' })
+highlight('BlinkCmpKindValue', { link = 'CmpItemKindValue' })
+highlight('BlinkCmpKindEnumMember', { link = 'CmpItemKindEnumMember' })
+highlight('BlinkCmpKindInterface', { link = 'CmpItemKindInterface' })
+highlight('BlinkCmpKindColor', { link = 'CmpItemKindColor' })
+highlight('BlinkCmpKindTypeParameter', { link = 'CmpItemKindTypeParameter' })
+
 -- Misc. mainly my custom stuff --
 highlight(
 	'OverLength',
@@ -492,3 +521,39 @@ highlight('LspReferenceWrite', { link = 'SpecialKey' })
 highlight('User5', { fg = colors.red })
 highlight('User7', { fg = colors.cyan })
 highlight('User4', { bg = nil, fg = colors.norm_very_subtle })
+
+-- Winbar
+highlight('WinBar', { bg = nil, fg = 'NvimLightGrey4' })
+highlight('WinBarNC', { link = 'WinBar' })
+
+-- FzfLua
+highlight('FzfLuaBorder', { link = 'Comment' })
+
+-- Render Markdown
+
+highlight('RenderMarkdownH1Bg', { fg = light_green, bold = true })
+highlight('RenderMarkdownH2Bg', { fg = light_green, bold = true })
+highlight('RenderMarkdownH3Bg', { fg = light_green, bold = true })
+highlight('RenderMarkdownH4Bg', { fg = light_green, bold = true })
+highlight('RenderMarkdownH5Bg', { fg = light_green, bold = true })
+highlight('RenderMarkdownH6Bg', { fg = light_green, bold = true })
+
+-- Snacks
+highlight('SnacksIndent', { link = 'Comment' })
+highlight('SnacksIndentChunk', { link = 'Comment' })
+highlight('SnacksIndentScope', { link = 'Comment' })
+highlight('SnacksPickerBorder', { link = 'Comment' })
+highlight('SnacksPickerBoxBorder', { link = 'SnacksPickerBorder' })
+highlight('SnacksPickerInputBorder', { link = 'SnacksPickerBorder' })
+highlight('SnacksPickerListBorder', { link = 'SnacksPickerBorder' })
+highlight('SnacksPickerListCursorLine', { link = 'CursorLine' })
+highlight('SnacksPickerPreviewBorder', { link = 'SnacksPickerBorder' })
+highlight('SnacksPickerPrompt', { link = 'SnacksPickerBorder' })
+highlight('SnacksPickerMatch', { fg = colors.blue, italic = true })
+highlight('SnacksPickerDir', { link = 'Comment' })
+highlight('SnacksPickerTotals', { link = 'Comment' })
+highlight('SnacksDashboardHeader', { link = 'Comment' })
+highlight('SnacksDashboardFooter', { link = 'Comment' })
+highlight('SnacksDashboardDir', { link = 'Comment' })
+highlight('SnacksDashboardKey', { fg = colors.bg_subtle })
+highlight('SnacksDashboardTitle', { fg = colors.bg_subtle })

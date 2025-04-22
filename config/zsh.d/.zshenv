@@ -168,8 +168,10 @@ proxy_on() {
   local proxy=${1:-$default_proxy}
   export {http,https,ftp,rsync}_proxy=$proxy
   export {no,NO}_proxy=$no_proxy_list
+  echo -e "Started http(s) proxy port:2333 "
 }
 
 proxy_off() {
+  echo -e "Closed http(s)  proxy port:2333"
   unset {http,https,ftp,rsync}_proxy {no,NO}_proxy
 }

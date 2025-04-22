@@ -1,3 +1,5 @@
+local utils = require '_.utils'
+
 return {
 	{
 		'https://github.com/jez/vim-github-hub',
@@ -6,7 +8,7 @@ return {
 	},
 	{
 		'https://github.com/akinsho/git-conflict.nvim',
-		event = 'VeryLazy',
+		event = { 'BufReadPre' },
 		opts = {},
 	},
 	{
@@ -17,6 +19,7 @@ return {
 	},
 	{
 		'https://github.com/tpope/vim-fugitive',
+		event = utils.LazyFile,
 		dependencies = {
 			{ 'https://github.com/tpope/vim-rhubarb' },
 		},
@@ -35,8 +38,7 @@ return {
 				desc = '[G]it [S]tatus',
 			},
 		},
-		cmd = { 'Git' },
-		config = function()
+		init = function()
 			local au = require '_.utils.au'
 
 			au.augroup('__my_fugitive__', {

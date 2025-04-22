@@ -5,18 +5,7 @@ M.mkview_filetype_blocklist = {
 	gitcommit = true,
 	hgcommit = true,
 	ministarter = true,
-}
-
-M.quit_on_q_allowlist = {
-	preview = true,
-	qf = true,
-	fzf = true,
-	netrw = true,
-	help = true,
-	taskedit = true,
-	diff = true,
-	man = true,
-	grepper = true,
+	snacks_dashboard = true,
 }
 
 M.colorcolumn_blocklist = {
@@ -39,12 +28,7 @@ M.colorcolumn_blocklist = {
 	gitcommit = true,
 	GrepperSide = true,
 	ministarter = true,
-}
-
-M.heavy_plugins_blocklist = {
-	taskedit = true,
-	minpacprgs = true,
-	ministarter = true,
+	snacks_dashboard = true,
 }
 
 --  Loosely based on: http://vim.wikia.com/wiki/Make_views_automatic
@@ -53,21 +37,6 @@ local function should_mkview(event)
 	return vim.bo[event.buf].buftype == ''
 		and M.mkview_filetype_blocklist[vim.bo[event.buf].filetype] == nil
 		and vim.fn.exists '$SUDO_USER' == 0 -- Don't create root-owned files.
-end
-
-local function should_quit_on_q()
-	return vim.wo.diff == true
-		or vim.wo.previewwindow == true
-		or M.quit_on_q_allowlist[vim.bo.filetype] == true
-end
-
-local function should_turn_off_colorcolumn()
-	return vim.bo.textwidth == 0
-		or vim.wo.diff == true
-		or M.colorcolumn_blocklist[vim.bo.filetype] == true
-		or vim.bo.buftype == 'terminal'
-		or vim.bo.readonly == true
-		or vim.wo.previewwindow == true
 end
 
 function M.mkview(event)
@@ -100,22 +69,6 @@ function M.loadview(event)
 	if should_mkview(event) then
 		vim.cmd.loadview { mods = { emsg_silent = true } }
 		vim.cmd('silent! ' .. vim.fn.line '.' .. 'foldopen!')
-	end
-end
-
-function M.quit_on_q()
-	if should_quit_on_q() then
-		vim.keymap.set(
-			{ 'n' },
-			'q',
-			(
-				(vim.wo.diff == true or vim.bo.filetype == 'man') and ':qa!'
-				or (vim.bo.filetype == 'qf') and ':cclose'
-				or (vim.bo.buftype == 'nofile') and ':q'
-				or ':q'
-			) .. '<cr>',
-			{ buffer = true, silent = true, desc = '[Q]uit on q' }
-		)
 	end
 end
 

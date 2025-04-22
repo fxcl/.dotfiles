@@ -21,12 +21,12 @@ in
     mkIf cfg.enable {
       environment.systemPackages = with pkgs;
         [ vim neovim-unwrapped ] ++ (lib.optionals (!pkgs.stdenv.isDarwin) [
-          gcc # Requried for treesitter parsers
+          gcc # Required for treesitter parsers
         ]);
 
       my.env = {
-        #EDITOR = "${pkgs.neovim-unwrapped}/bin/nvim";
-        EDITOR = "vim";
+        EDITOR = "${pkgs.neovim-unwrapped}/bin/nvim";
+        #EDITOR = "vim";
         VISUAL = "$EDITOR";
         GIT_EDITOR = "$EDITOR";
         MANPAGER = "$EDITOR +Man!";
@@ -51,21 +51,35 @@ in
           nodePackages.vscode-langservers-extracted # HTML, CSS, JSON & ESLint LSPs
           nodePackages.prettier
           nodePackages.bash-language-server
-          nodePackages.dockerfile-language-server-nodejs
           nodePackages.typescript-language-server
           nodePackages.vim-language-server
-          nodePackages.yaml-language-server
-          nodePackages."@tailwindcss/language-server"
+          dockerfile-language-server-nodejs
+	  docker-compose-language-service
+	  vtsls # js/ts LSP
+          yaml-language-server
+          tailwindcss-language-server
           selene # Lua linter
           statix
           sumneko-lua-language-server
-          #tree-sitter # required for treesitter "auto-install" option to work
-          nil
+          tree-sitter # required for treesitter "auto-install" option to work
+          nixd # nix lsp
           actionlint
+          taplo # TOML linter and formatter
+          selene # Lua linter
+          # neovim luarocks support requires lua 5.1
+          # https://github.com/folke/lazy.nvim/issues/1570#issuecomment-2194329169
+          lua51Packages.luarocks
+          typos
+          typos-lsp
+          #copilot-language-server
         ];
       };
 
-      system.activationScripts.postUserActivation.text = ''
+      system.activationScripts.postUserActivation.text =
+        /*
+        bash
+        */
+        ''
         echo ":: -> Running vim activationScript..."
         # Creating needed folders
 

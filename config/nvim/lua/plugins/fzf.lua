@@ -1,207 +1,188 @@
 return {
-	'https://github.com/junegunn/fzf.vim',
-	-- Load it in Markdown files because zk LSP needs to use it
-	ft = { 'markdown' },
-	-- I have the bin globally, so don't build, and just grab plugin directory
-	dependencies = { { 'https://github.com/junegunn/fzf' } },
-	cmd = { 'MyFiles' },
-	keys = {
-		{
-			'<leader><leader>',
-			vim.cmd.Files,
-			{ silent = true },
-			desc = 'Search Files',
-		},
-		{
-			'<Leader>b',
-			vim.cmd.Buffers,
-			{ silent = true },
-			desc = 'Search [B]uffers',
-		},
-		{
-			'<Leader>h',
-			vim.cmd.Helptags,
-			{ silent = true },
-			desc = 'Search [H]elp',
-		},
-		{
-			'<Leader>o',
-			vim.cmd.History,
-			{ silent = true },
-			desc = 'Search [O]ldfiles',
-		},
-	},
-	init = function()
-		if vim.env.VIM_FZF_LOG ~= nil then
-			vim.g.fzf_commits_log_options = vim.env.VIM_FZF_LOG
-		end
-
-		vim.g.fzf_layout =
-			{ window = { width = 0.9, height = 0.8, relative = false } }
-
-		vim.g.fzf_history_dir = vim.fn.expand '~/.fzf-history'
-		vim.g.fzf_buffers_jump = 1
-		vim.g.fzf_tags_command = 'ctags -R'
-		vim.g.fzf_preview_window = { 'right:border-left,<70(down:border-top)' }
-		vim.g.fzf_colors = {
-			-- fg = { 'fg', 'Normal' },
-			-- bg = { 'bg', 'Normal' },
-			-- ['preview-bg'] = { 'bg', 'NormalFloat' },
-			-- hl = { 'fg', 'Comment' },
-			-- ['fg+'] = { 'fg', 'CursorLine', 'CursorColumn', 'Normal' },
-			-- ['bg+'] = { 'bg', 'CursorLine', 'CursorColumn' },
-			-- ['hl+'] = { 'fg', 'Statement' },
-			-- info = { 'fg', 'PreProc' },
-			border = { 'fg', 'Ignore' },
-			-- prompt = { 'fg', 'Conditional' },
-			-- pointer = { 'fg', 'Exception' },
-			-- marker = { 'fg', 'Keyword' },
-			-- spinner = { 'fg', 'Label' },
-			-- header = { 'fg', 'Comment' },
-		}
-	end,
-	config = function()
-		local au = require '_.utils.au'
-
-		vim.keymap.set(
-			{ 'i' },
-			'<c-x><c-k>',
-			'<plug>(fzf-complete-word)',
-			{ remap = true }
-		)
-		vim.keymap.set(
-			{ 'i' },
-			'<c-x><c-f>',
-			'<plug>(fzf-complete-path)',
-			{ remap = true }
-		)
-		vim.keymap.set(
-			{ 'i' },
-			'<c-x><c-j>',
-			'<plug>(fzf-complete-file-ag)',
-			{ remap = true }
-		)
-		vim.keymap.set(
-			{ 'i' },
-			'<c-x><c-l>',
-			'<plug>(fzf-complete-line)',
-			{ remap = true }
-		)
-
-		local function with_preview(options, placeholder)
-			local cmd = vim.env.FZF_PREVIEW_COMMAND
-				or 'echo "vim.env.FZF_PREVIEW_COMMAND is not set {}"'
-
-			if placeholder ~= nil then
-				cmd = cmd:gsub('{}', placeholder)
-			end
-
-			local previewer = {
-				'--preview-window',
-				vim.g.fzf_preview_window[1],
-				'--preview',
-				cmd,
-			}
-
-			for _, v in ipairs(options) do
-				table.insert(previewer, v)
-			end
-
-			return previewer
-		end
-
-		-- Override Files to show resposnive UI depending on the window width
-		vim.api.nvim_create_user_command('Files', function(o)
-			vim.fn['fzf#vim#files'](o.args, {
-				options = with_preview {
-					'--border-label',
-					vim.fn.fnamemodify(vim.env.PWD, ':~'),
-					'--border-label-pos',
-					3,
-					'--prompt',
-					'» ',
-				},
-			}, o.bang)
-		end, { bang = true, nargs = '?', complete = 'dir' })
-
-		vim.api.nvim_create_user_command('MyFiles', function(o)
-			-- https://github.com/junegunn/fzf/blob/a4745626dd5c5f697dbbc5e3aa1796d5016c1faf/README-VIM.md
-			vim.fn['fzf#run'](
-				vim.fn['fzf#wrap'] {
-					source = vim.env.FZF_DEFAULT_COMMAND ~= nil
-							and vim.env.FZF_DEFAULT_COMMAND .. [[ -x printf "\e[38;5;240m{}\e[m {/} %s\n"]]
-						or [[git ls-files]],
-					sink = 'e',
-					dir = o.args,
-					options = with_preview({
-						'--ansi',
-						'--with-nth',
-						'2,1',
-						'--delimiter',
-						'\\s',
-						'--tiebreak',
-						'begin,index',
-						'--border-label',
-						vim.fn.fnamemodify(o.args or vim.env.PWD, ':~'),
-						'--border-label-pos',
-						3,
-						'--prompt',
-						'» ',
-					}, '{1}'),
-				},
-				o.bang
-			)
-		end, { bang = true, nargs = '?', complete = 'dir' })
-
-		au.augroup('__my_fzf__', {
+	{
+		'https://github.com/ibhagwan/fzf-lua',
+		ft = { 'markdown' },
+		keys = {
 			{
-				event = 'User',
-				pattern = 'FzfStatusLine',
-				callback = function()
-					vim.opt_local.statusline = table.concat(
-						{ '%4*', 'fzf', '%6*', 'V: ctrl-v', 'H: ctrl-x', 'Tab: ctrl-t' },
-						' '
-					)
+				'<leader><leader>',
+				function()
+					require('fzf-lua').files {}
 				end,
+				{ silent = true },
+				desc = 'Search Files',
 			},
-		})
+			{
+				'<leader>b',
+				function()
+					require('fzf-lua').buffers {}
+				end,
+				{ silent = true },
+				desc = 'Search [B]uffers',
+			},
+			{
+				'<leader>h',
+				function()
+					require('fzf-lua').help_tags {}
+				end,
+				{ silent = true },
+				desc = 'Search [H]elp',
+			},
+			{
+				'<Leader>o',
+				function()
+					require('fzf-lua').oldfiles {}
+				end,
+				{ silent = true },
+				desc = 'Search [O]ldfiles',
+			},
+			{
+				'<Leader>\\',
+				function()
+					require('fzf-lua').live_grep_glob { exec_empty_query = true }
+				end,
+				{ silent = true },
+				desc = 'grep project',
+			},
+			{
+				'<leader>ta',
+				function()
+					require('fzf-lua').grep_project {
+						winopts = { title = ' Tasks ' },
+						search = '^\\s*- \\[ \\]',
+						no_esc = true,
+						no_ignore = true,
+						hidden = true,
+					}
+				end,
+				desc = 'Search for incomplete t[a]sks',
+			},
+			{
+				'<leader>to',
+				function()
+					require('fzf-lua').grep_project {
+						winopts = { title = ' TODOs ' },
+						-- Single pattern that matches:
+						-- 1. Comment starters: //, #, --, %, ;, /*
+						-- 2. Optional whitespace
+						-- 3. Optional @ prefix
+						-- 4. Markers: todo, note, bug, fixme (case insensitive)
+						-- 5. Optional : suffix
+						-- 6. Word boundary
+						search = [[^\s*?(//|#|--|%|;|/\*)\s*@?(todo|note|hack|bug|fixme|fix|warn|xxx):?\b]],
+						no_esc = true,
+						no_ignore = true,
+						hidden = true,
+					}
+				end,
+				desc = 'Search for t[o]dos',
+			},
+			{
+				-- Overrides default z=
+				'z=',
+				function()
+					require('fzf-lua').spell_suggest {}
+				end,
+				{ silent = true },
+				desc = 'Spelling Suggestions',
+			},
+		},
+		init = function()
+			vim.g.fzf_history_dir = vim.fn.expand '~/.fzf-history'
 
-		-- https://github.com/junegunn/fzf.vim/issues/907#issuecomment-554699400
-		local function ripgrepFzf(query, fullscreen)
-			local command_fmt =
-				'rg --column --line-number --no-heading --color=always -g "!*.lock" -g "!*lock.json" --smart-case %s || true'
-			local initial_command =
-				string.format(command_fmt, vim.fn.shellescape(query))
-			local reload_command = string.format(command_fmt, '{q}')
-			local spec = {
-				'--phony',
-				'--query',
-				query,
-				'--bind',
-				'change:reload:' .. reload_command,
-				'--delimiter',
-				':',
-				'--preview-window',
-				'+{2}-/2',
-			}
-			vim.fn['fzf#vim#grep'](
-				initial_command,
-				1,
-				-- with_preview(spec),
-				vim.fn['fzf#vim#with_preview'] { options = spec },
-				fullscreen
-			)
-		end
+			-- Replaces vim.ui.select
+			-- https://github.com/ibhagwan/fzf-lua/wiki#automatic-sizing-of-heightwidth-of-vimuiselect
+			require('fzf-lua').register_ui_select(function(_, items)
+				local min_h, max_h = 0.15, 0.70
+				local h = (#items + 4) / vim.o.lines
+				if h < min_h then
+					h = min_h
+				elseif h > max_h then
+					h = max_h
+				end
+				return { winopts = { height = h, width = 0.60, row = 0.40 } }
+			end)
+		end,
+		opts = function(_, opts)
+			local utils = require '_.utils'
+			local actions = require 'fzf-lua.actions'
+			local defaults = require 'fzf-lua.defaults'
+			local function log_cmd(fallback, extra)
+				return vim.env.VIM_FZF_LOG
+						and 'git log ' .. vim.env.VIM_FZF_LOG .. ' ' .. (extra or '')
+					or fallback
+			end
 
-		vim.api.nvim_create_user_command('RG', function(o)
-			ripgrepFzf(o.args, o.bang)
-		end, { bang = true, nargs = '*' })
-
-		vim.keymap.set(
-			{ 'n' },
-			[[<leader>\]],
-			[[:RG<CR>]],
-			{ desc = 'Search using ripgrep' }
-		)
-	end,
+			return vim.tbl_deep_extend('force', opts or {}, {
+				defaults = {
+					-- Git icons are very slow in large codea bases and not very useful
+					-- https://github.com/ibhagwan/fzf-lua/wiki#how-do-i-get-maximum-performance-out-of-fzf-lua
+					git_icons = false,
+				},
+				file_icon_padding = ' ',
+				file_icons = 'mini',
+				winopts = {
+					border = utils.get_border(),
+					width = 0.6,
+					height = 0.5,
+					preview = {
+						border = utils.get_border(),
+						hidden = true,
+						winopts = {
+							number = false,
+							cursorline = true,
+						},
+					},
+					on_create = function()
+						-- disable indent plugins
+						vim.b.miniindentscope_disable = true
+						vim.b.snacks_indent = true
+					end,
+				},
+				fzf_opts = {
+					['--pointer'] = '▶',
+					['--marker'] = '✓ ',
+					['--no-scrollbar'] = true,
+					['--info'] = 'inline-right',
+				},
+				keymap = {
+					builtin = {
+						['?'] = 'toggle-preview',
+					},
+				},
+				oldfiles = {
+					include_current_session = true,
+					stat_file = true, -- verify files exist on disk
+				},
+				files = {
+					cwd_prompt = false,
+					fd_opts = vim.env.FZF_DEFAULT_COMMAND and nil
+						or defaults.defaults.files.fd_opts,
+					cmd = vim.env.FZF_DEFAULT_COMMAND ~= nil
+							and vim.env.FZF_DEFAULT_COMMAND
+						or defaults.defaults.files.cmd,
+					no_ignore = true,
+					hidden = true,
+					actions = {
+						['ctrl-g'] = false,
+						['default'] = actions.file_edit,
+					},
+				},
+				grep = {
+					rg_glob = true,
+					actions = {
+						['ctrl-q'] = {
+							fn = actions.file_edit_or_qf,
+							prefix = 'select-all+',
+						},
+					},
+				},
+				commits = {
+					cmd = log_cmd(defaults.defaults.git.commits.cmd),
+				},
+				bcommits = {
+					cmd = log_cmd(defaults.defaults.git.bcommits.cmd, '{file}'),
+				},
+			})
+		end,
+	},
 }

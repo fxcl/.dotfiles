@@ -21,7 +21,7 @@ in
           [
             tmux
             #tmuxPlugins.urlview
-            #next-prayer
+            next-prayer
           ];
       };
 
