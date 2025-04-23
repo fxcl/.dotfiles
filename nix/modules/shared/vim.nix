@@ -20,7 +20,8 @@ in
   config = with lib;
     mkIf cfg.enable {
       environment.systemPackages = with pkgs;
-        [ vim neovim-unwrapped ] ++ (lib.optionals (!pkgs.stdenv.isDarwin) [
+
+        [ vim neovim-unwrapped lua luajit luarocks ] ++ (lib.optionals (!pkgs.stdenv.isDarwin) [
           gcc # Required for treesitter parsers
         ]);
 
@@ -54,8 +55,8 @@ in
           nodePackages.typescript-language-server
           nodePackages.vim-language-server
           dockerfile-language-server-nodejs
-	  docker-compose-language-service
-	  vtsls # js/ts LSP
+          docker-compose-language-service
+          vtsls # js/ts LSP
           yaml-language-server
           tailwindcss-language-server
           selene # Lua linter
@@ -71,7 +72,7 @@ in
           lua51Packages.luarocks
           typos
           typos-lsp
-          #copilot-language-server
+          unstable.copilot-language-server
         ];
       };
 

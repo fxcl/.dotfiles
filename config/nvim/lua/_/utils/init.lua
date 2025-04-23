@@ -8,15 +8,11 @@ function M.get_icon(icon_name)
 			vim.env.PURE_GIT_BRANCH
 		) or ' ',
 		error = '×',
-		info = '𝒾',
-		warn = '⚐',
-		-- hint = '›',
-		hint = ' ',
+		info = '●',
+		warn = '!',
+		hint = '›',
 		lock = '',
-		conflict = ' ',
 		success = ' ',
-		virtual = '●',
-		search = '   ',
 		-- success = ' '
 	}
 
@@ -51,22 +47,37 @@ function M.urlencode(str)
 	return str
 end
 
+function M.plugin_installed(name)
+	local has_packer = pcall(require, 'packer')
+
+	if not has_packer then
+		return
+	end
+
+	return has_packer and packer_plugins ~= nil and packer_plugins[name]
+end
+
+function M.plugin_loaded(name)
+	return M.plugin_installed(name) and packer_plugins[name].loaded
+end
+
 function M.notify(msg, level)
 	vim.notify(msg, level or vim.log.levels.INFO, { title = ':: Local ::' })
 end
 
 function M.plaintext()
-	vim.opt_local.linebreak = true
-	vim.opt_local.list = false
-	vim.opt_local.wrap = true
-	vim.opt_local.expandtab = true
+	vim.cmd [[setlocal spell]]
+	vim.cmd [[setlocal linebreak]]
+	vim.cmd [[setlocal nolist]]
+	vim.cmd [[setlocal wrap]]
+	vim.cmd [[setlocal expandtab]]
 
 	if vim.bo.filetype == 'gitcommit' then
 		-- Git commit messages body are constraied to 72 characters
-		vim.opt_local.textwidth = 72
+		vim.cmd [[setlocal textwidth=72]]
 	else
-		vim.opt_local.textwidth = 0
-		vim.opt_local.wrapmargin = 0
+		vim.cmd [[setlocal textwidth=0]]
+		vim.cmd [[setlocal wrapmargin=0]]
 	end
 
 	-- Break undo sequences into chunks (after punctuation); see: `:h i_CTRL-G_u`
@@ -77,72 +88,18 @@ function M.plaintext()
 	vim.keymap.set({ 'i' }, ',', ',<c-g>u', { buffer = true })
 end
 
+function M.package_json_gx()
+	local line = vim.fn.getline '.'
+	local _, _, package, _ = string.find(line, [[^%s*"(.*)":%s*"(.*)"]])
+
+	if package then
+		local url = 'https://www.npmjs.com/package/' .. package
+		vim.fn['netrw#BrowseX'](url, 0)
+	end
+end
+
 function M.firstToUpper(str)
 	return (str:gsub('^%l', string.upper))
-end
-
-function M.is_rocket()
-	return vim.fn.hostname() == 'rocket'
-end
-
-function M.is_x86_64()
-	return vim.loop.os_uname().machine == 'x86_64'
-end
-
-function M.get_border(highlight)
-	-- single border but heavier and with custom highlight when needed
-	-- https://github.com/neovim/neovim/blob/99e0facf3a001608287ec6db69b01c77443c7b9d/src/nvim/api/win_config.c#L935C19-L935C57
-	return {
-		{ '┏', highlight or 'FloatBorder' },
-		{ '━', highlight or 'FloatBorder' },
-		{ '┓', highlight or 'FloatBorder' },
-		{ '┃', highlight or 'FloatBorder' },
-		{ '┛', highlight or 'FloatBorder' },
-		{ '━', highlight or 'FloatBorder' },
-		{ '┗', highlight or 'FloatBorder' },
-		{ '┃', highlight or 'FloatBorder' },
-	}
-end
-
--- Event for buffer loaded
--- See https://github.com/LazyVim/LazyVim/discussions/1583
-M.LazyFile = { 'BufReadPost', 'BufNewFile', 'BufWritePre' }
-
--- From TJDevries
--- https://github.com/tjdevries/lazy-require.nvim
-function M.lazy_require(require_path)
-	return setmetatable({}, {
-		__index = function(_, key)
-			return require(require_path)[key]
-		end,
-
-		__newindex = function(_, key, value)
-			require(require_path)[key] = value
-		end,
-	})
-end
-
--- Some LSP are part of npm packages, so the binaries live inside node_modules/.bin
--- this function helps getting the correct path to the binary and falling
--- back to a global binary if none is found in the local node_modules
-function M.get_lsp_bin(bin)
-	-- Get the closest `node_modules` first
-	local root = vim.fs.root(0, 'node_modules/.bin')
-	local bin_path = string.format('%s/.bin/%s', root, bin)
-
-	if vim.uv.fs_stat(bin_path) ~= nil then
-		return bin_path
-	end
-
-	-- Then maybe we might be in a monorepo, so get the root `node_modules`, maybe it's hoisted up there
-	root = vim.fs.root(0, '.git')
-	bin_path = string.format('%s/node_modules/.bin/%s', root, bin)
-
-	if vim.uv.fs_stat(bin_path) ~= nil then
-		return bin_path
-	end
-
-	return bin
 end
 
 return M

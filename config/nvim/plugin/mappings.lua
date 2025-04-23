@@ -1,4 +1,150 @@
 -- Plugin mappings are inside plugin/after/<plugin name>.vim files
+
+local au = require '_.utils.au'
+
+-- From https://bitbucket.org/sjl/dotfiles/src/tip/vim/vimrc
+-- The `zzzv` keeps search matches in the middle of the window.
+-- and make sure n will go forward when searching with ? or #
+-- https://vi.stackexchange.com/a/2366/4600
+vim.keymap.set(
+	{ 'n' },
+	'n',
+	[[(v:searchforward ? 'n' : 'N') . 'zzzv']],
+	{ expr = true }
+)
+vim.keymap.set(
+	{ 'n' },
+	'N',
+	[[(v:searchforward ? 'N' : 'n') . 'zzzv']],
+	{ expr = true }
+)
+
+-- Center { & } movements
+vim.keymap.set({ 'n' }, '{', '{zz')
+vim.keymap.set({ 'n' }, '}', '}zz')
+
+-- Movement
+-------------------
+-- highlight last inserted text
+vim.keymap.set({ 'n' }, 'gV', [[`[v`]']])
+
+-- Move by 'display lines' rather than 'logical lines' if no v:count was
+-- provided.  When a v:count is provided, move by logical lines.
+vim.keymap.set(
+	{ 'n', 'x' },
+	'j',
+	[[v:count ? (v:count > 5 ? "m'" . v:count : '') . 'j' : 'gj']],
+	{ expr = true }
+)
+vim.keymap.set(
+	{ 'n', 'x' },
+	'k',
+	[[v:count ? (v:count > 5 ? "m'" . v:count : '') . 'k' : 'gk']],
+	{ expr = true }
+)
+
+if not vim.fn.has 'nvim-0.6' then
+	-- Make `Y` behave like `C` and `D` (to the end of line)
+	vim.keymap.set({ 'n' }, 'Y', 'y$', { desc = '[Y]ank till end of line' })
+end
+
+-- Disable arrow keys
+vim.keymap.set({ 'i' }, '<up>', '<nop>', { remap = true })
+vim.keymap.set({ 'i' }, '<down>', '<nop>', { remap = true })
+vim.keymap.set({ 'i' }, '<left>', '<nop>', { remap = true })
+vim.keymap.set({ 'i' }, '<right>', '<nop>', { remap = true })
+
+-- Make arrowkey do something usefull, resize the viewports accordingly
+vim.keymap.set({ 'n' }, '<Right>', ':vertical resize -2<CR>')
+vim.keymap.set({ 'n' }, '<Left>', ':vertical resize +2<CR>')
+vim.keymap.set({ 'n' }, '<Down>', ':resize -2<CR>')
+vim.keymap.set({ 'n' }, '<Up>', ':resize +2<CR>')
+
+vim.keymap.set({ 'n' }, '<Leader><TAB>', '<C-w><C-w>')
+vim.keymap.set({ 'n' }, '<leader>sh', '<C-w>t<C-w>K<CR>')
+vim.keymap.set({ 'n' }, '<leader>sv', '<C-w>t<C-w>H<CR>')
+
+-- https://github.com/mhinz/vim-galore#dont-lose-selection-when-shifting-sidewards
+vim.keymap.set({ 'x' }, '<', '<gv')
+vim.keymap.set({ 'x' }, '>', '>gv')
+
+-- new file in current directory
+vim.keymap.set(
+	{ 'n' },
+	'<Leader>n',
+	[[:e <C-R>=expand("%:p:h") . "/" <CR>]],
+	{ desc = 'Create [n]ew file in CWD' }
+)
+
+vim.keymap.set({ 'n' }, '<Leader>p', [[:t.<left><left>]])
+vim.keymap.set(
+	{ 'n' },
+	'<leader>e',
+	[[:exe getline(line('.'))<cr>]],
+	{ desc = '[E]xecute current line' }
+)
+
+-- qq to record, Q to replay
+vim.keymap.set({ 'n' }, 'Q', '@@', { desc = 'Replay [Q] macro' })
+
+-- Make dot work in visual mode
+vim.keymap.set({ 'v' }, '.', ':norm.<CR>', { desc = 'Repeat in visual mode' })
+
+-- For neovim terminal :term
+-- nnoremap <leader>t  :vsplit +terminal<cr>
+vim.keymap.set(
+	{ 't' },
+	'<esc>',
+	[[&filetype == 'fzf' ? "\<esc>" : "\<c-\>\<c-n>"]],
+	{ expr = true }
+)
+
+vim.keymap.set({ 't' }, '<M-h>', '<c-><c-n><c-w>h')
+vim.keymap.set({ 't' }, '<M-j>', '<c-><c-n><c-w>j')
+vim.keymap.set({ 't' }, '<M-k>', '<c-><c-n><c-w>k')
+vim.keymap.set({ 't' }, '<M-l>', '<c-><c-n><c-w>l')
+
+au.augroup('__MyTerm__', {
+	{
+		event = 'TermOpen',
+		pattern = '*',
+		command = 'setl nonumber norelativenumber',
+	},
+	{ event = 'TermOpen', pattern = 'term://*', command = 'startinsert' },
+	{ event = 'TermClose', pattern = 'term://*', command = 'stopinsert' },
+})
+
+vim.keymap.set({ 'n' }, '<leader>z', ':call utils#ZoomToggle()<cr>', {
+	silent = true,
+	desc = 'Toggle buffer [z]ooming',
+})
+
+-- Do I need this? seems like not useful with treesitter
+vim.keymap.set(
+	{ 'n' },
+	'<c-g>',
+	':call utils#SynStack()<cr>',
+	{ desc = 'Show highlighting groups for current word' }
+)
+
+vim.keymap.set({ 'v' }, '<Leader>hu', ':call utils#HtmlUnEscape()<cr>', {
+	remap = true,
+	silent = true,
+	desc = '[H]tml [U]nescape',
+})
+
+vim.keymap.set({ 'v' }, '<Leader>he', ':call utils#HtmlEscape()<cr>', {
+	remap = true,
+	silent = true,
+	desc = '[H]tml [E]scape',
+})
+
+-- maintain the same shortcut as vim-gtfo becasue it's in my muscle memory.
+vim.keymap.set({ 'n' }, 'gof', ':call utils#OpenFileFolder()<cr>', {
+	silent = true,
+	desc = '[G]o [o]pen [f]older',
+})
+
 -- Allows you to visually select a section and then hit @ to run a macro on all lines
 -- https://medium.com/@schtoeffel/you-don-t-need-more-than-one-cursor-in-vim-2c44117d51db#.3dcn9prw6
 vim.cmd [[function! ExecuteMacroOverVisualRange()
@@ -6,252 +152,37 @@ vim.cmd [[function! ExecuteMacroOverVisualRange()
   execute ":'<,'>normal @".nr2char(getchar())
 endfunction]]
 
-local mode_keymaps = {
-	['n'] = {
-		-- From https://bitbucket.org/sjl/dotfiles/src/tip/vim/vimrc
-		-- The `zzzv` keeps search matches in the middle of the window.
-		-- and make sure n will go forward when searching with ? or #
-		-- https://vi.stackexchange.com/a/2366/4600
-		{
-			modes = { 'n' },
-			action = [[(v:searchforward ? 'n' : 'N') . 'zzzv']],
-			opts = { expr = true },
-		},
-	},
-	['N'] = {
-		{
-			modes = { 'n' },
-			action = [[(v:searchforward ? 'N' : 'n') . 'zzzv']],
-			opts = { expr = true },
-		},
-	},
-	-- Center { & } movements
-	['{'] = { { modes = { 'n' }, action = '{zz' } },
-	['}'] = { { modes = { 'n' }, action = '}zz' } },
-	['gV'] = {
-		{
-			modes = { 'n' },
-			action = [[`[v`]']],
-			opts = { desc = 'Highlight last insert' },
-		},
-	},
+vim.keymap.set(
+	{ 'x' },
+	'@',
+	':<C-u>call ExecuteMacroOverVisualRange()<CR>',
+	{ desc = 'Execute macro over visual range' }
+)
 
-	-- Move by 'display lines' rather than 'logical lines' if no v:count was
-	-- provided.  When a v:count is provided, move by logical lines.
-	['j'] = {
-		{
-			modes = { 'n', 'x' },
-			action = [[v:count ? (v:count > 5 ? "m'" . v:count : '') . 'j' : 'gj']],
-			opts = { expr = true, desc = 'Move down by display line' },
-		},
-	},
-	['k'] = {
-		{
-			modes = { 'n', 'x' },
-			action = [[v:count ? (v:count > 5 ? "m'" . v:count : '') . 'k' : 'gk']],
-			opts = { expr = true, desc = 'Move up by display line' },
-		},
-	},
+-- Conflicts with LSP K, LSP takes precenedence, so this is a fallback?
+vim.keymap.set(
+	{ 'n' },
+	'K',
+	[[:<C-U>exe 'help '. utils#helptopic()<CR>]],
+	{ silent = true, buffer = true, desc = 'Show help topic if available' }
+)
 
-	['Y'] = {
-		-- Make `Y` behave like `C` and `D` (to the end of line)
-		{
-			modes = { 'n' },
-			action = 'y$',
-			opts = { desc = '[Y]ank till end of line' },
-		},
-	},
-	-- Disable arrow keys in insert mode
-	-- Use arrow keys to resize the viewports in normal mode
-	['<up>'] = {
-		{ modes = { 'i' }, action = '<nop>', opts = { remap = true } },
-		{
-			modes = { 'n' },
-			action = ':resize +2<CR>',
-			opts = { desc = 'Increase height' },
-		},
-	},
-	['<down>'] = {
-		{ modes = { 'i' }, action = '<nop>', opts = { remap = true } },
-		{
-			modes = { 'n' },
-			action = ':resize -2<CR>',
-			opts = { desc = 'Decrease height' },
-		},
-	},
-	['<left>'] = {
-		{ modes = { 'i' }, action = '<nop>', opts = { remap = true } },
-		{
-			modes = { 'n' },
-			action = ':vertical resize +2<CR>',
-			opts = { desc = 'Increase width' },
-		},
-	},
-	['<right>'] = {
-		{ modes = { 'i' }, action = '<nop>', opts = { remap = true } },
-		{
-			modes = { 'n' },
-			action = ':vertical resize -2<CR>',
-			opts = { desc = 'Decrease width' },
-		},
-	},
+-- Quick note taking per project
+vim.keymap.set(
+	{ 'n' },
+	'<Localleader>t',
+	':tab drop .git/todo.md<CR>',
+	{ remap = true, desc = 'Add project [t]odos' }
+)
 
-	['<Leader><TAB>'] = { { modes = { 'n' }, action = '<C-w><C-w>' } },
+-- More easier increment/decrement mappings
+vim.keymap.set({ 'n' }, '+', '<C-a>')
+vim.keymap.set({ 'n' }, '-', '<C-x>')
+vim.keymap.set({ 'x' }, '+', 'g<C-a>')
+vim.keymap.set({ 'x' }, '-', 'g<C-x>')
 
-	-- https://github.com/mhinz/vim-galore#dont-lose-selection-when-shifting-sidewards
-	['<'] = { { modes = { 'x' }, action = '<gv' } },
-	['>'] = { { modes = { 'x' }, action = '>gv' } },
+-- Execute "q" macro over visual line selections
+vim.keymap.set({ 'x' }, 'Q', [[:'<,'>:normal @q<CR>]])
 
-	['<leader>e'] = {
-		{
-			modes = { 'n' },
-			action = [[:exe getline(line('.'))<cr>]],
-			opts = { desc = '[E]xecute current line' },
-		},
-	},
-
-	['Q'] = {
-		{
-			modes = { 'n' },
-			action = '@@',
-			opts = { desc = 'Replay [Q] macro' },
-		},
-		{
-			modes = { 'x' },
-			action = [[:'<,'>:normal @q<CR>]],
-			opts = { desc = 'Execute [Q] macro over visual lines' },
-		},
-	},
-
-	['.'] = {
-		{
-			modes = { 'v' },
-			action = ':norm.<CR>',
-			opts = { desc = 'Repeat in visual mode' },
-		},
-	},
-
-	['<Esc>'] = {
-		{
-			modes = { 't' },
-			action = [[&filetype == 'fzf' ? "\<esc>" : "\<c-\>\<c-n>"]],
-			opts = { expr = true, desc = 'Exit terminal mode' },
-		},
-		{
-			modes = { 'n' },
-			action = vim.g.LoupeLoaded == 1 and '<Plug>(LoupeClearHighlight)'
-				or '<cmd>nohlsearch<CR>',
-			opts = { remap = true, desc = 'Clear Search highlight' },
-		},
-	},
-
-	['<M-h>'] = { { modes = { 't' }, action = '<c-><c-n><c-w>h' } },
-	['<M-j>'] = { { modes = { 't' }, action = '<c-><c-n><c-w>j' } },
-	['<M-k>'] = { { modes = { 't' }, action = '<c-><c-n><c-w>k' } },
-	['<M-l>'] = { { modes = { 't' }, action = '<c-><c-n><c-w>l' } },
-
-	['<Localleader>g'] = {
-		{
-			modes = { 'n' },
-			action = function()
-				local result = vim.treesitter.get_captures_at_cursor(0)
-				print(vim.inspect(result))
-			end,
-			opts = {
-				desc = 'Show treesitter capture group for textobject under cursor.',
-			},
-		},
-	},
-	['gof'] = {
-		{
-			modes = { 'n' },
-			action = function()
-				vim.ui.open(vim.fn.expand '%:p:h:~')
-			end,
-			opts = { silent = true, desc = '[G]o [o]pen [f]older' },
-		},
-	},
-
-	['@'] = {
-		{
-			modes = { 'x' },
-			action = ':<C-u>call ExecuteMacroOverVisualRange()<CR>',
-			opts = { desc = 'Execute macro over visual range' },
-		},
-	},
-
-	['<Localleader>t'] = {
-		{
-			-- Quick note taking per project
-			modes = { 'n' },
-			action = ':tab drop .git/todo.md<CR>',
-			opts = { remap = true, desc = 'Add project [t]odos' },
-		},
-	},
-
-	['+'] = {
-		{ modes = { 'n' }, action = '<C-a>', opts = { desc = 'Increment' } },
-		{ modes = { 'x' }, action = 'g<C-a>', opts = { desc = 'Increment' } },
-	},
-	['_'] = {
-		{ modes = { 'n' }, action = '<C-x>', opts = { desc = 'Decrement' } },
-		{ modes = { 'x' }, action = 'g<C-x>', opts = { desc = 'Decrement' } },
-	},
-
-	['<leader>ld'] = {
-		{
-			modes = { 'n' },
-			action = function()
-				vim.diagnostic.open_float(
-					nil,
-					{ focusable = false, source = 'if_many' }
-				)
-			end,
-			opts = { desc = 'Show diagnostic [E]rror messages' },
-		},
-	},
-
-	['<leader>q'] = {
-		{
-			modes = { 'n' },
-			action = vim.diagnostic.setloclist,
-			opts = { desc = 'Open diagnostic [Q]uickfix list' },
-		},
-	},
-
-	['x'] = {
-		{
-			modes = { 'n' },
-			action = '"_x',
-			opts = {
-				desc = 'delete a character without storing it in the clipboard',
-			},
-		},
-	},
-	-- Center movements
-	['<C-d>'] = {
-		{
-			modes = { 'n' },
-			action = '<C-d>zz',
-		},
-	},
-	['<C-u>'] = {
-		{
-			modes = { 'n' },
-			action = '<C-u>zz',
-		},
-	},
-	-- will also handle path/to/file:13
-	['gf'] = {
-		{
-			modes = { 'n' },
-			action = 'gF',
-		},
-	},
-}
-
-for key, mappings in pairs(mode_keymaps) do
-	for _, map in pairs(mappings) do
-		vim.keymap.set(map.modes, key, map.action, map.opts or {})
-	end
-end
+-- Use / to search inside a visual selection
+vim.keymap.set('x', '/', '<Esc>/\\%V')

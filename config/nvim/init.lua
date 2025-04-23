@@ -1,8 +1,4 @@
 -- vim: foldmethod=marker
---
--- On `vim.opt` vs `vim.o` etc...
--- https://github.com/neovim/neovim/issues/20107
--- :h lua-guide-options
 
 -- Enable the Lua loader byte-compilation cache.
 if vim.loader then
@@ -13,31 +9,50 @@ end
 -- GENERAL {{{1
 -------------------------------------------------------------------------------
 
--- My global namespace
--- selene: allow(global_usage)
-_G.__ = {}
+require '_'
 
-local utils = require '_.utils'
+local au = require '_.utils.au'
 
 local root = vim.env.USER == 'root'
 
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ','
 
--- Skip vim plugins menu.vim, saves ~100ms, disabled by lazy later in this file
+-- Skip vim plugins menu.vim, saves ~100ms, disabled by lazy.nvim in plugin_manager.lua
 vim.g.did_install_default_menus = 1
+-- vim.g.loaded_getscript = 1
+-- vim.g.loaded_getscriptPlugin = 1
+-- vim.g.loaded_vimball = 1
+-- vim.g.loaded_vimballPlugin = 1
+-- vim.g.loaded_rrhelper = 1
 
 -- vim.opt. them directly if they are installed, otherwise disable them. To avoid the then
 -- runtime check cost, which can be slow.
--- Python This must be here because it makes loading vim VERY SLOW otherwise
+-- Python This must be here becasue it makes loading vim VERY SLOW otherwise
 vim.g.python_host_skip_check = 1
+-- Disable python2 provider
 vim.g.loaded_python_provider = 0
 
 vim.g.python3_host_skip_check = 1
-vim.g.loaded_python3_provider = 0
 
-vim.g.loaded_node_provider = 0
-vim.g.loaded_ruby_provider = 0
+if vim.fn.executable 'python3' == 1 then
+	vim.g.python3_host_prog = vim.fn.exepath 'python3'
+else
+	vim.g.loaded_python3_provider = 0
+end
+
+if vim.fn.executable 'neovim-node-host' == 1 then
+	vim.g.node_host_prog = vim.fn.exepath 'neovim-node-host'
+else
+	vim.g.loaded_node_provider = 0
+end
+
+if vim.fn.executable 'neovim-ruby-host' == 1 then
+	vim.g.ruby_host_prog = vim.fn.exepath 'neovim-ruby-host'
+else
+	vim.g.loaded_ruby_provider = 0
+end
+
 vim.g.loaded_perl_provider = 0
 
 -------------------------------------------------------------------------------
@@ -49,12 +64,14 @@ vim.opt.termguicolors = true
 -- spaces per tab
 vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
--- spaces per tab (when shifting), Zero means use tabstop value
-vim.opt.shiftwidth = 0
+-- spaces per tab (when shifting)
+vim.opt.shiftwidth = 2
 -- always use tabs
 vim.opt.expandtab = false
 
 vim.opt.signcolumn = 'yes'
+
+vim.opt.cmdheight = 0
 
 vim.opt.emoji = false
 
@@ -74,6 +91,10 @@ vim.opt.wildignore:append '*.swp,*~,*/.DS_Store'
 vim.opt.tagcase = 'followscs'
 vim.opt.tags:prepend './.git/tags;'
 
+-- Messes up with icons https://github.com/onsails/lspkind.nvim/issues/55
+-- vim.opt.pumblend = 5
+vim.opt.pumheight = 50
+
 -- https://robots.thoughtbot.com/opt-in-project-specific-vim-spell-checking-and-word-completion
 vim.opt.spelllang = 'en,nl'
 vim.opt.spellsuggest = '30'
@@ -91,7 +112,7 @@ vim.opt.virtualedit = 'block'
 -- allow <BS>/h/l/<Left>/<Right>/<Space>, ~ to cross line boundaries
 vim.opt.whichwrap = 'b,h,l,s,<,>,[,],~'
 
-vim.opt.completeopt = 'menu,menuone,noselect,fuzzy,preinsert'
+vim.opt.completeopt = 'menu,menuone,noselect'
 
 -- don't bother updating screen during macro playback
 vim.opt.lazyredraw = true
@@ -110,7 +131,10 @@ vim.opt.splitright = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
-vim.opt.timeoutlen = 300
+-- fix slight delay after pressing ESC then O http://ksjoberg.com/vim-esckeys.html
+-- vim.opt.timeout timeoutlen=500 ttimeoutlen=100
+vim.opt.timeoutlen = 1000
+vim.opt.ttimeoutlen = 0
 
 vim.opt.formatoptions:append 'n'
 vim.opt.formatoptions:append 'r1'
@@ -129,7 +153,7 @@ vim.opt.sidescrolloff = 5
 vim.opt.sidescroll = 3
 
 -- yank and paste with the system clipboard
-vim.opt.clipboard = 'unnamedplus'
+vim.opt.clipboard = 'unnamed'
 
 -- show trailing whitespace
 vim.opt.list = true
@@ -152,31 +176,19 @@ vim.opt.concealcursor = 'n'
 
 vim.opt.fillchars = {
 	diff = '⣿', -- BOX DRAWINGS
+	vert = '┃', -- HEAVY VERTICAL (U+2503, UTF-8: E2 94 83)
+	fold = '─',
 	msgsep = '‾',
 	eob = ' ', -- Hide end of buffer ~
-	fold = '─',
 	foldopen = '▾',
-	foldsep = ' ',
+	foldsep = '│',
 	foldclose = '▸',
-	horiz = '━',
-	horizup = '┻',
-	horizdown = '┳',
-	vert = '┃', -- HEAVY VERTICAL (U+2503, UTF-8: E2 94 83)
-	vertleft = '┫',
-	vertright = '┣',
-	verthoriz = '╋',
 }
 
-vim.opt.foldcolumn = '0'
-vim.opt.foldlevel = 99
-vim.opt.foldnestmax = 4
 vim.opt.foldlevelstart = 99 -- start unfolded
-vim.opt.foldminlines = 0 -- Allow closing even 1-line folds.
--- https://www.reddit.com/r/neovim/comments/1fv8o74/is_it_too_much_to_ask_for_a_foldline_that_looks/
-vim.opt.foldtext = ''
+
 vim.opt.foldmethod = 'expr'
-vim.opt.foldexpr = 'v:lua.__.foldexpr(v:lnum)'
--- vim.opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+vim.opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
 
 vim.opt.linebreak = true
 vim.opt.textwidth = 80
@@ -223,10 +235,11 @@ if not vim.fn.has 'nvim-0.6' then
 end
 
 vim.opt.swapfile = false
-vim.opt.directory =
-	string.format('%s%s,%s', vim.fn.stdpath 'state', '/swap//', '.') -- keep swap files out of the way
+vim.opt.directory = string.format('%s%s', vim.fn.stdpath 'state', '/swap//') -- keep swap files out of the way
+vim.opt.directory:append '.'
 
-vim.opt.updatetime = 250
+vim.opt.updatetime = 1000
+vim.opt.updatecount = 0 -- update swapfiles every 80 typed chars (I don't use swap files anymore)
 
 if root then
 	vim.opt.undofile = false -- don't create root-owned files
@@ -235,34 +248,38 @@ else
 	vim.opt.undodir:append '.'
 end
 
--- Shada Defaults:
---   Neovim: !,'100,<50,s10,h
--- - ! save/restore global variables (only all-uppercase variables)
--- - '100 save/restore marks from last 100 files
--- - <50 save/restore 50 lines from each register
--- - s10 max item size 10KB
--- - h do not save/restore 'hlsearch' setting
-
 if root then -- don't create root-owned files then
 	vim.opt.shada = ''
 	vim.opt.shadafile = 'NONE'
+else
+	-- Defaults:
+	--   Neovim: !,'100,<50,s10,h
+	-- - ! save/restore global variables (only all-uppercase variables)
+	-- - '100 save/restore marks from last 100 files
+	-- - <50 save/restore 50 lines from each register
+	-- - s10 max item size 10KB
+	-- - h do not save/restore 'hlsearch' setting
+	au.augroup('MyNeovimShada', {
+		{
+			event = { 'CursorHold', 'FocusGained', 'FocusLost' },
+			pattern = '*',
+			command = [[if &bt == '' | rshada|wshada | endif]],
+		},
+	})
+end
+
+if not vim.fn.has 'nvim-0.6' then
+	vim.opt.inccommand = 'nosplit' -- incremental command live feedback"
 end
 
 -- cursor behavior:
 --   - no blinking in normal/visual mode
 --   - blinking in insert-mode
 vim.opt.guicursor:append 'n-v-c:blinkon0,i-ci:ver25-Cursor/lCursor-blinkwait30-blinkoff100-blinkon100'
-vim.opt.smoothscroll = true
 
-vim.opt.tabclose = 'uselast'
-
-vim.opt.winborder = 'single' -- bold when this is released https://github.com/neovim/neovim/pull/33189
 -------------------------------------------------------------------------------
 -- PLUGINS {{{1
 -------------------------------------------------------------------------------
--- Fix markdown indentation settings
-vim.g.markdown_recommended_style = 0
-
 vim.g.markdown_fenced_languages = {
 	'css',
 	'erb=eruby',
@@ -287,59 +304,7 @@ vim.g.markdown_fenced_languages = {
 	'viml=vim',
 }
 
-local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
-if not vim.loop.fs_stat(lazypath) then
-	vim.fn.system {
-		'git',
-		'clone',
-		'--filter=blob:none',
-		'https://github.com/folke/lazy.nvim.git',
-		'--branch=stable', -- latest stable release
-		lazypath,
-	}
-end
-
-vim.opt.rtp:prepend(lazypath)
-
-require('lazy').setup {
-	spec = {
-		{ import = 'plugins' },
-	},
-	---@diagnostic disable-next-line: assign-type-mismatch
-	dev = {
-		-- directory where you store your local plugin projects
-		path = '~/Sites/personal/forks',
-		---@type string[] plugins that match these patterns will use your local versions instead of being fetched from GitHub
-		patterns = { 'ahmedelgabri' }, -- For example {"folke"}
-		fallback = true, -- Fallback to git when local plugin doesn't exist
-	},
-	ui = {
-		border = utils.get_border(),
-		backdrop = 0,
-	},
-	performance = {
-		rtp = {
-			-- Stuff I don't use.
-			disabled_plugins = {
-				'getscript',
-				'getscriptPlugin',
-				'netrwPlugin',
-				'rplugin',
-				'rrhelper',
-				'tohtml',
-				'tutor',
-				'vimball',
-				'vimballPlugin',
-			},
-		},
-	},
-	-- Don't bother me when tweaking plugins.
-	change_detection = { notify = false },
-	profiling = {
-		-- Track each new require in the Lazy profiling tab
-		require = true,
-	},
-}
+require '_.plugin_manager'
 
 -------------------------------------------------------------------------------
 -- OVERRIDES {{{1

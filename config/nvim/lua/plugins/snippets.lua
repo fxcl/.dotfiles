@@ -1,8 +1,6 @@
 return {
 	'https://github.com/L3MON4D3/LuaSnip',
 	lazy = true,
-	-- Build Step is needed for regex support in snippets
-	build = 'make install_jsregexp',
 	dependencies = {
 		{ 'https://github.com/rafamadriz/friendly-snippets' },
 	},
@@ -209,9 +207,6 @@ return {
 		ls.filetype_extend('jinja', twig)
 		ls.filetype_extend('jinja2', twig)
 		ls.filetype_extend('html.twig', twig)
-
-		ls.filetype_extend('typescriptreact', { 'html' })
-		ls.filetype_extend('javascriptreact', { 'html' })
 
 		ls.add_snippets(nil, {
 			all = {

@@ -17,6 +17,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/release-24.11";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     # Home Manager inputs
     home-manager = {
@@ -188,6 +189,7 @@
                 patches = (old.patches or [ ]) ++ [ ./nix/hosts/pure-zsh.patch ];
               });
             })
+             (_final: prev: { copilot-language-server = prev.copilot-language-server.fhs; })
              # Node.js related package configuration
              (final: prev: rec {
               nodejs = prev.nodejs_22; # Use Node.js 22

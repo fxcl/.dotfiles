@@ -1,183 +1,237 @@
 return {
-	{ 'https://github.com/tpope/vim-repeat' },
+	{ 'https://github.com/duggiefresh/vim-easydir' },
 	{
-		'https://github.com/wincent/loupe',
-		event = 'VeryLazy',
-		init = function()
-			vim.g.LoupeClearHighlightMap = 0
-			-- Not needed in Neovim (see `:help hl-CurSearch`).
-			vim.g.LoupeHighlightGroup = ''
-
+		'https://github.com/ojroques/vim-oscyank',
+		event = { 'TextYankPost *' },
+		config = function()
 			local au = require '_.utils.au'
-			local hl = require '_.utils.highlight'
 
-			function SetUpLoupeHighlight()
-				hl.group('QuickFixLine', { link = 'PmenuSel' })
-				vim.cmd 'highlight! clear Search'
-				hl.group('Search', { link = 'Underlined' })
-			end
-
-			au.augroup('__myloupe__', {
+			au.augroup('__oscyank__', {
 				{
-					event = 'ColorScheme',
+					event = { 'TextYankPost' },
 					pattern = '*',
-					callback = SetUpLoupeHighlight,
+					callback = function()
+						if vim.v.event.operator == 'y' and vim.v.event.regname == '' then
+							vim.cmd [[OSCYankRegister "]]
+						end
+					end,
 				},
 			})
-
-			SetUpLoupeHighlight()
 		end,
 	},
 	{
-		'https://github.com/alexghergh/nvim-tmux-navigation',
-		opts = {
-			disable_when_zoomed = true,
-			keybindings = {
-				left = '<C-h>',
-				down = '<C-j>',
-				up = '<C-k>',
-				right = '<C-l>',
-				last_active = '<C-\\>',
-				next = '<C-Space>',
-			},
-		},
-	},
-	{
-		'https://github.com/kevinhwang91/nvim-bqf',
-		ft = 'qf',
-		dependencies = {
-			-- https://github.com/kevinhwang91/nvim-bqf/issues/83#issuecomment-1296321476
-			{
-				'https://github.com/junegunn/fzf',
-				name = 'fzf',
-				config = function() end,
-			},
-		},
-	},
-	{
-		'https://github.com/jbyuki/venn.nvim',
+		'https://github.com/kyazdani42/nvim-tree.lua',
 		keys = {
 			{
-				'<leader>v',
-				function()
-					local venn_enabled = vim.inspect(vim.b.venn_enabled)
-					if venn_enabled == 'nil' then
-						vim.b.venn_enabled = true
-
-						vim.cmd [[setlocal ve=all]]
-
-						-- draw a line on HJKL keystrokes
-						vim.keymap.set('n', 'J', '<C-v>j:VBox<CR>', { buffer = true })
-						vim.keymap.set('n', 'K', '<C-v>k:VBox<CR>', { buffer = true })
-						vim.keymap.set('n', 'L', '<C-v>l:VBox<CR>', { buffer = true })
-						vim.keymap.set('n', 'H', '<C-v>h:VBox<CR>', { buffer = true })
-						-- draw a box by pressing "f" with visual selection
-						vim.keymap.set('v', 'f', ':VBox<CR>', { buffer = true })
-					else
-						vim.cmd [[setlocal ve=]]
-
-						vim.keymap.del('n', 'J', { buffer = true })
-						vim.keymap.del('n', 'K', { buffer = true })
-						vim.keymap.del('n', 'L', { buffer = true })
-						vim.keymap.del('n', 'H', { buffer = true })
-						vim.keymap.del('v', 'f', { buffer = true })
-
-						vim.b.venn_enabled = nil
-					end
-				end,
-				noremap = true,
-				desc = 'Enable [V]enn diagramming mode',
+				'--',
+				':NvimTreeFindFile<CR>',
+				{ silent = true },
+				desc = 'Open Nvimtree',
+			},
+		},
+		opts = {
+			view = {
+				side = 'right',
+			},
+			update_focused_file = {
+				enable = true,
+			},
+			git = {
+				ignore = false,
+			},
+			renderer = {
+				indent_markers = {
+					enable = false,
+				},
+				-- Normally README.md gets highlighted by default, which is a bit distracting.
+				special_files = {},
+				icons = {
+					show = {
+						git = true,
+						file = false,
+						folder = false,
+						folder_arrow = false,
+					},
+				},
+			},
+			actions = {
+				open_file = {
+					quit_on_open = true,
+					resize_window = true,
+					window_picker = {
+						enable = false,
+					},
+				},
+			},
+			-- vim-fugitive :GBrowse depends on netrw & this has to be set as early as possible
+			-- maybe switch to https://github.com/ruifm/gitlinker.nvim?
+			-- I only use fugitive for GBrowse 99% of the time & git branch in the statusline
+			disable_netrw = false,
+		},
+	},
+	{
+		'https://github.com/folke/which-key.nvim',
+		event = 'VeryLazy',
+		init = function()
+			vim.o.timeout = true
+			vim.o.timeoutlen = 300
+		end,
+		opts = {
+			window = {
+				border = 'single',
 			},
 		},
 	},
-	{ 'https://github.com/fladson/vim-kitty', ft = 'kitty' },
 	{
-		'ghostty',
-		ft = { 'ghostty' },
-		dir = '/Applications/Ghostty.app/Contents/Resources/vim/vimfiles/',
-	},
-	{
-		'https://github.com/MagicDuck/grug-far.nvim',
-		event = 'FileType grug-far',
-		cmd = { 'GrugFar' },
-		opts = function(_, opts)
-			local utils = require '_.utils'
-			local node_modules_ast_grep = utils.get_lsp_bin 'ast-grep'
-
-			-- Prefer local binaries over global ones
-			if node_modules_ast_grep then
-				return vim.tbl_deep_extend('force', opts or {}, {
-					engines = {
-						astgrep = {
-							path = node_modules_ast_grep,
-						},
-					},
-				})
-			end
-
-			return opts
+		'https://github.com/mbbill/undotree',
+		cmd = 'UndotreeToggle',
+		keys = {
+			{
+				'<leader>u',
+				vim.cmd.UndotreeToggle,
+				silent = true,
+				noremap = true,
+				desc = 'Toggle [U]ndotree',
+			},
+		},
+		config = function()
+			vim.g.undotree_WindowLayout = 2
+			vim.g.undotree_SplitWidth = 50
+			vim.g.undotree_SetFocusWhenToggle = 1
 		end,
 	},
 	{
-		'https://github.com/slugbyte/lackluster.nvim',
+		'https://github.com/tpope/tpope-vim-abolish',
+		cmd = { 'Abolish', 'S', 'Subvert' },
+	},
+	{
+		'https://github.com/tpope/vim-eunuch',
+		cmd = { 'Delete' },
+		keys = {
+			{
+				'<leader>m',
+				':Move <C-R>=expand("%")<cr>',
+				{ remap = true },
+				desc = '[M]ove file',
+			},
+		},
+	},
+	{ 'https://github.com/tpope/vim-repeat' },
+	{
+		'https://github.com/nullchilly/fsread.nvim',
+		cmd = { 'FSRead', 'FSToggle', 'FSClear' },
+	},
+	{
+		'https://github.com/numToStr/Comment.nvim',
+		dependencies = {
+			'https://github.com/JoosepAlviste/nvim-ts-context-commentstring',
+		},
+		keys = {
+			{ 'gc', mode = { 'n', 'x' } },
+			{ 'gb', mode = { 'n', 'x' } },
+		},
+		opts = function()
+			return {
+				pre_hook = require(
+					'ts_context_commentstring.integrations.comment_nvim'
+				).create_pre_hook(),
+			}
+		end,
+	},
+	{ 'https://github.com/wincent/loupe' },
+	{
+		'https://github.com/simrat39/symbols-outline.nvim',
+		cmd = 'SymbolsOutline',
+	},
+	{
+		'https://github.com/christoomey/vim-tmux-navigator',
 		lazy = false,
-		priority = 1000,
-		init = function()
-			vim.cmd.colorscheme 'lackluster'
-		end,
-		opts = function(_, opts)
-			local color = require 'lackluster.color'
-
-			return vim.tbl_deep_extend('force', opts or {}, {
-				tweak_color = {
-					-- I don't like the default warning colors, etc...
-					orange = color.yellow,
-					red = color.orange,
-				},
-				tweak_highlight = {
-					Comment = { italic = true },
-					['@comment'] = { link = 'Comment' },
-
-					Removed = { fg = color.orange },
-					DiffRemove = { link = 'Removed' },
-					DiffRemoved = { link = 'Removed' },
-					DiffDelete = { link = 'Removed' },
-					['@diff.minus'] = { link = 'Removed' },
-
-					Changed = { fg = color.yellow },
-					Change = { link = 'Changed' },
-					DiffChange = { link = 'Changed' },
-					['@diff.delta'] = { link = 'Changed' },
-
-					DiagnosticInfo = { fg = color.blue },
-					DiagnosticSignInfo = { link = 'DiagnosticInfo' },
-					DiagnosticHint = { fg = color.lack },
-					DiagnosticSignHint = { link = 'DiagnosticHint' },
-					DiagnosticWarn = { link = 'Changed' },
-					DiagnosticSignWarn = { link = 'DiagnosticWarn' },
-
-					DiagnosticDeprecated = { strikethrough = true },
-
-					['@markup.italic'] = { italic = true },
-					['@markup.emphasis'] = { link = '@markup.italic' },
-					['@markup.strong'] = { bold = true, fg = 'NONE' },
-
-					StatusLine = { fg = color.gray4, bg = 'NONE' },
-					StatusLineNC = { bg = 'NONE' },
-
-					TabLine = { bg = 'NONE' },
-
-					WinBar = { bg = 'NONE' },
-					WinBarNC = { bg = 'NONE' },
-
-					User6 = { fg = color.gray6 },
-
-					MiniIndentScopeSymbol = { fg = color.gray3 },
-				},
-				disable_plugin = {
-					navic = true,
-				},
-			})
+		config = function()
+			vim.g.tmux_navigator_disable_when_zoomed = 1
 		end,
 	},
+	{ 'https://github.com/kevinhwang91/nvim-bqf' },
+	{
+		'https://github.com/rgroli/other.nvim',
+		cmd = { 'Other', 'OtherSplit', 'OtherVSplit' },
+		config = function()
+			local ok, local_config = pcall(require, '_.config.other-local')
+
+			require('other-nvim').setup {
+				-- These chars needs to be escaped inside pattern only.
+				-- ( ) . % + - * ? [ ^ $
+				-- Escaping is done with prepending a % to it
+				-- https://github.com/rgroli/other.nvim/issues/4#issuecomment-1108372317
+				mappings = vim.tbl_extend('force', {}, ok and local_config or {}),
+			}
+		end,
+	},
+	-- Syntax {{{
+	{ 'https://github.com/jez/vim-github-hub' },
+	-- }}}
+
+	-- Git {{{
+	{
+		'https://github.com/akinsho/git-conflict.nvim',
+		opts = {},
+	},
+	{
+		'https://github.com/sindrets/diffview.nvim',
+		dependencies = { { 'https://github.com/nvim-lua/plenary.nvim' } },
+		cmd = { 'DiffviewOpen' },
+		opts = {
+			use_icons = false,
+		},
+	},
+	-- }}}
+
+	{
+		'https://github.com/folke/zen-mode.nvim',
+		cmd = { 'ZenMode' },
+		opts = {
+			on_close = function()
+				local is_last_buffer = #vim.fn.filter(
+					vim.fn.range(1, vim.fn.bufnr '$'),
+					'buflisted(v:val)'
+				) == 1
+
+				if vim.api.nvim_buf_get_var(0, 'quitting') == 1 and is_last_buffer then
+					if vim.api.nvim_buf_get_var(0, 'quitting_bang') == 1 then
+						vim.cmd 'qa!'
+					else
+						vim.cmd 'qa'
+					end
+				end
+			end,
+
+			on_open = function()
+				vim.api.nvim_buf_set_var(0, 'quitting', 0)
+				vim.api.nvim_buf_set_var(0, 'quitting_bang', 0)
+				vim.cmd [[autocmd! QuitPre <buffer> let b:quitting = 1]]
+				vim.cmd 'cabbrev <buffer> q! let b:quitting_bang = 1 <bar> q!'
+			end,
+
+			plugins = {
+				options = {
+					showbreak = '',
+					showmode = false,
+				},
+				tmux = {
+					enabled = true,
+				},
+			},
+			window = {
+				options = {
+					cursorline = false,
+					number = false,
+					relativenumber = false,
+				},
+			},
+		},
+	},
+	-- Themes, UI & eye candy {{{
+	-- Will load from local machine on personal, from git otherwise.
+	-- Check lazy.nvim config.dev
+	{ 'ahmedelgabri/vim-colors-plain', lazy = true, dev = true },
+	-- }}}
 }

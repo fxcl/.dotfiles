@@ -1,3 +1,6 @@
 vim.cmd [[wincmd L]]
 vim.cmd [[nmap <buffer> K K]]
-vim.opt_local.wrap = false
+
+if vim.fn.has 'nvim-0.9' > 0 then
+	vim.treesitter.start()
+end

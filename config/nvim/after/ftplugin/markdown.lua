@@ -1,9 +1,9 @@
 local utils = require '_.utils'
 
-vim.opt_local.conceallevel = 2
-vim.opt_local.concealcursor = 'c'
-
-vim.opt_local.foldmethod = 'expr'
-vim.opt_local.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+vim.opt.conceallevel = 0
 
 utils.plaintext()
+
+if vim.fn.executable 'gh' == 1 then
+	vim.cmd [[nnoremap <buffer><leader>p :call utils#openMarkdownPreview()<CR>]]
+end

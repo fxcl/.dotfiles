@@ -1,221 +1,264 @@
-local utils = require '_.utils'
-
-local has_words_before = function()
-	if vim.api.nvim_get_option_value('buftype', { buf = 0 }) == 'prompt' then
-		return false
-	end
-	local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-	return col ~= 0
-		and vim.api
-				.nvim_buf_get_text(0, line - 1, 0, line - 1, col, {})[1]
-				:match '^%s*$'
-			== nil
-end
-
 return {
-	{
-		'https://github.com/Saghen/blink.cmp',
-		dependencies = {
-			'https://github.com/rafamadriz/friendly-snippets',
-			'https://github.com/moyiz/blink-emoji.nvim',
-			'https://github.com/olimorris/codecompanion.nvim',
-			'https://github.com/giuxtaposition/blink-cmp-copilot',
-			'https://github.com/MeanderingProgrammer/render-markdown.nvim',
-			'https://github.com/folke/lazydev.nvim',
-			'https://github.com/xzbdmw/colorful-menu.nvim',
-		},
-		event = { 'InsertEnter' },
-		build = 'nix run .#build-plugin',
-		opts = {
-			keymap = {
-				-- Set my own, and get rid of the ones I don't use
-				preset = 'none',
-				['<C-space>'] = { 'show', 'show_documentation', 'hide_documentation' },
-				['<C-c>'] = { 'hide' },
-
-				['<C-p>'] = { 'select_prev', 'fallback_to_mappings' },
-				['<C-n>'] = { 'select_next', 'fallback_to_mappings' },
-
-				['<C-b>'] = { 'scroll_documentation_up', 'fallback' },
-				['<C-f>'] = { 'scroll_documentation_down', 'fallback' },
-
-				-- Not sure about this one 🤔
-				['<C-k>'] = { 'show_signature', 'hide_signature', 'fallback' },
-				['<S-Tab>'] = { 'select_prev', 'snippet_backward', 'fallback' },
-				['<Tab>'] = {
-					function(cmp)
-						if not has_words_before() then
-							return
-						end
-
-						if cmp.is_menu_visible() then
-							return cmp.select_next()
-						end
-					end,
-					'snippet_forward',
-					'fallback',
-				},
-				['<CR>'] = { 'select_and_accept', 'fallback' },
-			},
-
-			snippets = { preset = 'luasnip' },
-
-			completion = {
-				accept = {
-					-- Experimental auto-brackets support
-					auto_brackets = {
-						enabled = true,
-					},
-				},
-
-				menu = {
-					border = utils.get_border(),
-					draw = {
-						padding = 1,
-						gap = 2,
-						columns = { { 'kind_icon' }, { 'label', 'kind', gap = 2 } },
-						components = {
-							label = {
-								width = { fill = true },
-								text = function(ctx)
-									return require('colorful-menu').blink_components_text(ctx)
-								end,
-								highlight = function(ctx)
-									return require('colorful-menu').blink_components_highlight(
-										ctx
-									)
-								end,
-							},
-							label_description = { width = { fill = true } },
-							kind_icon = {
-								text = function(ctx)
-									local MiniIcons = require 'mini.icons'
-									local source = ctx.item.source_name
-									local label = ctx.item.label
-									local icon = source == 'LSP'
-											and MiniIcons.get('lsp', ctx.kind)
-										or source == 'copilot' and MiniIcons.get('lsp', source)
-										or source == 'Path' and (label:match '%.[^/]+$' and MiniIcons.get(
-											'file',
-											label
-										) or MiniIcons.get('directory', ctx.item.label))
-										or ctx.kind_icon
-
-									return icon .. ' '
-								end,
-							},
-						},
-					},
-				},
-
-				documentation = {
-					auto_show = true,
-					treesitter_highlighting = true,
-					window = {
-						border = utils.get_border(),
-					},
-				},
-				ghost_text = {
-					enabled = true,
-				},
-			},
-
-			-- Experimental signature help support
-			signature = {
-				enabled = true,
-				window = {
-					border = utils.get_border(),
-				},
-			},
-
-			cmdline = { enabled = false },
-
-			sources = {
-				default = {
-					'lsp',
-					'path',
-					'snippets',
-					'buffer',
-					'lazydev',
-					'emoji',
-					'codecompanion',
-					'markdown',
-				},
-				providers = {
-					lsp = {
-						name = 'lsp',
-						enabled = true,
-						module = 'blink.cmp.sources.lsp',
-						-- When linking markdown notes, I would get snippets and text in the
-						-- suggestions, I want those to show only if there are no LSP
-						-- suggestions
-						-- Disabling fallbacks as my snippets wouldn't show up
-						-- Enabled fallbacks as this seems to be working now
-						fallbacks = { 'lazydev', 'buffer' },
-					},
-					path = {
-						name = 'Path',
-						module = 'blink.cmp.sources.path',
-						-- When typing a path, I would get snippets and text in the
-						-- suggestions, I want those to show only if there are no path
-						-- suggestions
-						fallbacks = { 'snippets', 'buffer' },
-						opts = {
-							trailing_slash = false,
-							label_trailing_slash = true,
-							get_cwd = function(context)
-								return vim.fn.expand(('#%d:p:h'):format(context.bufnr))
-							end,
-							show_hidden_files_by_default = true,
-						},
-					},
-					buffer = {
-						name = 'Buffer',
-						enabled = true,
-						max_items = 3,
-						module = 'blink.cmp.sources.buffer',
-						min_keyword_length = 4,
-					},
-					lazydev = {
-						name = 'LazyDev',
-						module = 'lazydev.integrations.blink',
-					},
-					emoji = {
-						module = 'blink-emoji',
-						name = 'Emoji',
-						opts = { insert = true },
-					},
-					snippets = {
-						name = 'snippets',
-						enabled = true,
-						max_items = 8,
-						min_keyword_length = 2,
-						module = 'blink.cmp.sources.snippets',
-					},
-					markdown = {
-						name = 'RenderMarkdown',
-						module = 'render-markdown.integ.blink',
-						fallbacks = { 'lsp' },
-					},
-				},
-			},
-		},
-		config = function(_, opts)
-			local ok = pcall(require, 'copilot.api')
-
-			if ok then
-				table.insert(opts.sources.default, 'copilot')
-				opts.sources.providers.copilot = {
-					name = 'copilot',
-					enabled = true,
-					module = 'blink-cmp-copilot',
-					min_keyword_length = 6,
-					score_offset = 100, -- push to the top
-					async = true,
-				}
-			end
-
-			require('blink.cmp').setup(opts)
-		end,
+	'https://github.com/hrsh7th/nvim-cmp',
+	dependencies = {
+		{ 'https://github.com/hrsh7th/cmp-nvim-lsp' },
+		{ 'https://github.com/andersevenrud/cmp-tmux' },
+		{ 'https://github.com/saadparwaiz1/cmp_luasnip' },
+		{ 'https://github.com/hrsh7th/cmp-path' },
+		{ 'https://github.com/hrsh7th/cmp-buffer' },
+		{ 'https://github.com/hrsh7th/cmp-emoji' },
+		{ 'https://github.com/f3fora/cmp-spell' },
+		{ 'https://github.com/hrsh7th/cmp-cmdline' },
+		{ 'https://github.com/hrsh7th/cmp-calc' },
+		{ 'https://github.com/hrsh7th/cmp-nvim-lsp-signature-help' },
 	},
+	config = function()
+		local utils = require '_.utils'
+
+		local has_words_before = function()
+			if vim.api.nvim_buf_get_option(0, 'buftype') == 'prompt' then
+				return false
+			end
+			local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+			return col ~= 0
+				and vim.api
+						.nvim_buf_get_lines(0, line - 1, line, true)[1]
+						:sub(col, col)
+						:match '%s'
+					== nil
+		end
+
+		local sources = {
+			{ name = 'luasnip' },
+			{ name = 'nvim_lsp' },
+			{ name = 'calc' },
+			{ name = 'path' },
+			{ name = 'nvim_lsp_signature_help' },
+			{ name = 'conjure' },
+			{
+				name = 'buffer',
+				max_item_count = 10,
+				keyword_length = 5,
+				option = {
+					-- https://github.com/hrsh7th/cmp-buffer#get_bufnrs-type-fun-number=
+					-- https://github.com/hrsh7th/cmp-buffer#performance-on-large-text-files=
+					get_bufnrs = function()
+						local LIMIT = 1024 * 1024 -- 1 Megabyte max
+						local bufs = {}
+
+						for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+							local line_count = vim.api.nvim_buf_line_count(buf)
+							local byte_size = vim.api.nvim_buf_get_offset(buf, line_count)
+
+							if byte_size < LIMIT then
+								bufs[buf] = true
+							end
+						end
+
+						return vim.tbl_keys(bufs)
+					end,
+				},
+			},
+			{ name = 'tmux', max_item_count = 10 },
+			{ name = 'orgmode' },
+			{ name = 'emoji' },
+			{ name = 'spell' },
+		}
+
+		local menu = {}
+		local special_menu_case = {
+			nvim_lsp = 'LSP',
+			luasnip = 'Snip',
+			orgmode = 'Org',
+			nvim_lsp_signature_help = 'LSP',
+		}
+
+		for _, source in ipairs(sources) do
+			menu[source.name] = string.format(
+				'「%s」',
+				special_menu_case[source.name] or utils.firstToUpper(source.name)
+			)
+		end
+
+		local icons = {
+			Array = ' ',
+			Boolean = '◩ ',
+			Class = ' ',
+			Color = ' ',
+			Constant = ' ',
+			-- Constructor = ' ',
+			Constructor = ' ',
+			Enum = ' ',
+			EnumMember = ' ',
+			Event = ' ',
+			Field = ' ',
+			File = ' ',
+			Folder = ' ',
+			Function = ' ',
+			-- Interface = ' ',
+			Interface = '練',
+			Key = ' ',
+			Keyword = ' ',
+			Method = ' ',
+			Module = ' ',
+			Namespace = ' ',
+			Null = 'ﳠ ',
+			Number = ' ',
+			Object = ' ',
+			Operator = ' ',
+			Package = ' ',
+			Property = ' ',
+			Reference = ' ',
+			Snippet = ' ',
+			String = ' ',
+			Struct = ' ',
+			Text = ' ',
+			TypeParameter = ' ',
+			Unit = '塞 ',
+			Value = ' ',
+			Variable = ' ',
+		}
+
+		local completion_loaded = pcall(function()
+			local cmp = require 'cmp'
+			local types = require 'cmp.types'
+			local str = require 'cmp.utils.str'
+			local luasnip = require 'luasnip'
+
+			cmp.setup {
+				experimental = {
+					ghost_text = true,
+				},
+				formatting = {
+					format = function(entry, vim_item)
+						-- Get the full snippet (and only keep first line)
+						local word = entry:get_insert_text()
+						if
+							entry.completion_item.insertTextFormat
+							== types.lsp.InsertTextFormat.Snippet
+						then
+							word = vim.lsp.util.parse_snippet(word)
+						end
+						word = str.oneline(word)
+
+						-- concatenates the string
+						-- local max = 50
+						-- if string.len(word) >= max then
+						-- 	local before = string.sub(word, 1, math.floor((max - 3) / 2))
+						-- 	word = before .. "..."
+						-- end
+
+						if
+							entry.completion_item.insertTextFormat
+								== types.lsp.InsertTextFormat.Snippet
+							and string.sub(vim_item.abbr, -1, -1) == '~'
+						then
+							word = word .. '~'
+						end
+
+						vim_item.abbr = word
+
+						vim_item.kind =
+							string.format('%s %s', icons[vim_item.kind], vim_item.kind)
+
+						vim_item.menu = menu[entry.source.name] or ''
+
+						return vim_item
+					end,
+				},
+				window = {
+					completion = cmp.config.window.bordered(),
+					documentation = cmp.config.window.bordered(),
+				},
+				completion = {
+					completeopt = 'menu,menuone,noinsert',
+					-- https://github.com/hrsh7th/nvim-cmp/issues/101#issuecomment-907918888
+					get_trigger_characters = function(trigger_characters)
+						local filter_characters = function(char)
+							return char ~= ' ' and char ~= '\t'
+						end
+						return vim.tbl_filter(filter_characters, trigger_characters)
+					end,
+				},
+				sorting = {
+					comparators = {
+						-- defaults https://github.com/hrsh7th/nvim-cmp/blob/main/lua/cmp/config/compare.lua
+						cmp.config.compare.locality,
+						cmp.config.compare.recently_used,
+						cmp.config.compare.score,
+						cmp.config.compare.offset,
+						cmp.config.compare.order,
+						cmp.config.compare.exact,
+						cmp.config.compare.scopes,
+						cmp.config.compare.kind,
+						cmp.config.compare.sort_text,
+						cmp.config.compare.length,
+					},
+				},
+				sources = cmp.config.sources(sources),
+				snippet = {
+					expand = function(args)
+						luasnip.lsp_expand(args.body)
+					end,
+				},
+				mapping = {
+					['<C-n>'] = cmp.mapping.select_next_item {
+						behavior = cmp.SelectBehavior.Insert,
+					},
+					['<C-p>'] = cmp.mapping.select_prev_item {
+						behavior = cmp.SelectBehavior.Insert,
+					},
+					['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
+					['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
+					['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+					['<C-e>'] = cmp.mapping(function(fallback)
+						if cmp.abort() then
+							return
+						elseif luasnip.choice_active() then
+							luasnip.change_choice(1)
+						else
+							fallback()
+						end
+					end, {
+						'i',
+						's',
+					}),
+					['<CR>'] = cmp.mapping.confirm {
+						behavior = cmp.ConfirmBehavior.Insert,
+						select = true,
+					},
+					['<Tab>'] = cmp.mapping(function(fallback)
+						if cmp.visible() then
+							cmp.select_next_item { behavior = cmp.SelectBehavior.Select }
+						elseif luasnip.expand_or_locally_jumpable() then
+							luasnip.expand_or_jump()
+						elseif has_words_before() then
+							cmp.complete()
+						else
+							fallback()
+						end
+					end, {
+						'i',
+						's',
+					}),
+					['<S-Tab>'] = cmp.mapping(function(fallback)
+						if cmp.visible() then
+							cmp.select_prev_item { behavior = cmp.SelectBehavior.Select }
+						elseif luasnip.jumpable(-1) then
+							luasnip.jump(-1)
+						else
+							fallback()
+						end
+					end, {
+						'i',
+						's',
+					}),
+				},
+			}
+		end)
+
+		if not completion_loaded then
+			utils.notify 'Completion failed to set up'
+		end
+	end,
 }

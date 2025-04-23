@@ -72,8 +72,8 @@ in
         # `brew install`
         brews = [
           "cppcheck"
-          "lua"
-          "luajit"
+          #"lua"
+          #"luajit"
           # "ccache"
           # "sccache"
           "pinentry-mac"
