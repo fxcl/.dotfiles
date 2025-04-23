@@ -426,7 +426,7 @@ return {
 						or nvim_lsp.util.path.dirname(fname)
 				end,
 			},
-			tsserver = {
+			ts_ls = {
 				root_dir = function(fname)
 					return not nvim_lsp.util.root_pattern(
 						'.flowconfig',
