@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 _load_weather() {
 	# check for internet connection
@@ -31,7 +31,7 @@ weather_segment() {
 
 	echo
 
-	printf "%s#[fg=colour237] ⦁ " "$weather"
+	printf "%s" "$weather"
 }
 
 weather_segment

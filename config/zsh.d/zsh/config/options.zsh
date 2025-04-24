@@ -1,76 +1,109 @@
-##############################################################
-# Performance Optimization Configuration - Load Order is Critical for Performance
-###############################################################
+################################################################################
+# ZSH OPTIONS CONFIGURATION - OPTIMIZED FOR PERFORMANCE AND USABILITY
+################################################################################
 
-# Performance Critical Options - Must be Loaded First
-setopt HASH_CMDS        # Cache command locations to reduce PATH searches (significant performance boost)
-setopt HASH_DIRS        # Cache directory locations to reduce PATH searches (significant performance boost)
-setopt GLOB_COMPLETE    # Expand wildcards during completion rather than on command line (improves performance)
-setopt NO_FLOW_CONTROL  # Disable flow control characters (C-s and C-q), reduces processing overhead
-setopt NO_BEEP          # Disable error beeps, avoids unnecessary system calls
+# Early return for non-interactive sessions to improve startup time
+[[ ! -o interactive ]] && return 0
 
-# Lazy Load URL Handling Functions - Initialize Only When Needed
+################################################################################
+# CRITICAL PERFORMANCE OPTIONS - LOAD FIRST
+################################################################################
+
+# Command and path caching - major performance improvement
+setopt HASH_CMDS          # Cache command locations to avoid PATH searches
+setopt HASH_DIRS          # Cache directory locations to avoid PATH searches
+
+# Input/output optimization
+setopt NO_FLOW_CONTROL    # Disable flow control (Ctrl+S/Ctrl+Q) for better terminal experience
+setopt NO_BEEP            # Disable beeping to reduce system calls
+setopt GLOB_COMPLETE      # Complete globs instead of expanding them
+
+################################################################################
+# LAZY LOADING MECHANISMS - DEFER INITIALIZATION
+################################################################################
+
+# URL handling functions - only loaded when needed
 _load_url_handlers() {
-  autoload -Uz bracketed-paste-url-magic && zle -N bracketed-paste bracketed-paste-url-magic
-  autoload -Uz url-quote-magic && zle -N self-insert url-quote-magic
+  # Load URL-related ZLE functions in a single operation
+  autoload -Uz bracketed-paste-url-magic url-quote-magic
+  
+  # Register ZLE widgets
+  zle -N bracketed-paste bracketed-paste-url-magic
+  zle -N self-insert url-quote-magic
 }
+
+# Use zsh-defer if available, otherwise load immediately
 zsh-defer _load_url_handlers 2>/dev/null || _load_url_handlers
 
-# Standard Shell Options - Grouped by Purpose
-# Job Control Related Options (Grouped for Readability and Maintainability)
-setopt NO_CHECK_JOBS    # Don't report status of background and suspended jobs when exiting shell
-setopt NO_HUP           # Don't send HUP signal to running jobs when shell exits
-setopt NO_BG_NICE       # Prevent running all background jobs at a lower priority
-setopt NOTIFY           # Report background job status immediately, not before printing prompt
-setopt LONG_LIST_JOBS   # List jobs in long format by default
+################################################################################
+# JOB CONTROL OPTIMIZATION
+################################################################################
 
-# Interactive Usage Experience Options
-setopt AUTO_RESUME      # Treat single word simple commands without redirection as candidates for resumption
-setopt INTERACTIVE_COMMENTS # Allow comments starting with `#` in interactive shells
-setopt CORRECT          # Suggest command corrections (enable only when needed, may impact performance)
+# Job management settings - grouped for related functionality
+setopt NO_CHECK_JOBS      # Don't check for running jobs on shell exit
+setopt NO_HUP             # Don't kill background jobs on shell exit
+setopt NO_BG_NICE         # Don't lower priority of background jobs
+setopt NOTIFY             # Report job status immediately, not at next prompt
+setopt LONG_LIST_JOBS     # Use detailed format for job listings
 
-##############################################################
-#  History Optimization Options
-###############################################################
+################################################################################
+# INTERACTIVE SHELL EXPERIENCE
+################################################################################
 
-# History Ignore Pattern - Use Simple Patterns to Reduce Regex Complexity
-# Avoid complex regex, use simple pattern matching for better performance
+# Command line behavior enhancements
+setopt AUTO_RESUME        # Resume suspended job with its name as a command
+setopt INTERACTIVE_COMMENTS # Allow comments in interactive shells
+setopt CORRECT            # Suggest corrections for mistyped commands
+
+################################################################################
+# HISTORY MANAGEMENT - OPTIMIZED FOR PERFORMANCE AND USABILITY
+################################################################################
+
+# Ignore common commands in history to save space and improve search
+# Simple pattern matching is faster than complex regex
 HISTORY_IGNORE='(clear|c|pwd|exit|ls|ll|la|[bf]g|less)'
 
-# History Settings - Grouped by Performance Impact
-# High Performance Impact Options
-setopt HIST_IGNORE_ALL_DUPS   # Skip all duplicates (significant performance boost)
-setopt HIST_NO_STORE          # Don't store history commands themselves (improves performance)
-setopt HIST_NO_FUNCTIONS      # Don't store function definitions (improves performance)
-setopt HIST_FIND_NO_DUPS      # Don't show duplicates in search (improves performance)
+# High-impact history performance settings
+setopt HIST_IGNORE_ALL_DUPS   # Remove all duplicates from history
+setopt HIST_NO_STORE          # Don't store history or fc commands
+setopt HIST_NO_FUNCTIONS      # Don't store function definitions
+setopt HIST_FIND_NO_DUPS      # Don't display duplicates during searches
 
-# Medium Performance Impact Options
-setopt INC_APPEND_HISTORY     # Write immediately (better crash recovery, slight performance impact)
-setopt HIST_EXPIRE_DUPS_FIRST # Expire duplicates first (saves space)
-setopt HIST_REDUCE_BLANKS     # Save space by removing extra blanks
+# Balanced performance/functionality history settings
+setopt INC_APPEND_HISTORY     # Append to history file immediately
+setopt HIST_EXPIRE_DUPS_FIRST # Remove duplicates first when trimming history
+setopt HIST_REDUCE_BLANKS     # Remove superfluous blanks from history
 
-# Essential Functionality Options
-setopt EXTENDED_HISTORY       # Timestamped history (slight performance impact but necessary)
+# Core history functionality
+setopt EXTENDED_HISTORY       # Save timestamp and duration information
 
-##############################################################
-# Directory Navigation and File Operation Optimization
-###############################################################
+################################################################################
+# DIRECTORY NAVIGATION OPTIMIZATION
+################################################################################
 
-# Directory Navigation Options - Sorted by Performance Impact
-# High Performance Options
-setopt PUSHD_IGNORE_DUPS # Don't push multiple copies of same directory onto stack (reduces memory usage)
-setopt PUSHD_SILENT      # Don't print directory stack after pushd or popd (reduces I/O)
-setopt AUTOPARAMSLASH    # Tab completing directory appends a slash (improves user experience)
+# High-performance directory handling
+setopt PUSHD_IGNORE_DUPS      # Avoid duplicate directories in stack
+setopt PUSHD_SILENT           # Don't print directory stack after pushd/popd
+setopt AUTOPARAMSLASH         # Append slash to directory names during completion
 
-# Medium Performance Impact Options
-setopt AUTO_CD           # If command can't be executed and is a directory name, perform cd to that directory
-setopt AUTO_PUSHD        # Make cd push old directory onto directory stack
-setopt PUSHD_TO_HOME     # Have pushd with no arguments act like 'pushd ${HOME}'
+# Directory navigation convenience features
+setopt AUTO_CD                # Change to directory without typing cd
+setopt AUTO_PUSHD             # Make cd push directories to stack
+setopt PUSHD_TO_HOME          # pushd with no args goes to home directory
 
-# File Operation Safety Options
-# Optimized Global Settings - Disable Unnecessary Features
-setopt NO_MULTIOS        # Disabled - rarely needed and has performance overhead
-setopt NO_CLOBBER        # Prevent accidental overwrites (safety)
+################################################################################
+# FILE OPERATION SAFETY AND OPTIMIZATION
+################################################################################
 
-# Preload Common Modules to Reduce First-Use Delay
+# Disable rarely used features to improve performance
+setopt NO_MULTIOS             # Disable multiple redirections - rarely needed
+
+# File operation safety measures
+setopt NO_CLOBBER             # Prevent accidental file overwriting
+
+################################################################################
+# PRELOAD CRITICAL MODULES - REDUCE FIRST-USE DELAY
+################################################################################
+
+# Load stat module with minimal features for file operations
 { zmodload -F zsh/stat +b:zstat } 2>/dev/null

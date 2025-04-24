@@ -53,11 +53,11 @@
 
 [delta]
 	#features = labels
-  features = mellow-barbet
-  dark = true
-  light = false
-  line-numbers = true
-  side-by-side = false
+  	features = mellow-barbet
+	dark = true
+	light = false
+	line-numbers = true
+	side-by-side = false
 	syntax-theme = ansi
 	navigate = true # use n and N to move between diff sections
 	hyperlinks = true

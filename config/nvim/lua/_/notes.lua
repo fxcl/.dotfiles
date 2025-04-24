@@ -68,7 +68,13 @@ function M.open_in_obsidian()
 	)
 
 	print(str)
-	vim.ui.open(str)
+	vim.fn.system(
+		string.format(
+			vim.fn.executable 'osascript' and [[osascript -e 'open location "%s"']]
+				or [[xdg-open "%s"]],
+			str
+		)
+	)
 end
 
 function M.note_in_obsidian(...)
@@ -95,7 +101,13 @@ tags:
 	)
 
 	-- print(str)
-	vim.ui.open(str)
+	vim.fn.system(
+		string.format(
+			vim.fn.executable 'osascript' and [[osascript -e 'open location "%s"']]
+				or [[xdg-open "%s"]],
+			str
+		)
+	)
 end
 
 function M.get_notes_completion()

@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 set -ue -o pipefail
 
 # Look for files that still have conflict markers (>|< repeated 7 times)

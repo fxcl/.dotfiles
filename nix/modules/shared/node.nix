@@ -74,6 +74,7 @@ in
             nodePackages.browserify
             nodePackages.rollup
             nodePackages.parcel-bundler
+            unstable.copilot-language-server
           ];
         };
 
