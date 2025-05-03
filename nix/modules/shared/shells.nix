@@ -103,6 +103,7 @@ in
               bat
               fd
               ripgrep
+              tree
               pastel
               vivid
               hyperfine

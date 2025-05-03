@@ -15,19 +15,19 @@ has() {
 # Optimized function to measure file modification time (cross-platform)
 stat_mtime() {
   local file=$1
-  
+
   # Try BSD stat first (macOS) - faster than GNU on macOS
   if mtime=$(stat -f %m "$file" 2>/dev/null); then
     echo $mtime
     return 0
   fi
-  
+
   # Try GNU stat if BSD stat failed (Linux)
   if mtime=$(stat -c %Y "$file" 2>/dev/null); then
     echo $mtime
     return 0
   fi
-  
+
   # Fallback to current time if stat fails
   date +%s
 }
@@ -47,8 +47,8 @@ HISTFILE="${XDG_DATA_HOME}/.zsh_history" # History file location
 
 # Add custom functions directory first for faster lookups
 fpath=(
-  ${ZDOTDIR}/functions                  # User-defined functions
-  $fpath                                 # System functions
+  ${ZDOTDIR}/functions # User-defined functions
+  $fpath               # System functions
 )
 
 # Add Homebrew completions if available (avoid expensive brew --prefix call if possible)
@@ -69,19 +69,19 @@ autoload -Uz ${ZDOTDIR}/functions/**/*(N:t)
 
 # Centralized ZI configuration - use associative array for better organization
 typeset -gA ZI=(
-  [HOME_DIR]="$XDG_CACHE_HOME/zsh/zi"      # Base directory
-  [BIN_DIR]="$XDG_CACHE_HOME/zsh/zi/bin"    # Core scripts
+  [HOME_DIR]="$XDG_CACHE_HOME/zsh/zi"            # Base directory
+  [BIN_DIR]="$XDG_CACHE_HOME/zsh/zi/bin"         # Core scripts
   [PLUGINS_DIR]="$XDG_CACHE_HOME/zsh/zi/plugins" # Plugin storage
-  [ZCOMPDUMP_PATH]="${ZDOTDIR}/.zcompdump" # Completion cache
-  [COMPINIT_OPTS]="-C"                     # Fast completion initialization
+  [ZCOMPDUMP_PATH]="${ZDOTDIR}/.zcompdump"       # Completion cache
+  [COMPINIT_OPTS]="-C"                           # Fast completion initialization
 )
-ZPFX="$ZI[HOME_DIR]/polaris"               # Prefix for compiled functions
+ZPFX="$ZI[HOME_DIR]/polaris" # Prefix for compiled functions
 
 # Load or install ZI - optimized conditional logic
 if [[ -f "${ZI[BIN_DIR]}/zi.zsh" ]]; then
-  source "${ZI[BIN_DIR]}/zi.zsh"           # Load existing installation
-  autoload -Uz _zi                         # Load completion function
-  [[ -v _comps ]] && _comps[zi]=_zi        # Register completion
+  source "${ZI[BIN_DIR]}/zi.zsh"    # Load existing installation
+  autoload -Uz _zi                  # Load completion function
+  [[ -v _comps ]] && _comps[zi]=_zi # Register completion
 else
   # Only attempt installation if git is available
   if has git; then
@@ -107,7 +107,7 @@ zi ice wait'0' lucid compile'(pure|async).zsh' pick'async.zsh' src'pure.zsh'
 zi light sindresorhus/pure
 
 # Theme styling - grouped for better organization
-zstyle :prompt:pure:path color 240          # Subdued path color
+zstyle :prompt:pure:path color 240           # Subdued path color
 zstyle :prompt:pure:git:branch color blue    # Highlight branch name
 zstyle :prompt:pure:git:dirty color red      # Make dirty state obvious
 zstyle :prompt:pure:git:action color 005     # Highlight git actions
@@ -122,21 +122,21 @@ zstyle ':completion::complete:*' use-cache on
 zstyle ':completion::complete:*' cache-path "${ZDOTDIR}/.zcompcache"
 
 # Performance-optimized completion settings
-zstyle ':completion:*' accept-exact '*(N)'   # Accept exact matches immediately
+zstyle ':completion:*' accept-exact '*(N)'     # Accept exact matches immediately
 zstyle ':completion:*' accept-exact-dirs 'yes' # Faster directory completion
-zstyle ':completion:*' special-dirs true     # Handle . and .. directories
+zstyle ':completion:*' special-dirs true       # Handle . and .. directories
 
 # Smart case-insensitive matching - balance between accuracy and convenience
 # Simplified matcher list for better performance
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
 # Display optimization - reduce formatting overhead
-zstyle ':completion:*' list-packed yes       # Compact completion display
-zstyle ':completion:*' file-sort modification # Sort by modification time
+zstyle ':completion:*' list-packed yes                                          # Compact completion display
+zstyle ':completion:*' file-sort modification                                   # Sort by modification time
 zstyle ':completion:*:functions' ignored-patterns '(_*|pre(cmd|exec)|prompt_*)' # Skip internal functions
 
 # Load additional completions with turbo mode
-zi ice wait'0' lucid blockf                  # Block traditional fpath method
+zi ice wait'0' lucid blockf # Block traditional fpath method
 zi light zsh-users/zsh-completions
 
 # Intelligent compinit - only rebuild cache daily for better performance
@@ -171,10 +171,10 @@ zi light zsh-users/zsh-autosuggestions
 ################################################################################
 
 # Configure history search keybindings - support both terminal and application modes
-bindkey "${terminfo[kcuu1]}" history-substring-search-up    # Up arrow
-bindkey "${terminfo[kcud1]}" history-substring-search-down  # Down arrow
-bindkey '^[[A' history-substring-search-up                  # Alternative up
-bindkey '^[[B' history-substring-search-down                # Alternative down
+bindkey "${terminfo[kcuu1]}" history-substring-search-up   # Up arrow
+bindkey "${terminfo[kcud1]}" history-substring-search-down # Down arrow
+bindkey '^[[A' history-substring-search-up                 # Alternative up
+bindkey '^[[B' history-substring-search-down               # Alternative down
 
 ################################################################################
 # EXTERNAL TOOLS INTEGRATION - LAZY LOADED
@@ -189,9 +189,9 @@ init_env() {
       command mv -f /usr/local/share/zsh/site-functions/_git \
         /usr/local/share/zsh/site-functions/disabled._git 2>/dev/null
     fi
-    
+
     # Set C++ compiler flags on macOS if clang++ is available
-    has clang++ && export CXXFLAGS="-stdlib=libc++" LDFLAGS="-stdlib=libc++"
+    has clang++ && export CXXFLAGS="-stdlib=libc++" LDFLAGS="-stdlib=libc++ -L$(brew --prefix openssl@3)/lib" CFLAGS="-I$(brew --prefix openssl@3)/include" RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@3)"
   fi
 
   # Initialize tools with silent error handling and minimal output
@@ -209,8 +209,8 @@ init_env
 ################################################################################
 
 # Load optional local configurations
-[[ -f "$ZDOTDIR/bin/proto" ]] && source "$ZDOTDIR/bin/proto"  # Development environment
-[[ -f $HOST_CONFIGS/zshrc ]] && source $HOST_CONFIGS/zshrc     # Host-specific config
+[[ -f "$ZDOTDIR/bin/proto" ]] && source "$ZDOTDIR/bin/proto" # Development environment
+[[ -f $HOST_CONFIGS/zshrc ]] && source $HOST_CONFIGS/zshrc   # Host-specific config
 
 # Create hushlogin file if needed (suppresses login messages)
 if [[ -e /etc/motd ]] && [[ ! -f ${HOME}/.hushlogin ]]; then

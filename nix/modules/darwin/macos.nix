@@ -71,6 +71,7 @@ in
 
         # `brew install`
         brews = [
+         "libyaml"
           "cppcheck"
           #"lua"
           #"luajit"
