@@ -62,7 +62,10 @@ in
           ];
         };
 
-        system.activationScripts.postUserActivation.text = ''
+        # TODO: Migrate dock setup to use system.activationScripts or user-specific activation
+        # system.activationScripts.postUserActivation has been removed in nix-darwin
+        # This functionality needs to be restructured to run as root with sudo or moved to home-manager
+       system.activationScripts.userSetup.text = ''
           echo >&2 "Setting up dock items..."
           haveURIs="$(dockutil --list | ${pkgs.coreutils}/bin/cut -f2)"
           if ! diff -wu <(echo -n "$haveURIs") <(echo -n '${wantURIs}') >&2; then

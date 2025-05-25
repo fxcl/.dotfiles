@@ -46,7 +46,7 @@ in
 
       nix_managed = mkOptStr
         "vim: set nomodifiable : Nix managed - DO NOT EDIT - see source inside ~/.dotfiles or use `:set modifiable` to force.";
-      user = mkOption { type = options.users.users.type.functor.wrapped; };
+      user = mkOption { type = options.users.users.type.nestedTypes.elemType; };
       hostConfigHome = mkOptStr "";
       hm = {
         file = mkOpt' attrs { } "Files to place directly in $HOME";
@@ -140,13 +140,6 @@ in
       #   my.hm.dataFile    ->  home-manager.users.zxfstd.home.xdg.dataFile
       users."${config.my.username}" = {
         home = {
-          # Necessary for home-manager to work with flakes, otherwise it will
-          # look for a nixpkgs channel.
-          stateVersion =
-            if pkgs.stdenv.isDarwin then
-              "24.11"
-            else
-              config.system.stateVersion;
           inherit (config.my) username;
           file = mkAliasDefinitions options.my.hm.file;
         };

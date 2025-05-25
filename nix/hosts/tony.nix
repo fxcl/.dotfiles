@@ -1,7 +1,9 @@
 { pkgs, lib, inputs, ... }: {
 
+  # Set primary user for homebrew and other user-specific options
+  system.primaryUser = "kelvin";
+
   nix = {
-    gc = { user = "kelvin"; };
     # Auto upgrade nix package and the daemon service.
     # services.nix-daemon.enable = true;
     # nix.package = pkgs.nix;

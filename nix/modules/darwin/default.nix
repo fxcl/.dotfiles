@@ -1,11 +1,8 @@
 { pkgs, lib, config, options, ... }:
 
 {
-  # Auto upgrade nix package and the daemon service.
-  # affects nix.useDaemon
-  services.nix-daemon.enable = true;
-
-  nix.configureBuildUsers = true;
+  # nix-daemon and build users are now managed unconditionally when nix.enable is on
+  # services.nix-daemon.enable and nix.configureBuildUsers options have been removed
 
   homebrew.enable = true;
   #homebrew.autoUpdate = true;
