@@ -1,0 +1,197 @@
+#!/usr/bin/env zsh
+# ZSH Performance Benchmark Script
+# Measures shell startup time and provides optimization recommendations
+
+# Colors for output
+readonly RED='\033[0;31m'
+readonly GREEN='\033[0;32m'
+readonly YELLOW='\033[1;33m'
+readonly BLUE='\033[0;34m'
+readonly NC='\033[0m' # No Color
+
+# Configuration
+readonly ITERATIONS=5
+readonly TEMP_PROFILE="/tmp/zsh_benchmark_$$"
+
+print_header() {
+  echo -e "${BLUE}╔══════════════════════════════════════════════════════════════╗${NC}"
+  echo -e "${BLUE}║                    ZSH Performance Benchmark                 ║${NC}"
+  echo -e "${BLUE}╚══════════════════════════════════════════════════════════════╝${NC}"
+  echo
+}
+
+measure_startup_time() {
+  local profile_file="$1"
+  local description="$2"
+  local times=()
+  local total=0
+
+  echo -e "${YELLOW}Testing: $description${NC}" >&2
+  echo -n "Running $ITERATIONS iterations: " >&2
+
+  for i in {1..$ITERATIONS}; do
+    # Use microsecond precision for better timing
+    local start_time=$(date +%s%6N)
+
+    zsh -c "source '$profile_file'; exit" 2>/dev/null
+
+    local end_time=$(date +%s%6N)
+    local duration=$(((end_time - start_time) / 1000)) # Convert to milliseconds
+
+    times+=($duration)
+    total=$((total + duration))
+    echo -n "." >&2
+  done
+
+  echo >&2
+
+  # Calculate statistics
+  local avg=$((total / ITERATIONS))
+  local min=$(printf '%s\n' "${times[@]}" | sort -n | head -1)
+  local max=$(printf '%s\n' "${times[@]}" | sort -n | tail -1)
+
+  echo -e "  Average: ${GREEN}${avg}ms${NC}" >&2
+  echo -e "  Min:     ${GREEN}${min}ms${NC}" >&2
+  echo -e "  Max:     ${RED}${max}ms${NC}" >&2
+  echo >&2
+
+  # Return average time for comparison (clean numeric value to stdout)
+  echo "$avg"
+}
+
+create_minimal_profile() {
+  cat >"$TEMP_PROFILE" <<'EOF'
+# Minimal ZSH profile for baseline measurement
+export ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
+setopt NO_BEEP
+setopt HASH_CMDS
+setopt HASH_DIRS
+EOF
+}
+
+benchmark_current_config() {
+  local current_config="$ZDOTDIR/.zshrc"
+  if [[ ! -f "$current_config" ]]; then
+    current_config="$HOME/.zshrc"
+  fi
+
+  if [[ -f "$current_config" ]]; then
+    local result=$(measure_startup_time "$current_config" "Current ZSH Configuration")
+    printf "%d" "$result"
+  else
+    echo -e "${RED}Error: Could not find ZSH configuration file${NC}"
+    return 1
+  fi
+}
+
+benchmark_minimal_config() {
+  create_minimal_profile
+  local result=$(measure_startup_time "$TEMP_PROFILE" "Minimal ZSH Configuration (Baseline)")
+  rm -f "$TEMP_PROFILE"
+  printf "%d" "$result"
+}
+
+analyze_config() {
+  echo -e "${BLUE}Configuration Analysis:${NC}"
+  echo
+
+  # Check for common performance issues
+  local config_file="$ZDOTDIR/.zshrc"
+  [[ ! -f "$config_file" ]] && config_file="$HOME/.zshrc"
+
+  if [[ -f "$config_file" ]]; then
+    # Count plugins
+    local plugin_count=$(grep -c "zi light\|zi load" "$config_file" 2>/dev/null || echo "0")
+    echo -e "  Plugins loaded: ${YELLOW}$plugin_count${NC}"
+
+    # Check for expensive operations
+    if grep -q "brew --prefix" "$config_file" 2>/dev/null; then
+      echo -e "  ${RED}⚠${NC}  Found 'brew --prefix' calls (expensive)"
+    fi
+
+    if grep -q "which\|command -v" "$config_file" 2>/dev/null; then
+      local which_count=$(grep -c "which\|command -v" "$config_file" 2>/dev/null)
+      echo -e "  Command existence checks: ${YELLOW}$which_count${NC}"
+    fi
+
+    # Check for lazy loading
+    if grep -q "zsh-defer\|wait'" "$config_file" 2>/dev/null; then
+      echo -e "  ${GREEN}✓${NC} Lazy loading detected"
+    else
+      echo -e "  ${YELLOW}⚠${NC}  No lazy loading detected"
+    fi
+
+    # Check for completion optimization
+    if grep -q "compinit.*-C" "$config_file" 2>/dev/null; then
+      echo -e "  ${GREEN}✓${NC} Fast completion initialization"
+    else
+      echo -e "  ${YELLOW}⚠${NC}  Completion not optimized"
+    fi
+
+    echo
+  fi
+}
+
+provide_recommendations() {
+  echo -e "${BLUE}Performance Recommendations:${NC}"
+  echo
+  echo -e "  ${GREEN}1.${NC} Use lazy loading for non-essential plugins"
+  echo -e "  ${GREEN}2.${NC} Cache expensive command outputs (e.g., brew --prefix)"
+  echo -e "  ${GREEN}3.${NC} Use 'compinit -C' for faster completion initialization"
+  echo -e "  ${GREEN}4.${NC} Minimize synchronous plugin loading"
+  echo -e "  ${GREEN}5.${NC} Use 'zsh-defer' for deferred initialization"
+  echo -e "  ${GREEN}6.${NC} Avoid unnecessary command existence checks"
+  echo
+}
+
+main() {
+  print_header
+
+  # Run benchmarks
+  echo -e "${BLUE}Running performance benchmarks...${NC}"
+  echo
+
+  local baseline_time
+  local current_time
+
+  baseline_time=$(benchmark_minimal_config)
+  current_time=$(benchmark_current_config)
+
+  # Calculate overhead
+  if [[ -n "$baseline_time" && -n "$current_time" && "$baseline_time" =~ ^[0-9]+$ && "$current_time" =~ ^[0-9]+$ ]]; then
+    local overhead=$((current_time - baseline_time))
+    local overhead_percent=0
+
+    # Avoid division by zero
+    if ((baseline_time > 0)); then
+      overhead_percent=$(((overhead * 100) / baseline_time))
+    fi
+
+    echo -e "${BLUE}Performance Summary:${NC}"
+    echo -e "  Baseline time: ${GREEN}${baseline_time}ms${NC}"
+    echo -e "  Current time: ${GREEN}${current_time}ms${NC}"
+    echo -e "  Configuration overhead: ${YELLOW}${overhead}ms${NC} (${overhead_percent}%)"
+    echo
+
+    # Performance rating based on absolute overhead
+    if ((overhead < 10)); then
+      echo -e "  Performance rating: ${GREEN}Excellent${NC} 🚀"
+    elif ((overhead < 50)); then
+      echo -e "  Performance rating: ${GREEN}Good${NC} ✅"
+    elif ((overhead < 100)); then
+      echo -e "  Performance rating: ${YELLOW}Fair${NC} ⚠️"
+    else
+      echo -e "  Performance rating: ${RED}Needs Optimization${NC} 🐌"
+    fi
+    echo
+  else
+    echo -e "${RED}Error: Could not obtain valid benchmark results${NC}"
+    echo "Baseline: '$baseline_time', Current: '$current_time'"
+  fi
+
+  analyze_config
+  provide_recommendations
+}
+
+# Run the benchmark
+main "$@"
