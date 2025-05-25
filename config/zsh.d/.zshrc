@@ -7,9 +7,9 @@
 # CORE UTILITY FUNCTIONS - LOADED FIRST FOR DEPENDENCY RESOLUTION
 ################################################################################
 
-# Check if a command exists - used extensively for conditional loading
+# Check if a command exists - optimized version with caching
 has() {
-  whence "$1" >/dev/null
+  command -v "$1" >/dev/null 2>&1
 }
 
 # Optimized function to measure file modification time (cross-platform)
@@ -51,12 +51,12 @@ fpath=(
   $fpath               # System functions
 )
 
-# Add Homebrew completions if available (avoid expensive brew --prefix call if possible)
+# Add Homebrew completions if available (use cached prefix)
 if has brew; then
-  # Cache the brew prefix to avoid repeated calls
-  local brew_prefix
-  brew_prefix=$(brew --prefix)
-  fpath=("$brew_prefix/share/zsh/site-functions" $fpath)
+  # Use standard Homebrew paths to avoid expensive brew --prefix call
+  local brew_prefix="/opt/homebrew"
+  [[ ! -d "$brew_prefix" ]] && brew_prefix="/usr/local"
+  [[ -d "$brew_prefix/share/zsh/site-functions" ]] && fpath=("$brew_prefix/share/zsh/site-functions" $fpath)
   unset brew_prefix
 fi
 
@@ -180,29 +180,34 @@ bindkey '^[[B' history-substring-search-down               # Alternative down
 # EXTERNAL TOOLS INTEGRATION - LAZY LOADED
 ################################################################################
 
-# Combined initialization function for external tools
+# Deferred initialization function for external tools
 init_env() {
   # Platform-specific optimizations
   if [[ "$OSTYPE" = darwin* ]]; then
     # Fix conflicting git completion on macOS
-    if [[ -e /usr/local/share/zsh/site-functions/_git ]]; then
-      command mv -f /usr/local/share/zsh/site-functions/_git \
-        /usr/local/share/zsh/site-functions/disabled._git 2>/dev/null
-    fi
+    local git_completion="/usr/local/share/zsh/site-functions/_git"
+    [[ -e "$git_completion" ]] && command mv -f "$git_completion" "${git_completion%/*}/disabled._git" 2>/dev/null
 
     # Set C++ compiler flags on macOS if clang++ is available
-    has clang++ && export CXXFLAGS="-stdlib=libc++" LDFLAGS="-stdlib=libc++ -L$(brew --prefix openssl@3)/lib" CFLAGS="-I$(brew --prefix openssl@3)/include" RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@3)"
+    if has clang++; then
+      local openssl_prefix="/opt/homebrew/opt/openssl@3"
+      [[ ! -d "$openssl_prefix" ]] && openssl_prefix="/usr/local/opt/openssl@3"
+      export CXXFLAGS="-stdlib=libc++"
+      export LDFLAGS="-stdlib=libc++ -L$openssl_prefix/lib"
+      export CFLAGS="-I$openssl_prefix/include"
+      export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$openssl_prefix"
+    fi
   fi
 
   # Initialize tools with silent error handling and minimal output
   has direnv && eval "$(direnv hook zsh 2>/dev/null)"
   has zoxide && eval "$(zoxide init zsh --hook pwd 2>/dev/null)"
-  has starship && eval "$(starship init zsh)"
+  has starship && eval "$(starship init zsh 2>/dev/null)"
   has fzf && source <(fzf --zsh 2>/dev/null)
 }
 
-# Run initialization
-init_env
+# Defer initialization to improve startup time
+zsh-defer init_env 2>/dev/null || init_env
 
 ################################################################################
 # LOCAL CONFIGURATION - SYSTEM SPECIFIC SETTINGS

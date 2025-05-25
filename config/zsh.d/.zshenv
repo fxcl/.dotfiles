@@ -7,8 +7,8 @@
 ################################################################################
 
 # Terminal color and input settings
-export COLORTERM="truecolor"                # Enable true color support
-export KEYTIMEOUT="1"                      # Reduce delay for vi mode key sequences
+export COLORTERM="truecolor" # Enable true color support
+export KEYTIMEOUT="1"        # Reduce delay for vi mode key sequences
 
 # Spelling correction prompt format
 export SPROMPT="zsh: correct %F{red}'%R'%f to %F{blue}'%r'%f [%B%Uy%u%bes, %B%Un%u%bo, %B%Ue%u%bdit, %B%Ua%u%bbort]?"
@@ -24,17 +24,17 @@ export LESS="-F -g -i -M -R -S -w -X -z-4"
 ################################################################################
 
 # Essential directory paths - grouped for clarity
-export ZDOTDIR="$XDG_CONFIG_HOME/zsh"       # ZSH configuration directory
-export DOTFILES="$HOME/.dotfiles"           # Dotfiles repository location
+export ZDOTDIR="$XDG_CONFIG_HOME/zsh" # ZSH configuration directory
+export DOTFILES="$HOME/.dotfiles"     # Dotfiles repository location
 
 # Project directories
-export PROJECTS="$HOME/Sites/personal/dev"   # Personal development projects
-export WORK="$HOME/Sites/work"               # Work-related projects
+export PROJECTS="$HOME/Sites/personal/dev" # Personal development projects
+export WORK="$HOME/Sites/work"             # Work-related projects
 
 # Personal data storage
-export PERSONAL_STORAGE="$HOME/Sync"         # Synced personal files
-export NOTES_DIR="$PERSONAL_STORAGE/notes"   # Notes directory
-export ZK_NOTEBOOK_DIR="$NOTES_DIR"          # ZK notebook location
+export PERSONAL_STORAGE="$HOME/Sync"       # Synced personal files
+export NOTES_DIR="$PERSONAL_STORAGE/notes" # Notes directory
+export ZK_NOTEBOOK_DIR="$NOTES_DIR"        # ZK notebook location
 
 ################################################################################
 # XDG COMPLIANCE - REDUCE HOME DIRECTORY CLUTTER
@@ -63,23 +63,23 @@ export EZA_COLORS="ur=35;nnn:gr=35;nnn:tr=35;nnn:uw=34;nnn:gw=34;nnn:tw=34;nnn:u
 ################################################################################
 
 # Disable various telemetry and analytics
-export DO_NOT_TRACK=1                      # General do-not-track flag
-export HOMEBREW_NO_ANALYTICS=1             # Disable Homebrew analytics
-export GATSBY_TELEMETRY_DISABLED=1         # Disable Gatsby telemetry
-export NEXT_TELEMETRY_DISABLED=1           # Disable Next.js telemetry
-export ADBLOCK="true"                      # Enable ad blocking where supported
+export DO_NOT_TRACK=1              # General do-not-track flag
+export HOMEBREW_NO_ANALYTICS=1     # Disable Homebrew analytics
+export GATSBY_TELEMETRY_DISABLED=1 # Disable Gatsby telemetry
+export NEXT_TELEMETRY_DISABLED=1   # Disable Next.js telemetry
+export ADBLOCK="true"              # Enable ad blocking where supported
 
 ################################################################################
 # TOOL-SPECIFIC CONFIGURATION
 ################################################################################
 
 # Homebrew and prompt appearance
-export HOMEBREW_INSTALL_BADGE="⚽️"         # Custom Homebrew install icon
+export HOMEBREW_INSTALL_BADGE="⚽️" # Custom Homebrew install icon
 
 # Pure prompt git symbols
-export PURE_GIT_UP_ARROW="🠥"               # Commits ahead of remote
-export PURE_GIT_DOWN_ARROW="🠧"             # Commits behind remote
-export PURE_GIT_BRANCH="  "                # Branch symbol
+export PURE_GIT_UP_ARROW="🠥"   # Commits ahead of remote
+export PURE_GIT_DOWN_ARROW="🠧" # Commits behind remote
+export PURE_GIT_BRANCH="  "    # Branch symbol
 
 ################################################################################
 # PYTHON ENVIRONMENT - XDG COMPLIANCE
@@ -108,26 +108,34 @@ export USER_ZSH_SITE_FUNCTIONS="$USER_ZSH_DATA/site-functions"
 
 # Initialize PATH with core directories - most frequently used first for faster lookup
 path=(
-  "${ZDOTDIR}/bin"                # ZSH scripts directory
-  "/usr/local/{bin,sbin}"         # Homebrew binaries
-  $path                           # Existing PATH entries
+  "${ZDOTDIR}/bin"  # ZSH scripts directory
+  "/usr/local/bin"  # Homebrew binaries
+  "/usr/local/sbin" # Homebrew system binaries
+  $path             # Existing PATH entries
 )
 
 # Conditionally add paths - only if they exist (reduces startup time)
 [[ -d "${HOME}/.local/bin" ]] && path=("${HOME}/.local/bin" $path)
 [[ -n "${GOBIN}" && -d "${GOBIN}" ]] && path=("${GOBIN}" $path)
 
-# Platform-specific paths - macOS Rust tools
-if [[ "$OSTYPE" == darwin* && -d "/usr/local/Cellar/rustup/1.27.1_1/bin" ]]; then
-  path+=("/usr/local/Cellar/rustup/1.27.1_1/bin")
+# Platform-specific paths - macOS optimizations
+if [[ "$OSTYPE" == darwin* ]]; then
+  # Check common Homebrew paths
+  [[ -d "/opt/homebrew/bin" ]] && path=("/opt/homebrew/bin" $path)
+  # Check for rustup installation - use simple conditional
+  if [[ -d "/usr/local/Cellar/rustup" ]]; then
+    for rustup_dir in /usr/local/Cellar/rustup/*/bin; do
+      [[ -d "$rustup_dir" ]] && path=("$rustup_dir" $path)
+    done
+  fi
 fi
 
 # Rust toolchain paths - grouped for clarity
 if [[ -d "${CARGO_HOME}/bin" ]]; then
-  path+=("${CARGO_HOME}/bin")
-  [[ -d "${RUSTUP_HOME}/bin" ]] && path+=("${RUSTUP_HOME}/bin")
-  # Only evaluate rustc command when Cargo is available
-  export RUST_SRC_PATH="$(rustc --print sysroot 2>/dev/null)/lib/rustlib/src/rust/src"
+  path=("${CARGO_HOME}/bin" $path)
+  [[ -d "${RUSTUP_HOME}/bin" ]] && path=("${RUSTUP_HOME}/bin" $path)
+  # Only evaluate rustc command when Cargo is available - use fallback path
+  export RUST_SRC_PATH="${RUSTUP_HOME:-$HOME/.rustup}/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src"
 fi
 
 ################################################################################
@@ -135,14 +143,16 @@ fi
 ################################################################################
 
 # Word character handling for better word navigation
-WORDCHARS=${WORDCHARS//\[/}              # Remove path separator from WORDCHARS
+WORDCHARS=${WORDCHARS//\[/} # Remove path separator from WORDCHARS
 
 # Pager configuration - only set if not already defined
-(( ! ${+PAGER} )) && export PAGER="${commands[less]:-more}"
+[[ -z "$PAGER" ]] && export PAGER="$(command -v less || echo more)"
 
 # Set up Less preprocessor for better file viewing
-if (( $#commands[(i)lesspipe(|.sh)] )); then
-  export LESSOPEN="| /usr/bin/env $commands[(i)lesspipe(|.sh)] %s 2>&-"
+if command -v lesspipe >/dev/null 2>&1; then
+  export LESSOPEN="| /usr/bin/env lesspipe %s 2>&-"
+elif command -v lesspipe.sh >/dev/null 2>&1; then
+  export LESSOPEN="| /usr/bin/env lesspipe.sh %s 2>&-"
 fi
 
 # Temporary directory setup - create if needed
@@ -159,19 +169,23 @@ typeset -gU cdpath fpath mailpath manpath path
 # NETWORK CONFIGURATION
 ################################################################################
 
-# Proxy settings - defined but not enabled by default
-default_proxy="http://127.0.0.1:2333"
-no_proxy_list="127.0.0.1,localhost,auiag.corp,iag.com.au,devlabs,192.168.2.0/24,localaddress,.localdomain.com,192.168.99.100,192.168.10.100,iagcloud.net,192.168.49.2,DB8B4788812536AC063DABFD95299A5C.gr7.ap-southeast-2.eks.amazonaws.com"
+# Proxy settings - use readonly variables for better performance
+readonly default_proxy="http://127.0.0.1:2333"
+readonly no_proxy_list="127.0.0.1,localhost,auiag.corp,iag.com.au,devlabs,192.168.2.0/24,localaddress,.localdomain.com,192.168.99.100,192.168.10.100,iagcloud.net,192.168.49.2,DB8B4788812536AC063DABFD95299A5C.gr7.ap-southeast-2.eks.amazonaws.com"
 
-# Proxy management functions - enable/disable proxy as needed
+# Proxy management functions - optimized for performance
 proxy_on() {
   local proxy=${1:-$default_proxy}
-  export {http,https,ftp,rsync}_proxy=$proxy
-  export {no,NO}_proxy=$no_proxy_list
-  echo -e "Started http(s) proxy port:2333 "
+  export http_proxy=$proxy
+  export https_proxy=$proxy
+  export ftp_proxy=$proxy
+  export rsync_proxy=$proxy
+  export no_proxy=$no_proxy_list
+  export NO_proxy=$no_proxy_list
+  print "Started http(s) proxy port:2333"
 }
 
 proxy_off() {
-  echo -e "Closed http(s)  proxy port:2333"
-  unset {http,https,ftp,rsync}_proxy {no,NO}_proxy
+  print "Closed http(s) proxy port:2333"
+  unset http_proxy https_proxy ftp_proxy rsync_proxy no_proxy NO_proxy
 }
