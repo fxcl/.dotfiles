@@ -16,18 +16,18 @@
   description = "NixOS and Darwin configurations";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/release-24.11";
+    nixpkgs.url = "github:nixos/nixpkgs/release-25.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     # Home Manager inputs
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.11";
+      url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs"; # Ensure versions are consistent
     };
 
     # MacOS inputs
     darwin = {
-      url = "github:lnl7/nix-darwin/nix-darwin-24.11";
+      url = "github:lnl7/nix-darwin/nix-darwin-25.05";
       inputs.nixpkgs.follows = "nixpkgs"; # Ensure versions are consistent
     };
 
@@ -59,19 +59,17 @@
     let
       darwinHosts = {
         "tony" = "x86_64-darwin";
+	"alcantara" = "aarch64-darwin";
         "vvh" = "aarch64-darwin";
       };
 
-      darwinSystems =
-        inputs.nixpkgs.lib.unique (inputs.nixpkgs.lib.attrValues darwinHosts);
+      darwinSystems = inputs.nixpkgs.lib.unique (inputs.nixpkgs.lib.attrValues darwinHosts);
 
       linuxHosts = { "nixos" = "x86_64-linux"; };
 
-      linuxSystems =
-        inputs.nixpkgs.lib.unique (inputs.nixpkgs.lib.attrValues linuxHosts);
+      linuxSystems = inputs.nixpkgs.lib.unique (inputs.nixpkgs.lib.attrValues linuxHosts);
 
-      forAllSystems = f:
-        inputs.nixpkgs.lib.genAttrs (linuxSystems ++ darwinSystems) f;
+      forAllSystems = f: inputs.nixpkgs.lib.genAttrs (linuxSystems ++ darwinSystems) f;
 
       mapHosts = f: hostsMap: builtins.mapAttrs f hostsMap;
 
@@ -79,6 +77,10 @@
         system.configurationRevision = self.rev or self.dirtyRev or null;
 
         nix = {
+	  # @NOTE: for `nix-darwin` this will enable these old options `services.nix-daemon.enable` and `nix.configureBuildUsers'
+          enable = true;
+          # Disable channels since we are using flakes
+          channel.enable = false;
           nixPath = {
             # Inherit input source paths
             inherit (inputs) nixpkgs;
@@ -86,7 +88,7 @@
             inherit (inputs) home-manager;
           };
 
-          package = pkgs.nixVersions.git;
+          package = pkgs.nixVersions.stable;
           extraOptions = ''
             # Enable experimental features
             experimental-features = nix-command flakes
@@ -106,7 +108,8 @@
             auto-optimise-store = !pkgs.stdenv.isDarwin;
 
             # Force set binary cache sources
-            substituters = pkgs.lib.mkForce [
+            #substituters = pkgs.lib.mkForce [
+			substituters = [
               "https://cache.garnix.io"
               https://mirrors.cernet.edu.cn/nix-channels/store
               #"https://mirror.sjtu.edu.cn/nix-channels/store" # Shanghai Jiao Tong University mirror
@@ -170,14 +173,24 @@
 
         nixpkgs = {
           # Allow unfree software
-          config = { allowUnfree = true; };
-            overlays = [
+          config = {
+                allowUnfree = true;
+                 allowUnfreePredicate =
+                  pkg:
+                  builtins.elem (pkgs.lib.getName pkg) [
+                    "broadcom-sta"
+                    "copilot-language-server"
+                    "steam"
+                    "steam-original"
+                    "steam-run"
+                    "steam-unwrapped"
+                  ];
+            };
+          overlays = [
             (final: prev: {
               # Make unstable version of nixpkgs available
               unstable =
                 inputs.nixpkgs-unstable.legacyPackages.${prev.system};
-              # Use Node.js 24.x which has better OpenSSL 3.x support
-              nodejs = prev.nodejs-24_x;
               # Custom package configurations
               # pragmatapro = prev.callPackage ./nix/pkgs/pragmatapro.nix { };
               # zk = prev.callPackage ./nix/pkgs/zk.nix { source = inputs.zk; };
@@ -188,14 +201,6 @@
               pure-prompt = prev.pure-prompt.overrideAttrs (old: {
                 patches = (old.patches or [ ]) ++ [ ./nix/hosts/pure-zsh.patch ];
               });
-            })
-             (_final: prev: { copilot-language-server = prev.copilot-language-server.fhs; })
-             # Node.js related package configuration
-             (final: prev: rec {
-              nodejs = prev.nodejs_22; # Use Node.js 22
-              nodePackages = prev.nodePackages.override { inherit nodejs; };
-              pnpm = (prev.pnpm.override { inherit nodejs; });
-              yarn = (prev.yarn.override { inherit nodejs; });
             })
             # Swift 8 fix
             # Reference: https://github.com/NixOS/nixpkgs/issues/327836#issuecomment-2292084100
@@ -247,7 +252,7 @@
           if pkgs.stdenv.isDarwin then
             4
           else
-            "24.11"; # Did you read the comment?
+            "25.05"; # Did you read the comment?
 
         home-manager.users."${config.my.username}" = {
           home = {
@@ -255,7 +260,7 @@
             # look for a nixpkgs channel.
             stateVersion =
               if pkgs.stdenv.isDarwin then
-                "24.11"
+                "25.05"
               else
                 config.system.stateVersion;
           };
@@ -269,29 +274,36 @@
             specialArgs = { inherit inputs; };
             inherit system;
             modules = [
+	            sharedConfiguration
               inputs.home-manager.darwinModules.home-manager
               ./nix/modules/darwin
               ./nix/modules/shared
-              sharedConfiguration
               ./nix/hosts/${host}.nix
             ];
           }))
         darwinHosts;
 
-      nixosConfigurations = mapHosts
+	nixosConfigurations = mapHosts
         (host: system:
           (inputs.nixpkgs.lib.nixosSystem {
             # This gets passed to modules as an extra argument
             specialArgs = { inherit inputs; };
             inherit system;
             modules = [
+	      sharedConfiguration
               inputs.home-manager.nixosModules.home-manager
               ./nix/modules/shared
-              sharedConfiguration
+
             ];
           }))
         linuxHosts;
 
+	formatter = forAllSystems (
+         system: let
+	  pkgs = inputs.nixpkgs.legacyPackages.${system};
+      	in
+          pkgs.alejandra
+	);
       # @TODO: move the logic inside ./install here
       devShells = forAllSystems (system:
         let pkgs = inputs.nixpkgs.legacyPackages.${system};
@@ -302,6 +314,11 @@
               go
               gopls
               go-tools # goimports, staticcheck, etc...
+	      gomodifytags
+              gotools # goimports
+              typos
+              typos-lsp
+              alejandra
             ];
             # shellHook = ''echo "hi"'';
           };

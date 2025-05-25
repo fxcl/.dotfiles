@@ -1,0 +1,13 @@
+## 2025-05-25
+
+### Fixed
+- Changed Node.js version from nodejs_22 to nodejs_22 LTS in flake.nix overlay to resolve Node.js 24.1.0 build test failures
+- Updated nodePackages to use override with nodejs_22 for consistency with Node.js 20 LTS
+
+# Changes Log
+
+## 2025-05-24
+
+### Fixed
+- Changed nix package from `pkgs.nixVersions.git` to `pkgs.nixVersions.stable` in flake.nix to resolve build failures caused by unstable tests in the pre-release nix version
+- Fixed VSCode extensions configuration to use new format programs.vscode.profiles.default.extensions

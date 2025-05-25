@@ -13,12 +13,12 @@ format:
 deploy:
 	NIXPKGS_ALLOW_UNFREE=1 NIX_BUILD_FLAGS="--no-check" nix build .#darwinConfigurations.tony.system --impure --show-trace\
 	  --extra-experimental-features 'nix-command flakes'
-	NIXPKGS_ALLOW_UNFREE=1 ./result/sw/bin/darwin-rebuild switch --flake .#tony --impure
+	NIXPKGS_ALLOW_UNFREE=1  sudo ./result/sw/bin/darwin-rebuild switch --flake .#tony --impure
 
 deploy-debug:
 	NIX_BUILD_FLAGS="--no-check" nix build .#darwinConfigurations.tony.system \
 	  --extra-experimental-features 'nix-command flakes' --show-trace
-	./result/sw/bin/darwin-rebuild switch --flake --show-trace .#tony
+	sudo ./result/sw/bin/darwin-rebuild switch --flake --show-trace .#tony
 
 gc:
 	nix-collect-garbage -d

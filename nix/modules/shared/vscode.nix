@@ -23,7 +23,7 @@ in {
         # - Does not unistall extensions once removed.
         # - Update using the following: export temp=$(mktemp) && curl -s https://raw.githubusercontent.com/NixOS/nixpkgs/master/pkgs/applications/editors/vscode/extensions/update_installed_exts.sh  > $temp && chmod +x $temp && $temp $(whereis codium)
         # https://github.com/NixOS/nixpkgs/blob/master/pkgs/misc/vscode-extensions/default.nix
-        extensions = with pkgs.vscode-extensions;
+        profiles.default.extensions = with pkgs.vscode-extensions;
           let
             lib = pkgs.lib;
             vitesse-theme = pkgs.vscode-utils.buildVscodeMarketplaceExtension {

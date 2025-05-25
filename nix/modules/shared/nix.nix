@@ -12,5 +12,8 @@ in {
   };
 
   config = with lib;
-    mkIf cfg.enable { services = { nix-daemon = { enable = true; }; }; };
+    mkIf cfg.enable {
+      # nix-daemon is now managed unconditionally when nix.enable is on
+      # services.nix-daemon.enable option has been removed
+    };
 }

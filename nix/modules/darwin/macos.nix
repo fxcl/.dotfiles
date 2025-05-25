@@ -71,6 +71,7 @@ in
 
         # `brew install`
         brews = [
+         "libyaml"
           "cppcheck"
           #"lua"
           #"luajit"
@@ -142,7 +143,10 @@ in
 
       system = {
         # activationScripts are executed every time you boot the system or run `nixos-rebuild` / `darwin-rebuild`.
-        activationScripts.postUserActivation.text = ''
+        # TODO: Migrate macOS settings to use system.activationScripts or restructure for root execution
+        # system.activationScripts.postUserActivation has been removed in nix-darwin
+        # This functionality needs to be restructured to run as root with sudo
+        activationScripts.macosSettings.text = ''
           # activateSettings -u will reload the settings from the database and apply them to the current session,
           # so we do not need to logout and login again to make the changes take effect.
           /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u

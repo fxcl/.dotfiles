@@ -15,11 +15,11 @@ in
 
   config = with lib;
     mkIf cfg.enable {
-      # workaround for now see https://github.com/NixOS/nixpkgs/issues/145634
+	# workaround for now see https://github.com/NixOS/nixpkgs/issues/145634
 
       my = {
         env = with config.my; {
-          NODE_HOME = "${pkgs.nodejs}";
+          NODE_HOME = "${pkgs.nodejs_24}";
           NPM_CONFIG_USERCONFIG = "$XDG_CONFIG_HOME/npm/config";
           # NPM_CONFIG_TMP = "$XDG_RUNTIME_DIR/npm";
           NPM_CONFIG_CACHE = "$XDG_CACHE_HOME/npm";
@@ -50,12 +50,12 @@ in
             nodePackages.dockerfile-language-server-nodejs
             nodePackages.javascript-typescript-langserver
             nodePackages.typescript-language-server
-            nodePackages.vue-language-server
+            # nodePackages.vue-language-server # Deprecated - use Volar instead
             nodePackages.yaml-language-server
             nodePackages.prettier
             nodePackages.typescript
             nodePackages.npm-check-updates
-            nodePackages.create-react-app
+            # nodePackages.create-react-app # Deprecated - use a framework for React instead
             nodePackages.eslint
             nodePackages.eslint_d
             nodePackages.js-beautify
@@ -72,9 +72,8 @@ in
             # Bundlers
             nodePackages.webpack
             nodePackages.browserify
-            nodePackages.rollup
-            nodePackages.parcel-bundler
-            unstable.copilot-language-server
+            # nodePackages.rollup # Removed because it was broken
+            # nodePackages.parcel-bundler # Removed because it was broken
           ];
         };
 

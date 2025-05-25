@@ -58,7 +58,7 @@ in
           docker-compose-language-service
           vtsls # js/ts LSP
           yaml-language-server
-          tailwindcss-language-server
+          #tailwindcss-language-server
           selene # Lua linter
           statix
           sumneko-lua-language-server
@@ -72,14 +72,15 @@ in
           lua51Packages.luarocks
           typos
           typos-lsp
-          unstable.copilot-language-server
+          copilot-language-server
         ];
       };
 
-      system.activationScripts.postUserActivation.text =
-        /*
-        bash
-        */
+      # TODO: Migrate vim setup to use system.activationScripts or home-manager
+      # system.activationScripts.postUserActivation has been removed in nix-darwin
+      # This functionality needs to be restructured to run as root with sudo or moved to home-manager
+      /*
+     system.activationScripts.userSetup.text =
         ''
         echo ":: -> Running vim activationScript..."
         # Creating needed folders
@@ -96,5 +97,6 @@ in
           ln -sf ${home}/.dotfiles/config/nvim ${hm.configHome}/nvim
         fi
       '';
+      */
     };
 }
