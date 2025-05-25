@@ -29,14 +29,22 @@ measure_startup_time() {
   echo -e "${YELLOW}Testing: $description${NC}" >&2
   echo -n "Running $ITERATIONS iterations: " >&2
 
-  for i in {1..$ITERATIONS}; do
-    # Use microsecond precision for better timing
-    local start_time=$(date +%s%6N)
-
-    zsh -c "source '$profile_file'; exit" 2>/dev/null
-
-    local end_time=$(date +%s%6N)
-    local duration=$(((end_time - start_time) / 1000)) # Convert to milliseconds
+  for ((i = 1; i <= ITERATIONS; i++)); do
+    # Use high-precision timing with fallback
+    if command -v python >/dev/null 2>&1; then
+      local start_time=$(python -c "import time; print(int(time.time() * 1000))")
+      zsh -c "source '$profile_file'; exit" 2>/dev/null
+      local end_time=$(python -c "import time; print(int(time.time() * 1000))")
+      local duration=$((end_time - start_time))
+    else
+      # Fallback to second precision with artificial minimum
+      local start_time=$(date +%s)
+      zsh -c "source '$profile_file'; exit" 2>/dev/null
+      local end_time=$(date +%s)
+      local duration=$(((end_time - start_time) * 1000))
+      # Ensure minimum 1ms for very fast operations
+      [[ $duration -eq 0 ]] && duration=1
+    fi
 
     times+=($duration)
     total=$((total + duration))
@@ -100,8 +108,13 @@ analyze_config() {
   [[ ! -f "$config_file" ]] && config_file="$HOME/.zshrc"
 
   if [[ -f "$config_file" ]]; then
-    # Count plugins
-    local plugin_count=$(grep -c "zi light\|zi load" "$config_file" 2>/dev/null || echo "0")
+    # Count plugins - use separate grep commands for better reliability
+    local light_count=$(grep -c "zi light" "$config_file" 2>/dev/null)
+    local load_count=$(grep -c "zi load" "$config_file" 2>/dev/null)
+    # Ensure we have valid numbers
+    [[ -z "$light_count" || ! "$light_count" =~ ^[0-9]+$ ]] && light_count=0
+    [[ -z "$load_count" || ! "$load_count" =~ ^[0-9]+$ ]] && load_count=0
+    local plugin_count=$((light_count + load_count))
     echo -e "  Plugins loaded: ${YELLOW}$plugin_count${NC}"
 
     # Check for expensive operations
