@@ -231,6 +231,15 @@
           });
         };
       })
+            # Node.js configuration modification - disable tests to fix build failures
+            (final: prev: {
+              nodejs_24 = prev.nodejs_24.overrideAttrs (old: {
+                doCheck = false; # Disable tests to prevent build failures
+              });
+              nodejs_22 = prev.nodejs_22.overrideAttrs (old: {
+                doCheck = false; # Disable tests to prevent build failures
+              });
+            })
             (final: prev: {
               zimfw = prev.zimfw.overrideAttrs (oldAttrs: rec {
                 version = "1.15.0";

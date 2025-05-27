@@ -45,7 +45,7 @@
     gpg.enable = lib.mkDefault true;
     vim.enable = lib.mkDefault true;
     java.enable = lib.mkDefault true;
-    node.enable = lib.mkDefault false;
+    node.enable = lib.mkDefault true;
     go.enable = lib.mkDefault true;
     cc.enable = lib.mkDefault true;
     kube.enable = lib.mkDefault false;

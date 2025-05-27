@@ -317,7 +317,7 @@ if [[ "$(uname)" == Darwin* ]]; then
   alias canary='/Applications/Google\ Chrome\ Canary.app/Contents/MacOS/Google\ Chrome\ Canary' # Launch Chrome Canary
 
   # VSCode launcher function with proper working directory
-  code() {
+  codium() {
     VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args "$@"
   }
 
