@@ -75,17 +75,31 @@ Add a new \`type\` property to the Button component to allow for different butto
 JSON_ENCODED_PROMPT=$(jq -Rn --arg var "$PROMPT" '$var')
 
 # Sending request to OpenAI and getting the message
-MESSAGE_TEXT=$(
+# Capture raw curl output for debugging
+CURL_OUTPUT=$(
   curl -s -H "Content-Type: application/json" \
     -H "Authorization: Bearer $SILICONFLOW_API_KEY" \
-    -d @- https://api.siliconflow.cn/v1/chat/completions <<JSON | jq -r '.choices[0].message.content'
+    -d @- https://api.siliconflow.cn/v1/chat/completions <<JSON_DATA
 {
     "model": "deepseek-ai/DeepSeek-V2.5",
     "messages": [{"role": "system", "content": $JSON_ENCODED_PROMPT}],
     "max_tokens": 200
 }
-JSON
+JSON_DATA
 )
+
+# Log the raw curl output for debugging purposes
+echo "Raw CURL Output: $CURL_OUTPUT" >&2
+
+# Attempt to parse the JSON output
+MESSAGE_TEXT=$(echo "$CURL_OUTPUT" | jq -r '.choices[0].message.content')
+
+# Check if jq failed and provide a more informative error
+if [ $? -ne 0 ]; then
+  echo "Error: Failed to parse JSON response from SiliconFlow API. Raw output:" >&2
+  echo "$CURL_OUTPUT" >&2
+  exit 1
+fi
 
 # Extracting and formatting the summary and body
 SUMMARY=$(echo "$MESSAGE_TEXT" | head -n1)
