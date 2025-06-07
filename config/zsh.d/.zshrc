@@ -127,15 +127,7 @@ zi ice lucid id-as'history-search' atload'
 '
 zi light zsh-users/zsh-history-substring-search
 
-# Syntax highlighting - optimized loading
-zi ice lucid id-as'syntax-highlight' atload'
-  zdelay 0.2
-  ZI[COMPINIT_OPTS]=-C
-  zpcompinit
-  zpcdreplay
-  unset "FAST_HIGHLIGHT[chroma-whatis]" "FAST_HIGHLIGHT[chroma-man]" "FAST_HIGHLIGHT[chroma-which]"
-'
-zi light zdharma-continuum/fast-syntax-highlighting
+
 
 # Autosuggestions - balanced delay
 zi ice lucid id-as'auto-suggest' atload'
@@ -155,10 +147,8 @@ source "${ZDOTDIR}/config/completion.zsh"
 # PLUGIN LOADING - OPTIMIZED STAGGERED LOADING
 ################################################################################
 
-# Syntax highlighting and autosuggestions with turbo mode
+# Autosuggestions and history-substring-search with turbo mode
 zi wait lucid for \
-  atinit"ZI[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
-  zdharma-continuum/fast-syntax-highlighting \
   atload"!_zsh_autosuggest_start" \
   zsh-users/zsh-autosuggestions \
   atload"bindkey '^[[A' history-substring-search-up; bindkey '^[[B' history-substring-search-down" \
