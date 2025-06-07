@@ -3,19 +3,22 @@
 # ZSH RUNTIME CONFIGURATION - OPTIMIZED FOR PERFORMANCE
 ################################################################################
 
-# 确保 XDG 目录存在
+# Load Zsh Performance Analysis Modules
+# zsh/zprof: For analyzing Zsh startup time and performance
+# zsh/mathfunc: Provides mathematical function support
+# zsh/system: Provides system-level operation support
+zmodload zsh/zprof
+zmodload zsh/mathfunc
+zmodload zsh/system
+
+# Ensure XDG directories exist
 export XDG_CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.cache}"
 export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
 export XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
 
-# 确保必要的目录存在
+# Ensure required directories exist
 [[ ! -d "$XDG_CACHE_HOME/zsh" ]] && mkdir -p "$XDG_CACHE_HOME/zsh"
 [[ ! -d "$XDG_CACHE_HOME/zsh/zi" ]] && mkdir -p "$XDG_CACHE_HOME/zsh/zi"
-
-# 启用性能分析
-zmodload zsh/zprof
-zmodload zsh/mathfunc
-zmodload zsh/system
 
 ################################################################################
 # CORE UTILITY FUNCTIONS - LOADED FIRST FOR DEPENDENCY RESOLUTION
@@ -207,5 +210,10 @@ fi
 # Create hushlogin file if needed
 [[ -e /etc/motd ]] && [[ ! -f ${HOME}/.hushlogin ]] && tee ${HOME}/.hushlogin </etc/motd >/dev/null
 
-# 结束性能分析
+# End performance analysis and print report
+# The zprof command will display detailed performance analysis results, including:
+# - Number of calls for each function
+# - Total execution time for each function
+# - Self execution time (excluding subcall time)
+# - Function list sorted by execution time
 zprof
