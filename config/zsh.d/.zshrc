@@ -3,6 +3,20 @@
 # ZSH RUNTIME CONFIGURATION - OPTIMIZED FOR PERFORMANCE
 ################################################################################
 
+# 确保 XDG 目录存在
+export XDG_CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.cache}"
+export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
+export XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
+
+# 确保必要的目录存在
+[[ ! -d "$XDG_CACHE_HOME/zsh" ]] && mkdir -p "$XDG_CACHE_HOME/zsh"
+[[ ! -d "$XDG_CACHE_HOME/zsh/zi" ]] && mkdir -p "$XDG_CACHE_HOME/zsh/zi"
+
+# 启用性能分析
+zmodload zsh/zprof
+zmodload zsh/mathfunc
+zmodload zsh/system
+
 ################################################################################
 # CORE UTILITY FUNCTIONS - LOADED FIRST FOR DEPENDENCY RESOLUTION
 ################################################################################
@@ -12,24 +26,11 @@ has() {
   command -v "$1" >/dev/null 2>&1
 }
 
-# Optimized function to measure file modification time (cross-platform)
-stat_mtime() {
-  local file=$1
-
-  # Try BSD stat first (macOS) - faster than GNU on macOS
-  if mtime=$(stat -f %m "$file" 2>/dev/null); then
-    echo $mtime
-    return 0
-  fi
-
-  # Try GNU stat if BSD stat failed (Linux)
-  if mtime=$(stat -c %Y "$file" 2>/dev/null); then
-    echo $mtime
-    return 0
-  fi
-
-  # Fallback to current time if stat fails
-  date +%s
+# Delay function that uses zsh/system for better precision
+zdelay() {
+  local delay=$1
+  (( delay = delay * 1000 )) # Convert to milliseconds
+  zsystem flock -t $delay /dev/null
 }
 
 ################################################################################
@@ -53,7 +54,6 @@ fpath=(
 
 # Add Homebrew completions if available (use cached prefix)
 if has brew; then
-  # Use standard Homebrew paths to avoid expensive brew --prefix call
   local brew_prefix="/opt/homebrew"
   [[ ! -d "$brew_prefix" ]] && brew_prefix="/usr/local"
   [[ -d "$brew_prefix/share/zsh/site-functions" ]] && fpath=("$brew_prefix/share/zsh/site-functions" $fpath)
@@ -64,28 +64,26 @@ fi
 autoload -Uz ${ZDOTDIR}/functions/**/*(N:t)
 
 ################################################################################
-# ZI PLUGIN MANAGER CONFIGURATION - OPTIMIZED FOR LAZY LOADING
+# ZI PLUGIN MANAGER CONFIGURATION - OPTIMIZED LOADING
 ################################################################################
 
-# Centralized ZI configuration - use associative array for better organization
+# Centralized ZI configuration
 typeset -gA ZI=(
-  [HOME_DIR]="$XDG_CACHE_HOME/zsh/zi"            # Base directory
-  [BIN_DIR]="$XDG_CACHE_HOME/zsh/zi/bin"         # Core scripts
-  [PLUGINS_DIR]="$XDG_CACHE_HOME/zsh/zi/plugins" # Plugin storage
-  [ZCOMPDUMP_PATH]="${ZDOTDIR}/.zcompdump"       # Completion cache
-  [COMPINIT_OPTS]="-C"                           # Fast completion initialization
+  [HOME_DIR]="$XDG_CACHE_HOME/zsh/zi"
+  [BIN_DIR]="$XDG_CACHE_HOME/zsh/zi/bin"
+  [PLUGINS_DIR]="$XDG_CACHE_HOME/zsh/zi/plugins"
+  [ZCOMPDUMP_PATH]="$XDG_CACHE_HOME/zsh/.zcompdump"
+  [COMPINIT_OPTS]="-C -d ${ZI[ZCOMPDUMP_PATH]}"
 )
-ZPFX="$ZI[HOME_DIR]/polaris" # Prefix for compiled functions
+ZPFX="$ZI[HOME_DIR]/polaris"
 
-# Load or install ZI - optimized conditional logic
+# Load or install ZI
 if [[ -f "${ZI[BIN_DIR]}/zi.zsh" ]]; then
-  source "${ZI[BIN_DIR]}/zi.zsh"    # Load existing installation
-  autoload -Uz _zi                  # Load completion function
-  [[ -v _comps ]] && _comps[zi]=_zi # Register completion
+  source "${ZI[BIN_DIR]}/zi.zsh"
+  autoload -Uz _zi
+  [[ -v _comps ]] && _comps[zi]=_zi
 else
-  # Only attempt installation if git is available
   if has git; then
-    # Single-command installation with chained operations for efficiency
     git clone --depth 1 https://github.com/z-shell/zi.git "${ZI[BIN_DIR]}" &&
       source "${ZI[BIN_DIR]}/zi.zsh" &&
       autoload -Uz _zi &&
@@ -93,131 +91,131 @@ else
   fi
 fi
 
+# Initialize prompt system
+autoload -Uz promptinit && promptinit
+
 ################################################################################
 # PROMPT CONFIGURATION - PURE THEME OPTIMIZATION
 ################################################################################
 
-# Random prompt symbol selection - adds visual variety
+# Random prompt symbol selection
 PURE_SYMBOLS=("λ" "ϟ" "▲" "∴" "→" "»" "৸")
 export PURE_PROMPT_SYMBOL="${PURE_SYMBOLS[$RANDOM % ${#PURE_SYMBOLS[@]} + 1]}"
 
-# Load Pure theme with turbo mode - wait'0' provides optimal balance
-# between startup speed and prompt availability
-zi ice wait'0' lucid compile'(pure|async).zsh' pick'async.zsh' src'pure.zsh'
-zi light sindresorhus/pure
+# Load Pure theme immediately
+zi light-mode for \
+  compile'(pure|async).zsh' \
+  pick'async.zsh' \
+  src'pure.zsh' \
+  atload'prompt pure' \
+  sindresorhus/pure
 
-# Theme styling - grouped for better organization
-zstyle :prompt:pure:path color 240           # Subdued path color
-zstyle :prompt:pure:git:branch color blue    # Highlight branch name
-zstyle :prompt:pure:git:dirty color red      # Make dirty state obvious
-zstyle :prompt:pure:git:action color 005     # Highlight git actions
-zstyle :prompt:pure:prompt:success color 003 # Successful command indicator
+# Theme styling
+zstyle :prompt:pure:path color 240
+zstyle :prompt:pure:git:branch color blue
+zstyle :prompt:pure:git:dirty color red
+zstyle :prompt:pure:git:action color 005
+zstyle :prompt:pure:prompt:success color 003
+
+# History substring search - minimal delay
+zi ice lucid id-as'history-search' atload'
+  zdelay 0.1
+  bindkey "${terminfo[kcuu1]}" history-substring-search-up
+  bindkey "${terminfo[kcud1]}" history-substring-search-down
+  bindkey "^[[A" history-substring-search-up
+  bindkey "^[[B" history-substring-search-down
+'
+zi light zsh-users/zsh-history-substring-search
+
+# Syntax highlighting - optimized loading
+zi ice lucid id-as'syntax-highlight' atload'
+  zdelay 0.2
+  ZI[COMPINIT_OPTS]=-C
+  zpcompinit
+  zpcdreplay
+  unset "FAST_HIGHLIGHT[chroma-whatis]" "FAST_HIGHLIGHT[chroma-man]" "FAST_HIGHLIGHT[chroma-which]"
+'
+zi light zdharma-continuum/fast-syntax-highlighting
+
+# Autosuggestions - balanced delay
+zi ice lucid id-as'auto-suggest' atload'
+  zdelay 0.3
+  _zsh_autosuggest_start
+'
+zi light zsh-users/zsh-autosuggestions
 
 ################################################################################
 # COMPLETION SYSTEM CONFIGURATION - PERFORMANCE OPTIMIZED
 ################################################################################
 
-# Completion caching - reduces repeated parsing of completion files
-zstyle ':completion::complete:*' use-cache on
-zstyle ':completion::complete:*' cache-path "${ZDOTDIR}/.zcompcache"
+# Load completion configuration
+source "${ZDOTDIR}/config/completion.zsh"
 
-# Performance-optimized completion settings
-zstyle ':completion:*' accept-exact '*(N)'     # Accept exact matches immediately
-zstyle ':completion:*' accept-exact-dirs 'yes' # Faster directory completion
-zstyle ':completion:*' special-dirs true       # Handle . and .. directories
+################################################################################
+# PLUGIN LOADING - OPTIMIZED STAGGERED LOADING
+################################################################################
 
-# Smart case-insensitive matching - balance between accuracy and convenience
-# Simplified matcher list for better performance
-zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+# Syntax highlighting and autosuggestions with turbo mode
+zi wait lucid for \
+  atinit"ZI[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
+  zdharma-continuum/fast-syntax-highlighting \
+  atload"!_zsh_autosuggest_start" \
+  zsh-users/zsh-autosuggestions \
+  atload"bindkey '^[[A' history-substring-search-up; bindkey '^[[B' history-substring-search-down" \
+  zsh-users/zsh-history-substring-search
 
-# Display optimization - reduce formatting overhead
-zstyle ':completion:*' list-packed yes                                          # Compact completion display
-zstyle ':completion:*' file-sort modification                                   # Sort by modification time
-zstyle ':completion:*:functions' ignored-patterns '(_*|pre(cmd|exec)|prompt_*)' # Skip internal functions
+################################################################################
+# EXTERNAL TOOLS INTEGRATION - PRIORITIZED LOADING
+################################################################################
 
-# Load additional completions with turbo mode
-zi ice wait'0' lucid blockf # Block traditional fpath method
-zi light zsh-users/zsh-completions
-
-# Intelligent compinit - only rebuild cache daily for better performance
-autoload -Uz compinit
-if [[ -f "${ZI[ZCOMPDUMP_PATH]}" ]] && (($(stat_mtime "${ZI[ZCOMPDUMP_PATH]}") > ($(date +%s) - 86400))); then
-  # Use cached completion - much faster startup
-  compinit -C -d "${ZI[ZCOMPDUMP_PATH]}"
-else
-  # Rebuild completion cache - only happens once daily
-  compinit -d "${ZI[ZCOMPDUMP_PATH]}"
+# Priority 1: Immediate loading (essential tools)
+if has zoxide && [[ ! -v _ZOXIDE_INITIALIZED ]]; then
+  zi wait lucid id-as"zoxide" as"null" atload'
+    export _ZOXIDE_INITIALIZED=1
+    eval "$(zoxide init zsh --hook pwd 2>/dev/null)"
+  ' for zdharma-continuum/null
 fi
 
-################################################################################
-# PLUGIN LOADING - STAGGERED FOR OPTIMAL STARTUP TIME
-################################################################################
+# Priority 2: Short delay (environment tools)
+if has direnv; then
+  zi ice lucid id-as'direnv' atload'
+    zdelay 0.5
+    direnv hook zsh >| "${ZI[PLUGINS_DIR]}/direnv/init.zsh"
+    source "${ZI[PLUGINS_DIR]}/direnv/init.zsh"
+  '
+  zi light zdharma-continuum/null
+fi
 
-# History substring search - load after compinit but before user interaction
-zi ice wait lucid
-zi light zsh-users/zsh-history-substring-search
+# Priority 3: Medium delay (interactive tools)
+if has fzf; then
+  zi ice lucid id-as'fzf' atload'
+    zdelay 1
+    fzf --zsh >| "${ZI[PLUGINS_DIR]}/fzf/init.zsh"
+    source "${ZI[PLUGINS_DIR]}/fzf/init.zsh"
+  '
+  zi light zdharma-continuum/null
+fi
 
-# Syntax highlighting - load with delay and minimal features
-zi ice wait'2' lucid atinit'ZI[COMPINIT_OPTS]=-C; zpcompinit; zpcdreplay' \
-  atload'unset "FAST_HIGHLIGHT[chroma-whatis]" "FAST_HIGHLIGHT[chroma-man]" "FAST_HIGHLIGHT[chroma-which]"'
-zi light zdharma-continuum/fast-syntax-highlighting
-
-# Autosuggestions - load with delay for faster initial startup
-zi ice wait'2' lucid atload'_zsh_autosuggest_start'
-zi light zsh-users/zsh-autosuggestions
-
-################################################################################
-# KEY BINDINGS - HISTORY NAVIGATION
-################################################################################
-
-# Configure history search keybindings - support both terminal and application modes
-bindkey "${terminfo[kcuu1]}" history-substring-search-up   # Up arrow
-bindkey "${terminfo[kcud1]}" history-substring-search-down # Down arrow
-bindkey '^[[A' history-substring-search-up                 # Alternative up
-bindkey '^[[B' history-substring-search-down               # Alternative down
-
-################################################################################
-# EXTERNAL TOOLS INTEGRATION - LAZY LOADED
-################################################################################
-
-# Deferred initialization function for external tools
-init_env() {
-  # Platform-specific optimizations
-  if [[ "$OSTYPE" = darwin* ]]; then
-    # Fix conflicting git completion on macOS
-    local git_completion="/usr/local/share/zsh/site-functions/_git"
-    [[ -e "$git_completion" ]] && command mv -f "$git_completion" "${git_completion%/*}/disabled._git" 2>/dev/null
-
-    # Set C++ compiler flags on macOS if clang++ is available
-    if has clang++; then
-      local openssl_prefix="/opt/homebrew/opt/openssl@3"
-      [[ ! -d "$openssl_prefix" ]] && openssl_prefix="/usr/local/opt/openssl@3"
-      export CXXFLAGS="-stdlib=libc++"
-      export LDFLAGS="-stdlib=libc++ -L$openssl_prefix/lib"
-      export CFLAGS="-I$openssl_prefix/include"
-      export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$openssl_prefix"
-    fi
-  fi
-
-  # Initialize tools with silent error handling and minimal output
-  has direnv && eval "$(direnv hook zsh 2>/dev/null)"
-  has zoxide && eval "$(zoxide init zsh --hook pwd 2>/dev/null)"
-  has starship && eval "$(starship init zsh 2>/dev/null)"
-  has fzf && source <(fzf --zsh 2>/dev/null)
-}
-
-# Defer initialization to improve startup time
-zsh-defer init_env 2>/dev/null || init_env
+# Priority 4: Long delay (other tools)
+if has starship; then
+  zi ice lucid id-as'starship' atload'
+    zdelay 2
+    starship init zsh --print-full-init >| "${ZI[PLUGINS_DIR]}/starship/init.zsh"
+    source "${ZI[PLUGINS_DIR]}/starship/init.zsh"
+  '
+  zi light zdharma-continuum/null
+fi
 
 ################################################################################
 # LOCAL CONFIGURATION - SYSTEM SPECIFIC SETTINGS
 ################################################################################
 
 # Load optional local configurations
-[[ -f "$ZDOTDIR/bin/proto" ]] && source "$ZDOTDIR/bin/proto" # Development environment
-[[ -f $HOST_CONFIGS/zshrc ]] && source $HOST_CONFIGS/zshrc   # Host-specific config
+[[ -f "$ZDOTDIR/bin/proto" ]] && source "$ZDOTDIR/bin/proto"
+[[ -f $HOST_CONFIGS/zshrc ]] && source $HOST_CONFIGS/zshrc
 
-# Create hushlogin file if needed (suppresses login messages)
-if [[ -e /etc/motd ]] && [[ ! -f ${HOME}/.hushlogin ]]; then
-  tee ${HOME}/.hushlogin </etc/motd >/dev/null
-fi
+# Create hushlogin file if needed
+[[ -e /etc/motd ]] && [[ ! -f ${HOME}/.hushlogin ]] && tee ${HOME}/.hushlogin </etc/motd >/dev/null
+
+# 结束性能分析
+zprof

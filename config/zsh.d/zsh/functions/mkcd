@@ -2,10 +2,9 @@
 
 emulate -L zsh
 
-function mkcd {
-  if [[ -n ${1} ]]; then
-    mkdir -p -- ${1} && builtin cd -- ${1}
-  fi
+# 创建目录并进入
+function mkcd() {
+  [[ -n "$1" ]] && mkdir -p -- "$1" && builtin cd -- "$1"
 }
 
 mkcd "$@"

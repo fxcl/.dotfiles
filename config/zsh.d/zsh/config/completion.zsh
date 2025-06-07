@@ -3,112 +3,87 @@
 ###############################################################################
 
 # Early return for non-interactive or dumb terminals
-if [[ ${TERM} == 'dumb' || ! -o interactive ]]; then
-  return 0
-fi
-
-# Lazy-load completion system to improve shell startup time
-# This function is called only on first tab press
-_zsh_comp_setup() {
-  # Performance: Local variables are faster than globals
-  local cache_dir="${ZDOTDIR:-$HOME}/.zcompcache"
-  local dump_file="${ZI[ZCOMPDUMP_PATH]:-${ZDOTDIR:-$HOME}/.zcompdump}"
-
-  ###############################################################################
-  # Core Options - Minimal set for better performance
-  ###############################################################################
-  setopt ALWAYS_TO_END # Move cursor to end of completed word
-  setopt PATH_DIRS     # Perform path search even on command names with slashes
-  unsetopt CASE_GLOB   # Case insensitive globbing
-  unsetopt LIST_BEEP   # Don't beep on ambiguous completion
-
-  ###############################################################################
-  # Cache Configuration - Reduces disk I/O
-  ###############################################################################
-  zstyle ':completion::complete:*' use-cache on
-  zstyle ':completion::complete:*' cache-path "$cache_dir"
-
-  ###############################################################################
-  # Completion Behavior - Optimized for speed and usability
-  ###############################################################################
-  # Only show menu when there are at least 3 items (faster)
-  zstyle ':completion:*' menu select=3
-
-  # Case-insensitive matching (optimized single rule)
-  zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
-
-  # Minimal completion strategies for better performance
-  zstyle ':completion:*' completer _complete _approximate
-  zstyle ':completion:*:approximate:*' max-errors 1 numeric
-
-  ###############################################################################
-  # Display Optimization - Reduces formatting overhead
-  ###############################################################################
-  # Sort files by modification time (most recent first)
-  zstyle ':completion:*' file-sort modification
-
-  # Compact display settings
-  zstyle ':completion:*' list-packed yes
-  zstyle ':completion:*' special-dirs true
-  zstyle ':completion:*' squeeze-slashes true
-
-  # Minimal formatting with essential visual cues
-  zstyle ':completion:*:descriptions' format ' %F{yellow}-- %d --%f'
-  zstyle ':completion:*:warnings' format ' %F{red}-- no matches found --%f'
-  zstyle ':completion:*' group-name ''
-  zstyle ':completion:*' verbose no
-
-  # Use LS_COLORS for file coloring (if available)
-  [[ -n "$LS_COLORS" ]] && zstyle ':completion:*' list-colors "$LS_COLORS"
-
-  ###############################################################################
-  # Context-Specific Optimizations
-  ###############################################################################
-  # Directory navigation prioritization
-  zstyle ':completion:*:*:cd:*' tag-order local-directories directory-stack path-directories
-
-  # Skip internal/helper functions in completion
-  zstyle ':completion:*:functions' ignored-patterns '(_*|pre(cmd|exec)|prompt_*)'
-
-  # Avoid suggesting words from current line for certain commands
-  zstyle ':completion:*:(rm|kill|diff):*' ignore-line other
-
-  # History word completion settings
-  zstyle ':completion:*:history-words' remove-all-dups yes
-  zstyle ':completion:*:history-words' list false
-  zstyle ':completion:*:history-words' menu yes
-
-  # Load man page sections separately (on-demand loading)
-  zstyle ':completion:*:manuals' separate-sections true
-
-  ###############################################################################
-  # Initialize Completion System
-  ###############################################################################
-  # Initialize completion (creates/updates dump file)
-  compinit -d "$dump_file"
-
-  # Clean up: Remove this function to free memory after initialization
-  unfunction _zsh_comp_setup
-}
+[[ ${TERM} == 'dumb' || ! -o interactive ]] && return 0
 
 ###############################################################################
-# Optimized Lazy Loading Implementation
+# Completion System Setup - Efficient Loading
 ###############################################################################
 
-# Function called on first tab press - simplified for better performance
-_delayed_completion() {
-  # Initialize completion system
-  _zsh_comp_setup
+# Load required modules
+zmodload zsh/complist
+zmodload zsh/mathfunc
 
-  # Restore normal tab completion behavior
-  bindkey "^I" expand-or-complete
+# Local variables for better performance
+typeset -g cache_dir="${ZDOTDIR:-$HOME}/.zcompcache"
+typeset -g dump_file="${ZI[ZCOMPDUMP_PATH]:-${ZDOTDIR:-$HOME}/.zcompdump}"
 
-  # Execute normal completion for current context
-  zle expand-or-complete
-}
+###############################################################################
+# Core Options - Performance Optimized
+###############################################################################
 
-# Register the delayed completion function
-zle -N _delayed_completion
+# Essential completion options
+setopt ALWAYS_TO_END PATH_DIRS
+unsetopt CASE_GLOB LIST_BEEP
 
-# Bind tab key to delayed completion initially
-bindkey "^I" _delayed_completion
+# Cache configuration
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path "$cache_dir"
+
+# Optimized completion behavior
+zstyle ':completion:*' menu select=3
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+zstyle ':completion:*' completer _complete _approximate
+zstyle ':completion:*:approximate:*' max-errors 1 numeric
+
+# Display optimization
+zstyle ':completion:*' {list-packed,special-dirs,squeeze-slashes} yes
+zstyle ':completion:*' file-sort modification
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*' verbose no
+
+# Minimal but effective formatting
+zstyle ':completion:*:descriptions' format '%F{yellow}-- %d --%f'
+zstyle ':completion:*:warnings' format '%F{red}-- no matches --%f'
+
+# Use LS_COLORS if available
+[[ -n "$LS_COLORS" ]] && zstyle ':completion:*' list-colors "$LS_COLORS"
+
+###############################################################################
+# Context-Specific Optimizations
+###############################################################################
+
+# Directory navigation
+zstyle ':completion:*:*:cd:*' tag-order local-directories directory-stack path-directories
+
+# Function completion
+zstyle ':completion:*:functions' ignored-patterns '(_*|pre(cmd|exec)|prompt_*)'
+
+# Command-specific settings
+zstyle ':completion:*:(rm|kill|diff):*' ignore-line other
+
+# History completion
+zstyle ':completion:*:history-words' {remove-all-dups,list,menu} yes
+
+# Man pages
+zstyle ':completion:*:manuals' separate-sections true
+
+###############################################################################
+# Initialize System
+###############################################################################
+
+# Initialize completion system
+{
+  # Compile zcompdump if needed
+  local zcd="$dump_file"
+  
+  autoload -Uz compinit
+  if [[ ! -f "$zcd" ]] || ((zcd_time < ($(date +%s) - 86400) )); then
+    compinit -i -d "$zcd"
+  else
+    compinit -C -d "$zcd"
+  fi
+
+  if [[ -f "$zcd"(#qN.m+1) ]]; then
+    zcompile -R "$zcd" && command touch "$zcd"
+  fi
+} &!

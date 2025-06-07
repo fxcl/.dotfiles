@@ -2,31 +2,28 @@
 
 emulate -L zsh
 
-unalias l 2> /dev/null
+# 缓存命令检查结果
+typeset -gA __L_CACHE
+__l_has_cmd() {
+  [[ -n "${__L_CACHE[$1]}" ]] && return ${__L_CACHE[$1]}
+  (( $+commands[$1] )) && __L_CACHE[$1]=0 || __L_CACHE[$1]=1
+  return ${__L_CACHE[$1]}
+}
 
-if (( $+commands[lsd] )); then
+# 优化的 awk 脚本 - 预编译模式
+readonly __L_AWK_SCRIPT='
+{
+  k=0;
+  for(i=0;i<=8;i++)k+=((substr($1,i+2,1)~/[rwx]/)*2^(8-i));
+  printf("%s%o %9s %3s %2s %5s %6s %s %s %s\n",
+    (k?"":"   "),k,$3,$6,$7,$8,$5,$9,$10,$11);
+}'
+
+# 主函数
+if __l_has_cmd lsd; then
   lsd --all --long --color-scale --group-directories-first --sort=type --octal-permissions "$@"
 elif [[ -x "/run/current-system/sw/bin/ls" ]]; then
-  # https://github.com/paulirish/dotfiles/blob/7c46f8c25015c2632894dbe5fea20014ab37fd89/.functions#L14-L25
-  # [TODO]: Check why this is not picked up from $PATH?
-  /run/current-system/sw/bin/ls --almost-all -l --human-readable --classify -alph --group-directories-first --color=always --hyperlink=auto "$@" | awk '
-  {
-    k=0;
-    for (i=0;i<=8;i++)
-      k+=((substr($1,i+2,1)~/[rwx]/) *2^(8-i));
-    if (k)
-      printf("%0o ",k);
-    printf(" %9s  %3s %2s %5s  %6s  %s %s %s\n", $3, $6, $7, $8, $5, $9,$10, $11);
-  }'
+  /run/current-system/sw/bin/ls -alph --group-directories-first --color=always --hyperlink=auto "$@" | awk "$__L_AWK_SCRIPT"
 else
-  # List all files, long format, colorized, permissions in octal
-  ls -l "$@" | awk '
-  {
-    k=0;
-    for (i=0;i<=8;i++)
-      k+=((substr($1,i+2,1)~/[rwx]/) *2^(8-i));
-    if (k)
-      printf("%0o ",k);
-    printf(" %9s  %3s %2s %5s  %6s  %s %s %s\n", $3, $6, $7, $8, $5, $9,$10, $11);
-  }'
+  ls -l "$@" | awk "$__L_AWK_SCRIPT"
 fi

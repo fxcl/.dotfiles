@@ -5,37 +5,45 @@
 
 emulate -L zsh
 
-command -v git >/dev/null || return 0
+# 缓存命令检查结果
+typeset -gA __G_CACHE
+__g_has_cmd() {
+  [[ -n "${__G_CACHE[$1]}" ]] && return ${__G_CACHE[$1]}
+  (( $+commands[$1] )) && __G_CACHE[$1]=0 || __G_CACHE[$1]=1
+  return ${__G_CACHE[$1]}
+}
 
-unalias g 2>/dev/null
+# 优化的最后提交信息格式
+readonly __G_COMMIT_FORMAT='%C(238)%cr%Creset %C(blue)%h%Creset %s - %C(cyan)%aN %C(238)%(describe:tags,abbrev=0)%Creset'
 
-function time_since_last_commit() {
-  local __LAST_COMMIT=$(git log --color=always -1 --pretty=format:"%C(238)%cr%Creset %C(blue)%h%Creset %s - %C(cyan)%aN %C(238)%(describe:tags,abbrev=0)%Creset" --date=auto:human 2>/dev/null)
-
-  printf "%s\n" "$__LAST_COMMIT"
+# 获取最后提交信息
+function __g_last_commit() {
+  git log --color=always -1 --pretty=format:"$__G_COMMIT_FORMAT" --date=auto:human 2>/dev/null
 }
 
 # Hack because otherwise compdef doesn't work with zinit for some reason.
 # autoload -Uz compinit compdef && compinit -C -d "${ZDOTDIR}/${zcompdump_file:-.zcompdump}"
 
+# 主函数
 function g() {
-  local __CMD=""
+  __g_has_cmd git || return 1
 
-  if (($ + commands[hub])); then
+  local __cmd
+  if __g_has_cmd hub; then
     compdef g=hub
-    __CMD=$commands[hub]
-  elif (($ + commands[git])); then
+    __cmd=$commands[hub]
+  else
     compdef g=git
-    __CMD=$commands[git]
+    __cmd=$commands[git]
   fi
 
-  [[ $__CMD != "" ]] || return
-
-  if [ $# -eq 0 ]; then
-    printf "%s\n\n" "$(time_since_last_commit)"
-    "$__CMD" st 2>/dev/null || "$__CMD" status --short --branch
+  if (( $# == 0 )); then
+    local __last_commit
+    __last_commit=$(__g_last_commit)
+    [[ -n "$__last_commit" ]] && printf '%s\n\n' "$__last_commit"
+    "$__cmd" status --short --branch 2>/dev/null
   else
-    "$__CMD" "$@"
+    "$__cmd" "$@"
   fi
 }
 

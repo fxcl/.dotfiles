@@ -16,108 +16,78 @@ bindkey -v
 [[ -t 0 ]] && stty -ixon
 
 ###############################################################################
-# Key Binding Setup Function - Lazy Loaded
+# Key Binding Setup Functions - Modular and Lazy Loaded
 ###############################################################################
 
-# Main function for setting up key bindings - called only once
-_setup_key_bindings() {
-  # Load terminfo module with minimal features to reduce overhead
-  # Only load the specific capabilities we need
-  zmodload -F zsh/terminfo +b:echoti +p:terminfo 2>/dev/null
-  
-  ###############################################################################
-  # Key Mapping Configuration
-  ###############################################################################
-  
-  # Use local associative array for better performance
+# Core bindings setup - loaded immediately
+_setup_core_bindings() {
   local -A _key_info
   
   # Define core key prefixes
   _key_info=(
-    'Control' '\C-'  # Control key prefix
-    'Escape'  '\e'   # Escape key prefix
-    'Meta'    '\M-'  # Meta/Alt key prefix
+    'Control' '\C-'
+    'Escape'  '\e'
+    'Meta'    '\M-'
   )
   
-  # Map essential terminal keys from terminfo database
-  # Only map the most frequently used keys to reduce initialization time
+  # Map essential keys
+  zmodload -F zsh/terminfo +b:echoti +p:terminfo 2>/dev/null
   _key_info[Backspace]=${terminfo[kbs]}
   _key_info[Left]=${terminfo[kcub1]}
   _key_info[Right]=${terminfo[kcuf1]}
-  _key_info[Up]=${terminfo[kcuu1]}
-  _key_info[Down]=${terminfo[kcud1]}
-  _key_info[BackTab]=${terminfo[kcbt]}
   
-  # Export key mappings to global scope for other scripts
+  # Export key mappings
   typeset -gA key_info
   key_info=(${(kv)_key_info})
   
-  ###############################################################################
-  # Core Key Bindings
-  ###############################################################################
-  
-  # Space expands history references like !!, !$, etc.
+  # Core bindings
   bindkey ' ' magic-space
-  
-  # Ctrl+L clears the screen
   bindkey "${_key_info[Control]}L" clear-screen
   
-  # Shift+Tab for reverse completion menu navigation
-  [[ -n ${_key_info[BackTab]} ]] && bindkey ${_key_info[BackTab]} reverse-menu-complete
-  
-  ###############################################################################
-  # Optional Features - Only loaded when needed
-  ###############################################################################
-  
-  # Double-dot expansion: typing .. expands to ../
+  unset _key_info
+}
+
+# Optional bindings setup - deferred loading
+_setup_optional_bindings() {
+  # Double-dot expansion
   if [[ ${zdouble_dot_expand} == 'true' ]]; then
     double-dot-expand() {
-      if [[ ${LBUFFER} == *.. ]]; then
-        LBUFFER+='/..' # Expand to path
-      else
-        LBUFFER+='.'   # Just add a dot
-      fi
+      [[ ${LBUFFER} == *.. ]] && LBUFFER+='/..' || LBUFFER+='.'
     }
     zle -N double-dot-expand
     bindkey '.' double-dot-expand
   fi
   
-  ###############################################################################
-  # Version-specific Compatibility
-  ###############################################################################
-  
-  # Special handling for older ZSH versions (< 5.3)
-  if ! is-at-least 5.3 2>/dev/null; then
-    # Show visual indicator during completion and ensure proper redisplay
-    expand-or-complete-with-redisplay() {
-      print -Pn '...' # Visual indicator
-      zle expand-or-complete
-      zle redisplay   # Force redisplay after completion
-    }
-    zle -N expand-or-complete-with-redisplay
-    bindkey "${_key_info[Control]}I" expand-or-complete-with-redisplay
-  fi
-  
-  ###############################################################################
-  # Command Line Editing Enhancements
-  ###############################################################################
-  
-  # Enable edit-command-line widget for full-featured editing
+  # Command line editing
   autoload -Uz edit-command-line
   zle -N edit-command-line
-  bindkey -M vicmd '!' edit-command-line # Edit command in vi command mode
-  
-  # Memory optimization: clean up temporary variables
-  unset _key_info
+  bindkey -M vicmd '!' edit-command-line
+}
+
+# Version compatibility setup - deferred loading
+_setup_version_compat() {
+  # Simplified version check
+  if ! zmodload zsh/pcre 2>/dev/null; then
+    # Show visual indicator during completion
+    expand-or-complete-with-redisplay() {
+      print -Pn '...'
+      zle expand-or-complete
+      zle redisplay
+    }
+    zle -N expand-or-complete-with-redisplay
+    bindkey "${key_info[Control]}I" expand-or-complete-with-redisplay
+  fi
 }
 
 ###############################################################################
-# Initialization
+# Initialization with Progressive Loading
 ###############################################################################
 
-# Preload minimal required functions
-autoload -Uz is-at-least
+# Load core bindings immediately
+_setup_core_bindings
 
-# Defer key binding setup for faster shell startup
-# Falls back to immediate execution if zsh-defer is not available
-zsh-defer _setup_key_bindings 2>/dev/null || _setup_key_bindings
+# Defer optional features
+zsh-defer -t 0.1 _setup_optional_bindings 2>/dev/null || _setup_optional_bindings
+
+# Defer compatibility features
+zsh-defer -t 0.2 _setup_version_compat 2>/dev/null || _setup_version_compat

@@ -2,190 +2,146 @@
 # ZSH ENVIRONMENT CONFIGURATION - OPTIMIZED FOR PERFORMANCE
 ################################################################################
 
+# Fast path existence check function
+_exists() { [[ -e "$1" ]] }
+
 ################################################################################
-# TERMINAL APPEARANCE AND BEHAVIOR
+# ESSENTIAL ENVIRONMENT VARIABLES - LOADED FIRST
 ################################################################################
 
-# Terminal color and input settings
-export COLORTERM="truecolor" # Enable true color support
-export KEYTIMEOUT="1"        # Reduce delay for vi mode key sequences
+# Core paths - essential for other configurations
+export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
+export DOTFILES="${HOME}/.dotfiles"
+export USER_BIN_HOME="${HOME}/.local/bin"
+export USER_ZSH_DATA="${XDG_DATA_HOME:-$HOME/.local/share}/zsh"
+export USER_ZSH_SITE_FUNCTIONS="${USER_ZSH_DATA}/site-functions"
 
-# Spelling correction prompt format
-export SPROMPT="zsh: correct %F{red}'%R'%f to %F{blue}'%r'%f [%B%Uy%u%bes, %B%Un%u%bo, %B%Ue%u%bdit, %B%Ua%u%bbort]?"
-
-# Less pager options for better readability
-# -F: quit if one screen, -g: highlight search, -i: ignore case
-# -M: verbose prompt, -R: raw control chars, -S: chop long lines
-# -w: highlight first unread line, -X: don't clear screen, -z-4: scroll size
+# Terminal settings - required for proper operation
+export COLORTERM="truecolor"
+export KEYTIMEOUT="1"
+export PAGER="$(command -v less || echo more)"
 export LESS="-F -g -i -M -R -S -w -X -z-4"
 
 ################################################################################
-# DIRECTORY STRUCTURE - CORE PATHS
+# PATH CONFIGURATION - OPTIMIZED FOR LOOKUP SPEED
 ################################################################################
 
-# Essential directory paths - grouped for clarity
-export ZDOTDIR="$XDG_CONFIG_HOME/zsh" # ZSH configuration directory
-export DOTFILES="$HOME/.dotfiles"     # Dotfiles repository location
-
-# Project directories
-export PROJECTS="$HOME/Sites/personal/dev" # Personal development projects
-export WORK="$HOME/Sites/work"             # Work-related projects
-
-# Personal data storage
-export PERSONAL_STORAGE="$HOME/Sync"       # Synced personal files
-export NOTES_DIR="$PERSONAL_STORAGE/notes" # Notes directory
-export ZK_NOTEBOOK_DIR="$NOTES_DIR"        # ZK notebook location
-
-################################################################################
-# XDG COMPLIANCE - REDUCE HOME DIRECTORY CLUTTER
-################################################################################
-
-# Group related application configs for better organization
-
-# Development tools
-export DOCKER_CONFIG="$XDG_CONFIG_HOME/docker"
-export _ZO_DATA_DIR="$XDG_CONFIG_HOME/zoxide"
-export RLWRAP_HOME="$XDG_DATA_HOME/rlwrap"
-
-# AWS configuration
-export AWS_SHARED_CREDENTIALS_FILE="$XDG_CONFIG_HOME/aws/credentials"
-export AWS_CONFIG_FILE="$XDG_CONFIG_HOME/aws/config"
-
-# Terminal applications
-export ELINKS_CONFDIR="$XDG_CONFIG_HOME/elinks"
-export KITTY_LISTEN_ON="unix:/tmp/kitty"
-
-# File listing colors for eza
-export EZA_COLORS="ur=35;nnn:gr=35;nnn:tr=35;nnn:uw=34;nnn:gw=34;nnn:tw=34;nnn:ux=36;nnn:ue=36;nnn:gx=36;nnn:tx=36;nnn:uu=36;nnn:uu=38;5;235:da=38;5;238"
-
-################################################################################
-# PRIVACY SETTINGS - DISABLE TELEMETRY
-################################################################################
-
-# Disable various telemetry and analytics
-export DO_NOT_TRACK=1              # General do-not-track flag
-export HOMEBREW_NO_ANALYTICS=1     # Disable Homebrew analytics
-export GATSBY_TELEMETRY_DISABLED=1 # Disable Gatsby telemetry
-export NEXT_TELEMETRY_DISABLED=1   # Disable Next.js telemetry
-export ADBLOCK="true"              # Enable ad blocking where supported
-
-################################################################################
-# TOOL-SPECIFIC CONFIGURATION
-################################################################################
-
-# Homebrew and prompt appearance
-export HOMEBREW_INSTALL_BADGE="⚽️" # Custom Homebrew install icon
-
-# Pure prompt git symbols
-export PURE_GIT_UP_ARROW="🠥"   # Commits ahead of remote
-export PURE_GIT_DOWN_ARROW="🠧" # Commits behind remote
-export PURE_GIT_BRANCH="  "    # Branch symbol
-
-################################################################################
-# PYTHON ENVIRONMENT - XDG COMPLIANCE
-################################################################################
-
-# Python tools configuration paths
-export PIP_CONFIG_FILE="$XDG_CONFIG_HOME/pip/pip.conf"
-export PIP_LOG_FILE="$XDG_DATA_HOME/pip/log"
-export PYTHON_EGG_CACHE="$XDG_CACHE_HOME/python-eggs"
-
-# Python development environment
-export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME/jupyter"
-export IPYTHONDIR="$XDG_CONFIG_HOME/ipython"
-export PYLINTRC="$XDG_CONFIG_HOME/pylint/pylintrc"
-export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/pythonrc"
-export PYLINTHOME="$XDG_DATA_HOME/pylint"
-
-################################################################################
-# PATH CONFIGURATION - OPTIMIZED FOR PERFORMANCE
-################################################################################
-
-# User-specific paths
-export USER_BIN_HOME="$HOME/.local/bin"
-export USER_ZSH_DATA="${XDG_DATA_HOME:-$HOME/.local/share}/zsh"
-export USER_ZSH_SITE_FUNCTIONS="$USER_ZSH_DATA/site-functions"
-
-# Initialize PATH with core directories - most frequently used first for faster lookup
+# Initialize PATH with most frequently used directories
 path=(
-  "${ZDOTDIR}/bin"  # ZSH scripts directory
-  "/usr/local/bin"  # Homebrew binaries
-  "/usr/local/sbin" # Homebrew system binaries
-  $path             # Existing PATH entries
+  "${ZDOTDIR}/bin"
+  "/usr/local/bin"
+  "/usr/local/sbin"
+  $path
 )
 
-# Conditionally add paths - only if they exist (reduces startup time)
-[[ -d "${HOME}/.local/bin" ]] && path=("${HOME}/.local/bin" $path)
-[[ -n "${GOBIN}" && -d "${GOBIN}" ]] && path=("${GOBIN}" $path)
-
-# Platform-specific paths - macOS optimizations
+# Efficient path additions - single check for multiple directories
 if [[ "$OSTYPE" == darwin* ]]; then
-  # Check common Homebrew paths
-  [[ -d "/opt/homebrew/bin" ]] && path=("/opt/homebrew/bin" $path)
-  # Check for rustup installation - use simple conditional
-  if [[ -d "/usr/local/Cellar/rustup" ]]; then
-    for rustup_dir in /usr/local/Cellar/rustup/*/bin; do
-      [[ -d "$rustup_dir" ]] && path=("$rustup_dir" $path)
-    done
-  fi
+  local brew_paths=("/opt/homebrew/bin" "/usr/local/Cellar/rustup/*/bin")
+  for dir in $brew_paths; do
+    _exists "${dir}" && path=("${dir}" $path)
+  done
 fi
 
-# Rust toolchain paths - grouped for clarity
-if [[ -d "${CARGO_HOME}/bin" ]]; then
+# User-specific paths - conditional addition
+_exists "${USER_BIN_HOME}" && path=("${USER_BIN_HOME}" $path)
+[[ -n "${GOBIN}" && -d "${GOBIN}" ]] && path=("${GOBIN}" $path)
+
+# Rust toolchain paths - grouped check
+if _exists "${CARGO_HOME}/bin"; then
   path=("${CARGO_HOME}/bin" $path)
-  [[ -d "${RUSTUP_HOME}/bin" ]] && path=("${RUSTUP_HOME}/bin" $path)
-  # Only evaluate rustc command when Cargo is available - use fallback path
+  _exists "${RUSTUP_HOME}/bin" && path=("${RUSTUP_HOME}/bin" $path)
   export RUST_SRC_PATH="${RUSTUP_HOME:-$HOME/.rustup}/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src"
 fi
 
 ################################################################################
-# SHELL BEHAVIOR CONFIGURATION
+# XDG COMPLIANCE AND PRIVACY
 ################################################################################
 
-# Word character handling for better word navigation
-WORDCHARS=${WORDCHARS//\[/} # Remove path separator from WORDCHARS
+# Development tools
+export DOCKER_CONFIG="${XDG_CONFIG_HOME}/docker"
+export RLWRAP_HOME="${XDG_DATA_HOME}/rlwrap"
+export AWS_SHARED_CREDENTIALS_FILE="${XDG_CONFIG_HOME}/aws/credentials"
+export AWS_CONFIG_FILE="${XDG_CONFIG_HOME}/aws/config"
+export ELINKS_CONFDIR="${XDG_CONFIG_HOME}/elinks"
+export KITTY_LISTEN_ON="unix:/tmp/kitty"
 
-# Pager configuration - only set if not already defined
-[[ -z "$PAGER" ]] && export PAGER="$(command -v less || echo more)"
+# Python environment
+export PIP_CONFIG_FILE="${XDG_CONFIG_HOME}/pip/pip.conf"
+export PIP_LOG_FILE="${XDG_DATA_HOME}/pip/log"
+export PYTHON_EGG_CACHE="${XDG_CACHE_HOME}/python-eggs"
+export JUPYTER_CONFIG_DIR="${XDG_CONFIG_HOME}/jupyter"
+export IPYTHONDIR="${XDG_CONFIG_HOME}/ipython"
+export PYLINTRC="${XDG_CONFIG_HOME}/pylint/pylintrc"
+export PYTHONSTARTUP="${XDG_CONFIG_HOME}/python/pythonrc"
+export PYLINTHOME="${XDG_DATA_HOME}/pylint"
 
-# Set up Less preprocessor for better file viewing
+# Privacy settings
+export DO_NOT_TRACK=1
+export HOMEBREW_NO_ANALYTICS=1
+export GATSBY_TELEMETRY_DISABLED=1
+export NEXT_TELEMETRY_DISABLED=1
+export ADBLOCK=true
+
+################################################################################
+# PROJECT DIRECTORIES AND APPEARANCE
+################################################################################
+
+# Project paths
+export PROJECTS="${HOME}/Sites/personal/dev"
+export WORK="${HOME}/Sites/work"
+export PERSONAL_STORAGE="${HOME}/Sync"
+export NOTES_DIR="${PERSONAL_STORAGE}/notes"
+export ZK_NOTEBOOK_DIR="${NOTES_DIR}"
+
+# Appearance settings
+export EZA_COLORS="ur=35;nnn:gr=35;nnn:tr=35;nnn:uw=34;nnn:gw=34;nnn:tw=34;nnn:ux=36;nnn:ue=36;nnn:gx=36;nnn:tx=36;nnn:uu=36;nnn:uu=38;5;235:da=38;5;238"
+export HOMEBREW_INSTALL_BADGE="⚽️"
+export PURE_GIT_UP_ARROW="🠥"
+export PURE_GIT_DOWN_ARROW="🠧"
+export PURE_GIT_BRANCH="  "
+export SPROMPT="zsh: correct %F{red}'%R'%f to %F{blue}'%r'%f [%B%Uy%u%bes, %B%Un%u%bo, %B%Ue%u%bdit, %B%Ua%u%bbort]?"
+
+################################################################################
+# SHELL BEHAVIOR AND TEMPORARY FILES
+################################################################################
+
+# Word character handling
+WORDCHARS=${WORDCHARS//\[/}
+
+# Less configuration
 if command -v lesspipe >/dev/null 2>&1; then
   export LESSOPEN="| /usr/bin/env lesspipe %s 2>&-"
 elif command -v lesspipe.sh >/dev/null 2>&1; then
   export LESSOPEN="| /usr/bin/env lesspipe.sh %s 2>&-"
 fi
 
-# Temporary directory setup - create if needed
-if [[ ! -d "$TMPDIR" ]]; then
-  export TMPDIR="/tmp/$LOGNAME"
-  mkdir -p -m 700 "$TMPDIR"
+# Temporary directory setup
+if [[ ! -d "${TMPDIR}" ]]; then
+  export TMPDIR="/tmp/${LOGNAME}"
+  mkdir -p -m 700 "${TMPDIR}"
 fi
 TMPPREFIX="${TMPDIR%/}/zsh"
 
-# Ensure path arrays don't contain duplicates - improves lookup performance
+# Ensure unique paths
 typeset -gU cdpath fpath mailpath manpath path
 
 ################################################################################
-# NETWORK CONFIGURATION
+# NETWORK CONFIGURATION - OPTIMIZED PROXY MANAGEMENT
 ################################################################################
 
-# Proxy settings - use readonly variables for better performance
-readonly default_proxy="http://127.0.0.1:2333"
-readonly no_proxy_list="127.0.0.1,localhost,auiag.corp,iag.com.au,devlabs,192.168.2.0/24,localaddress,.localdomain.com,192.168.99.100,192.168.10.100,iagcloud.net,192.168.49.2,DB8B4788812536AC063DABFD95299A5C.gr7.ap-southeast-2.eks.amazonaws.com"
+# Proxy configuration
+typeset -gr _PROXY_URL="http://127.0.0.1:2333"
+typeset -gr _NO_PROXY="127.0.0.1,localhost,auiag.corp,iag.com.au,devlabs,192.168.2.0/24,localaddress,.localdomain.com,192.168.99.100,192.168.10.100,iagcloud.net,192.168.49.2,DB8B4788812536AC063DABFD95299A5C.gr7.ap-southeast-2.eks.amazonaws.com"
 
-# Proxy management functions - optimized for performance
+# Proxy management functions
 proxy_on() {
-  local proxy=${1:-$default_proxy}
-  export http_proxy=$proxy
-  export https_proxy=$proxy
-  export ftp_proxy=$proxy
-  export rsync_proxy=$proxy
-  export no_proxy=$no_proxy_list
-  export NO_proxy=$no_proxy_list
+  local proxy="${1:-$_PROXY_URL}"
+  export {http,https,ftp,rsync}_proxy="$proxy"
+  export {no,NO}_proxy="$_NO_PROXY"
   print "Started http(s) proxy port:2333"
 }
 
 proxy_off() {
+  unset {http,https,ftp,rsync}_proxy {no,NO}_proxy
   print "Closed http(s) proxy port:2333"
-  unset http_proxy https_proxy ftp_proxy rsync_proxy no_proxy NO_proxy
 }
