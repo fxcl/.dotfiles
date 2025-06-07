@@ -20,21 +20,21 @@ alias ...="cd ../.."         # Go up two directories
 alias ....="cd ../../.."     # Go up three directories
 alias .....="cd ../../../.." # Go up four directories
 alias ~="cd ~"               # Go to home directory
-alias -- -="cd -"           # Go to previous directory
+alias -- -="cd -"            # Go to previous directory
 
 # List all files excluding hidden ones, sorted
-alias listdir='find ${1:-.} -type f -not -path "*/.*/*" -print0 | xargs -0 -I {} bash -c "echo \"$(dirname \"{}\")\"$(basename \"{}\")\"" | sort -t/ -k2 -k3'
 
 # Cross-platform fallbacks
+# Cross-platform fallbacks (consolidated)
 command -v hd >/dev/null || alias hd="hexdump -C"
 command -v md5sum >/dev/null || alias md5sum="md5"
 command -v sha1sum >/dev/null || alias sha1sum="shasum"
 
 # Essential file operations
-alias ls="ls -G"            # Colored output
-alias l="ls -lah"           # Long format, hidden files
-alias ll="ls -lh"           # Long format
-alias la="ls -lAh"          # Long format, almost all hidden files
+alias ls="ls -G"   # Colored output
+alias l="ls -lah"  # Long format, hidden files
+alias ll="ls -lh"  # Long format
+alias la="ls -lAh" # Long format, almost all hidden files
 
 ###############################################################################
 # Development Tools
@@ -167,11 +167,14 @@ command -v yarn >/dev/null && alias y=yarn
 if command -v lsd >/dev/null 2>&1; then
   alias ls="lsd -tr1lh"
   alias ll='lsd --tree --group-directories-first -I "node_modules"'
+  alias listdir='lsd -a --group-directories-first --depth=1' # Optimized listdir using lsd
 elif command -v tree >/dev/null 2>&1; then
   alias ll="tree --dirsfirst -a -L 1 2>/dev/null || ls -la"
   alias tree='tree -I "node_modules"'
+  alias listdir='tree -L 1 -a -I "node_modules" 2>/dev/null || find ${1:-.} -maxdepth 1 -type f -not -path "*/.*/*" -print0 | xargs -0 -I {} bash -c "echo \"$(dirname \"{}\")\"$(basename \"{}\")\"" | sort -t/ -k2 -k3' # Optimized listdir using tree or fallback find
 else
   alias ll="ls -la"
+  alias listdir='find ${1:-.} -maxdepth 1 -type f -not -path "*/.*/*" -print0 | xargs -0 -I {} bash -c "echo \"$(dirname \"{}\")\"$(basename \"{}\")\"" | sort -t/ -k2 -k3' # Fallback listdir
 fi
 
 # JSON formatting
@@ -200,8 +203,18 @@ alias pp='xsel --clipboard --input'
 ###############################################################################
 # Virtual environment functions
 python_venv_create() {
-  [[ ! -d .venv ]] && python -m venv .venv
-  source ./.venv/bin/activate
+  if [[ ! -d .venv ]]; then
+    echo "Creating Python virtual environment in ./.venv..."
+    python -m venv .venv || {
+      echo "Error: Failed to create virtual environment."
+      return 1
+    }
+  fi
+  echo "Activating virtual environment..."
+  source ./.venv/bin/activate || {
+    echo "Error: Failed to activate virtual environment."
+    return 1
+  }
 }
 
 python_venv_deactivate() {
@@ -214,9 +227,24 @@ python_venv_remove() {
 }
 
 python_pip_upgrade() {
-  python -m pip --disable-pip-version-check list --outdated --format=json 2>/dev/null |
-    jq -r ".[].name" 2>/dev/null |
-    xargs -I{} python -m pip install --no-cache-dir -U "{}"
+  if ! command -v python >/dev/null; then
+    echo "Error: Python is not installed."
+    return 1
+  fi
+  if ! command -v pip >/dev/null; then
+    echo "Error: pip is not installed."
+    return 1
+  fi
+  if ! command -v jq >/dev/null; then
+    echo "Warning: jq is not installed. Falling back to less efficient parsing."
+    python -m pip --disable-pip-version-check list --outdated 2>/dev/null |
+      awk '/^Package/ {next} {print $1}' |
+      xargs -I{} python -m pip install --no-cache-dir -U "{}"
+  else
+    python -m pip --disable-pip-version-check list --outdated --format=json 2>/dev/null |
+      jq -r ".[].name" 2>/dev/null |
+      xargs -I{} python -m pip install --no-cache-dir -U "{}"
+  fi
 }
 
 # Python aliases
@@ -237,7 +265,7 @@ if [[ "$(uname)" == Darwin* ]]; then
   alias chrome='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome'
   alias canary='/Applications/Google\ Chrome\ Canary.app/Contents/MacOS/Google\ Chrome\ Canary'
   alias vsc='/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code'
-  
+
   VSC_BIN='/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin'
   PATH=$VSC_BIN:$PATH
   export PATH

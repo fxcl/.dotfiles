@@ -7,7 +7,7 @@
 # zsh/zprof: For analyzing Zsh startup time and performance
 # zsh/mathfunc: Provides mathematical function support
 # zsh/system: Provides system-level operation support
-zmodload zsh/zprof
+# zmodload zsh/zprof
 zmodload zsh/mathfunc
 zmodload zsh/system
 
@@ -32,7 +32,7 @@ has() {
 # Delay function that uses zsh/system for better precision
 zdelay() {
   local delay=$1
-  (( delay = delay * 1000 )) # Convert to milliseconds
+  ((delay = delay * 1000)) # Convert to milliseconds
   zsystem flock -t $delay /dev/null
 }
 
@@ -130,8 +130,6 @@ zi ice lucid id-as'history-search' atload'
 '
 zi light zsh-users/zsh-history-substring-search
 
-
-
 # Autosuggestions - balanced delay
 zi ice lucid id-as'auto-suggest' atload'
   zdelay 0.3
@@ -216,4 +214,4 @@ fi
 # - Total execution time for each function
 # - Self execution time (excluding subcall time)
 # - Function list sorted by execution time
-zprof
+# zprof
