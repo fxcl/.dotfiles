@@ -67,11 +67,13 @@ cmd fzf ${{
 
 # https://github.com/gokcehan/lf/wiki/Integrations#zoxide
 cmd z %{{
-	result="$(zoxide query --exclude $PWD $@)"
-	lf -remote "send $id cd $result"
+	if result="$(zoxide query --exclude $PWD $@ 2>/dev/null)" && [ -n "$result" ]; then
+		lf -remote "send $id cd \"$result\""
+	fi
 }}
 
 cmd zi ${{
-	result="$(zoxide query -i)"
-	lf -remote "send $id cd $result"
+	if result="$(zoxide query -i 2>/dev/null)" && [ -n "$result" ]; then
+		lf -remote "send $id cd \"$result\""
+	fi
 }}

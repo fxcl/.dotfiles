@@ -12,7 +12,8 @@ format:
 
 deploy:
 	NIXPKGS_ALLOW_UNFREE=1 NIX_BUILD_FLAGS="--no-check" nix build .#darwinConfigurations.tony.system --impure --show-trace\
-	  --extra-experimental-features 'nix-command flakes'
+	  --extra-experimental-features 'nix-command flakes' \
+		--max-jobs 4 --cores 4
 	NIXPKGS_ALLOW_UNFREE=1  sudo ./result/sw/bin/darwin-rebuild switch --flake .#tony --impure
 
 deploy-debug:

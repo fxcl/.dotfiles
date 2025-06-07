@@ -2,119 +2,80 @@
 # ZSH OPTIONS CONFIGURATION - OPTIMIZED FOR PERFORMANCE AND USABILITY
 ################################################################################
 
-# Early return for non-interactive sessions to improve startup time
+# Early return for non-interactive sessions
 [[ ! -o interactive ]] && return 0
 
 ################################################################################
-# CRITICAL PERFORMANCE OPTIONS - LOAD FIRST
+# CRITICAL PERFORMANCE MODULES - PRELOAD
 ################################################################################
 
-# Command and path caching - major performance improvement
-setopt HASH_CMDS # Cache command locations to avoid PATH searches
-setopt HASH_DIRS # Cache directory locations to avoid PATH searches
+# Load essential modules with minimal features
+zmodload -F zsh/stat b:zstat
+zmodload -F zsh/datetime p:EPOCHSECONDS
+zmodload -F zsh/system b:syserror
+
+################################################################################
+# CORE PERFORMANCE OPTIONS
+################################################################################
+
+# Command and path caching
+setopt HASH_CMDS HASH_DIRS
 
 # Input/output optimization
-setopt NO_FLOW_CONTROL # Disable flow control (Ctrl+S/Ctrl+Q) for better terminal experience
-setopt NO_BEEP         # Disable beeping to reduce system calls
-setopt GLOB_COMPLETE   # Complete globs instead of expanding them
+setopt NO_FLOW_CONTROL NO_BEEP GLOB_COMPLETE
+
+# Job control optimization
+setopt NO_CHECK_JOBS NO_HUP NO_BG_NICE NOTIFY LONG_LIST_JOBS
+
+# Directory navigation optimization
+setopt PUSHD_IGNORE_DUPS PUSHD_SILENT AUTOPARAMSLASH
+setopt AUTO_CD AUTO_PUSHD PUSHD_TO_HOME
+
+# File operation safety
+setopt NO_CLOBBER NO_MULTIOS
 
 ################################################################################
-# LAZY LOADING MECHANISMS - DEFER INITIALIZATION
+# HISTORY OPTIMIZATION
 ################################################################################
 
-# URL handling functions - deferred loading for better startup performance
+# High-performance history settings
+setopt HIST_IGNORE_ALL_DUPS    # Remove duplicates
+setopt HIST_NO_STORE           # Don't store history commands
+setopt HIST_NO_FUNCTIONS       # Don't store functions
+setopt HIST_FIND_NO_DUPS      # Skip duplicates in search
+setopt INC_APPEND_HISTORY      # Immediate append
+setopt HIST_EXPIRE_DUPS_FIRST  # Remove duplicates first
+setopt HIST_REDUCE_BLANKS      # Remove extra blanks
+setopt EXTENDED_HISTORY        # Save timestamps
+
+# Ignore common commands in history
+typeset -gr HISTORY_IGNORE='(clear|c|pwd|exit|ls|ll|la|[bf]g|less)'
+
+################################################################################
+# INTERACTIVE SHELL OPTIMIZATION
+################################################################################
+
+# Command line behavior
+setopt AUTO_RESUME INTERACTIVE_COMMENTS CORRECT
+
+################################################################################
+# URL HANDLING - OPTIMIZED LAZY LOADING
+################################################################################
+
+# Efficient URL handler loading
 _load_url_handlers() {
-  # Load URL-related ZLE functions only when needed
-  autoload -Uz bracketed-paste-url-magic url-quote-magic
-
-  # Register ZLE widgets
-  zle -N bracketed-paste bracketed-paste-url-magic
-  zle -N self-insert url-quote-magic
-
-  # Remove this function after loading to free memory
+  # Load only if not already loaded
+  if [[ ! -v functions[url-quote-magic] ]]; then
+    autoload -Uz bracketed-paste-url-magic url-quote-magic
+    zle -N bracketed-paste bracketed-paste-url-magic
+    zle -N self-insert url-quote-magic
+  fi
   unfunction _load_url_handlers
 }
 
-# Defer URL handler loading to improve startup time
-if command -v zsh-defer >/dev/null 2>&1; then
+# Use zsh-defer if available, otherwise load immediately
+if (( $+commands[zsh-defer] )); then
   zsh-defer _load_url_handlers
 else
-  # Load immediately if zsh-defer is not available
   _load_url_handlers
 fi
-
-################################################################################
-# JOB CONTROL OPTIMIZATION
-################################################################################
-
-# Job management settings - grouped for related functionality
-setopt NO_CHECK_JOBS  # Don't check for running jobs on shell exit
-setopt NO_HUP         # Don't kill background jobs on shell exit
-setopt NO_BG_NICE     # Don't lower priority of background jobs
-setopt NOTIFY         # Report job status immediately, not at next prompt
-setopt LONG_LIST_JOBS # Use detailed format for job listings
-
-################################################################################
-# INTERACTIVE SHELL EXPERIENCE
-################################################################################
-
-# Command line behavior enhancements
-setopt AUTO_RESUME          # Resume suspended job with its name as a command
-setopt INTERACTIVE_COMMENTS # Allow comments in interactive shells
-setopt CORRECT              # Suggest corrections for mistyped commands
-
-################################################################################
-# HISTORY MANAGEMENT - OPTIMIZED FOR PERFORMANCE AND USABILITY
-################################################################################
-
-# Ignore common commands in history to save space and improve search
-# Use readonly for better performance
-readonly HISTORY_IGNORE='(clear|c|pwd|exit|ls|ll|la|[bf]g|less)'
-
-# High-impact history performance settings
-setopt HIST_IGNORE_ALL_DUPS # Remove all duplicates from history
-setopt HIST_NO_STORE        # Don't store history or fc commands
-setopt HIST_NO_FUNCTIONS    # Don't store function definitions
-setopt HIST_FIND_NO_DUPS    # Don't display duplicates during searches
-
-# Balanced performance/functionality history settings
-setopt INC_APPEND_HISTORY     # Append to history file immediately
-setopt HIST_EXPIRE_DUPS_FIRST # Remove duplicates first when trimming history
-setopt HIST_REDUCE_BLANKS     # Remove superfluous blanks from history
-
-# Core history functionality
-setopt EXTENDED_HISTORY # Save timestamp and duration information
-
-################################################################################
-# DIRECTORY NAVIGATION OPTIMIZATION
-################################################################################
-
-# High-performance directory handling
-setopt PUSHD_IGNORE_DUPS # Avoid duplicate directories in stack
-setopt PUSHD_SILENT      # Don't print directory stack after pushd/popd
-setopt AUTOPARAMSLASH    # Append slash to directory names during completion
-
-# Directory navigation convenience features
-setopt AUTO_CD       # Change to directory without typing cd
-setopt AUTO_PUSHD    # Make cd push directories to stack
-setopt PUSHD_TO_HOME # pushd with no args goes to home directory
-
-################################################################################
-# FILE OPERATION SAFETY AND OPTIMIZATION
-################################################################################
-
-# Disable rarely used features to improve performance
-setopt NO_MULTIOS # Disable multiple redirections - rarely needed
-
-# File operation safety measures
-setopt NO_CLOBBER # Prevent accidental file overwriting
-
-################################################################################
-# PRELOAD CRITICAL MODULES - REDUCE FIRST-USE DELAY
-################################################################################
-
-# Load essential modules with minimal features for better performance
-{
-  zmodload -F zsh/stat +b:zstat
-  zmodload -F zsh/datetime +p:EPOCHSECONDS
-} 2>/dev/null

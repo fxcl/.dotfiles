@@ -1,9 +1,22 @@
 # vim:ft=zsh:
 
+emulate -L zsh
+
+# 缓存命令检查结果
+typeset -gA __TRE_CACHE
+__tre_has_cmd() {
+	[[ -n "${__TRE_CACHE[$1]}" ]] && return ${__TRE_CACHE[$1]}
+	(( $+commands[$1] )) && __TRE_CACHE[$1]=0 || __TRE_CACHE[$1]=1
+	return ${__TRE_CACHE[$1]}
+}
+
 # `tre` is a shorthand for `tree` with hidden files and color enabled, ignoring
 # the `.git` directory, listing directories first. The output gets piped into
 # `less` with options to preserve color and line numbers, unless the output is
 # small enough for one screen.
 function tre() {
-	tree -aC -I '.git|node_modules|bower_components' --dirsfirst "$@" | less -FRNX;
+	__tre_has_cmd tree || return 1
+	
+	local -r ignore_pattern='.git|node_modules|bower_components'
+	tree -aC -I "$ignore_pattern" --dirsfirst "$@" | less -FRNX
 }
