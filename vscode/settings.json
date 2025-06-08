@@ -10,10 +10,28 @@
   "continue.telemetryEnabled": false,
   "continue.enableQuickActions": true,
   "remote.extensionKind": {
+    "ms-vscode.js-debug-nightly": "workspace",
     "msjsdiag.debugger-for-chrome": "workspace",
-    // "continue.continue": [
-    //   "workspace"
-    // ]
+    "dbaeumer.vscode-eslint": "workspace",
+    "editorconfig.editorconfig": "workspace",
+    "esbenp.prettier-vscode": "workspace",
+    "ms-vscode.typescript-javascript-grammar": "workspace",
+    "rbbit.typescript-hero": "workspace",
+    "pub.name": [
+      "ui"
+    ],
+    "igorsbitnev.error-gutters": [
+      "ui"
+    ],
+    "joeberria.statusbarerror": [
+      "ui"
+    ],
+    "wakatime.vscode-wakatime": [
+      "ui"
+    ],
+    "continue.continue": [
+      "workspace"
+    ]
   },
   "liveServer.settings.donotVerifyTags": true,
   "liveServer.settings.donotShowInfoMsg": true,
@@ -161,7 +179,7 @@
   // },
   "apc.sidebar.titlebar": {
     "height": 35,
-    "fontSize": 12,
+    "fontSize": 12
   },
   "apc.parts.font.family": {
     // "sidebar": "Zed Mono','Mononoki Nerd Font','MesloLGS NF'",
@@ -395,7 +413,7 @@
       "description": "",
       "type": "text",
       "multiline": false
-    },
+    }
   ],
   "clang-format.executable": "clang-format-10",
   "clang-format.style": "google",
@@ -928,7 +946,7 @@
           "entity.name.type.class", // class names
           "entity.name.type.interface", // interface names
           "entity.name.type.trait", // trait names
-          "entity.name.section.markdown", // markdown headlines
+          "entity.name.section.markdown" // markdown headlines
         ],
         "settings": {
           "fontStyle": "italic bold"
@@ -1108,12 +1126,12 @@
   "explicitFolding.rules": {
     "*": {
       "begin": "{{{",
-      "end": "}}}",
-    },
+      "end": "}}}"
+    }
   },
   "explicitFolding.additionalSchemes": [
     "git",
-    "gitlens",
+    "gitlens"
   ],
   // "explicitFolding.debug": true,
   // "explicitFolding.delay": 0,
@@ -1130,6 +1148,7 @@
   "deno.suggest.imports.hosts": {
     "https://deno.land": true
   },
+  "debug.chrome.useV3": true,
   "debug.terminal.clearBeforeReusing": true,
   "debug.internalConsoleOptions": "neverOpen",
   "debug.javascript.suggestPrettyPrinting": true,
@@ -1493,7 +1512,7 @@
     "src/vs/base/test/node/uri.perf.data.txt": true,
     "src/vs/workbench/api/test/browser/extHostDocumentData.test.perf-data.ts": true,
     "src/vs/base/test/node/uri.test.data.txt": true,
-    "src/vs/editor/test/node/diffing/fixtures/**": true,
+    "src/vs/editor/test/node/diffing/fixtures/**": true
   },
   "files.readonlyInclude": {
     "**/node_modules/**/*.*": true,
@@ -1511,7 +1530,7 @@
     "test/smoke/out/**": true,
     "test/automation/out/**": true,
     "test/integration/browser/out/**": true,
-    "src2/**": true,
+    "src2/**": true
   },
   "files.readonlyExclude": {
     "build/builtin/*.js": true,
@@ -1682,7 +1701,7 @@
       // "vsx:DanielSanMedium.dscodegpt"
       //"ms:saoudrizwan.claude-dev"
       "vsx:Continue.continue",
-      "ms:supermaven.supermaven",
+      "ms:supermaven.supermaven"
     ],
     "data": [
       // #core
@@ -1690,7 +1709,7 @@
       "ms:GraphQL.vscode-graphql",
       "ms:matt-meyers.vscode-dbml",
       "vsx:adam-bender.commit-message-editor",
-      "vsx:aaron-bond.better-comments",
+      "vsx:aaron-bond.better-comments"
       // "vsx:alexcvzz.vscode-sqlite",
       // "vsx:cweijan.vscode-redis-client",
       ////"vsx:mtxr.sqltools-driver-mysql",
@@ -1889,7 +1908,7 @@
         // For Arduino & Excel themes
         "id": [
           "ms:hoovercj.vscode-settings-cycler",
-          "vsx:jellydn.vscode-settings-cycler",
+          "vsx:jellydn.vscode-settings-cycler"
         ]
       },
       "vsx:BrandonKirbyson.vscode-animations",
@@ -1900,7 +1919,7 @@
     // Language Extensions
     "css": [
       "ms:mrmlnc.vscode-scss",
-      "vsx:pranaygp.vscode-css-peek",
+      "vsx:pranaygp.vscode-css-peek"
       // "vsx:syler.sass-indented"
       // "vsx:Zignd.html-css-class-completion"
     ],
@@ -2002,7 +2021,7 @@
       "vsx:batisteo.vscode-django",
       "vsx:littlefoxteam.vscode-python-test-adapter",
       "vsx:ms-python.python",
-      "vsx:njpwerner.autodocstring",
+      "vsx:njpwerner.autodocstring"
       // "vsx:sourcery.sourcery"
     ],
     "rust": [
@@ -2117,7 +2136,7 @@
     "**/app/**/index.tsx": "${dirname} - Index",
     "**/app/**/layout. tsx": "${dirname} - Layout",
     "**/app/**/template.tsx": "${dirname} - Template",
-    "**/components/**/index.tsx": "${dirname} - Component",
+    "**/components/**/index.tsx": "${dirname} - Component"
   },
   "workbench.colorCustomizations": {
     // "window.activeBorder": "#ff0000",
@@ -2247,8 +2266,8 @@
       {
         "beginRegex": "\"([^\\(]{0,16})\\(",
         "endRegex": "\\)\\1\"",
-        "foldLastLine": false,
-      },
+        "foldLastLine": false
+      }
     ]
   },
   "[csharp]": {
@@ -2262,7 +2281,7 @@
     "editor.codeActionsOnSave": {
       "source.organizeImports": "explicit",
       "source.fixAll": "explicit"
-    },
+    }
   },
   "[html]": {
     // "explicitFolding.debug": true,
@@ -2270,9 +2289,9 @@
       {
         "beginRegex": "<(?!area|base|br|col|embed|hr|img|input|link|menuitem|meta|param|source|track|wbr)([a-zA-Z0-9]+)[^>\/]*>",
         "endRegex": "<\\/\\1>"
-      },
+      }
     ],
-    "explicitFolding.autoFold": "4",
+    "explicitFolding.autoFold": "4"
   },
   "[ignore]": {
     "editor.defaultFormatter": "mkhl.shfmt"
@@ -2280,11 +2299,11 @@
   "[json]": {
     "editor.foldingStrategy": "indentation",
     // "editor.formatOnSave": true,
-    "explicitFolding.autoFold": "none",
+    "explicitFolding.autoFold": "none"
   },
   "[jsonc]": {
     // "editor.foldingStrategy": "indentation",
-    "explicitFolding.autoFold": "none",
+    "explicitFolding.autoFold": "none"
     // "explicitFolding.debug": true,
     // "explicitFolding.rules": [
     // 	{
@@ -2298,7 +2317,7 @@
     "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
   },
   "[makefile]": {
-    "editor.wordSeparators": "`~!@^&*()-+[{]}\\|'\",/?",
+    "editor.wordSeparators": "`~!@^&*()-+[{]}\\|'\",/?"
   },
   "[dockerfile]": {
     "editor.defaultFormatter": "ms-azuretools.vscode-docker"
@@ -2313,7 +2332,7 @@
     "editor.rulers": [
       80
     ],
-    "editor.suggest.snippetsPreventQuickSuggestions": false,
+    "editor.suggest.snippetsPreventQuickSuggestions": false
   },
   "[dotenv]": {
     "editor.defaultFormatter": "mkhl.shfmt"
@@ -2326,8 +2345,8 @@
     "explicitFolding.rules": [
       {
         "separator": "process"
-      },
-    ],
+      }
+    ]
   },
   "[lua]": {
     // "explicitFolding.debug": true,
@@ -2336,25 +2355,25 @@
         "begin": "--[[",
         "end": "--]]",
         "nested": false,
-        "kind": "comment",
+        "kind": "comment"
       },
       {
         "begin": "--",
         "continuation": "\\",
         "nested": false,
-        "kind": "comment",
+        "kind": "comment"
       },
       {
         "begin": "\"",
         "end": "\"",
-        "nested": false,
+        "nested": false
       },
       {
         "beginRegex": "\\b(?:for|function|if)\\b",
         "middleRegex": "\\belse(?:if)?\\b",
-        "endRegex": "\\bend\\b",
-      },
-    ],
+        "endRegex": "\\bend\\b"
+      }
+    ]
   },
   "[markdown]": {
     "editor.defaultFormatter": "DavidAnson.vscode-markdownlint",
@@ -2425,10 +2444,9 @@
     // 		"end": ")"
     // 	}
     // ],
-    // "explicitFolding.perFiles": {
-    // 	"*.special.js": [
-    // 	]
-    // },
+    "explicitFolding.perFiles": {
+      "*.special.js": []
+    }
   },
   "[plaintext]": {
     "files.insertFinalNewline": false
@@ -2450,14 +2468,14 @@
     "explicitFolding.rules": [
       {
         "beginRegex": "\"\"\"",
-        "endRegex": "\"\"\"",
+        "endRegex": "\"\"\""
       },
       {
         "separatorRegex": "#\\s*%%"
       },
       {
         "begin": "(",
-        "end": ")",
+        "end": ")"
       },
       {
         "indentation": true,
@@ -2631,91 +2649,6 @@
         },
         {
           "apc.stylesheet": {
-            // // Sidebar category (e.g. Explorer) text, conflicts with mac window buttons
-            // ".sidebar > .title > .title-label": "opacity: 0",
-            // // Sidebar actions (e.g. fold all files)
-            // ".sidebar .title-actions": "display: none !important",
-            // // Editor actions (e.g. open preview)
-            // ".editor-group-container .title-actions": "display: none !important",
-            // // Auxiliary bar actions (e.g. commit when source control is in auxiliary bar)
-            // "[id='workbench.parts.auxiliarybar'] .title-actions": "display: none !important",
-            // // Terminal actions (e.g. new terminal)
-            // "[aria-label='Terminal actions']": "display: none !important",
-            // // Panel close
-            // ".actions-container .codicon-panel-close": "display: none !important",
-            // // Panel maximize
-            // ".actions-container .codicon-panel-maximize": "display: none !important"
-            ////////////////////////////////////////////////////
-            // ".monaco-workbench .part.sidebar>.title>.title-label h2": "display: none;",
-            // ".title.tabs.title-border-bottom .tabs-container": "cursor: default; -webkit-app-region: no-drag;",
-            // ".editor-actions": "display: none;",
-            // ".monaco-list-rows": "background-color: transparent !important;",
-            // ".nosidebar .tabs": "padding-left: 80px;",
-            // ".scrollbar": " width: 10px !important",
-            // ".scrollbar .slider": "border-radius: 6px; width: calc(100% - 2px) !important;",
-            // ".activitybar .composite-bar > .monaco-action-bar > .actions-container": "justify-content: space-evenly; max-width: 300px;",
-            // ".monaco-editor .margin": "opacity: 1;",
-            // // ".pane-header": "padding-left: 10px;",
-            // ".activitybar > .content": "flex-direction: column !important",
-            // // Toolbars hidden unless needed
-            // "#workbench\\.parts\\.sidebar > .composite.title": "opacity: 0;",
-            // "#workbench\\.parts\\.sidebar > .composite.title:hover": "opacity: 1;",
-            // // Move notifications above taller status bar
-            // // TODO: Move over editor if right sidebar is open (Needs fixed sidebar widths)
-            // ".monaco-workbench>.notifications-center": "bottom: 45px; right: 0px",
-            // ".monaco-workbench>.notifications-toasts": "bottom: 45px",
-            // // Dim inactive terminal panes further
-            // ".terminal": "border-left: 1px solid #00ffaa; padding-left: 1em; opacity: 1;",
-            // ".terminal:not(.focus)": "border-color: transparent; opacity: 0.4;",
-            // // Translucent sidebars
-            // ".editor .title": "background: transparent !important;",
-            // ".editor .title .label-container": "visibility: hidden;",
-            // ".editor .scrollbar .slider": "visibility: hidden",
-            // ".editor .scrollbar:hover .slider": "visibility: initial",
-            // ".monaco-editor .scroll-decoration": "visibility: hidden",
-            // ".monaco-scrollable-element>.shadow.top": "visibility: hidden",
-            // ".inline-no-tabs-placeholder": "background: transparent !important;"
-            ////////////////////////////////////////////////
-            // ".title-actions": "display: none !important",
-            // ".quick-input-widget.show-file-icons, .editor-widget.find-widget": "box-shadow: none !important",
-            // ".filematch .monaco-icon-label:before, .custom-list-row.results .monaco-list-row .monaco-icon-label:before": "background-position: 0 bottom !important",
-            // ".filematch .monaco-count-badge": "padding: 5px 6px 0 6px !important",
-            // ".sidebar .title-label": "padding: 0 !important",
-            // ".monaco-workbench .monaco-list:not(.element-focused):focus:before": "outline: none !important",
-            // ".sidebar": "border: none !important",
-            // // ".monaco-editor .cursors-layer .cursor": "background-image: linear-gradient(135deg, #67D0FF 10%, #C45DFF 100%)",
-            // ".quick-input-list-row div": "display: flex !important; align-items: center !important",
-            // // ".panel .composite.title": "visibility: hidden !important",
-            // ".title.show-file-icons .label-container .monaco-icon-label.file-icon": "padding-bottom: 6px !important",
-            // ".sidebar .title-label h2": "line-height: 2.8 !important",
-            // ".monaco-editor .scroll-decoration": "display: none !important",
-            // ".monaco-scrollable-element > .shadow.top": "display: none !important",
-            // // ".monaco-split-view2 > .monaco-scrollable-element > .split-view-container": "background: #191521 !important",
-            // ".comment:not(.punctuation), .attribute-name, .decorator.name, .decorator.punctuation:not(.block), .import.keyword, .type.storage,.type.storage.declaration, .storage.class.modifier, .mtki": "font-family: 'VictorMono Nerd Font' !important; font-size:1.05em !important; font-weight: 800 !important"
-            /////////////////////////////////
-            // ".title-actions": "display: none !important",
-            // ".tabs-and-actions-container > .editor-actions": "display: none !important",
-            // ".titlebar-center": "display: none !important",
-            // ".titlebar-right": "display: none !important",
-            // ".inline-tabs-placeholder": "display: none !important",
-            // ".decorationsOverviewRuler": "display: none !important",
-            // ".sidebar": "border: none !important",
-            // ".monaco-workbench .monaco-list:not(.element-focused):focus:before": "outline: none !important",
-            // ".monaco-editor .cursors-layer .cursor": "background-image: linear-gradient(135deg, #c6a0f6 10%, #8aadf4 100%)",
-            // ".quick-input-list-row div": "display: flex !important; align-items: center !important",
-            // ".title.show-file-icons .label-container .monaco-icon-label.file-icon": "padding-bottom: 6px !important",
-            // ".quick-input-widget.show-file-icons, .editor-widget.find-widget": "box-shadow: none !important",
-            // ".filematch .monaco-icon-label:before, .custom-list-row.results .monaco-list-row .monaco-icon-label:before": "background-position: 0 bottom !important",
-            // ".filematch .monaco-count-badge": "padding: 5px 6px 0 6px !important",
-            // ".composite": "border: none !important",
-            // ".global-actions": "display: none !important",
-            // ".slider": "position: absolute !important; right: 1px !important; width: 6px !important; border-radius: 5px; left: auto !important;",
-            // ".monaco-scrollable-element > .shadow.top": "box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.75) !important; top: -3px !important",
-            // ".monaco-editor-hover, .monaco-hover": "box-shadow: 0px 8px 32px rgba(0,0,0,.45) !important; padding: 5px !important; background-image: linear-gradient(#363a4f 0%, #24273a 100%) !important; border-radius: 7px !important; border: none !important;",
-            // ".quick-input-widget": "transform: translateY(-50%) !important; top: 50% !important; box-shadow: 0px 8px 20px rgba(0, 0, 0, .45) !important; padding: 10px 10px 18px 10px !important; background-image: linear-gradient(#363a4f 0%, #1e2030 100%) !important; border-radius: 7px !important;",
-            // ".monaco-list-rows": "background: transparent !important;",
-            // ".monaco-list-row:hover": "background: rgba(0, 0, 0, .2) !important;",
-            // ".notifications-toasts .monaco-list-row:hover": "background: none !important;"
             ".sideBar": "border: none !important",
             ".monaco-workbench": {
               "--vscode-scrollbarSlider-background": "#424441"
