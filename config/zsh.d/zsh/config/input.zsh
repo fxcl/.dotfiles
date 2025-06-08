@@ -12,82 +12,78 @@
 # Enable vi mode for command line editing
 bindkey -v
 
-# Disable terminal flow control (allows Ctrl+S and Ctrl+Q usage)
+# Disable terminal flow control (freeing Ctrl+S/Ctrl+Q)
 [[ -t 0 ]] && stty -ixon
 
 ###############################################################################
-# Key Binding Setup Functions - Modular and Lazy Loaded
+# Key Binding Setup - Modular Loading
 ###############################################################################
 
-# Core bindings setup - loaded immediately
+# Load terminfo module once globally
+zmodload -F zsh/terminfo +b:echoti +p:terminfo 2>/dev/null
+
+# Core bindings (immediate load)
 _setup_core_bindings() {
-  local -A _key_info
-  
-  # Define core key prefixes
-  _key_info=(
+  typeset -gA key_info=(
     'Control' '\C-'
-    'Escape'  '\e'
-    'Meta'    '\M-'
+    'Escape' '\e'
+    'Meta' '\M-'
+    'Backspace' "${terminfo[kbs]:-^?}"
+    'Left' "${terminfo[kcub1]:-^[[D}"
+    'Right' "${terminfo[kcuf1]:-^[[C}"
   )
-  
-  # Map essential keys
-  zmodload -F zsh/terminfo +b:echoti +p:terminfo 2>/dev/null
-  _key_info[Backspace]=${terminfo[kbs]}
-  _key_info[Left]=${terminfo[kcub1]}
-  _key_info[Right]=${terminfo[kcuf1]}
-  
-  # Export key mappings
-  typeset -gA key_info
-  key_info=(${(kv)_key_info})
-  
-  # Core bindings
+
+  # Magic space expands history abbreviations
   bindkey ' ' magic-space
-  bindkey "${_key_info[Control]}L" clear-screen
-  
-  unset _key_info
+
+  # Ctrl+L clears screen
+  bindkey "${key_info[Control]}L" clear-screen
 }
 
-# Optional bindings setup - deferred loading
+# Optional features (deferred load)
 _setup_optional_bindings() {
-  # Double-dot expansion
+  # Double-dot path expansion (e.g., '..' becomes '../..')
   if [[ ${zdouble_dot_expand} == 'true' ]]; then
     double-dot-expand() {
-      [[ ${LBUFFER} == *.. ]] && LBUFFER+='/..' || LBUFFER+='.'
+      LBUFFER+="${LBUFFER[-2, -1]== '..' ? '/..' : '.'}"
     }
     zle -N double-dot-expand
     bindkey '.' double-dot-expand
   fi
-  
-  # Command line editing
+
+  # Edit command in $EDITOR (bound to '!' in vicmd mode)
   autoload -Uz edit-command-line
   zle -N edit-command-line
   bindkey -M vicmd '!' edit-command-line
 }
 
-# Version compatibility setup - deferred loading
+# Backward compatibility (deferred load)
 _setup_version_compat() {
-  # Simplified version check
-  if ! zmodload zsh/pcre 2>/dev/null; then
-    # Show visual indicator during completion
-    expand-or-complete-with-redisplay() {
+  # Visual indicator for older zsh versions (<5.8)
+  if ((ZSH_VERSION < 5.8)); then
+    expand-or-complete-with-indicator() {
       print -Pn '...'
       zle expand-or-complete
       zle redisplay
     }
-    zle -N expand-or-complete-with-redisplay
-    bindkey "${key_info[Control]}I" expand-or-complete-with-redisplay
+    zle -N expand-or-complete-with-indicator
+    bindkey "${key_info[Control]}I" expand-or-complete-with-indicator
   fi
 }
 
 ###############################################################################
-# Initialization with Progressive Loading
+# Initialization
 ###############################################################################
 
-# Load core bindings immediately
+# Load core functionality immediately
 _setup_core_bindings
 
-# Defer optional features
-zsh-defer -t 0.1 _setup_optional_bindings 2>/dev/null || _setup_optional_bindings
-
-# Defer compatibility features
-zsh-defer -t 0.2 _setup_version_compat 2>/dev/null || _setup_version_compat
+# Defer non-critical features
+if (( $+commands[zsh-defer] )); then
+  zsh-defer -t 0.1 _setup_optional_bindings
+  zsh-defer -t 0.2 _setup_version_compat
+else
+  # Fallback to immediate load if zsh-defer missing
+  _setup_optional_bindings
+  _setup_version_compat
+fi
