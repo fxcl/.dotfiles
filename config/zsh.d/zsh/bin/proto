@@ -73,7 +73,7 @@ if which go >/dev/null 2>&1; then
   export GOPROXY="https://goproxy.cn,direct"
   export GOOS=darwin
   export GOARCH=amd64
-  export GOROOT=$PROTO_HOME/tools/go/1.24.2
+  export GOROOT=$PROTO_HOME/tools/go/1.24.4
   export GOPATH=$HOME/go
   export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
   export PATH=$PATH:$(go env GOPATH)/bin
