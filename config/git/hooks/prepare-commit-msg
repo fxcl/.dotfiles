@@ -89,7 +89,7 @@ JSON_DATA
 )
 
 # Log the raw curl output for debugging purposes
-echo "Raw CURL Output: $CURL_OUTPUT" >&2
+# echo "Raw CURL Output: $CURL_OUTPUT" >&2
 
 # Attempt to parse the JSON output
 MESSAGE_TEXT=$(echo "$CURL_OUTPUT" | jq -r '.choices[0].message.content')
