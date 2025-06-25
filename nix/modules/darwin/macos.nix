@@ -63,14 +63,14 @@ in
           #"teamviewer"
           #"utm"
           #"via"
-          "goneovim"
+          #"goneovim"
           #"xquartz"
           #"xournal-plus-plus"
           #"zoom"
         ];
-
         # `brew install`
         brews = [
+        "ruby@3.3"
          "libyaml"
           "cppcheck"
           #"lua"
@@ -103,7 +103,7 @@ in
           "texinfo"
           "imagemagick"
           "libtool"
-          "llvm"
+          "llvm@19"
           "uv"
           "libomp"
           #"verible"
