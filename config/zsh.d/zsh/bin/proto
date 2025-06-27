@@ -54,11 +54,17 @@ export PATH="$MOON_HOME:$PATH"
 # moon end
 
 # node
-export NODE_HOME="$PROTO_HOME/shims/node"
-export PATH="$NODE_HOME:$PATH"
-if [[ -d "$PROTO_HOME/tools/node/globals/bin" ]]; then
-  export PATH="$PROTO_HOME/tools/node/globals/bin:$PATH"
-fi
+# Extract the Node.js version from .prototools
+NODE_VERSION=$(grep -E '^node = "[0-9.]+"' ~/.proto/.prototools | awk -F'"' '{print $2}')
+# If a Node.js version is found, set the exports
+if [ -n "$NODE_VERSION" ]; then
+  # Ensure PROTO_HOME is set; adjust if your proto installation is elsewhere
+  export PROTO_HOME="${PROTO_HOME:-$HOME/.proto}"
+  export NODE_HOME="$PROTO_HOME/tools/node/$NODE_VERSION"
+  export PATH="$NODE_HOME:$PATH"
+  if [[ -d "$PROTO_HOME/tools/node/$NODE_VERSION/bin" ]]; then
+    export PATH="$PROTO_HOME/tools/node/$NODE_VERSION/bin:$PATH"
+  fi
 # node end
 
 # go
