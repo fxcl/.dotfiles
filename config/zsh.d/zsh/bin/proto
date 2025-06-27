@@ -1,140 +1,80 @@
 #!/usr/bin/env sh
 
-# # Check for nodejs plugin
-# if ! proto status node &> /dev/null; then
-#   echo "  Node.js proto plugin is being installed"
-#   proto install node
-# fi
-
-# # Check for pnpm plugin
-# if ! proto status pnpm &> /dev/null; then
-#   echo "  Pnpm proto plugin is being installed"
-#   proto install pnpm
-# fi
-
-# # Check for yarn plugin
-# if ! proto status yarn &> /dev/null; then
-#   echo "  Yarn proto plugin is being installed"
-#   proto install yarn
-# fi
-
-# # Check for moon plugin
-# # First, check if the moon plugin is added at all.
-# # If `proto status moon` returns an error, it likely means the plugin isn't added.
-# if ! proto status moon &> /dev/null; then
-#   echo "  Moon proto plugin is being added"
-#   proto plugin add moon "https://raw.githubusercontent.com/moonrepo/moon/master/proto-plugin.toml"
-# fi
-
-# # Now check if moon is installed after ensuring the plugin is added
-# if ! proto status moon &> /dev/null; then
-#   echo "  Moon proto plugin is being installed"
-#   proto install moon
-# fi
-
-# proto
-#export PATH="$PROTO_HOME/shims:$PROTO_HOME/bin:/opt/homebrew/sbin:$PATH"
+# Proto environment setup
 export PROTO_HOME="$HOME/.proto"
 export PATH="$PROTO_HOME/shims:$PROTO_HOME/bin:$PATH"
-# proto end
 
-# pnpm
-export PNPM_HOME="$PROTO_HOME/shims/pnpm"
-export PATH="$PNPM_HOME:$PATH"
-#pnpm end
+# Tool-specific shims
+export PNPM_HOME="$PROTO_HOME/cache/pnpm"
+export YARN_HOME="$PROTO_HOME/cache/yarn"
+export MOON_HOME="$PROTO_HOME/cache/moon"
+export PATH="$PNPM_HOME:$YARN_HOME:$MOON_HOME:$PATH"
 
-# yarn
-export YARN_HOME="$PROTO_HOME/shims/yarn"
-export PATH="$YARN_HOME:$PATH"
-# yarn end
-
-# moon
-export MOON_HOME="$PROTO_HOME/shims/moon"
-export PATH="$MOON_HOME:$PATH"
-# moon end
-
-# node
-# Extract the Node.js version from .prototools
+# Node.js setup
 NODE_VERSION=$(grep -E '^node = "[0-9.]+"' ~/.proto/.prototools | awk -F'"' '{print $2}')
-# If a Node.js version is found, set the exports
 if [ -n "$NODE_VERSION" ]; then
-  # Ensure PROTO_HOME is set; adjust if your proto installation is elsewhere
-  export PROTO_HOME="${PROTO_HOME:-$HOME/.proto}"
   export NODE_HOME="$PROTO_HOME/tools/node/$NODE_VERSION"
-  export PATH="$NODE_HOME:$PATH"
-  if [[ -d "$PROTO_HOME/tools/node/$NODE_VERSION/bin" ]]; then
-    export PATH="$PROTO_HOME/tools/node/$NODE_VERSION/bin:$PATH"
+  # export PATH="$NODE_HOME:$PATH"
+  if [ -d "$NODE_HOME/bin" ]; then
+    export PATH="$NODE_HOME/bin:$PATH"
   fi
-# node end
+fi
 
-# go
-if which go >/dev/null 2>&1; then
-  if [ ! -d "$HOME/go" ]; then
-    mkdir -p $HOME/go
+# Go setup
+if command -v go >/dev/null 2>&1; then
+ GO_VERSION=$(grep -E '^go = "[0-9.]+"' ~/.proto/.prototools | awk -F'"' '{print $2}')
+  [ ! -d "$HOME/go" ] && mkdir -p "$HOME/go"
+  if [ -n "$GO_VERSION" ]; then
+      export GOROOT="$PROTO_HOME/tools/go/$GO_VERSION"
   fi
   export GO111MODULE=on
   export GOPROXY="https://goproxy.cn,direct"
   export GOOS=darwin
   export GOARCH=amd64
-  export GOROOT=$PROTO_HOME/tools/go/1.24.4
-  export GOPATH=$HOME/go
-  export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
-  export PATH=$PATH:$(go env GOPATH)/bin
+  export GOPATH="$HOME/go"
+  export PATH="$GOPATH/bin:$GOROOT/bin:$PATH"
+  export PATH="$PATH:$(go env GOPATH)/bin"
 fi
-# go end
 
+# Proto aliases
 alias plist="proto list --aliases"
 alias psearch="proto list-remote --aliases"
 alias pupgrade="proto upgrade"
+
+# Proto custom commands
 pinstall() {
-  if [[ $# -eq 1 ]]; then
-    echo -e "\033[0;33mWarning: No version provided. Using 'latest' as version tag.\033[0m"
-    echo
-    proto install --pin global $1 latest
-  else
-    proto install --pin global $1 $2
-  fi
+  local version=${2:-latest}
+  [[ $# -eq 1 ]] && echo -e "\033[0;33mWarning: No version provided. Using 'latest' as version tag.\033[0m\n"
+  proto install --pin  "$1" "$version"
 }
+
 prm() {
-  if [[ $# -eq 1 ]]; then
-    echo -e "\033[0;33mWarning: No version provided. Using 'latest' as version tag.\033[0m"
-    echo
-    proto uninstall $1 latest
-  else
-    proto uninstall $1 $2
-  fi
+  local version=${2:-latest}
+  [[ $# -eq 1 ]] && echo -e "\033[0;33mWarning: No version provided. Using 'latest' as version tag.\033[0m\n"
+  proto uninstall "$1" "$version"
 }
-puse() {
-  if [[ $# -eq 1 ]]; then
-    echo -e "\033[0;33mWarning: No version provided. Using 'latest' as version tag.\033[0m"
-    echo
-    proto pin --resolve --global $1 latest
-  else
-    proto pin --resolve --global $1 $2
-  fi
-}
+
 poutdated() {
   if [[ -f .prototools ]]; then
     proto outdated
   elif [[ $# -eq 0 ]]; then
-    echo -e "\033[0;33mWarning: No argument provided. Checking global tools...\033[0m"
-    echo
-    (cd $PROTO_HOME && proto outdated)
+    echo -e "\033[0;33mWarning: No argument provided. Checking global tools...\033[0m\n"
+    (cd "$PROTO_HOME" && proto outdated)
   elif [[ -d $1 ]]; then
-    (cd $1 && proto outdated)
+    (cd "$1" && proto outdated)
   else
     echo -e "\033[0;31mInvalid argument: $1\033[0m"
   fi
 }
+
 ptools() {
   if [[ -f .prototools ]]; then
     proto status
   elif [[ $# -eq 0 ]]; then
-    echo -e "\033[0;33mWarning: No argument provided. Checking global tools...\033[0m"
-    echo
-    (cd $PROTO_HOME && proto status)
+    echo -e "\033[0;33mWarning: No argument provided. Checking global tools...\033[0m\n"
+    (cd "$PROTO_HOME" && proto status)
   elif [[ -d $1 ]]; then
-    (cd $1 && proto status)
+    (cd "$1" && proto status)
   else
     echo -e "\033[0;31mInvalid argument: $1\033[0m"
   fi
@@ -146,17 +86,11 @@ phelp() {
   echo "Usage: <P-COMMAND> [OPTIONS]"
   echo
   echo "Commands:"
-  echo "    puse <TOOL> <[VERSION]>      - Use <TOOL> at <[VERSION]> ."
-  echo "                                   If <[VERSION]>  is not provided, it will be set to 'latest'."
-  echo "    pinstall <TOOL> <[VERSION]>  - Install <TOOL> at <[VERSION]> ."
-  echo "                                   If <[VERSION]>  is not provided, it will be set to 'latest'."
-  echo "    prm <TOOL> <[VERSION]>       - Uninstall <TOOL> at <[VERSION]> ."
-  echo "                                   If <[VERSION]>  is not provided, it will be set to 'latest'."
-  echo "    plist <TOOL>                 - List all installed versions of <TOOL>."
-  echo "    psearch <TOOL>               - Search for available versions of <TOOL>."
-  echo "    pupgrade                     - Upgrade proto itself."
-  echo "    poutdated <[DIRECTORY]>      - Show outdated tools in <directory>."
-  echo "                                   If <[DIRECTORY]> is not provided, it will be set to '$PROTO_HOME'."
-  echo "    ptools <[DIRECTORY]>         - List all installed tools in <directory>."
-  echo "                                   If <[DIRECTORY]> is not provided, it will be set to '$PROTO_HOME'."
+  echo "  pinstall <TOOL> <[VERSION]>  - Install <TOOL> at <[VERSION]>. If <[VERSION]> is not provided, it will be set to 'latest'."
+  echo "  prm <TOOL> <[VERSION]>       - Uninstall <TOOL> at <[VERSION]>. If <[VERSION]> is not provided, it will be set to 'latest'."
+  echo "  plist <TOOL>                 - List all installed versions of <TOOL>."
+  echo "  psearch <TOOL>               - Search for available versions of <TOOL>."
+  echo "  pupgrade                     - Upgrade proto itself."
+  echo "  poutdated <[DIRECTORY]>      - Show outdated tools in <directory>. If <[DIRECTORY]> is not provided, it will be set to '$PROTO_HOME'."
+  echo "  ptools <[DIRECTORY]>         - List all installed tools in <directory>. If <[DIRECTORY]> is not provided, it will be set to '$PROTO_HOME'."
 }
