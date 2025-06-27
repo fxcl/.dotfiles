@@ -37,9 +37,10 @@ if command -v go >/dev/null 2>&1; then
 fi
 
 # Proto aliases
-alias plist="proto list --aliases"
-alias psearch="proto list-remote --aliases"
+alias plist="proto versions"
+alias psearch="proto plugin search"
 alias pupgrade="proto upgrade"
+alias pstaus="proto status"
 
 # Proto custom commands
 pinstall() {
@@ -55,7 +56,7 @@ prm() {
 }
 
 poutdated() {
-  if [[ -f .prototools ]]; then
+  if [[ -f ~/.prototools ]]; then
     proto outdated
   elif [[ $# -eq 0 ]]; then
     echo -e "\033[0;33mWarning: No argument provided. Checking global tools...\033[0m\n"
@@ -68,7 +69,7 @@ poutdated() {
 }
 
 ptools() {
-  if [[ -f .prototools ]]; then
+  if [[ -f  ~/.prototools ]]; then
     proto status
   elif [[ $# -eq 0 ]]; then
     echo -e "\033[0;33mWarning: No argument provided. Checking global tools...\033[0m\n"

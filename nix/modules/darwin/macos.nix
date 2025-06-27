@@ -70,8 +70,8 @@ in
         ];
         # `brew install`
         brews = [
-        "ruby@3.3"
-         "libyaml"
+          "ruby@3.3"
+          "libyaml"
           "cppcheck"
           #"lua"
           #"luajit"

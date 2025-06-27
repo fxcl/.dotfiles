@@ -80,7 +80,7 @@ in
       # system.activationScripts.postUserActivation has been removed in nix-darwin
       # This functionality needs to be restructured to run as root with sudo or moved to home-manager
       /*
-     system.activationScripts.userSetup.text =
+         system.activationScripts.userSetup.text =
         ''
         echo ":: -> Running vim activationScript..."
         # Creating needed folders
