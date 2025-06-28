@@ -1,4 +1,29 @@
+## 2025-06-28
+
+### Fixed
+
+- **`config/zsh.d/.zshenv`**: Corrected a globbing bug in the macOS `PATH` configuration that prevented the `rustup` path from being added correctly.
+- **`config/zsh.d/.zshenv`**: Made the `RUST_SRC_PATH` detection dynamic to prevent breakage when the Rust toolchain is updated.
+
+### Changed
+
+- **`config/zsh.d/.zshenv`**: Improved readability of the `_no_proxy_hosts` list by grouping related hosts.
+
+---
+
+## 2025-06-28
+
+- **Refactor(`config/zsh.d/.zshenv`):** Correctly set and unset `no_proxy` and `NO_PROXY` environment variables in proxy management functions to ensure cross-tool compatibility.
+
 # Changes Log
+
+## [2025-06-28] - Zsh Environment Configuration Refactoring
+- Refactored `config/zsh.d/.zshenv` to improve readability and maintainability.
+- Renamed `_exists` to `_is_dir` and updated it to check for directories.
+- Added comments to the `PATH` configuration and standardized directory checks.
+- Simplified the `lesspipe` setup using a loop.
+- Re-defined `_NO_PROXY` as a multi-line array to improve readability.
+- Updated proxy management functions to provide clearer output.
 
 ## [2025-06-27] - Proto Script Optimization
 - Optimized 'config/zsh.d/zsh/bin/proto' for improved performance and readability.
