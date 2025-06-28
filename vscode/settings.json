@@ -1,5 +1,4 @@
 {
-  // "http.proxy": "http://127.0.0.1:2333",
   "terminal.integrated.shellIntegration.enabled": false,
   "terminal.integrated.shellIntegration.showWelcome": false,
   "terminal.integrated.shellIntegration.decorationsEnabled": "never",
@@ -174,9 +173,6 @@
     "itemMargin": 6,
     "itemSize": 30
   },
-  // "apc.header": {
-  //   "height": 28
-  // },
   "apc.sidebar.titlebar": {
     "height": 35,
     "fontSize": 12
@@ -225,45 +221,7 @@
     //"/Users/kelvin/.vscode-insiders/extensions/bahman.vsxcode-themes-2.2.0/dist/widgets.min.css"
     "file:///Users/kelvin/.vscode/extensions/brandonkirbyson.vscode-animations-2.0.4/dist/updateHandler.js"
   ],
-  "apc.stylesheet": {
-    //
-    // ".sidebar > .composite": "height: 12px !important",
-    // ".title-label": "display: none !important",
-    // ".title-actions": "display: none !important",
-    // ".tabs-and-actions-container > .editor-actions": "display: none !important",
-    // ".titlebar-center": "display: none !important",
-    // ".titlebar-right": "display: none !important",
-    // ".inline-tabs-placeholder": "display: none !important",
-    // ".split-view-view .visible": "background-color: #110f17 !important",
-    //
-    // ".sidebar > .composite": "height: 12px !important",
-    // ".title-label": "display: none !important",
-    // ".title-actions": "display: none !important",
-    // ".tabs-and-actions-container > .editor-actions": "display: none !important",
-    // ".titlebar-center": "display: none !important",
-    // ".titlebar-right": "display: none !important",
-    // ".inline-tabs-placeholder": "display: none !important",
-    // ".split-view-view .visible": "background-color: #110f17 !important"
-    ///////////
-    // ".custom-activitybar div.monaco-workbench div.activitybar > div.content div.monaco-action-bar ul.actions-container li.action-item .badge div.badge-content": "top: 0px; right: 12px; ",
-    // ".monaco-workbench .codicon[class*=codicon-]": "font-size: 14.5px",
-    // ".sidebar>.title>.title-label": "opacity: 0; flex: 0 !important; padding: 0 !important;",
-    // ".sidebar>.title": "padding: 0px 4px !important",
-    // ".nosidebar .inline-tabs-placeholder": "width: 75px",
-    // ".pane-header": "padding: 0 8px",
-    // ".pane-body": "padding: 0px 0px",
-    // ".split-view-view:first-child .pane-header": "display: none !important;",
-    // ".monaco-list-row": "border-radius: 0px;",
-    // ".monaco-workbench .monaco-list:not(.element-focused):focus:before": "display: none;",
-    // ".window-appicon": "display: none;",
-    // ".editor .title": "background: transparent !important;",
-    // ".editor .title .label-container": "visibility: hidden;",
-    // ".editor .scrollbar .slider": "visibility: hidden",
-    // ".editor .scrollbar:hover .slider": "visibility: initial",
-    // ".monaco-editor .scroll-decoration": "visibility: hidden",
-    // ".monaco-scrollable-element>.shadow.top": "visibility: hidden",
-    // ".inline-no-tabs-placeholder": "background: transparent !important;"
-  },
+  "apc.stylesheet": {},
   "c.SublimeText3Mode": true,
   "auto-close-tag.enableAutoCloseSelfClosingTag": true,
   "auto-close-tag.insertSpaceBeforeSelfClosingTag": true,
@@ -284,18 +242,6 @@
   "commit-message-editor.view.defaultView": "form",
   "commit-message-editor.view.saveAndClose": true,
   "commit-message-editor.view.useTabs": true,
-  // "commit-message-editor.dynamicTemplate": [
-  // 	"{type}{scope}: {description}",
-  // 	"",
-  // 	"{body}",
-  // 	"",
-  // 	"{breaking_change}{footer}",
-  // 	"Resolves: {resolves}",
-  // 	"See also: {references}",
-  //	""
-  //	""
-  //	"skip-checks: true"
-  // ],
   "commit-message-editor.tokens": [
     {
       "name": "type",
