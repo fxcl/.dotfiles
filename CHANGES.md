@@ -1,3 +1,7 @@
+-e ### Fix .zshrc (config/zsh.d/.zshrc) - Final
+
+- **Simplified `zdelay` Function**: Removed the dependency on the `zsh/mathfunc` module and the custom `float_eval` function. The `zdelay` function now uses Zsh's native floating-point arithmetic, making it more robust and self-contained.
+
 ## 2025-06-28
 
 ### Fixed
