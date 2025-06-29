@@ -263,12 +263,12 @@ in {
               version = "190.1.20";
               sha256 = "13zqpkd0gk1xh1vpc5x3zzy4nlkyzr9ap7a95in9z2y5pk6hp8px";
             }
-           # {
-           #   name = "vscode-clangd";
-           #   publisher = "llvm-vs-code-extensions";
-           #   version = "0.1.28";
-           #   sha256 = "1kys452zd99519jwvw5yqil0lm8wjvfaczsb555l0lk9lligbn35";
-           # }
+            # {
+            #   name = "vscode-clangd";
+            #   publisher = "llvm-vs-code-extensions";
+            #   version = "0.1.28";
+            #   sha256 = "1kys452zd99519jwvw5yqil0lm8wjvfaczsb555l0lk9lligbn35";
+            # }
             {
               name = "vsls-pomodoro";
               publisher = "lostintangent";

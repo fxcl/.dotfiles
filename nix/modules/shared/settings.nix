@@ -3,6 +3,9 @@
 with lib;
 
 let
+  # ============================================================================
+  # Helper functions for creating options
+  # ============================================================================
   mkOptStr = value:
     mkOption {
       type = with types; uniq str;
@@ -27,6 +30,9 @@ let
       example = true;
     };
 
+  # ============================================================================
+  # Platform-aware home directory
+  # ============================================================================
   home =
     if pkgs.stdenv.isDarwin then
       "/Users/${config.my.username}"
@@ -37,17 +43,26 @@ in
 {
   options = with types; {
     my = {
+      # --------------------------------------------------------------------------
+      # Personal Information
+      # --------------------------------------------------------------------------
       fullname = mkOptStr "Kelvin Zhao";
-      timezone = mkOptStr "Asia/Shanghai ";
+      timezone = mkOptStr "Asia/Shanghai"; # Removed trailing space
       username = mkOptStr "kelvin";
       website = mkOptStr "https://gabri.me";
       github_username = mkOptStr "fxcl";
       email = mkOptStr "me@gnux.cn";
 
+      # --------------------------------------------------------------------------
+      # System & User Configuration
+      # --------------------------------------------------------------------------
       nix_managed = mkOptStr
         "vim: set nomodifiable : Nix managed - DO NOT EDIT - see source inside ~/.dotfiles or use `:set modifiable` to force.";
       user = mkOption { type = options.users.users.type.nestedTypes.elemType; };
       hostConfigHome = mkOptStr "";
+       # --------------------------------------------------------------------------
+      # Home Manager Aliases & XDG Paths
+      # --------------------------------------------------------------------------
       hm = {
         file = mkOpt' attrs { } "Files to place directly in $HOME";
         configFile = mkOpt' attrs { } "Files to place in $XDG_CONFIG_HOME";
@@ -64,17 +79,20 @@ in
         stateHome = mkOpt' path "${home}/.local/state"
           "Absolute path to directory holding application states.";
         binHome = mkOpt' path "${home}/.local/bin"
-          "Absolute path to directory holding application data.";
+          "Absolute path to directory holding application binaries.";
         programs = mkOpt' attrs { } "Programs to enable via home-manager";
         services = mkOpt' attrs { } "Services to enable via home-manager";
       };
 
+      # --------------------------------------------------------------------------
+      # Environment Configuration
+      # --------------------------------------------------------------------------
       env = mkOption {
         type = attrsOf (oneOf [ str path (listOf (either str path)) ]);
         apply = mapAttrs (n: v:
           if isList v then
             if n == "TERMINFO_DIRS" then
-            # Home-manager and sets it before nix-darwin so instead of overriding it we append to it
+              # Home-manager sets this before nix-darwin, so we append to it.
               "$TERMINFO_DIRS:" + concatMapStringsSep ":" toString v
             else
               concatMapStringsSep ":" toString v
@@ -113,10 +131,12 @@ in
     # my.env.PATH  = [ <bin> "$PATH" ];
     my.env.PATH = [
       "$NODE_HOME/bin"
-      "/Users/kelvin/.local/share/cargo/bin"
-      "/Users/kelvin/.cache/npm/bin"
-      "/Users/kelvin/.bin"
-      "$XDG_BIN_HOME"
+       # Use the `home` variable for portability instead of hardcoded paths
+      "${home}/.local/share/cargo/bin"
+      "${config.my.hm.cacheHome}/npm/bin"
+      "${home}/.bin"
+      # Use the option for clarity, which defaults to `${home}/.local/bin`
+      config.my.hm.binHome
       "$CARGO_HOME/bin"
       "$RUSTUP_HOME/bin"
       "$GOBIN"
@@ -132,12 +152,12 @@ in
       # I only need a subset of home-manager's capabilities. That is, access to
       # its home.file, home.xdg.configFile and home.xdg.dataFile so I can deploy
       # files easily to my $HOME, but 'home-manager.users.${config.my.username}.home.file.*'
-      # Re-defining home-manager settings for modified option-names:
       # is much too long and harder to maintain, so I've made aliases in:
       #   my.hm -> home-manager.users.<primary user>
       #   my.hm.file        ->  home-manager.users.zxfstd.home.file
       #   my.hm.configFile  ->  home-manager.users.zxfstd.home.xdg.configFile
       #   my.hm.dataFile    ->  home-manager.users.zxfstd.home.xdg.dataFile
+      # Re-defining home-manager settings for modified option-names:
       users."${config.my.username}" = {
         home = {
           inherit (config.my) username;

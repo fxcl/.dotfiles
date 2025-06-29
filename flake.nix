@@ -59,7 +59,7 @@
     let
       darwinHosts = {
         "tony" = "x86_64-darwin";
-	"alcantara" = "aarch64-darwin";
+        "alcantara" = "aarch64-darwin";
         "vvh" = "aarch64-darwin";
       };
 
@@ -77,7 +77,7 @@
         system.configurationRevision = self.rev or self.dirtyRev or null;
 
         nix = {
-	  # @NOTE: for `nix-darwin` this will enable these old options `services.nix-daemon.enable` and `nix.configureBuildUsers'
+          # @NOTE: for `nix-darwin` this will enable these old options `services.nix-daemon.enable` and `nix.configureBuildUsers'
           enable = true;
           # Disable channels since we are using flakes
           channel.enable = false;
@@ -109,7 +109,7 @@
 
             # Force set binary cache sources
             #substituters = pkgs.lib.mkForce [
-			substituters = [
+            substituters = [
               "https://cache.garnix.io"
               https://mirrors.cernet.edu.cn/nix-channels/store
               #"https://mirror.sjtu.edu.cn/nix-channels/store" # Shanghai Jiao Tong University mirror
@@ -157,7 +157,8 @@
           # fontDir.enable = true;
           # Font packages configuration
           packages = with pkgs;
-            [ ] ++ (lib.optionals pkgs.stdenv.isLinux [ # Only install these fonts on Linux
+            [ ] ++ (lib.optionals pkgs.stdenv.isLinux [
+              # Only install these fonts on Linux
               noto-fonts
               noto-fonts-cjk
               noto-fonts-emoji
@@ -174,18 +175,18 @@
         nixpkgs = {
           # Allow unfree software
           config = {
-                allowUnfree = true;
-                 allowUnfreePredicate =
-                  pkg:
-                  builtins.elem (pkgs.lib.getName pkg) [
-                    "broadcom-sta"
-                    "copilot-language-server"
-                    "steam"
-                    "steam-original"
-                    "steam-run"
-                    "steam-unwrapped"
-                  ];
-            };
+            allowUnfree = true;
+            allowUnfreePredicate =
+              pkg:
+              builtins.elem (pkgs.lib.getName pkg) [
+                "broadcom-sta"
+                "copilot-language-server"
+                "steam"
+                "steam-original"
+                "steam-run"
+                "steam-unwrapped"
+              ];
+          };
           overlays = [
             (final: prev: {
               # Make unstable version of nixpkgs available
@@ -212,25 +213,25 @@
               prev.lib.optionalAttrs prev.stdenv.hostPlatform.isDarwin {
                 inherit (pkgsDarwin) swift;
               })
-          # Fish shell configuration modification
-          (final: prev: {
-            fish = prev.fish.overrideAttrs (old: {
-              doCheck = false; # Disable tests
-            });
-          })
-      # re2 regular expression library configuration modification
-      (final: prev: {
-        re2 = prev.re2.overrideAttrs (old: {
-          doCheck = false; # Disable tests, fix build timeout issues
-        });
-      })
-      (final: prev: {
-        python3Packages = prev.python3Packages // {
-          hypothesis = prev.python3Packages.hypothesis.overrideAttrs (old: {
-            version = "6.111.0";
-          });
-        };
-      })
+            # Fish shell configuration modification
+            (final: prev: {
+              fish = prev.fish.overrideAttrs (old: {
+                doCheck = false; # Disable tests
+              });
+            })
+            # re2 regular expression library configuration modification
+            (final: prev: {
+              re2 = prev.re2.overrideAttrs (old: {
+                doCheck = false; # Disable tests, fix build timeout issues
+              });
+            })
+            (final: prev: {
+              python3Packages = prev.python3Packages // {
+                hypothesis = prev.python3Packages.hypothesis.overrideAttrs (old: {
+                  version = "6.111.0";
+                });
+              };
+            })
             # Node.js configuration modification - disable tests to fix build failures
             (final: prev: {
               nodejs_24 = prev.nodejs_24.overrideAttrs (old: {
@@ -283,7 +284,7 @@
             specialArgs = { inherit inputs; };
             inherit system;
             modules = [
-	            sharedConfiguration
+              sharedConfiguration
               inputs.home-manager.darwinModules.home-manager
               ./nix/modules/darwin
               ./nix/modules/shared
@@ -292,14 +293,14 @@
           }))
         darwinHosts;
 
-	nixosConfigurations = mapHosts
+      nixosConfigurations = mapHosts
         (host: system:
           (inputs.nixpkgs.lib.nixosSystem {
             # This gets passed to modules as an extra argument
             specialArgs = { inherit inputs; };
             inherit system;
             modules = [
-	      sharedConfiguration
+              sharedConfiguration
               inputs.home-manager.nixosModules.home-manager
               ./nix/modules/shared
 
@@ -307,12 +308,13 @@
           }))
         linuxHosts;
 
-	formatter = forAllSystems (
-         system: let
-	  pkgs = inputs.nixpkgs.legacyPackages.${system};
-      	in
-          pkgs.alejandra
-	);
+      formatter = forAllSystems (
+        system:
+        let
+          pkgs = inputs.nixpkgs.legacyPackages.${system};
+        in
+        pkgs.alejandra
+      );
       # @TODO: move the logic inside ./install here
       devShells = forAllSystems (system:
         let pkgs = inputs.nixpkgs.legacyPackages.${system};
@@ -323,7 +325,7 @@
               go
               gopls
               go-tools # goimports, staticcheck, etc...
-	      gomodifytags
+              gomodifytags
               gotools # goimports
               typos
               typos-lsp

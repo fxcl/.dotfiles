@@ -29,7 +29,7 @@ in
         ".urlview" = { source = ../../../config/.urlview; };
         ".condarc" = { source = ../../../config/.condarc; };
         ".editorconfig" = { source = ../../../config/.editorconfig; };
-        ".config/uv/uv.toml" =  { source = ../../../config/uv/uv.toml; };
+        ".config/uv/uv.toml" = { source = ../../../config/uv/uv.toml; };
         ".config/tldr/config.toml" = {
           recursive = true;
           text = builtins.readFile ../../../config/tldr/config.toml;

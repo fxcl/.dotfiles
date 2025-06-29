@@ -2,8 +2,8 @@
 # ZSH ENVIRONMENT CONFIGURATION - OPTIMIZED FOR PERFORMANCE
 ################################################################################
 
-# Fast path existence check function
-_exists() { [[ -e "$1" ]] }
+# Fast directory existence check
+_is_dir() { [[ -d "$1" ]] }
 
 ################################################################################
 # ESSENTIAL ENVIRONMENT VARIABLES - LOADED FIRST
@@ -24,9 +24,12 @@ export LESS="-F -g -i -M -R -S -w -X -z-4"
 
 ################################################################################
 # PATH CONFIGURATION - OPTIMIZED FOR LOOKUP SPEED
+#
+# Paths are prepended to the `path` array. `typeset -gU path` at the end
+# ensures uniqueness. The order of prepending determines precedence (last is first).
 ################################################################################
 
-# Initialize PATH with most frequently used directories
+# Initialize PATH with base system path and Zsh-specific bin
 path=(
   "${ZDOTDIR}/bin"
   "/usr/local/bin"
@@ -34,23 +37,28 @@ path=(
   $path
 )
 
-# Efficient path additions - single check for multiple directories
+# OS-specific paths (macOS)
 if [[ "$OSTYPE" == darwin* ]]; then
-  local brew_paths=("/opt/homebrew/bin" "/usr/local/Cellar/rustup/*/bin")
-  for dir in $brew_paths; do
-    _exists "${dir}" && path=("${dir}" $path)
+  # Note: The glob '*' will expand to any matching cellar paths.
+  # Globs are expanded here. If no match, the literal path is checked and fails `_is_dir`.
+  local os_specific_paths=(/opt/homebrew/bin /usr/local/Cellar/rustup/*/bin)
+  for dir in "${os_specific_paths[@]}"; do
+    _is_dir "${dir}" && path=("${dir}" $path)
   done
 fi
 
-# User-specific paths - conditional addition
-_exists "${USER_BIN_HOME}" && path=("${USER_BIN_HOME}" $path)
-[[ -n "${GOBIN}" && -d "${GOBIN}" ]] && path=("${GOBIN}" $path)
+# User-specific and language toolchain paths
+_is_dir "${USER_BIN_HOME}" && path=("${USER_BIN_HOME}" $path)
+_is_dir "${GOBIN}" && path=("${GOBIN}" $path)
 
-# Rust toolchain paths - grouped check
-if _exists "${CARGO_HOME}/bin"; then
+# Rust toolchain paths - grouped check for performance
+if _is_dir "${CARGO_HOME}/bin"; then
   path=("${CARGO_HOME}/bin" $path)
-  _exists "${RUSTUP_HOME}/bin" && path=("${RUSTUP_HOME}/bin" $path)
-  export RUST_SRC_PATH="${RUSTUP_HOME:-$HOME/.rustup}/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src"
+  _is_dir "${RUSTUP_HOME}/bin" && path=("${RUSTUP_HOME}/bin" $path)
+  # Dynamically set RUST_SRC_PATH if rust is available
+  if command -v rustc >/dev/null 2>&1; then
+    export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
+  fi
 fi
 
 ################################################################################
@@ -109,11 +117,13 @@ export SPROMPT="zsh: correct %F{red}'%R'%f to %F{blue}'%r'%f [%B%Uy%u%bes, %B%Un
 WORDCHARS=${WORDCHARS//\[/}
 
 # Less configuration
-if command -v lesspipe >/dev/null 2>&1; then
-  export LESSOPEN="| /usr/bin/env lesspipe %s 2>&-"
-elif command -v lesspipe.sh >/dev/null 2>&1; then
-  export LESSOPEN="| /usr/bin/env lesspipe.sh %s 2>&-"
-fi
+# Set up lesspipe if available for richer `less` output.
+for cmd in lesspipe lesspipe.sh; do
+  if command -v "$cmd" >/dev/null 2>&1; then
+    export LESSOPEN="| /usr/bin/env $cmd %s 2>&-"
+    break
+  fi
+done
 
 # Temporary directory setup
 if [[ ! -d "${TMPDIR}" ]]; then
@@ -131,17 +141,30 @@ typeset -gU cdpath fpath mailpath manpath path
 
 # Proxy configuration
 typeset -gr _PROXY_URL="http://127.0.0.1:2333"
-typeset -gr _NO_PROXY="127.0.0.1,localhost,auiag.corp,iag.com.au,devlabs,192.168.2.0/24,localaddress,.localdomain.com,192.168.99.100,192.168.10.100,iagcloud.net,192.168.49.2,DB8B4788812536AC063DABFD95299A5C.gr7.ap-southeast-2.eks.amazonaws.com"
+local -a _no_proxy_hosts=(
+  # Loopback
+  "127.0.0.1" "localhost"
+  # Local network & domains
+  "auiag.corp" "iag.com.au" "devlabs" "localaddress" ".localdomain.com"
+  # IP ranges and specific IPs
+  "192.168.2.0/24" "192.168.99.100" "192.168.10.100" "192.168.49.2"
+  # Cloud services
+  "iagcloud.net" "DB8B4788812536AC063DABFD95299A5C.gr7.ap-southeast-2.eks.amazonaws.com"
+)
+typeset -gr _NO_PROXY="${(j:,:)_no_proxy_hosts}"
+unset _no_proxy_hosts
 
 # Proxy management functions
 proxy_on() {
-  local proxy="${1:-$_PROXY_URL}"
-  export {http,https,ftp,rsync}_proxy="$proxy"
-  export {no,NO}_proxy="$_NO_PROXY"
-  print "Started http(s) proxy port:2333"
+  local proxy_url="${1:-$_PROXY_URL}"
+  export {http,https,ftp,rsync}_proxy="$proxy_url"
+  # Set both no_proxy and NO_PROXY for compatibility with various tools.
+  export no_proxy="$_NO_PROXY"
+  export NO_PROXY="$_NO_PROXY"
+  print "Proxy enabled: ${proxy_url}"
 }
 
 proxy_off() {
-  unset {http,https,ftp,rsync}_proxy {no,NO}_proxy
-  print "Closed http(s) proxy port:2333"
+  unset {http,https,ftp,rsync}_proxy no_proxy NO_PROXY
+  print "Proxy disabled."
 }

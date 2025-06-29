@@ -75,7 +75,7 @@ zstyle ':completion:*:manuals' separate-sections true
   local zcd="$dump_file"
 
   autoload -Uz compinit
-  if [[ ! -f "$zcd" ]] || ((zcd_time < ($(date +%s) - 86400))); then
+  if [[ ! -f "$zcd" ]] || ((zcd_time < ($(date +%s) - 5256000))); then
     compinit -i -d "$zcd"
   else
     compinit -C -d "$zcd"

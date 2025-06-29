@@ -15,7 +15,7 @@ in
 
   config = with lib;
     mkIf cfg.enable {
-	# workaround for now see https://github.com/NixOS/nixpkgs/issues/145634
+      # workaround for now see https://github.com/NixOS/nixpkgs/issues/145634
 
       my = {
         env = with config.my; {
@@ -37,7 +37,7 @@ in
           NPM_CONFIG_INIT_AUTHOR_URL = website;
           NPM_CONFIG_INIT_LICENSE = "MIT";
           NPM_CONFIG_INIT_VERSION = "0.0.0";
-          NPX_PROXY="http://127.0.0.1:2333";
+          NPX_PROXY = "http://127.0.0.1:2333";
         };
 
         # TODO gatsby-cli
