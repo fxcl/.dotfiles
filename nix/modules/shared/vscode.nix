@@ -20,7 +20,7 @@ in {
         mutableExtensionsDir = true;
         package = pkgs.vscodium;
         # Notes:
-        # - Does not unistall extensions once removed.
+        # - Does not uninstall extensions once removed.
         # - Update using the following: export temp=$(mktemp) && curl -s https://raw.githubusercontent.com/NixOS/nixpkgs/master/pkgs/applications/editors/vscode/extensions/update_installed_exts.sh  > $temp && chmod +x $temp && $temp $(whereis codium)
         # https://github.com/NixOS/nixpkgs/blob/master/pkgs/misc/vscode-extensions/default.nix
         profiles.default.extensions = with pkgs.vscode-extensions;
