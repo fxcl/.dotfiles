@@ -197,6 +197,8 @@ alias olsn='ollama stop nomic-embed-text:latest' # Stops the Nomic Embed Text mo
 alias neomutt="TERM=xterm-direct neomutt" # Launches Neomutt with direct xterm terminal.
 alias tmux='direnv exec / tmux'           # Executes tmux with direnv.
 alias pp='xsel --clipboard --input'       # Pipes input to the clipboard.
+alias dgc="deno run -A code-assist-api.ts"
+alias di="docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' "
 
 ###############################################################################
 # Python Development

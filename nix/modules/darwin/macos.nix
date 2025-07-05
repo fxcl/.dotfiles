@@ -70,6 +70,7 @@ in
         ];
         # `brew install`
         brews = [
+         "jq"
           "ruby@3.3"
           "libyaml"
           "cppcheck"
