@@ -1,0 +1,137 @@
+---
+description: ALWAYS use when executing any task to ensure proper integration of Agile, LDD, and automated rules
+globs: **/*.{md,mdc}
+alwaysApply: false
+---
+# Integrated Agile Workflow
+
+## Core Components
+
+### 1. Agile Workflow Structure
+- Epics → Stories → Tasks → Subtasks
+- Management in `.ai/` directory
+- Approval-based progress management
+
+### 2. Rule System
+- Automation rules in `.cursor/rules/`
+- Priority-based execution
+- Evolution through version control
+
+### 3. LDD (Logging-Driven Development)
+- Log management in `.logs/`
+- Structured log templates
+- Integrated feedback loop
+
+### 4. Memory Bank
+- Tracking project state
+- Accumulation of learnings
+- Management of optimization history
+
+## Integrated Workflow
+
+### Phase 1: Initialization
+1. Environment verification
+   - Existence of `.ai/` directory
+   - Placement of required templates
+   - Rule file validation
+
+2. Context setting
+   - Recording project information
+   - Setting initial metrics
+   - Establishing log structure
+
+### Phase 2: Planning
+1. PRD creation/update
+   - Requirement definition
+   - Epic identification
+   - Priority setting
+
+2. Architecture design
+   - Technology selection
+   - Structural design
+   - Constraint definition
+
+### Phase 3: Execution
+1. Story management
+   - Task breakdown
+   - Progress tracking
+   - Feedback collection
+
+2. Implementation process
+   - Test-driven development
+   - Continuous validation
+   - Documentation updates
+
+### Phase 4: Optimization
+1. Metrics analysis
+   - Performance evaluation
+   - Quality indicator tracking
+   - Efficiency measurement
+
+2. Rule adjustment
+   - Feedback reflection
+   - Auto-tuning
+   - Version updates
+
+## Integration Rules
+
+<rules>
+1. All tasks must have appropriate log entries
+2. Feedback is immediately reflected in the memory bank
+3. Rule updates are automatically propagated
+4. Metrics are continuously collected and analyzed
+5. Optimization is performed regularly
+</rules>
+
+## Metrics Definition
+
+### 1. Project Metrics
+- Epic completion rate
+- Story progress status
+- Task completion velocity
+
+### 2. Quality Metrics
+- Test coverage
+- Code quality score
+- Documentation completeness
+
+### 3. Process Metrics
+- Feedback loop efficiency
+- Rule optimization effectiveness
+- Learning rate indicator
+
+## Feedback Loop
+
+```mermaid
+graph TD
+    A[Task Execution] --> B[Log Recording]
+    B --> C[Metrics Collection]
+    C --> D[Analysis & Evaluation]
+    D --> E[Rule Optimization]
+    E --> F[Memory Update]
+    F --> A
+```
+
+## Optimization Mechanism
+
+### 1. Rule Optimization
+- Usage frequency analysis
+- Effectiveness measurement
+- Automatic adjustment
+
+### 2. Process Optimization
+- Bottleneck identification
+- Efficiency proposals
+- Automation enhancement
+
+### 3. Context Optimization
+- Memory usage efficiency
+- Learning efficiency
+- Feedback efficiency
+
+<critical>
+- All components must always maintain synchronization
+- Optimization is performed automatically and continuously
+- Feedback is reflected immediately
+- Metrics are always kept up-to-date
+</critical>

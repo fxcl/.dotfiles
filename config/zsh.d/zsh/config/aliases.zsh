@@ -85,6 +85,10 @@ alias cgb='cargo build'      # Compiles the current Rust package.
 alias cgc='cargo check'      # Checks the current Rust package for errors.
 alias cdo='cargo doc --open' # Builds and opens the package's documentation.
 
+# Atlassian account
+alias aclil="acli rovodev auth login"
+alias aclir="acli rovodev run"
+
 ###############################################################################
 # System Tools
 ###############################################################################

@@ -18,6 +18,9 @@ if [ -n "$NODE_VERSION" ]; then
   if [ -d "$NODE_HOME/bin" ]; then
     export PATH="$NODE_HOME/bin:$PATH"
   fi
+  if [ "$(uname)" = "Darwin" ]; then
+    export NODE_EXTRA_CA_CERTS=/etc/ssl/cert.pem
+  fi
 fi
 
 # Go setup

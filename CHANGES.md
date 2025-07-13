@@ -1,3 +1,6 @@
+### Changed
+
+- **config/zsh.d/zsh/bin/proto**: Add `NODE_EXTRA_CA_CERTS` export for macOS to handle custom SSL certificates.
 -e ### Fix .zshrc (config/zsh.d/.zshrc) - Final
 
 - **Simplified `zdelay` Function**: Removed the dependency on the `zsh/mathfunc` module and the custom `float_eval` function. The `zdelay` function now uses Zsh's native floating-point arithmetic, making it more robust and self-contained.
