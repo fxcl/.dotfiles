@@ -70,7 +70,7 @@ zstyle ':completion:*:manuals' separate-sections true
 ###############################################################################
 
 # Initialize the Zsh completion system.
-{
+_zsh_completion_init() {
   # Compile zcompdump if needed
   local zcd="$dump_file"
 
@@ -85,3 +85,5 @@ zstyle ':completion:*:manuals' separate-sections true
     zcompile -R "$zcd" && command touch "$zcd"
   fi
 }
+
+_zsh_completion_init
