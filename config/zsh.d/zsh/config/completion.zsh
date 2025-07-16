@@ -34,10 +34,12 @@ zstyle ':completion:*' completer _complete _approximate   # Use standard and app
 zstyle ':completion:*:approximate:*' max-errors 1 numeric # Allow 1 error for approximate matching.
 
 # Display optimization settings for a cleaner completion menu.
-zstyle ':completion:*' {list-packed,special-dirs,squeeze-slashes} yes # Pack lists, handle special dirs, squeeze slashes.
-zstyle ':completion:*' file-sort modification                         # Sort files by modification time.
-zstyle ':completion:*' group-name ''                                  # Do not display group names.
-zstyle ':completion:*' verbose no                                     # Do not display verbose completion messages.
+zstyle ':completion:*' list-packed yes            # Pack lists.
+zstyle ':completion:*' special-dirs yes           # Handle special directories.
+zstyle ':completion:*' squeeze-slashes yes        # Squeeze slashes in paths.
+zstyle ':completion:*' file-sort modification     # Sort files by modification time.
+zstyle ':completion:*' group-name ''              # Do not display group names.
+zstyle ':completion:*' verbose no                 # Do not display verbose completion messages.
 
 # Minimal but effective formatting for completion descriptions and warnings.
 zstyle ':completion:*:descriptions' format '%F{yellow}-- %d --%f'  # Format descriptions in yellow.
@@ -60,7 +62,9 @@ zstyle ':completion:*:functions' ignored-patterns '(_*|pre(cmd|exec)|prompt_*)'
 zstyle ':completion:*:(rm|kill|diff):*' ignore-line other
 
 # History completion settings.
-zstyle ':completion:*:history-words' {remove-all-dups,list,menu} yes # Remove duplicates, list, and show menu for history words.
+zstyle ':completion:*:history-words' remove-all-dups yes # Remove all duplicates from history words.
+zstyle ':completion:*:history-words' list yes            # List history words.
+zstyle ':completion:*:history-words' menu yes            # Show menu for history words.
 
 # Man pages completion: separate sections for better organization.
 zstyle ':completion:*:manuals' separate-sections true

@@ -12,7 +12,10 @@ alias e='$EDITOR --listen /tmp/nvim.pipe'                                       
 alias ec='nvim --cmd ":lua vim.g.noplugins=1"'                                           # Opens Neovim without loading plugins.
 alias df="df -kh"                                                                        # Displays disk free space in human-readable format.
 alias du="du -kh"                                                                        # Displays disk usage in human-readable format.
-alias dt='du -sh * | sort -rh | awk "{sum+=$1; print} END {print \"Total Size: \" sum}"' # Lists directory sizes, sorted by size, and shows total.
+dt() {
+  # Lists directory sizes, sorted by size, and shows total.
+  du -sh * | sort -rh | awk '{sum+=$1; print} END {print "Total Size: " sum}'
+}
 
 # Navigation Shortcuts
 alias ..="cd .."             # Navigates up one directory.
@@ -24,9 +27,9 @@ alias -- -="cd -"            # Navigates to the previous directory.
 
 # Cross-platform Fallbacks
 # Provides aliases for common commands that might have different names across platforms.
-command -v hd >/dev/null || alias hd="hexdump -C"       # Hexdump utility.
-command -v md5sum >/dev/null || alias md5sum="md5"      # MD5 checksum utility.
-command -v sha1sum >/dev/null || alias sha1sum="shasum" # SHA1 checksum utility.
+(( $+commands[hd] )) || alias hd="hexdump -C"       # Hexdump utility.
+(( $+commands[md5sum] )) || alias md5sum="md5"      # MD5 checksum utility.
+(( $+commands[sha1sum] )) || alias sha1sum="shasum" # SHA1 checksum utility.
 
 # Essential File Operations
 alias ls="ls -G"   # Lists files with colored output.
@@ -144,48 +147,53 @@ alias flush="dscacheutil -flushcache && killall -HUP mDNSResponder" # Flushes DN
 alias dns-clear-local-cache="sudo killall -HUP mDNSResponder"       # Clears local DNS cache.
 
 # Curl Shortcuts
-if command -v curl >/dev/null; then
-  alias curlh="curl -sILX GET"                                                                                                                                             # Performs a silent, include headers, location, GET request.
-  alias curld="curl -A \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36\""                                      # Performs curl request with a desktop user agent.
-  alias curlm="curl -A \"Mozilla/5.0 (iPhone; CPU iPhone OS 6_1_3 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) CriOS/28.0.1500.12 Mobile/10B329 Safari/8536.25\"" # Performs curl request with a mobile user agent.
-  alias curl-get="curl -i -X GET"                                                                                                                                          # Performs an HTTP GET request with headers.
-  alias curl-post="curl -X POST -d"                                                                                                                                        # Performs an HTTP POST request with data.
-  alias curl-put="curl -X PUT -d"                                                                                                                                          # Performs an HTTP PUT request with data.
-  alias curl-post-file="curl -X POST -f"                                                                                                                                   # Performs an HTTP POST request with file upload.
-  alias curl-fetch-header='curl -I'                                                                                                                                        # Fetches only the HTTP header.
-  alias curl-fetch-header-check-compression='curl -I --compress'                                                                                                           # Fetches HTTP header and checks for compression.
+if (( $+commands[curl] )); then
+  alias curlh="curl -sILX GET"
+  alias curld="curl -A \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36\""
+  alias curlm="curl -A \"Mozilla/5.0 (iPhone; CPU iPhone OS 6_1_3 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) CriOS/28.0.1500.12 Mobile/10B329 Safari/8536.25\""
+  alias curl-get="curl -i -X GET"
+  alias curl-post="curl -X POST -d"
+  alias curl-put="curl -X PUT -d"
+  alias curl-post-file="curl -X POST -f"
+  alias curl-fetch-header='curl -I'
+  alias curl-fetch-header-check-compression='curl -I --compress'
 fi
 
 ###############################################################################
 # Enhanced Tools
 ###############################################################################
 # Only create aliases when commands exist
-command -v htop >/dev/null && alias top=htop       # Uses htop if available, otherwise falls back to top.
-command -v bat >/dev/null && alias cat='bat'       # Uses bat (cat clone with wings) if available.
-command -v fd >/dev/null && alias fd='fd --hidden' # Uses fd (find alternative) with hidden files included.
-command -v yarn >/dev/null && alias y=yarn         # Alias for yarn package manager.
+(( $+commands[htop] )) && alias top=htop       # Uses htop if available, otherwise falls back to top.
+(( $+commands[bat] )) && alias cat='bat'       # Uses bat (cat clone with wings) if available.
+(( $+commands[fd] )) && alias fd='fd --hidden' # Uses fd (find alternative) with hidden files included.
+(( $+commands[yarn] )) && alias y=yarn         # Alias for yarn package manager.
 
 # File Listing Enhancements
 # Provides enhanced directory listing commands based on available tools (lsd, tree, or fallback find).
-if command -v lsd >/dev/null 2>&1; then
-  alias ls="lsd -tr1lh"                                             # Lists files using lsd with tree, reverse, one-per-line, human-readable, and long format.
-  alias ll='lsd --tree --group-directories-first -I "node_modules"' # Lists files as a tree, grouping directories first, ignoring node_modules.
-  alias listdir='lsd -a --group-directories-first --depth=1'        # Lists directories with lsd, showing all, grouping directories first, and depth of 1.
-elif command -v tree >/dev/null 2>&1; then
-  alias ll="tree --dirsfirst -a -L 1 2>/dev/null || ls -la"                                                                                                                                                               # Lists files as a tree, directories first, all files, depth of 1, or falls back to ls -la.
-  alias tree='tree -I "node_modules"'                                                                                                                                                                                     # Lists directory contents as a tree, ignoring node_modules.
-  alias listdir='tree -L 1 -a -I "node_modules" 2>/dev/null || find ${1:-.} -maxdepth 1 -type f -not -path "*/.*/*" -print0 | xargs -0 -I {} bash -c "echo \"$(dirname \"{}\")\"$(basename \"{}\")\"" | sort -t/ -k2 -k3' # Lists directories using tree or falls back to find.
+if (( $+commands[lsd] )); then
+  alias ls="lsd -tr1lh"
+  alias ll='lsd --tree --group-directories-first -I "node_modules"'
+  alias listdir='lsd -a --group-directories-first --depth=1'
+elif (( $+commands[tree] )); then
+  alias ll="tree --dirsfirst -a -L 1 2>/dev/null || ls -la"
+  alias tree='tree -I "node_modules"'
+  alias listdir='tree -L 1 -a -I "node_modules" 2>/dev/null || _zsh_listdir_find_fallback "${1}"'
 else
-  alias ll="ls -la"                                                                                                                                                         # Fallback for long format listing, including hidden files.
-  alias listdir='find ${1:-.} -maxdepth 1 -type f -not -path "*/.*/*" -print0 | xargs -0 -I {} bash -c "echo \"$(dirname \"{}\")\"$(basename \"{}\")\"" | sort -t/ -k2 -k3' # Fallback for listing directories using find.
+  alias ll="ls -la"
+  alias listdir='_zsh_listdir_find_fallback "${1}"'
 fi
+
+_zsh_listdir_find_fallback() {
+  # Fallback for listing directories using find.
+  find "${1:-.}" -maxdepth 1 -type f -not -path "*/.*/*" -print0 | xargs -0 -I _ bash -c "echo \"$(dirname "_")\"$(basename "_")\"" | sort -t/ -k2 -k3"
+}
 
 # JSON Formatting
 # Provides an alias for JSON formatting based on available tools (jq or python's json.tool).
-if command -v jq >/dev/null; then
-  alias formatJSON='jq .' # Formats JSON using jq.
+if (( $+commands[jq] )); then
+  alias formatJSON='jq .'
 else
-  alias formatJSON='python -m json.tool' # Formats JSON using Python's json.tool.
+  alias formatJSON='python -m json.tool'
 fi
 
 ###############################################################################
@@ -249,7 +257,7 @@ _python_pip_parse_awk() {
 
 # Function to get outdated pip packages based on available tools
 _python_pip_get_outdated_packages() {
-  if command -v jq >/dev/null; then
+  if (( $+commands[jq] )); then
     _python_pip_parse_jq
   else
     _python_pip_parse_awk
@@ -258,11 +266,11 @@ _python_pip_get_outdated_packages() {
 
 python_pip_upgrade() {
   # Upgrades all outdated Python pip packages.
-  if ! command -v python >/dev/null; then
+  if ! (( $+commands[python] )); then
     echo "Error: Python is not installed."
     return 1
   fi
-  if ! command -v pip >/dev/null; then
+  if ! (( $+commands[pip] )); then
     echo "Error: pip is not installed."
     return 1
   fi
