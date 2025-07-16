@@ -221,16 +221,16 @@ python_venv_create() {
   # Creates a Python virtual environment if it doesn't exist and activates it.
   if [[ ! -d .venv ]]; then
     echo "Creating Python virtual environment in ./.venv..."
-    python -m venv .venv || {
+    if ! python -m venv .venv; then
       echo "Error: Failed to create virtual environment."
       return 1
-    }
+    fi
   fi
   echo "Activating virtual environment..."
-  source ./.venv/bin/activate || {
+  if ! source ./.venv/bin/activate; then
     echo "Error: Failed to activate virtual environment."
     return 1
-  }
+  fi
 }
 
 python_venv_deactivate() {
