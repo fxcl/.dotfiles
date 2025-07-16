@@ -185,7 +185,7 @@ fi
 
 _zsh_listdir_find_fallback() {
   # Fallback for listing directories using find.
-  find "${1:-.}" -maxdepth 1 -type f -not -path "*/.*/*" -print0 | xargs -0 -I _ bash -c "echo \"$(dirname "_")\"$(basename "_")\"" | sort -t/ -k2 -k3"
+  find "${1:-.}" -maxdepth 1 -type f -not -path "*/.*/*" -print0 | xargs -0 -I {} bash -c 'echo "$(dirname "{}")/$(basename "{}")"' | sort -t/ -k2 -k3
 }
 
 # JSON Formatting
