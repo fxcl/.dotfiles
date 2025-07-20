@@ -1,0 +1,50 @@
+{
+  "version": "1.0",
+  "last_updated": "2025-04-30T12:57:00Z",
+  "artifacts": [
+    {
+      "id": "artifact-001",
+      "title": "Memory Mode System Diagram",
+      "project_id": "sample-project",
+      "task_id": "memory-mode-setup-001",
+      "path": ".roo/memory/projects/sample-project/artifacts/memory-mode-diagram.md",
+      "type": "diagram",
+      "format": "markdown",
+      "created_date": "2025-04-30T12:32:00Z",
+      "last_updated": "2025-04-30T12:32:00Z",
+      "owner": "Code",
+      "tags": ["memory-mode", "diagram", "architecture"],
+      "related_artifacts": []
+    },
+    {
+      "id": "artifact-002",
+      "title": "SPARC Framework Implementation Self-Reflection Analysis",
+      "project_id": "sparc-implementation",
+      "task_id": "update-001",
+      "path": ".roo/memory/projects/sparc-implementation/artifacts/self-reflection-analysis.md",
+      "type": "analysis",
+      "format": "markdown",
+      "created_date": "2025-04-30T12:57:00Z",
+      "last_updated": "2025-04-30T12:57:00Z",
+      "owner": "Code",
+      "tags": ["sparc-framework", "self-reflection", "analysis", "implementation"],
+      "related_artifacts": [
+        {
+          "id": "external-001",
+          "path": "implementation/sparc-implementation-guide.md",
+          "relationship": "references"
+        },
+        {
+          "id": "external-002",
+          "path": ".roo/config.json",
+          "relationship": "analyzes"
+        },
+        {
+          "id": "external-003",
+          "path": ".roomodes",
+          "relationship": "analyzes"
+        }
+      ]
+    }
+  ]
+}

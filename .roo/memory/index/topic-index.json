@@ -1,0 +1,36 @@
+{
+  "version": "1.0",
+  "last_updated": "2025-04-30T12:33:00Z",
+  "topics": [
+    {
+      "id": "topic-001",
+      "name": "Memory Storage",
+      "description": "Approaches and patterns for storing memory in the multi-agent system",
+      "tags": ["memory", "storage", "file-system", "organization"],
+      "related_topics": [],
+      "items": [
+        {
+          "id": "decision-001",
+          "type": "decision",
+          "title": "Memory Storage Approach Decision",
+          "path": ".roo/memory/projects/sample-project/decisions/memory-storage-approach.md",
+          "project_id": "sample-project"
+        },
+        {
+          "id": "learning-001",
+          "type": "learning",
+          "title": "File System Memory Organization Patterns",
+          "path": ".roo/memory/projects/sample-project/learnings/file-system-memory-patterns.md",
+          "project_id": "sample-project"
+        },
+        {
+          "id": "artifact-001",
+          "type": "artifact",
+          "title": "Memory Mode System Diagram",
+          "path": ".roo/memory/projects/sample-project/artifacts/memory-mode-diagram.md",
+          "project_id": "sample-project"
+        }
+      ]
+    }
+  ]
+}

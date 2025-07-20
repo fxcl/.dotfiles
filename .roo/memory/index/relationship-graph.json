@@ -1,0 +1,140 @@
+{
+  "version": "1.0",
+  "last_updated": "2025-04-30T12:34:00Z",
+  "nodes": [
+    {
+      "id": "event-001",
+      "type": "event",
+      "label": "Initial Project Setup",
+      "path": ".roo/memory/projects/sample-project/timeline/initial-setup.md"
+    },
+    {
+      "id": "decision-001",
+      "type": "decision",
+      "label": "Memory Storage Approach Decision",
+      "path": ".roo/memory/projects/sample-project/decisions/memory-storage-approach.md"
+    },
+    {
+      "id": "learning-001",
+      "type": "learning",
+      "label": "File System Memory Organization Patterns",
+      "path": ".roo/memory/projects/sample-project/learnings/file-system-memory-patterns.md"
+    },
+    {
+      "id": "artifact-001",
+      "type": "artifact",
+      "label": "Memory Mode System Diagram",
+      "path": ".roo/memory/projects/sample-project/artifacts/memory-mode-diagram.md"
+    },
+    {
+      "id": "topic-001",
+      "type": "topic",
+      "label": "Memory Storage",
+      "path": null
+    },
+    {
+      "id": "project-sample-project",
+      "type": "project",
+      "label": "Sample Project",
+      "path": ".roo/memory/projects/sample-project/project-metadata.json"
+    },
+    {
+      "id": "task-memory-mode-setup-001",
+      "type": "task",
+      "label": "Memory Mode Setup",
+      "path": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "event-001",
+      "target": "decision-001",
+      "type": "references",
+      "label": "Documents decision"
+    },
+    {
+      "source": "event-001",
+      "target": "artifact-001",
+      "type": "creates",
+      "label": "Creates artifact"
+    },
+    {
+      "source": "decision-001",
+      "target": "learning-001",
+      "type": "leads_to",
+      "label": "Leads to learning"
+    },
+    {
+      "source": "learning-001",
+      "target": "artifact-001",
+      "type": "informs",
+      "label": "Informs artifact"
+    },
+    {
+      "source": "topic-001",
+      "target": "decision-001",
+      "type": "contains",
+      "label": "Contains decision"
+    },
+    {
+      "source": "topic-001",
+      "target": "learning-001",
+      "type": "contains",
+      "label": "Contains learning"
+    },
+    {
+      "source": "topic-001",
+      "target": "artifact-001",
+      "type": "contains",
+      "label": "Contains artifact"
+    },
+    {
+      "source": "project-sample-project",
+      "target": "event-001",
+      "type": "contains",
+      "label": "Contains event"
+    },
+    {
+      "source": "project-sample-project",
+      "target": "decision-001",
+      "type": "contains",
+      "label": "Contains decision"
+    },
+    {
+      "source": "project-sample-project",
+      "target": "learning-001",
+      "type": "contains",
+      "label": "Contains learning"
+    },
+    {
+      "source": "project-sample-project",
+      "target": "artifact-001",
+      "type": "contains",
+      "label": "Contains artifact"
+    },
+    {
+      "source": "task-memory-mode-setup-001",
+      "target": "event-001",
+      "type": "produces",
+      "label": "Produces event"
+    },
+    {
+      "source": "task-memory-mode-setup-001",
+      "target": "decision-001",
+      "type": "produces",
+      "label": "Produces decision"
+    },
+    {
+      "source": "task-memory-mode-setup-001",
+      "target": "learning-001",
+      "type": "produces",
+      "label": "Produces learning"
+    },
+    {
+      "source": "task-memory-mode-setup-001",
+      "target": "artifact-001",
+      "type": "produces",
+      "label": "Produces artifact"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "project_id": "sample-project",
+  "name": "Sample Project",
+  "description": "A demonstration project for the Memory Mode",
+  "created_date": "2025-04-30T12:30:00Z",
+  "last_updated": "2025-04-30T12:30:00Z",
+  "status": "active",
+  "tags": ["demo", "memory-mode", "example"],
+  "contributors": ["Roo"],
+  "related_projects": []
+}

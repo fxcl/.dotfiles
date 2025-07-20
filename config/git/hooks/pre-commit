@@ -2,7 +2,7 @@
 set -ue -o pipefail
 
 # Look for files that still have conflict markers (>|< repeated 7 times)
-CONFLICTS="$(git diff --diff-filter=d --cached --name-only --pickaxe-regex -S'[>|<]{7}')"
+CONFLICTS="$(git diff --cached --name-only --diff-filter=ACMRT -G'^[<]{7} |^[>]{7} ')"
 
 if [[ -z "${GIT_DIR-}" ]]; then
 	GIT_DIR="$(git rev-parse --git-dir 2>/dev/null)"

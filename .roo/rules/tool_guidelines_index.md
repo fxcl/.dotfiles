@@ -1,0 +1,50 @@
+# Tool Guidelines Index
+
+To prevent common errors when using tools, refer to these detailed guidelines:
+
+## File Operations
+
+- [File Operations Guidelines](../rules-code/file_operations.md) - Guidelines for `read_file`, `write_to_file`, `and list_files`
+
+## Code Editing
+
+- [Code Editing Guidelines](../rules-code/code_editing.md) - Guidelines for `apply_diff`
+- [Search and Replace Guidelines](../rules-code/search_replace.md) - Guidelines for `search_and_replace`
+- [Insert Content Guidelines](../rules-code/insert_content.md) - Guidelines for `insert_content`
+
+## Common Error Prevention
+
+- [apply_diff Error Prevention](../rules-code/apply_diff_guidelines.md) - Specific guidelines to prevent errors with `apply_diff`
+
+## Key Points to Remember
+
+1. Always include all required parameters for each tool
+2. Verify file existence before attempting modifications
+3. For `apply_diff`, never include literal diff markers in code examples
+4. For `search_and_replace`, always include both search and replace parameters
+5. For `write_to_file`, always include the line_count parameter
+6. For `insert_content`, always include valid start_line and content in operations array
+
+## Always pass tool usage example into task context
+
+<!-- =========================================================
+     Roo Code snippets  - examples to be provided to with tasks or sub tasks
+     ========================================================= -->
+
+<!-- ─── new_task block example───────────────────────────────────────
+<new_task>
+  <mode>journal</mode>
+  <message>Update ai_journal with {meticulously detailed context}</message>
+</new_task>
+-->
+
+<!-- ─── attempt_completion block example─────────────────────────────
+<attempt_completion>
+  <result>
+    • Updated the CSS for the navigation bar
+    • Fixed dropdown alignment
+    • Added mobile responsiveness
+  </result>
+  <command>npm start</command> # optional parameter
+</attempt_completion>
+-->
