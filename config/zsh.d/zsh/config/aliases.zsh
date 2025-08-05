@@ -27,9 +27,9 @@ alias -- -="cd -"            # Navigates to the previous directory.
 
 # Cross-platform Fallbacks
 # Provides aliases for common commands that might have different names across platforms.
-(( $+commands[hd] )) || alias hd="hexdump -C"       # Hexdump utility.
-(( $+commands[md5sum] )) || alias md5sum="md5"      # MD5 checksum utility.
-(( $+commands[sha1sum] )) || alias sha1sum="shasum" # SHA1 checksum utility.
+command -v hd &>/dev/null || alias hd="hexdump -C"       # Hexdump utility.
+command -v md5sum &>/dev/null || alias md5sum="md5"      # MD5 checksum utility.
+command -v sha1sum &>/dev/null || alias sha1sum="shasum" # SHA1 checksum utility.
 
 # Essential File Operations
 alias ls="ls -G"   # Lists files with colored output.
@@ -147,7 +147,7 @@ alias flush="dscacheutil -flushcache && killall -HUP mDNSResponder" # Flushes DN
 alias dns-clear-local-cache="sudo killall -HUP mDNSResponder"       # Clears local DNS cache.
 
 # Curl Shortcuts
-if (( $+commands[curl] )); then
+if command -v curl &>/dev/null; then
   alias curlh="curl -sILX GET"
   alias curld="curl -A \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36\""
   alias curlm="curl -A \"Mozilla/5.0 (iPhone; CPU iPhone OS 6_1_3 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) CriOS/28.0.1500.12 Mobile/10B329 Safari/8536.25\""
@@ -163,14 +163,14 @@ fi
 # Enhanced Tools
 ###############################################################################
 # Only create aliases when commands exist
-(( $+commands[htop] )) && alias top=htop       # Uses htop if available, otherwise falls back to top.
-(( $+commands[bat] )) && alias cat='bat'       # Uses bat (cat clone with wings) if available.
-(( $+commands[fd] )) && alias fd='fd --hidden' # Uses fd (find alternative) with hidden files included.
-(( $+commands[yarn] )) && alias y=yarn         # Alias for yarn package manager.
+command -v htop &>/dev/null && alias top=htop       # Uses htop if available, otherwise falls back to top.
+command -v bat &>/dev/null && alias cat='bat'       # Uses bat (cat clone with wings) if available.
+command -v fd &>/dev/null && alias fd='fd --hidden' # Uses fd (find alternative) with hidden files included.
+command -v yarn &>/dev/null && alias y=yarn         # Alias for yarn package manager.
 
 # File Listing Enhancements
 # Provides enhanced directory listing commands based on available tools (lsd, tree, or fallback find).
-if (( $+commands[lsd] )); then
+if command -v lsd &>/dev/null; then
   alias ls="lsd -tr1lh"
   alias ll='lsd --tree --group-directories-first -I "node_modules"'
   alias listdir='lsd -a --group-directories-first --depth=1'
@@ -190,7 +190,7 @@ _zsh_listdir_find_fallback() {
 
 # JSON Formatting
 # Provides an alias for JSON formatting based on available tools (jq or python's json.tool).
-if (( $+commands[jq] )); then
+if command -v jq &>/dev/null; then
   alias formatJSON='jq .'
 else
   alias formatJSON='python -m json.tool'
@@ -257,7 +257,7 @@ _python_pip_parse_awk() {
 
 # Function to get outdated pip packages based on available tools
 _python_pip_get_outdated_packages() {
-  if (( $+commands[jq] )); then
+  if command -v jq &>/dev/null; then
     _python_pip_parse_jq
   else
     _python_pip_parse_awk
@@ -266,11 +266,11 @@ _python_pip_get_outdated_packages() {
 
 python_pip_upgrade() {
   # Upgrades all outdated Python pip packages.
-  if ! (( $+commands[python] )); then
+  if ! command -v python &>/dev/null; then
     echo "Error: Python is not installed."
     return 1
   fi
-  if ! (( $+commands[pip] )); then
+  if ! command -v pip &>/dev/null; then
     echo "Error: pip is not installed."
     return 1
   fi
