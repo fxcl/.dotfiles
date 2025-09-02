@@ -1,0 +1,2467 @@
+{
+  "timestamp": "2025-08-24T03:28:14.010Z",
+  "files": [
+    {
+      "file": "/Users/kelvin/workspace/js/rooles/.roo/rules-ui-ux-designer/rules.md",
+      "compliant": false,
+      "sections": [
+        {
+          "name": "Goal",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Goal",
+            "line": 7,
+            "raw": "## Goal"
+          }
+        },
+        {
+          "name": "Onboarding",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Onboarding",
+            "line": 11,
+            "raw": "## Onboarding"
+          }
+        },
+        {
+          "name": "Role Definition",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Role Definition",
+            "line": 15,
+            "raw": "## Role Definition"
+          }
+        },
+        {
+          "name": "Foundation",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Foundation",
+            "line": 3,
+            "raw": "## Foundation"
+          }
+        },
+        {
+          "name": "Workflow",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow",
+            "line": 21,
+            "raw": "## Workflow"
+          }
+        },
+        {
+          "name": "Requirements",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "UI/UX Requirements",
+            "line": 31,
+            "raw": "## UI/UX Requirements"
+          }
+        },
+        {
+          "name": "Response Protocol",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Response Protocol",
+            "line": 130,
+            "raw": "## Response Protocol"
+          }
+        },
+        {
+          "name": "Error Handling",
+          "found": false,
+          "section": null
+        },
+        {
+          "name": "Non-Negotiable",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Non-Negotiable Requirements",
+            "line": 151,
+            "raw": "## Non-Negotiable Requirements"
+          }
+        }
+      ],
+      "missingRequired": [
+        "Error Handling"
+      ],
+      "extraSections": [],
+      "structureIssues": [
+        {
+          "type": "workflow_format",
+          "message": "Workflow section should use table format",
+          "line": 21
+        }
+      ],
+      "score": 86
+    },
+    {
+      "file": "/Users/kelvin/workspace/js/rooles/.roo/rules-tutorial/rules.md",
+      "compliant": false,
+      "sections": [
+        {
+          "name": "Goal",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Goal",
+            "line": 7,
+            "raw": "## Goal"
+          }
+        },
+        {
+          "name": "Onboarding",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Onboarding",
+            "line": 11,
+            "raw": "## Onboarding"
+          }
+        },
+        {
+          "name": "Role Definition",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Role Definition",
+            "line": 15,
+            "raw": "## Role Definition"
+          }
+        },
+        {
+          "name": "Foundation",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Foundation",
+            "line": 3,
+            "raw": "## Foundation"
+          }
+        },
+        {
+          "name": "Workflow",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "2. Educational Workflow",
+            "line": 21,
+            "raw": "## 2. Educational Workflow"
+          }
+        },
+        {
+          "name": "Requirements",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Tutorial Requirements",
+            "line": 108,
+            "raw": "## Tutorial Requirements"
+          }
+        },
+        {
+          "name": "Response Protocol",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Response Protocol",
+            "line": 296,
+            "raw": "## Response Protocol"
+          }
+        },
+        {
+          "name": "Error Handling",
+          "found": false,
+          "section": null
+        },
+        {
+          "name": "Non-Negotiable",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Non-Negotiable Requirements",
+            "line": 302,
+            "raw": "## Non-Negotiable Requirements"
+          }
+        }
+      ],
+      "missingRequired": [
+        "Error Handling"
+      ],
+      "extraSections": [],
+      "structureIssues": [
+        {
+          "type": "workflow_format",
+          "message": "Workflow section should use table format",
+          "line": 21
+        }
+      ],
+      "score": 86
+    },
+    {
+      "file": "/Users/kelvin/workspace/js/rooles/.roo/rules-test/rules.md",
+      "compliant": false,
+      "sections": [
+        {
+          "name": "Goal",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Goal",
+            "line": 3,
+            "raw": "## Goal"
+          }
+        },
+        {
+          "name": "Onboarding",
+          "found": false,
+          "section": null
+        },
+        {
+          "name": "Role Definition",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Role Definition",
+            "line": 7,
+            "raw": "## Role Definition"
+          }
+        },
+        {
+          "name": "Foundation",
+          "found": false,
+          "section": null
+        },
+        {
+          "name": "Workflow",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Test-Specific Workflow",
+            "line": 15,
+            "raw": "## Test-Specific Workflow"
+          }
+        },
+        {
+          "name": "Requirements",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Requirements",
+            "line": 25,
+            "raw": "## Requirements"
+          }
+        },
+        {
+          "name": "Response Protocol",
+          "found": false,
+          "section": null
+        },
+        {
+          "name": "Error Handling",
+          "found": false,
+          "section": null
+        },
+        {
+          "name": "Non-Negotiable",
+          "found": false,
+          "section": null
+        }
+      ],
+      "missingRequired": [
+        "Onboarding",
+        "Foundation",
+        "Response Protocol",
+        "Error Handling",
+        "Non-Negotiable"
+      ],
+      "extraSections": [],
+      "structureIssues": [
+        {
+          "type": "workflow_format",
+          "message": "Workflow section should use table format",
+          "line": 15
+        },
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/workflow-guide.md",
+          "line": 124
+        }
+      ],
+      "score": 46
+    },
+    {
+      "file": "/Users/kelvin/workspace/js/rooles/.roo/rules-tdd/rules.md",
+      "compliant": false,
+      "sections": [
+        {
+          "name": "Goal",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Goal",
+            "line": 3,
+            "raw": "## Goal"
+          }
+        },
+        {
+          "name": "Onboarding",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Onboarding",
+            "line": 9,
+            "raw": "## Onboarding"
+          }
+        },
+        {
+          "name": "Role Definition",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Role Definition",
+            "line": 13,
+            "raw": "## Role Definition"
+          }
+        },
+        {
+          "name": "Foundation",
+          "found": false,
+          "section": null
+        },
+        {
+          "name": "Workflow",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow & Error Handling",
+            "line": 81,
+            "raw": "## Workflow & Error Handling"
+          }
+        },
+        {
+          "name": "Requirements",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "TDD-Specific Requirements",
+            "line": 35,
+            "raw": "## TDD-Specific Requirements"
+          }
+        },
+        {
+          "name": "Response Protocol",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Response Protocol",
+            "line": 75,
+            "raw": "## Response Protocol"
+          }
+        },
+        {
+          "name": "Error Handling",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow & Error Handling",
+            "line": 81,
+            "raw": "## Workflow & Error Handling"
+          }
+        },
+        {
+          "name": "Non-Negotiable",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Non-Negotiable Requirements",
+            "line": 87,
+            "raw": "## Non-Negotiable Requirements"
+          }
+        }
+      ],
+      "missingRequired": [
+        "Foundation"
+      ],
+      "extraSections": [],
+      "structureIssues": [
+        {
+          "type": "workflow_format",
+          "message": "Workflow section should use table format",
+          "line": 81
+        },
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/workflow-guide.md",
+          "line": 83
+        }
+      ],
+      "score": 81
+    },
+    {
+      "file": "/Users/kelvin/workspace/js/rooles/.roo/rules-supabase-admin/rules.md",
+      "compliant": false,
+      "sections": [
+        {
+          "name": "Goal",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Goal",
+            "line": 9,
+            "raw": "## Goal"
+          }
+        },
+        {
+          "name": "Onboarding",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Onboarding",
+            "line": 13,
+            "raw": "## Onboarding"
+          }
+        },
+        {
+          "name": "Role Definition",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Role Definition",
+            "line": 17,
+            "raw": "## Role Definition"
+          }
+        },
+        {
+          "name": "Foundation",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Foundation",
+            "line": 3,
+            "raw": "## Foundation"
+          }
+        },
+        {
+          "name": "Workflow",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "SPARC Workflow",
+            "line": 21,
+            "raw": "## SPARC Workflow"
+          }
+        },
+        {
+          "name": "Requirements",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Supabase Admin Requirements",
+            "line": 30,
+            "raw": "## Supabase Admin Requirements"
+          }
+        },
+        {
+          "name": "Response Protocol",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Response Protocol",
+            "line": 78,
+            "raw": "## Response Protocol"
+          }
+        },
+        {
+          "name": "Error Handling",
+          "found": false,
+          "section": null
+        },
+        {
+          "name": "Non-Negotiable",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Non-Negotiable Requirements",
+            "line": 158,
+            "raw": "## Non-Negotiable Requirements"
+          }
+        }
+      ],
+      "missingRequired": [
+        "Error Handling"
+      ],
+      "extraSections": [],
+      "structureIssues": [
+        {
+          "type": "workflow_format",
+          "message": "Workflow section should use table format",
+          "line": 21
+        }
+      ],
+      "score": 86
+    },
+    {
+      "file": "/Users/kelvin/workspace/js/rooles/.roo/rules-spec-pseudocode/rules.md",
+      "compliant": false,
+      "sections": [
+        {
+          "name": "Goal",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Goal",
+            "line": 7,
+            "raw": "## Goal"
+          }
+        },
+        {
+          "name": "Onboarding",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Onboarding",
+            "line": 11,
+            "raw": "## Onboarding"
+          }
+        },
+        {
+          "name": "Role Definition",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Role Definition",
+            "line": 15,
+            "raw": "## Role Definition"
+          }
+        },
+        {
+          "name": "Foundation",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Foundation",
+            "line": 3,
+            "raw": "## Foundation"
+          }
+        },
+        {
+          "name": "Workflow",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow",
+            "line": 21,
+            "raw": "## Workflow"
+          }
+        },
+        {
+          "name": "Requirements",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Spec-Pseudocode Requirements",
+            "line": 31,
+            "raw": "## Spec-Pseudocode Requirements"
+          }
+        },
+        {
+          "name": "Response Protocol",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Response Protocol",
+            "line": 149,
+            "raw": "## Response Protocol"
+          }
+        },
+        {
+          "name": "Error Handling",
+          "found": false,
+          "section": null
+        },
+        {
+          "name": "Non-Negotiable",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Non-Negotiable Requirements",
+            "line": 155,
+            "raw": "## Non-Negotiable Requirements"
+          }
+        }
+      ],
+      "missingRequired": [
+        "Error Handling"
+      ],
+      "extraSections": [],
+      "structureIssues": [
+        {
+          "type": "workflow_format",
+          "message": "Workflow section should use table format",
+          "line": 21
+        }
+      ],
+      "score": 86
+    },
+    {
+      "file": "/Users/kelvin/workspace/js/rooles/.roo/rules-sparc/rules.md",
+      "compliant": false,
+      "sections": [
+        {
+          "name": "Goal",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Goal",
+            "line": 7,
+            "raw": "## Goal"
+          }
+        },
+        {
+          "name": "Onboarding",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Onboarding",
+            "line": 11,
+            "raw": "## Onboarding"
+          }
+        },
+        {
+          "name": "Role Definition",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Role Definition",
+            "line": 15,
+            "raw": "## Role Definition"
+          }
+        },
+        {
+          "name": "Foundation",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Foundation",
+            "line": 3,
+            "raw": "## Foundation"
+          }
+        },
+        {
+          "name": "Workflow",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow",
+            "line": 21,
+            "raw": "## Workflow"
+          }
+        },
+        {
+          "name": "Requirements",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "SPARC-Specific Requirements",
+            "line": 33,
+            "raw": "## SPARC-Specific Requirements"
+          }
+        },
+        {
+          "name": "Response Protocol",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Response Protocol",
+            "line": 256,
+            "raw": "## Response Protocol"
+          }
+        },
+        {
+          "name": "Error Handling",
+          "found": false,
+          "section": null
+        },
+        {
+          "name": "Non-Negotiable",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Non-Negotiable Requirements",
+            "line": 374,
+            "raw": "## Non-Negotiable Requirements"
+          }
+        }
+      ],
+      "missingRequired": [
+        "Error Handling"
+      ],
+      "extraSections": [],
+      "structureIssues": [
+        {
+          "type": "workflow_format",
+          "message": "Workflow section should use table format",
+          "line": 21
+        }
+      ],
+      "score": 86
+    },
+    {
+      "file": "/Users/kelvin/workspace/js/rooles/.roo/rules-security-review/rules.md",
+      "compliant": false,
+      "sections": [
+        {
+          "name": "Goal",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Goal",
+            "line": 3,
+            "raw": "## Goal"
+          }
+        },
+        {
+          "name": "Onboarding",
+          "found": false,
+          "section": null
+        },
+        {
+          "name": "Role Definition",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Role Definition",
+            "line": 7,
+            "raw": "## Role Definition"
+          }
+        },
+        {
+          "name": "Foundation",
+          "found": false,
+          "section": null
+        },
+        {
+          "name": "Workflow",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Security-Specific Workflow",
+            "line": 14,
+            "raw": "## Security-Specific Workflow"
+          }
+        },
+        {
+          "name": "Requirements",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Requirements",
+            "line": 24,
+            "raw": "## Requirements"
+          }
+        },
+        {
+          "name": "Response Protocol",
+          "found": false,
+          "section": null
+        },
+        {
+          "name": "Error Handling",
+          "found": false,
+          "section": null
+        },
+        {
+          "name": "Non-Negotiable",
+          "found": false,
+          "section": null
+        }
+      ],
+      "missingRequired": [
+        "Onboarding",
+        "Foundation",
+        "Response Protocol",
+        "Error Handling",
+        "Non-Negotiable"
+      ],
+      "extraSections": [],
+      "structureIssues": [
+        {
+          "type": "workflow_format",
+          "message": "Workflow section should use table format",
+          "line": 14
+        },
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/workflow-guide.md",
+          "line": 78
+        }
+      ],
+      "score": 46
+    },
+    {
+      "file": "/Users/kelvin/workspace/js/rooles/.roo/rules-refinement-optimization/rules.md",
+      "compliant": false,
+      "sections": [
+        {
+          "name": "Goal",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Goal",
+            "line": 9,
+            "raw": "## Goal"
+          }
+        },
+        {
+          "name": "Onboarding",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Onboarding",
+            "line": 13,
+            "raw": "## Onboarding"
+          }
+        },
+        {
+          "name": "Role Definition",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Role Definition",
+            "line": 17,
+            "raw": "## Role Definition"
+          }
+        },
+        {
+          "name": "Foundation",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Foundation",
+            "line": 3,
+            "raw": "## Foundation"
+          }
+        },
+        {
+          "name": "Workflow",
+          "found": false,
+          "section": null
+        },
+        {
+          "name": "Requirements",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Optimization Requirements",
+            "line": 31,
+            "raw": "## Optimization Requirements"
+          }
+        },
+        {
+          "name": "Response Protocol",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Response Protocol",
+            "line": 322,
+            "raw": "## Response Protocol"
+          }
+        },
+        {
+          "name": "Error Handling",
+          "found": false,
+          "section": null
+        },
+        {
+          "name": "Non-Negotiable",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Non-Negotiable Requirements",
+            "line": 328,
+            "raw": "## Non-Negotiable Requirements"
+          }
+        }
+      ],
+      "missingRequired": [
+        "Workflow",
+        "Error Handling"
+      ],
+      "extraSections": [],
+      "structureIssues": [],
+      "score": 82
+    },
+    {
+      "file": "/Users/kelvin/workspace/js/rooles/.roo/rules-post-deployment-monitoring/rules.md",
+      "compliant": false,
+      "sections": [
+        {
+          "name": "Goal",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Goal",
+            "line": 9,
+            "raw": "## Goal"
+          }
+        },
+        {
+          "name": "Onboarding",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Onboarding",
+            "line": 13,
+            "raw": "## Onboarding"
+          }
+        },
+        {
+          "name": "Role Definition",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Role Definition",
+            "line": 17,
+            "raw": "## Role Definition"
+          }
+        },
+        {
+          "name": "Foundation",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Foundation",
+            "line": 3,
+            "raw": "## Foundation"
+          }
+        },
+        {
+          "name": "Workflow",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow",
+            "line": 23,
+            "raw": "## Workflow"
+          }
+        },
+        {
+          "name": "Requirements",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Monitoring Requirements",
+            "line": 33,
+            "raw": "## Monitoring Requirements"
+          }
+        },
+        {
+          "name": "Response Protocol",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Response Protocol",
+            "line": 206,
+            "raw": "## Response Protocol"
+          }
+        },
+        {
+          "name": "Error Handling",
+          "found": false,
+          "section": null
+        },
+        {
+          "name": "Non-Negotiable",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Non-Negotiable Requirements",
+            "line": 212,
+            "raw": "## Non-Negotiable Requirements"
+          }
+        }
+      ],
+      "missingRequired": [
+        "Error Handling"
+      ],
+      "extraSections": [],
+      "structureIssues": [
+        {
+          "type": "workflow_format",
+          "message": "Workflow section should use table format",
+          "line": 23
+        }
+      ],
+      "score": 86
+    },
+    {
+      "file": "/Users/kelvin/workspace/js/rooles/.roo/rules-nuxt-3-pro-developer/rules.md",
+      "compliant": false,
+      "sections": [
+        {
+          "name": "Goal",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Goal",
+            "line": 7,
+            "raw": "## Goal"
+          }
+        },
+        {
+          "name": "Onboarding",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Onboarding",
+            "line": 11,
+            "raw": "## Onboarding"
+          }
+        },
+        {
+          "name": "Role Definition",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Role Definition",
+            "line": 15,
+            "raw": "## Role Definition"
+          }
+        },
+        {
+          "name": "Foundation",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Foundation",
+            "line": 3,
+            "raw": "## Foundation"
+          }
+        },
+        {
+          "name": "Workflow",
+          "found": false,
+          "section": null
+        },
+        {
+          "name": "Requirements",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Nuxt 3 Development Requirements",
+            "line": 21,
+            "raw": "## Nuxt 3 Development Requirements"
+          }
+        },
+        {
+          "name": "Response Protocol",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Response Protocol",
+            "line": 110,
+            "raw": "## Response Protocol"
+          }
+        },
+        {
+          "name": "Error Handling",
+          "found": false,
+          "section": null
+        },
+        {
+          "name": "Non-Negotiable",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Non-Negotiable Requirements",
+            "line": 138,
+            "raw": "## Non-Negotiable Requirements"
+          }
+        }
+      ],
+      "missingRequired": [
+        "Workflow",
+        "Error Handling"
+      ],
+      "extraSections": [],
+      "structureIssues": [],
+      "score": 82
+    },
+    {
+      "file": "/Users/kelvin/workspace/js/rooles/.roo/rules-memory/rules.md",
+      "compliant": false,
+      "sections": [
+        {
+          "name": "Goal",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Goal",
+            "line": 8,
+            "raw": "## Goal"
+          }
+        },
+        {
+          "name": "Onboarding",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Onboarding",
+            "line": 12,
+            "raw": "## Onboarding"
+          }
+        },
+        {
+          "name": "Role Definition",
+          "found": false,
+          "section": null
+        },
+        {
+          "name": "Foundation",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Foundation",
+            "line": 4,
+            "raw": "## Foundation"
+          }
+        },
+        {
+          "name": "Workflow",
+          "found": false,
+          "section": null
+        },
+        {
+          "name": "Requirements",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Memory Management Requirements",
+            "line": 23,
+            "raw": "## Memory Management Requirements"
+          }
+        },
+        {
+          "name": "Response Protocol",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Response Protocol",
+            "line": 81,
+            "raw": "## Response Protocol"
+          }
+        },
+        {
+          "name": "Error Handling",
+          "found": false,
+          "section": null
+        },
+        {
+          "name": "Non-Negotiable",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Non-Negotiable Requirements",
+            "line": 107,
+            "raw": "## Non-Negotiable Requirements"
+          }
+        }
+      ],
+      "missingRequired": [
+        "Role Definition",
+        "Workflow",
+        "Error Handling"
+      ],
+      "extraSections": [],
+      "structureIssues": [],
+      "score": 73
+    },
+    {
+      "file": "/Users/kelvin/workspace/js/rooles/.roo/rules-mcp/rules.md",
+      "compliant": false,
+      "sections": [
+        {
+          "name": "Goal",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Goal",
+            "line": 7,
+            "raw": "## Goal"
+          }
+        },
+        {
+          "name": "Onboarding",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Onboarding",
+            "line": 11,
+            "raw": "## Onboarding"
+          }
+        },
+        {
+          "name": "Role Definition",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Role Definition",
+            "line": 15,
+            "raw": "## Role Definition"
+          }
+        },
+        {
+          "name": "Foundation",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Foundation",
+            "line": 3,
+            "raw": "## Foundation"
+          }
+        },
+        {
+          "name": "Workflow",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow",
+            "line": 21,
+            "raw": "## Workflow"
+          }
+        },
+        {
+          "name": "Requirements",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "MCP Integration Requirements",
+            "line": 33,
+            "raw": "## MCP Integration Requirements"
+          }
+        },
+        {
+          "name": "Response Protocol",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Response Protocol",
+            "line": 119,
+            "raw": "## Response Protocol"
+          }
+        },
+        {
+          "name": "Error Handling",
+          "found": false,
+          "section": null
+        },
+        {
+          "name": "Non-Negotiable",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Non-Negotiable Requirements",
+            "line": 125,
+            "raw": "## Non-Negotiable Requirements"
+          }
+        }
+      ],
+      "missingRequired": [
+        "Error Handling"
+      ],
+      "extraSections": [],
+      "structureIssues": [
+        {
+          "type": "workflow_format",
+          "message": "Workflow section should use table format",
+          "line": 21
+        }
+      ],
+      "score": 86
+    },
+    {
+      "file": "/Users/kelvin/workspace/js/rooles/.roo/rules-integration/rules.md",
+      "compliant": false,
+      "sections": [
+        {
+          "name": "Goal",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Goal",
+            "line": 7,
+            "raw": "## Goal"
+          }
+        },
+        {
+          "name": "Onboarding",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Onboarding",
+            "line": 11,
+            "raw": "## Onboarding"
+          }
+        },
+        {
+          "name": "Role Definition",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Role Definition",
+            "line": 15,
+            "raw": "## Role Definition"
+          }
+        },
+        {
+          "name": "Foundation",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Foundation",
+            "line": 3,
+            "raw": "## Foundation"
+          }
+        },
+        {
+          "name": "Workflow",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow",
+            "line": 24,
+            "raw": "## Workflow"
+          }
+        },
+        {
+          "name": "Requirements",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Integration-Specific Requirements",
+            "line": 36,
+            "raw": "## Integration-Specific Requirements"
+          }
+        },
+        {
+          "name": "Response Protocol",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Response Protocol",
+            "line": 160,
+            "raw": "## Response Protocol"
+          }
+        },
+        {
+          "name": "Error Handling",
+          "found": false,
+          "section": null
+        },
+        {
+          "name": "Non-Negotiable",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Non-Negotiable Requirements",
+            "line": 179,
+            "raw": "## Non-Negotiable Requirements"
+          }
+        }
+      ],
+      "missingRequired": [
+        "Error Handling"
+      ],
+      "extraSections": [],
+      "structureIssues": [
+        {
+          "type": "workflow_format",
+          "message": "Workflow section should use table format",
+          "line": 24
+        }
+      ],
+      "score": 86
+    },
+    {
+      "file": "/Users/kelvin/workspace/js/rooles/.roo/rules-instructions-file-generator/rules.md",
+      "compliant": false,
+      "sections": [
+        {
+          "name": "Goal",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Goal",
+            "line": 7,
+            "raw": "## Goal"
+          }
+        },
+        {
+          "name": "Onboarding",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Onboarding",
+            "line": 11,
+            "raw": "## Onboarding"
+          }
+        },
+        {
+          "name": "Role Definition",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Role Definition",
+            "line": 15,
+            "raw": "## Role Definition"
+          }
+        },
+        {
+          "name": "Foundation",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Foundation",
+            "line": 3,
+            "raw": "## Foundation"
+          }
+        },
+        {
+          "name": "Workflow",
+          "found": false,
+          "section": null
+        },
+        {
+          "name": "Requirements",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Instructions Generation Requirements",
+            "line": 21,
+            "raw": "## Instructions Generation Requirements"
+          }
+        },
+        {
+          "name": "Response Protocol",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Response Protocol",
+            "line": 73,
+            "raw": "## Response Protocol"
+          }
+        },
+        {
+          "name": "Error Handling",
+          "found": false,
+          "section": null
+        },
+        {
+          "name": "Non-Negotiable",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Non-Negotiable Requirements",
+            "line": 106,
+            "raw": "## Non-Negotiable Requirements"
+          }
+        }
+      ],
+      "missingRequired": [
+        "Workflow",
+        "Error Handling"
+      ],
+      "extraSections": [],
+      "structureIssues": [
+        {
+          "type": "title_structure",
+          "message": "Document should have only one H1 title",
+          "line": 59
+        }
+      ],
+      "score": 77
+    },
+    {
+      "file": "/Users/kelvin/workspace/js/rooles/.roo/rules-docs-writer/rules.md",
+      "compliant": false,
+      "sections": [
+        {
+          "name": "Goal",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Goal",
+            "line": 3,
+            "raw": "## Goal"
+          }
+        },
+        {
+          "name": "Onboarding",
+          "found": false,
+          "section": null
+        },
+        {
+          "name": "Role Definition",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Role Definition",
+            "line": 7,
+            "raw": "## Role Definition"
+          }
+        },
+        {
+          "name": "Foundation",
+          "found": false,
+          "section": null
+        },
+        {
+          "name": "Workflow",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Documentation-Specific Workflow",
+            "line": 14,
+            "raw": "## Documentation-Specific Workflow"
+          }
+        },
+        {
+          "name": "Requirements",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Requirements",
+            "line": 24,
+            "raw": "## Requirements"
+          }
+        },
+        {
+          "name": "Response Protocol",
+          "found": false,
+          "section": null
+        },
+        {
+          "name": "Error Handling",
+          "found": false,
+          "section": null
+        },
+        {
+          "name": "Non-Negotiable",
+          "found": false,
+          "section": null
+        }
+      ],
+      "missingRequired": [
+        "Onboarding",
+        "Foundation",
+        "Response Protocol",
+        "Error Handling",
+        "Non-Negotiable"
+      ],
+      "extraSections": [],
+      "structureIssues": [
+        {
+          "type": "workflow_format",
+          "message": "Workflow section should use table format",
+          "line": 14
+        },
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/workflow-guide.md",
+          "line": 124
+        }
+      ],
+      "score": 46
+    },
+    {
+      "file": "/Users/kelvin/workspace/js/rooles/.roo/rules-devops/rules.md",
+      "compliant": false,
+      "sections": [
+        {
+          "name": "Goal",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Goal",
+            "line": 3,
+            "raw": "## Goal"
+          }
+        },
+        {
+          "name": "Onboarding",
+          "found": false,
+          "section": null
+        },
+        {
+          "name": "Role Definition",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Role Definition",
+            "line": 7,
+            "raw": "## Role Definition"
+          }
+        },
+        {
+          "name": "Foundation",
+          "found": false,
+          "section": null
+        },
+        {
+          "name": "Workflow",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "DevOps-Specific Workflow",
+            "line": 14,
+            "raw": "## DevOps-Specific Workflow"
+          }
+        },
+        {
+          "name": "Requirements",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Requirements",
+            "line": 24,
+            "raw": "## Requirements"
+          }
+        },
+        {
+          "name": "Response Protocol",
+          "found": false,
+          "section": null
+        },
+        {
+          "name": "Error Handling",
+          "found": false,
+          "section": null
+        },
+        {
+          "name": "Non-Negotiable",
+          "found": false,
+          "section": null
+        }
+      ],
+      "missingRequired": [
+        "Onboarding",
+        "Foundation",
+        "Response Protocol",
+        "Error Handling",
+        "Non-Negotiable"
+      ],
+      "extraSections": [],
+      "structureIssues": [
+        {
+          "type": "workflow_format",
+          "message": "Workflow section should use table format",
+          "line": 14
+        },
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/workflow-guide.md",
+          "line": 96
+        }
+      ],
+      "score": 46
+    },
+    {
+      "file": "/Users/kelvin/workspace/js/rooles/.roo/rules-deep-research-agent/rules.md",
+      "compliant": false,
+      "sections": [
+        {
+          "name": "Goal",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Goal",
+            "line": 7,
+            "raw": "## Goal"
+          }
+        },
+        {
+          "name": "Onboarding",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Onboarding",
+            "line": 11,
+            "raw": "## Onboarding"
+          }
+        },
+        {
+          "name": "Role Definition",
+          "found": false,
+          "section": null
+        },
+        {
+          "name": "Foundation",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Foundation",
+            "line": 3,
+            "raw": "## Foundation"
+          }
+        },
+        {
+          "name": "Workflow",
+          "found": false,
+          "section": null
+        },
+        {
+          "name": "Requirements",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Deep Research Requirements",
+            "line": 22,
+            "raw": "## Deep Research Requirements"
+          }
+        },
+        {
+          "name": "Response Protocol",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Response Protocol",
+            "line": 76,
+            "raw": "## Response Protocol"
+          }
+        },
+        {
+          "name": "Error Handling",
+          "found": false,
+          "section": null
+        },
+        {
+          "name": "Non-Negotiable",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Non-Negotiable Requirements",
+            "line": 102,
+            "raw": "## Non-Negotiable Requirements"
+          }
+        }
+      ],
+      "missingRequired": [
+        "Role Definition",
+        "Workflow",
+        "Error Handling"
+      ],
+      "extraSections": [],
+      "structureIssues": [],
+      "score": 73
+    },
+    {
+      "file": "/Users/kelvin/workspace/js/rooles/.roo/rules-debug/rules.md",
+      "compliant": false,
+      "sections": [
+        {
+          "name": "Goal",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Goal",
+            "line": 3,
+            "raw": "## Goal"
+          }
+        },
+        {
+          "name": "Onboarding",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Onboarding",
+            "line": 9,
+            "raw": "## Onboarding"
+          }
+        },
+        {
+          "name": "Role Definition",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Role Definition",
+            "line": 13,
+            "raw": "## Role Definition"
+          }
+        },
+        {
+          "name": "Foundation",
+          "found": false,
+          "section": null
+        },
+        {
+          "name": "Workflow",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow & Error Handling",
+            "line": 80,
+            "raw": "## Workflow & Error Handling"
+          }
+        },
+        {
+          "name": "Requirements",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Debug-Specific Requirements",
+            "line": 35,
+            "raw": "## Debug-Specific Requirements"
+          }
+        },
+        {
+          "name": "Response Protocol",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Response Protocol",
+            "line": 74,
+            "raw": "## Response Protocol"
+          }
+        },
+        {
+          "name": "Error Handling",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow & Error Handling",
+            "line": 80,
+            "raw": "## Workflow & Error Handling"
+          }
+        },
+        {
+          "name": "Non-Negotiable",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Non-Negotiable Requirements",
+            "line": 86,
+            "raw": "## Non-Negotiable Requirements"
+          }
+        }
+      ],
+      "missingRequired": [
+        "Foundation"
+      ],
+      "extraSections": [],
+      "structureIssues": [
+        {
+          "type": "workflow_format",
+          "message": "Workflow section should use table format",
+          "line": 80
+        },
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/workflow-guide.md",
+          "line": 82
+        }
+      ],
+      "score": 81
+    },
+    {
+      "file": "/Users/kelvin/workspace/js/rooles/.roo/rules-context-condensing/rules.md",
+      "compliant": false,
+      "sections": [
+        {
+          "name": "Goal",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Goal",
+            "line": 11,
+            "raw": "## Goal"
+          }
+        },
+        {
+          "name": "Onboarding",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Onboarding",
+            "line": 3,
+            "raw": "## Onboarding"
+          }
+        },
+        {
+          "name": "Role Definition",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Role Definition",
+            "line": 17,
+            "raw": "## Role Definition"
+          }
+        },
+        {
+          "name": "Foundation",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Foundation",
+            "line": 7,
+            "raw": "## Foundation"
+          }
+        },
+        {
+          "name": "Workflow",
+          "found": false,
+          "section": null
+        },
+        {
+          "name": "Requirements",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Non-Negotiable Requirements",
+            "line": 125,
+            "raw": "## Non-Negotiable Requirements"
+          }
+        },
+        {
+          "name": "Response Protocol",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Response Protocol",
+            "line": 99,
+            "raw": "## Response Protocol"
+          }
+        },
+        {
+          "name": "Error Handling",
+          "found": false,
+          "section": null
+        },
+        {
+          "name": "Non-Negotiable",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Non-Negotiable Requirements",
+            "line": 125,
+            "raw": "## Non-Negotiable Requirements"
+          }
+        }
+      ],
+      "missingRequired": [
+        "Workflow",
+        "Error Handling"
+      ],
+      "extraSections": [],
+      "structureIssues": [],
+      "score": 82
+    },
+    {
+      "file": "/Users/kelvin/workspace/js/rooles/.roo/rules-code-style-analyzer/rules.md",
+      "compliant": false,
+      "sections": [
+        {
+          "name": "Goal",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Goal",
+            "line": 3,
+            "raw": "## Goal"
+          }
+        },
+        {
+          "name": "Onboarding",
+          "found": false,
+          "section": null
+        },
+        {
+          "name": "Role Definition",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Role Definition",
+            "line": 7,
+            "raw": "## Role Definition"
+          }
+        },
+        {
+          "name": "Foundation",
+          "found": false,
+          "section": null
+        },
+        {
+          "name": "Workflow",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Code Style Analysis Workflow",
+            "line": 14,
+            "raw": "## Code Style Analysis Workflow"
+          }
+        },
+        {
+          "name": "Requirements",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Requirements",
+            "line": 24,
+            "raw": "## Requirements"
+          }
+        },
+        {
+          "name": "Response Protocol",
+          "found": false,
+          "section": null
+        },
+        {
+          "name": "Error Handling",
+          "found": false,
+          "section": null
+        },
+        {
+          "name": "Non-Negotiable",
+          "found": false,
+          "section": null
+        }
+      ],
+      "missingRequired": [
+        "Onboarding",
+        "Foundation",
+        "Response Protocol",
+        "Error Handling",
+        "Non-Negotiable"
+      ],
+      "extraSections": [],
+      "structureIssues": [
+        {
+          "type": "workflow_format",
+          "message": "Workflow section should use table format",
+          "line": 14
+        },
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/workflow-guide.md",
+          "line": 99
+        }
+      ],
+      "score": 46
+    },
+    {
+      "file": "/Users/kelvin/workspace/js/rooles/.roo/rules-code/rules.md",
+      "compliant": false,
+      "sections": [
+        {
+          "name": "Goal",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Goal",
+            "line": 3,
+            "raw": "## Goal"
+          }
+        },
+        {
+          "name": "Onboarding",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Onboarding",
+            "line": 9,
+            "raw": "## Onboarding"
+          }
+        },
+        {
+          "name": "Role Definition",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Role Definition",
+            "line": 13,
+            "raw": "## Role Definition"
+          }
+        },
+        {
+          "name": "Foundation",
+          "found": false,
+          "section": null
+        },
+        {
+          "name": "Workflow",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow & Error Handling",
+            "line": 75,
+            "raw": "## Workflow & Error Handling"
+          }
+        },
+        {
+          "name": "Requirements",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Code-Specific Requirements",
+            "line": 35,
+            "raw": "## Code-Specific Requirements"
+          }
+        },
+        {
+          "name": "Response Protocol",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Response Protocol",
+            "line": 69,
+            "raw": "## Response Protocol"
+          }
+        },
+        {
+          "name": "Error Handling",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow & Error Handling",
+            "line": 75,
+            "raw": "## Workflow & Error Handling"
+          }
+        },
+        {
+          "name": "Non-Negotiable",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Non-Negotiable Requirements",
+            "line": 81,
+            "raw": "## Non-Negotiable Requirements"
+          }
+        }
+      ],
+      "missingRequired": [
+        "Foundation"
+      ],
+      "extraSections": [],
+      "structureIssues": [
+        {
+          "type": "workflow_format",
+          "message": "Workflow section should use table format",
+          "line": 75
+        },
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/workflow-guide.md",
+          "line": 77
+        }
+      ],
+      "score": 81
+    },
+    {
+      "file": "/Users/kelvin/workspace/js/rooles/.roo/rules-ask/rules.md",
+      "compliant": false,
+      "sections": [
+        {
+          "name": "Goal",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Goal",
+            "line": 3,
+            "raw": "## Goal"
+          }
+        },
+        {
+          "name": "Onboarding",
+          "found": false,
+          "section": null
+        },
+        {
+          "name": "Role Definition",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Role Definition",
+            "line": 7,
+            "raw": "## Role Definition"
+          }
+        },
+        {
+          "name": "Foundation",
+          "found": false,
+          "section": null
+        },
+        {
+          "name": "Workflow",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Ask-Specific Workflow",
+            "line": 14,
+            "raw": "## Ask-Specific Workflow"
+          }
+        },
+        {
+          "name": "Requirements",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Requirements",
+            "line": 24,
+            "raw": "## Requirements"
+          }
+        },
+        {
+          "name": "Response Protocol",
+          "found": false,
+          "section": null
+        },
+        {
+          "name": "Error Handling",
+          "found": false,
+          "section": null
+        },
+        {
+          "name": "Non-Negotiable",
+          "found": false,
+          "section": null
+        }
+      ],
+      "missingRequired": [
+        "Onboarding",
+        "Foundation",
+        "Response Protocol",
+        "Error Handling",
+        "Non-Negotiable"
+      ],
+      "extraSections": [],
+      "structureIssues": [
+        {
+          "type": "workflow_format",
+          "message": "Workflow section should use table format",
+          "line": 14
+        },
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/workflow-guide.md",
+          "line": 111
+        }
+      ],
+      "score": 46
+    },
+    {
+      "file": "/Users/kelvin/workspace/js/rooles/.roo/rules-architect/rules.md",
+      "compliant": false,
+      "sections": [
+        {
+          "name": "Goal",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Goal",
+            "line": 3,
+            "raw": "## Goal"
+          }
+        },
+        {
+          "name": "Onboarding",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Onboarding",
+            "line": 9,
+            "raw": "## Onboarding"
+          }
+        },
+        {
+          "name": "Role Definition",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Role Definition",
+            "line": 13,
+            "raw": "## Role Definition"
+          }
+        },
+        {
+          "name": "Foundation",
+          "found": false,
+          "section": null
+        },
+        {
+          "name": "Workflow",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow & Error Handling",
+            "line": 77,
+            "raw": "## Workflow & Error Handling"
+          }
+        },
+        {
+          "name": "Requirements",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Architecture-Specific Requirements",
+            "line": 35,
+            "raw": "## Architecture-Specific Requirements"
+          }
+        },
+        {
+          "name": "Response Protocol",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Response Protocol",
+            "line": 71,
+            "raw": "## Response Protocol"
+          }
+        },
+        {
+          "name": "Error Handling",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow & Error Handling",
+            "line": 77,
+            "raw": "## Workflow & Error Handling"
+          }
+        },
+        {
+          "name": "Non-Negotiable",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Non-Negotiable Requirements",
+            "line": 83,
+            "raw": "## Non-Negotiable Requirements"
+          }
+        }
+      ],
+      "missingRequired": [
+        "Foundation"
+      ],
+      "extraSections": [],
+      "structureIssues": [
+        {
+          "type": "workflow_format",
+          "message": "Workflow section should use table format",
+          "line": 77
+        },
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/workflow-guide.md",
+          "line": 79
+        }
+      ],
+      "score": 81
+    },
+    {
+      "file": "/Users/kelvin/workspace/js/rooles/.roo/rules-accessibility-expert/rules.md",
+      "compliant": false,
+      "sections": [
+        {
+          "name": "Goal",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Goal",
+            "line": 3,
+            "raw": "## Goal"
+          }
+        },
+        {
+          "name": "Onboarding",
+          "found": false,
+          "section": null
+        },
+        {
+          "name": "Role Definition",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Role Definition",
+            "line": 7,
+            "raw": "## Role Definition"
+          }
+        },
+        {
+          "name": "Foundation",
+          "found": false,
+          "section": null
+        },
+        {
+          "name": "Workflow",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Accessibility-Specific Workflow",
+            "line": 14,
+            "raw": "## Accessibility-Specific Workflow"
+          }
+        },
+        {
+          "name": "Requirements",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Requirements",
+            "line": 24,
+            "raw": "## Requirements"
+          }
+        },
+        {
+          "name": "Response Protocol",
+          "found": false,
+          "section": null
+        },
+        {
+          "name": "Error Handling",
+          "found": false,
+          "section": null
+        },
+        {
+          "name": "Non-Negotiable",
+          "found": false,
+          "section": null
+        }
+      ],
+      "missingRequired": [
+        "Onboarding",
+        "Foundation",
+        "Response Protocol",
+        "Error Handling",
+        "Non-Negotiable"
+      ],
+      "extraSections": [],
+      "structureIssues": [
+        {
+          "type": "workflow_format",
+          "message": "Workflow section should use table format",
+          "line": 14
+        },
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/workflow-guide.md",
+          "line": 95
+        }
+      ],
+      "score": 46
+    }
+  ],
+  "summary": {
+    "totalFiles": 25,
+    "compliantFiles": 0,
+    "nonCompliantFiles": 25,
+    "complianceRate": "0.00"
+  }
+}

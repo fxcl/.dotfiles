@@ -1,0 +1,16 @@
+{
+  "timestamp": "2025-08-24T03:28:51.937Z",
+  "files": [],
+  "references": [],
+  "issues": [],
+  "summary": {
+    "totalFiles": 0,
+    "totalReferences": 0,
+    "validReferences": 0,
+    "brokenReferences": 0,
+    "circularDependencies": [],
+    "orphanedDocuments": [],
+    "missingDependencies": []
+  },
+  "documentMap": []
+}

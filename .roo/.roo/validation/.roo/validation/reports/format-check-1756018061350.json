@@ -1,0 +1,209 @@
+{
+  "timestamp": "2025-08-24T06:47:41.350Z",
+  "files": [
+    {
+      "file": "../rules-ui-ux-designer/rules.md",
+      "passed": true,
+      "issues": [],
+      "issueCount": 0
+    },
+    {
+      "file": "../rules-tutorial/rules.md",
+      "passed": true,
+      "issues": [],
+      "issueCount": 0
+    },
+    {
+      "file": "../rules-test/rules.md",
+      "passed": true,
+      "issues": [],
+      "issueCount": 0
+    },
+    {
+      "file": "../rules-tdd/rules.md",
+      "passed": true,
+      "issues": [],
+      "issueCount": 0
+    },
+    {
+      "file": "../rules-supabase-admin/rules.md",
+      "passed": true,
+      "issues": [],
+      "issueCount": 0
+    },
+    {
+      "file": "../rules-spec-pseudocode/rules.md",
+      "passed": true,
+      "issues": [],
+      "issueCount": 0
+    },
+    {
+      "file": "../rules-sparc/rules.md",
+      "passed": true,
+      "issues": [],
+      "issueCount": 0
+    },
+    {
+      "file": "../rules-security-review/rules.md",
+      "passed": true,
+      "issues": [],
+      "issueCount": 0
+    },
+    {
+      "file": "../rules-refinement-optimization/rules.md",
+      "passed": true,
+      "issues": [],
+      "issueCount": 0
+    },
+    {
+      "file": "../rules-post-deployment-monitoring/rules.md",
+      "passed": true,
+      "issues": [],
+      "issueCount": 0
+    },
+    {
+      "file": "../rules-nuxt-3-pro-developer/rules.md",
+      "passed": false,
+      "issues": [
+        {
+          "type": "long_inline_code",
+          "message": "Long code snippets should use code blocks instead of inline code",
+          "line": 40,
+          "severity": "info"
+        },
+        {
+          "type": "long_inline_code",
+          "message": "Long code snippets should use code blocks instead of inline code",
+          "line": 53,
+          "severity": "info"
+        },
+        {
+          "type": "long_inline_code",
+          "message": "Long code snippets should use code blocks instead of inline code",
+          "line": 81,
+          "severity": "info"
+        },
+        {
+          "type": "long_inline_code",
+          "message": "Long code snippets should use code blocks instead of inline code",
+          "line": 86,
+          "severity": "info"
+        },
+        {
+          "type": "long_inline_code",
+          "message": "Long code snippets should use code blocks instead of inline code",
+          "line": 87,
+          "severity": "info"
+        },
+        {
+          "type": "long_inline_code",
+          "message": "Long code snippets should use code blocks instead of inline code",
+          "line": 87,
+          "severity": "info"
+        }
+      ],
+      "issueCount": 6
+    },
+    {
+      "file": "../rules-memory/rules.md",
+      "passed": true,
+      "issues": [],
+      "issueCount": 0
+    },
+    {
+      "file": "../rules-mcp/rules.md",
+      "passed": true,
+      "issues": [],
+      "issueCount": 0
+    },
+    {
+      "file": "../rules-integration/rules.md",
+      "passed": true,
+      "issues": [],
+      "issueCount": 0
+    },
+    {
+      "file": "../rules-instructions-file-generator/rules.md",
+      "passed": true,
+      "issues": [],
+      "issueCount": 0
+    },
+    {
+      "file": "../rules-docs-writer/rules.md",
+      "passed": true,
+      "issues": [],
+      "issueCount": 0
+    },
+    {
+      "file": "../rules-devops/rules.md",
+      "passed": true,
+      "issues": [],
+      "issueCount": 0
+    },
+    {
+      "file": "../rules-deep-research-agent/rules.md",
+      "passed": true,
+      "issues": [],
+      "issueCount": 0
+    },
+    {
+      "file": "../rules-debug/rules.md",
+      "passed": true,
+      "issues": [],
+      "issueCount": 0
+    },
+    {
+      "file": "../rules-context-condensing/rules.md",
+      "passed": false,
+      "issues": [
+        {
+          "type": "heading_case",
+          "message": "Main headings should use title case",
+          "line": 132,
+          "severity": "info"
+        }
+      ],
+      "issueCount": 1
+    },
+    {
+      "file": "../rules-code-style-analyzer/rules.md",
+      "passed": true,
+      "issues": [],
+      "issueCount": 0
+    },
+    {
+      "file": "../rules-code/rules.md",
+      "passed": true,
+      "issues": [],
+      "issueCount": 0
+    },
+    {
+      "file": "../rules-ask/rules.md",
+      "passed": true,
+      "issues": [],
+      "issueCount": 0
+    },
+    {
+      "file": "../rules-architect/rules.md",
+      "passed": true,
+      "issues": [],
+      "issueCount": 0
+    },
+    {
+      "file": "../rules-accessibility-expert/rules.md",
+      "passed": true,
+      "issues": [],
+      "issueCount": 0
+    }
+  ],
+  "summary": {
+    "totalFiles": 25,
+    "passedFiles": 23,
+    "failedFiles": 2,
+    "totalIssues": 7,
+    "issueTypes": {
+      "long_inline_code": 6,
+      "heading_case": 1
+    }
+  }
+}

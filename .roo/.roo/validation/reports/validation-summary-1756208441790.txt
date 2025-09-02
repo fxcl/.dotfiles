@@ -1,0 +1,46 @@
+RooCode Documentation Validation Report
+==================================================
+Generated: 8/26/2025, 7:40:41 PM
+
+OVERALL RESULTS
+--------------------
+Status: FAILED
+Score: 86/100
+Total Files: 51
+Total Issues: 24
+Critical: 23
+Warnings: 0
+Info: 1
+
+LINKCHECKER SUMMARY
+--------------------
+totalFiles: 51
+totalLinks: 39
+brokenLinks: 1
+validLinks: 38
+successRate: 97.44
+
+TEMPLATEVALIDATOR SUMMARY
+--------------------
+totalFiles: 25
+compliantFiles: 25
+nonCompliantFiles: 0
+complianceRate: 100.00
+
+FORMATCHECKER SUMMARY
+--------------------
+totalFiles: 25
+passedFiles: 1
+failedFiles: 24
+totalIssues: 24
+issueTypes: [object Object]
+
+CROSSREFERENCEVALIDATOR SUMMARY
+--------------------
+totalFiles: 32
+totalReferences: 38
+validReferences: 37
+brokenReferences: 1
+circularDependencies: 
+orphanedDocuments: [object Object]
+missingDependencies: 

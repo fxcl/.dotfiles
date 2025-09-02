@@ -1,0 +1,58 @@
+RooCode Documentation Validation Report
+==================================================
+Generated: 8/24/2025, 1:44:02 PM
+
+OVERALL RESULTS
+--------------------
+Status: FAILED
+Score: 81/100
+Total Files: 85
+Total Issues: 112
+Critical: 30
+Warnings: 74
+Info: 8
+
+CRITICAL ISSUES
+--------------------
+1. [link_integrity] Link success rate NaN% below threshold 95%
+2. [template_compliance] Template compliance 28% below threshold 90%
+3. [cross_reference_integrity] Reference integrity 19.6% below threshold 95%
+4. [circular_dependencies] Found 6 circular dependencies (max allowed: 0)
+
+WARNINGS
+--------------------
+1. [format_consistency] 7 files have more than 5 format issues
+2. [orphaned_documents] Found 16 orphaned documents (threshold: 3)
+
+LINKCHECKER SUMMARY
+--------------------
+totalFiles: 85
+totalLinks: 179
+brokenLinks: 8
+validLinks: 171
+successRate: 95.53
+
+TEMPLATEVALIDATOR SUMMARY
+--------------------
+totalFiles: 25
+compliantFiles: 7
+nonCompliantFiles: 18
+complianceRate: 28.00
+
+FORMATCHECKER SUMMARY
+--------------------
+totalFiles: 25
+passedFiles: 0
+failedFiles: 25
+totalIssues: 106
+issueTypes: [object Object]
+
+CROSSREFERENCEVALIDATOR SUMMARY
+--------------------
+totalFiles: 45
+totalReferences: 143
+validReferences: 28
+brokenReferences: 115
+circularDependencies: ../shared/tool-guidelines-optimized.md,../shared/error-handling-optimized.md,../shared/tool-guidelines-optimized.md,../shared/workflow-patterns-optimized.md,../shared/tool-guidelines-optimized.md,../shared/tool-guidelines.md,../shared/error-handling-optimized.md,../shared/standard-responses.md,../shared/tool-guidelines-optimized.md,../shared/standard-responses-optimized.md,../shared/tool-guidelines-optimized.md,../shared/error-handling.md,../shared/tool-guidelines-optimized.md
+orphanedDocuments: [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+missingDependencies: 

@@ -1,0 +1,5866 @@
+{
+  "timestamp": "2025-08-24T03:46:30.075Z",
+  "overall": {
+    "passed": false,
+    "score": 95,
+    "issues": [
+      {
+        "type": "link_integrity",
+        "severity": "error",
+        "message": "Link success rate NaN% below threshold 95%"
+      },
+      {
+        "type": "template_compliance",
+        "severity": "error",
+        "message": "Template compliance 0% below threshold 90%"
+      },
+      {
+        "type": "cross_reference_integrity",
+        "severity": "error",
+        "message": "Reference integrity 76.5% below threshold 95%"
+      }
+    ],
+    "warnings": [
+      {
+        "type": "format_consistency",
+        "severity": "warning",
+        "message": "1 files have more than 5 format issues"
+      },
+      {
+        "type": "orphaned_documents",
+        "severity": "warning",
+        "message": "Found 10 orphaned documents (threshold: 3)"
+      }
+    ]
+  },
+  "validations": {
+    "linkChecker": {
+      "files": [
+        {
+          "file": "../mcp.md",
+          "links": [],
+          "brokenCount": 0,
+          "validCount": 0
+        },
+        {
+          "file": "../README.md",
+          "links": [],
+          "brokenCount": 0,
+          "validCount": 0
+        },
+        {
+          "file": "../shared/workflow-patterns.md",
+          "links": [],
+          "brokenCount": 0,
+          "validCount": 0
+        },
+        {
+          "file": "../shared/workflow-guide.md",
+          "links": [],
+          "brokenCount": 0,
+          "validCount": 0
+        },
+        {
+          "file": "../shared/tools-common.md",
+          "links": [],
+          "brokenCount": 0,
+          "validCount": 0
+        },
+        {
+          "file": "../shared/tool-guidelines.md",
+          "links": [
+            {
+              "text": "Core Principles",
+              "url": "core-principles.md",
+              "line": 76,
+              "sourceFile": "../shared/tool-guidelines.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Error Handling",
+              "url": "error-handling.md",
+              "line": 77,
+              "sourceFile": "../shared/tool-guidelines.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Response Protocol",
+              "url": "response-protocol-optimized.md",
+              "line": 78,
+              "sourceFile": "../shared/tool-guidelines.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            }
+          ],
+          "brokenCount": 0,
+          "validCount": 3
+        },
+        {
+          "file": "../shared/standard-responses.md",
+          "links": [
+            {
+              "text": "Response Protocol",
+              "url": "response-protocol-optimized.md",
+              "line": 173,
+              "sourceFile": "../shared/standard-responses.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Core Principles",
+              "url": "core-principles.md",
+              "line": 174,
+              "sourceFile": "../shared/standard-responses.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Tool Guidelines",
+              "url": "tool-guidelines.md",
+              "line": 175,
+              "sourceFile": "../shared/standard-responses.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            }
+          ],
+          "brokenCount": 0,
+          "validCount": 3
+        },
+        {
+          "file": "../shared/response-protocol.md",
+          "links": [],
+          "brokenCount": 0,
+          "validCount": 0
+        },
+        {
+          "file": "../shared/response-protocol-optimized.md",
+          "links": [],
+          "brokenCount": 0,
+          "validCount": 0
+        },
+        {
+          "file": "../shared/error-handling.md",
+          "links": [],
+          "brokenCount": 0,
+          "validCount": 0
+        },
+        {
+          "file": "../shared/core-references.md",
+          "links": [
+            {
+              "text": "`response-protocol.md`",
+              "url": "./response-protocol.md",
+              "line": 9,
+              "sourceFile": "../shared/core-references.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "`workflow-patterns.md`",
+              "url": "./workflow-patterns.md",
+              "line": 10,
+              "sourceFile": "../shared/core-references.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "`error-handling.md`",
+              "url": "./error-handling.md",
+              "line": 11,
+              "sourceFile": "../shared/core-references.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "`core-principles.md`",
+              "url": "./core-principles.md",
+              "line": 12,
+              "sourceFile": "../shared/core-references.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "`common-requirements.md`",
+              "url": "./common-requirements.md",
+              "line": 13,
+              "sourceFile": "../shared/core-references.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "`tools-common.md`",
+              "url": "./tools-common.md",
+              "line": 14,
+              "sourceFile": "../shared/core-references.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            }
+          ],
+          "brokenCount": 0,
+          "validCount": 6
+        },
+        {
+          "file": "../shared/core-references-optimized.md",
+          "links": [
+            {
+              "text": "`workflow-guide.md`",
+              "url": "./workflow-guide.md",
+              "line": 9,
+              "sourceFile": "../shared/core-references-optimized.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "`response-protocol-optimized.md`",
+              "url": "./response-protocol-optimized.md",
+              "line": 10,
+              "sourceFile": "../shared/core-references-optimized.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "`common-requirements-optimized.md`",
+              "url": "./common-requirements-optimized.md",
+              "line": 11,
+              "sourceFile": "../shared/core-references-optimized.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            }
+          ],
+          "brokenCount": 0,
+          "validCount": 3
+        },
+        {
+          "file": "../shared/core-principles.md",
+          "links": [],
+          "brokenCount": 0,
+          "validCount": 0
+        },
+        {
+          "file": "../shared/common-requirements.md",
+          "links": [],
+          "brokenCount": 0,
+          "validCount": 0
+        },
+        {
+          "file": "../shared/common-requirements-optimized.md",
+          "links": [],
+          "brokenCount": 0,
+          "validCount": 0
+        },
+        {
+          "file": "../rules-ui-ux-designer/rules.md",
+          "links": [
+            {
+              "text": "Core References Hub",
+              "url": "../shared/core-references-optimized.md",
+              "line": 5,
+              "sourceFile": "../rules-ui-ux-designer/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Response Protocol",
+              "url": "../shared/response-protocol-optimized.md",
+              "line": 132,
+              "sourceFile": "../rules-ui-ux-designer/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Common Requirements",
+              "url": "../shared/common-requirements-optimized.md",
+              "line": 153,
+              "sourceFile": "../rules-ui-ux-designer/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            }
+          ],
+          "brokenCount": 0,
+          "validCount": 3
+        },
+        {
+          "file": "../rules-tutorial/rules.md",
+          "links": [
+            {
+              "text": "Core References Hub",
+              "url": "../shared/core-references-optimized.md",
+              "line": 5,
+              "sourceFile": "../rules-tutorial/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Response Protocol",
+              "url": "../shared/response-protocol-optimized.md",
+              "line": 298,
+              "sourceFile": "../rules-tutorial/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Common Requirements",
+              "url": "../shared/common-requirements-optimized.md",
+              "line": 304,
+              "sourceFile": "../rules-tutorial/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            }
+          ],
+          "brokenCount": 0,
+          "validCount": 3
+        },
+        {
+          "file": "../rules-test/rules.md",
+          "links": [
+            {
+              "text": "Core References",
+              "url": "../shared/core-references-optimized.md",
+              "line": 123,
+              "sourceFile": "../rules-test/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Workflow Guide",
+              "url": "../shared/workflow-guide.md",
+              "line": 124,
+              "sourceFile": "../rules-test/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Response Protocol",
+              "url": "../shared/response-protocol-optimized.md",
+              "line": 125,
+              "sourceFile": "../rules-test/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Common Requirements",
+              "url": "../shared/common-requirements-optimized.md",
+              "line": 126,
+              "sourceFile": "../rules-test/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            }
+          ],
+          "brokenCount": 0,
+          "validCount": 4
+        },
+        {
+          "file": "../rules-tdd/rules.md",
+          "links": [
+            {
+              "text": "Core References Hub",
+              "url": "../shared/core-references-optimized.md",
+              "line": 21,
+              "sourceFile": "../rules-tdd/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Response Protocol",
+              "url": "../shared/response-protocol-optimized.md",
+              "line": 77,
+              "sourceFile": "../rules-tdd/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Workflow Guide",
+              "url": "../shared/workflow-guide.md",
+              "line": 83,
+              "sourceFile": "../rules-tdd/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Common Requirements",
+              "url": "../shared/common-requirements-optimized.md",
+              "line": 89,
+              "sourceFile": "../rules-tdd/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            }
+          ],
+          "brokenCount": 0,
+          "validCount": 4
+        },
+        {
+          "file": "../rules-supabase-admin/rules.md",
+          "links": [
+            {
+              "text": "Core References Hub",
+              "url": "../shared/core-references-optimized.md",
+              "line": 7,
+              "sourceFile": "../rules-supabase-admin/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Response Protocol",
+              "url": "../shared/response-protocol-optimized.md",
+              "line": 80,
+              "sourceFile": "../rules-supabase-admin/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Common Requirements",
+              "url": "../shared/common-requirements-optimized.md",
+              "line": 160,
+              "sourceFile": "../rules-supabase-admin/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            }
+          ],
+          "brokenCount": 0,
+          "validCount": 3
+        },
+        {
+          "file": "../rules-spec-pseudocode/rules.md",
+          "links": [
+            {
+              "text": "Core References Hub",
+              "url": "../shared/core-references-optimized.md",
+              "line": 5,
+              "sourceFile": "../rules-spec-pseudocode/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Response Protocol",
+              "url": "../shared/response-protocol-optimized.md",
+              "line": 151,
+              "sourceFile": "../rules-spec-pseudocode/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Common Requirements",
+              "url": "../shared/common-requirements-optimized.md",
+              "line": 157,
+              "sourceFile": "../rules-spec-pseudocode/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            }
+          ],
+          "brokenCount": 0,
+          "validCount": 3
+        },
+        {
+          "file": "../rules-sparc/rules.md",
+          "links": [
+            {
+              "text": "Core References Hub",
+              "url": "../shared/core-references-optimized.md",
+              "line": 5,
+              "sourceFile": "../rules-sparc/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Response Protocol",
+              "url": "../shared/response-protocol-optimized.md",
+              "line": 258,
+              "sourceFile": "../rules-sparc/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Common Requirements",
+              "url": "../shared/common-requirements-optimized.md",
+              "line": 376,
+              "sourceFile": "../rules-sparc/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            }
+          ],
+          "brokenCount": 0,
+          "validCount": 3
+        },
+        {
+          "file": "../rules-security-review/rules.md",
+          "links": [
+            {
+              "text": "Core References",
+              "url": "../shared/core-references-optimized.md",
+              "line": 77,
+              "sourceFile": "../rules-security-review/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Workflow Guide",
+              "url": "../shared/workflow-guide.md",
+              "line": 78,
+              "sourceFile": "../rules-security-review/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Response Protocol",
+              "url": "../shared/response-protocol-optimized.md",
+              "line": 79,
+              "sourceFile": "../rules-security-review/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Common Requirements",
+              "url": "../shared/common-requirements-optimized.md",
+              "line": 80,
+              "sourceFile": "../rules-security-review/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            }
+          ],
+          "brokenCount": 0,
+          "validCount": 4
+        },
+        {
+          "file": "../rules-refinement-optimization/rules.md",
+          "links": [
+            {
+              "text": "Core References Hub",
+              "url": "../shared/core-references-optimized.md",
+              "line": 7,
+              "sourceFile": "../rules-refinement-optimization/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Response Protocol",
+              "url": "../shared/response-protocol-optimized.md",
+              "line": 324,
+              "sourceFile": "../rules-refinement-optimization/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Common Requirements",
+              "url": "../shared/common-requirements-optimized.md",
+              "line": 330,
+              "sourceFile": "../rules-refinement-optimization/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            }
+          ],
+          "brokenCount": 0,
+          "validCount": 3
+        },
+        {
+          "file": "../rules-post-deployment-monitoring/rules.md",
+          "links": [
+            {
+              "text": "Core References Hub",
+              "url": "../shared/core-references-optimized.md",
+              "line": 7,
+              "sourceFile": "../rules-post-deployment-monitoring/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Response Protocol",
+              "url": "../shared/response-protocol-optimized.md",
+              "line": 208,
+              "sourceFile": "../rules-post-deployment-monitoring/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Common Requirements",
+              "url": "../shared/common-requirements-optimized.md",
+              "line": 214,
+              "sourceFile": "../rules-post-deployment-monitoring/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            }
+          ],
+          "brokenCount": 0,
+          "validCount": 3
+        },
+        {
+          "file": "../rules-memory/rules.md",
+          "links": [
+            {
+              "text": "Core References Hub",
+              "url": "../shared/core-references-optimized.md",
+              "line": 6,
+              "sourceFile": "../rules-memory/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Response Protocol",
+              "url": "../shared/response-protocol-optimized.md",
+              "line": 83,
+              "sourceFile": "../rules-memory/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Common Requirements",
+              "url": "../shared/common-requirements-optimized.md",
+              "line": 109,
+              "sourceFile": "../rules-memory/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            }
+          ],
+          "brokenCount": 0,
+          "validCount": 3
+        },
+        {
+          "file": "../rules-integration/rules.md",
+          "links": [
+            {
+              "text": "Core References Hub",
+              "url": "../shared/core-references-optimized.md",
+              "line": 5,
+              "sourceFile": "../rules-integration/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Core References Hub",
+              "url": "../shared/core-references-optimized.md",
+              "line": 20,
+              "sourceFile": "../rules-integration/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Response Protocol",
+              "url": "../shared/response-protocol-optimized.md",
+              "line": 162,
+              "sourceFile": "../rules-integration/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Common Requirements",
+              "url": "../shared/common-requirements-optimized.md",
+              "line": 181,
+              "sourceFile": "../rules-integration/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            }
+          ],
+          "brokenCount": 0,
+          "validCount": 4
+        },
+        {
+          "file": "../rules-instructions-file-generator/rules.md",
+          "links": [
+            {
+              "text": "Core References Hub",
+              "url": "../shared/core-references-optimized.md",
+              "line": 5,
+              "sourceFile": "../rules-instructions-file-generator/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Response Protocol",
+              "url": "../shared/response-protocol-optimized.md",
+              "line": 75,
+              "sourceFile": "../rules-instructions-file-generator/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Common Requirements",
+              "url": "../shared/common-requirements-optimized.md",
+              "line": 108,
+              "sourceFile": "../rules-instructions-file-generator/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            }
+          ],
+          "brokenCount": 0,
+          "validCount": 3
+        },
+        {
+          "file": "../rules-mcp/rules.md",
+          "links": [
+            {
+              "text": "Core References Hub",
+              "url": "../shared/core-references-optimized.md",
+              "line": 5,
+              "sourceFile": "../rules-mcp/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Response Protocol",
+              "url": "../shared/response-protocol-optimized.md",
+              "line": 121,
+              "sourceFile": "../rules-mcp/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Common Requirements",
+              "url": "../shared/common-requirements-optimized.md",
+              "line": 127,
+              "sourceFile": "../rules-mcp/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            }
+          ],
+          "brokenCount": 0,
+          "validCount": 3
+        },
+        {
+          "file": "../rules-nuxt-3-pro-developer/rules.md",
+          "links": [
+            {
+              "text": "Core References Hub",
+              "url": "../shared/core-references-optimized.md",
+              "line": 5,
+              "sourceFile": "../rules-nuxt-3-pro-developer/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Response Protocol",
+              "url": "../shared/response-protocol-optimized.md",
+              "line": 112,
+              "sourceFile": "../rules-nuxt-3-pro-developer/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Common Requirements",
+              "url": "../shared/common-requirements-optimized.md",
+              "line": 140,
+              "sourceFile": "../rules-nuxt-3-pro-developer/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            }
+          ],
+          "brokenCount": 0,
+          "validCount": 3
+        },
+        {
+          "file": "../rules-docs-writer/rules.md",
+          "links": [
+            {
+              "text": "Core References",
+              "url": "../shared/core-references-optimized.md",
+              "line": 123,
+              "sourceFile": "../rules-docs-writer/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Workflow Guide",
+              "url": "../shared/workflow-guide.md",
+              "line": 124,
+              "sourceFile": "../rules-docs-writer/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Response Protocol",
+              "url": "../shared/response-protocol-optimized.md",
+              "line": 125,
+              "sourceFile": "../rules-docs-writer/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Common Requirements",
+              "url": "../shared/common-requirements-optimized.md",
+              "line": 126,
+              "sourceFile": "../rules-docs-writer/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            }
+          ],
+          "brokenCount": 0,
+          "validCount": 4
+        },
+        {
+          "file": "../rules-devops/rules.md",
+          "links": [
+            {
+              "text": "Core References",
+              "url": "../shared/core-references-optimized.md",
+              "line": 95,
+              "sourceFile": "../rules-devops/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Workflow Guide",
+              "url": "../shared/workflow-guide.md",
+              "line": 96,
+              "sourceFile": "../rules-devops/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Response Protocol",
+              "url": "../shared/response-protocol-optimized.md",
+              "line": 97,
+              "sourceFile": "../rules-devops/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Common Requirements",
+              "url": "../shared/common-requirements-optimized.md",
+              "line": 98,
+              "sourceFile": "../rules-devops/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            }
+          ],
+          "brokenCount": 0,
+          "validCount": 4
+        },
+        {
+          "file": "../rules-debug/rules.md",
+          "links": [
+            {
+              "text": "Core References Hub",
+              "url": "../shared/core-references-optimized.md",
+              "line": 21,
+              "sourceFile": "../rules-debug/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Response Protocol",
+              "url": "../shared/response-protocol-optimized.md",
+              "line": 76,
+              "sourceFile": "../rules-debug/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Workflow Guide",
+              "url": "../shared/workflow-guide.md",
+              "line": 82,
+              "sourceFile": "../rules-debug/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Common Requirements",
+              "url": "../shared/common-requirements-optimized.md",
+              "line": 88,
+              "sourceFile": "../rules-debug/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            }
+          ],
+          "brokenCount": 0,
+          "validCount": 4
+        },
+        {
+          "file": "../rules-context-condensing/rules.md",
+          "links": [
+            {
+              "text": "Core References Hub",
+              "url": "../shared/core-references-optimized.md",
+              "line": 9,
+              "sourceFile": "../rules-context-condensing/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Response Protocol",
+              "url": "../shared/response-protocol-optimized.md",
+              "line": 101,
+              "sourceFile": "../rules-context-condensing/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Common Requirements",
+              "url": "../shared/common-requirements-optimized.md",
+              "line": 127,
+              "sourceFile": "../rules-context-condensing/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            }
+          ],
+          "brokenCount": 0,
+          "validCount": 3
+        },
+        {
+          "file": "../rules-deep-research-agent/rules.md",
+          "links": [
+            {
+              "text": "Core References Hub",
+              "url": "../shared/core-references-optimized.md",
+              "line": 5,
+              "sourceFile": "../rules-deep-research-agent/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Response Protocol",
+              "url": "../shared/response-protocol-optimized.md",
+              "line": 78,
+              "sourceFile": "../rules-deep-research-agent/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Common Requirements",
+              "url": "../shared/common-requirements-optimized.md",
+              "line": 104,
+              "sourceFile": "../rules-deep-research-agent/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            }
+          ],
+          "brokenCount": 0,
+          "validCount": 3
+        },
+        {
+          "file": "../rules-code/rules.md",
+          "links": [
+            {
+              "text": "Core References Hub",
+              "url": "../shared/core-references-optimized.md",
+              "line": 21,
+              "sourceFile": "../rules-code/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Response Protocol",
+              "url": "../shared/response-protocol-optimized.md",
+              "line": 71,
+              "sourceFile": "../rules-code/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Workflow Guide",
+              "url": "../shared/workflow-guide.md",
+              "line": 77,
+              "sourceFile": "../rules-code/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Common Requirements",
+              "url": "../shared/common-requirements-optimized.md",
+              "line": 83,
+              "sourceFile": "../rules-code/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            }
+          ],
+          "brokenCount": 0,
+          "validCount": 4
+        },
+        {
+          "file": "../rules-code-style-analyzer/rules.md",
+          "links": [
+            {
+              "text": "Core References",
+              "url": "../shared/core-references-optimized.md",
+              "line": 98,
+              "sourceFile": "../rules-code-style-analyzer/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Workflow Guide",
+              "url": "../shared/workflow-guide.md",
+              "line": 99,
+              "sourceFile": "../rules-code-style-analyzer/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Response Protocol",
+              "url": "../shared/response-protocol-optimized.md",
+              "line": 100,
+              "sourceFile": "../rules-code-style-analyzer/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Common Requirements",
+              "url": "../shared/common-requirements-optimized.md",
+              "line": 101,
+              "sourceFile": "../rules-code-style-analyzer/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            }
+          ],
+          "brokenCount": 0,
+          "validCount": 4
+        },
+        {
+          "file": "../rules-architect/rules.md",
+          "links": [
+            {
+              "text": "Core References Hub",
+              "url": "../shared/core-references-optimized.md",
+              "line": 21,
+              "sourceFile": "../rules-architect/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Response Protocol",
+              "url": "../shared/response-protocol-optimized.md",
+              "line": 73,
+              "sourceFile": "../rules-architect/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Workflow Guide",
+              "url": "../shared/workflow-guide.md",
+              "line": 79,
+              "sourceFile": "../rules-architect/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Common Requirements",
+              "url": "../shared/common-requirements-optimized.md",
+              "line": 85,
+              "sourceFile": "../rules-architect/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            }
+          ],
+          "brokenCount": 0,
+          "validCount": 4
+        },
+        {
+          "file": "../rules-ask/rules.md",
+          "links": [
+            {
+              "text": "Core References",
+              "url": "../shared/core-references-optimized.md",
+              "line": 110,
+              "sourceFile": "../rules-ask/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Workflow Guide",
+              "url": "../shared/workflow-guide.md",
+              "line": 111,
+              "sourceFile": "../rules-ask/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Response Protocol",
+              "url": "../shared/response-protocol-optimized.md",
+              "line": 112,
+              "sourceFile": "../rules-ask/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Common Requirements",
+              "url": "../shared/common-requirements-optimized.md",
+              "line": 113,
+              "sourceFile": "../rules-ask/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            }
+          ],
+          "brokenCount": 0,
+          "validCount": 4
+        },
+        {
+          "file": "../rules-accessibility-expert/rules.md",
+          "links": [
+            {
+              "text": "Core References",
+              "url": "../shared/core-references-optimized.md",
+              "line": 94,
+              "sourceFile": "../rules-accessibility-expert/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Workflow Guide",
+              "url": "../shared/workflow-guide.md",
+              "line": 95,
+              "sourceFile": "../rules-accessibility-expert/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Response Protocol",
+              "url": "../shared/response-protocol-optimized.md",
+              "line": 96,
+              "sourceFile": "../rules-accessibility-expert/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Common Requirements",
+              "url": "../shared/common-requirements-optimized.md",
+              "line": 97,
+              "sourceFile": "../rules-accessibility-expert/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            }
+          ],
+          "brokenCount": 0,
+          "validCount": 4
+        },
+        {
+          "file": "../memory/README.md",
+          "links": [
+            {
+              "text": "Memory Rules documentation",
+              "url": "../rules-memory/rules.md",
+              "line": 71,
+              "sourceFile": "../memory/README.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            }
+          ],
+          "brokenCount": 0,
+          "validCount": 1
+        },
+        {
+          "file": "../rules/rules.md",
+          "links": [],
+          "brokenCount": 0,
+          "validCount": 0
+        },
+        {
+          "file": "../rules/memory-bank.md",
+          "links": [],
+          "brokenCount": 0,
+          "validCount": 0
+        },
+        {
+          "file": "../logs/memory-activity.md",
+          "links": [],
+          "brokenCount": 0,
+          "validCount": 0
+        },
+        {
+          "file": "../docs/xml-format-validation-checklist.md",
+          "links": [],
+          "brokenCount": 0,
+          "validCount": 0
+        },
+        {
+          "file": "../docs/usage-statistics.md",
+          "links": [],
+          "brokenCount": 0,
+          "validCount": 0
+        },
+        {
+          "file": "../docs/rules-template.md",
+          "links": [],
+          "brokenCount": 0,
+          "validCount": 0
+        },
+        {
+          "file": "../docs/rules-index.md",
+          "links": [],
+          "brokenCount": 0,
+          "validCount": 0
+        },
+        {
+          "file": "../docs/rules-code-cleanup-report.md",
+          "links": [
+            {
+              "text": "General Tool Guidelines",
+              "url": "../shared/tool-guidelines.md",
+              "line": 24,
+              "sourceFile": "../docs/rules-code-cleanup-report.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Common Tool Guidelines",
+              "url": "../shared/tools-common.md",
+              "line": 24,
+              "sourceFile": "../docs/rules-code-cleanup-report.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            }
+          ],
+          "brokenCount": 0,
+          "validCount": 2
+        },
+        {
+          "file": "../docs/phase2-standardization-complete.md",
+          "links": [],
+          "brokenCount": 0,
+          "validCount": 0
+        },
+        {
+          "file": "../docs/phase2-optimization-report.md",
+          "links": [],
+          "brokenCount": 0,
+          "validCount": 0
+        },
+        {
+          "file": "../docs/optimized-rules-template.md",
+          "links": [
+            {
+              "text": "Core References Hub",
+              "url": "../shared/core-references-optimized.md",
+              "line": 21,
+              "sourceFile": "../docs/optimized-rules-template.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Response Protocol",
+              "url": "../shared/response-protocol-optimized.md",
+              "line": 71,
+              "sourceFile": "../docs/optimized-rules-template.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Workflow Guide",
+              "url": "../shared/workflow-guide.md",
+              "line": 77,
+              "sourceFile": "../docs/optimized-rules-template.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Common Requirements",
+              "url": "../shared/common-requirements-optimized.md",
+              "line": 83,
+              "sourceFile": "../docs/optimized-rules-template.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            }
+          ],
+          "brokenCount": 0,
+          "validCount": 4
+        },
+        {
+          "file": "../docs/optimization-summary.md",
+          "links": [],
+          "brokenCount": 0,
+          "validCount": 0
+        },
+        {
+          "file": "../docs/optimization-complete.md",
+          "links": [],
+          "brokenCount": 0,
+          "validCount": 0
+        },
+        {
+          "file": "../docs/onboarding-revert-report.md",
+          "links": [
+            {
+              "text": "Standard Responses",
+              "url": "../shared/standard-responses.md",
+              "line": 12,
+              "sourceFile": "../docs/onboarding-revert-report.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Standard Responses",
+              "url": "../shared/standard-responses.md",
+              "line": 16,
+              "sourceFile": "../docs/onboarding-revert-report.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Standard Responses",
+              "url": "../shared/standard-responses.md",
+              "line": 20,
+              "sourceFile": "../docs/onboarding-revert-report.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Standard Responses",
+              "url": "../shared/standard-responses.md",
+              "line": 24,
+              "sourceFile": "../docs/onboarding-revert-report.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Standard Responses",
+              "url": "../shared/standard-responses.md",
+              "line": 28,
+              "sourceFile": "../docs/onboarding-revert-report.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Standard Responses",
+              "url": "../shared/standard-responses.md",
+              "line": 32,
+              "sourceFile": "../docs/onboarding-revert-report.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Standard Responses",
+              "url": "../shared/standard-responses.md",
+              "line": 36,
+              "sourceFile": "../docs/onboarding-revert-report.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Standard Responses",
+              "url": "../shared/standard-responses.md",
+              "line": 40,
+              "sourceFile": "../docs/onboarding-revert-report.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Standard Responses",
+              "url": "../shared/standard-responses.md",
+              "line": 44,
+              "sourceFile": "../docs/onboarding-revert-report.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Standard Responses",
+              "url": "../shared/standard-responses.md",
+              "line": 48,
+              "sourceFile": "../docs/onboarding-revert-report.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Standard Responses",
+              "url": "../shared/standard-responses.md",
+              "line": 52,
+              "sourceFile": "../docs/onboarding-revert-report.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Standard Responses",
+              "url": "../shared/standard-responses.md",
+              "line": 56,
+              "sourceFile": "../docs/onboarding-revert-report.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Standard Responses",
+              "url": "../shared/standard-responses.md",
+              "line": 60,
+              "sourceFile": "../docs/onboarding-revert-report.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Standard Responses",
+              "url": "../shared/standard-responses.md",
+              "line": 64,
+              "sourceFile": "../docs/onboarding-revert-report.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Standard Responses",
+              "url": "../shared/standard-responses.md",
+              "line": 68,
+              "sourceFile": "../docs/onboarding-revert-report.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Standard Responses",
+              "url": "../shared/standard-responses.md",
+              "line": 72,
+              "sourceFile": "../docs/onboarding-revert-report.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            }
+          ],
+          "brokenCount": 0,
+          "validCount": 16
+        },
+        {
+          "file": "../docs/onboarding-consistency-report.md",
+          "links": [],
+          "brokenCount": 0,
+          "validCount": 0
+        },
+        {
+          "file": "../docs/memory-bank-best-practices.md",
+          "links": [],
+          "brokenCount": 0,
+          "validCount": 0
+        },
+        {
+          "file": "../docs/invalid-references-fix-report.md",
+          "links": [
+            {
+              "text": "General Tool Guidelines",
+              "url": "../shared/tool-guidelines.md",
+              "line": 22,
+              "sourceFile": "../docs/invalid-references-fix-report.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Common Tool Guidelines",
+              "url": "../shared/tools-common.md",
+              "line": 25,
+              "sourceFile": "../docs/invalid-references-fix-report.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Memory Agent documentation",
+              "url": "../../agents/memory/memory-agent.md",
+              "line": 40,
+              "sourceFile": "../docs/invalid-references-fix-report.md",
+              "valid": false,
+              "error": "File not found",
+              "type": "relative"
+            },
+            {
+              "text": "Memory Rules documentation",
+              "url": "../rules-memory/rules.md",
+              "line": 43,
+              "sourceFile": "../docs/invalid-references-fix-report.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            }
+          ],
+          "brokenCount": 1,
+          "validCount": 3
+        },
+        {
+          "file": "../docs/dependency-analysis-report.md",
+          "links": [
+            {
+              "text": ".*\\\\\\\\",
+              "url": ".*\\\\\\\\.md",
+              "line": 132,
+              "sourceFile": "../docs/dependency-analysis-report.md",
+              "valid": false,
+              "error": "File not found",
+              "type": "relative"
+            },
+            {
+              "text": ".*\\\\\\\\",
+              "url": ".*\\\\\\\\.md",
+              "line": 133,
+              "sourceFile": "../docs/dependency-analysis-report.md",
+              "valid": false,
+              "error": "File not found",
+              "type": "relative"
+            },
+            {
+              "text": ".*\\\\\\\\",
+              "url": ".*\\\\\\\\.md",
+              "line": 134,
+              "sourceFile": "../docs/dependency-analysis-report.md",
+              "valid": false,
+              "error": "File not found",
+              "type": "relative"
+            },
+            {
+              "text": ".*\\\\\\\\",
+              "url": ".*\\\\\\\\.md",
+              "line": 135,
+              "sourceFile": "../docs/dependency-analysis-report.md",
+              "valid": false,
+              "error": "File not found",
+              "type": "relative"
+            },
+            {
+              "text": ".*\\\\\\\\",
+              "url": ".*\\\\\\\\.md",
+              "line": 138,
+              "sourceFile": "../docs/dependency-analysis-report.md",
+              "valid": false,
+              "error": "File not found",
+              "type": "relative"
+            },
+            {
+              "text": ".*\\\\\\\\",
+              "url": ".*\\\\\\\\.md",
+              "line": 139,
+              "sourceFile": "../docs/dependency-analysis-report.md",
+              "valid": false,
+              "error": "File not found",
+              "type": "relative"
+            }
+          ],
+          "brokenCount": 6,
+          "validCount": 0
+        },
+        {
+          "file": "../docs/context-condensing-integration-report.md",
+          "links": [],
+          "brokenCount": 0,
+          "validCount": 0
+        },
+        {
+          "file": "../docs/conditional-loading-guide.md",
+          "links": [],
+          "brokenCount": 0,
+          "validCount": 0
+        },
+        {
+          "file": "../rules/memory-bank/tech.md",
+          "links": [],
+          "brokenCount": 0,
+          "validCount": 0
+        },
+        {
+          "file": "../rules/memory-bank/tasks.md",
+          "links": [],
+          "brokenCount": 0,
+          "validCount": 0
+        },
+        {
+          "file": "../rules/memory-bank/product.md",
+          "links": [],
+          "brokenCount": 0,
+          "validCount": 0
+        },
+        {
+          "file": "../rules/memory-bank/context.md",
+          "links": [],
+          "brokenCount": 0,
+          "validCount": 0
+        },
+        {
+          "file": "../rules/memory-bank/brief.md",
+          "links": [],
+          "brokenCount": 0,
+          "validCount": 0
+        },
+        {
+          "file": "../rules/memory-bank/architecture.md",
+          "links": [],
+          "brokenCount": 0,
+          "validCount": 0
+        },
+        {
+          "file": "reports/comprehensive-test-report-1756006445704.md",
+          "links": [],
+          "brokenCount": 0,
+          "validCount": 0
+        },
+        {
+          "file": "reports/comprehensive-test-report-1756006326760.md",
+          "links": [],
+          "brokenCount": 0,
+          "validCount": 0
+        },
+        {
+          "file": "reports/comprehensive-test-report-1756006282296.md",
+          "links": [],
+          "brokenCount": 0,
+          "validCount": 0
+        },
+        {
+          "file": "reports/comprehensive-test-report-1756006230454.md",
+          "links": [],
+          "brokenCount": 0,
+          "validCount": 0
+        },
+        {
+          "file": "reports/baseline-analysis-report.md",
+          "links": [],
+          "brokenCount": 0,
+          "validCount": 0
+        },
+        {
+          "file": "../memory/projects/sparc-implementation/artifacts/self-reflection-analysis.md",
+          "links": [],
+          "brokenCount": 0,
+          "validCount": 0
+        },
+        {
+          "file": "../memory/projects/sample-project/timeline/initial-setup.md",
+          "links": [],
+          "brokenCount": 0,
+          "validCount": 0
+        },
+        {
+          "file": "../memory/projects/sample-project/decisions/memory-storage-approach.md",
+          "links": [],
+          "brokenCount": 0,
+          "validCount": 0
+        },
+        {
+          "file": "../memory/projects/sample-project/learnings/file-system-memory-patterns.md",
+          "links": [],
+          "brokenCount": 0,
+          "validCount": 0
+        },
+        {
+          "file": "../memory/projects/sample-project/artifacts/memory-mode-diagram.md",
+          "links": [],
+          "brokenCount": 0,
+          "validCount": 0
+        }
+      ],
+      "summary": {
+        "totalFiles": 77,
+        "totalLinks": 135,
+        "brokenLinks": 7,
+        "validLinks": 128,
+        "successRate": "94.81"
+      }
+    },
+    "templateValidator": {
+      "files": [
+        {
+          "file": "../rules-ui-ux-designer/rules.md",
+          "compliant": false,
+          "sections": [
+            {
+              "name": "Goal",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Goal",
+                "line": 7,
+                "raw": "## Goal"
+              }
+            },
+            {
+              "name": "Onboarding",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Onboarding",
+                "line": 11,
+                "raw": "## Onboarding"
+              }
+            },
+            {
+              "name": "Role Definition",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Role Definition",
+                "line": 15,
+                "raw": "## Role Definition"
+              }
+            },
+            {
+              "name": "Foundation",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Foundation",
+                "line": 3,
+                "raw": "## Foundation"
+              }
+            },
+            {
+              "name": "Workflow",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Workflow",
+                "line": 21,
+                "raw": "## Workflow"
+              }
+            },
+            {
+              "name": "Requirements",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "UI/UX Requirements",
+                "line": 31,
+                "raw": "## UI/UX Requirements"
+              }
+            },
+            {
+              "name": "Response Protocol",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Response Protocol",
+                "line": 130,
+                "raw": "## Response Protocol"
+              }
+            },
+            {
+              "name": "Error Handling",
+              "found": false,
+              "section": null
+            },
+            {
+              "name": "Non-Negotiable",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Non-Negotiable Requirements",
+                "line": 151,
+                "raw": "## Non-Negotiable Requirements"
+              }
+            }
+          ],
+          "missingRequired": [
+            "Error Handling"
+          ],
+          "extraSections": [],
+          "structureIssues": [
+            {
+              "type": "workflow_format",
+              "message": "Workflow section should use table format",
+              "line": 21
+            }
+          ],
+          "score": 86
+        },
+        {
+          "file": "../rules-test/rules.md",
+          "compliant": false,
+          "sections": [
+            {
+              "name": "Goal",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Goal",
+                "line": 3,
+                "raw": "## Goal"
+              }
+            },
+            {
+              "name": "Onboarding",
+              "found": false,
+              "section": null
+            },
+            {
+              "name": "Role Definition",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Role Definition",
+                "line": 7,
+                "raw": "## Role Definition"
+              }
+            },
+            {
+              "name": "Foundation",
+              "found": false,
+              "section": null
+            },
+            {
+              "name": "Workflow",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Test-Specific Workflow",
+                "line": 15,
+                "raw": "## Test-Specific Workflow"
+              }
+            },
+            {
+              "name": "Requirements",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Requirements",
+                "line": 25,
+                "raw": "## Requirements"
+              }
+            },
+            {
+              "name": "Response Protocol",
+              "found": false,
+              "section": null
+            },
+            {
+              "name": "Error Handling",
+              "found": false,
+              "section": null
+            },
+            {
+              "name": "Non-Negotiable",
+              "found": false,
+              "section": null
+            }
+          ],
+          "missingRequired": [
+            "Onboarding",
+            "Foundation",
+            "Response Protocol",
+            "Error Handling",
+            "Non-Negotiable"
+          ],
+          "extraSections": [],
+          "structureIssues": [
+            {
+              "type": "workflow_format",
+              "message": "Workflow section should use table format",
+              "line": 15
+            },
+            {
+              "type": "reference_format",
+              "message": "Reference should use optimized version: ../shared/workflow-guide.md",
+              "line": 124
+            }
+          ],
+          "score": 46
+        },
+        {
+          "file": "../rules-tdd/rules.md",
+          "compliant": false,
+          "sections": [
+            {
+              "name": "Goal",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Goal",
+                "line": 3,
+                "raw": "## Goal"
+              }
+            },
+            {
+              "name": "Onboarding",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Onboarding",
+                "line": 9,
+                "raw": "## Onboarding"
+              }
+            },
+            {
+              "name": "Role Definition",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Role Definition",
+                "line": 13,
+                "raw": "## Role Definition"
+              }
+            },
+            {
+              "name": "Foundation",
+              "found": false,
+              "section": null
+            },
+            {
+              "name": "Workflow",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Workflow & Error Handling",
+                "line": 81,
+                "raw": "## Workflow & Error Handling"
+              }
+            },
+            {
+              "name": "Requirements",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "TDD-Specific Requirements",
+                "line": 35,
+                "raw": "## TDD-Specific Requirements"
+              }
+            },
+            {
+              "name": "Response Protocol",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Response Protocol",
+                "line": 75,
+                "raw": "## Response Protocol"
+              }
+            },
+            {
+              "name": "Error Handling",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Workflow & Error Handling",
+                "line": 81,
+                "raw": "## Workflow & Error Handling"
+              }
+            },
+            {
+              "name": "Non-Negotiable",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Non-Negotiable Requirements",
+                "line": 87,
+                "raw": "## Non-Negotiable Requirements"
+              }
+            }
+          ],
+          "missingRequired": [
+            "Foundation"
+          ],
+          "extraSections": [],
+          "structureIssues": [
+            {
+              "type": "workflow_format",
+              "message": "Workflow section should use table format",
+              "line": 81
+            },
+            {
+              "type": "reference_format",
+              "message": "Reference should use optimized version: ../shared/workflow-guide.md",
+              "line": 83
+            }
+          ],
+          "score": 81
+        },
+        {
+          "file": "../rules-supabase-admin/rules.md",
+          "compliant": false,
+          "sections": [
+            {
+              "name": "Goal",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Goal",
+                "line": 9,
+                "raw": "## Goal"
+              }
+            },
+            {
+              "name": "Onboarding",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Onboarding",
+                "line": 13,
+                "raw": "## Onboarding"
+              }
+            },
+            {
+              "name": "Role Definition",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Role Definition",
+                "line": 17,
+                "raw": "## Role Definition"
+              }
+            },
+            {
+              "name": "Foundation",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Foundation",
+                "line": 3,
+                "raw": "## Foundation"
+              }
+            },
+            {
+              "name": "Workflow",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "SPARC Workflow",
+                "line": 21,
+                "raw": "## SPARC Workflow"
+              }
+            },
+            {
+              "name": "Requirements",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Supabase Admin Requirements",
+                "line": 30,
+                "raw": "## Supabase Admin Requirements"
+              }
+            },
+            {
+              "name": "Response Protocol",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Response Protocol",
+                "line": 78,
+                "raw": "## Response Protocol"
+              }
+            },
+            {
+              "name": "Error Handling",
+              "found": false,
+              "section": null
+            },
+            {
+              "name": "Non-Negotiable",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Non-Negotiable Requirements",
+                "line": 158,
+                "raw": "## Non-Negotiable Requirements"
+              }
+            }
+          ],
+          "missingRequired": [
+            "Error Handling"
+          ],
+          "extraSections": [],
+          "structureIssues": [
+            {
+              "type": "workflow_format",
+              "message": "Workflow section should use table format",
+              "line": 21
+            }
+          ],
+          "score": 86
+        },
+        {
+          "file": "../rules-tutorial/rules.md",
+          "compliant": false,
+          "sections": [
+            {
+              "name": "Goal",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Goal",
+                "line": 7,
+                "raw": "## Goal"
+              }
+            },
+            {
+              "name": "Onboarding",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Onboarding",
+                "line": 11,
+                "raw": "## Onboarding"
+              }
+            },
+            {
+              "name": "Role Definition",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Role Definition",
+                "line": 15,
+                "raw": "## Role Definition"
+              }
+            },
+            {
+              "name": "Foundation",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Foundation",
+                "line": 3,
+                "raw": "## Foundation"
+              }
+            },
+            {
+              "name": "Workflow",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "2. Educational Workflow",
+                "line": 21,
+                "raw": "## 2. Educational Workflow"
+              }
+            },
+            {
+              "name": "Requirements",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Tutorial Requirements",
+                "line": 108,
+                "raw": "## Tutorial Requirements"
+              }
+            },
+            {
+              "name": "Response Protocol",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Response Protocol",
+                "line": 296,
+                "raw": "## Response Protocol"
+              }
+            },
+            {
+              "name": "Error Handling",
+              "found": false,
+              "section": null
+            },
+            {
+              "name": "Non-Negotiable",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Non-Negotiable Requirements",
+                "line": 302,
+                "raw": "## Non-Negotiable Requirements"
+              }
+            }
+          ],
+          "missingRequired": [
+            "Error Handling"
+          ],
+          "extraSections": [],
+          "structureIssues": [
+            {
+              "type": "workflow_format",
+              "message": "Workflow section should use table format",
+              "line": 21
+            }
+          ],
+          "score": 86
+        },
+        {
+          "file": "../rules-spec-pseudocode/rules.md",
+          "compliant": false,
+          "sections": [
+            {
+              "name": "Goal",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Goal",
+                "line": 7,
+                "raw": "## Goal"
+              }
+            },
+            {
+              "name": "Onboarding",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Onboarding",
+                "line": 11,
+                "raw": "## Onboarding"
+              }
+            },
+            {
+              "name": "Role Definition",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Role Definition",
+                "line": 15,
+                "raw": "## Role Definition"
+              }
+            },
+            {
+              "name": "Foundation",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Foundation",
+                "line": 3,
+                "raw": "## Foundation"
+              }
+            },
+            {
+              "name": "Workflow",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Workflow",
+                "line": 21,
+                "raw": "## Workflow"
+              }
+            },
+            {
+              "name": "Requirements",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Spec-Pseudocode Requirements",
+                "line": 31,
+                "raw": "## Spec-Pseudocode Requirements"
+              }
+            },
+            {
+              "name": "Response Protocol",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Response Protocol",
+                "line": 149,
+                "raw": "## Response Protocol"
+              }
+            },
+            {
+              "name": "Error Handling",
+              "found": false,
+              "section": null
+            },
+            {
+              "name": "Non-Negotiable",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Non-Negotiable Requirements",
+                "line": 155,
+                "raw": "## Non-Negotiable Requirements"
+              }
+            }
+          ],
+          "missingRequired": [
+            "Error Handling"
+          ],
+          "extraSections": [],
+          "structureIssues": [
+            {
+              "type": "workflow_format",
+              "message": "Workflow section should use table format",
+              "line": 21
+            }
+          ],
+          "score": 86
+        },
+        {
+          "file": "../rules-sparc/rules.md",
+          "compliant": false,
+          "sections": [
+            {
+              "name": "Goal",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Goal",
+                "line": 7,
+                "raw": "## Goal"
+              }
+            },
+            {
+              "name": "Onboarding",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Onboarding",
+                "line": 11,
+                "raw": "## Onboarding"
+              }
+            },
+            {
+              "name": "Role Definition",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Role Definition",
+                "line": 15,
+                "raw": "## Role Definition"
+              }
+            },
+            {
+              "name": "Foundation",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Foundation",
+                "line": 3,
+                "raw": "## Foundation"
+              }
+            },
+            {
+              "name": "Workflow",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Workflow",
+                "line": 21,
+                "raw": "## Workflow"
+              }
+            },
+            {
+              "name": "Requirements",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "SPARC-Specific Requirements",
+                "line": 33,
+                "raw": "## SPARC-Specific Requirements"
+              }
+            },
+            {
+              "name": "Response Protocol",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Response Protocol",
+                "line": 256,
+                "raw": "## Response Protocol"
+              }
+            },
+            {
+              "name": "Error Handling",
+              "found": false,
+              "section": null
+            },
+            {
+              "name": "Non-Negotiable",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Non-Negotiable Requirements",
+                "line": 374,
+                "raw": "## Non-Negotiable Requirements"
+              }
+            }
+          ],
+          "missingRequired": [
+            "Error Handling"
+          ],
+          "extraSections": [],
+          "structureIssues": [
+            {
+              "type": "workflow_format",
+              "message": "Workflow section should use table format",
+              "line": 21
+            }
+          ],
+          "score": 86
+        },
+        {
+          "file": "../rules-security-review/rules.md",
+          "compliant": false,
+          "sections": [
+            {
+              "name": "Goal",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Goal",
+                "line": 3,
+                "raw": "## Goal"
+              }
+            },
+            {
+              "name": "Onboarding",
+              "found": false,
+              "section": null
+            },
+            {
+              "name": "Role Definition",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Role Definition",
+                "line": 7,
+                "raw": "## Role Definition"
+              }
+            },
+            {
+              "name": "Foundation",
+              "found": false,
+              "section": null
+            },
+            {
+              "name": "Workflow",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Security-Specific Workflow",
+                "line": 14,
+                "raw": "## Security-Specific Workflow"
+              }
+            },
+            {
+              "name": "Requirements",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Requirements",
+                "line": 24,
+                "raw": "## Requirements"
+              }
+            },
+            {
+              "name": "Response Protocol",
+              "found": false,
+              "section": null
+            },
+            {
+              "name": "Error Handling",
+              "found": false,
+              "section": null
+            },
+            {
+              "name": "Non-Negotiable",
+              "found": false,
+              "section": null
+            }
+          ],
+          "missingRequired": [
+            "Onboarding",
+            "Foundation",
+            "Response Protocol",
+            "Error Handling",
+            "Non-Negotiable"
+          ],
+          "extraSections": [],
+          "structureIssues": [
+            {
+              "type": "workflow_format",
+              "message": "Workflow section should use table format",
+              "line": 14
+            },
+            {
+              "type": "reference_format",
+              "message": "Reference should use optimized version: ../shared/workflow-guide.md",
+              "line": 78
+            }
+          ],
+          "score": 46
+        },
+        {
+          "file": "../rules-refinement-optimization/rules.md",
+          "compliant": false,
+          "sections": [
+            {
+              "name": "Goal",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Goal",
+                "line": 9,
+                "raw": "## Goal"
+              }
+            },
+            {
+              "name": "Onboarding",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Onboarding",
+                "line": 13,
+                "raw": "## Onboarding"
+              }
+            },
+            {
+              "name": "Role Definition",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Role Definition",
+                "line": 17,
+                "raw": "## Role Definition"
+              }
+            },
+            {
+              "name": "Foundation",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Foundation",
+                "line": 3,
+                "raw": "## Foundation"
+              }
+            },
+            {
+              "name": "Workflow",
+              "found": false,
+              "section": null
+            },
+            {
+              "name": "Requirements",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Optimization Requirements",
+                "line": 31,
+                "raw": "## Optimization Requirements"
+              }
+            },
+            {
+              "name": "Response Protocol",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Response Protocol",
+                "line": 322,
+                "raw": "## Response Protocol"
+              }
+            },
+            {
+              "name": "Error Handling",
+              "found": false,
+              "section": null
+            },
+            {
+              "name": "Non-Negotiable",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Non-Negotiable Requirements",
+                "line": 328,
+                "raw": "## Non-Negotiable Requirements"
+              }
+            }
+          ],
+          "missingRequired": [
+            "Workflow",
+            "Error Handling"
+          ],
+          "extraSections": [],
+          "structureIssues": [],
+          "score": 82
+        },
+        {
+          "file": "../rules-post-deployment-monitoring/rules.md",
+          "compliant": false,
+          "sections": [
+            {
+              "name": "Goal",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Goal",
+                "line": 9,
+                "raw": "## Goal"
+              }
+            },
+            {
+              "name": "Onboarding",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Onboarding",
+                "line": 13,
+                "raw": "## Onboarding"
+              }
+            },
+            {
+              "name": "Role Definition",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Role Definition",
+                "line": 17,
+                "raw": "## Role Definition"
+              }
+            },
+            {
+              "name": "Foundation",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Foundation",
+                "line": 3,
+                "raw": "## Foundation"
+              }
+            },
+            {
+              "name": "Workflow",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Workflow",
+                "line": 23,
+                "raw": "## Workflow"
+              }
+            },
+            {
+              "name": "Requirements",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Monitoring Requirements",
+                "line": 33,
+                "raw": "## Monitoring Requirements"
+              }
+            },
+            {
+              "name": "Response Protocol",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Response Protocol",
+                "line": 206,
+                "raw": "## Response Protocol"
+              }
+            },
+            {
+              "name": "Error Handling",
+              "found": false,
+              "section": null
+            },
+            {
+              "name": "Non-Negotiable",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Non-Negotiable Requirements",
+                "line": 212,
+                "raw": "## Non-Negotiable Requirements"
+              }
+            }
+          ],
+          "missingRequired": [
+            "Error Handling"
+          ],
+          "extraSections": [],
+          "structureIssues": [
+            {
+              "type": "workflow_format",
+              "message": "Workflow section should use table format",
+              "line": 23
+            }
+          ],
+          "score": 86
+        },
+        {
+          "file": "../rules-nuxt-3-pro-developer/rules.md",
+          "compliant": false,
+          "sections": [
+            {
+              "name": "Goal",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Goal",
+                "line": 7,
+                "raw": "## Goal"
+              }
+            },
+            {
+              "name": "Onboarding",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Onboarding",
+                "line": 11,
+                "raw": "## Onboarding"
+              }
+            },
+            {
+              "name": "Role Definition",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Role Definition",
+                "line": 15,
+                "raw": "## Role Definition"
+              }
+            },
+            {
+              "name": "Foundation",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Foundation",
+                "line": 3,
+                "raw": "## Foundation"
+              }
+            },
+            {
+              "name": "Workflow",
+              "found": false,
+              "section": null
+            },
+            {
+              "name": "Requirements",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Nuxt 3 Development Requirements",
+                "line": 21,
+                "raw": "## Nuxt 3 Development Requirements"
+              }
+            },
+            {
+              "name": "Response Protocol",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Response Protocol",
+                "line": 110,
+                "raw": "## Response Protocol"
+              }
+            },
+            {
+              "name": "Error Handling",
+              "found": false,
+              "section": null
+            },
+            {
+              "name": "Non-Negotiable",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Non-Negotiable Requirements",
+                "line": 138,
+                "raw": "## Non-Negotiable Requirements"
+              }
+            }
+          ],
+          "missingRequired": [
+            "Workflow",
+            "Error Handling"
+          ],
+          "extraSections": [],
+          "structureIssues": [],
+          "score": 82
+        },
+        {
+          "file": "../rules-memory/rules.md",
+          "compliant": false,
+          "sections": [
+            {
+              "name": "Goal",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Goal",
+                "line": 8,
+                "raw": "## Goal"
+              }
+            },
+            {
+              "name": "Onboarding",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Onboarding",
+                "line": 12,
+                "raw": "## Onboarding"
+              }
+            },
+            {
+              "name": "Role Definition",
+              "found": false,
+              "section": null
+            },
+            {
+              "name": "Foundation",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Foundation",
+                "line": 4,
+                "raw": "## Foundation"
+              }
+            },
+            {
+              "name": "Workflow",
+              "found": false,
+              "section": null
+            },
+            {
+              "name": "Requirements",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Memory Management Requirements",
+                "line": 23,
+                "raw": "## Memory Management Requirements"
+              }
+            },
+            {
+              "name": "Response Protocol",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Response Protocol",
+                "line": 81,
+                "raw": "## Response Protocol"
+              }
+            },
+            {
+              "name": "Error Handling",
+              "found": false,
+              "section": null
+            },
+            {
+              "name": "Non-Negotiable",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Non-Negotiable Requirements",
+                "line": 107,
+                "raw": "## Non-Negotiable Requirements"
+              }
+            }
+          ],
+          "missingRequired": [
+            "Role Definition",
+            "Workflow",
+            "Error Handling"
+          ],
+          "extraSections": [],
+          "structureIssues": [],
+          "score": 73
+        },
+        {
+          "file": "../rules-mcp/rules.md",
+          "compliant": false,
+          "sections": [
+            {
+              "name": "Goal",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Goal",
+                "line": 7,
+                "raw": "## Goal"
+              }
+            },
+            {
+              "name": "Onboarding",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Onboarding",
+                "line": 11,
+                "raw": "## Onboarding"
+              }
+            },
+            {
+              "name": "Role Definition",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Role Definition",
+                "line": 15,
+                "raw": "## Role Definition"
+              }
+            },
+            {
+              "name": "Foundation",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Foundation",
+                "line": 3,
+                "raw": "## Foundation"
+              }
+            },
+            {
+              "name": "Workflow",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Workflow",
+                "line": 21,
+                "raw": "## Workflow"
+              }
+            },
+            {
+              "name": "Requirements",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "MCP Integration Requirements",
+                "line": 33,
+                "raw": "## MCP Integration Requirements"
+              }
+            },
+            {
+              "name": "Response Protocol",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Response Protocol",
+                "line": 119,
+                "raw": "## Response Protocol"
+              }
+            },
+            {
+              "name": "Error Handling",
+              "found": false,
+              "section": null
+            },
+            {
+              "name": "Non-Negotiable",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Non-Negotiable Requirements",
+                "line": 125,
+                "raw": "## Non-Negotiable Requirements"
+              }
+            }
+          ],
+          "missingRequired": [
+            "Error Handling"
+          ],
+          "extraSections": [],
+          "structureIssues": [
+            {
+              "type": "workflow_format",
+              "message": "Workflow section should use table format",
+              "line": 21
+            }
+          ],
+          "score": 86
+        },
+        {
+          "file": "../rules-integration/rules.md",
+          "compliant": false,
+          "sections": [
+            {
+              "name": "Goal",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Goal",
+                "line": 7,
+                "raw": "## Goal"
+              }
+            },
+            {
+              "name": "Onboarding",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Onboarding",
+                "line": 11,
+                "raw": "## Onboarding"
+              }
+            },
+            {
+              "name": "Role Definition",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Role Definition",
+                "line": 15,
+                "raw": "## Role Definition"
+              }
+            },
+            {
+              "name": "Foundation",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Foundation",
+                "line": 3,
+                "raw": "## Foundation"
+              }
+            },
+            {
+              "name": "Workflow",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Workflow",
+                "line": 24,
+                "raw": "## Workflow"
+              }
+            },
+            {
+              "name": "Requirements",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Integration-Specific Requirements",
+                "line": 36,
+                "raw": "## Integration-Specific Requirements"
+              }
+            },
+            {
+              "name": "Response Protocol",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Response Protocol",
+                "line": 160,
+                "raw": "## Response Protocol"
+              }
+            },
+            {
+              "name": "Error Handling",
+              "found": false,
+              "section": null
+            },
+            {
+              "name": "Non-Negotiable",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Non-Negotiable Requirements",
+                "line": 179,
+                "raw": "## Non-Negotiable Requirements"
+              }
+            }
+          ],
+          "missingRequired": [
+            "Error Handling"
+          ],
+          "extraSections": [],
+          "structureIssues": [
+            {
+              "type": "workflow_format",
+              "message": "Workflow section should use table format",
+              "line": 24
+            }
+          ],
+          "score": 86
+        },
+        {
+          "file": "../rules-instructions-file-generator/rules.md",
+          "compliant": false,
+          "sections": [
+            {
+              "name": "Goal",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Goal",
+                "line": 7,
+                "raw": "## Goal"
+              }
+            },
+            {
+              "name": "Onboarding",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Onboarding",
+                "line": 11,
+                "raw": "## Onboarding"
+              }
+            },
+            {
+              "name": "Role Definition",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Role Definition",
+                "line": 15,
+                "raw": "## Role Definition"
+              }
+            },
+            {
+              "name": "Foundation",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Foundation",
+                "line": 3,
+                "raw": "## Foundation"
+              }
+            },
+            {
+              "name": "Workflow",
+              "found": false,
+              "section": null
+            },
+            {
+              "name": "Requirements",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Instructions Generation Requirements",
+                "line": 21,
+                "raw": "## Instructions Generation Requirements"
+              }
+            },
+            {
+              "name": "Response Protocol",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Response Protocol",
+                "line": 73,
+                "raw": "## Response Protocol"
+              }
+            },
+            {
+              "name": "Error Handling",
+              "found": false,
+              "section": null
+            },
+            {
+              "name": "Non-Negotiable",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Non-Negotiable Requirements",
+                "line": 106,
+                "raw": "## Non-Negotiable Requirements"
+              }
+            }
+          ],
+          "missingRequired": [
+            "Workflow",
+            "Error Handling"
+          ],
+          "extraSections": [],
+          "structureIssues": [
+            {
+              "type": "title_structure",
+              "message": "Document should have only one H1 title",
+              "line": 59
+            }
+          ],
+          "score": 77
+        },
+        {
+          "file": "../rules-docs-writer/rules.md",
+          "compliant": false,
+          "sections": [
+            {
+              "name": "Goal",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Goal",
+                "line": 3,
+                "raw": "## Goal"
+              }
+            },
+            {
+              "name": "Onboarding",
+              "found": false,
+              "section": null
+            },
+            {
+              "name": "Role Definition",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Role Definition",
+                "line": 7,
+                "raw": "## Role Definition"
+              }
+            },
+            {
+              "name": "Foundation",
+              "found": false,
+              "section": null
+            },
+            {
+              "name": "Workflow",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Documentation-Specific Workflow",
+                "line": 14,
+                "raw": "## Documentation-Specific Workflow"
+              }
+            },
+            {
+              "name": "Requirements",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Requirements",
+                "line": 24,
+                "raw": "## Requirements"
+              }
+            },
+            {
+              "name": "Response Protocol",
+              "found": false,
+              "section": null
+            },
+            {
+              "name": "Error Handling",
+              "found": false,
+              "section": null
+            },
+            {
+              "name": "Non-Negotiable",
+              "found": false,
+              "section": null
+            }
+          ],
+          "missingRequired": [
+            "Onboarding",
+            "Foundation",
+            "Response Protocol",
+            "Error Handling",
+            "Non-Negotiable"
+          ],
+          "extraSections": [],
+          "structureIssues": [
+            {
+              "type": "workflow_format",
+              "message": "Workflow section should use table format",
+              "line": 14
+            },
+            {
+              "type": "reference_format",
+              "message": "Reference should use optimized version: ../shared/workflow-guide.md",
+              "line": 124
+            }
+          ],
+          "score": 46
+        },
+        {
+          "file": "../rules-devops/rules.md",
+          "compliant": false,
+          "sections": [
+            {
+              "name": "Goal",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Goal",
+                "line": 3,
+                "raw": "## Goal"
+              }
+            },
+            {
+              "name": "Onboarding",
+              "found": false,
+              "section": null
+            },
+            {
+              "name": "Role Definition",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Role Definition",
+                "line": 7,
+                "raw": "## Role Definition"
+              }
+            },
+            {
+              "name": "Foundation",
+              "found": false,
+              "section": null
+            },
+            {
+              "name": "Workflow",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "DevOps-Specific Workflow",
+                "line": 14,
+                "raw": "## DevOps-Specific Workflow"
+              }
+            },
+            {
+              "name": "Requirements",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Requirements",
+                "line": 24,
+                "raw": "## Requirements"
+              }
+            },
+            {
+              "name": "Response Protocol",
+              "found": false,
+              "section": null
+            },
+            {
+              "name": "Error Handling",
+              "found": false,
+              "section": null
+            },
+            {
+              "name": "Non-Negotiable",
+              "found": false,
+              "section": null
+            }
+          ],
+          "missingRequired": [
+            "Onboarding",
+            "Foundation",
+            "Response Protocol",
+            "Error Handling",
+            "Non-Negotiable"
+          ],
+          "extraSections": [],
+          "structureIssues": [
+            {
+              "type": "workflow_format",
+              "message": "Workflow section should use table format",
+              "line": 14
+            },
+            {
+              "type": "reference_format",
+              "message": "Reference should use optimized version: ../shared/workflow-guide.md",
+              "line": 96
+            }
+          ],
+          "score": 46
+        },
+        {
+          "file": "../rules-deep-research-agent/rules.md",
+          "compliant": false,
+          "sections": [
+            {
+              "name": "Goal",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Goal",
+                "line": 7,
+                "raw": "## Goal"
+              }
+            },
+            {
+              "name": "Onboarding",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Onboarding",
+                "line": 11,
+                "raw": "## Onboarding"
+              }
+            },
+            {
+              "name": "Role Definition",
+              "found": false,
+              "section": null
+            },
+            {
+              "name": "Foundation",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Foundation",
+                "line": 3,
+                "raw": "## Foundation"
+              }
+            },
+            {
+              "name": "Workflow",
+              "found": false,
+              "section": null
+            },
+            {
+              "name": "Requirements",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Deep Research Requirements",
+                "line": 22,
+                "raw": "## Deep Research Requirements"
+              }
+            },
+            {
+              "name": "Response Protocol",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Response Protocol",
+                "line": 76,
+                "raw": "## Response Protocol"
+              }
+            },
+            {
+              "name": "Error Handling",
+              "found": false,
+              "section": null
+            },
+            {
+              "name": "Non-Negotiable",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Non-Negotiable Requirements",
+                "line": 102,
+                "raw": "## Non-Negotiable Requirements"
+              }
+            }
+          ],
+          "missingRequired": [
+            "Role Definition",
+            "Workflow",
+            "Error Handling"
+          ],
+          "extraSections": [],
+          "structureIssues": [],
+          "score": 73
+        },
+        {
+          "file": "../rules-debug/rules.md",
+          "compliant": false,
+          "sections": [
+            {
+              "name": "Goal",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Goal",
+                "line": 3,
+                "raw": "## Goal"
+              }
+            },
+            {
+              "name": "Onboarding",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Onboarding",
+                "line": 9,
+                "raw": "## Onboarding"
+              }
+            },
+            {
+              "name": "Role Definition",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Role Definition",
+                "line": 13,
+                "raw": "## Role Definition"
+              }
+            },
+            {
+              "name": "Foundation",
+              "found": false,
+              "section": null
+            },
+            {
+              "name": "Workflow",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Workflow & Error Handling",
+                "line": 80,
+                "raw": "## Workflow & Error Handling"
+              }
+            },
+            {
+              "name": "Requirements",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Debug-Specific Requirements",
+                "line": 35,
+                "raw": "## Debug-Specific Requirements"
+              }
+            },
+            {
+              "name": "Response Protocol",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Response Protocol",
+                "line": 74,
+                "raw": "## Response Protocol"
+              }
+            },
+            {
+              "name": "Error Handling",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Workflow & Error Handling",
+                "line": 80,
+                "raw": "## Workflow & Error Handling"
+              }
+            },
+            {
+              "name": "Non-Negotiable",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Non-Negotiable Requirements",
+                "line": 86,
+                "raw": "## Non-Negotiable Requirements"
+              }
+            }
+          ],
+          "missingRequired": [
+            "Foundation"
+          ],
+          "extraSections": [],
+          "structureIssues": [
+            {
+              "type": "workflow_format",
+              "message": "Workflow section should use table format",
+              "line": 80
+            },
+            {
+              "type": "reference_format",
+              "message": "Reference should use optimized version: ../shared/workflow-guide.md",
+              "line": 82
+            }
+          ],
+          "score": 81
+        },
+        {
+          "file": "../rules-context-condensing/rules.md",
+          "compliant": false,
+          "sections": [
+            {
+              "name": "Goal",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Goal",
+                "line": 11,
+                "raw": "## Goal"
+              }
+            },
+            {
+              "name": "Onboarding",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Onboarding",
+                "line": 3,
+                "raw": "## Onboarding"
+              }
+            },
+            {
+              "name": "Role Definition",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Role Definition",
+                "line": 17,
+                "raw": "## Role Definition"
+              }
+            },
+            {
+              "name": "Foundation",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Foundation",
+                "line": 7,
+                "raw": "## Foundation"
+              }
+            },
+            {
+              "name": "Workflow",
+              "found": false,
+              "section": null
+            },
+            {
+              "name": "Requirements",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Non-Negotiable Requirements",
+                "line": 125,
+                "raw": "## Non-Negotiable Requirements"
+              }
+            },
+            {
+              "name": "Response Protocol",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Response Protocol",
+                "line": 99,
+                "raw": "## Response Protocol"
+              }
+            },
+            {
+              "name": "Error Handling",
+              "found": false,
+              "section": null
+            },
+            {
+              "name": "Non-Negotiable",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Non-Negotiable Requirements",
+                "line": 125,
+                "raw": "## Non-Negotiable Requirements"
+              }
+            }
+          ],
+          "missingRequired": [
+            "Workflow",
+            "Error Handling"
+          ],
+          "extraSections": [],
+          "structureIssues": [],
+          "score": 82
+        },
+        {
+          "file": "../rules-code-style-analyzer/rules.md",
+          "compliant": false,
+          "sections": [
+            {
+              "name": "Goal",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Goal",
+                "line": 3,
+                "raw": "## Goal"
+              }
+            },
+            {
+              "name": "Onboarding",
+              "found": false,
+              "section": null
+            },
+            {
+              "name": "Role Definition",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Role Definition",
+                "line": 7,
+                "raw": "## Role Definition"
+              }
+            },
+            {
+              "name": "Foundation",
+              "found": false,
+              "section": null
+            },
+            {
+              "name": "Workflow",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Code Style Analysis Workflow",
+                "line": 14,
+                "raw": "## Code Style Analysis Workflow"
+              }
+            },
+            {
+              "name": "Requirements",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Requirements",
+                "line": 24,
+                "raw": "## Requirements"
+              }
+            },
+            {
+              "name": "Response Protocol",
+              "found": false,
+              "section": null
+            },
+            {
+              "name": "Error Handling",
+              "found": false,
+              "section": null
+            },
+            {
+              "name": "Non-Negotiable",
+              "found": false,
+              "section": null
+            }
+          ],
+          "missingRequired": [
+            "Onboarding",
+            "Foundation",
+            "Response Protocol",
+            "Error Handling",
+            "Non-Negotiable"
+          ],
+          "extraSections": [],
+          "structureIssues": [
+            {
+              "type": "workflow_format",
+              "message": "Workflow section should use table format",
+              "line": 14
+            },
+            {
+              "type": "reference_format",
+              "message": "Reference should use optimized version: ../shared/workflow-guide.md",
+              "line": 99
+            }
+          ],
+          "score": 46
+        },
+        {
+          "file": "../rules-code/rules.md",
+          "compliant": false,
+          "sections": [
+            {
+              "name": "Goal",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Goal",
+                "line": 3,
+                "raw": "## Goal"
+              }
+            },
+            {
+              "name": "Onboarding",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Onboarding",
+                "line": 9,
+                "raw": "## Onboarding"
+              }
+            },
+            {
+              "name": "Role Definition",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Role Definition",
+                "line": 13,
+                "raw": "## Role Definition"
+              }
+            },
+            {
+              "name": "Foundation",
+              "found": false,
+              "section": null
+            },
+            {
+              "name": "Workflow",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Workflow & Error Handling",
+                "line": 75,
+                "raw": "## Workflow & Error Handling"
+              }
+            },
+            {
+              "name": "Requirements",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Code-Specific Requirements",
+                "line": 35,
+                "raw": "## Code-Specific Requirements"
+              }
+            },
+            {
+              "name": "Response Protocol",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Response Protocol",
+                "line": 69,
+                "raw": "## Response Protocol"
+              }
+            },
+            {
+              "name": "Error Handling",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Workflow & Error Handling",
+                "line": 75,
+                "raw": "## Workflow & Error Handling"
+              }
+            },
+            {
+              "name": "Non-Negotiable",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Non-Negotiable Requirements",
+                "line": 81,
+                "raw": "## Non-Negotiable Requirements"
+              }
+            }
+          ],
+          "missingRequired": [
+            "Foundation"
+          ],
+          "extraSections": [],
+          "structureIssues": [
+            {
+              "type": "workflow_format",
+              "message": "Workflow section should use table format",
+              "line": 75
+            },
+            {
+              "type": "reference_format",
+              "message": "Reference should use optimized version: ../shared/workflow-guide.md",
+              "line": 77
+            }
+          ],
+          "score": 81
+        },
+        {
+          "file": "../rules-ask/rules.md",
+          "compliant": false,
+          "sections": [
+            {
+              "name": "Goal",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Goal",
+                "line": 3,
+                "raw": "## Goal"
+              }
+            },
+            {
+              "name": "Onboarding",
+              "found": false,
+              "section": null
+            },
+            {
+              "name": "Role Definition",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Role Definition",
+                "line": 7,
+                "raw": "## Role Definition"
+              }
+            },
+            {
+              "name": "Foundation",
+              "found": false,
+              "section": null
+            },
+            {
+              "name": "Workflow",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Ask-Specific Workflow",
+                "line": 14,
+                "raw": "## Ask-Specific Workflow"
+              }
+            },
+            {
+              "name": "Requirements",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Requirements",
+                "line": 24,
+                "raw": "## Requirements"
+              }
+            },
+            {
+              "name": "Response Protocol",
+              "found": false,
+              "section": null
+            },
+            {
+              "name": "Error Handling",
+              "found": false,
+              "section": null
+            },
+            {
+              "name": "Non-Negotiable",
+              "found": false,
+              "section": null
+            }
+          ],
+          "missingRequired": [
+            "Onboarding",
+            "Foundation",
+            "Response Protocol",
+            "Error Handling",
+            "Non-Negotiable"
+          ],
+          "extraSections": [],
+          "structureIssues": [
+            {
+              "type": "workflow_format",
+              "message": "Workflow section should use table format",
+              "line": 14
+            },
+            {
+              "type": "reference_format",
+              "message": "Reference should use optimized version: ../shared/workflow-guide.md",
+              "line": 111
+            }
+          ],
+          "score": 46
+        },
+        {
+          "file": "../rules-architect/rules.md",
+          "compliant": false,
+          "sections": [
+            {
+              "name": "Goal",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Goal",
+                "line": 3,
+                "raw": "## Goal"
+              }
+            },
+            {
+              "name": "Onboarding",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Onboarding",
+                "line": 9,
+                "raw": "## Onboarding"
+              }
+            },
+            {
+              "name": "Role Definition",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Role Definition",
+                "line": 13,
+                "raw": "## Role Definition"
+              }
+            },
+            {
+              "name": "Foundation",
+              "found": false,
+              "section": null
+            },
+            {
+              "name": "Workflow",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Workflow & Error Handling",
+                "line": 77,
+                "raw": "## Workflow & Error Handling"
+              }
+            },
+            {
+              "name": "Requirements",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Architecture-Specific Requirements",
+                "line": 35,
+                "raw": "## Architecture-Specific Requirements"
+              }
+            },
+            {
+              "name": "Response Protocol",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Response Protocol",
+                "line": 71,
+                "raw": "## Response Protocol"
+              }
+            },
+            {
+              "name": "Error Handling",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Workflow & Error Handling",
+                "line": 77,
+                "raw": "## Workflow & Error Handling"
+              }
+            },
+            {
+              "name": "Non-Negotiable",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Non-Negotiable Requirements",
+                "line": 83,
+                "raw": "## Non-Negotiable Requirements"
+              }
+            }
+          ],
+          "missingRequired": [
+            "Foundation"
+          ],
+          "extraSections": [],
+          "structureIssues": [
+            {
+              "type": "workflow_format",
+              "message": "Workflow section should use table format",
+              "line": 77
+            },
+            {
+              "type": "reference_format",
+              "message": "Reference should use optimized version: ../shared/workflow-guide.md",
+              "line": 79
+            }
+          ],
+          "score": 81
+        },
+        {
+          "file": "../rules-accessibility-expert/rules.md",
+          "compliant": false,
+          "sections": [
+            {
+              "name": "Goal",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Goal",
+                "line": 3,
+                "raw": "## Goal"
+              }
+            },
+            {
+              "name": "Onboarding",
+              "found": false,
+              "section": null
+            },
+            {
+              "name": "Role Definition",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Role Definition",
+                "line": 7,
+                "raw": "## Role Definition"
+              }
+            },
+            {
+              "name": "Foundation",
+              "found": false,
+              "section": null
+            },
+            {
+              "name": "Workflow",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Accessibility-Specific Workflow",
+                "line": 14,
+                "raw": "## Accessibility-Specific Workflow"
+              }
+            },
+            {
+              "name": "Requirements",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Requirements",
+                "line": 24,
+                "raw": "## Requirements"
+              }
+            },
+            {
+              "name": "Response Protocol",
+              "found": false,
+              "section": null
+            },
+            {
+              "name": "Error Handling",
+              "found": false,
+              "section": null
+            },
+            {
+              "name": "Non-Negotiable",
+              "found": false,
+              "section": null
+            }
+          ],
+          "missingRequired": [
+            "Onboarding",
+            "Foundation",
+            "Response Protocol",
+            "Error Handling",
+            "Non-Negotiable"
+          ],
+          "extraSections": [],
+          "structureIssues": [
+            {
+              "type": "workflow_format",
+              "message": "Workflow section should use table format",
+              "line": 14
+            },
+            {
+              "type": "reference_format",
+              "message": "Reference should use optimized version: ../shared/workflow-guide.md",
+              "line": 95
+            }
+          ],
+          "score": 46
+        }
+      ],
+      "summary": {
+        "totalFiles": 25,
+        "compliantFiles": 0,
+        "nonCompliantFiles": 25,
+        "complianceRate": "0.00"
+      }
+    },
+    "formatChecker": {
+      "files": [
+        {
+          "file": "../rules-ui-ux-designer/rules.md",
+          "passed": true,
+          "issues": [],
+          "issueCount": 0
+        },
+        {
+          "file": "../rules-tutorial/rules.md",
+          "passed": false,
+          "issues": [
+            {
+              "type": "workflow_table_headers",
+              "message": "Workflow table should have \"Step\" and \"Action\" columns",
+              "line": 22,
+              "severity": "warning"
+            }
+          ],
+          "issueCount": 1
+        },
+        {
+          "file": "../rules-test/rules.md",
+          "passed": false,
+          "issues": [
+            {
+              "type": "reference_not_optimized",
+              "message": "Reference should use optimized version: ../shared/workflow-guide.md",
+              "line": 124,
+              "severity": "warning"
+            }
+          ],
+          "issueCount": 1
+        },
+        {
+          "file": "../rules-tdd/rules.md",
+          "passed": false,
+          "issues": [
+            {
+              "type": "workflow_table_missing",
+              "message": "Workflow section should contain a table format",
+              "line": 81,
+              "severity": "error"
+            },
+            {
+              "type": "reference_not_optimized",
+              "message": "Reference should use optimized version: ../shared/workflow-guide.md",
+              "line": 83,
+              "severity": "warning"
+            }
+          ],
+          "issueCount": 2
+        },
+        {
+          "file": "../rules-supabase-admin/rules.md",
+          "passed": true,
+          "issues": [],
+          "issueCount": 0
+        },
+        {
+          "file": "../rules-spec-pseudocode/rules.md",
+          "passed": false,
+          "issues": [
+            {
+              "type": "workflow_table_headers",
+              "message": "Workflow table should have \"Step\" and \"Action\" columns",
+              "line": 22,
+              "severity": "warning"
+            },
+            {
+              "type": "long_inline_code",
+              "message": "Long code snippets should use code blocks instead of inline code",
+              "line": 110,
+              "severity": "info"
+            }
+          ],
+          "issueCount": 2
+        },
+        {
+          "file": "../rules-sparc/rules.md",
+          "passed": true,
+          "issues": [],
+          "issueCount": 0
+        },
+        {
+          "file": "../rules-security-review/rules.md",
+          "passed": false,
+          "issues": [
+            {
+              "type": "reference_not_optimized",
+              "message": "Reference should use optimized version: ../shared/workflow-guide.md",
+              "line": 78,
+              "severity": "warning"
+            }
+          ],
+          "issueCount": 1
+        },
+        {
+          "file": "../rules-refinement-optimization/rules.md",
+          "passed": true,
+          "issues": [],
+          "issueCount": 0
+        },
+        {
+          "file": "../rules-post-deployment-monitoring/rules.md",
+          "passed": false,
+          "issues": [
+            {
+              "type": "workflow_table_headers",
+              "message": "Workflow table should have \"Step\" and \"Action\" columns",
+              "line": 24,
+              "severity": "warning"
+            }
+          ],
+          "issueCount": 1
+        },
+        {
+          "file": "../rules-nuxt-3-pro-developer/rules.md",
+          "passed": false,
+          "issues": [
+            {
+              "type": "long_inline_code",
+              "message": "Long code snippets should use code blocks instead of inline code",
+              "line": 40,
+              "severity": "info"
+            },
+            {
+              "type": "long_inline_code",
+              "message": "Long code snippets should use code blocks instead of inline code",
+              "line": 53,
+              "severity": "info"
+            },
+            {
+              "type": "long_inline_code",
+              "message": "Long code snippets should use code blocks instead of inline code",
+              "line": 81,
+              "severity": "info"
+            },
+            {
+              "type": "long_inline_code",
+              "message": "Long code snippets should use code blocks instead of inline code",
+              "line": 86,
+              "severity": "info"
+            },
+            {
+              "type": "long_inline_code",
+              "message": "Long code snippets should use code blocks instead of inline code",
+              "line": 87,
+              "severity": "info"
+            },
+            {
+              "type": "long_inline_code",
+              "message": "Long code snippets should use code blocks instead of inline code",
+              "line": 87,
+              "severity": "info"
+            }
+          ],
+          "issueCount": 6
+        },
+        {
+          "file": "../rules-memory/rules.md",
+          "passed": true,
+          "issues": [],
+          "issueCount": 0
+        },
+        {
+          "file": "../rules-mcp/rules.md",
+          "passed": false,
+          "issues": [
+            {
+              "type": "workflow_table_headers",
+              "message": "Workflow table should have \"Step\" and \"Action\" columns",
+              "line": 22,
+              "severity": "warning"
+            }
+          ],
+          "issueCount": 1
+        },
+        {
+          "file": "../rules-integration/rules.md",
+          "passed": false,
+          "issues": [
+            {
+              "type": "workflow_table_headers",
+              "message": "Workflow table should have \"Step\" and \"Action\" columns",
+              "line": 25,
+              "severity": "warning"
+            }
+          ],
+          "issueCount": 1
+        },
+        {
+          "file": "../rules-instructions-file-generator/rules.md",
+          "passed": true,
+          "issues": [],
+          "issueCount": 0
+        },
+        {
+          "file": "../rules-docs-writer/rules.md",
+          "passed": false,
+          "issues": [
+            {
+              "type": "reference_not_optimized",
+              "message": "Reference should use optimized version: ../shared/workflow-guide.md",
+              "line": 124,
+              "severity": "warning"
+            }
+          ],
+          "issueCount": 1
+        },
+        {
+          "file": "../rules-devops/rules.md",
+          "passed": false,
+          "issues": [
+            {
+              "type": "reference_not_optimized",
+              "message": "Reference should use optimized version: ../shared/workflow-guide.md",
+              "line": 96,
+              "severity": "warning"
+            }
+          ],
+          "issueCount": 1
+        },
+        {
+          "file": "../rules-deep-research-agent/rules.md",
+          "passed": true,
+          "issues": [],
+          "issueCount": 0
+        },
+        {
+          "file": "../rules-debug/rules.md",
+          "passed": false,
+          "issues": [
+            {
+              "type": "workflow_table_missing",
+              "message": "Workflow section should contain a table format",
+              "line": 80,
+              "severity": "error"
+            },
+            {
+              "type": "reference_not_optimized",
+              "message": "Reference should use optimized version: ../shared/workflow-guide.md",
+              "line": 82,
+              "severity": "warning"
+            }
+          ],
+          "issueCount": 2
+        },
+        {
+          "file": "../rules-context-condensing/rules.md",
+          "passed": false,
+          "issues": [
+            {
+              "type": "heading_case",
+              "message": "Main headings should use title case",
+              "line": 105,
+              "severity": "info"
+            }
+          ],
+          "issueCount": 1
+        },
+        {
+          "file": "../rules-code-style-analyzer/rules.md",
+          "passed": false,
+          "issues": [
+            {
+              "type": "reference_not_optimized",
+              "message": "Reference should use optimized version: ../shared/workflow-guide.md",
+              "line": 99,
+              "severity": "warning"
+            }
+          ],
+          "issueCount": 1
+        },
+        {
+          "file": "../rules-code/rules.md",
+          "passed": false,
+          "issues": [
+            {
+              "type": "workflow_table_missing",
+              "message": "Workflow section should contain a table format",
+              "line": 75,
+              "severity": "error"
+            },
+            {
+              "type": "reference_not_optimized",
+              "message": "Reference should use optimized version: ../shared/workflow-guide.md",
+              "line": 77,
+              "severity": "warning"
+            }
+          ],
+          "issueCount": 2
+        },
+        {
+          "file": "../rules-ask/rules.md",
+          "passed": false,
+          "issues": [
+            {
+              "type": "reference_not_optimized",
+              "message": "Reference should use optimized version: ../shared/workflow-guide.md",
+              "line": 111,
+              "severity": "warning"
+            }
+          ],
+          "issueCount": 1
+        },
+        {
+          "file": "../rules-architect/rules.md",
+          "passed": false,
+          "issues": [
+            {
+              "type": "workflow_table_missing",
+              "message": "Workflow section should contain a table format",
+              "line": 77,
+              "severity": "error"
+            },
+            {
+              "type": "reference_not_optimized",
+              "message": "Reference should use optimized version: ../shared/workflow-guide.md",
+              "line": 79,
+              "severity": "warning"
+            }
+          ],
+          "issueCount": 2
+        },
+        {
+          "file": "../rules-accessibility-expert/rules.md",
+          "passed": false,
+          "issues": [
+            {
+              "type": "reference_not_optimized",
+              "message": "Reference should use optimized version: ../shared/workflow-guide.md",
+              "line": 95,
+              "severity": "warning"
+            }
+          ],
+          "issueCount": 1
+        }
+      ],
+      "summary": {
+        "totalFiles": 25,
+        "passedFiles": 7,
+        "failedFiles": 18,
+        "totalIssues": 28,
+        "issueTypes": {
+          "workflow_table_headers": 5,
+          "reference_not_optimized": 11,
+          "workflow_table_missing": 4,
+          "long_inline_code": 7,
+          "heading_case": 1
+        }
+      }
+    },
+    "crossReferenceValidator": {
+      "files": [],
+      "references": [
+        {
+          "sourcePath": "../rules-ui-ux-designer/rules.md",
+          "targetPath": "../shared/core-references-optimized.md",
+          "linkText": "Core References Hub",
+          "linkUrl": "../shared/core-references-optimized.md",
+          "line": 5,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-ui-ux-designer/rules.md",
+          "targetPath": "../shared/response-protocol-optimized.md",
+          "linkText": "Response Protocol",
+          "linkUrl": "../shared/response-protocol-optimized.md",
+          "line": 132,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-ui-ux-designer/rules.md",
+          "targetPath": "../shared/common-requirements-optimized.md",
+          "linkText": "Common Requirements",
+          "linkUrl": "../shared/common-requirements-optimized.md",
+          "line": 153,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-tutorial/rules.md",
+          "targetPath": "../shared/core-references-optimized.md",
+          "linkText": "Core References Hub",
+          "linkUrl": "../shared/core-references-optimized.md",
+          "line": 5,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-tutorial/rules.md",
+          "targetPath": "../shared/response-protocol-optimized.md",
+          "linkText": "Response Protocol",
+          "linkUrl": "../shared/response-protocol-optimized.md",
+          "line": 298,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-tutorial/rules.md",
+          "targetPath": "../shared/common-requirements-optimized.md",
+          "linkText": "Common Requirements",
+          "linkUrl": "../shared/common-requirements-optimized.md",
+          "line": 304,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-test/rules.md",
+          "targetPath": "../shared/core-references-optimized.md",
+          "linkText": "Core References",
+          "linkUrl": "../shared/core-references-optimized.md",
+          "line": 123,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-test/rules.md",
+          "targetPath": "../shared/workflow-guide.md",
+          "linkText": "Workflow Guide",
+          "linkUrl": "../shared/workflow-guide.md",
+          "line": 124,
+          "type": "markdown_link",
+          "valid": false,
+          "issue": "Should reference optimized version of shared document"
+        },
+        {
+          "sourcePath": "../rules-test/rules.md",
+          "targetPath": "../shared/response-protocol-optimized.md",
+          "linkText": "Response Protocol",
+          "linkUrl": "../shared/response-protocol-optimized.md",
+          "line": 125,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-test/rules.md",
+          "targetPath": "../shared/common-requirements-optimized.md",
+          "linkText": "Common Requirements",
+          "linkUrl": "../shared/common-requirements-optimized.md",
+          "line": 126,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-tdd/rules.md",
+          "targetPath": "../shared/core-references-optimized.md",
+          "linkText": "Core References Hub",
+          "linkUrl": "../shared/core-references-optimized.md",
+          "line": 21,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-tdd/rules.md",
+          "targetPath": "../shared/response-protocol-optimized.md",
+          "linkText": "Response Protocol",
+          "linkUrl": "../shared/response-protocol-optimized.md",
+          "line": 77,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-tdd/rules.md",
+          "targetPath": "../shared/workflow-guide.md",
+          "linkText": "Workflow Guide",
+          "linkUrl": "../shared/workflow-guide.md",
+          "line": 83,
+          "type": "markdown_link",
+          "valid": false,
+          "issue": "Should reference optimized version of shared document"
+        },
+        {
+          "sourcePath": "../rules-tdd/rules.md",
+          "targetPath": "../shared/common-requirements-optimized.md",
+          "linkText": "Common Requirements",
+          "linkUrl": "../shared/common-requirements-optimized.md",
+          "line": 89,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-supabase-admin/rules.md",
+          "targetPath": "../shared/core-references-optimized.md",
+          "linkText": "Core References Hub",
+          "linkUrl": "../shared/core-references-optimized.md",
+          "line": 7,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-supabase-admin/rules.md",
+          "targetPath": "../shared/response-protocol-optimized.md",
+          "linkText": "Response Protocol",
+          "linkUrl": "../shared/response-protocol-optimized.md",
+          "line": 80,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-supabase-admin/rules.md",
+          "targetPath": "../shared/common-requirements-optimized.md",
+          "linkText": "Common Requirements",
+          "linkUrl": "../shared/common-requirements-optimized.md",
+          "line": 160,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-spec-pseudocode/rules.md",
+          "targetPath": "../shared/core-references-optimized.md",
+          "linkText": "Core References Hub",
+          "linkUrl": "../shared/core-references-optimized.md",
+          "line": 5,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-spec-pseudocode/rules.md",
+          "targetPath": "../shared/response-protocol-optimized.md",
+          "linkText": "Response Protocol",
+          "linkUrl": "../shared/response-protocol-optimized.md",
+          "line": 151,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-spec-pseudocode/rules.md",
+          "targetPath": "../shared/common-requirements-optimized.md",
+          "linkText": "Common Requirements",
+          "linkUrl": "../shared/common-requirements-optimized.md",
+          "line": 157,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-sparc/rules.md",
+          "targetPath": "../shared/core-references-optimized.md",
+          "linkText": "Core References Hub",
+          "linkUrl": "../shared/core-references-optimized.md",
+          "line": 5,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-sparc/rules.md",
+          "targetPath": "../shared/response-protocol-optimized.md",
+          "linkText": "Response Protocol",
+          "linkUrl": "../shared/response-protocol-optimized.md",
+          "line": 258,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-sparc/rules.md",
+          "targetPath": "../shared/common-requirements-optimized.md",
+          "linkText": "Common Requirements",
+          "linkUrl": "../shared/common-requirements-optimized.md",
+          "line": 376,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-security-review/rules.md",
+          "targetPath": "../shared/core-references-optimized.md",
+          "linkText": "Core References",
+          "linkUrl": "../shared/core-references-optimized.md",
+          "line": 77,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-security-review/rules.md",
+          "targetPath": "../shared/workflow-guide.md",
+          "linkText": "Workflow Guide",
+          "linkUrl": "../shared/workflow-guide.md",
+          "line": 78,
+          "type": "markdown_link",
+          "valid": false,
+          "issue": "Should reference optimized version of shared document"
+        },
+        {
+          "sourcePath": "../rules-security-review/rules.md",
+          "targetPath": "../shared/response-protocol-optimized.md",
+          "linkText": "Response Protocol",
+          "linkUrl": "../shared/response-protocol-optimized.md",
+          "line": 79,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-security-review/rules.md",
+          "targetPath": "../shared/common-requirements-optimized.md",
+          "linkText": "Common Requirements",
+          "linkUrl": "../shared/common-requirements-optimized.md",
+          "line": 80,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-refinement-optimization/rules.md",
+          "targetPath": "../shared/core-references-optimized.md",
+          "linkText": "Core References Hub",
+          "linkUrl": "../shared/core-references-optimized.md",
+          "line": 7,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-refinement-optimization/rules.md",
+          "targetPath": "../shared/response-protocol-optimized.md",
+          "linkText": "Response Protocol",
+          "linkUrl": "../shared/response-protocol-optimized.md",
+          "line": 324,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-refinement-optimization/rules.md",
+          "targetPath": "../shared/common-requirements-optimized.md",
+          "linkText": "Common Requirements",
+          "linkUrl": "../shared/common-requirements-optimized.md",
+          "line": 330,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-post-deployment-monitoring/rules.md",
+          "targetPath": "../shared/core-references-optimized.md",
+          "linkText": "Core References Hub",
+          "linkUrl": "../shared/core-references-optimized.md",
+          "line": 7,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-post-deployment-monitoring/rules.md",
+          "targetPath": "../shared/response-protocol-optimized.md",
+          "linkText": "Response Protocol",
+          "linkUrl": "../shared/response-protocol-optimized.md",
+          "line": 208,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-post-deployment-monitoring/rules.md",
+          "targetPath": "../shared/common-requirements-optimized.md",
+          "linkText": "Common Requirements",
+          "linkUrl": "../shared/common-requirements-optimized.md",
+          "line": 214,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-nuxt-3-pro-developer/rules.md",
+          "targetPath": "../shared/core-references-optimized.md",
+          "linkText": "Core References Hub",
+          "linkUrl": "../shared/core-references-optimized.md",
+          "line": 5,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-nuxt-3-pro-developer/rules.md",
+          "targetPath": "../shared/response-protocol-optimized.md",
+          "linkText": "Response Protocol",
+          "linkUrl": "../shared/response-protocol-optimized.md",
+          "line": 112,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-nuxt-3-pro-developer/rules.md",
+          "targetPath": "../shared/common-requirements-optimized.md",
+          "linkText": "Common Requirements",
+          "linkUrl": "../shared/common-requirements-optimized.md",
+          "line": 140,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-memory/rules.md",
+          "targetPath": "../shared/core-references-optimized.md",
+          "linkText": "Core References Hub",
+          "linkUrl": "../shared/core-references-optimized.md",
+          "line": 6,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-memory/rules.md",
+          "targetPath": "../shared/response-protocol-optimized.md",
+          "linkText": "Response Protocol",
+          "linkUrl": "../shared/response-protocol-optimized.md",
+          "line": 83,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-memory/rules.md",
+          "targetPath": "../shared/common-requirements-optimized.md",
+          "linkText": "Common Requirements",
+          "linkUrl": "../shared/common-requirements-optimized.md",
+          "line": 109,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-mcp/rules.md",
+          "targetPath": "../shared/core-references-optimized.md",
+          "linkText": "Core References Hub",
+          "linkUrl": "../shared/core-references-optimized.md",
+          "line": 5,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-mcp/rules.md",
+          "targetPath": "../shared/response-protocol-optimized.md",
+          "linkText": "Response Protocol",
+          "linkUrl": "../shared/response-protocol-optimized.md",
+          "line": 121,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-mcp/rules.md",
+          "targetPath": "../shared/common-requirements-optimized.md",
+          "linkText": "Common Requirements",
+          "linkUrl": "../shared/common-requirements-optimized.md",
+          "line": 127,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-integration/rules.md",
+          "targetPath": "../shared/core-references-optimized.md",
+          "linkText": "Core References Hub",
+          "linkUrl": "../shared/core-references-optimized.md",
+          "line": 5,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-integration/rules.md",
+          "targetPath": "../shared/core-references-optimized.md",
+          "linkText": "Core References Hub",
+          "linkUrl": "../shared/core-references-optimized.md",
+          "line": 20,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-integration/rules.md",
+          "targetPath": "../shared/response-protocol-optimized.md",
+          "linkText": "Response Protocol",
+          "linkUrl": "../shared/response-protocol-optimized.md",
+          "line": 162,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-integration/rules.md",
+          "targetPath": "../shared/common-requirements-optimized.md",
+          "linkText": "Common Requirements",
+          "linkUrl": "../shared/common-requirements-optimized.md",
+          "line": 181,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-instructions-file-generator/rules.md",
+          "targetPath": "../shared/core-references-optimized.md",
+          "linkText": "Core References Hub",
+          "linkUrl": "../shared/core-references-optimized.md",
+          "line": 5,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-instructions-file-generator/rules.md",
+          "targetPath": "../shared/response-protocol-optimized.md",
+          "linkText": "Response Protocol",
+          "linkUrl": "../shared/response-protocol-optimized.md",
+          "line": 75,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-instructions-file-generator/rules.md",
+          "targetPath": "../shared/common-requirements-optimized.md",
+          "linkText": "Common Requirements",
+          "linkUrl": "../shared/common-requirements-optimized.md",
+          "line": 108,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-docs-writer/rules.md",
+          "targetPath": "../shared/core-references-optimized.md",
+          "linkText": "Core References",
+          "linkUrl": "../shared/core-references-optimized.md",
+          "line": 123,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-docs-writer/rules.md",
+          "targetPath": "../shared/workflow-guide.md",
+          "linkText": "Workflow Guide",
+          "linkUrl": "../shared/workflow-guide.md",
+          "line": 124,
+          "type": "markdown_link",
+          "valid": false,
+          "issue": "Should reference optimized version of shared document"
+        },
+        {
+          "sourcePath": "../rules-docs-writer/rules.md",
+          "targetPath": "../shared/response-protocol-optimized.md",
+          "linkText": "Response Protocol",
+          "linkUrl": "../shared/response-protocol-optimized.md",
+          "line": 125,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-docs-writer/rules.md",
+          "targetPath": "../shared/common-requirements-optimized.md",
+          "linkText": "Common Requirements",
+          "linkUrl": "../shared/common-requirements-optimized.md",
+          "line": 126,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-devops/rules.md",
+          "targetPath": "../shared/core-references-optimized.md",
+          "linkText": "Core References",
+          "linkUrl": "../shared/core-references-optimized.md",
+          "line": 95,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-devops/rules.md",
+          "targetPath": "../shared/workflow-guide.md",
+          "linkText": "Workflow Guide",
+          "linkUrl": "../shared/workflow-guide.md",
+          "line": 96,
+          "type": "markdown_link",
+          "valid": false,
+          "issue": "Should reference optimized version of shared document"
+        },
+        {
+          "sourcePath": "../rules-devops/rules.md",
+          "targetPath": "../shared/response-protocol-optimized.md",
+          "linkText": "Response Protocol",
+          "linkUrl": "../shared/response-protocol-optimized.md",
+          "line": 97,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-devops/rules.md",
+          "targetPath": "../shared/common-requirements-optimized.md",
+          "linkText": "Common Requirements",
+          "linkUrl": "../shared/common-requirements-optimized.md",
+          "line": 98,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-deep-research-agent/rules.md",
+          "targetPath": "../shared/core-references-optimized.md",
+          "linkText": "Core References Hub",
+          "linkUrl": "../shared/core-references-optimized.md",
+          "line": 5,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-deep-research-agent/rules.md",
+          "targetPath": "../shared/response-protocol-optimized.md",
+          "linkText": "Response Protocol",
+          "linkUrl": "../shared/response-protocol-optimized.md",
+          "line": 78,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-deep-research-agent/rules.md",
+          "targetPath": "../shared/common-requirements-optimized.md",
+          "linkText": "Common Requirements",
+          "linkUrl": "../shared/common-requirements-optimized.md",
+          "line": 104,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-debug/rules.md",
+          "targetPath": "../shared/core-references-optimized.md",
+          "linkText": "Core References Hub",
+          "linkUrl": "../shared/core-references-optimized.md",
+          "line": 21,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-debug/rules.md",
+          "targetPath": "../shared/response-protocol-optimized.md",
+          "linkText": "Response Protocol",
+          "linkUrl": "../shared/response-protocol-optimized.md",
+          "line": 76,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-debug/rules.md",
+          "targetPath": "../shared/workflow-guide.md",
+          "linkText": "Workflow Guide",
+          "linkUrl": "../shared/workflow-guide.md",
+          "line": 82,
+          "type": "markdown_link",
+          "valid": false,
+          "issue": "Should reference optimized version of shared document"
+        },
+        {
+          "sourcePath": "../rules-debug/rules.md",
+          "targetPath": "../shared/common-requirements-optimized.md",
+          "linkText": "Common Requirements",
+          "linkUrl": "../shared/common-requirements-optimized.md",
+          "line": 88,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-context-condensing/rules.md",
+          "targetPath": "../shared/core-references-optimized.md",
+          "linkText": "Core References Hub",
+          "linkUrl": "../shared/core-references-optimized.md",
+          "line": 9,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-context-condensing/rules.md",
+          "targetPath": "../shared/response-protocol-optimized.md",
+          "linkText": "Response Protocol",
+          "linkUrl": "../shared/response-protocol-optimized.md",
+          "line": 101,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-context-condensing/rules.md",
+          "targetPath": "../shared/common-requirements-optimized.md",
+          "linkText": "Common Requirements",
+          "linkUrl": "../shared/common-requirements-optimized.md",
+          "line": 127,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-code-style-analyzer/rules.md",
+          "targetPath": "../shared/core-references-optimized.md",
+          "linkText": "Core References",
+          "linkUrl": "../shared/core-references-optimized.md",
+          "line": 98,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-code-style-analyzer/rules.md",
+          "targetPath": "../shared/workflow-guide.md",
+          "linkText": "Workflow Guide",
+          "linkUrl": "../shared/workflow-guide.md",
+          "line": 99,
+          "type": "markdown_link",
+          "valid": false,
+          "issue": "Should reference optimized version of shared document"
+        },
+        {
+          "sourcePath": "../rules-code-style-analyzer/rules.md",
+          "targetPath": "../shared/response-protocol-optimized.md",
+          "linkText": "Response Protocol",
+          "linkUrl": "../shared/response-protocol-optimized.md",
+          "line": 100,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-code-style-analyzer/rules.md",
+          "targetPath": "../shared/common-requirements-optimized.md",
+          "linkText": "Common Requirements",
+          "linkUrl": "../shared/common-requirements-optimized.md",
+          "line": 101,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-code/rules.md",
+          "targetPath": "../shared/core-references-optimized.md",
+          "linkText": "Core References Hub",
+          "linkUrl": "../shared/core-references-optimized.md",
+          "line": 21,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-code/rules.md",
+          "targetPath": "../shared/response-protocol-optimized.md",
+          "linkText": "Response Protocol",
+          "linkUrl": "../shared/response-protocol-optimized.md",
+          "line": 71,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-code/rules.md",
+          "targetPath": "../shared/workflow-guide.md",
+          "linkText": "Workflow Guide",
+          "linkUrl": "../shared/workflow-guide.md",
+          "line": 77,
+          "type": "markdown_link",
+          "valid": false,
+          "issue": "Should reference optimized version of shared document"
+        },
+        {
+          "sourcePath": "../rules-code/rules.md",
+          "targetPath": "../shared/common-requirements-optimized.md",
+          "linkText": "Common Requirements",
+          "linkUrl": "../shared/common-requirements-optimized.md",
+          "line": 83,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-ask/rules.md",
+          "targetPath": "../shared/core-references-optimized.md",
+          "linkText": "Core References",
+          "linkUrl": "../shared/core-references-optimized.md",
+          "line": 110,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-ask/rules.md",
+          "targetPath": "../shared/workflow-guide.md",
+          "linkText": "Workflow Guide",
+          "linkUrl": "../shared/workflow-guide.md",
+          "line": 111,
+          "type": "markdown_link",
+          "valid": false,
+          "issue": "Should reference optimized version of shared document"
+        },
+        {
+          "sourcePath": "../rules-ask/rules.md",
+          "targetPath": "../shared/response-protocol-optimized.md",
+          "linkText": "Response Protocol",
+          "linkUrl": "../shared/response-protocol-optimized.md",
+          "line": 112,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-ask/rules.md",
+          "targetPath": "../shared/common-requirements-optimized.md",
+          "linkText": "Common Requirements",
+          "linkUrl": "../shared/common-requirements-optimized.md",
+          "line": 113,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-architect/rules.md",
+          "targetPath": "../shared/core-references-optimized.md",
+          "linkText": "Core References Hub",
+          "linkUrl": "../shared/core-references-optimized.md",
+          "line": 21,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-architect/rules.md",
+          "targetPath": "../shared/response-protocol-optimized.md",
+          "linkText": "Response Protocol",
+          "linkUrl": "../shared/response-protocol-optimized.md",
+          "line": 73,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-architect/rules.md",
+          "targetPath": "../shared/workflow-guide.md",
+          "linkText": "Workflow Guide",
+          "linkUrl": "../shared/workflow-guide.md",
+          "line": 79,
+          "type": "markdown_link",
+          "valid": false,
+          "issue": "Should reference optimized version of shared document"
+        },
+        {
+          "sourcePath": "../rules-architect/rules.md",
+          "targetPath": "../shared/common-requirements-optimized.md",
+          "linkText": "Common Requirements",
+          "linkUrl": "../shared/common-requirements-optimized.md",
+          "line": 85,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-accessibility-expert/rules.md",
+          "targetPath": "../shared/core-references-optimized.md",
+          "linkText": "Core References",
+          "linkUrl": "../shared/core-references-optimized.md",
+          "line": 94,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-accessibility-expert/rules.md",
+          "targetPath": "../shared/workflow-guide.md",
+          "linkText": "Workflow Guide",
+          "linkUrl": "../shared/workflow-guide.md",
+          "line": 95,
+          "type": "markdown_link",
+          "valid": false,
+          "issue": "Should reference optimized version of shared document"
+        },
+        {
+          "sourcePath": "../rules-accessibility-expert/rules.md",
+          "targetPath": "../shared/response-protocol-optimized.md",
+          "linkText": "Response Protocol",
+          "linkUrl": "../shared/response-protocol-optimized.md",
+          "line": 96,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-accessibility-expert/rules.md",
+          "targetPath": "../shared/common-requirements-optimized.md",
+          "linkText": "Common Requirements",
+          "linkUrl": "../shared/common-requirements-optimized.md",
+          "line": 97,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../shared/tool-guidelines.md",
+          "targetPath": "../shared/core-principles.md",
+          "linkText": "Core Principles",
+          "linkUrl": "core-principles.md",
+          "line": 76,
+          "type": "markdown_link",
+          "valid": false,
+          "issue": "Should use relative path for internal references"
+        },
+        {
+          "sourcePath": "../shared/tool-guidelines.md",
+          "targetPath": "../shared/error-handling.md",
+          "linkText": "Error Handling",
+          "linkUrl": "error-handling.md",
+          "line": 77,
+          "type": "markdown_link",
+          "valid": false,
+          "issue": "Should use relative path for internal references"
+        },
+        {
+          "sourcePath": "../shared/tool-guidelines.md",
+          "targetPath": "../shared/response-protocol-optimized.md",
+          "linkText": "Response Protocol",
+          "linkUrl": "response-protocol-optimized.md",
+          "line": 78,
+          "type": "markdown_link",
+          "valid": false,
+          "issue": "Should use relative path for internal references"
+        },
+        {
+          "sourcePath": "../shared/standard-responses.md",
+          "targetPath": "../shared/response-protocol-optimized.md",
+          "linkText": "Response Protocol",
+          "linkUrl": "response-protocol-optimized.md",
+          "line": 173,
+          "type": "markdown_link",
+          "valid": false,
+          "issue": "Should use relative path for internal references"
+        },
+        {
+          "sourcePath": "../shared/standard-responses.md",
+          "targetPath": "../shared/core-principles.md",
+          "linkText": "Core Principles",
+          "linkUrl": "core-principles.md",
+          "line": 174,
+          "type": "markdown_link",
+          "valid": false,
+          "issue": "Should use relative path for internal references"
+        },
+        {
+          "sourcePath": "../shared/standard-responses.md",
+          "targetPath": "../shared/tool-guidelines.md",
+          "linkText": "Tool Guidelines",
+          "linkUrl": "tool-guidelines.md",
+          "line": 175,
+          "type": "markdown_link",
+          "valid": false,
+          "issue": "Should use relative path for internal references"
+        },
+        {
+          "sourcePath": "../shared/core-references.md",
+          "targetPath": "../shared/response-protocol.md",
+          "linkText": "`response-protocol.md`",
+          "linkUrl": "./response-protocol.md",
+          "line": 9,
+          "type": "markdown_link",
+          "valid": false,
+          "issue": "Should reference optimized version of shared document"
+        },
+        {
+          "sourcePath": "../shared/core-references.md",
+          "targetPath": "../shared/workflow-patterns.md",
+          "linkText": "`workflow-patterns.md`",
+          "linkUrl": "./workflow-patterns.md",
+          "line": 10,
+          "type": "markdown_link",
+          "valid": false,
+          "issue": "Should reference optimized version of shared document"
+        },
+        {
+          "sourcePath": "../shared/core-references.md",
+          "targetPath": "../shared/error-handling.md",
+          "linkText": "`error-handling.md`",
+          "linkUrl": "./error-handling.md",
+          "line": 11,
+          "type": "markdown_link",
+          "valid": false,
+          "issue": "Should reference optimized version of shared document"
+        },
+        {
+          "sourcePath": "../shared/core-references.md",
+          "targetPath": "../shared/core-principles.md",
+          "linkText": "`core-principles.md`",
+          "linkUrl": "./core-principles.md",
+          "line": 12,
+          "type": "markdown_link",
+          "valid": false,
+          "issue": "Should reference optimized version of shared document"
+        },
+        {
+          "sourcePath": "../shared/core-references.md",
+          "targetPath": "../shared/common-requirements.md",
+          "linkText": "`common-requirements.md`",
+          "linkUrl": "./common-requirements.md",
+          "line": 13,
+          "type": "markdown_link",
+          "valid": false,
+          "issue": "Should reference optimized version of shared document"
+        },
+        {
+          "sourcePath": "../shared/core-references.md",
+          "targetPath": "../shared/tools-common.md",
+          "linkText": "`tools-common.md`",
+          "linkUrl": "./tools-common.md",
+          "line": 14,
+          "type": "markdown_link",
+          "valid": false,
+          "issue": "Should reference optimized version of shared document"
+        },
+        {
+          "sourcePath": "../shared/core-references-optimized.md",
+          "targetPath": "../shared/workflow-guide.md",
+          "linkText": "`workflow-guide.md`",
+          "linkUrl": "./workflow-guide.md",
+          "line": 9,
+          "type": "markdown_link",
+          "valid": false,
+          "issue": "Should reference optimized version of shared document"
+        },
+        {
+          "sourcePath": "../shared/core-references-optimized.md",
+          "targetPath": "../shared/response-protocol-optimized.md",
+          "linkText": "`response-protocol-optimized.md`",
+          "linkUrl": "./response-protocol-optimized.md",
+          "line": 10,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../shared/core-references-optimized.md",
+          "targetPath": "../shared/common-requirements-optimized.md",
+          "linkText": "`common-requirements-optimized.md`",
+          "linkUrl": "./common-requirements-optimized.md",
+          "line": 11,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        }
+      ],
+      "issues": [
+        {
+          "type": "non_optimized_reference",
+          "severity": "info",
+          "message": "Should reference optimized version of shared document",
+          "sourcePath": "../rules-test/rules.md",
+          "targetPath": "../shared/workflow-guide.md",
+          "line": 124
+        },
+        {
+          "type": "non_optimized_reference",
+          "severity": "info",
+          "message": "Should reference optimized version of shared document",
+          "sourcePath": "../rules-tdd/rules.md",
+          "targetPath": "../shared/workflow-guide.md",
+          "line": 83
+        },
+        {
+          "type": "non_optimized_reference",
+          "severity": "info",
+          "message": "Should reference optimized version of shared document",
+          "sourcePath": "../rules-security-review/rules.md",
+          "targetPath": "../shared/workflow-guide.md",
+          "line": 78
+        },
+        {
+          "type": "non_optimized_reference",
+          "severity": "info",
+          "message": "Should reference optimized version of shared document",
+          "sourcePath": "../rules-docs-writer/rules.md",
+          "targetPath": "../shared/workflow-guide.md",
+          "line": 124
+        },
+        {
+          "type": "non_optimized_reference",
+          "severity": "info",
+          "message": "Should reference optimized version of shared document",
+          "sourcePath": "../rules-devops/rules.md",
+          "targetPath": "../shared/workflow-guide.md",
+          "line": 96
+        },
+        {
+          "type": "non_optimized_reference",
+          "severity": "info",
+          "message": "Should reference optimized version of shared document",
+          "sourcePath": "../rules-debug/rules.md",
+          "targetPath": "../shared/workflow-guide.md",
+          "line": 82
+        },
+        {
+          "type": "non_optimized_reference",
+          "severity": "info",
+          "message": "Should reference optimized version of shared document",
+          "sourcePath": "../rules-code-style-analyzer/rules.md",
+          "targetPath": "../shared/workflow-guide.md",
+          "line": 99
+        },
+        {
+          "type": "non_optimized_reference",
+          "severity": "info",
+          "message": "Should reference optimized version of shared document",
+          "sourcePath": "../rules-code/rules.md",
+          "targetPath": "../shared/workflow-guide.md",
+          "line": 77
+        },
+        {
+          "type": "non_optimized_reference",
+          "severity": "info",
+          "message": "Should reference optimized version of shared document",
+          "sourcePath": "../rules-ask/rules.md",
+          "targetPath": "../shared/workflow-guide.md",
+          "line": 111
+        },
+        {
+          "type": "non_optimized_reference",
+          "severity": "info",
+          "message": "Should reference optimized version of shared document",
+          "sourcePath": "../rules-architect/rules.md",
+          "targetPath": "../shared/workflow-guide.md",
+          "line": 79
+        },
+        {
+          "type": "non_optimized_reference",
+          "severity": "info",
+          "message": "Should reference optimized version of shared document",
+          "sourcePath": "../rules-accessibility-expert/rules.md",
+          "targetPath": "../shared/workflow-guide.md",
+          "line": 95
+        },
+        {
+          "type": "absolute_path",
+          "severity": "warning",
+          "message": "Should use relative path for internal references",
+          "sourcePath": "../shared/tool-guidelines.md",
+          "targetPath": "../shared/core-principles.md",
+          "line": 76
+        },
+        {
+          "type": "absolute_path",
+          "severity": "warning",
+          "message": "Should use relative path for internal references",
+          "sourcePath": "../shared/tool-guidelines.md",
+          "targetPath": "../shared/error-handling.md",
+          "line": 77
+        },
+        {
+          "type": "absolute_path",
+          "severity": "warning",
+          "message": "Should use relative path for internal references",
+          "sourcePath": "../shared/tool-guidelines.md",
+          "targetPath": "../shared/response-protocol-optimized.md",
+          "line": 78
+        },
+        {
+          "type": "absolute_path",
+          "severity": "warning",
+          "message": "Should use relative path for internal references",
+          "sourcePath": "../shared/standard-responses.md",
+          "targetPath": "../shared/response-protocol-optimized.md",
+          "line": 173
+        },
+        {
+          "type": "absolute_path",
+          "severity": "warning",
+          "message": "Should use relative path for internal references",
+          "sourcePath": "../shared/standard-responses.md",
+          "targetPath": "../shared/core-principles.md",
+          "line": 174
+        },
+        {
+          "type": "absolute_path",
+          "severity": "warning",
+          "message": "Should use relative path for internal references",
+          "sourcePath": "../shared/standard-responses.md",
+          "targetPath": "../shared/tool-guidelines.md",
+          "line": 175
+        },
+        {
+          "type": "non_optimized_reference",
+          "severity": "info",
+          "message": "Should reference optimized version of shared document",
+          "sourcePath": "../shared/core-references.md",
+          "targetPath": "../shared/response-protocol.md",
+          "line": 9
+        },
+        {
+          "type": "non_optimized_reference",
+          "severity": "info",
+          "message": "Should reference optimized version of shared document",
+          "sourcePath": "../shared/core-references.md",
+          "targetPath": "../shared/workflow-patterns.md",
+          "line": 10
+        },
+        {
+          "type": "non_optimized_reference",
+          "severity": "info",
+          "message": "Should reference optimized version of shared document",
+          "sourcePath": "../shared/core-references.md",
+          "targetPath": "../shared/error-handling.md",
+          "line": 11
+        },
+        {
+          "type": "non_optimized_reference",
+          "severity": "info",
+          "message": "Should reference optimized version of shared document",
+          "sourcePath": "../shared/core-references.md",
+          "targetPath": "../shared/core-principles.md",
+          "line": 12
+        },
+        {
+          "type": "non_optimized_reference",
+          "severity": "info",
+          "message": "Should reference optimized version of shared document",
+          "sourcePath": "../shared/core-references.md",
+          "targetPath": "../shared/common-requirements.md",
+          "line": 13
+        },
+        {
+          "type": "non_optimized_reference",
+          "severity": "info",
+          "message": "Should reference optimized version of shared document",
+          "sourcePath": "../shared/core-references.md",
+          "targetPath": "../shared/tools-common.md",
+          "line": 14
+        },
+        {
+          "type": "non_optimized_reference",
+          "severity": "info",
+          "message": "Should reference optimized version of shared document",
+          "sourcePath": "../shared/core-references-optimized.md",
+          "targetPath": "../shared/workflow-guide.md",
+          "line": 9
+        }
+      ],
+      "summary": {
+        "totalFiles": 38,
+        "totalReferences": 102,
+        "validReferences": 78,
+        "brokenReferences": 24,
+        "circularDependencies": [],
+        "orphanedDocuments": [
+          {
+            "path": "../shared/workflow-patterns.md",
+            "type": "shared",
+            "outgoingReferences": 0
+          },
+          {
+            "path": "../shared/workflow-guide.md",
+            "type": "shared",
+            "outgoingReferences": 0
+          },
+          {
+            "path": "../shared/tools-common.md",
+            "type": "shared",
+            "outgoingReferences": 0
+          },
+          {
+            "path": "../shared/tool-guidelines.md",
+            "type": "shared",
+            "outgoingReferences": 3
+          },
+          {
+            "path": "../shared/standard-responses.md",
+            "type": "shared",
+            "outgoingReferences": 3
+          },
+          {
+            "path": "../shared/response-protocol.md",
+            "type": "shared",
+            "outgoingReferences": 0
+          },
+          {
+            "path": "../shared/error-handling.md",
+            "type": "shared",
+            "outgoingReferences": 0
+          },
+          {
+            "path": "../shared/core-references.md",
+            "type": "shared",
+            "outgoingReferences": 6
+          },
+          {
+            "path": "../shared/core-principles.md",
+            "type": "shared",
+            "outgoingReferences": 0
+          },
+          {
+            "path": "../shared/common-requirements.md",
+            "type": "shared",
+            "outgoingReferences": 0
+          }
+        ],
+        "missingDependencies": []
+      }
+    }
+  },
+  "summary": {
+    "totalFiles": 77,
+    "totalIssues": 33,
+    "criticalIssues": 7,
+    "warningIssues": 18,
+    "infoIssues": 8
+  }
+}

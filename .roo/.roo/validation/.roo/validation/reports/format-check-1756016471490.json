@@ -1,0 +1,402 @@
+{
+  "timestamp": "2025-08-24T06:21:11.490Z",
+  "files": [
+    {
+      "file": "../rules-ui-ux-designer/rules.md",
+      "passed": false,
+      "issues": [
+        {
+          "type": "workflow_table_missing",
+          "message": "Workflow section should contain a table format",
+          "line": 151,
+          "severity": "error"
+        }
+      ],
+      "issueCount": 1
+    },
+    {
+      "file": "../rules-tutorial/rules.md",
+      "passed": false,
+      "issues": [
+        {
+          "type": "workflow_table_headers",
+          "message": "Workflow table should have \"Step\" and \"Action\" columns",
+          "line": 22,
+          "severity": "warning"
+        },
+        {
+          "type": "workflow_table_missing",
+          "message": "Workflow section should contain a table format",
+          "line": 302,
+          "severity": "error"
+        }
+      ],
+      "issueCount": 2
+    },
+    {
+      "file": "../rules-test/rules.md",
+      "passed": false,
+      "issues": [
+        {
+          "type": "workflow_table_missing",
+          "message": "Workflow section should contain a table format",
+          "line": 139,
+          "severity": "error"
+        }
+      ],
+      "issueCount": 1
+    },
+    {
+      "file": "../rules-tdd/rules.md",
+      "passed": false,
+      "issues": [
+        {
+          "type": "workflow_table_missing",
+          "message": "Workflow section should contain a table format",
+          "line": 85,
+          "severity": "error"
+        }
+      ],
+      "issueCount": 1
+    },
+    {
+      "file": "../rules-supabase-admin/rules.md",
+      "passed": false,
+      "issues": [
+        {
+          "type": "workflow_table_missing",
+          "message": "Workflow section should contain a table format",
+          "line": 78,
+          "severity": "error"
+        }
+      ],
+      "issueCount": 1
+    },
+    {
+      "file": "../rules-spec-pseudocode/rules.md",
+      "passed": false,
+      "issues": [
+        {
+          "type": "workflow_table_missing",
+          "message": "Workflow section should contain a table format",
+          "line": 149,
+          "severity": "error"
+        },
+        {
+          "type": "long_inline_code",
+          "message": "Long code snippets should use code blocks instead of inline code",
+          "line": 110,
+          "severity": "info"
+        }
+      ],
+      "issueCount": 2
+    },
+    {
+      "file": "../rules-sparc/rules.md",
+      "passed": false,
+      "issues": [
+        {
+          "type": "workflow_table_missing",
+          "message": "Workflow section should contain a table format",
+          "line": 243,
+          "severity": "error"
+        }
+      ],
+      "issueCount": 1
+    },
+    {
+      "file": "../rules-security-review/rules.md",
+      "passed": false,
+      "issues": [
+        {
+          "type": "workflow_table_missing",
+          "message": "Workflow section should contain a table format",
+          "line": 99,
+          "severity": "error"
+        }
+      ],
+      "issueCount": 1
+    },
+    {
+      "file": "../rules-refinement-optimization/rules.md",
+      "passed": false,
+      "issues": [
+        {
+          "type": "workflow_table_missing",
+          "message": "Workflow section should contain a table format",
+          "line": 388,
+          "severity": "error"
+        }
+      ],
+      "issueCount": 1
+    },
+    {
+      "file": "../rules-post-deployment-monitoring/rules.md",
+      "passed": false,
+      "issues": [
+        {
+          "type": "workflow_table_missing",
+          "message": "Workflow section should contain a table format",
+          "line": 256,
+          "severity": "error"
+        }
+      ],
+      "issueCount": 1
+    },
+    {
+      "file": "../rules-nuxt-3-pro-developer/rules.md",
+      "passed": false,
+      "issues": [
+        {
+          "type": "workflow_table_missing",
+          "message": "Workflow section should contain a table format",
+          "line": 110,
+          "severity": "error"
+        },
+        {
+          "type": "long_inline_code",
+          "message": "Long code snippets should use code blocks instead of inline code",
+          "line": 40,
+          "severity": "info"
+        },
+        {
+          "type": "long_inline_code",
+          "message": "Long code snippets should use code blocks instead of inline code",
+          "line": 53,
+          "severity": "info"
+        },
+        {
+          "type": "long_inline_code",
+          "message": "Long code snippets should use code blocks instead of inline code",
+          "line": 81,
+          "severity": "info"
+        },
+        {
+          "type": "long_inline_code",
+          "message": "Long code snippets should use code blocks instead of inline code",
+          "line": 86,
+          "severity": "info"
+        },
+        {
+          "type": "long_inline_code",
+          "message": "Long code snippets should use code blocks instead of inline code",
+          "line": 87,
+          "severity": "info"
+        },
+        {
+          "type": "long_inline_code",
+          "message": "Long code snippets should use code blocks instead of inline code",
+          "line": 87,
+          "severity": "info"
+        }
+      ],
+      "issueCount": 7
+    },
+    {
+      "file": "../rules-memory/rules.md",
+      "passed": false,
+      "issues": [
+        {
+          "type": "workflow_table_missing",
+          "message": "Workflow section should contain a table format",
+          "line": 125,
+          "severity": "error"
+        }
+      ],
+      "issueCount": 1
+    },
+    {
+      "file": "../rules-mcp/rules.md",
+      "passed": false,
+      "issues": [
+        {
+          "type": "workflow_table_missing",
+          "message": "Workflow section should contain a table format",
+          "line": 119,
+          "severity": "error"
+        },
+        {
+          "type": "workflow_table_missing",
+          "message": "Workflow section should contain a table format",
+          "line": 164,
+          "severity": "error"
+        }
+      ],
+      "issueCount": 2
+    },
+    {
+      "file": "../rules-integration/rules.md",
+      "passed": false,
+      "issues": [
+        {
+          "type": "workflow_table_missing",
+          "message": "Workflow section should contain a table format",
+          "line": 147,
+          "severity": "error"
+        }
+      ],
+      "issueCount": 1
+    },
+    {
+      "file": "../rules-instructions-file-generator/rules.md",
+      "passed": false,
+      "issues": [
+        {
+          "type": "workflow_table_missing",
+          "message": "Workflow section should contain a table format",
+          "line": 110,
+          "severity": "error"
+        }
+      ],
+      "issueCount": 1
+    },
+    {
+      "file": "../rules-docs-writer/rules.md",
+      "passed": false,
+      "issues": [
+        {
+          "type": "workflow_table_missing",
+          "message": "Workflow section should contain a table format",
+          "line": 139,
+          "severity": "error"
+        }
+      ],
+      "issueCount": 1
+    },
+    {
+      "file": "../rules-devops/rules.md",
+      "passed": false,
+      "issues": [
+        {
+          "type": "workflow_table_missing",
+          "message": "Workflow section should contain a table format",
+          "line": 117,
+          "severity": "error"
+        }
+      ],
+      "issueCount": 1
+    },
+    {
+      "file": "../rules-deep-research-agent/rules.md",
+      "passed": false,
+      "issues": [
+        {
+          "type": "workflow_table_missing",
+          "message": "Workflow section should contain a table format",
+          "line": 86,
+          "severity": "error"
+        },
+        {
+          "type": "workflow_table_missing",
+          "message": "Workflow section should contain a table format",
+          "line": 187,
+          "severity": "error"
+        }
+      ],
+      "issueCount": 2
+    },
+    {
+      "file": "../rules-debug/rules.md",
+      "passed": false,
+      "issues": [
+        {
+          "type": "workflow_table_missing",
+          "message": "Workflow section should contain a table format",
+          "line": 84,
+          "severity": "error"
+        }
+      ],
+      "issueCount": 1
+    },
+    {
+      "file": "../rules-context-condensing/rules.md",
+      "passed": false,
+      "issues": [
+        {
+          "type": "heading_case",
+          "message": "Main headings should use title case",
+          "line": 132,
+          "severity": "info"
+        }
+      ],
+      "issueCount": 1
+    },
+    {
+      "file": "../rules-code-style-analyzer/rules.md",
+      "passed": false,
+      "issues": [
+        {
+          "type": "workflow_table_missing",
+          "message": "Workflow section should contain a table format",
+          "line": 114,
+          "severity": "error"
+        }
+      ],
+      "issueCount": 1
+    },
+    {
+      "file": "../rules-code/rules.md",
+      "passed": false,
+      "issues": [
+        {
+          "type": "workflow_table_missing",
+          "message": "Workflow section should contain a table format",
+          "line": 79,
+          "severity": "error"
+        }
+      ],
+      "issueCount": 1
+    },
+    {
+      "file": "../rules-ask/rules.md",
+      "passed": false,
+      "issues": [
+        {
+          "type": "workflow_table_missing",
+          "message": "Workflow section should contain a table format",
+          "line": 132,
+          "severity": "error"
+        }
+      ],
+      "issueCount": 1
+    },
+    {
+      "file": "../rules-architect/rules.md",
+      "passed": false,
+      "issues": [
+        {
+          "type": "workflow_table_missing",
+          "message": "Workflow section should contain a table format",
+          "line": 127,
+          "severity": "error"
+        }
+      ],
+      "issueCount": 1
+    },
+    {
+      "file": "../rules-accessibility-expert/rules.md",
+      "passed": false,
+      "issues": [
+        {
+          "type": "workflow_table_missing",
+          "message": "Workflow section should contain a table format",
+          "line": 110,
+          "severity": "error"
+        }
+      ],
+      "issueCount": 1
+    }
+  ],
+  "summary": {
+    "totalFiles": 25,
+    "passedFiles": 0,
+    "failedFiles": 25,
+    "totalIssues": 35,
+    "issueTypes": {
+      "workflow_table_missing": 26,
+      "workflow_table_headers": 1,
+      "long_inline_code": 7,
+      "heading_case": 1
+    }
+  }
+}

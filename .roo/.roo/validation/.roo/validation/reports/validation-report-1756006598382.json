@@ -1,0 +1,61 @@
+{
+  "timestamp": "2025-08-24T03:36:38.357Z",
+  "overall": {
+    "passed": true,
+    "score": null,
+    "issues": [],
+    "warnings": []
+  },
+  "validations": {
+    "linkChecker": {
+      "files": [],
+      "summary": {
+        "totalFiles": 0,
+        "totalLinks": 0,
+        "brokenLinks": 0,
+        "validLinks": 0,
+        "successRate": 100
+      }
+    },
+    "templateValidator": {
+      "files": [],
+      "summary": {
+        "totalFiles": 0,
+        "compliantFiles": 0,
+        "nonCompliantFiles": 0,
+        "complianceRate": 100
+      }
+    },
+    "formatChecker": {
+      "files": [],
+      "summary": {
+        "totalFiles": 0,
+        "passedFiles": 0,
+        "failedFiles": 0,
+        "totalIssues": 0,
+        "issueTypes": {}
+      }
+    },
+    "crossReferenceValidator": {
+      "files": [],
+      "references": [],
+      "issues": [],
+      "summary": {
+        "totalFiles": 0,
+        "totalReferences": 0,
+        "validReferences": 0,
+        "brokenReferences": 0,
+        "circularDependencies": [],
+        "orphanedDocuments": [],
+        "missingDependencies": []
+      }
+    }
+  },
+  "summary": {
+    "totalFiles": 0,
+    "totalIssues": 0,
+    "criticalIssues": 0,
+    "warningIssues": 0,
+    "infoIssues": 0
+  }
+}

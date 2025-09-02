@@ -123,6 +123,11 @@ _setup_system_tool_aliases() {
   alias pwdc="pwd | tr -d '\n' | pbcopy"                                                  # Copies the current working directory to the clipboard.
 }
 
+# AI
+alias alog='acli rovodev auth login'
+alias arovo='acli rovodev run'
+alias cost='npx ccusage@latest'
+
 _setup_network_aliases() {
   # IP address information
   alias ip="dig +short myip.opendns.com @resolver1.opendns.com"                                                                                                  # Displays external IP address.

@@ -132,7 +132,8 @@ in
           #     "with-unlimited-select"
           #   ];
           # }
-          "swift-format"
+          "swift-format",
+           "atlassian/acli/acli"
         ];
 
         masApps = {

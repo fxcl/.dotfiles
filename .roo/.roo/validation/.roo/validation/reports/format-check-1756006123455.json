@@ -1,0 +1,354 @@
+{
+  "timestamp": "2025-08-24T03:28:43.455Z",
+  "files": [
+    {
+      "file": "/Users/kelvin/workspace/js/rooles/.roo/rules-ui-ux-designer/rules.md",
+      "passed": true,
+      "issues": [],
+      "issueCount": 0
+    },
+    {
+      "file": "/Users/kelvin/workspace/js/rooles/.roo/rules-tutorial/rules.md",
+      "passed": false,
+      "issues": [
+        {
+          "type": "workflow_table_headers",
+          "message": "Workflow table should have \"Step\" and \"Action\" columns",
+          "line": 22,
+          "severity": "warning"
+        }
+      ],
+      "issueCount": 1
+    },
+    {
+      "file": "/Users/kelvin/workspace/js/rooles/.roo/rules-test/rules.md",
+      "passed": false,
+      "issues": [
+        {
+          "type": "reference_not_optimized",
+          "message": "Reference should use optimized version: ../shared/workflow-guide.md",
+          "line": 124,
+          "severity": "warning"
+        }
+      ],
+      "issueCount": 1
+    },
+    {
+      "file": "/Users/kelvin/workspace/js/rooles/.roo/rules-tdd/rules.md",
+      "passed": false,
+      "issues": [
+        {
+          "type": "workflow_table_missing",
+          "message": "Workflow section should contain a table format",
+          "line": 81,
+          "severity": "error"
+        },
+        {
+          "type": "reference_not_optimized",
+          "message": "Reference should use optimized version: ../shared/workflow-guide.md",
+          "line": 83,
+          "severity": "warning"
+        }
+      ],
+      "issueCount": 2
+    },
+    {
+      "file": "/Users/kelvin/workspace/js/rooles/.roo/rules-supabase-admin/rules.md",
+      "passed": true,
+      "issues": [],
+      "issueCount": 0
+    },
+    {
+      "file": "/Users/kelvin/workspace/js/rooles/.roo/rules-spec-pseudocode/rules.md",
+      "passed": false,
+      "issues": [
+        {
+          "type": "workflow_table_headers",
+          "message": "Workflow table should have \"Step\" and \"Action\" columns",
+          "line": 22,
+          "severity": "warning"
+        },
+        {
+          "type": "long_inline_code",
+          "message": "Long code snippets should use code blocks instead of inline code",
+          "line": 110,
+          "severity": "info"
+        }
+      ],
+      "issueCount": 2
+    },
+    {
+      "file": "/Users/kelvin/workspace/js/rooles/.roo/rules-sparc/rules.md",
+      "passed": true,
+      "issues": [],
+      "issueCount": 0
+    },
+    {
+      "file": "/Users/kelvin/workspace/js/rooles/.roo/rules-security-review/rules.md",
+      "passed": false,
+      "issues": [
+        {
+          "type": "reference_not_optimized",
+          "message": "Reference should use optimized version: ../shared/workflow-guide.md",
+          "line": 78,
+          "severity": "warning"
+        }
+      ],
+      "issueCount": 1
+    },
+    {
+      "file": "/Users/kelvin/workspace/js/rooles/.roo/rules-refinement-optimization/rules.md",
+      "passed": true,
+      "issues": [],
+      "issueCount": 0
+    },
+    {
+      "file": "/Users/kelvin/workspace/js/rooles/.roo/rules-post-deployment-monitoring/rules.md",
+      "passed": false,
+      "issues": [
+        {
+          "type": "workflow_table_headers",
+          "message": "Workflow table should have \"Step\" and \"Action\" columns",
+          "line": 24,
+          "severity": "warning"
+        }
+      ],
+      "issueCount": 1
+    },
+    {
+      "file": "/Users/kelvin/workspace/js/rooles/.roo/rules-nuxt-3-pro-developer/rules.md",
+      "passed": false,
+      "issues": [
+        {
+          "type": "long_inline_code",
+          "message": "Long code snippets should use code blocks instead of inline code",
+          "line": 40,
+          "severity": "info"
+        },
+        {
+          "type": "long_inline_code",
+          "message": "Long code snippets should use code blocks instead of inline code",
+          "line": 53,
+          "severity": "info"
+        },
+        {
+          "type": "long_inline_code",
+          "message": "Long code snippets should use code blocks instead of inline code",
+          "line": 81,
+          "severity": "info"
+        },
+        {
+          "type": "long_inline_code",
+          "message": "Long code snippets should use code blocks instead of inline code",
+          "line": 86,
+          "severity": "info"
+        },
+        {
+          "type": "long_inline_code",
+          "message": "Long code snippets should use code blocks instead of inline code",
+          "line": 87,
+          "severity": "info"
+        },
+        {
+          "type": "long_inline_code",
+          "message": "Long code snippets should use code blocks instead of inline code",
+          "line": 87,
+          "severity": "info"
+        }
+      ],
+      "issueCount": 6
+    },
+    {
+      "file": "/Users/kelvin/workspace/js/rooles/.roo/rules-memory/rules.md",
+      "passed": true,
+      "issues": [],
+      "issueCount": 0
+    },
+    {
+      "file": "/Users/kelvin/workspace/js/rooles/.roo/rules-mcp/rules.md",
+      "passed": false,
+      "issues": [
+        {
+          "type": "workflow_table_headers",
+          "message": "Workflow table should have \"Step\" and \"Action\" columns",
+          "line": 22,
+          "severity": "warning"
+        }
+      ],
+      "issueCount": 1
+    },
+    {
+      "file": "/Users/kelvin/workspace/js/rooles/.roo/rules-integration/rules.md",
+      "passed": false,
+      "issues": [
+        {
+          "type": "workflow_table_headers",
+          "message": "Workflow table should have \"Step\" and \"Action\" columns",
+          "line": 25,
+          "severity": "warning"
+        }
+      ],
+      "issueCount": 1
+    },
+    {
+      "file": "/Users/kelvin/workspace/js/rooles/.roo/rules-instructions-file-generator/rules.md",
+      "passed": true,
+      "issues": [],
+      "issueCount": 0
+    },
+    {
+      "file": "/Users/kelvin/workspace/js/rooles/.roo/rules-docs-writer/rules.md",
+      "passed": false,
+      "issues": [
+        {
+          "type": "reference_not_optimized",
+          "message": "Reference should use optimized version: ../shared/workflow-guide.md",
+          "line": 124,
+          "severity": "warning"
+        }
+      ],
+      "issueCount": 1
+    },
+    {
+      "file": "/Users/kelvin/workspace/js/rooles/.roo/rules-devops/rules.md",
+      "passed": false,
+      "issues": [
+        {
+          "type": "reference_not_optimized",
+          "message": "Reference should use optimized version: ../shared/workflow-guide.md",
+          "line": 96,
+          "severity": "warning"
+        }
+      ],
+      "issueCount": 1
+    },
+    {
+      "file": "/Users/kelvin/workspace/js/rooles/.roo/rules-deep-research-agent/rules.md",
+      "passed": true,
+      "issues": [],
+      "issueCount": 0
+    },
+    {
+      "file": "/Users/kelvin/workspace/js/rooles/.roo/rules-debug/rules.md",
+      "passed": false,
+      "issues": [
+        {
+          "type": "workflow_table_missing",
+          "message": "Workflow section should contain a table format",
+          "line": 80,
+          "severity": "error"
+        },
+        {
+          "type": "reference_not_optimized",
+          "message": "Reference should use optimized version: ../shared/workflow-guide.md",
+          "line": 82,
+          "severity": "warning"
+        }
+      ],
+      "issueCount": 2
+    },
+    {
+      "file": "/Users/kelvin/workspace/js/rooles/.roo/rules-context-condensing/rules.md",
+      "passed": false,
+      "issues": [
+        {
+          "type": "heading_case",
+          "message": "Main headings should use title case",
+          "line": 105,
+          "severity": "info"
+        }
+      ],
+      "issueCount": 1
+    },
+    {
+      "file": "/Users/kelvin/workspace/js/rooles/.roo/rules-code-style-analyzer/rules.md",
+      "passed": false,
+      "issues": [
+        {
+          "type": "reference_not_optimized",
+          "message": "Reference should use optimized version: ../shared/workflow-guide.md",
+          "line": 99,
+          "severity": "warning"
+        }
+      ],
+      "issueCount": 1
+    },
+    {
+      "file": "/Users/kelvin/workspace/js/rooles/.roo/rules-code/rules.md",
+      "passed": false,
+      "issues": [
+        {
+          "type": "workflow_table_missing",
+          "message": "Workflow section should contain a table format",
+          "line": 75,
+          "severity": "error"
+        },
+        {
+          "type": "reference_not_optimized",
+          "message": "Reference should use optimized version: ../shared/workflow-guide.md",
+          "line": 77,
+          "severity": "warning"
+        }
+      ],
+      "issueCount": 2
+    },
+    {
+      "file": "/Users/kelvin/workspace/js/rooles/.roo/rules-ask/rules.md",
+      "passed": false,
+      "issues": [
+        {
+          "type": "reference_not_optimized",
+          "message": "Reference should use optimized version: ../shared/workflow-guide.md",
+          "line": 111,
+          "severity": "warning"
+        }
+      ],
+      "issueCount": 1
+    },
+    {
+      "file": "/Users/kelvin/workspace/js/rooles/.roo/rules-architect/rules.md",
+      "passed": false,
+      "issues": [
+        {
+          "type": "workflow_table_missing",
+          "message": "Workflow section should contain a table format",
+          "line": 77,
+          "severity": "error"
+        },
+        {
+          "type": "reference_not_optimized",
+          "message": "Reference should use optimized version: ../shared/workflow-guide.md",
+          "line": 79,
+          "severity": "warning"
+        }
+      ],
+      "issueCount": 2
+    },
+    {
+      "file": "/Users/kelvin/workspace/js/rooles/.roo/rules-accessibility-expert/rules.md",
+      "passed": false,
+      "issues": [
+        {
+          "type": "reference_not_optimized",
+          "message": "Reference should use optimized version: ../shared/workflow-guide.md",
+          "line": 95,
+          "severity": "warning"
+        }
+      ],
+      "issueCount": 1
+    }
+  ],
+  "summary": {
+    "totalFiles": 25,
+    "passedFiles": 7,
+    "failedFiles": 18,
+    "totalIssues": 28,
+    "issueTypes": {
+      "workflow_table_headers": 5,
+      "reference_not_optimized": 11,
+      "workflow_table_missing": 4,
+      "long_inline_code": 7,
+      "heading_case": 1
+    }
+  }
+}

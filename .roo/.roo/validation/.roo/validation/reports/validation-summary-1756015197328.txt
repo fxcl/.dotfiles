@@ -1,0 +1,58 @@
+RooCode Documentation Validation Report
+==================================================
+Generated: 8/24/2025, 1:59:57 PM
+
+OVERALL RESULTS
+--------------------
+Status: FAILED
+Score: 74/100
+Total Files: 75
+Total Issues: 140
+Critical: 30
+Warnings: 102
+Info: 8
+
+CRITICAL ISSUES
+--------------------
+1. [link_integrity] Link success rate NaN% below threshold 95%
+2. [template_compliance] Template compliance 0% below threshold 90%
+3. [cross_reference_integrity] Reference integrity 0.0% below threshold 95%
+4. [circular_dependencies] Found 2 circular dependencies (max allowed: 0)
+
+WARNINGS
+--------------------
+1. [format_consistency] 8 files have more than 5 format issues
+2. [orphaned_documents] Found 10 orphaned documents (threshold: 3)
+
+LINKCHECKER SUMMARY
+--------------------
+totalFiles: 75
+totalLinks: 157
+brokenLinks: 38
+validLinks: 119
+successRate: 75.80
+
+TEMPLATEVALIDATOR SUMMARY
+--------------------
+totalFiles: 25
+compliantFiles: 0
+nonCompliantFiles: 25
+complianceRate: 0.00
+
+FORMATCHECKER SUMMARY
+--------------------
+totalFiles: 25
+passedFiles: 0
+failedFiles: 25
+totalIssues: 134
+issueTypes: [object Object]
+
+CROSSREFERENCEVALIDATOR SUMMARY
+--------------------
+totalFiles: 35
+totalReferences: 121
+validReferences: 0
+brokenReferences: 121
+circularDependencies: ../shared/tool-guidelines.md,../shared/error-handling.md,../shared/tool-guidelines.md,../shared/standard-responses.md,../shared/tool-guidelines.md
+orphanedDocuments: [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+missingDependencies: 

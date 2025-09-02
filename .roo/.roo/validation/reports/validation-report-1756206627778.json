@@ -1,0 +1,3287 @@
+{
+  "timestamp": "2025-08-26T11:10:27.736Z",
+  "overall": {
+    "passed": false,
+    "score": 86,
+    "issues": [
+      {
+        "type": "link_integrity",
+        "severity": "error",
+        "message": "Link success rate NaN% below threshold 95%"
+      }
+    ],
+    "warnings": []
+  },
+  "validations": {
+    "linkChecker": {
+      "files": [
+        {
+          "file": "../mcp.md",
+          "links": [],
+          "brokenCount": 0,
+          "validCount": 0
+        },
+        {
+          "file": "../duplicate-analysis-report.md",
+          "links": [],
+          "brokenCount": 0,
+          "validCount": 0
+        },
+        {
+          "file": "../README.md",
+          "links": [],
+          "brokenCount": 0,
+          "validCount": 0
+        },
+        {
+          "file": "../shared/workflow-patterns.md",
+          "links": [
+            {
+              "text": "Core Principles",
+              "url": "./core-principles.md",
+              "line": 186,
+              "sourceFile": "../shared/workflow-patterns.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Tool Guidelines",
+              "url": "./tool-guidelines.md",
+              "line": 187,
+              "sourceFile": "../shared/workflow-patterns.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Response Protocol",
+              "url": "./response-protocol.md",
+              "line": 188,
+              "sourceFile": "../shared/workflow-patterns.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Common Requirements",
+              "url": "./common-requirements.md",
+              "line": 189,
+              "sourceFile": "../shared/workflow-patterns.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            }
+          ],
+          "brokenCount": 0,
+          "validCount": 4
+        },
+        {
+          "file": "../shared/tool-guidelines.md",
+          "links": [],
+          "brokenCount": 0,
+          "validCount": 0
+        },
+        {
+          "file": "../shared/shared-components.md",
+          "links": [
+            {
+              "text": "Core Principles",
+              "url": "./core-principles.md",
+              "line": 5,
+              "sourceFile": "../shared/shared-components.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Common Requirements",
+              "url": "./common-requirements.md",
+              "line": 6,
+              "sourceFile": "../shared/shared-components.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Workflow Patterns",
+              "url": "./workflow-patterns.md",
+              "line": 7,
+              "sourceFile": "../shared/shared-components.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Response Protocol",
+              "url": "./response-protocol.md",
+              "line": 8,
+              "sourceFile": "../shared/shared-components.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Tool Guidelines",
+              "url": "./tool-guidelines.md",
+              "line": 9,
+              "sourceFile": "../shared/shared-components.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Error Handling",
+              "url": "./error-handling.md",
+              "line": 10,
+              "sourceFile": "../shared/shared-components.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            }
+          ],
+          "brokenCount": 0,
+          "validCount": 6
+        },
+        {
+          "file": "../shared/response-protocol.md",
+          "links": [],
+          "brokenCount": 0,
+          "validCount": 0
+        },
+        {
+          "file": "../shared/error-handling.md",
+          "links": [
+            {
+              "text": "Core Principles",
+              "url": "./core-principles.md",
+              "line": 144,
+              "sourceFile": "../shared/error-handling.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Response Protocol",
+              "url": "./response-protocol.md",
+              "line": 145,
+              "sourceFile": "../shared/error-handling.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Workflow Patterns",
+              "url": "./workflow-patterns.md",
+              "line": 146,
+              "sourceFile": "../shared/error-handling.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            },
+            {
+              "text": "Standard Responses",
+              "url": "./standard-responses.md",
+              "line": 147,
+              "sourceFile": "../shared/error-handling.md",
+              "valid": false,
+              "error": "File not found",
+              "type": "relative"
+            }
+          ],
+          "brokenCount": 1,
+          "validCount": 3
+        },
+        {
+          "file": "../shared/core-principles.md",
+          "links": [],
+          "brokenCount": 0,
+          "validCount": 0
+        },
+        {
+          "file": "../shared/common-requirements.md",
+          "links": [],
+          "brokenCount": 0,
+          "validCount": 0
+        },
+        {
+          "file": "../rules-ui-ux-designer/rules.md",
+          "links": [
+            {
+              "text": "Response Protocol",
+              "url": "../shared/response-protocol.md",
+              "line": 46,
+              "sourceFile": "../rules-ui-ux-designer/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            }
+          ],
+          "brokenCount": 0,
+          "validCount": 1
+        },
+        {
+          "file": "../rules-tutorial/rules.md",
+          "links": [
+            {
+              "text": "Response Protocol",
+              "url": "../shared/response-protocol.md",
+              "line": 33,
+              "sourceFile": "../rules-tutorial/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            }
+          ],
+          "brokenCount": 0,
+          "validCount": 1
+        },
+        {
+          "file": "../rules-test/rules.md",
+          "links": [
+            {
+              "text": "Response Protocol",
+              "url": "../shared/response-protocol.md",
+              "line": 44,
+              "sourceFile": "../rules-test/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            }
+          ],
+          "brokenCount": 0,
+          "validCount": 1
+        },
+        {
+          "file": "../rules-tdd/rules.md",
+          "links": [
+            {
+              "text": "Response Protocol",
+              "url": "../shared/response-protocol.md",
+              "line": 38,
+              "sourceFile": "../rules-tdd/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            }
+          ],
+          "brokenCount": 0,
+          "validCount": 1
+        },
+        {
+          "file": "../rules-supabase-admin/rules.md",
+          "links": [
+            {
+              "text": "Response Protocol",
+              "url": "../shared/response-protocol.md",
+              "line": 30,
+              "sourceFile": "../rules-supabase-admin/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            }
+          ],
+          "brokenCount": 0,
+          "validCount": 1
+        },
+        {
+          "file": "../rules-spec-pseudocode/rules.md",
+          "links": [],
+          "brokenCount": 0,
+          "validCount": 0
+        },
+        {
+          "file": "../rules-sparc/rules.md",
+          "links": [
+            {
+              "text": "Response Protocol",
+              "url": "../shared/response-protocol.md",
+              "line": 42,
+              "sourceFile": "../rules-sparc/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            }
+          ],
+          "brokenCount": 0,
+          "validCount": 1
+        },
+        {
+          "file": "../rules-security-review/rules.md",
+          "links": [
+            {
+              "text": "Response Protocol",
+              "url": "../shared/response-protocol.md",
+              "line": 37,
+              "sourceFile": "../rules-security-review/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            }
+          ],
+          "brokenCount": 0,
+          "validCount": 1
+        },
+        {
+          "file": "../rules-refinement-optimization/rules.md",
+          "links": [
+            {
+              "text": "Response Protocol",
+              "url": "../shared/response-protocol.md",
+              "line": 41,
+              "sourceFile": "../rules-refinement-optimization/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            }
+          ],
+          "brokenCount": 0,
+          "validCount": 1
+        },
+        {
+          "file": "../rules-post-deployment-monitoring/rules.md",
+          "links": [
+            {
+              "text": "Response Protocol",
+              "url": "../shared/response-protocol.md",
+              "line": 40,
+              "sourceFile": "../rules-post-deployment-monitoring/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            }
+          ],
+          "brokenCount": 0,
+          "validCount": 1
+        },
+        {
+          "file": "../rules-nuxt-3-pro-developer/rules.md",
+          "links": [
+            {
+              "text": "Response Protocol",
+              "url": "../shared/response-protocol.md",
+              "line": 31,
+              "sourceFile": "../rules-nuxt-3-pro-developer/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            }
+          ],
+          "brokenCount": 0,
+          "validCount": 1
+        },
+        {
+          "file": "../rules-memory/rules.md",
+          "links": [
+            {
+              "text": "Response Protocol",
+              "url": "../shared/response-protocol.md",
+              "line": 30,
+              "sourceFile": "../rules-memory/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            }
+          ],
+          "brokenCount": 0,
+          "validCount": 1
+        },
+        {
+          "file": "../rules-integration/rules.md",
+          "links": [
+            {
+              "text": "Response Protocol",
+              "url": "../shared/response-protocol.md",
+              "line": 37,
+              "sourceFile": "../rules-integration/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            }
+          ],
+          "brokenCount": 0,
+          "validCount": 1
+        },
+        {
+          "file": "../rules-mcp/rules.md",
+          "links": [
+            {
+              "text": "Response Protocol",
+              "url": "../shared/response-protocol.md",
+              "line": 38,
+              "sourceFile": "../rules-mcp/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            }
+          ],
+          "brokenCount": 0,
+          "validCount": 1
+        },
+        {
+          "file": "../rules-instructions-file-generator/rules.md",
+          "links": [
+            {
+              "text": "Response Protocol",
+              "url": "../shared/response-protocol.md",
+              "line": 33,
+              "sourceFile": "../rules-instructions-file-generator/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            }
+          ],
+          "brokenCount": 0,
+          "validCount": 1
+        },
+        {
+          "file": "../rules-docs-writer/rules.md",
+          "links": [
+            {
+              "text": "Response Protocol",
+              "url": "../shared/response-protocol.md",
+              "line": 39,
+              "sourceFile": "../rules-docs-writer/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            }
+          ],
+          "brokenCount": 0,
+          "validCount": 1
+        },
+        {
+          "file": "../rules-devops/rules.md",
+          "links": [
+            {
+              "text": "Response Protocol",
+              "url": "../shared/response-protocol.md",
+              "line": 41,
+              "sourceFile": "../rules-devops/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            }
+          ],
+          "brokenCount": 0,
+          "validCount": 1
+        },
+        {
+          "file": "../rules-deep-research-agent/rules.md",
+          "links": [
+            {
+              "text": "Response Protocol",
+              "url": "../shared/response-protocol.md",
+              "line": 35,
+              "sourceFile": "../rules-deep-research-agent/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            }
+          ],
+          "brokenCount": 0,
+          "validCount": 1
+        },
+        {
+          "file": "../rules-debug/rules.md",
+          "links": [
+            {
+              "text": "Response Protocol",
+              "url": "../shared/response-protocol.md",
+              "line": 35,
+              "sourceFile": "../rules-debug/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            }
+          ],
+          "brokenCount": 0,
+          "validCount": 1
+        },
+        {
+          "file": "../rules-context-condensing/rules.md",
+          "links": [
+            {
+              "text": "Response Protocol",
+              "url": "../shared/response-protocol.md",
+              "line": 28,
+              "sourceFile": "../rules-context-condensing/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            }
+          ],
+          "brokenCount": 0,
+          "validCount": 1
+        },
+        {
+          "file": "../rules-code/rules.md",
+          "links": [
+            {
+              "text": "Response Protocol",
+              "url": "../shared/response-protocol.md",
+              "line": 31,
+              "sourceFile": "../rules-code/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            }
+          ],
+          "brokenCount": 0,
+          "validCount": 1
+        },
+        {
+          "file": "../rules-code-style-analyzer/rules.md",
+          "links": [
+            {
+              "text": "Response Protocol",
+              "url": "../shared/response-protocol.md",
+              "line": 45,
+              "sourceFile": "../rules-code-style-analyzer/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            }
+          ],
+          "brokenCount": 0,
+          "validCount": 1
+        },
+        {
+          "file": "../rules-ask/rules.md",
+          "links": [
+            {
+              "text": "Response Protocol",
+              "url": "../shared/response-protocol.md",
+              "line": 42,
+              "sourceFile": "../rules-ask/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            }
+          ],
+          "brokenCount": 0,
+          "validCount": 1
+        },
+        {
+          "file": "../rules-architect/rules.md",
+          "links": [
+            {
+              "text": "Response Protocol",
+              "url": "../shared/response-protocol.md",
+              "line": 41,
+              "sourceFile": "../rules-architect/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            }
+          ],
+          "brokenCount": 0,
+          "validCount": 1
+        },
+        {
+          "file": "../rules-accessibility-expert/rules.md",
+          "links": [
+            {
+              "text": "Response Protocol",
+              "url": "../shared/response-protocol.md",
+              "line": 46,
+              "sourceFile": "../rules-accessibility-expert/rules.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            }
+          ],
+          "brokenCount": 0,
+          "validCount": 1
+        },
+        {
+          "file": "../rules/rules.md",
+          "links": [],
+          "brokenCount": 0,
+          "validCount": 0
+        },
+        {
+          "file": "../rules/memory-bank.md",
+          "links": [],
+          "brokenCount": 0,
+          "validCount": 0
+        },
+        {
+          "file": "../memory/README.md",
+          "links": [
+            {
+              "text": "Memory Rules documentation",
+              "url": "../rules-memory/rules.md",
+              "line": 71,
+              "sourceFile": "../memory/README.md",
+              "valid": true,
+              "error": null,
+              "type": "relative"
+            }
+          ],
+          "brokenCount": 0,
+          "validCount": 1
+        },
+        {
+          "file": "../logs/memory-activity.md",
+          "links": [],
+          "brokenCount": 0,
+          "validCount": 0
+        },
+        {
+          "file": "../rules/memory-bank/tech.md",
+          "links": [],
+          "brokenCount": 0,
+          "validCount": 0
+        },
+        {
+          "file": "../rules/memory-bank/tasks.md",
+          "links": [],
+          "brokenCount": 0,
+          "validCount": 0
+        },
+        {
+          "file": "../rules/memory-bank/product.md",
+          "links": [],
+          "brokenCount": 0,
+          "validCount": 0
+        },
+        {
+          "file": "../rules/memory-bank/context.md",
+          "links": [],
+          "brokenCount": 0,
+          "validCount": 0
+        },
+        {
+          "file": "../rules/memory-bank/brief.md",
+          "links": [],
+          "brokenCount": 0,
+          "validCount": 0
+        },
+        {
+          "file": "../rules/memory-bank/architecture.md",
+          "links": [],
+          "brokenCount": 0,
+          "validCount": 0
+        },
+        {
+          "file": "reports/comprehensive-test-report-1756206011711.md",
+          "links": [],
+          "brokenCount": 0,
+          "validCount": 0
+        },
+        {
+          "file": "../memory/projects/sparc-implementation/artifacts/self-reflection-analysis.md",
+          "links": [],
+          "brokenCount": 0,
+          "validCount": 0
+        },
+        {
+          "file": "../memory/projects/sample-project/timeline/initial-setup.md",
+          "links": [],
+          "brokenCount": 0,
+          "validCount": 0
+        },
+        {
+          "file": "../memory/projects/sample-project/decisions/memory-storage-approach.md",
+          "links": [],
+          "brokenCount": 0,
+          "validCount": 0
+        },
+        {
+          "file": "../memory/projects/sample-project/artifacts/memory-mode-diagram.md",
+          "links": [],
+          "brokenCount": 0,
+          "validCount": 0
+        },
+        {
+          "file": "../memory/projects/sample-project/learnings/file-system-memory-patterns.md",
+          "links": [],
+          "brokenCount": 0,
+          "validCount": 0
+        }
+      ],
+      "summary": {
+        "totalFiles": 51,
+        "totalLinks": 39,
+        "brokenLinks": 1,
+        "validLinks": 38,
+        "successRate": "97.44"
+      }
+    },
+    "templateValidator": {
+      "files": [
+        {
+          "file": "/Users/kelvin/workspace/js/rooles/.roo/rules-ui-ux-designer/rules.md",
+          "compliant": true,
+          "sections": [
+            {
+              "name": "Purpose",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Purpose",
+                "line": 3,
+                "raw": "## Purpose"
+              },
+              "required": true
+            },
+            {
+              "name": "Response Protocol",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Response Protocol",
+                "line": 45,
+                "raw": "## Response Protocol"
+              },
+              "required": true
+            },
+            {
+              "name": "Scope or Role",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Scope",
+                "line": 6,
+                "raw": "## Scope"
+              },
+              "required": false
+            },
+            {
+              "name": "Workflow",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Minimal Workflow",
+                "line": 9,
+                "raw": "## Minimal Workflow"
+              },
+              "required": false
+            },
+            {
+              "name": "Requirements",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Essentials",
+                "line": 16,
+                "raw": "## Essentials"
+              },
+              "required": false
+            },
+            {
+              "name": "Error Handling",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Error Handling",
+                "line": 40,
+                "raw": "## Error Handling"
+              },
+              "required": false
+            }
+          ],
+          "missingRequired": [],
+          "extraSections": [],
+          "structureIssues": [],
+          "score": 100
+        },
+        {
+          "file": "/Users/kelvin/workspace/js/rooles/.roo/rules-tutorial/rules.md",
+          "compliant": true,
+          "sections": [
+            {
+              "name": "Purpose",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Purpose",
+                "line": 3,
+                "raw": "## Purpose"
+              },
+              "required": true
+            },
+            {
+              "name": "Response Protocol",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Response Protocol",
+                "line": 32,
+                "raw": "## Response Protocol"
+              },
+              "required": true
+            },
+            {
+              "name": "Scope or Role",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Scope",
+                "line": 6,
+                "raw": "## Scope"
+              },
+              "required": false
+            },
+            {
+              "name": "Workflow",
+              "found": false,
+              "section": null,
+              "required": false
+            },
+            {
+              "name": "Requirements",
+              "found": false,
+              "section": null,
+              "required": false
+            },
+            {
+              "name": "Error Handling",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Error Handling (Teaching)",
+                "line": 29,
+                "raw": "## Error Handling (Teaching)"
+              },
+              "required": false
+            }
+          ],
+          "missingRequired": [],
+          "extraSections": [],
+          "structureIssues": [],
+          "score": 85
+        },
+        {
+          "file": "/Users/kelvin/workspace/js/rooles/.roo/rules-test/rules.md",
+          "compliant": true,
+          "sections": [
+            {
+              "name": "Purpose",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Purpose",
+                "line": 3,
+                "raw": "## Purpose"
+              },
+              "required": true
+            },
+            {
+              "name": "Response Protocol",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Response Protocol",
+                "line": 43,
+                "raw": "## Response Protocol"
+              },
+              "required": true
+            },
+            {
+              "name": "Scope or Role",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Scope",
+                "line": 6,
+                "raw": "## Scope"
+              },
+              "required": false
+            },
+            {
+              "name": "Workflow",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Minimal Workflow",
+                "line": 9,
+                "raw": "## Minimal Workflow"
+              },
+              "required": false
+            },
+            {
+              "name": "Requirements",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Essential Requirements",
+                "line": 17,
+                "raw": "## Essential Requirements"
+              },
+              "required": false
+            },
+            {
+              "name": "Error Handling",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Error Handling",
+                "line": 37,
+                "raw": "## Error Handling"
+              },
+              "required": false
+            }
+          ],
+          "missingRequired": [],
+          "extraSections": [],
+          "structureIssues": [],
+          "score": 100
+        },
+        {
+          "file": "/Users/kelvin/workspace/js/rooles/.roo/rules-tdd/rules.md",
+          "compliant": true,
+          "sections": [
+            {
+              "name": "Purpose",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Purpose",
+                "line": 3,
+                "raw": "## Purpose"
+              },
+              "required": true
+            },
+            {
+              "name": "Response Protocol",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Response Protocol",
+                "line": 37,
+                "raw": "## Response Protocol"
+              },
+              "required": true
+            },
+            {
+              "name": "Scope or Role",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Scope",
+                "line": 6,
+                "raw": "## Scope"
+              },
+              "required": false
+            },
+            {
+              "name": "Workflow",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Minimal Workflow (R-G-R)",
+                "line": 11,
+                "raw": "## Minimal Workflow (R-G-R)"
+              },
+              "required": false
+            },
+            {
+              "name": "Requirements",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Essential Requirements",
+                "line": 16,
+                "raw": "## Essential Requirements"
+              },
+              "required": false
+            },
+            {
+              "name": "Error Handling",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Error Handling",
+                "line": 32,
+                "raw": "## Error Handling"
+              },
+              "required": false
+            }
+          ],
+          "missingRequired": [],
+          "extraSections": [],
+          "structureIssues": [],
+          "score": 100
+        },
+        {
+          "file": "/Users/kelvin/workspace/js/rooles/.roo/rules-supabase-admin/rules.md",
+          "compliant": true,
+          "sections": [
+            {
+              "name": "Purpose",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Purpose",
+                "line": 3,
+                "raw": "## Purpose"
+              },
+              "required": true
+            },
+            {
+              "name": "Response Protocol",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Response Protocol",
+                "line": 29,
+                "raw": "## Response Protocol"
+              },
+              "required": true
+            },
+            {
+              "name": "Scope or Role",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Scope",
+                "line": 6,
+                "raw": "## Scope"
+              },
+              "required": false
+            },
+            {
+              "name": "Workflow",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Minimal Workflow",
+                "line": 9,
+                "raw": "## Minimal Workflow"
+              },
+              "required": false
+            },
+            {
+              "name": "Requirements",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Essential Requirements",
+                "line": 16,
+                "raw": "## Essential Requirements"
+              },
+              "required": false
+            },
+            {
+              "name": "Error Handling",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Error Handling",
+                "line": 24,
+                "raw": "## Error Handling"
+              },
+              "required": false
+            }
+          ],
+          "missingRequired": [],
+          "extraSections": [],
+          "structureIssues": [],
+          "score": 100
+        },
+        {
+          "file": "/Users/kelvin/workspace/js/rooles/.roo/rules-spec-pseudocode/rules.md",
+          "compliant": true,
+          "sections": [
+            {
+              "name": "Purpose",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Purpose",
+                "line": 3,
+                "raw": "## Purpose"
+              },
+              "required": true
+            },
+            {
+              "name": "Response Protocol",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Response Protocol",
+                "line": 40,
+                "raw": "## Response Protocol"
+              },
+              "required": true
+            },
+            {
+              "name": "Scope or Role",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Scope",
+                "line": 6,
+                "raw": "## Scope"
+              },
+              "required": false
+            },
+            {
+              "name": "Workflow",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Minimal Workflow",
+                "line": 9,
+                "raw": "## Minimal Workflow"
+              },
+              "required": false
+            },
+            {
+              "name": "Requirements",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Essential Requirements",
+                "line": 16,
+                "raw": "## Essential Requirements"
+              },
+              "required": false
+            },
+            {
+              "name": "Error Handling",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Error Handling",
+                "line": 34,
+                "raw": "## Error Handling"
+              },
+              "required": false
+            }
+          ],
+          "missingRequired": [],
+          "extraSections": [],
+          "structureIssues": [],
+          "score": 100
+        },
+        {
+          "file": "/Users/kelvin/workspace/js/rooles/.roo/rules-sparc/rules.md",
+          "compliant": true,
+          "sections": [
+            {
+              "name": "Purpose",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Purpose",
+                "line": 3,
+                "raw": "## Purpose"
+              },
+              "required": true
+            },
+            {
+              "name": "Response Protocol",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Response Protocol",
+                "line": 41,
+                "raw": "## Response Protocol"
+              },
+              "required": true
+            },
+            {
+              "name": "Scope or Role",
+              "found": false,
+              "section": null,
+              "required": false
+            },
+            {
+              "name": "Workflow",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Minimal Workflow",
+                "line": 6,
+                "raw": "## Minimal Workflow"
+              },
+              "required": false
+            },
+            {
+              "name": "Requirements",
+              "found": false,
+              "section": null,
+              "required": false
+            },
+            {
+              "name": "Error Handling",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Error Handling",
+                "line": 36,
+                "raw": "## Error Handling"
+              },
+              "required": false
+            }
+          ],
+          "missingRequired": [],
+          "extraSections": [],
+          "structureIssues": [],
+          "score": 85
+        },
+        {
+          "file": "/Users/kelvin/workspace/js/rooles/.roo/rules-security-review/rules.md",
+          "compliant": true,
+          "sections": [
+            {
+              "name": "Purpose",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Purpose",
+                "line": 3,
+                "raw": "## Purpose"
+              },
+              "required": true
+            },
+            {
+              "name": "Response Protocol",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Response Protocol",
+                "line": 36,
+                "raw": "## Response Protocol"
+              },
+              "required": true
+            },
+            {
+              "name": "Scope or Role",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Scope",
+                "line": 6,
+                "raw": "## Scope"
+              },
+              "required": false
+            },
+            {
+              "name": "Workflow",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Minimal Workflow",
+                "line": 10,
+                "raw": "## Minimal Workflow"
+              },
+              "required": false
+            },
+            {
+              "name": "Requirements",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Requirements",
+                "line": 25,
+                "raw": "## Requirements"
+              },
+              "required": false
+            },
+            {
+              "name": "Error Handling",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Error Handling",
+                "line": 31,
+                "raw": "## Error Handling"
+              },
+              "required": false
+            }
+          ],
+          "missingRequired": [],
+          "extraSections": [],
+          "structureIssues": [],
+          "score": 100
+        },
+        {
+          "file": "/Users/kelvin/workspace/js/rooles/.roo/rules-refinement-optimization/rules.md",
+          "compliant": true,
+          "sections": [
+            {
+              "name": "Purpose",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Purpose",
+                "line": 3,
+                "raw": "## Purpose"
+              },
+              "required": true
+            },
+            {
+              "name": "Response Protocol",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Response Protocol",
+                "line": 40,
+                "raw": "## Response Protocol"
+              },
+              "required": true
+            },
+            {
+              "name": "Scope or Role",
+              "found": false,
+              "section": null,
+              "required": false
+            },
+            {
+              "name": "Workflow",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Minimal Workflow",
+                "line": 6,
+                "raw": "## Minimal Workflow"
+              },
+              "required": false
+            },
+            {
+              "name": "Requirements",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Core Requirements",
+                "line": 15,
+                "raw": "## Core Requirements"
+              },
+              "required": false
+            },
+            {
+              "name": "Error Handling",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Error Handling",
+                "line": 34,
+                "raw": "## Error Handling"
+              },
+              "required": false
+            }
+          ],
+          "missingRequired": [],
+          "extraSections": [],
+          "structureIssues": [],
+          "score": 93
+        },
+        {
+          "file": "/Users/kelvin/workspace/js/rooles/.roo/rules-post-deployment-monitoring/rules.md",
+          "compliant": true,
+          "sections": [
+            {
+              "name": "Purpose",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Purpose",
+                "line": 3,
+                "raw": "## Purpose"
+              },
+              "required": true
+            },
+            {
+              "name": "Response Protocol",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Response Protocol",
+                "line": 39,
+                "raw": "## Response Protocol"
+              },
+              "required": true
+            },
+            {
+              "name": "Scope or Role",
+              "found": false,
+              "section": null,
+              "required": false
+            },
+            {
+              "name": "Workflow",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Minimal Workflow",
+                "line": 6,
+                "raw": "## Minimal Workflow"
+              },
+              "required": false
+            },
+            {
+              "name": "Requirements",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Core Requirements",
+                "line": 13,
+                "raw": "## Core Requirements"
+              },
+              "required": false
+            },
+            {
+              "name": "Error Handling",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Error Handling",
+                "line": 36,
+                "raw": "## Error Handling"
+              },
+              "required": false
+            }
+          ],
+          "missingRequired": [],
+          "extraSections": [],
+          "structureIssues": [],
+          "score": 93
+        },
+        {
+          "file": "/Users/kelvin/workspace/js/rooles/.roo/rules-nuxt-3-pro-developer/rules.md",
+          "compliant": true,
+          "sections": [
+            {
+              "name": "Purpose",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Purpose",
+                "line": 3,
+                "raw": "## Purpose"
+              },
+              "required": true
+            },
+            {
+              "name": "Response Protocol",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Response Protocol",
+                "line": 30,
+                "raw": "## Response Protocol"
+              },
+              "required": true
+            },
+            {
+              "name": "Scope or Role",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Scope",
+                "line": 6,
+                "raw": "## Scope"
+              },
+              "required": false
+            },
+            {
+              "name": "Workflow",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Minimal Workflow",
+                "line": 9,
+                "raw": "## Minimal Workflow"
+              },
+              "required": false
+            },
+            {
+              "name": "Requirements",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Essentials",
+                "line": 16,
+                "raw": "## Essentials"
+              },
+              "required": false
+            },
+            {
+              "name": "Error Handling",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Error Handling",
+                "line": 25,
+                "raw": "## Error Handling"
+              },
+              "required": false
+            }
+          ],
+          "missingRequired": [],
+          "extraSections": [],
+          "structureIssues": [],
+          "score": 100
+        },
+        {
+          "file": "/Users/kelvin/workspace/js/rooles/.roo/rules-memory/rules.md",
+          "compliant": true,
+          "sections": [
+            {
+              "name": "Purpose",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Purpose",
+                "line": 4,
+                "raw": "## Purpose"
+              },
+              "required": true
+            },
+            {
+              "name": "Response Protocol",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Response Protocol",
+                "line": 29,
+                "raw": "## Response Protocol"
+              },
+              "required": true
+            },
+            {
+              "name": "Scope or Role",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Scope",
+                "line": 7,
+                "raw": "## Scope"
+              },
+              "required": false
+            },
+            {
+              "name": "Workflow",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Minimal Workflow",
+                "line": 10,
+                "raw": "## Minimal Workflow"
+              },
+              "required": false
+            },
+            {
+              "name": "Requirements",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Requirements",
+                "line": 17,
+                "raw": "## Requirements"
+              },
+              "required": false
+            },
+            {
+              "name": "Error Handling",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Error Handling",
+                "line": 24,
+                "raw": "## Error Handling"
+              },
+              "required": false
+            }
+          ],
+          "missingRequired": [],
+          "extraSections": [],
+          "structureIssues": [],
+          "score": 100
+        },
+        {
+          "file": "/Users/kelvin/workspace/js/rooles/.roo/rules-mcp/rules.md",
+          "compliant": true,
+          "sections": [
+            {
+              "name": "Purpose",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Purpose",
+                "line": 3,
+                "raw": "## Purpose"
+              },
+              "required": true
+            },
+            {
+              "name": "Response Protocol",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Response Protocol",
+                "line": 37,
+                "raw": "## Response Protocol"
+              },
+              "required": true
+            },
+            {
+              "name": "Scope or Role",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Scope",
+                "line": 6,
+                "raw": "## Scope"
+              },
+              "required": false
+            },
+            {
+              "name": "Workflow",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Minimal Workflow",
+                "line": 12,
+                "raw": "## Minimal Workflow"
+              },
+              "required": false
+            },
+            {
+              "name": "Requirements",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Essential Requirements",
+                "line": 15,
+                "raw": "## Essential Requirements"
+              },
+              "required": false
+            },
+            {
+              "name": "Error Handling",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Error Handling (MCP)",
+                "line": 30,
+                "raw": "## Error Handling (MCP)"
+              },
+              "required": false
+            }
+          ],
+          "missingRequired": [],
+          "extraSections": [],
+          "structureIssues": [],
+          "score": 100
+        },
+        {
+          "file": "/Users/kelvin/workspace/js/rooles/.roo/rules-integration/rules.md",
+          "compliant": true,
+          "sections": [
+            {
+              "name": "Purpose",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Purpose",
+                "line": 3,
+                "raw": "## Purpose"
+              },
+              "required": true
+            },
+            {
+              "name": "Response Protocol",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Response Protocol",
+                "line": 36,
+                "raw": "## Response Protocol"
+              },
+              "required": true
+            },
+            {
+              "name": "Scope or Role",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Scope",
+                "line": 6,
+                "raw": "## Scope"
+              },
+              "required": false
+            },
+            {
+              "name": "Workflow",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Minimal Workflow",
+                "line": 13,
+                "raw": "## Minimal Workflow"
+              },
+              "required": false
+            },
+            {
+              "name": "Requirements",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Essential Requirements",
+                "line": 16,
+                "raw": "## Essential Requirements"
+              },
+              "required": false
+            },
+            {
+              "name": "Error Handling",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Error Handling (Integration)",
+                "line": 29,
+                "raw": "## Error Handling (Integration)"
+              },
+              "required": false
+            }
+          ],
+          "missingRequired": [],
+          "extraSections": [],
+          "structureIssues": [],
+          "score": 100
+        },
+        {
+          "file": "/Users/kelvin/workspace/js/rooles/.roo/rules-instructions-file-generator/rules.md",
+          "compliant": true,
+          "sections": [
+            {
+              "name": "Purpose",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Purpose",
+                "line": 3,
+                "raw": "## Purpose"
+              },
+              "required": true
+            },
+            {
+              "name": "Response Protocol",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Response Protocol",
+                "line": 32,
+                "raw": "## Response Protocol"
+              },
+              "required": true
+            },
+            {
+              "name": "Scope or Role",
+              "found": false,
+              "section": null,
+              "required": false
+            },
+            {
+              "name": "Workflow",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Minimal Workflow",
+                "line": 6,
+                "raw": "## Minimal Workflow"
+              },
+              "required": false
+            },
+            {
+              "name": "Requirements",
+              "found": false,
+              "section": null,
+              "required": false
+            },
+            {
+              "name": "Error Handling",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Error Handling",
+                "line": 27,
+                "raw": "## Error Handling"
+              },
+              "required": false
+            }
+          ],
+          "missingRequired": [],
+          "extraSections": [],
+          "structureIssues": [],
+          "score": 85
+        },
+        {
+          "file": "/Users/kelvin/workspace/js/rooles/.roo/rules-docs-writer/rules.md",
+          "compliant": true,
+          "sections": [
+            {
+              "name": "Purpose",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Purpose",
+                "line": 3,
+                "raw": "## Purpose"
+              },
+              "required": true
+            },
+            {
+              "name": "Response Protocol",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Response Protocol",
+                "line": 38,
+                "raw": "## Response Protocol"
+              },
+              "required": true
+            },
+            {
+              "name": "Scope or Role",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Scope",
+                "line": 6,
+                "raw": "## Scope"
+              },
+              "required": false
+            },
+            {
+              "name": "Workflow",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Minimal Workflow",
+                "line": 11,
+                "raw": "## Minimal Workflow"
+              },
+              "required": false
+            },
+            {
+              "name": "Requirements",
+              "found": false,
+              "section": null,
+              "required": false
+            },
+            {
+              "name": "Error Handling",
+              "found": false,
+              "section": null,
+              "required": false
+            }
+          ],
+          "missingRequired": [],
+          "extraSections": [],
+          "structureIssues": [],
+          "score": 85
+        },
+        {
+          "file": "/Users/kelvin/workspace/js/rooles/.roo/rules-devops/rules.md",
+          "compliant": true,
+          "sections": [
+            {
+              "name": "Purpose",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Purpose",
+                "line": 3,
+                "raw": "## Purpose"
+              },
+              "required": true
+            },
+            {
+              "name": "Response Protocol",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Response Protocol",
+                "line": 40,
+                "raw": "## Response Protocol"
+              },
+              "required": true
+            },
+            {
+              "name": "Scope or Role",
+              "found": false,
+              "section": null,
+              "required": false
+            },
+            {
+              "name": "Workflow",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Pipeline Stages",
+                "line": 23,
+                "raw": "## Pipeline Stages"
+              },
+              "required": false
+            },
+            {
+              "name": "Requirements",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Essential Requirements",
+                "line": 13,
+                "raw": "## Essential Requirements"
+              },
+              "required": false
+            },
+            {
+              "name": "Error Handling",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Error Handling",
+                "line": 33,
+                "raw": "## Error Handling"
+              },
+              "required": false
+            }
+          ],
+          "missingRequired": [],
+          "extraSections": [],
+          "structureIssues": [],
+          "score": 93
+        },
+        {
+          "file": "/Users/kelvin/workspace/js/rooles/.roo/rules-deep-research-agent/rules.md",
+          "compliant": true,
+          "sections": [
+            {
+              "name": "Purpose",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Purpose",
+                "line": 3,
+                "raw": "## Purpose"
+              },
+              "required": true
+            },
+            {
+              "name": "Response Protocol",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Response Protocol",
+                "line": 34,
+                "raw": "## Response Protocol"
+              },
+              "required": true
+            },
+            {
+              "name": "Scope or Role",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Scope & Role",
+                "line": 6,
+                "raw": "## Scope & Role"
+              },
+              "required": false
+            },
+            {
+              "name": "Workflow",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Minimal Workflow",
+                "line": 9,
+                "raw": "## Minimal Workflow"
+              },
+              "required": false
+            },
+            {
+              "name": "Requirements",
+              "found": false,
+              "section": null,
+              "required": false
+            },
+            {
+              "name": "Error Handling",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Error Handling",
+                "line": 29,
+                "raw": "## Error Handling"
+              },
+              "required": false
+            }
+          ],
+          "missingRequired": [],
+          "extraSections": [],
+          "structureIssues": [],
+          "score": 93
+        },
+        {
+          "file": "/Users/kelvin/workspace/js/rooles/.roo/rules-debug/rules.md",
+          "compliant": true,
+          "sections": [
+            {
+              "name": "Purpose",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Purpose",
+                "line": 3,
+                "raw": "## Purpose"
+              },
+              "required": true
+            },
+            {
+              "name": "Response Protocol",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Response Protocol",
+                "line": 34,
+                "raw": "## Response Protocol"
+              },
+              "required": true
+            },
+            {
+              "name": "Scope or Role",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Role",
+                "line": 6,
+                "raw": "## Role"
+              },
+              "required": false
+            },
+            {
+              "name": "Workflow",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Workflow",
+                "line": 12,
+                "raw": "## Workflow"
+              },
+              "required": false
+            },
+            {
+              "name": "Requirements",
+              "found": false,
+              "section": null,
+              "required": false
+            },
+            {
+              "name": "Error Handling",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Error Handling (shortlist)",
+                "line": 29,
+                "raw": "## Error Handling (shortlist)"
+              },
+              "required": false
+            }
+          ],
+          "missingRequired": [],
+          "extraSections": [],
+          "structureIssues": [],
+          "score": 93
+        },
+        {
+          "file": "/Users/kelvin/workspace/js/rooles/.roo/rules-context-condensing/rules.md",
+          "compliant": true,
+          "sections": [
+            {
+              "name": "Purpose",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Purpose",
+                "line": 3,
+                "raw": "## Purpose"
+              },
+              "required": true
+            },
+            {
+              "name": "Response Protocol",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Response Protocol",
+                "line": 27,
+                "raw": "## Response Protocol"
+              },
+              "required": true
+            },
+            {
+              "name": "Scope or Role",
+              "found": false,
+              "section": null,
+              "required": false
+            },
+            {
+              "name": "Workflow",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Workflow",
+                "line": 21,
+                "raw": "## Workflow"
+              },
+              "required": false
+            },
+            {
+              "name": "Requirements",
+              "found": false,
+              "section": null,
+              "required": false
+            },
+            {
+              "name": "Error Handling",
+              "found": false,
+              "section": null,
+              "required": false
+            }
+          ],
+          "missingRequired": [],
+          "extraSections": [],
+          "structureIssues": [],
+          "score": 78
+        },
+        {
+          "file": "/Users/kelvin/workspace/js/rooles/.roo/rules-code-style-analyzer/rules.md",
+          "compliant": true,
+          "sections": [
+            {
+              "name": "Purpose",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Purpose",
+                "line": 3,
+                "raw": "## Purpose"
+              },
+              "required": true
+            },
+            {
+              "name": "Response Protocol",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Response Protocol",
+                "line": 44,
+                "raw": "## Response Protocol"
+              },
+              "required": true
+            },
+            {
+              "name": "Scope or Role",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Scope",
+                "line": 6,
+                "raw": "## Scope"
+              },
+              "required": false
+            },
+            {
+              "name": "Workflow",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Minimal Workflow",
+                "line": 9,
+                "raw": "## Minimal Workflow"
+              },
+              "required": false
+            },
+            {
+              "name": "Requirements",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Essential Requirements",
+                "line": 19,
+                "raw": "## Essential Requirements"
+              },
+              "required": false
+            },
+            {
+              "name": "Error Handling",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Error Handling",
+                "line": 38,
+                "raw": "## Error Handling"
+              },
+              "required": false
+            }
+          ],
+          "missingRequired": [],
+          "extraSections": [],
+          "structureIssues": [],
+          "score": 100
+        },
+        {
+          "file": "/Users/kelvin/workspace/js/rooles/.roo/rules-code/rules.md",
+          "compliant": true,
+          "sections": [
+            {
+              "name": "Purpose",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Purpose",
+                "line": 3,
+                "raw": "## Purpose"
+              },
+              "required": true
+            },
+            {
+              "name": "Response Protocol",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Response Protocol",
+                "line": 30,
+                "raw": "## Response Protocol"
+              },
+              "required": true
+            },
+            {
+              "name": "Scope or Role",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Role",
+                "line": 6,
+                "raw": "## Role"
+              },
+              "required": false
+            },
+            {
+              "name": "Workflow",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Workflow",
+                "line": 12,
+                "raw": "## Workflow"
+              },
+              "required": false
+            },
+            {
+              "name": "Requirements",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Requirements",
+                "line": 19,
+                "raw": "## Requirements"
+              },
+              "required": false
+            },
+            {
+              "name": "Error Handling",
+              "found": false,
+              "section": null,
+              "required": false
+            }
+          ],
+          "missingRequired": [],
+          "extraSections": [],
+          "structureIssues": [],
+          "score": 93
+        },
+        {
+          "file": "/Users/kelvin/workspace/js/rooles/.roo/rules-ask/rules.md",
+          "compliant": true,
+          "sections": [
+            {
+              "name": "Purpose",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Purpose",
+                "line": 3,
+                "raw": "## Purpose"
+              },
+              "required": true
+            },
+            {
+              "name": "Response Protocol",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Response Protocol",
+                "line": 41,
+                "raw": "## Response Protocol"
+              },
+              "required": true
+            },
+            {
+              "name": "Scope or Role",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Scope",
+                "line": 6,
+                "raw": "## Scope"
+              },
+              "required": false
+            },
+            {
+              "name": "Workflow",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Minimal Workflow",
+                "line": 9,
+                "raw": "## Minimal Workflow"
+              },
+              "required": false
+            },
+            {
+              "name": "Requirements",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Essentials",
+                "line": 16,
+                "raw": "## Essentials"
+              },
+              "required": false
+            },
+            {
+              "name": "Error Handling",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Error Handling",
+                "line": 35,
+                "raw": "## Error Handling"
+              },
+              "required": false
+            }
+          ],
+          "missingRequired": [],
+          "extraSections": [],
+          "structureIssues": [],
+          "score": 100
+        },
+        {
+          "file": "/Users/kelvin/workspace/js/rooles/.roo/rules-architect/rules.md",
+          "compliant": true,
+          "sections": [
+            {
+              "name": "Purpose",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Purpose",
+                "line": 3,
+                "raw": "## Purpose"
+              },
+              "required": true
+            },
+            {
+              "name": "Response Protocol",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Response Protocol",
+                "line": 40,
+                "raw": "## Response Protocol"
+              },
+              "required": true
+            },
+            {
+              "name": "Scope or Role",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Scope & Role",
+                "line": 6,
+                "raw": "## Scope & Role"
+              },
+              "required": false
+            },
+            {
+              "name": "Workflow",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Minimal Workflow",
+                "line": 9,
+                "raw": "## Minimal Workflow"
+              },
+              "required": false
+            },
+            {
+              "name": "Requirements",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Essential Requirements",
+                "line": 16,
+                "raw": "## Essential Requirements"
+              },
+              "required": false
+            },
+            {
+              "name": "Error Handling",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Error Handling",
+                "line": 35,
+                "raw": "## Error Handling"
+              },
+              "required": false
+            }
+          ],
+          "missingRequired": [],
+          "extraSections": [],
+          "structureIssues": [],
+          "score": 100
+        },
+        {
+          "file": "/Users/kelvin/workspace/js/rooles/.roo/rules-accessibility-expert/rules.md",
+          "compliant": true,
+          "sections": [
+            {
+              "name": "Purpose",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Purpose",
+                "line": 3,
+                "raw": "## Purpose"
+              },
+              "required": true
+            },
+            {
+              "name": "Response Protocol",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Response Protocol",
+                "line": 45,
+                "raw": "## Response Protocol"
+              },
+              "required": true
+            },
+            {
+              "name": "Scope or Role",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Scope",
+                "line": 6,
+                "raw": "## Scope"
+              },
+              "required": false
+            },
+            {
+              "name": "Workflow",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Minimal Workflow",
+                "line": 9,
+                "raw": "## Minimal Workflow"
+              },
+              "required": false
+            },
+            {
+              "name": "Requirements",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Essential Requirements",
+                "line": 20,
+                "raw": "## Essential Requirements"
+              },
+              "required": false
+            },
+            {
+              "name": "Error Handling",
+              "found": true,
+              "section": {
+                "level": 2,
+                "title": "Error Handling",
+                "line": 40,
+                "raw": "## Error Handling"
+              },
+              "required": false
+            }
+          ],
+          "missingRequired": [],
+          "extraSections": [],
+          "structureIssues": [],
+          "score": 100
+        }
+      ],
+      "summary": {
+        "totalFiles": 25,
+        "compliantFiles": 25,
+        "nonCompliantFiles": 0,
+        "complianceRate": "100.00"
+      }
+    },
+    "formatChecker": {
+      "files": [
+        {
+          "file": "../rules-ui-ux-designer/rules.md",
+          "passed": false,
+          "issues": [
+            {
+              "type": "workflow_table_missing",
+              "message": "Workflow section should contain a table format",
+              "line": 9,
+              "severity": "error"
+            }
+          ],
+          "issueCount": 1
+        },
+        {
+          "file": "../rules-tutorial/rules.md",
+          "passed": false,
+          "issues": [
+            {
+              "type": "heading_case",
+              "message": "Main headings should use title case",
+              "line": 17,
+              "severity": "info"
+            }
+          ],
+          "issueCount": 1
+        },
+        {
+          "file": "../rules-test/rules.md",
+          "passed": false,
+          "issues": [
+            {
+              "type": "workflow_table_missing",
+              "message": "Workflow section should contain a table format",
+              "line": 9,
+              "severity": "error"
+            }
+          ],
+          "issueCount": 1
+        },
+        {
+          "file": "../rules-tdd/rules.md",
+          "passed": false,
+          "issues": [
+            {
+              "type": "workflow_table_missing",
+              "message": "Workflow section should contain a table format",
+              "line": 11,
+              "severity": "error"
+            }
+          ],
+          "issueCount": 1
+        },
+        {
+          "file": "../rules-supabase-admin/rules.md",
+          "passed": false,
+          "issues": [
+            {
+              "type": "workflow_table_missing",
+              "message": "Workflow section should contain a table format",
+              "line": 9,
+              "severity": "error"
+            }
+          ],
+          "issueCount": 1
+        },
+        {
+          "file": "../rules-spec-pseudocode/rules.md",
+          "passed": false,
+          "issues": [
+            {
+              "type": "workflow_table_missing",
+              "message": "Workflow section should contain a table format",
+              "line": 9,
+              "severity": "error"
+            }
+          ],
+          "issueCount": 1
+        },
+        {
+          "file": "../rules-sparc/rules.md",
+          "passed": false,
+          "issues": [
+            {
+              "type": "workflow_table_missing",
+              "message": "Workflow section should contain a table format",
+              "line": 6,
+              "severity": "error"
+            }
+          ],
+          "issueCount": 1
+        },
+        {
+          "file": "../rules-security-review/rules.md",
+          "passed": false,
+          "issues": [
+            {
+              "type": "workflow_table_missing",
+              "message": "Workflow section should contain a table format",
+              "line": 10,
+              "severity": "error"
+            }
+          ],
+          "issueCount": 1
+        },
+        {
+          "file": "../rules-refinement-optimization/rules.md",
+          "passed": false,
+          "issues": [
+            {
+              "type": "workflow_table_missing",
+              "message": "Workflow section should contain a table format",
+              "line": 6,
+              "severity": "error"
+            }
+          ],
+          "issueCount": 1
+        },
+        {
+          "file": "../rules-post-deployment-monitoring/rules.md",
+          "passed": false,
+          "issues": [
+            {
+              "type": "workflow_table_missing",
+              "message": "Workflow section should contain a table format",
+              "line": 6,
+              "severity": "error"
+            }
+          ],
+          "issueCount": 1
+        },
+        {
+          "file": "../rules-nuxt-3-pro-developer/rules.md",
+          "passed": false,
+          "issues": [
+            {
+              "type": "workflow_table_missing",
+              "message": "Workflow section should contain a table format",
+              "line": 9,
+              "severity": "error"
+            }
+          ],
+          "issueCount": 1
+        },
+        {
+          "file": "../rules-memory/rules.md",
+          "passed": false,
+          "issues": [
+            {
+              "type": "workflow_table_missing",
+              "message": "Workflow section should contain a table format",
+              "line": 10,
+              "severity": "error"
+            }
+          ],
+          "issueCount": 1
+        },
+        {
+          "file": "../rules-mcp/rules.md",
+          "passed": false,
+          "issues": [
+            {
+              "type": "workflow_table_missing",
+              "message": "Workflow section should contain a table format",
+              "line": 12,
+              "severity": "error"
+            }
+          ],
+          "issueCount": 1
+        },
+        {
+          "file": "../rules-integration/rules.md",
+          "passed": false,
+          "issues": [
+            {
+              "type": "workflow_table_missing",
+              "message": "Workflow section should contain a table format",
+              "line": 13,
+              "severity": "error"
+            }
+          ],
+          "issueCount": 1
+        },
+        {
+          "file": "../rules-instructions-file-generator/rules.md",
+          "passed": false,
+          "issues": [
+            {
+              "type": "workflow_table_missing",
+              "message": "Workflow section should contain a table format",
+              "line": 6,
+              "severity": "error"
+            }
+          ],
+          "issueCount": 1
+        },
+        {
+          "file": "../rules-docs-writer/rules.md",
+          "passed": false,
+          "issues": [
+            {
+              "type": "workflow_table_missing",
+              "message": "Workflow section should contain a table format",
+              "line": 11,
+              "severity": "error"
+            }
+          ],
+          "issueCount": 1
+        },
+        {
+          "file": "../rules-devops/rules.md",
+          "passed": true,
+          "issues": [],
+          "issueCount": 0
+        },
+        {
+          "file": "../rules-deep-research-agent/rules.md",
+          "passed": false,
+          "issues": [
+            {
+              "type": "workflow_table_missing",
+              "message": "Workflow section should contain a table format",
+              "line": 9,
+              "severity": "error"
+            }
+          ],
+          "issueCount": 1
+        },
+        {
+          "file": "../rules-debug/rules.md",
+          "passed": false,
+          "issues": [
+            {
+              "type": "workflow_table_missing",
+              "message": "Workflow section should contain a table format",
+              "line": 12,
+              "severity": "error"
+            }
+          ],
+          "issueCount": 1
+        },
+        {
+          "file": "../rules-context-condensing/rules.md",
+          "passed": false,
+          "issues": [
+            {
+              "type": "workflow_table_missing",
+              "message": "Workflow section should contain a table format",
+              "line": 21,
+              "severity": "error"
+            }
+          ],
+          "issueCount": 1
+        },
+        {
+          "file": "../rules-code-style-analyzer/rules.md",
+          "passed": false,
+          "issues": [
+            {
+              "type": "workflow_table_missing",
+              "message": "Workflow section should contain a table format",
+              "line": 9,
+              "severity": "error"
+            }
+          ],
+          "issueCount": 1
+        },
+        {
+          "file": "../rules-code/rules.md",
+          "passed": false,
+          "issues": [
+            {
+              "type": "workflow_table_missing",
+              "message": "Workflow section should contain a table format",
+              "line": 12,
+              "severity": "error"
+            }
+          ],
+          "issueCount": 1
+        },
+        {
+          "file": "../rules-ask/rules.md",
+          "passed": false,
+          "issues": [
+            {
+              "type": "workflow_table_missing",
+              "message": "Workflow section should contain a table format",
+              "line": 9,
+              "severity": "error"
+            }
+          ],
+          "issueCount": 1
+        },
+        {
+          "file": "../rules-architect/rules.md",
+          "passed": false,
+          "issues": [
+            {
+              "type": "workflow_table_missing",
+              "message": "Workflow section should contain a table format",
+              "line": 9,
+              "severity": "error"
+            }
+          ],
+          "issueCount": 1
+        },
+        {
+          "file": "../rules-accessibility-expert/rules.md",
+          "passed": false,
+          "issues": [
+            {
+              "type": "workflow_table_missing",
+              "message": "Workflow section should contain a table format",
+              "line": 9,
+              "severity": "error"
+            }
+          ],
+          "issueCount": 1
+        }
+      ],
+      "summary": {
+        "totalFiles": 25,
+        "passedFiles": 1,
+        "failedFiles": 24,
+        "totalIssues": 24,
+        "issueTypes": {
+          "workflow_table_missing": 23,
+          "heading_case": 1
+        }
+      }
+    },
+    "crossReferenceValidator": {
+      "files": [],
+      "references": [
+        {
+          "sourcePath": "../rules-ui-ux-designer/rules.md",
+          "targetPath": "../shared/response-protocol.md",
+          "linkText": "Response Protocol",
+          "linkUrl": "../shared/response-protocol.md",
+          "line": 46,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-tutorial/rules.md",
+          "targetPath": "../shared/response-protocol.md",
+          "linkText": "Response Protocol",
+          "linkUrl": "../shared/response-protocol.md",
+          "line": 33,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-test/rules.md",
+          "targetPath": "../shared/response-protocol.md",
+          "linkText": "Response Protocol",
+          "linkUrl": "../shared/response-protocol.md",
+          "line": 44,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-tdd/rules.md",
+          "targetPath": "../shared/response-protocol.md",
+          "linkText": "Response Protocol",
+          "linkUrl": "../shared/response-protocol.md",
+          "line": 38,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-supabase-admin/rules.md",
+          "targetPath": "../shared/response-protocol.md",
+          "linkText": "Response Protocol",
+          "linkUrl": "../shared/response-protocol.md",
+          "line": 30,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-sparc/rules.md",
+          "targetPath": "../shared/response-protocol.md",
+          "linkText": "Response Protocol",
+          "linkUrl": "../shared/response-protocol.md",
+          "line": 42,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-security-review/rules.md",
+          "targetPath": "../shared/response-protocol.md",
+          "linkText": "Response Protocol",
+          "linkUrl": "../shared/response-protocol.md",
+          "line": 37,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-refinement-optimization/rules.md",
+          "targetPath": "../shared/response-protocol.md",
+          "linkText": "Response Protocol",
+          "linkUrl": "../shared/response-protocol.md",
+          "line": 41,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-post-deployment-monitoring/rules.md",
+          "targetPath": "../shared/response-protocol.md",
+          "linkText": "Response Protocol",
+          "linkUrl": "../shared/response-protocol.md",
+          "line": 40,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-nuxt-3-pro-developer/rules.md",
+          "targetPath": "../shared/response-protocol.md",
+          "linkText": "Response Protocol",
+          "linkUrl": "../shared/response-protocol.md",
+          "line": 31,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-memory/rules.md",
+          "targetPath": "../shared/response-protocol.md",
+          "linkText": "Response Protocol",
+          "linkUrl": "../shared/response-protocol.md",
+          "line": 30,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-mcp/rules.md",
+          "targetPath": "../shared/response-protocol.md",
+          "linkText": "Response Protocol",
+          "linkUrl": "../shared/response-protocol.md",
+          "line": 38,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-integration/rules.md",
+          "targetPath": "../shared/response-protocol.md",
+          "linkText": "Response Protocol",
+          "linkUrl": "../shared/response-protocol.md",
+          "line": 37,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-instructions-file-generator/rules.md",
+          "targetPath": "../shared/response-protocol.md",
+          "linkText": "Response Protocol",
+          "linkUrl": "../shared/response-protocol.md",
+          "line": 33,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-docs-writer/rules.md",
+          "targetPath": "../shared/response-protocol.md",
+          "linkText": "Response Protocol",
+          "linkUrl": "../shared/response-protocol.md",
+          "line": 39,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-devops/rules.md",
+          "targetPath": "../shared/response-protocol.md",
+          "linkText": "Response Protocol",
+          "linkUrl": "../shared/response-protocol.md",
+          "line": 41,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-deep-research-agent/rules.md",
+          "targetPath": "../shared/response-protocol.md",
+          "linkText": "Response Protocol",
+          "linkUrl": "../shared/response-protocol.md",
+          "line": 35,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-debug/rules.md",
+          "targetPath": "../shared/response-protocol.md",
+          "linkText": "Response Protocol",
+          "linkUrl": "../shared/response-protocol.md",
+          "line": 35,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-context-condensing/rules.md",
+          "targetPath": "../shared/response-protocol.md",
+          "linkText": "Response Protocol",
+          "linkUrl": "../shared/response-protocol.md",
+          "line": 28,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-code-style-analyzer/rules.md",
+          "targetPath": "../shared/response-protocol.md",
+          "linkText": "Response Protocol",
+          "linkUrl": "../shared/response-protocol.md",
+          "line": 45,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-code/rules.md",
+          "targetPath": "../shared/response-protocol.md",
+          "linkText": "Response Protocol",
+          "linkUrl": "../shared/response-protocol.md",
+          "line": 31,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-ask/rules.md",
+          "targetPath": "../shared/response-protocol.md",
+          "linkText": "Response Protocol",
+          "linkUrl": "../shared/response-protocol.md",
+          "line": 42,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-architect/rules.md",
+          "targetPath": "../shared/response-protocol.md",
+          "linkText": "Response Protocol",
+          "linkUrl": "../shared/response-protocol.md",
+          "line": 41,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../rules-accessibility-expert/rules.md",
+          "targetPath": "../shared/response-protocol.md",
+          "linkText": "Response Protocol",
+          "linkUrl": "../shared/response-protocol.md",
+          "line": 46,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../shared/workflow-patterns.md",
+          "targetPath": "../shared/core-principles.md",
+          "linkText": "Core Principles",
+          "linkUrl": "./core-principles.md",
+          "line": 186,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../shared/workflow-patterns.md",
+          "targetPath": "../shared/tool-guidelines.md",
+          "linkText": "Tool Guidelines",
+          "linkUrl": "./tool-guidelines.md",
+          "line": 187,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../shared/workflow-patterns.md",
+          "targetPath": "../shared/response-protocol.md",
+          "linkText": "Response Protocol",
+          "linkUrl": "./response-protocol.md",
+          "line": 188,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../shared/workflow-patterns.md",
+          "targetPath": "../shared/common-requirements.md",
+          "linkText": "Common Requirements",
+          "linkUrl": "./common-requirements.md",
+          "line": 189,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../shared/shared-components.md",
+          "targetPath": "../shared/core-principles.md",
+          "linkText": "Core Principles",
+          "linkUrl": "./core-principles.md",
+          "line": 5,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../shared/shared-components.md",
+          "targetPath": "../shared/common-requirements.md",
+          "linkText": "Common Requirements",
+          "linkUrl": "./common-requirements.md",
+          "line": 6,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../shared/shared-components.md",
+          "targetPath": "../shared/workflow-patterns.md",
+          "linkText": "Workflow Patterns",
+          "linkUrl": "./workflow-patterns.md",
+          "line": 7,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../shared/shared-components.md",
+          "targetPath": "../shared/response-protocol.md",
+          "linkText": "Response Protocol",
+          "linkUrl": "./response-protocol.md",
+          "line": 8,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../shared/shared-components.md",
+          "targetPath": "../shared/tool-guidelines.md",
+          "linkText": "Tool Guidelines",
+          "linkUrl": "./tool-guidelines.md",
+          "line": 9,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../shared/shared-components.md",
+          "targetPath": "../shared/error-handling.md",
+          "linkText": "Error Handling",
+          "linkUrl": "./error-handling.md",
+          "line": 10,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../shared/error-handling.md",
+          "targetPath": "../shared/core-principles.md",
+          "linkText": "Core Principles",
+          "linkUrl": "./core-principles.md",
+          "line": 144,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../shared/error-handling.md",
+          "targetPath": "../shared/response-protocol.md",
+          "linkText": "Response Protocol",
+          "linkUrl": "./response-protocol.md",
+          "line": 145,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../shared/error-handling.md",
+          "targetPath": "../shared/workflow-patterns.md",
+          "linkText": "Workflow Patterns",
+          "linkUrl": "./workflow-patterns.md",
+          "line": 146,
+          "type": "markdown_link",
+          "valid": true,
+          "issue": null
+        },
+        {
+          "sourcePath": "../shared/error-handling.md",
+          "targetPath": "../shared/standard-responses.md",
+          "linkText": "Standard Responses",
+          "linkUrl": "./standard-responses.md",
+          "line": 147,
+          "type": "markdown_link",
+          "valid": false,
+          "issue": "Referenced file does not exist: ../shared/standard-responses.md"
+        }
+      ],
+      "issues": [
+        {
+          "type": "broken_reference",
+          "severity": "error",
+          "message": "Referenced file does not exist: ../shared/standard-responses.md",
+          "sourcePath": "../shared/error-handling.md",
+          "targetPath": "../shared/standard-responses.md",
+          "line": 147
+        }
+      ],
+      "summary": {
+        "totalFiles": 32,
+        "totalReferences": 38,
+        "validReferences": 37,
+        "brokenReferences": 1,
+        "circularDependencies": [],
+        "orphanedDocuments": [
+          {
+            "path": "../shared/shared-components.md",
+            "type": "shared",
+            "outgoingReferences": 6
+          }
+        ],
+        "missingDependencies": []
+      }
+    }
+  },
+  "summary": {
+    "totalFiles": 51,
+    "totalIssues": 25,
+    "criticalIssues": 24,
+    "warningIssues": 0,
+    "infoIssues": 1
+  }
+}

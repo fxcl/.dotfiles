@@ -1,0 +1,57 @@
+RooCode Documentation Validation Report
+==================================================
+Generated: 8/24/2025, 2:16:52 PM
+
+OVERALL RESULTS
+--------------------
+Status: FAILED
+Score: 83/100
+Total Files: 52
+Total Issues: 40
+Critical: 29
+Warnings: 3
+Info: 8
+
+CRITICAL ISSUES
+--------------------
+1. [link_integrity] Link success rate NaN% below threshold 95%
+2. [cross_reference_integrity] Reference integrity 84.3% below threshold 95%
+3. [circular_dependencies] Found 2 circular dependencies (max allowed: 0)
+
+WARNINGS
+--------------------
+1. [format_consistency] 1 files have more than 5 format issues
+2. [orphaned_documents] Found 6 orphaned documents (threshold: 3)
+
+LINKCHECKER SUMMARY
+--------------------
+totalFiles: 52
+totalLinks: 122
+brokenLinks: 0
+validLinks: 122
+successRate: 100.00
+
+TEMPLATEVALIDATOR SUMMARY
+--------------------
+totalFiles: 25
+compliantFiles: 25
+nonCompliantFiles: 0
+complianceRate: 100.00
+
+FORMATCHECKER SUMMARY
+--------------------
+totalFiles: 25
+passedFiles: 0
+failedFiles: 25
+totalIssues: 35
+issueTypes: [object Object]
+
+CROSSREFERENCEVALIDATOR SUMMARY
+--------------------
+totalFiles: 35
+totalReferences: 121
+validReferences: 102
+brokenReferences: 19
+circularDependencies: ../shared/tool-guidelines.md,../shared/error-handling.md,../shared/tool-guidelines.md,../shared/standard-responses.md,../shared/tool-guidelines.md
+orphanedDocuments: [object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+missingDependencies: 

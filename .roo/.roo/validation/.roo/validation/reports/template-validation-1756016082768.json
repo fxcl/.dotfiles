@@ -1,0 +1,3031 @@
+{
+  "timestamp": "2025-08-24T06:14:42.768Z",
+  "files": [
+    {
+      "file": "../rules-ui-ux-designer/rules.md",
+      "compliant": false,
+      "sections": [
+        {
+          "name": "Goal",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Goal",
+            "line": 7,
+            "raw": "## Goal"
+          }
+        },
+        {
+          "name": "Onboarding",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Onboarding",
+            "line": 11,
+            "raw": "## Onboarding"
+          }
+        },
+        {
+          "name": "Role Definition",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Role Definition",
+            "line": 15,
+            "raw": "## Role Definition"
+          }
+        },
+        {
+          "name": "Foundation",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Foundation",
+            "line": 3,
+            "raw": "## Foundation"
+          }
+        },
+        {
+          "name": "Workflow",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow",
+            "line": 21,
+            "raw": "## Workflow"
+          }
+        },
+        {
+          "name": "Requirements",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "UI/UX Requirements",
+            "line": 31,
+            "raw": "## UI/UX Requirements"
+          }
+        },
+        {
+          "name": "Response Protocol",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Response Protocol",
+            "line": 130,
+            "raw": "## Response Protocol"
+          }
+        },
+        {
+          "name": "Error Handling",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow & Error Handling",
+            "line": 151,
+            "raw": "## Workflow & Error Handling"
+          }
+        },
+        {
+          "name": "Non-Negotiable",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Non-Negotiable Requirements",
+            "line": 166,
+            "raw": "## Non-Negotiable Requirements"
+          }
+        }
+      ],
+      "missingRequired": [],
+      "extraSections": [],
+      "structureIssues": [
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/core-references.md",
+          "line": 5
+        },
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/response-protocol.md",
+          "line": 132
+        },
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/workflow-guide.md",
+          "line": 153
+        },
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/common-requirements.md",
+          "line": 168
+        }
+      ],
+      "score": 80
+    },
+    {
+      "file": "../rules-tutorial/rules.md",
+      "compliant": false,
+      "sections": [
+        {
+          "name": "Goal",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Goal",
+            "line": 7,
+            "raw": "## Goal"
+          }
+        },
+        {
+          "name": "Onboarding",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Onboarding",
+            "line": 11,
+            "raw": "## Onboarding"
+          }
+        },
+        {
+          "name": "Role Definition",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Role Definition",
+            "line": 15,
+            "raw": "## Role Definition"
+          }
+        },
+        {
+          "name": "Foundation",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Foundation",
+            "line": 3,
+            "raw": "## Foundation"
+          }
+        },
+        {
+          "name": "Workflow",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "2. Educational Workflow",
+            "line": 21,
+            "raw": "## 2. Educational Workflow"
+          }
+        },
+        {
+          "name": "Requirements",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Tutorial Requirements",
+            "line": 108,
+            "raw": "## Tutorial Requirements"
+          }
+        },
+        {
+          "name": "Response Protocol",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Response Protocol",
+            "line": 317,
+            "raw": "## Response Protocol"
+          }
+        },
+        {
+          "name": "Error Handling",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow & Error Handling",
+            "line": 302,
+            "raw": "## Workflow & Error Handling"
+          }
+        },
+        {
+          "name": "Non-Negotiable",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Non-Negotiable Requirements",
+            "line": 296,
+            "raw": "## Non-Negotiable Requirements"
+          }
+        }
+      ],
+      "missingRequired": [],
+      "extraSections": [],
+      "structureIssues": [
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/core-references.md",
+          "line": 5
+        },
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/common-requirements.md",
+          "line": 298
+        },
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/workflow-guide.md",
+          "line": 304
+        },
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/response-protocol.md",
+          "line": 319
+        }
+      ],
+      "score": 80
+    },
+    {
+      "file": "../rules-test/rules.md",
+      "compliant": false,
+      "sections": [
+        {
+          "name": "Goal",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Goal",
+            "line": 3,
+            "raw": "## Goal"
+          }
+        },
+        {
+          "name": "Onboarding",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Onboarding",
+            "line": 9,
+            "raw": "## Onboarding"
+          }
+        },
+        {
+          "name": "Role Definition",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Role Definition",
+            "line": 17,
+            "raw": "## Role Definition"
+          }
+        },
+        {
+          "name": "Foundation",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Foundation",
+            "line": 13,
+            "raw": "## Foundation"
+          }
+        },
+        {
+          "name": "Workflow",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Test-Specific Workflow",
+            "line": 25,
+            "raw": "## Test-Specific Workflow"
+          }
+        },
+        {
+          "name": "Requirements",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Requirements",
+            "line": 35,
+            "raw": "## Requirements"
+          }
+        },
+        {
+          "name": "Response Protocol",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Response Protocol",
+            "line": 133,
+            "raw": "## Response Protocol"
+          }
+        },
+        {
+          "name": "Error Handling",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow & Error Handling",
+            "line": 139,
+            "raw": "## Workflow & Error Handling"
+          }
+        },
+        {
+          "name": "Non-Negotiable",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Non-Negotiable Requirements",
+            "line": 154,
+            "raw": "## Non-Negotiable Requirements"
+          }
+        }
+      ],
+      "missingRequired": [],
+      "extraSections": [],
+      "structureIssues": [
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/core-references.md",
+          "line": 15
+        },
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/response-protocol.md",
+          "line": 135
+        },
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/workflow-guide.md",
+          "line": 141
+        },
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/common-requirements.md",
+          "line": 156
+        }
+      ],
+      "score": 80
+    },
+    {
+      "file": "../rules-tdd/rules.md",
+      "compliant": false,
+      "sections": [
+        {
+          "name": "Goal",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Goal",
+            "line": 7,
+            "raw": "## Goal"
+          }
+        },
+        {
+          "name": "Onboarding",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Onboarding",
+            "line": 13,
+            "raw": "## Onboarding"
+          }
+        },
+        {
+          "name": "Role Definition",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Role Definition",
+            "line": 17,
+            "raw": "## Role Definition"
+          }
+        },
+        {
+          "name": "Foundation",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Foundation",
+            "line": 3,
+            "raw": "## Foundation"
+          }
+        },
+        {
+          "name": "Workflow",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow & Error Handling",
+            "line": 85,
+            "raw": "## Workflow & Error Handling"
+          }
+        },
+        {
+          "name": "Requirements",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "TDD-Specific Requirements",
+            "line": 39,
+            "raw": "## TDD-Specific Requirements"
+          }
+        },
+        {
+          "name": "Response Protocol",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Response Protocol",
+            "line": 79,
+            "raw": "## Response Protocol"
+          }
+        },
+        {
+          "name": "Error Handling",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow & Error Handling",
+            "line": 85,
+            "raw": "## Workflow & Error Handling"
+          }
+        },
+        {
+          "name": "Non-Negotiable",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Non-Negotiable Requirements",
+            "line": 91,
+            "raw": "## Non-Negotiable Requirements"
+          }
+        }
+      ],
+      "missingRequired": [],
+      "extraSections": [],
+      "structureIssues": [
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/core-references.md",
+          "line": 5
+        },
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/core-references.md",
+          "line": 25
+        },
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/response-protocol.md",
+          "line": 81
+        },
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/workflow-guide.md",
+          "line": 87
+        },
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/common-requirements.md",
+          "line": 93
+        }
+      ],
+      "score": 80
+    },
+    {
+      "file": "../rules-supabase-admin/rules.md",
+      "compliant": false,
+      "sections": [
+        {
+          "name": "Goal",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Goal",
+            "line": 9,
+            "raw": "## Goal"
+          }
+        },
+        {
+          "name": "Onboarding",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Onboarding",
+            "line": 13,
+            "raw": "## Onboarding"
+          }
+        },
+        {
+          "name": "Role Definition",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Role Definition",
+            "line": 17,
+            "raw": "## Role Definition"
+          }
+        },
+        {
+          "name": "Foundation",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Foundation",
+            "line": 3,
+            "raw": "## Foundation"
+          }
+        },
+        {
+          "name": "Workflow",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "SPARC Workflow",
+            "line": 21,
+            "raw": "## SPARC Workflow"
+          }
+        },
+        {
+          "name": "Requirements",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Supabase Admin Requirements",
+            "line": 30,
+            "raw": "## Supabase Admin Requirements"
+          }
+        },
+        {
+          "name": "Response Protocol",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Response Protocol",
+            "line": 93,
+            "raw": "## Response Protocol"
+          }
+        },
+        {
+          "name": "Error Handling",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow & Error Handling",
+            "line": 78,
+            "raw": "## Workflow & Error Handling"
+          }
+        },
+        {
+          "name": "Non-Negotiable",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Non-Negotiable Requirements",
+            "line": 173,
+            "raw": "## Non-Negotiable Requirements"
+          }
+        }
+      ],
+      "missingRequired": [],
+      "extraSections": [],
+      "structureIssues": [
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/core-references.md",
+          "line": 7
+        },
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/response-protocol.md",
+          "line": 95
+        },
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/common-requirements.md",
+          "line": 175
+        }
+      ],
+      "score": 85
+    },
+    {
+      "file": "../rules-spec-pseudocode/rules.md",
+      "compliant": false,
+      "sections": [
+        {
+          "name": "Goal",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Goal",
+            "line": 7,
+            "raw": "## Goal"
+          }
+        },
+        {
+          "name": "Onboarding",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Onboarding",
+            "line": 11,
+            "raw": "## Onboarding"
+          }
+        },
+        {
+          "name": "Role Definition",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Role Definition",
+            "line": 15,
+            "raw": "## Role Definition"
+          }
+        },
+        {
+          "name": "Foundation",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Foundation",
+            "line": 3,
+            "raw": "## Foundation"
+          }
+        },
+        {
+          "name": "Workflow",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow",
+            "line": 21,
+            "raw": "## Workflow"
+          }
+        },
+        {
+          "name": "Requirements",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Spec-Pseudocode Requirements",
+            "line": 31,
+            "raw": "## Spec-Pseudocode Requirements"
+          }
+        },
+        {
+          "name": "Response Protocol",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Response Protocol",
+            "line": 164,
+            "raw": "## Response Protocol"
+          }
+        },
+        {
+          "name": "Error Handling",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow & Error Handling",
+            "line": 149,
+            "raw": "## Workflow & Error Handling"
+          }
+        },
+        {
+          "name": "Non-Negotiable",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Non-Negotiable Requirements",
+            "line": 170,
+            "raw": "## Non-Negotiable Requirements"
+          }
+        }
+      ],
+      "missingRequired": [],
+      "extraSections": [],
+      "structureIssues": [
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/core-references.md",
+          "line": 5
+        },
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/response-protocol.md",
+          "line": 166
+        },
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/common-requirements.md",
+          "line": 172
+        }
+      ],
+      "score": 85
+    },
+    {
+      "file": "../rules-sparc/rules.md",
+      "compliant": false,
+      "sections": [
+        {
+          "name": "Goal",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Goal",
+            "line": 7,
+            "raw": "## Goal"
+          }
+        },
+        {
+          "name": "Onboarding",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Onboarding",
+            "line": 11,
+            "raw": "## Onboarding"
+          }
+        },
+        {
+          "name": "Role Definition",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Role Definition",
+            "line": 15,
+            "raw": "## Role Definition"
+          }
+        },
+        {
+          "name": "Foundation",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Foundation",
+            "line": 3,
+            "raw": "## Foundation"
+          }
+        },
+        {
+          "name": "Workflow",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow",
+            "line": 21,
+            "raw": "## Workflow"
+          }
+        },
+        {
+          "name": "Requirements",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "SPARC-Specific Requirements",
+            "line": 33,
+            "raw": "## SPARC-Specific Requirements"
+          }
+        },
+        {
+          "name": "Response Protocol",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Response Protocol",
+            "line": 260,
+            "raw": "## Response Protocol"
+          }
+        },
+        {
+          "name": "Error Handling",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow & Error Handling",
+            "line": 243,
+            "raw": "## Workflow & Error Handling"
+          }
+        },
+        {
+          "name": "Non-Negotiable",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Non-Negotiable Requirements",
+            "line": 378,
+            "raw": "## Non-Negotiable Requirements"
+          }
+        }
+      ],
+      "missingRequired": [],
+      "extraSections": [],
+      "structureIssues": [
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/core-references.md",
+          "line": 5
+        },
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/response-protocol.md",
+          "line": 262
+        },
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/common-requirements.md",
+          "line": 380
+        }
+      ],
+      "score": 85
+    },
+    {
+      "file": "../rules-security-review/rules.md",
+      "compliant": false,
+      "sections": [
+        {
+          "name": "Goal",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Goal",
+            "line": 3,
+            "raw": "## Goal"
+          }
+        },
+        {
+          "name": "Onboarding",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Onboarding",
+            "line": 9,
+            "raw": "## Onboarding"
+          }
+        },
+        {
+          "name": "Role Definition",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Role Definition",
+            "line": 17,
+            "raw": "## Role Definition"
+          }
+        },
+        {
+          "name": "Foundation",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Foundation",
+            "line": 13,
+            "raw": "## Foundation"
+          }
+        },
+        {
+          "name": "Workflow",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Security-Specific Workflow",
+            "line": 24,
+            "raw": "## Security-Specific Workflow"
+          }
+        },
+        {
+          "name": "Requirements",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Requirements",
+            "line": 34,
+            "raw": "## Requirements"
+          }
+        },
+        {
+          "name": "Response Protocol",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Response Protocol",
+            "line": 93,
+            "raw": "## Response Protocol"
+          }
+        },
+        {
+          "name": "Error Handling",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow & Error Handling",
+            "line": 99,
+            "raw": "## Workflow & Error Handling"
+          }
+        },
+        {
+          "name": "Non-Negotiable",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Non-Negotiable Requirements",
+            "line": 87,
+            "raw": "## Non-Negotiable Requirements"
+          }
+        }
+      ],
+      "missingRequired": [],
+      "extraSections": [],
+      "structureIssues": [
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/core-references.md",
+          "line": 15
+        },
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/common-requirements.md",
+          "line": 89
+        },
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/response-protocol.md",
+          "line": 95
+        },
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/workflow-guide.md",
+          "line": 101
+        }
+      ],
+      "score": 80
+    },
+    {
+      "file": "../rules-refinement-optimization/rules.md",
+      "compliant": false,
+      "sections": [
+        {
+          "name": "Goal",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Goal",
+            "line": 9,
+            "raw": "## Goal"
+          }
+        },
+        {
+          "name": "Onboarding",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Onboarding",
+            "line": 13,
+            "raw": "## Onboarding"
+          }
+        },
+        {
+          "name": "Role Definition",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Role Definition",
+            "line": 17,
+            "raw": "## Role Definition"
+          }
+        },
+        {
+          "name": "Foundation",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Foundation",
+            "line": 3,
+            "raw": "## Foundation"
+          }
+        },
+        {
+          "name": "Workflow",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow",
+            "line": 33,
+            "raw": "## Workflow"
+          }
+        },
+        {
+          "name": "Requirements",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Optimization Requirements",
+            "line": 45,
+            "raw": "## Optimization Requirements"
+          }
+        },
+        {
+          "name": "Response Protocol",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Response Protocol",
+            "line": 382,
+            "raw": "## Response Protocol"
+          }
+        },
+        {
+          "name": "Error Handling",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow & Error Handling",
+            "line": 388,
+            "raw": "## Workflow & Error Handling"
+          }
+        },
+        {
+          "name": "Non-Negotiable",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Non-Negotiable Requirements",
+            "line": 336,
+            "raw": "## Non-Negotiable Requirements"
+          }
+        }
+      ],
+      "missingRequired": [],
+      "extraSections": [],
+      "structureIssues": [
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/core-references.md",
+          "line": 7
+        },
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/common-requirements.md",
+          "line": 338
+        },
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/response-protocol.md",
+          "line": 384
+        },
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/workflow-guide.md",
+          "line": 390
+        }
+      ],
+      "score": 80
+    },
+    {
+      "file": "../rules-post-deployment-monitoring/rules.md",
+      "compliant": false,
+      "sections": [
+        {
+          "name": "Goal",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Goal",
+            "line": 7,
+            "raw": "## Goal"
+          }
+        },
+        {
+          "name": "Onboarding",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Onboarding",
+            "line": 11,
+            "raw": "## Onboarding"
+          }
+        },
+        {
+          "name": "Role Definition",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Role Definition",
+            "line": 15,
+            "raw": "## Role Definition"
+          }
+        },
+        {
+          "name": "Foundation",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Foundation",
+            "line": 3,
+            "raw": "## Foundation"
+          }
+        },
+        {
+          "name": "Workflow",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow",
+            "line": 21,
+            "raw": "## Workflow"
+          }
+        },
+        {
+          "name": "Requirements",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Monitoring Requirements",
+            "line": 31,
+            "raw": "## Monitoring Requirements"
+          }
+        },
+        {
+          "name": "Response Protocol",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Response Protocol",
+            "line": 250,
+            "raw": "## Response Protocol"
+          }
+        },
+        {
+          "name": "Error Handling",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow & Error Handling",
+            "line": 256,
+            "raw": "## Workflow & Error Handling"
+          }
+        },
+        {
+          "name": "Non-Negotiable",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Non-Negotiable Requirements",
+            "line": 204,
+            "raw": "## Non-Negotiable Requirements"
+          }
+        }
+      ],
+      "missingRequired": [],
+      "extraSections": [],
+      "structureIssues": [
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/core-references.md",
+          "line": 5
+        },
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/common-requirements.md",
+          "line": 206
+        },
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/response-protocol.md",
+          "line": 252
+        },
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/workflow-guide.md",
+          "line": 258
+        }
+      ],
+      "score": 80
+    },
+    {
+      "file": "../rules-nuxt-3-pro-developer/rules.md",
+      "compliant": false,
+      "sections": [
+        {
+          "name": "Goal",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Goal",
+            "line": 7,
+            "raw": "## Goal"
+          }
+        },
+        {
+          "name": "Onboarding",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Onboarding",
+            "line": 11,
+            "raw": "## Onboarding"
+          }
+        },
+        {
+          "name": "Role Definition",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Role Definition",
+            "line": 15,
+            "raw": "## Role Definition"
+          }
+        },
+        {
+          "name": "Foundation",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Foundation",
+            "line": 3,
+            "raw": "## Foundation"
+          }
+        },
+        {
+          "name": "Workflow",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow & Error Handling",
+            "line": 110,
+            "raw": "## Workflow & Error Handling"
+          }
+        },
+        {
+          "name": "Requirements",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Nuxt 3 Development Requirements",
+            "line": 21,
+            "raw": "## Nuxt 3 Development Requirements"
+          }
+        },
+        {
+          "name": "Response Protocol",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Response Protocol",
+            "line": 137,
+            "raw": "## Response Protocol"
+          }
+        },
+        {
+          "name": "Error Handling",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow & Error Handling",
+            "line": 110,
+            "raw": "## Workflow & Error Handling"
+          }
+        },
+        {
+          "name": "Non-Negotiable",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Non-Negotiable Requirements",
+            "line": 165,
+            "raw": "## Non-Negotiable Requirements"
+          }
+        }
+      ],
+      "missingRequired": [],
+      "extraSections": [],
+      "structureIssues": [
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/core-references.md",
+          "line": 5
+        },
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/response-protocol.md",
+          "line": 139
+        },
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/common-requirements.md",
+          "line": 167
+        }
+      ],
+      "score": 85
+    },
+    {
+      "file": "../rules-memory/rules.md",
+      "compliant": false,
+      "sections": [
+        {
+          "name": "Goal",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Goal",
+            "line": 8,
+            "raw": "## Goal"
+          }
+        },
+        {
+          "name": "Onboarding",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Onboarding",
+            "line": 12,
+            "raw": "## Onboarding"
+          }
+        },
+        {
+          "name": "Role Definition",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Role Definition",
+            "line": 16,
+            "raw": "## Role Definition"
+          }
+        },
+        {
+          "name": "Foundation",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Foundation",
+            "line": 4,
+            "raw": "## Foundation"
+          }
+        },
+        {
+          "name": "Workflow",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow",
+            "line": 20,
+            "raw": "## Workflow"
+          }
+        },
+        {
+          "name": "Requirements",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Memory Management Requirements",
+            "line": 37,
+            "raw": "## Memory Management Requirements"
+          }
+        },
+        {
+          "name": "Response Protocol",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Response Protocol",
+            "line": 119,
+            "raw": "## Response Protocol"
+          }
+        },
+        {
+          "name": "Error Handling",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow & Error Handling",
+            "line": 125,
+            "raw": "## Workflow & Error Handling"
+          }
+        },
+        {
+          "name": "Non-Negotiable",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Non-Negotiable Requirements",
+            "line": 95,
+            "raw": "## Non-Negotiable Requirements"
+          }
+        }
+      ],
+      "missingRequired": [],
+      "extraSections": [],
+      "structureIssues": [
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/core-references.md",
+          "line": 6
+        },
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/common-requirements.md",
+          "line": 97
+        },
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/response-protocol.md",
+          "line": 121
+        },
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/workflow-guide.md",
+          "line": 127
+        }
+      ],
+      "score": 80
+    },
+    {
+      "file": "../rules-mcp/rules.md",
+      "compliant": false,
+      "sections": [
+        {
+          "name": "Goal",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Goal",
+            "line": 7,
+            "raw": "## Goal"
+          }
+        },
+        {
+          "name": "Onboarding",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Onboarding",
+            "line": 11,
+            "raw": "## Onboarding"
+          }
+        },
+        {
+          "name": "Role Definition",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Role Definition",
+            "line": 15,
+            "raw": "## Role Definition"
+          }
+        },
+        {
+          "name": "Foundation",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Foundation",
+            "line": 3,
+            "raw": "## Foundation"
+          }
+        },
+        {
+          "name": "Workflow",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow",
+            "line": 21,
+            "raw": "## Workflow"
+          }
+        },
+        {
+          "name": "Requirements",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "MCP Integration Requirements",
+            "line": 33,
+            "raw": "## MCP Integration Requirements"
+          }
+        },
+        {
+          "name": "Response Protocol",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Response Protocol",
+            "line": 158,
+            "raw": "## Response Protocol"
+          }
+        },
+        {
+          "name": "Error Handling",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow & Error Handling",
+            "line": 119,
+            "raw": "## Workflow & Error Handling"
+          }
+        },
+        {
+          "name": "Non-Negotiable",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Non-Negotiable Requirements",
+            "line": 134,
+            "raw": "## Non-Negotiable Requirements"
+          }
+        }
+      ],
+      "missingRequired": [],
+      "extraSections": [],
+      "structureIssues": [
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/core-references.md",
+          "line": 5
+        },
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/common-requirements.md",
+          "line": 136
+        },
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/response-protocol.md",
+          "line": 160
+        },
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/workflow-guide.md",
+          "line": 166
+        }
+      ],
+      "score": 80
+    },
+    {
+      "file": "../rules-integration/rules.md",
+      "compliant": false,
+      "sections": [
+        {
+          "name": "Goal",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Goal",
+            "line": 7,
+            "raw": "## Goal"
+          }
+        },
+        {
+          "name": "Onboarding",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Onboarding",
+            "line": 11,
+            "raw": "## Onboarding"
+          }
+        },
+        {
+          "name": "Role Definition",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Role Definition",
+            "line": 15,
+            "raw": "## Role Definition"
+          }
+        },
+        {
+          "name": "Foundation",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Foundation",
+            "line": 3,
+            "raw": "## Foundation"
+          }
+        },
+        {
+          "name": "Workflow",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow",
+            "line": 24,
+            "raw": "## Workflow"
+          }
+        },
+        {
+          "name": "Requirements",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Integration-Specific Requirements",
+            "line": 36,
+            "raw": "## Integration-Specific Requirements"
+          }
+        },
+        {
+          "name": "Response Protocol",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Response Protocol",
+            "line": 164,
+            "raw": "## Response Protocol"
+          }
+        },
+        {
+          "name": "Error Handling",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow & Error Handling",
+            "line": 147,
+            "raw": "## Workflow & Error Handling"
+          }
+        },
+        {
+          "name": "Non-Negotiable",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Non-Negotiable Requirements",
+            "line": 183,
+            "raw": "## Non-Negotiable Requirements"
+          }
+        }
+      ],
+      "missingRequired": [],
+      "extraSections": [],
+      "structureIssues": [
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/core-references.md",
+          "line": 5
+        },
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/core-references.md",
+          "line": 20
+        },
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/response-protocol.md",
+          "line": 166
+        },
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/common-requirements.md",
+          "line": 185
+        }
+      ],
+      "score": 80
+    },
+    {
+      "file": "../rules-instructions-file-generator/rules.md",
+      "compliant": false,
+      "sections": [
+        {
+          "name": "Goal",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Goal",
+            "line": 7,
+            "raw": "## Goal"
+          }
+        },
+        {
+          "name": "Onboarding",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Onboarding",
+            "line": 11,
+            "raw": "## Onboarding"
+          }
+        },
+        {
+          "name": "Role Definition",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Role Definition",
+            "line": 15,
+            "raw": "## Role Definition"
+          }
+        },
+        {
+          "name": "Foundation",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Foundation",
+            "line": 3,
+            "raw": "## Foundation"
+          }
+        },
+        {
+          "name": "Workflow",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow & Error Handling",
+            "line": 110,
+            "raw": "## Workflow & Error Handling"
+          }
+        },
+        {
+          "name": "Requirements",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Instructions Generation Requirements",
+            "line": 21,
+            "raw": "## Instructions Generation Requirements"
+          }
+        },
+        {
+          "name": "Response Protocol",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Response Protocol",
+            "line": 104,
+            "raw": "## Response Protocol"
+          }
+        },
+        {
+          "name": "Error Handling",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow & Error Handling",
+            "line": 110,
+            "raw": "## Workflow & Error Handling"
+          }
+        },
+        {
+          "name": "Non-Negotiable",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Non-Negotiable Requirements",
+            "line": 73,
+            "raw": "## Non-Negotiable Requirements"
+          }
+        }
+      ],
+      "missingRequired": [],
+      "extraSections": [],
+      "structureIssues": [
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/core-references.md",
+          "line": 5
+        },
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/common-requirements.md",
+          "line": 75
+        },
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/response-protocol.md",
+          "line": 106
+        },
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/workflow-guide.md",
+          "line": 112
+        }
+      ],
+      "score": 80
+    },
+    {
+      "file": "../rules-docs-writer/rules.md",
+      "compliant": false,
+      "sections": [
+        {
+          "name": "Goal",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Goal",
+            "line": 3,
+            "raw": "## Goal"
+          }
+        },
+        {
+          "name": "Onboarding",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Onboarding",
+            "line": 9,
+            "raw": "## Onboarding"
+          }
+        },
+        {
+          "name": "Role Definition",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Role Definition",
+            "line": 17,
+            "raw": "## Role Definition"
+          }
+        },
+        {
+          "name": "Foundation",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Foundation",
+            "line": 13,
+            "raw": "## Foundation"
+          }
+        },
+        {
+          "name": "Workflow",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Documentation-Specific Workflow",
+            "line": 24,
+            "raw": "## Documentation-Specific Workflow"
+          }
+        },
+        {
+          "name": "Requirements",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Requirements",
+            "line": 34,
+            "raw": "## Requirements"
+          }
+        },
+        {
+          "name": "Response Protocol",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Response Protocol",
+            "line": 133,
+            "raw": "## Response Protocol"
+          }
+        },
+        {
+          "name": "Error Handling",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow & Error Handling",
+            "line": 139,
+            "raw": "## Workflow & Error Handling"
+          }
+        },
+        {
+          "name": "Non-Negotiable",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Non-Negotiable Requirements",
+            "line": 154,
+            "raw": "## Non-Negotiable Requirements"
+          }
+        }
+      ],
+      "missingRequired": [],
+      "extraSections": [],
+      "structureIssues": [
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/core-references.md",
+          "line": 15
+        },
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/response-protocol.md",
+          "line": 135
+        },
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/workflow-guide.md",
+          "line": 141
+        },
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/common-requirements.md",
+          "line": 156
+        }
+      ],
+      "score": 80
+    },
+    {
+      "file": "../rules-devops/rules.md",
+      "compliant": false,
+      "sections": [
+        {
+          "name": "Goal",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Goal",
+            "line": 3,
+            "raw": "## Goal"
+          }
+        },
+        {
+          "name": "Onboarding",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Onboarding",
+            "line": 9,
+            "raw": "## Onboarding"
+          }
+        },
+        {
+          "name": "Role Definition",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Role Definition",
+            "line": 17,
+            "raw": "## Role Definition"
+          }
+        },
+        {
+          "name": "Foundation",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Foundation",
+            "line": 13,
+            "raw": "## Foundation"
+          }
+        },
+        {
+          "name": "Workflow",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "DevOps-Specific Workflow",
+            "line": 24,
+            "raw": "## DevOps-Specific Workflow"
+          }
+        },
+        {
+          "name": "Requirements",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Requirements",
+            "line": 34,
+            "raw": "## Requirements"
+          }
+        },
+        {
+          "name": "Response Protocol",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Response Protocol",
+            "line": 111,
+            "raw": "## Response Protocol"
+          }
+        },
+        {
+          "name": "Error Handling",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow & Error Handling",
+            "line": 117,
+            "raw": "## Workflow & Error Handling"
+          }
+        },
+        {
+          "name": "Non-Negotiable",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Non-Negotiable Requirements",
+            "line": 105,
+            "raw": "## Non-Negotiable Requirements"
+          }
+        }
+      ],
+      "missingRequired": [],
+      "extraSections": [],
+      "structureIssues": [
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/core-references.md",
+          "line": 15
+        },
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/common-requirements.md",
+          "line": 107
+        },
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/response-protocol.md",
+          "line": 113
+        },
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/workflow-guide.md",
+          "line": 119
+        }
+      ],
+      "score": 80
+    },
+    {
+      "file": "../rules-deep-research-agent/rules.md",
+      "compliant": false,
+      "sections": [
+        {
+          "name": "Goal",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Goal",
+            "line": 17,
+            "raw": "## Goal"
+          }
+        },
+        {
+          "name": "Onboarding",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Onboarding",
+            "line": 21,
+            "raw": "## Onboarding"
+          }
+        },
+        {
+          "name": "Role Definition",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Role Definition",
+            "line": 7,
+            "raw": "## Role Definition"
+          }
+        },
+        {
+          "name": "Foundation",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Foundation",
+            "line": 3,
+            "raw": "## Foundation"
+          }
+        },
+        {
+          "name": "Workflow",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow & Error Handling",
+            "line": 86,
+            "raw": "## Workflow & Error Handling"
+          }
+        },
+        {
+          "name": "Requirements",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Deep Research Requirements",
+            "line": 32,
+            "raw": "## Deep Research Requirements"
+          }
+        },
+        {
+          "name": "Response Protocol",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Response Protocol",
+            "line": 181,
+            "raw": "## Response Protocol"
+          }
+        },
+        {
+          "name": "Error Handling",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow & Error Handling",
+            "line": 86,
+            "raw": "## Workflow & Error Handling"
+          }
+        },
+        {
+          "name": "Non-Negotiable",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Non-Negotiable Requirements",
+            "line": 150,
+            "raw": "## Non-Negotiable Requirements"
+          }
+        }
+      ],
+      "missingRequired": [],
+      "extraSections": [],
+      "structureIssues": [
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/core-references.md",
+          "line": 5
+        },
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/common-requirements.md",
+          "line": 152
+        },
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/response-protocol.md",
+          "line": 183
+        },
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/workflow-guide.md",
+          "line": 189
+        }
+      ],
+      "score": 80
+    },
+    {
+      "file": "../rules-debug/rules.md",
+      "compliant": false,
+      "sections": [
+        {
+          "name": "Goal",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Goal",
+            "line": 7,
+            "raw": "## Goal"
+          }
+        },
+        {
+          "name": "Onboarding",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Onboarding",
+            "line": 13,
+            "raw": "## Onboarding"
+          }
+        },
+        {
+          "name": "Role Definition",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Role Definition",
+            "line": 17,
+            "raw": "## Role Definition"
+          }
+        },
+        {
+          "name": "Foundation",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Foundation",
+            "line": 3,
+            "raw": "## Foundation"
+          }
+        },
+        {
+          "name": "Workflow",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow & Error Handling",
+            "line": 84,
+            "raw": "## Workflow & Error Handling"
+          }
+        },
+        {
+          "name": "Requirements",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Debug-Specific Requirements",
+            "line": 39,
+            "raw": "## Debug-Specific Requirements"
+          }
+        },
+        {
+          "name": "Response Protocol",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Response Protocol",
+            "line": 78,
+            "raw": "## Response Protocol"
+          }
+        },
+        {
+          "name": "Error Handling",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow & Error Handling",
+            "line": 84,
+            "raw": "## Workflow & Error Handling"
+          }
+        },
+        {
+          "name": "Non-Negotiable",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Non-Negotiable Requirements",
+            "line": 90,
+            "raw": "## Non-Negotiable Requirements"
+          }
+        }
+      ],
+      "missingRequired": [],
+      "extraSections": [],
+      "structureIssues": [
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/core-references.md",
+          "line": 5
+        },
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/core-references.md",
+          "line": 25
+        },
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/response-protocol.md",
+          "line": 80
+        },
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/workflow-guide.md",
+          "line": 86
+        },
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/common-requirements.md",
+          "line": 92
+        }
+      ],
+      "score": 80
+    },
+    {
+      "file": "../rules-context-condensing/rules.md",
+      "compliant": false,
+      "sections": [
+        {
+          "name": "Goal",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Goal",
+            "line": 11,
+            "raw": "## Goal"
+          }
+        },
+        {
+          "name": "Onboarding",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Onboarding",
+            "line": 3,
+            "raw": "## Onboarding"
+          }
+        },
+        {
+          "name": "Role Definition",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Role Definition",
+            "line": 17,
+            "raw": "## Role Definition"
+          }
+        },
+        {
+          "name": "Foundation",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Foundation",
+            "line": 7,
+            "raw": "## Foundation"
+          }
+        },
+        {
+          "name": "Workflow",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow & Error Handling",
+            "line": 99,
+            "raw": "## Workflow & Error Handling"
+          }
+        },
+        {
+          "name": "Requirements",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Non-Negotiable Requirements",
+            "line": 152,
+            "raw": "## Non-Negotiable Requirements"
+          }
+        },
+        {
+          "name": "Response Protocol",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Response Protocol",
+            "line": 126,
+            "raw": "## Response Protocol"
+          }
+        },
+        {
+          "name": "Error Handling",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow & Error Handling",
+            "line": 99,
+            "raw": "## Workflow & Error Handling"
+          }
+        },
+        {
+          "name": "Non-Negotiable",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Non-Negotiable Requirements",
+            "line": 152,
+            "raw": "## Non-Negotiable Requirements"
+          }
+        }
+      ],
+      "missingRequired": [],
+      "extraSections": [],
+      "structureIssues": [
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/core-references.md",
+          "line": 9
+        },
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/response-protocol.md",
+          "line": 128
+        },
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/common-requirements.md",
+          "line": 154
+        }
+      ],
+      "score": 85
+    },
+    {
+      "file": "../rules-code-style-analyzer/rules.md",
+      "compliant": false,
+      "sections": [
+        {
+          "name": "Goal",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Goal",
+            "line": 3,
+            "raw": "## Goal"
+          }
+        },
+        {
+          "name": "Onboarding",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Onboarding",
+            "line": 9,
+            "raw": "## Onboarding"
+          }
+        },
+        {
+          "name": "Role Definition",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Role Definition",
+            "line": 17,
+            "raw": "## Role Definition"
+          }
+        },
+        {
+          "name": "Foundation",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Foundation",
+            "line": 13,
+            "raw": "## Foundation"
+          }
+        },
+        {
+          "name": "Workflow",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Code Style Analysis Workflow",
+            "line": 24,
+            "raw": "## Code Style Analysis Workflow"
+          }
+        },
+        {
+          "name": "Requirements",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Requirements",
+            "line": 34,
+            "raw": "## Requirements"
+          }
+        },
+        {
+          "name": "Response Protocol",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Response Protocol",
+            "line": 108,
+            "raw": "## Response Protocol"
+          }
+        },
+        {
+          "name": "Error Handling",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow & Error Handling",
+            "line": 114,
+            "raw": "## Workflow & Error Handling"
+          }
+        },
+        {
+          "name": "Non-Negotiable",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Non-Negotiable Requirements",
+            "line": 129,
+            "raw": "## Non-Negotiable Requirements"
+          }
+        }
+      ],
+      "missingRequired": [],
+      "extraSections": [],
+      "structureIssues": [
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/core-references.md",
+          "line": 15
+        },
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/response-protocol.md",
+          "line": 110
+        },
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/workflow-guide.md",
+          "line": 116
+        },
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/common-requirements.md",
+          "line": 131
+        }
+      ],
+      "score": 80
+    },
+    {
+      "file": "../rules-code/rules.md",
+      "compliant": false,
+      "sections": [
+        {
+          "name": "Goal",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Goal",
+            "line": 3,
+            "raw": "## Goal"
+          }
+        },
+        {
+          "name": "Onboarding",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Onboarding",
+            "line": 9,
+            "raw": "## Onboarding"
+          }
+        },
+        {
+          "name": "Role Definition",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Role Definition",
+            "line": 17,
+            "raw": "## Role Definition"
+          }
+        },
+        {
+          "name": "Foundation",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Foundation",
+            "line": 13,
+            "raw": "## Foundation"
+          }
+        },
+        {
+          "name": "Workflow",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow & Error Handling",
+            "line": 79,
+            "raw": "## Workflow & Error Handling"
+          }
+        },
+        {
+          "name": "Requirements",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Code-Specific Requirements",
+            "line": 39,
+            "raw": "## Code-Specific Requirements"
+          }
+        },
+        {
+          "name": "Response Protocol",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Response Protocol",
+            "line": 73,
+            "raw": "## Response Protocol"
+          }
+        },
+        {
+          "name": "Error Handling",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow & Error Handling",
+            "line": 79,
+            "raw": "## Workflow & Error Handling"
+          }
+        },
+        {
+          "name": "Non-Negotiable",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Non-Negotiable Requirements",
+            "line": 85,
+            "raw": "## Non-Negotiable Requirements"
+          }
+        }
+      ],
+      "missingRequired": [],
+      "extraSections": [],
+      "structureIssues": [
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/core-references.md",
+          "line": 15
+        },
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/core-references.md",
+          "line": 25
+        },
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/response-protocol.md",
+          "line": 75
+        },
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/workflow-guide.md",
+          "line": 81
+        },
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/common-requirements.md",
+          "line": 87
+        }
+      ],
+      "score": 80
+    },
+    {
+      "file": "../rules-ask/rules.md",
+      "compliant": false,
+      "sections": [
+        {
+          "name": "Goal",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Goal",
+            "line": 3,
+            "raw": "## Goal"
+          }
+        },
+        {
+          "name": "Onboarding",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Onboarding",
+            "line": 9,
+            "raw": "## Onboarding"
+          }
+        },
+        {
+          "name": "Role Definition",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Role Definition",
+            "line": 17,
+            "raw": "## Role Definition"
+          }
+        },
+        {
+          "name": "Foundation",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Foundation",
+            "line": 13,
+            "raw": "## Foundation"
+          }
+        },
+        {
+          "name": "Workflow",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Ask-Specific Workflow",
+            "line": 24,
+            "raw": "## Ask-Specific Workflow"
+          }
+        },
+        {
+          "name": "Requirements",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Requirements",
+            "line": 34,
+            "raw": "## Requirements"
+          }
+        },
+        {
+          "name": "Response Protocol",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Response Protocol",
+            "line": 126,
+            "raw": "## Response Protocol"
+          }
+        },
+        {
+          "name": "Error Handling",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow & Error Handling",
+            "line": 132,
+            "raw": "## Workflow & Error Handling"
+          }
+        },
+        {
+          "name": "Non-Negotiable",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Non-Negotiable Requirements",
+            "line": 120,
+            "raw": "## Non-Negotiable Requirements"
+          }
+        }
+      ],
+      "missingRequired": [],
+      "extraSections": [],
+      "structureIssues": [
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/core-references.md",
+          "line": 15
+        },
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/common-requirements.md",
+          "line": 122
+        },
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/response-protocol.md",
+          "line": 128
+        },
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/workflow-guide.md",
+          "line": 134
+        }
+      ],
+      "score": 80
+    },
+    {
+      "file": "../rules-architect/rules.md",
+      "compliant": false,
+      "sections": [
+        {
+          "name": "Goal",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Goal",
+            "line": 3,
+            "raw": "## Goal"
+          }
+        },
+        {
+          "name": "Onboarding",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Onboarding",
+            "line": 9,
+            "raw": "## Onboarding"
+          }
+        },
+        {
+          "name": "Role Definition",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Role Definition",
+            "line": 17,
+            "raw": "## Role Definition"
+          }
+        },
+        {
+          "name": "Foundation",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Foundation",
+            "line": 13,
+            "raw": "## Foundation"
+          }
+        },
+        {
+          "name": "Workflow",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow & Error Handling",
+            "line": 127,
+            "raw": "## Workflow & Error Handling"
+          }
+        },
+        {
+          "name": "Requirements",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Architecture-Specific Requirements",
+            "line": 39,
+            "raw": "## Architecture-Specific Requirements"
+          }
+        },
+        {
+          "name": "Response Protocol",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Response Protocol",
+            "line": 121,
+            "raw": "## Response Protocol"
+          }
+        },
+        {
+          "name": "Error Handling",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow & Error Handling",
+            "line": 127,
+            "raw": "## Workflow & Error Handling"
+          }
+        },
+        {
+          "name": "Non-Negotiable",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Non-Negotiable Requirements",
+            "line": 75,
+            "raw": "## Non-Negotiable Requirements"
+          }
+        }
+      ],
+      "missingRequired": [],
+      "extraSections": [],
+      "structureIssues": [
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/core-references.md",
+          "line": 15
+        },
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/core-references.md",
+          "line": 25
+        },
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/common-requirements.md",
+          "line": 77
+        },
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/response-protocol.md",
+          "line": 123
+        },
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/workflow-guide.md",
+          "line": 129
+        }
+      ],
+      "score": 80
+    },
+    {
+      "file": "../rules-accessibility-expert/rules.md",
+      "compliant": false,
+      "sections": [
+        {
+          "name": "Goal",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Goal",
+            "line": 3,
+            "raw": "## Goal"
+          }
+        },
+        {
+          "name": "Onboarding",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Onboarding",
+            "line": 9,
+            "raw": "## Onboarding"
+          }
+        },
+        {
+          "name": "Role Definition",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Role Definition",
+            "line": 17,
+            "raw": "## Role Definition"
+          }
+        },
+        {
+          "name": "Foundation",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Foundation",
+            "line": 13,
+            "raw": "## Foundation"
+          }
+        },
+        {
+          "name": "Workflow",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Accessibility-Specific Workflow",
+            "line": 24,
+            "raw": "## Accessibility-Specific Workflow"
+          }
+        },
+        {
+          "name": "Requirements",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Requirements",
+            "line": 34,
+            "raw": "## Requirements"
+          }
+        },
+        {
+          "name": "Response Protocol",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Response Protocol",
+            "line": 104,
+            "raw": "## Response Protocol"
+          }
+        },
+        {
+          "name": "Error Handling",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow & Error Handling",
+            "line": 110,
+            "raw": "## Workflow & Error Handling"
+          }
+        },
+        {
+          "name": "Non-Negotiable",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Non-Negotiable Requirements",
+            "line": 125,
+            "raw": "## Non-Negotiable Requirements"
+          }
+        }
+      ],
+      "missingRequired": [],
+      "extraSections": [],
+      "structureIssues": [
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/core-references.md",
+          "line": 15
+        },
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/response-protocol.md",
+          "line": 106
+        },
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/workflow-guide.md",
+          "line": 112
+        },
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/common-requirements.md",
+          "line": 127
+        }
+      ],
+      "score": 80
+    }
+  ],
+  "summary": {
+    "totalFiles": 25,
+    "compliantFiles": 0,
+    "nonCompliantFiles": 25,
+    "complianceRate": "0.00"
+  }
+}

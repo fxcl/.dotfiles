@@ -1,0 +1,57 @@
+RooCode Documentation Validation Report
+==================================================
+Generated: 8/24/2025, 12:40:32 PM
+
+OVERALL RESULTS
+--------------------
+Status: FAILED
+Score: 90/100
+Total Files: 85
+Total Issues: 38
+Critical: 27
+Warnings: 3
+Info: 8
+
+CRITICAL ISSUES
+--------------------
+1. [link_integrity] Link success rate NaN% below threshold 95%
+2. [cross_reference_integrity] Reference integrity 80.3% below threshold 95%
+3. [circular_dependencies] Found 5 circular dependencies (max allowed: 0)
+
+WARNINGS
+--------------------
+1. [format_consistency] 1 files have more than 5 format issues
+2. [orphaned_documents] Found 12 orphaned documents (threshold: 3)
+
+LINKCHECKER SUMMARY
+--------------------
+totalFiles: 85
+totalLinks: 163
+brokenLinks: 8
+validLinks: 155
+successRate: 95.09
+
+TEMPLATEVALIDATOR SUMMARY
+--------------------
+totalFiles: 25
+compliantFiles: 25
+nonCompliantFiles: 0
+complianceRate: 100.00
+
+FORMATCHECKER SUMMARY
+--------------------
+totalFiles: 25
+passedFiles: 0
+failedFiles: 25
+totalIssues: 33
+issueTypes: [object Object]
+
+CROSSREFERENCEVALIDATOR SUMMARY
+--------------------
+totalFiles: 45
+totalReferences: 127
+validReferences: 102
+brokenReferences: 25
+circularDependencies: ../shared/tool-guidelines-optimized.md,../shared/error-handling-optimized.md,../shared/tool-guidelines-optimized.md,../shared/tool-guidelines.md,../shared/error-handling-optimized.md,../shared/standard-responses.md,../shared/tool-guidelines-optimized.md,../shared/standard-responses-optimized.md,../shared/tool-guidelines-optimized.md,../shared/core-references.md,../shared/workflow-patterns-optimized.md
+orphanedDocuments: [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+missingDependencies: 

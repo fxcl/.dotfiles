@@ -1,0 +1,85 @@
+{
+  "validation": {
+    "thresholds": {
+      "linkIntegrity": {
+        "minSuccessRate": 95,
+        "description": "Minimum percentage of working links required"
+      },
+      "templateCompliance": {
+        "minComplianceRate": 90,
+        "description": "Minimum percentage of documents following template structure"
+      },
+      "formatConsistency": {
+        "maxIssuesPerFile": 5,
+        "description": "Maximum format issues allowed per file"
+      },
+      "crossReferences": {
+        "minIntegrityRate": 95,
+        "maxCircularDependencies": 0,
+        "maxOrphanedDocuments": 3,
+        "description": "Cross-reference validation thresholds"
+      }
+    },
+    "rules": {
+      "requiredSections": [
+        "Goal",
+        "Onboarding",
+        "Role Definition",
+        "Foundation",
+        "Workflow",
+        "Requirements",
+        "Response Protocol",
+        "Error Handling",
+        "Non-Negotiable"
+      ],
+      "workflowTableRequired": true,
+      "optimizedReferencesRequired": true,
+      "headingHierarchyRequired": true
+    },
+    "ignorePatterns": [
+      "*.tmp",
+      "*.backup",
+      "node_modules/**",
+      ".git/**",
+      "**/.DS_Store"
+    ],
+    "reportFormats": [
+      "json",
+      "html",
+      "console"
+    ]
+  },
+  "paths": {
+    "rulesDirectory": ".roo/rules-*",
+    "sharedDirectory": ".roo/shared",
+    "validationScripts": ".roo/validation/scripts",
+    "validationReports": ".roo/validation/reports",
+    "validationConfig": ".roo/validation/config"
+  },
+  "scripts": {
+    "linkChecker": "link-checker.js",
+    "templateValidator": "template-validator.js",
+    "formatChecker": "format-checker.js",
+    "crossReferenceValidator": "cross-reference-validator.js",
+    "masterValidator": "master-validator.js"
+  },
+  "notifications": {
+    "onSuccess": {
+      "enabled": true,
+      "message": "All validation checks passed successfully!"
+    },
+    "onFailure": {
+      "enabled": true,
+      "message": "Validation checks failed. Please review the report."
+    },
+    "onWarning": {
+      "enabled": true,
+      "message": "Validation completed with warnings."
+    }
+  },
+  "performance": {
+    "maxConcurrentFiles": 10,
+    "timeoutMs": 30000,
+    "retryAttempts": 3
+  }
+}

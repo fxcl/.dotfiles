@@ -1,0 +1,1633 @@
+{
+  "timestamp": "2025-08-24T06:24:52.076Z",
+  "files": [],
+  "references": [
+    {
+      "sourcePath": "../rules-ui-ux-designer/rules.md",
+      "targetPath": "../shared/core-references.md",
+      "linkText": "Core References Hub",
+      "linkUrl": "../shared/core-references.md",
+      "line": 5,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-ui-ux-designer/rules.md",
+      "targetPath": "../shared/response-protocol.md",
+      "linkText": "Response Protocol",
+      "linkUrl": "../shared/response-protocol.md",
+      "line": 132,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-ui-ux-designer/rules.md",
+      "targetPath": "../shared/workflow-guide.md",
+      "linkText": "Workflow Guide",
+      "linkUrl": "../shared/workflow-guide.md",
+      "line": 153,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-ui-ux-designer/rules.md",
+      "targetPath": "../shared/common-requirements.md",
+      "linkText": "Common Requirements",
+      "linkUrl": "../shared/common-requirements.md",
+      "line": 168,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-tutorial/rules.md",
+      "targetPath": "../shared/core-references.md",
+      "linkText": "Core References Hub",
+      "linkUrl": "../shared/core-references.md",
+      "line": 5,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-tutorial/rules.md",
+      "targetPath": "../shared/common-requirements.md",
+      "linkText": "Common Requirements",
+      "linkUrl": "../shared/common-requirements.md",
+      "line": 298,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-tutorial/rules.md",
+      "targetPath": "../shared/workflow-guide.md",
+      "linkText": "Workflow Guide",
+      "linkUrl": "../shared/workflow-guide.md",
+      "line": 304,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-tutorial/rules.md",
+      "targetPath": "../shared/response-protocol.md",
+      "linkText": "Response Protocol",
+      "linkUrl": "../shared/response-protocol.md",
+      "line": 319,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-test/rules.md",
+      "targetPath": "../shared/core-references.md",
+      "linkText": "Core References Hub",
+      "linkUrl": "../shared/core-references.md",
+      "line": 15,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-test/rules.md",
+      "targetPath": "../shared/response-protocol.md",
+      "linkText": "Response Protocol",
+      "linkUrl": "../shared/response-protocol.md",
+      "line": 135,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-test/rules.md",
+      "targetPath": "../shared/workflow-guide.md",
+      "linkText": "Workflow Guide",
+      "linkUrl": "../shared/workflow-guide.md",
+      "line": 141,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-test/rules.md",
+      "targetPath": "../shared/common-requirements.md",
+      "linkText": "Common Requirements",
+      "linkUrl": "../shared/common-requirements.md",
+      "line": 156,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-tdd/rules.md",
+      "targetPath": "../shared/core-references.md",
+      "linkText": "Core References Hub",
+      "linkUrl": "../shared/core-references.md",
+      "line": 5,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-tdd/rules.md",
+      "targetPath": "../shared/core-references.md",
+      "linkText": "Core References Hub",
+      "linkUrl": "../shared/core-references.md",
+      "line": 25,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-tdd/rules.md",
+      "targetPath": "../shared/response-protocol.md",
+      "linkText": "Response Protocol",
+      "linkUrl": "../shared/response-protocol.md",
+      "line": 81,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-tdd/rules.md",
+      "targetPath": "../shared/workflow-guide.md",
+      "linkText": "Workflow Guide",
+      "linkUrl": "../shared/workflow-guide.md",
+      "line": 87,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-tdd/rules.md",
+      "targetPath": "../shared/common-requirements.md",
+      "linkText": "Common Requirements",
+      "linkUrl": "../shared/common-requirements.md",
+      "line": 93,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-supabase-admin/rules.md",
+      "targetPath": "../shared/core-references.md",
+      "linkText": "Core References Hub",
+      "linkUrl": "../shared/core-references.md",
+      "line": 7,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-supabase-admin/rules.md",
+      "targetPath": "../shared/response-protocol.md",
+      "linkText": "Response Protocol",
+      "linkUrl": "../shared/response-protocol.md",
+      "line": 95,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-supabase-admin/rules.md",
+      "targetPath": "../shared/common-requirements.md",
+      "linkText": "Common Requirements",
+      "linkUrl": "../shared/common-requirements.md",
+      "line": 175,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-spec-pseudocode/rules.md",
+      "targetPath": "../shared/core-references.md",
+      "linkText": "Core References Hub",
+      "linkUrl": "../shared/core-references.md",
+      "line": 5,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-spec-pseudocode/rules.md",
+      "targetPath": "../shared/response-protocol.md",
+      "linkText": "Response Protocol",
+      "linkUrl": "../shared/response-protocol.md",
+      "line": 166,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-spec-pseudocode/rules.md",
+      "targetPath": "../shared/common-requirements.md",
+      "linkText": "Common Requirements",
+      "linkUrl": "../shared/common-requirements.md",
+      "line": 172,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-sparc/rules.md",
+      "targetPath": "../shared/core-references.md",
+      "linkText": "Core References Hub",
+      "linkUrl": "../shared/core-references.md",
+      "line": 5,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-sparc/rules.md",
+      "targetPath": "../shared/response-protocol.md",
+      "linkText": "Response Protocol",
+      "linkUrl": "../shared/response-protocol.md",
+      "line": 262,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-sparc/rules.md",
+      "targetPath": "../shared/common-requirements.md",
+      "linkText": "Common Requirements",
+      "linkUrl": "../shared/common-requirements.md",
+      "line": 380,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-security-review/rules.md",
+      "targetPath": "../shared/core-references.md",
+      "linkText": "Core References Hub",
+      "linkUrl": "../shared/core-references.md",
+      "line": 15,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-security-review/rules.md",
+      "targetPath": "../shared/common-requirements.md",
+      "linkText": "Common Requirements",
+      "linkUrl": "../shared/common-requirements.md",
+      "line": 89,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-security-review/rules.md",
+      "targetPath": "../shared/response-protocol.md",
+      "linkText": "Response Protocol",
+      "linkUrl": "../shared/response-protocol.md",
+      "line": 95,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-security-review/rules.md",
+      "targetPath": "../shared/workflow-guide.md",
+      "linkText": "Workflow Guide",
+      "linkUrl": "../shared/workflow-guide.md",
+      "line": 101,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-refinement-optimization/rules.md",
+      "targetPath": "../shared/core-references.md",
+      "linkText": "Core References Hub",
+      "linkUrl": "../shared/core-references.md",
+      "line": 7,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-refinement-optimization/rules.md",
+      "targetPath": "../shared/common-requirements.md",
+      "linkText": "Common Requirements",
+      "linkUrl": "../shared/common-requirements.md",
+      "line": 338,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-refinement-optimization/rules.md",
+      "targetPath": "../shared/response-protocol.md",
+      "linkText": "Response Protocol",
+      "linkUrl": "../shared/response-protocol.md",
+      "line": 384,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-refinement-optimization/rules.md",
+      "targetPath": "../shared/workflow-guide.md",
+      "linkText": "Workflow Guide",
+      "linkUrl": "../shared/workflow-guide.md",
+      "line": 390,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-post-deployment-monitoring/rules.md",
+      "targetPath": "../shared/core-references.md",
+      "linkText": "Core References Hub",
+      "linkUrl": "../shared/core-references.md",
+      "line": 5,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-post-deployment-monitoring/rules.md",
+      "targetPath": "../shared/common-requirements.md",
+      "linkText": "Common Requirements",
+      "linkUrl": "../shared/common-requirements.md",
+      "line": 206,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-post-deployment-monitoring/rules.md",
+      "targetPath": "../shared/response-protocol.md",
+      "linkText": "Response Protocol",
+      "linkUrl": "../shared/response-protocol.md",
+      "line": 252,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-post-deployment-monitoring/rules.md",
+      "targetPath": "../shared/workflow-guide.md",
+      "linkText": "Workflow Guide",
+      "linkUrl": "../shared/workflow-guide.md",
+      "line": 258,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-nuxt-3-pro-developer/rules.md",
+      "targetPath": "../shared/core-references.md",
+      "linkText": "Core References Hub",
+      "linkUrl": "../shared/core-references.md",
+      "line": 5,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-nuxt-3-pro-developer/rules.md",
+      "targetPath": "../shared/response-protocol.md",
+      "linkText": "Response Protocol",
+      "linkUrl": "../shared/response-protocol.md",
+      "line": 139,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-nuxt-3-pro-developer/rules.md",
+      "targetPath": "../shared/common-requirements.md",
+      "linkText": "Common Requirements",
+      "linkUrl": "../shared/common-requirements.md",
+      "line": 167,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-memory/rules.md",
+      "targetPath": "../shared/core-references.md",
+      "linkText": "Core References Hub",
+      "linkUrl": "../shared/core-references.md",
+      "line": 6,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-memory/rules.md",
+      "targetPath": "../shared/common-requirements.md",
+      "linkText": "Common Requirements",
+      "linkUrl": "../shared/common-requirements.md",
+      "line": 97,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-memory/rules.md",
+      "targetPath": "../shared/response-protocol.md",
+      "linkText": "Response Protocol",
+      "linkUrl": "../shared/response-protocol.md",
+      "line": 121,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-memory/rules.md",
+      "targetPath": "../shared/workflow-guide.md",
+      "linkText": "Workflow Guide",
+      "linkUrl": "../shared/workflow-guide.md",
+      "line": 127,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-mcp/rules.md",
+      "targetPath": "../shared/core-references.md",
+      "linkText": "Core References Hub",
+      "linkUrl": "../shared/core-references.md",
+      "line": 5,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-mcp/rules.md",
+      "targetPath": "../shared/common-requirements.md",
+      "linkText": "Common Requirements",
+      "linkUrl": "../shared/common-requirements.md",
+      "line": 136,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-mcp/rules.md",
+      "targetPath": "../shared/response-protocol.md",
+      "linkText": "Response Protocol",
+      "linkUrl": "../shared/response-protocol.md",
+      "line": 160,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-mcp/rules.md",
+      "targetPath": "../shared/workflow-guide.md",
+      "linkText": "Workflow Guide",
+      "linkUrl": "../shared/workflow-guide.md",
+      "line": 166,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-integration/rules.md",
+      "targetPath": "../shared/core-references.md",
+      "linkText": "Core References Hub",
+      "linkUrl": "../shared/core-references.md",
+      "line": 5,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-integration/rules.md",
+      "targetPath": "../shared/core-references.md",
+      "linkText": "Core References Hub",
+      "linkUrl": "../shared/core-references.md",
+      "line": 20,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-integration/rules.md",
+      "targetPath": "../shared/response-protocol.md",
+      "linkText": "Response Protocol",
+      "linkUrl": "../shared/response-protocol.md",
+      "line": 166,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-integration/rules.md",
+      "targetPath": "../shared/common-requirements.md",
+      "linkText": "Common Requirements",
+      "linkUrl": "../shared/common-requirements.md",
+      "line": 185,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-instructions-file-generator/rules.md",
+      "targetPath": "../shared/core-references.md",
+      "linkText": "Core References Hub",
+      "linkUrl": "../shared/core-references.md",
+      "line": 5,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-instructions-file-generator/rules.md",
+      "targetPath": "../shared/common-requirements.md",
+      "linkText": "Common Requirements",
+      "linkUrl": "../shared/common-requirements.md",
+      "line": 75,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-instructions-file-generator/rules.md",
+      "targetPath": "../shared/response-protocol.md",
+      "linkText": "Response Protocol",
+      "linkUrl": "../shared/response-protocol.md",
+      "line": 106,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-instructions-file-generator/rules.md",
+      "targetPath": "../shared/workflow-guide.md",
+      "linkText": "Workflow Guide",
+      "linkUrl": "../shared/workflow-guide.md",
+      "line": 112,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-docs-writer/rules.md",
+      "targetPath": "../shared/core-references.md",
+      "linkText": "Core References Hub",
+      "linkUrl": "../shared/core-references.md",
+      "line": 15,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-docs-writer/rules.md",
+      "targetPath": "../shared/response-protocol.md",
+      "linkText": "Response Protocol",
+      "linkUrl": "../shared/response-protocol.md",
+      "line": 135,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-docs-writer/rules.md",
+      "targetPath": "../shared/workflow-guide.md",
+      "linkText": "Workflow Guide",
+      "linkUrl": "../shared/workflow-guide.md",
+      "line": 141,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-docs-writer/rules.md",
+      "targetPath": "../shared/common-requirements.md",
+      "linkText": "Common Requirements",
+      "linkUrl": "../shared/common-requirements.md",
+      "line": 156,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-devops/rules.md",
+      "targetPath": "../shared/core-references.md",
+      "linkText": "Core References Hub",
+      "linkUrl": "../shared/core-references.md",
+      "line": 15,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-devops/rules.md",
+      "targetPath": "../shared/common-requirements.md",
+      "linkText": "Common Requirements",
+      "linkUrl": "../shared/common-requirements.md",
+      "line": 107,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-devops/rules.md",
+      "targetPath": "../shared/response-protocol.md",
+      "linkText": "Response Protocol",
+      "linkUrl": "../shared/response-protocol.md",
+      "line": 113,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-devops/rules.md",
+      "targetPath": "../shared/workflow-guide.md",
+      "linkText": "Workflow Guide",
+      "linkUrl": "../shared/workflow-guide.md",
+      "line": 119,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-deep-research-agent/rules.md",
+      "targetPath": "../shared/core-references.md",
+      "linkText": "Core References Hub",
+      "linkUrl": "../shared/core-references.md",
+      "line": 5,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-deep-research-agent/rules.md",
+      "targetPath": "../shared/common-requirements.md",
+      "linkText": "Common Requirements",
+      "linkUrl": "../shared/common-requirements.md",
+      "line": 152,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-deep-research-agent/rules.md",
+      "targetPath": "../shared/response-protocol.md",
+      "linkText": "Response Protocol",
+      "linkUrl": "../shared/response-protocol.md",
+      "line": 183,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-deep-research-agent/rules.md",
+      "targetPath": "../shared/workflow-guide.md",
+      "linkText": "Workflow Guide",
+      "linkUrl": "../shared/workflow-guide.md",
+      "line": 189,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-debug/rules.md",
+      "targetPath": "../shared/core-references.md",
+      "linkText": "Core References Hub",
+      "linkUrl": "../shared/core-references.md",
+      "line": 5,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-debug/rules.md",
+      "targetPath": "../shared/core-references.md",
+      "linkText": "Core References Hub",
+      "linkUrl": "../shared/core-references.md",
+      "line": 25,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-debug/rules.md",
+      "targetPath": "../shared/response-protocol.md",
+      "linkText": "Response Protocol",
+      "linkUrl": "../shared/response-protocol.md",
+      "line": 80,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-debug/rules.md",
+      "targetPath": "../shared/workflow-guide.md",
+      "linkText": "Workflow Guide",
+      "linkUrl": "../shared/workflow-guide.md",
+      "line": 86,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-debug/rules.md",
+      "targetPath": "../shared/common-requirements.md",
+      "linkText": "Common Requirements",
+      "linkUrl": "../shared/common-requirements.md",
+      "line": 92,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-context-condensing/rules.md",
+      "targetPath": "../shared/core-references.md",
+      "linkText": "Core References Hub",
+      "linkUrl": "../shared/core-references.md",
+      "line": 9,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-context-condensing/rules.md",
+      "targetPath": "../shared/response-protocol.md",
+      "linkText": "Response Protocol",
+      "linkUrl": "../shared/response-protocol.md",
+      "line": 128,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-context-condensing/rules.md",
+      "targetPath": "../shared/common-requirements.md",
+      "linkText": "Common Requirements",
+      "linkUrl": "../shared/common-requirements.md",
+      "line": 154,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-code/rules.md",
+      "targetPath": "../shared/core-references.md",
+      "linkText": "Core References Hub",
+      "linkUrl": "../shared/core-references.md",
+      "line": 15,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-code/rules.md",
+      "targetPath": "../shared/core-references.md",
+      "linkText": "Core References Hub",
+      "linkUrl": "../shared/core-references.md",
+      "line": 25,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-code/rules.md",
+      "targetPath": "../shared/response-protocol.md",
+      "linkText": "Response Protocol",
+      "linkUrl": "../shared/response-protocol.md",
+      "line": 75,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-code/rules.md",
+      "targetPath": "../shared/workflow-guide.md",
+      "linkText": "Workflow Guide",
+      "linkUrl": "../shared/workflow-guide.md",
+      "line": 81,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-code/rules.md",
+      "targetPath": "../shared/common-requirements.md",
+      "linkText": "Common Requirements",
+      "linkUrl": "../shared/common-requirements.md",
+      "line": 87,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-ask/rules.md",
+      "targetPath": "../shared/core-references.md",
+      "linkText": "Core References Hub",
+      "linkUrl": "../shared/core-references.md",
+      "line": 15,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-ask/rules.md",
+      "targetPath": "../shared/common-requirements.md",
+      "linkText": "Common Requirements",
+      "linkUrl": "../shared/common-requirements.md",
+      "line": 122,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-ask/rules.md",
+      "targetPath": "../shared/response-protocol.md",
+      "linkText": "Response Protocol",
+      "linkUrl": "../shared/response-protocol.md",
+      "line": 128,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-ask/rules.md",
+      "targetPath": "../shared/workflow-guide.md",
+      "linkText": "Workflow Guide",
+      "linkUrl": "../shared/workflow-guide.md",
+      "line": 134,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-code-style-analyzer/rules.md",
+      "targetPath": "../shared/core-references.md",
+      "linkText": "Core References Hub",
+      "linkUrl": "../shared/core-references.md",
+      "line": 15,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-code-style-analyzer/rules.md",
+      "targetPath": "../shared/response-protocol.md",
+      "linkText": "Response Protocol",
+      "linkUrl": "../shared/response-protocol.md",
+      "line": 110,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-code-style-analyzer/rules.md",
+      "targetPath": "../shared/workflow-guide.md",
+      "linkText": "Workflow Guide",
+      "linkUrl": "../shared/workflow-guide.md",
+      "line": 116,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-code-style-analyzer/rules.md",
+      "targetPath": "../shared/common-requirements.md",
+      "linkText": "Common Requirements",
+      "linkUrl": "../shared/common-requirements.md",
+      "line": 131,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-architect/rules.md",
+      "targetPath": "../shared/core-references.md",
+      "linkText": "Core References Hub",
+      "linkUrl": "../shared/core-references.md",
+      "line": 15,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-architect/rules.md",
+      "targetPath": "../shared/core-references.md",
+      "linkText": "Core References Hub",
+      "linkUrl": "../shared/core-references.md",
+      "line": 25,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-architect/rules.md",
+      "targetPath": "../shared/common-requirements.md",
+      "linkText": "Common Requirements",
+      "linkUrl": "../shared/common-requirements.md",
+      "line": 77,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-architect/rules.md",
+      "targetPath": "../shared/response-protocol.md",
+      "linkText": "Response Protocol",
+      "linkUrl": "../shared/response-protocol.md",
+      "line": 123,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-architect/rules.md",
+      "targetPath": "../shared/workflow-guide.md",
+      "linkText": "Workflow Guide",
+      "linkUrl": "../shared/workflow-guide.md",
+      "line": 129,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-accessibility-expert/rules.md",
+      "targetPath": "../shared/core-references.md",
+      "linkText": "Core References Hub",
+      "linkUrl": "../shared/core-references.md",
+      "line": 15,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-accessibility-expert/rules.md",
+      "targetPath": "../shared/response-protocol.md",
+      "linkText": "Response Protocol",
+      "linkUrl": "../shared/response-protocol.md",
+      "line": 106,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-accessibility-expert/rules.md",
+      "targetPath": "../shared/workflow-guide.md",
+      "linkText": "Workflow Guide",
+      "linkUrl": "../shared/workflow-guide.md",
+      "line": 112,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../rules-accessibility-expert/rules.md",
+      "targetPath": "../shared/common-requirements.md",
+      "linkText": "Common Requirements",
+      "linkUrl": "../shared/common-requirements.md",
+      "line": 127,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../shared/workflow-patterns.md",
+      "targetPath": "../shared/core-principles.md",
+      "linkText": "Core Principles",
+      "linkUrl": "./core-principles.md",
+      "line": 302,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../shared/workflow-patterns.md",
+      "targetPath": "../shared/tool-guidelines.md",
+      "linkText": "Tool Guidelines",
+      "linkUrl": "./tool-guidelines.md",
+      "line": 303,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../shared/workflow-patterns.md",
+      "targetPath": "../shared/response-protocol.md",
+      "linkText": "Response Protocol",
+      "linkUrl": "./response-protocol.md",
+      "line": 304,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../shared/workflow-patterns.md",
+      "targetPath": "../shared/common-requirements.md",
+      "linkText": "Common Requirements",
+      "linkUrl": "./common-requirements.md",
+      "line": 305,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../shared/workflow-patterns.md",
+      "targetPath": "../shared/workflow-guide.md",
+      "linkText": "Workflow Guide",
+      "linkUrl": "./workflow-guide.md",
+      "line": 306,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../shared/tool-guidelines.md",
+      "targetPath": "../shared/core-principles.md",
+      "linkText": "Core Principles",
+      "linkUrl": "./core-principles.md",
+      "line": 151,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../shared/tool-guidelines.md",
+      "targetPath": "../shared/response-protocol.md",
+      "linkText": "Response Protocol",
+      "linkUrl": "./response-protocol.md",
+      "line": 152,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../shared/tool-guidelines.md",
+      "targetPath": "../shared/common-requirements.md",
+      "linkText": "Common Requirements",
+      "linkUrl": "./common-requirements.md",
+      "line": 153,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../shared/standard-responses.md",
+      "targetPath": "../shared/response-protocol.md",
+      "linkText": "Response Protocol",
+      "linkUrl": "./response-protocol.md",
+      "line": 165,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../shared/standard-responses.md",
+      "targetPath": "../shared/core-principles.md",
+      "linkText": "Core Principles",
+      "linkUrl": "./core-principles.md",
+      "line": 166,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../shared/standard-responses.md",
+      "targetPath": "../shared/common-requirements.md",
+      "linkText": "Common Requirements",
+      "linkUrl": "./common-requirements.md",
+      "line": 167,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../shared/standard-responses.md",
+      "targetPath": "../shared/workflow-guide.md",
+      "linkText": "Workflow Guide",
+      "linkUrl": "./workflow-guide.md",
+      "line": 168,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../shared/error-handling.md",
+      "targetPath": "../shared/core-principles.md",
+      "linkText": "Core Principles",
+      "linkUrl": "./core-principles.md",
+      "line": 338,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../shared/error-handling.md",
+      "targetPath": "../shared/response-protocol.md",
+      "linkText": "Response Protocol",
+      "linkUrl": "./response-protocol.md",
+      "line": 339,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../shared/error-handling.md",
+      "targetPath": "../shared/workflow-patterns.md",
+      "linkText": "Workflow Patterns",
+      "linkUrl": "./workflow-patterns.md",
+      "line": 340,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../shared/error-handling.md",
+      "targetPath": "../shared/standard-responses.md",
+      "linkText": "Standard Responses",
+      "linkUrl": "./standard-responses.md",
+      "line": 341,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../shared/core-references.md",
+      "targetPath": "../shared/workflow-guide.md",
+      "linkText": "`workflow-guide.md`",
+      "linkUrl": "./workflow-guide.md",
+      "line": 9,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../shared/core-references.md",
+      "targetPath": "../shared/response-protocol.md",
+      "linkText": "`response-protocol.md`",
+      "linkUrl": "./response-protocol.md",
+      "line": 10,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../shared/core-references.md",
+      "targetPath": "../shared/common-requirements.md",
+      "linkText": "`common-requirements.md`",
+      "linkUrl": "./common-requirements.md",
+      "line": 11,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../shared/core-references.md",
+      "targetPath": "../shared/workflow-patterns.md",
+      "linkText": "`workflow-patterns.md`",
+      "linkUrl": "./workflow-patterns.md",
+      "line": 12,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../shared/core-references.md",
+      "targetPath": "../shared/tools-common.md",
+      "linkText": "`tools-common.md`",
+      "linkUrl": "./tools-common.md",
+      "line": 13,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../shared/core-references.md",
+      "targetPath": "../shared/tool-guidelines.md",
+      "linkText": "`tool-guidelines.md`",
+      "linkUrl": "./tool-guidelines.md",
+      "line": 14,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../shared/core-references.md",
+      "targetPath": "../shared/standard-responses.md",
+      "linkText": "`standard-responses.md`",
+      "linkUrl": "./standard-responses.md",
+      "line": 15,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    },
+    {
+      "sourcePath": "../shared/core-references.md",
+      "targetPath": "../shared/error-handling.md",
+      "linkText": "`error-handling.md`",
+      "linkUrl": "./error-handling.md",
+      "line": 16,
+      "type": "markdown_link",
+      "valid": true,
+      "issue": null
+    }
+  ],
+  "issues": [],
+  "summary": {
+    "totalFiles": 35,
+    "totalReferences": 123,
+    "validReferences": 123,
+    "brokenReferences": 0,
+    "circularDependencies": [],
+    "orphanedDocuments": [],
+    "missingDependencies": []
+  },
+  "documentMap": [
+    {
+      "path": "../rules-ui-ux-designer/rules.md",
+      "type": "rules",
+      "metrics": {
+        "outgoingReferences": 4,
+        "incomingReferences": 0,
+        "dependencyRatio": 0
+      },
+      "referencesCount": 4,
+      "referencedByCount": 0
+    },
+    {
+      "path": "../rules-tutorial/rules.md",
+      "type": "rules",
+      "metrics": {
+        "outgoingReferences": 4,
+        "incomingReferences": 0,
+        "dependencyRatio": 0
+      },
+      "referencesCount": 4,
+      "referencedByCount": 0
+    },
+    {
+      "path": "../rules-test/rules.md",
+      "type": "rules",
+      "metrics": {
+        "outgoingReferences": 4,
+        "incomingReferences": 0,
+        "dependencyRatio": 0
+      },
+      "referencesCount": 4,
+      "referencedByCount": 0
+    },
+    {
+      "path": "../rules-tdd/rules.md",
+      "type": "rules",
+      "metrics": {
+        "outgoingReferences": 5,
+        "incomingReferences": 0,
+        "dependencyRatio": 0
+      },
+      "referencesCount": 5,
+      "referencedByCount": 0
+    },
+    {
+      "path": "../rules-supabase-admin/rules.md",
+      "type": "rules",
+      "metrics": {
+        "outgoingReferences": 3,
+        "incomingReferences": 0,
+        "dependencyRatio": 0
+      },
+      "referencesCount": 3,
+      "referencedByCount": 0
+    },
+    {
+      "path": "../rules-spec-pseudocode/rules.md",
+      "type": "rules",
+      "metrics": {
+        "outgoingReferences": 3,
+        "incomingReferences": 0,
+        "dependencyRatio": 0
+      },
+      "referencesCount": 3,
+      "referencedByCount": 0
+    },
+    {
+      "path": "../rules-sparc/rules.md",
+      "type": "rules",
+      "metrics": {
+        "outgoingReferences": 3,
+        "incomingReferences": 0,
+        "dependencyRatio": 0
+      },
+      "referencesCount": 3,
+      "referencedByCount": 0
+    },
+    {
+      "path": "../rules-security-review/rules.md",
+      "type": "rules",
+      "metrics": {
+        "outgoingReferences": 4,
+        "incomingReferences": 0,
+        "dependencyRatio": 0
+      },
+      "referencesCount": 4,
+      "referencedByCount": 0
+    },
+    {
+      "path": "../rules-refinement-optimization/rules.md",
+      "type": "rules",
+      "metrics": {
+        "outgoingReferences": 4,
+        "incomingReferences": 0,
+        "dependencyRatio": 0
+      },
+      "referencesCount": 4,
+      "referencedByCount": 0
+    },
+    {
+      "path": "../rules-post-deployment-monitoring/rules.md",
+      "type": "rules",
+      "metrics": {
+        "outgoingReferences": 4,
+        "incomingReferences": 0,
+        "dependencyRatio": 0
+      },
+      "referencesCount": 4,
+      "referencedByCount": 0
+    },
+    {
+      "path": "../rules-nuxt-3-pro-developer/rules.md",
+      "type": "rules",
+      "metrics": {
+        "outgoingReferences": 3,
+        "incomingReferences": 0,
+        "dependencyRatio": 0
+      },
+      "referencesCount": 3,
+      "referencedByCount": 0
+    },
+    {
+      "path": "../rules-memory/rules.md",
+      "type": "rules",
+      "metrics": {
+        "outgoingReferences": 4,
+        "incomingReferences": 0,
+        "dependencyRatio": 0
+      },
+      "referencesCount": 4,
+      "referencedByCount": 0
+    },
+    {
+      "path": "../rules-mcp/rules.md",
+      "type": "rules",
+      "metrics": {
+        "outgoingReferences": 4,
+        "incomingReferences": 0,
+        "dependencyRatio": 0
+      },
+      "referencesCount": 4,
+      "referencedByCount": 0
+    },
+    {
+      "path": "../rules-integration/rules.md",
+      "type": "rules",
+      "metrics": {
+        "outgoingReferences": 4,
+        "incomingReferences": 0,
+        "dependencyRatio": 0
+      },
+      "referencesCount": 4,
+      "referencedByCount": 0
+    },
+    {
+      "path": "../rules-instructions-file-generator/rules.md",
+      "type": "rules",
+      "metrics": {
+        "outgoingReferences": 4,
+        "incomingReferences": 0,
+        "dependencyRatio": 0
+      },
+      "referencesCount": 4,
+      "referencedByCount": 0
+    },
+    {
+      "path": "../rules-docs-writer/rules.md",
+      "type": "rules",
+      "metrics": {
+        "outgoingReferences": 4,
+        "incomingReferences": 0,
+        "dependencyRatio": 0
+      },
+      "referencesCount": 4,
+      "referencedByCount": 0
+    },
+    {
+      "path": "../rules-devops/rules.md",
+      "type": "rules",
+      "metrics": {
+        "outgoingReferences": 4,
+        "incomingReferences": 0,
+        "dependencyRatio": 0
+      },
+      "referencesCount": 4,
+      "referencedByCount": 0
+    },
+    {
+      "path": "../rules-deep-research-agent/rules.md",
+      "type": "rules",
+      "metrics": {
+        "outgoingReferences": 4,
+        "incomingReferences": 0,
+        "dependencyRatio": 0
+      },
+      "referencesCount": 4,
+      "referencedByCount": 0
+    },
+    {
+      "path": "../rules-debug/rules.md",
+      "type": "rules",
+      "metrics": {
+        "outgoingReferences": 5,
+        "incomingReferences": 0,
+        "dependencyRatio": 0
+      },
+      "referencesCount": 5,
+      "referencedByCount": 0
+    },
+    {
+      "path": "../rules-context-condensing/rules.md",
+      "type": "rules",
+      "metrics": {
+        "outgoingReferences": 3,
+        "incomingReferences": 0,
+        "dependencyRatio": 0
+      },
+      "referencesCount": 3,
+      "referencedByCount": 0
+    },
+    {
+      "path": "../rules-code/rules.md",
+      "type": "rules",
+      "metrics": {
+        "outgoingReferences": 5,
+        "incomingReferences": 0,
+        "dependencyRatio": 0
+      },
+      "referencesCount": 5,
+      "referencedByCount": 0
+    },
+    {
+      "path": "../rules-ask/rules.md",
+      "type": "rules",
+      "metrics": {
+        "outgoingReferences": 4,
+        "incomingReferences": 0,
+        "dependencyRatio": 0
+      },
+      "referencesCount": 4,
+      "referencedByCount": 0
+    },
+    {
+      "path": "../rules-code-style-analyzer/rules.md",
+      "type": "rules",
+      "metrics": {
+        "outgoingReferences": 4,
+        "incomingReferences": 0,
+        "dependencyRatio": 0
+      },
+      "referencesCount": 4,
+      "referencedByCount": 0
+    },
+    {
+      "path": "../rules-architect/rules.md",
+      "type": "rules",
+      "metrics": {
+        "outgoingReferences": 5,
+        "incomingReferences": 0,
+        "dependencyRatio": 0
+      },
+      "referencesCount": 5,
+      "referencedByCount": 0
+    },
+    {
+      "path": "../rules-accessibility-expert/rules.md",
+      "type": "rules",
+      "metrics": {
+        "outgoingReferences": 4,
+        "incomingReferences": 0,
+        "dependencyRatio": 0
+      },
+      "referencesCount": 4,
+      "referencedByCount": 0
+    },
+    {
+      "path": "../shared/workflow-patterns.md",
+      "type": "shared",
+      "metrics": {
+        "outgoingReferences": 5,
+        "incomingReferences": 2,
+        "dependencyRatio": 0.4
+      },
+      "referencesCount": 5,
+      "referencedByCount": 2
+    },
+    {
+      "path": "../shared/workflow-guide.md",
+      "type": "shared",
+      "metrics": {
+        "outgoingReferences": 0,
+        "incomingReferences": 22,
+        "dependencyRatio": 0
+      },
+      "referencesCount": 0,
+      "referencedByCount": 22
+    },
+    {
+      "path": "../shared/tools-common.md",
+      "type": "shared",
+      "metrics": {
+        "outgoingReferences": 0,
+        "incomingReferences": 1,
+        "dependencyRatio": 0
+      },
+      "referencesCount": 0,
+      "referencedByCount": 1
+    },
+    {
+      "path": "../shared/tool-guidelines.md",
+      "type": "shared",
+      "metrics": {
+        "outgoingReferences": 3,
+        "incomingReferences": 2,
+        "dependencyRatio": 0.6666666666666666
+      },
+      "referencesCount": 3,
+      "referencedByCount": 2
+    },
+    {
+      "path": "../shared/standard-responses.md",
+      "type": "shared",
+      "metrics": {
+        "outgoingReferences": 4,
+        "incomingReferences": 2,
+        "dependencyRatio": 0.5
+      },
+      "referencesCount": 4,
+      "referencedByCount": 2
+    },
+    {
+      "path": "../shared/response-protocol.md",
+      "type": "shared",
+      "metrics": {
+        "outgoingReferences": 0,
+        "incomingReferences": 30,
+        "dependencyRatio": 0
+      },
+      "referencesCount": 0,
+      "referencedByCount": 30
+    },
+    {
+      "path": "../shared/error-handling.md",
+      "type": "shared",
+      "metrics": {
+        "outgoingReferences": 4,
+        "incomingReferences": 1,
+        "dependencyRatio": 0.25
+      },
+      "referencesCount": 4,
+      "referencedByCount": 1
+    },
+    {
+      "path": "../shared/core-references.md",
+      "type": "shared",
+      "metrics": {
+        "outgoingReferences": 8,
+        "incomingReferences": 30,
+        "dependencyRatio": 3.75
+      },
+      "referencesCount": 8,
+      "referencedByCount": 30
+    },
+    {
+      "path": "../shared/core-principles.md",
+      "type": "shared",
+      "metrics": {
+        "outgoingReferences": 0,
+        "incomingReferences": 4,
+        "dependencyRatio": 0
+      },
+      "referencesCount": 0,
+      "referencedByCount": 4
+    },
+    {
+      "path": "../shared/common-requirements.md",
+      "type": "shared",
+      "metrics": {
+        "outgoingReferences": 0,
+        "incomingReferences": 29,
+        "dependencyRatio": 0
+      },
+      "referencesCount": 0,
+      "referencedByCount": 29
+    }
+  ]
+}

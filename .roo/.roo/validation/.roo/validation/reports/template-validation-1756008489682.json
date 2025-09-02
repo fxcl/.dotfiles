@@ -1,0 +1,2571 @@
+{
+  "timestamp": "2025-08-24T04:08:09.682Z",
+  "files": [
+    {
+      "file": "../rules-ui-ux-designer/rules.md",
+      "compliant": true,
+      "sections": [
+        {
+          "name": "Goal",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Goal",
+            "line": 7,
+            "raw": "## Goal"
+          }
+        },
+        {
+          "name": "Onboarding",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Onboarding",
+            "line": 11,
+            "raw": "## Onboarding"
+          }
+        },
+        {
+          "name": "Role Definition",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Role Definition",
+            "line": 15,
+            "raw": "## Role Definition"
+          }
+        },
+        {
+          "name": "Foundation",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Foundation",
+            "line": 3,
+            "raw": "## Foundation"
+          }
+        },
+        {
+          "name": "Workflow",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow",
+            "line": 21,
+            "raw": "## Workflow"
+          }
+        },
+        {
+          "name": "Requirements",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "UI/UX Requirements",
+            "line": 31,
+            "raw": "## UI/UX Requirements"
+          }
+        },
+        {
+          "name": "Response Protocol",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Response Protocol",
+            "line": 130,
+            "raw": "## Response Protocol"
+          }
+        },
+        {
+          "name": "Error Handling",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow & Error Handling",
+            "line": 151,
+            "raw": "## Workflow & Error Handling"
+          }
+        },
+        {
+          "name": "Non-Negotiable",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Non-Negotiable Requirements",
+            "line": 166,
+            "raw": "## Non-Negotiable Requirements"
+          }
+        }
+      ],
+      "missingRequired": [],
+      "extraSections": [],
+      "structureIssues": [],
+      "score": 100
+    },
+    {
+      "file": "../rules-tutorial/rules.md",
+      "compliant": false,
+      "sections": [
+        {
+          "name": "Goal",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Goal",
+            "line": 7,
+            "raw": "## Goal"
+          }
+        },
+        {
+          "name": "Onboarding",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Onboarding",
+            "line": 11,
+            "raw": "## Onboarding"
+          }
+        },
+        {
+          "name": "Role Definition",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Role Definition",
+            "line": 15,
+            "raw": "## Role Definition"
+          }
+        },
+        {
+          "name": "Foundation",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Foundation",
+            "line": 3,
+            "raw": "## Foundation"
+          }
+        },
+        {
+          "name": "Workflow",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "2. Educational Workflow",
+            "line": 21,
+            "raw": "## 2. Educational Workflow"
+          }
+        },
+        {
+          "name": "Requirements",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Tutorial Requirements",
+            "line": 108,
+            "raw": "## Tutorial Requirements"
+          }
+        },
+        {
+          "name": "Response Protocol",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Response Protocol",
+            "line": 311,
+            "raw": "## Response Protocol"
+          }
+        },
+        {
+          "name": "Error Handling",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow & Error Handling",
+            "line": 296,
+            "raw": "## Workflow & Error Handling"
+          }
+        },
+        {
+          "name": "Non-Negotiable",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Non-Negotiable Requirements",
+            "line": 317,
+            "raw": "## Non-Negotiable Requirements"
+          }
+        }
+      ],
+      "missingRequired": [],
+      "extraSections": [],
+      "structureIssues": [
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/workflow-guide.md",
+          "line": 298
+        }
+      ],
+      "score": 95
+    },
+    {
+      "file": "../rules-test/rules.md",
+      "compliant": false,
+      "sections": [
+        {
+          "name": "Goal",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Goal",
+            "line": 3,
+            "raw": "## Goal"
+          }
+        },
+        {
+          "name": "Onboarding",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Onboarding",
+            "line": 9,
+            "raw": "## Onboarding"
+          }
+        },
+        {
+          "name": "Role Definition",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Role Definition",
+            "line": 17,
+            "raw": "## Role Definition"
+          }
+        },
+        {
+          "name": "Foundation",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Foundation",
+            "line": 13,
+            "raw": "## Foundation"
+          }
+        },
+        {
+          "name": "Workflow",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Test-Specific Workflow",
+            "line": 25,
+            "raw": "## Test-Specific Workflow"
+          }
+        },
+        {
+          "name": "Requirements",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Requirements",
+            "line": 35,
+            "raw": "## Requirements"
+          }
+        },
+        {
+          "name": "Response Protocol",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Response Protocol",
+            "line": 133,
+            "raw": "## Response Protocol"
+          }
+        },
+        {
+          "name": "Error Handling",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow & Error Handling",
+            "line": 139,
+            "raw": "## Workflow & Error Handling"
+          }
+        },
+        {
+          "name": "Non-Negotiable",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Non-Negotiable Requirements",
+            "line": 154,
+            "raw": "## Non-Negotiable Requirements"
+          }
+        }
+      ],
+      "missingRequired": [],
+      "extraSections": [],
+      "structureIssues": [
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/workflow-guide.md",
+          "line": 141
+        }
+      ],
+      "score": 95
+    },
+    {
+      "file": "../rules-tdd/rules.md",
+      "compliant": false,
+      "sections": [
+        {
+          "name": "Goal",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Goal",
+            "line": 7,
+            "raw": "## Goal"
+          }
+        },
+        {
+          "name": "Onboarding",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Onboarding",
+            "line": 13,
+            "raw": "## Onboarding"
+          }
+        },
+        {
+          "name": "Role Definition",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Role Definition",
+            "line": 17,
+            "raw": "## Role Definition"
+          }
+        },
+        {
+          "name": "Foundation",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Foundation",
+            "line": 3,
+            "raw": "## Foundation"
+          }
+        },
+        {
+          "name": "Workflow",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow & Error Handling",
+            "line": 85,
+            "raw": "## Workflow & Error Handling"
+          }
+        },
+        {
+          "name": "Requirements",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "TDD-Specific Requirements",
+            "line": 39,
+            "raw": "## TDD-Specific Requirements"
+          }
+        },
+        {
+          "name": "Response Protocol",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Response Protocol",
+            "line": 79,
+            "raw": "## Response Protocol"
+          }
+        },
+        {
+          "name": "Error Handling",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow & Error Handling",
+            "line": 85,
+            "raw": "## Workflow & Error Handling"
+          }
+        },
+        {
+          "name": "Non-Negotiable",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Non-Negotiable Requirements",
+            "line": 91,
+            "raw": "## Non-Negotiable Requirements"
+          }
+        }
+      ],
+      "missingRequired": [],
+      "extraSections": [],
+      "structureIssues": [
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/workflow-guide.md",
+          "line": 87
+        }
+      ],
+      "score": 95
+    },
+    {
+      "file": "../rules-spec-pseudocode/rules.md",
+      "compliant": false,
+      "sections": [
+        {
+          "name": "Goal",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Goal",
+            "line": 7,
+            "raw": "## Goal"
+          }
+        },
+        {
+          "name": "Onboarding",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Onboarding",
+            "line": 11,
+            "raw": "## Onboarding"
+          }
+        },
+        {
+          "name": "Role Definition",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Role Definition",
+            "line": 15,
+            "raw": "## Role Definition"
+          }
+        },
+        {
+          "name": "Foundation",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Foundation",
+            "line": 3,
+            "raw": "## Foundation"
+          }
+        },
+        {
+          "name": "Workflow",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow",
+            "line": 21,
+            "raw": "## Workflow"
+          }
+        },
+        {
+          "name": "Requirements",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Spec-Pseudocode Requirements",
+            "line": 31,
+            "raw": "## Spec-Pseudocode Requirements"
+          }
+        },
+        {
+          "name": "Response Protocol",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Response Protocol",
+            "line": 164,
+            "raw": "## Response Protocol"
+          }
+        },
+        {
+          "name": "Error Handling",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow & Error Handling",
+            "line": 149,
+            "raw": "## Workflow & Error Handling"
+          }
+        },
+        {
+          "name": "Non-Negotiable",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Non-Negotiable Requirements",
+            "line": 170,
+            "raw": "## Non-Negotiable Requirements"
+          }
+        }
+      ],
+      "missingRequired": [],
+      "extraSections": [],
+      "structureIssues": [
+        {
+          "type": "workflow_header",
+          "message": "Workflow table should have \"Step\" and \"Action\" columns",
+          "line": 21
+        }
+      ],
+      "score": 95
+    },
+    {
+      "file": "../rules-supabase-admin/rules.md",
+      "compliant": true,
+      "sections": [
+        {
+          "name": "Goal",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Goal",
+            "line": 9,
+            "raw": "## Goal"
+          }
+        },
+        {
+          "name": "Onboarding",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Onboarding",
+            "line": 13,
+            "raw": "## Onboarding"
+          }
+        },
+        {
+          "name": "Role Definition",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Role Definition",
+            "line": 17,
+            "raw": "## Role Definition"
+          }
+        },
+        {
+          "name": "Foundation",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Foundation",
+            "line": 3,
+            "raw": "## Foundation"
+          }
+        },
+        {
+          "name": "Workflow",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "SPARC Workflow",
+            "line": 21,
+            "raw": "## SPARC Workflow"
+          }
+        },
+        {
+          "name": "Requirements",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Supabase Admin Requirements",
+            "line": 30,
+            "raw": "## Supabase Admin Requirements"
+          }
+        },
+        {
+          "name": "Response Protocol",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Response Protocol",
+            "line": 93,
+            "raw": "## Response Protocol"
+          }
+        },
+        {
+          "name": "Error Handling",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow & Error Handling",
+            "line": 78,
+            "raw": "## Workflow & Error Handling"
+          }
+        },
+        {
+          "name": "Non-Negotiable",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Non-Negotiable Requirements",
+            "line": 173,
+            "raw": "## Non-Negotiable Requirements"
+          }
+        }
+      ],
+      "missingRequired": [],
+      "extraSections": [],
+      "structureIssues": [],
+      "score": 100
+    },
+    {
+      "file": "../rules-security-review/rules.md",
+      "compliant": false,
+      "sections": [
+        {
+          "name": "Goal",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Goal",
+            "line": 3,
+            "raw": "## Goal"
+          }
+        },
+        {
+          "name": "Onboarding",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Onboarding",
+            "line": 9,
+            "raw": "## Onboarding"
+          }
+        },
+        {
+          "name": "Role Definition",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Role Definition",
+            "line": 17,
+            "raw": "## Role Definition"
+          }
+        },
+        {
+          "name": "Foundation",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Foundation",
+            "line": 13,
+            "raw": "## Foundation"
+          }
+        },
+        {
+          "name": "Workflow",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Security-Specific Workflow",
+            "line": 24,
+            "raw": "## Security-Specific Workflow"
+          }
+        },
+        {
+          "name": "Requirements",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Requirements",
+            "line": 34,
+            "raw": "## Requirements"
+          }
+        },
+        {
+          "name": "Response Protocol",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Response Protocol",
+            "line": 87,
+            "raw": "## Response Protocol"
+          }
+        },
+        {
+          "name": "Error Handling",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow & Error Handling",
+            "line": 93,
+            "raw": "## Workflow & Error Handling"
+          }
+        },
+        {
+          "name": "Non-Negotiable",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Non-Negotiable Requirements",
+            "line": 108,
+            "raw": "## Non-Negotiable Requirements"
+          }
+        }
+      ],
+      "missingRequired": [],
+      "extraSections": [],
+      "structureIssues": [
+        {
+          "type": "reference_format",
+          "message": "Reference should use optimized version: ../shared/workflow-guide.md",
+          "line": 95
+        }
+      ],
+      "score": 95
+    },
+    {
+      "file": "../rules-sparc/rules.md",
+      "compliant": true,
+      "sections": [
+        {
+          "name": "Goal",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Goal",
+            "line": 7,
+            "raw": "## Goal"
+          }
+        },
+        {
+          "name": "Onboarding",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Onboarding",
+            "line": 11,
+            "raw": "## Onboarding"
+          }
+        },
+        {
+          "name": "Role Definition",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Role Definition",
+            "line": 15,
+            "raw": "## Role Definition"
+          }
+        },
+        {
+          "name": "Foundation",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Foundation",
+            "line": 3,
+            "raw": "## Foundation"
+          }
+        },
+        {
+          "name": "Workflow",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow",
+            "line": 21,
+            "raw": "## Workflow"
+          }
+        },
+        {
+          "name": "Requirements",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "SPARC-Specific Requirements",
+            "line": 33,
+            "raw": "## SPARC-Specific Requirements"
+          }
+        },
+        {
+          "name": "Response Protocol",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Response Protocol",
+            "line": 260,
+            "raw": "## Response Protocol"
+          }
+        },
+        {
+          "name": "Error Handling",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow & Error Handling",
+            "line": 243,
+            "raw": "## Workflow & Error Handling"
+          }
+        },
+        {
+          "name": "Non-Negotiable",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Non-Negotiable Requirements",
+            "line": 378,
+            "raw": "## Non-Negotiable Requirements"
+          }
+        }
+      ],
+      "missingRequired": [],
+      "extraSections": [],
+      "structureIssues": [],
+      "score": 100
+    },
+    {
+      "file": "../rules-post-deployment-monitoring/rules.md",
+      "compliant": false,
+      "sections": [
+        {
+          "name": "Goal",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Goal",
+            "line": 9,
+            "raw": "## Goal"
+          }
+        },
+        {
+          "name": "Onboarding",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Onboarding",
+            "line": 13,
+            "raw": "## Onboarding"
+          }
+        },
+        {
+          "name": "Role Definition",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Role Definition",
+            "line": 17,
+            "raw": "## Role Definition"
+          }
+        },
+        {
+          "name": "Foundation",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Foundation",
+            "line": 3,
+            "raw": "## Foundation"
+          }
+        },
+        {
+          "name": "Workflow",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow",
+            "line": 23,
+            "raw": "## Workflow"
+          }
+        },
+        {
+          "name": "Requirements",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Monitoring Requirements",
+            "line": 33,
+            "raw": "## Monitoring Requirements"
+          }
+        },
+        {
+          "name": "Response Protocol",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Response Protocol",
+            "line": 223,
+            "raw": "## Response Protocol"
+          }
+        },
+        {
+          "name": "Error Handling",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow & Error Handling",
+            "line": 206,
+            "raw": "## Workflow & Error Handling"
+          }
+        },
+        {
+          "name": "Non-Negotiable",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Non-Negotiable Requirements",
+            "line": 229,
+            "raw": "## Non-Negotiable Requirements"
+          }
+        }
+      ],
+      "missingRequired": [],
+      "extraSections": [],
+      "structureIssues": [
+        {
+          "type": "workflow_header",
+          "message": "Workflow table should have \"Step\" and \"Action\" columns",
+          "line": 23
+        }
+      ],
+      "score": 95
+    },
+    {
+      "file": "../rules-refinement-optimization/rules.md",
+      "compliant": false,
+      "sections": [
+        {
+          "name": "Goal",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Goal",
+            "line": 9,
+            "raw": "## Goal"
+          }
+        },
+        {
+          "name": "Onboarding",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Onboarding",
+            "line": 13,
+            "raw": "## Onboarding"
+          }
+        },
+        {
+          "name": "Role Definition",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Role Definition",
+            "line": 17,
+            "raw": "## Role Definition"
+          }
+        },
+        {
+          "name": "Foundation",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Foundation",
+            "line": 3,
+            "raw": "## Foundation"
+          }
+        },
+        {
+          "name": "Workflow",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow",
+            "line": 33,
+            "raw": "## Workflow"
+          }
+        },
+        {
+          "name": "Requirements",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Optimization Requirements",
+            "line": 45,
+            "raw": "## Optimization Requirements"
+          }
+        },
+        {
+          "name": "Response Protocol",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Response Protocol",
+            "line": 351,
+            "raw": "## Response Protocol"
+          }
+        },
+        {
+          "name": "Error Handling",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow & Error Handling",
+            "line": 336,
+            "raw": "## Workflow & Error Handling"
+          }
+        },
+        {
+          "name": "Non-Negotiable",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Non-Negotiable Requirements",
+            "line": 357,
+            "raw": "## Non-Negotiable Requirements"
+          }
+        }
+      ],
+      "missingRequired": [],
+      "extraSections": [],
+      "structureIssues": [
+        {
+          "type": "workflow_header",
+          "message": "Workflow table should have \"Step\" and \"Action\" columns",
+          "line": 33
+        }
+      ],
+      "score": 95
+    },
+    {
+      "file": "../rules-nuxt-3-pro-developer/rules.md",
+      "compliant": true,
+      "sections": [
+        {
+          "name": "Goal",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Goal",
+            "line": 7,
+            "raw": "## Goal"
+          }
+        },
+        {
+          "name": "Onboarding",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Onboarding",
+            "line": 11,
+            "raw": "## Onboarding"
+          }
+        },
+        {
+          "name": "Role Definition",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Role Definition",
+            "line": 15,
+            "raw": "## Role Definition"
+          }
+        },
+        {
+          "name": "Foundation",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Foundation",
+            "line": 3,
+            "raw": "## Foundation"
+          }
+        },
+        {
+          "name": "Workflow",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow & Error Handling",
+            "line": 110,
+            "raw": "## Workflow & Error Handling"
+          }
+        },
+        {
+          "name": "Requirements",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Nuxt 3 Development Requirements",
+            "line": 21,
+            "raw": "## Nuxt 3 Development Requirements"
+          }
+        },
+        {
+          "name": "Response Protocol",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Response Protocol",
+            "line": 137,
+            "raw": "## Response Protocol"
+          }
+        },
+        {
+          "name": "Error Handling",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow & Error Handling",
+            "line": 110,
+            "raw": "## Workflow & Error Handling"
+          }
+        },
+        {
+          "name": "Non-Negotiable",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Non-Negotiable Requirements",
+            "line": 165,
+            "raw": "## Non-Negotiable Requirements"
+          }
+        }
+      ],
+      "missingRequired": [],
+      "extraSections": [],
+      "structureIssues": [],
+      "score": 100
+    },
+    {
+      "file": "../rules-memory/rules.md",
+      "compliant": true,
+      "sections": [
+        {
+          "name": "Goal",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Goal",
+            "line": 8,
+            "raw": "## Goal"
+          }
+        },
+        {
+          "name": "Onboarding",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Onboarding",
+            "line": 12,
+            "raw": "## Onboarding"
+          }
+        },
+        {
+          "name": "Role Definition",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Role Definition",
+            "line": 16,
+            "raw": "## Role Definition"
+          }
+        },
+        {
+          "name": "Foundation",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Foundation",
+            "line": 4,
+            "raw": "## Foundation"
+          }
+        },
+        {
+          "name": "Workflow",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow",
+            "line": 20,
+            "raw": "## Workflow"
+          }
+        },
+        {
+          "name": "Requirements",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Memory Management Requirements",
+            "line": 37,
+            "raw": "## Memory Management Requirements"
+          }
+        },
+        {
+          "name": "Response Protocol",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Response Protocol",
+            "line": 124,
+            "raw": "## Response Protocol"
+          }
+        },
+        {
+          "name": "Error Handling",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow & Error Handling",
+            "line": 95,
+            "raw": "## Workflow & Error Handling"
+          }
+        },
+        {
+          "name": "Non-Negotiable",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Non-Negotiable Requirements",
+            "line": 150,
+            "raw": "## Non-Negotiable Requirements"
+          }
+        }
+      ],
+      "missingRequired": [],
+      "extraSections": [],
+      "structureIssues": [],
+      "score": 100
+    },
+    {
+      "file": "../rules-mcp/rules.md",
+      "compliant": false,
+      "sections": [
+        {
+          "name": "Goal",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Goal",
+            "line": 7,
+            "raw": "## Goal"
+          }
+        },
+        {
+          "name": "Onboarding",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Onboarding",
+            "line": 11,
+            "raw": "## Onboarding"
+          }
+        },
+        {
+          "name": "Role Definition",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Role Definition",
+            "line": 15,
+            "raw": "## Role Definition"
+          }
+        },
+        {
+          "name": "Foundation",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Foundation",
+            "line": 3,
+            "raw": "## Foundation"
+          }
+        },
+        {
+          "name": "Workflow",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow",
+            "line": 21,
+            "raw": "## Workflow"
+          }
+        },
+        {
+          "name": "Requirements",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "MCP Integration Requirements",
+            "line": 33,
+            "raw": "## MCP Integration Requirements"
+          }
+        },
+        {
+          "name": "Response Protocol",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Response Protocol",
+            "line": 136,
+            "raw": "## Response Protocol"
+          }
+        },
+        {
+          "name": "Error Handling",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow & Error Handling",
+            "line": 119,
+            "raw": "## Workflow & Error Handling"
+          }
+        },
+        {
+          "name": "Non-Negotiable",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Non-Negotiable Requirements",
+            "line": 142,
+            "raw": "## Non-Negotiable Requirements"
+          }
+        }
+      ],
+      "missingRequired": [],
+      "extraSections": [],
+      "structureIssues": [
+        {
+          "type": "workflow_header",
+          "message": "Workflow table should have \"Step\" and \"Action\" columns",
+          "line": 21
+        }
+      ],
+      "score": 95
+    },
+    {
+      "file": "../rules-integration/rules.md",
+      "compliant": false,
+      "sections": [
+        {
+          "name": "Goal",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Goal",
+            "line": 7,
+            "raw": "## Goal"
+          }
+        },
+        {
+          "name": "Onboarding",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Onboarding",
+            "line": 11,
+            "raw": "## Onboarding"
+          }
+        },
+        {
+          "name": "Role Definition",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Role Definition",
+            "line": 15,
+            "raw": "## Role Definition"
+          }
+        },
+        {
+          "name": "Foundation",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Foundation",
+            "line": 3,
+            "raw": "## Foundation"
+          }
+        },
+        {
+          "name": "Workflow",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow",
+            "line": 24,
+            "raw": "## Workflow"
+          }
+        },
+        {
+          "name": "Requirements",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Integration-Specific Requirements",
+            "line": 36,
+            "raw": "## Integration-Specific Requirements"
+          }
+        },
+        {
+          "name": "Response Protocol",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Response Protocol",
+            "line": 164,
+            "raw": "## Response Protocol"
+          }
+        },
+        {
+          "name": "Error Handling",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow & Error Handling",
+            "line": 147,
+            "raw": "## Workflow & Error Handling"
+          }
+        },
+        {
+          "name": "Non-Negotiable",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Non-Negotiable Requirements",
+            "line": 183,
+            "raw": "## Non-Negotiable Requirements"
+          }
+        }
+      ],
+      "missingRequired": [],
+      "extraSections": [],
+      "structureIssues": [
+        {
+          "type": "workflow_header",
+          "message": "Workflow table should have \"Step\" and \"Action\" columns",
+          "line": 24
+        }
+      ],
+      "score": 95
+    },
+    {
+      "file": "../rules-instructions-file-generator/rules.md",
+      "compliant": false,
+      "sections": [
+        {
+          "name": "Goal",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Goal",
+            "line": 7,
+            "raw": "## Goal"
+          }
+        },
+        {
+          "name": "Onboarding",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Onboarding",
+            "line": 11,
+            "raw": "## Onboarding"
+          }
+        },
+        {
+          "name": "Role Definition",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Role Definition",
+            "line": 15,
+            "raw": "## Role Definition"
+          }
+        },
+        {
+          "name": "Foundation",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Foundation",
+            "line": 3,
+            "raw": "## Foundation"
+          }
+        },
+        {
+          "name": "Workflow",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow & Error Handling",
+            "line": 73,
+            "raw": "## Workflow & Error Handling"
+          }
+        },
+        {
+          "name": "Requirements",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Instructions Generation Requirements",
+            "line": 21,
+            "raw": "## Instructions Generation Requirements"
+          }
+        },
+        {
+          "name": "Response Protocol",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Response Protocol",
+            "line": 100,
+            "raw": "## Response Protocol"
+          }
+        },
+        {
+          "name": "Error Handling",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow & Error Handling",
+            "line": 73,
+            "raw": "## Workflow & Error Handling"
+          }
+        },
+        {
+          "name": "Non-Negotiable",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Non-Negotiable Requirements",
+            "line": 133,
+            "raw": "## Non-Negotiable Requirements"
+          }
+        }
+      ],
+      "missingRequired": [],
+      "extraSections": [],
+      "structureIssues": [
+        {
+          "type": "title_structure",
+          "message": "Document should have only one H1 title",
+          "line": 59
+        }
+      ],
+      "score": 95
+    },
+    {
+      "file": "../rules-docs-writer/rules.md",
+      "compliant": true,
+      "sections": [
+        {
+          "name": "Goal",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Goal",
+            "line": 3,
+            "raw": "## Goal"
+          }
+        },
+        {
+          "name": "Onboarding",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Onboarding",
+            "line": 9,
+            "raw": "## Onboarding"
+          }
+        },
+        {
+          "name": "Role Definition",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Role Definition",
+            "line": 17,
+            "raw": "## Role Definition"
+          }
+        },
+        {
+          "name": "Foundation",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Foundation",
+            "line": 13,
+            "raw": "## Foundation"
+          }
+        },
+        {
+          "name": "Workflow",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Documentation-Specific Workflow",
+            "line": 24,
+            "raw": "## Documentation-Specific Workflow"
+          }
+        },
+        {
+          "name": "Requirements",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Requirements",
+            "line": 34,
+            "raw": "## Requirements"
+          }
+        },
+        {
+          "name": "Response Protocol",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Response Protocol",
+            "line": 133,
+            "raw": "## Response Protocol"
+          }
+        },
+        {
+          "name": "Error Handling",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow & Error Handling",
+            "line": 139,
+            "raw": "## Workflow & Error Handling"
+          }
+        },
+        {
+          "name": "Non-Negotiable",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Non-Negotiable Requirements",
+            "line": 154,
+            "raw": "## Non-Negotiable Requirements"
+          }
+        }
+      ],
+      "missingRequired": [],
+      "extraSections": [],
+      "structureIssues": [],
+      "score": 100
+    },
+    {
+      "file": "../rules-devops/rules.md",
+      "compliant": true,
+      "sections": [
+        {
+          "name": "Goal",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Goal",
+            "line": 3,
+            "raw": "## Goal"
+          }
+        },
+        {
+          "name": "Onboarding",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Onboarding",
+            "line": 9,
+            "raw": "## Onboarding"
+          }
+        },
+        {
+          "name": "Role Definition",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Role Definition",
+            "line": 17,
+            "raw": "## Role Definition"
+          }
+        },
+        {
+          "name": "Foundation",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Foundation",
+            "line": 13,
+            "raw": "## Foundation"
+          }
+        },
+        {
+          "name": "Workflow",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "DevOps-Specific Workflow",
+            "line": 24,
+            "raw": "## DevOps-Specific Workflow"
+          }
+        },
+        {
+          "name": "Requirements",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Requirements",
+            "line": 34,
+            "raw": "## Requirements"
+          }
+        },
+        {
+          "name": "Response Protocol",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Response Protocol",
+            "line": 105,
+            "raw": "## Response Protocol"
+          }
+        },
+        {
+          "name": "Error Handling",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow & Error Handling",
+            "line": 111,
+            "raw": "## Workflow & Error Handling"
+          }
+        },
+        {
+          "name": "Non-Negotiable",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Non-Negotiable Requirements",
+            "line": 126,
+            "raw": "## Non-Negotiable Requirements"
+          }
+        }
+      ],
+      "missingRequired": [],
+      "extraSections": [],
+      "structureIssues": [],
+      "score": 100
+    },
+    {
+      "file": "../rules-debug/rules.md",
+      "compliant": true,
+      "sections": [
+        {
+          "name": "Goal",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Goal",
+            "line": 7,
+            "raw": "## Goal"
+          }
+        },
+        {
+          "name": "Onboarding",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Onboarding",
+            "line": 13,
+            "raw": "## Onboarding"
+          }
+        },
+        {
+          "name": "Role Definition",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Role Definition",
+            "line": 17,
+            "raw": "## Role Definition"
+          }
+        },
+        {
+          "name": "Foundation",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Foundation",
+            "line": 3,
+            "raw": "## Foundation"
+          }
+        },
+        {
+          "name": "Workflow",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow & Error Handling",
+            "line": 84,
+            "raw": "## Workflow & Error Handling"
+          }
+        },
+        {
+          "name": "Requirements",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Debug-Specific Requirements",
+            "line": 39,
+            "raw": "## Debug-Specific Requirements"
+          }
+        },
+        {
+          "name": "Response Protocol",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Response Protocol",
+            "line": 78,
+            "raw": "## Response Protocol"
+          }
+        },
+        {
+          "name": "Error Handling",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow & Error Handling",
+            "line": 84,
+            "raw": "## Workflow & Error Handling"
+          }
+        },
+        {
+          "name": "Non-Negotiable",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Non-Negotiable Requirements",
+            "line": 90,
+            "raw": "## Non-Negotiable Requirements"
+          }
+        }
+      ],
+      "missingRequired": [],
+      "extraSections": [],
+      "structureIssues": [],
+      "score": 100
+    },
+    {
+      "file": "../rules-context-condensing/rules.md",
+      "compliant": true,
+      "sections": [
+        {
+          "name": "Goal",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Goal",
+            "line": 11,
+            "raw": "## Goal"
+          }
+        },
+        {
+          "name": "Onboarding",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Onboarding",
+            "line": 3,
+            "raw": "## Onboarding"
+          }
+        },
+        {
+          "name": "Role Definition",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Role Definition",
+            "line": 17,
+            "raw": "## Role Definition"
+          }
+        },
+        {
+          "name": "Foundation",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Foundation",
+            "line": 7,
+            "raw": "## Foundation"
+          }
+        },
+        {
+          "name": "Workflow",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow & Error Handling",
+            "line": 99,
+            "raw": "## Workflow & Error Handling"
+          }
+        },
+        {
+          "name": "Requirements",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Non-Negotiable Requirements",
+            "line": 152,
+            "raw": "## Non-Negotiable Requirements"
+          }
+        },
+        {
+          "name": "Response Protocol",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Response Protocol",
+            "line": 126,
+            "raw": "## Response Protocol"
+          }
+        },
+        {
+          "name": "Error Handling",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow & Error Handling",
+            "line": 99,
+            "raw": "## Workflow & Error Handling"
+          }
+        },
+        {
+          "name": "Non-Negotiable",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Non-Negotiable Requirements",
+            "line": 152,
+            "raw": "## Non-Negotiable Requirements"
+          }
+        }
+      ],
+      "missingRequired": [],
+      "extraSections": [],
+      "structureIssues": [],
+      "score": 100
+    },
+    {
+      "file": "../rules-code-style-analyzer/rules.md",
+      "compliant": true,
+      "sections": [
+        {
+          "name": "Goal",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Goal",
+            "line": 3,
+            "raw": "## Goal"
+          }
+        },
+        {
+          "name": "Onboarding",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Onboarding",
+            "line": 9,
+            "raw": "## Onboarding"
+          }
+        },
+        {
+          "name": "Role Definition",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Role Definition",
+            "line": 17,
+            "raw": "## Role Definition"
+          }
+        },
+        {
+          "name": "Foundation",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Foundation",
+            "line": 13,
+            "raw": "## Foundation"
+          }
+        },
+        {
+          "name": "Workflow",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Code Style Analysis Workflow",
+            "line": 24,
+            "raw": "## Code Style Analysis Workflow"
+          }
+        },
+        {
+          "name": "Requirements",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Requirements",
+            "line": 34,
+            "raw": "## Requirements"
+          }
+        },
+        {
+          "name": "Response Protocol",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Response Protocol",
+            "line": 108,
+            "raw": "## Response Protocol"
+          }
+        },
+        {
+          "name": "Error Handling",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow & Error Handling",
+            "line": 114,
+            "raw": "## Workflow & Error Handling"
+          }
+        },
+        {
+          "name": "Non-Negotiable",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Non-Negotiable Requirements",
+            "line": 129,
+            "raw": "## Non-Negotiable Requirements"
+          }
+        }
+      ],
+      "missingRequired": [],
+      "extraSections": [],
+      "structureIssues": [],
+      "score": 100
+    },
+    {
+      "file": "../rules-deep-research-agent/rules.md",
+      "compliant": true,
+      "sections": [
+        {
+          "name": "Goal",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Goal",
+            "line": 17,
+            "raw": "## Goal"
+          }
+        },
+        {
+          "name": "Onboarding",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Onboarding",
+            "line": 21,
+            "raw": "## Onboarding"
+          }
+        },
+        {
+          "name": "Role Definition",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Role Definition",
+            "line": 7,
+            "raw": "## Role Definition"
+          }
+        },
+        {
+          "name": "Foundation",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Foundation",
+            "line": 3,
+            "raw": "## Foundation"
+          }
+        },
+        {
+          "name": "Workflow",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow & Error Handling",
+            "line": 86,
+            "raw": "## Workflow & Error Handling"
+          }
+        },
+        {
+          "name": "Requirements",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Deep Research Requirements",
+            "line": 32,
+            "raw": "## Deep Research Requirements"
+          }
+        },
+        {
+          "name": "Response Protocol",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Response Protocol",
+            "line": 135,
+            "raw": "## Response Protocol"
+          }
+        },
+        {
+          "name": "Error Handling",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow & Error Handling",
+            "line": 86,
+            "raw": "## Workflow & Error Handling"
+          }
+        },
+        {
+          "name": "Non-Negotiable",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Non-Negotiable Requirements",
+            "line": 161,
+            "raw": "## Non-Negotiable Requirements"
+          }
+        }
+      ],
+      "missingRequired": [],
+      "extraSections": [],
+      "structureIssues": [],
+      "score": 100
+    },
+    {
+      "file": "../rules-code/rules.md",
+      "compliant": true,
+      "sections": [
+        {
+          "name": "Goal",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Goal",
+            "line": 3,
+            "raw": "## Goal"
+          }
+        },
+        {
+          "name": "Onboarding",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Onboarding",
+            "line": 9,
+            "raw": "## Onboarding"
+          }
+        },
+        {
+          "name": "Role Definition",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Role Definition",
+            "line": 17,
+            "raw": "## Role Definition"
+          }
+        },
+        {
+          "name": "Foundation",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Foundation",
+            "line": 13,
+            "raw": "## Foundation"
+          }
+        },
+        {
+          "name": "Workflow",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow & Error Handling",
+            "line": 79,
+            "raw": "## Workflow & Error Handling"
+          }
+        },
+        {
+          "name": "Requirements",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Code-Specific Requirements",
+            "line": 39,
+            "raw": "## Code-Specific Requirements"
+          }
+        },
+        {
+          "name": "Response Protocol",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Response Protocol",
+            "line": 73,
+            "raw": "## Response Protocol"
+          }
+        },
+        {
+          "name": "Error Handling",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow & Error Handling",
+            "line": 79,
+            "raw": "## Workflow & Error Handling"
+          }
+        },
+        {
+          "name": "Non-Negotiable",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Non-Negotiable Requirements",
+            "line": 85,
+            "raw": "## Non-Negotiable Requirements"
+          }
+        }
+      ],
+      "missingRequired": [],
+      "extraSections": [],
+      "structureIssues": [],
+      "score": 100
+    },
+    {
+      "file": "../rules-ask/rules.md",
+      "compliant": true,
+      "sections": [
+        {
+          "name": "Goal",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Goal",
+            "line": 3,
+            "raw": "## Goal"
+          }
+        },
+        {
+          "name": "Onboarding",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Onboarding",
+            "line": 9,
+            "raw": "## Onboarding"
+          }
+        },
+        {
+          "name": "Role Definition",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Role Definition",
+            "line": 17,
+            "raw": "## Role Definition"
+          }
+        },
+        {
+          "name": "Foundation",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Foundation",
+            "line": 13,
+            "raw": "## Foundation"
+          }
+        },
+        {
+          "name": "Workflow",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Ask-Specific Workflow",
+            "line": 24,
+            "raw": "## Ask-Specific Workflow"
+          }
+        },
+        {
+          "name": "Requirements",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Requirements",
+            "line": 34,
+            "raw": "## Requirements"
+          }
+        },
+        {
+          "name": "Response Protocol",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Response Protocol",
+            "line": 120,
+            "raw": "## Response Protocol"
+          }
+        },
+        {
+          "name": "Error Handling",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow & Error Handling",
+            "line": 126,
+            "raw": "## Workflow & Error Handling"
+          }
+        },
+        {
+          "name": "Non-Negotiable",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Non-Negotiable Requirements",
+            "line": 141,
+            "raw": "## Non-Negotiable Requirements"
+          }
+        }
+      ],
+      "missingRequired": [],
+      "extraSections": [],
+      "structureIssues": [],
+      "score": 100
+    },
+    {
+      "file": "../rules-architect/rules.md",
+      "compliant": true,
+      "sections": [
+        {
+          "name": "Goal",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Goal",
+            "line": 3,
+            "raw": "## Goal"
+          }
+        },
+        {
+          "name": "Onboarding",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Onboarding",
+            "line": 9,
+            "raw": "## Onboarding"
+          }
+        },
+        {
+          "name": "Role Definition",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Role Definition",
+            "line": 17,
+            "raw": "## Role Definition"
+          }
+        },
+        {
+          "name": "Foundation",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Foundation",
+            "line": 13,
+            "raw": "## Foundation"
+          }
+        },
+        {
+          "name": "Workflow",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow & Error Handling",
+            "line": 81,
+            "raw": "## Workflow & Error Handling"
+          }
+        },
+        {
+          "name": "Requirements",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Architecture-Specific Requirements",
+            "line": 39,
+            "raw": "## Architecture-Specific Requirements"
+          }
+        },
+        {
+          "name": "Response Protocol",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Response Protocol",
+            "line": 75,
+            "raw": "## Response Protocol"
+          }
+        },
+        {
+          "name": "Error Handling",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow & Error Handling",
+            "line": 81,
+            "raw": "## Workflow & Error Handling"
+          }
+        },
+        {
+          "name": "Non-Negotiable",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Non-Negotiable Requirements",
+            "line": 87,
+            "raw": "## Non-Negotiable Requirements"
+          }
+        }
+      ],
+      "missingRequired": [],
+      "extraSections": [],
+      "structureIssues": [],
+      "score": 100
+    },
+    {
+      "file": "../rules-accessibility-expert/rules.md",
+      "compliant": true,
+      "sections": [
+        {
+          "name": "Goal",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Goal",
+            "line": 3,
+            "raw": "## Goal"
+          }
+        },
+        {
+          "name": "Onboarding",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Onboarding",
+            "line": 9,
+            "raw": "## Onboarding"
+          }
+        },
+        {
+          "name": "Role Definition",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Role Definition",
+            "line": 17,
+            "raw": "## Role Definition"
+          }
+        },
+        {
+          "name": "Foundation",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Foundation",
+            "line": 13,
+            "raw": "## Foundation"
+          }
+        },
+        {
+          "name": "Workflow",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Accessibility-Specific Workflow",
+            "line": 24,
+            "raw": "## Accessibility-Specific Workflow"
+          }
+        },
+        {
+          "name": "Requirements",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Requirements",
+            "line": 34,
+            "raw": "## Requirements"
+          }
+        },
+        {
+          "name": "Response Protocol",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Response Protocol",
+            "line": 104,
+            "raw": "## Response Protocol"
+          }
+        },
+        {
+          "name": "Error Handling",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Workflow & Error Handling",
+            "line": 110,
+            "raw": "## Workflow & Error Handling"
+          }
+        },
+        {
+          "name": "Non-Negotiable",
+          "found": true,
+          "section": {
+            "level": 2,
+            "title": "Non-Negotiable Requirements",
+            "line": 125,
+            "raw": "## Non-Negotiable Requirements"
+          }
+        }
+      ],
+      "missingRequired": [],
+      "extraSections": [],
+      "structureIssues": [],
+      "score": 100
+    }
+  ],
+  "summary": {
+    "totalFiles": 25,
+    "compliantFiles": 15,
+    "nonCompliantFiles": 10,
+    "complianceRate": "60.00"
+  }
+}

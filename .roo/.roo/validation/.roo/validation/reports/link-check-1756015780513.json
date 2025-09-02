@@ -1,0 +1,1866 @@
+{
+  "timestamp": "2025-08-24T06:09:40.513Z",
+  "files": [
+    {
+      "file": "../mcp.md",
+      "links": [],
+      "brokenCount": 0,
+      "validCount": 0
+    },
+    {
+      "file": "../README.md",
+      "links": [],
+      "brokenCount": 0,
+      "validCount": 0
+    },
+    {
+      "file": "../shared/workflow-patterns.md",
+      "links": [
+        {
+          "text": "Core Principles",
+          "url": "core-principles.md",
+          "line": 302,
+          "sourceFile": "../shared/workflow-patterns.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Tool Guidelines",
+          "url": "tool-guidelines.md",
+          "line": 303,
+          "sourceFile": "../shared/workflow-patterns.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Response Protocol",
+          "url": "response-protocol.md",
+          "line": 304,
+          "sourceFile": "../shared/workflow-patterns.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Common Requirements",
+          "url": "common-requirements.md",
+          "line": 305,
+          "sourceFile": "../shared/workflow-patterns.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Workflow Guide",
+          "url": "workflow-guide.md",
+          "line": 306,
+          "sourceFile": "../shared/workflow-patterns.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        }
+      ],
+      "brokenCount": 0,
+      "validCount": 5
+    },
+    {
+      "file": "../shared/workflow-guide.md",
+      "links": [],
+      "brokenCount": 0,
+      "validCount": 0
+    },
+    {
+      "file": "../shared/tools-common.md",
+      "links": [],
+      "brokenCount": 0,
+      "validCount": 0
+    },
+    {
+      "file": "../shared/tool-guidelines.md",
+      "links": [
+        {
+          "text": "Core Principles",
+          "url": "core-principles.md",
+          "line": 151,
+          "sourceFile": "../shared/tool-guidelines.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Error Handling",
+          "url": "error-handling.md",
+          "line": 152,
+          "sourceFile": "../shared/tool-guidelines.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Response Protocol",
+          "url": "response-protocol.md",
+          "line": 153,
+          "sourceFile": "../shared/tool-guidelines.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Common Requirements",
+          "url": "common-requirements.md",
+          "line": 154,
+          "sourceFile": "../shared/tool-guidelines.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        }
+      ],
+      "brokenCount": 0,
+      "validCount": 4
+    },
+    {
+      "file": "../shared/standard-responses.md",
+      "links": [
+        {
+          "text": "Response Protocol",
+          "url": "response-protocol.md",
+          "line": 165,
+          "sourceFile": "../shared/standard-responses.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Core Principles",
+          "url": "core-principles.md",
+          "line": 166,
+          "sourceFile": "../shared/standard-responses.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Tool Guidelines",
+          "url": "tool-guidelines.md",
+          "line": 167,
+          "sourceFile": "../shared/standard-responses.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Common Requirements",
+          "url": "common-requirements.md",
+          "line": 168,
+          "sourceFile": "../shared/standard-responses.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Workflow Guide",
+          "url": "workflow-guide.md",
+          "line": 169,
+          "sourceFile": "../shared/standard-responses.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        }
+      ],
+      "brokenCount": 0,
+      "validCount": 5
+    },
+    {
+      "file": "../shared/response-protocol.md",
+      "links": [],
+      "brokenCount": 0,
+      "validCount": 0
+    },
+    {
+      "file": "../shared/error-handling.md",
+      "links": [
+        {
+          "text": "Core Principles",
+          "url": "core-principles.md",
+          "line": 340,
+          "sourceFile": "../shared/error-handling.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Tool Guidelines",
+          "url": "tool-guidelines.md",
+          "line": 341,
+          "sourceFile": "../shared/error-handling.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Response Protocol",
+          "url": "response-protocol.md",
+          "line": 342,
+          "sourceFile": "../shared/error-handling.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Workflow Patterns",
+          "url": "workflow-patterns.md",
+          "line": 343,
+          "sourceFile": "../shared/error-handling.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Standard Responses",
+          "url": "standard-responses.md",
+          "line": 344,
+          "sourceFile": "../shared/error-handling.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        }
+      ],
+      "brokenCount": 0,
+      "validCount": 5
+    },
+    {
+      "file": "../shared/core-references.md",
+      "links": [
+        {
+          "text": "`workflow-guide.md`",
+          "url": "./workflow-guide.md",
+          "line": 9,
+          "sourceFile": "../shared/core-references.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "`response-protocol.md`",
+          "url": "./response-protocol.md",
+          "line": 10,
+          "sourceFile": "../shared/core-references.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "`common-requirements.md`",
+          "url": "./common-requirements.md",
+          "line": 11,
+          "sourceFile": "../shared/core-references.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        }
+      ],
+      "brokenCount": 0,
+      "validCount": 3
+    },
+    {
+      "file": "../shared/core-principles.md",
+      "links": [],
+      "brokenCount": 0,
+      "validCount": 0
+    },
+    {
+      "file": "../shared/common-requirements.md",
+      "links": [],
+      "brokenCount": 0,
+      "validCount": 0
+    },
+    {
+      "file": "../rules-tutorial/rules.md",
+      "links": [
+        {
+          "text": "Core References Hub",
+          "url": "../shared/core-references.md",
+          "line": 5,
+          "sourceFile": "../rules-tutorial/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Common Requirements",
+          "url": "../shared/common-requirements.md",
+          "line": 298,
+          "sourceFile": "../rules-tutorial/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Workflow Guide",
+          "url": "../shared/workflow-guide.md",
+          "line": 304,
+          "sourceFile": "../rules-tutorial/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Response Protocol",
+          "url": "../shared/response-protocol.md",
+          "line": 319,
+          "sourceFile": "../rules-tutorial/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        }
+      ],
+      "brokenCount": 0,
+      "validCount": 4
+    },
+    {
+      "file": "../rules-ui-ux-designer/rules.md",
+      "links": [
+        {
+          "text": "Core References Hub",
+          "url": "../shared/core-references.md",
+          "line": 5,
+          "sourceFile": "../rules-ui-ux-designer/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Response Protocol",
+          "url": "../shared/response-protocol.md",
+          "line": 132,
+          "sourceFile": "../rules-ui-ux-designer/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Workflow Guide",
+          "url": "../shared/workflow-guide.md",
+          "line": 153,
+          "sourceFile": "../rules-ui-ux-designer/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Common Requirements",
+          "url": "../shared/common-requirements.md",
+          "line": 168,
+          "sourceFile": "../rules-ui-ux-designer/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        }
+      ],
+      "brokenCount": 0,
+      "validCount": 4
+    },
+    {
+      "file": "../rules-test/rules.md",
+      "links": [
+        {
+          "text": "Core References Hub",
+          "url": "../shared/core-references.md",
+          "line": 15,
+          "sourceFile": "../rules-test/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Response Protocol",
+          "url": "../shared/response-protocol.md",
+          "line": 135,
+          "sourceFile": "../rules-test/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Workflow Guide",
+          "url": "../shared/workflow-guide.md",
+          "line": 141,
+          "sourceFile": "../rules-test/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Common Requirements",
+          "url": "../shared/common-requirements.md",
+          "line": 156,
+          "sourceFile": "../rules-test/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        }
+      ],
+      "brokenCount": 0,
+      "validCount": 4
+    },
+    {
+      "file": "../rules-tdd/rules.md",
+      "links": [
+        {
+          "text": "Core References Hub",
+          "url": "../shared/core-references.md",
+          "line": 5,
+          "sourceFile": "../rules-tdd/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Core References Hub",
+          "url": "../shared/core-references.md",
+          "line": 25,
+          "sourceFile": "../rules-tdd/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Response Protocol",
+          "url": "../shared/response-protocol.md",
+          "line": 81,
+          "sourceFile": "../rules-tdd/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Workflow Guide",
+          "url": "../shared/workflow-guide.md",
+          "line": 87,
+          "sourceFile": "../rules-tdd/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Common Requirements",
+          "url": "../shared/common-requirements.md",
+          "line": 93,
+          "sourceFile": "../rules-tdd/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        }
+      ],
+      "brokenCount": 0,
+      "validCount": 5
+    },
+    {
+      "file": "../rules-supabase-admin/rules.md",
+      "links": [
+        {
+          "text": "Core References Hub",
+          "url": "../shared/core-references.md",
+          "line": 7,
+          "sourceFile": "../rules-supabase-admin/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Response Protocol",
+          "url": "../shared/response-protocol.md",
+          "line": 95,
+          "sourceFile": "../rules-supabase-admin/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Common Requirements",
+          "url": "../shared/common-requirements.md",
+          "line": 175,
+          "sourceFile": "../rules-supabase-admin/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        }
+      ],
+      "brokenCount": 0,
+      "validCount": 3
+    },
+    {
+      "file": "../rules-spec-pseudocode/rules.md",
+      "links": [
+        {
+          "text": "Core References Hub",
+          "url": "../shared/core-references.md",
+          "line": 5,
+          "sourceFile": "../rules-spec-pseudocode/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Response Protocol",
+          "url": "../shared/response-protocol.md",
+          "line": 166,
+          "sourceFile": "../rules-spec-pseudocode/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Common Requirements",
+          "url": "../shared/common-requirements.md",
+          "line": 172,
+          "sourceFile": "../rules-spec-pseudocode/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        }
+      ],
+      "brokenCount": 0,
+      "validCount": 3
+    },
+    {
+      "file": "../rules-sparc/rules.md",
+      "links": [
+        {
+          "text": "Core References Hub",
+          "url": "../shared/core-references.md",
+          "line": 5,
+          "sourceFile": "../rules-sparc/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Response Protocol",
+          "url": "../shared/response-protocol.md",
+          "line": 262,
+          "sourceFile": "../rules-sparc/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Common Requirements",
+          "url": "../shared/common-requirements.md",
+          "line": 380,
+          "sourceFile": "../rules-sparc/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        }
+      ],
+      "brokenCount": 0,
+      "validCount": 3
+    },
+    {
+      "file": "../rules-security-review/rules.md",
+      "links": [
+        {
+          "text": "Core References Hub",
+          "url": "../shared/core-references.md",
+          "line": 15,
+          "sourceFile": "../rules-security-review/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Common Requirements",
+          "url": "../shared/common-requirements.md",
+          "line": 89,
+          "sourceFile": "../rules-security-review/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Response Protocol",
+          "url": "../shared/response-protocol.md",
+          "line": 95,
+          "sourceFile": "../rules-security-review/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Workflow Guide",
+          "url": "../shared/workflow-guide.md",
+          "line": 101,
+          "sourceFile": "../rules-security-review/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        }
+      ],
+      "brokenCount": 0,
+      "validCount": 4
+    },
+    {
+      "file": "../rules-refinement-optimization/rules.md",
+      "links": [
+        {
+          "text": "Core References Hub",
+          "url": "../shared/core-references.md",
+          "line": 7,
+          "sourceFile": "../rules-refinement-optimization/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Common Requirements",
+          "url": "../shared/common-requirements.md",
+          "line": 338,
+          "sourceFile": "../rules-refinement-optimization/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Response Protocol",
+          "url": "../shared/response-protocol.md",
+          "line": 384,
+          "sourceFile": "../rules-refinement-optimization/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Workflow Guide",
+          "url": "../shared/workflow-guide.md",
+          "line": 390,
+          "sourceFile": "../rules-refinement-optimization/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        }
+      ],
+      "brokenCount": 0,
+      "validCount": 4
+    },
+    {
+      "file": "../rules-post-deployment-monitoring/rules.md",
+      "links": [
+        {
+          "text": "Core References Hub",
+          "url": "../shared/core-references.md",
+          "line": 5,
+          "sourceFile": "../rules-post-deployment-monitoring/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Common Requirements",
+          "url": "../shared/common-requirements.md",
+          "line": 206,
+          "sourceFile": "../rules-post-deployment-monitoring/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Response Protocol",
+          "url": "../shared/response-protocol.md",
+          "line": 252,
+          "sourceFile": "../rules-post-deployment-monitoring/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Workflow Guide",
+          "url": "../shared/workflow-guide.md",
+          "line": 258,
+          "sourceFile": "../rules-post-deployment-monitoring/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        }
+      ],
+      "brokenCount": 0,
+      "validCount": 4
+    },
+    {
+      "file": "../rules-nuxt-3-pro-developer/rules.md",
+      "links": [
+        {
+          "text": "Core References Hub",
+          "url": "../shared/core-references.md",
+          "line": 5,
+          "sourceFile": "../rules-nuxt-3-pro-developer/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Response Protocol",
+          "url": "../shared/response-protocol.md",
+          "line": 139,
+          "sourceFile": "../rules-nuxt-3-pro-developer/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Common Requirements",
+          "url": "../shared/common-requirements.md",
+          "line": 167,
+          "sourceFile": "../rules-nuxt-3-pro-developer/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        }
+      ],
+      "brokenCount": 0,
+      "validCount": 3
+    },
+    {
+      "file": "../rules-memory/rules.md",
+      "links": [
+        {
+          "text": "Core References Hub",
+          "url": "../shared/core-references.md",
+          "line": 6,
+          "sourceFile": "../rules-memory/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Common Requirements",
+          "url": "../shared/common-requirements.md",
+          "line": 97,
+          "sourceFile": "../rules-memory/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Response Protocol",
+          "url": "../shared/response-protocol.md",
+          "line": 121,
+          "sourceFile": "../rules-memory/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Workflow Guide",
+          "url": "../shared/workflow-guide.md",
+          "line": 127,
+          "sourceFile": "../rules-memory/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        }
+      ],
+      "brokenCount": 0,
+      "validCount": 4
+    },
+    {
+      "file": "../rules-mcp/rules.md",
+      "links": [
+        {
+          "text": "Core References Hub",
+          "url": "../shared/core-references.md",
+          "line": 5,
+          "sourceFile": "../rules-mcp/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Common Requirements",
+          "url": "../shared/common-requirements.md",
+          "line": 136,
+          "sourceFile": "../rules-mcp/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Response Protocol",
+          "url": "../shared/response-protocol.md",
+          "line": 160,
+          "sourceFile": "../rules-mcp/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Workflow Guide",
+          "url": "../shared/workflow-guide.md",
+          "line": 166,
+          "sourceFile": "../rules-mcp/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        }
+      ],
+      "brokenCount": 0,
+      "validCount": 4
+    },
+    {
+      "file": "../rules-integration/rules.md",
+      "links": [
+        {
+          "text": "Core References Hub",
+          "url": "../shared/core-references.md",
+          "line": 5,
+          "sourceFile": "../rules-integration/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Core References Hub",
+          "url": "../shared/core-references.md",
+          "line": 20,
+          "sourceFile": "../rules-integration/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Response Protocol",
+          "url": "../shared/response-protocol.md",
+          "line": 166,
+          "sourceFile": "../rules-integration/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Common Requirements",
+          "url": "../shared/common-requirements.md",
+          "line": 185,
+          "sourceFile": "../rules-integration/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        }
+      ],
+      "brokenCount": 0,
+      "validCount": 4
+    },
+    {
+      "file": "../rules-instructions-file-generator/rules.md",
+      "links": [
+        {
+          "text": "Core References Hub",
+          "url": "../shared/core-references.md",
+          "line": 5,
+          "sourceFile": "../rules-instructions-file-generator/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Common Requirements",
+          "url": "../shared/common-requirements.md",
+          "line": 75,
+          "sourceFile": "../rules-instructions-file-generator/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Response Protocol",
+          "url": "../shared/response-protocol.md",
+          "line": 106,
+          "sourceFile": "../rules-instructions-file-generator/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Workflow Guide",
+          "url": "../shared/workflow-guide.md",
+          "line": 112,
+          "sourceFile": "../rules-instructions-file-generator/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        }
+      ],
+      "brokenCount": 0,
+      "validCount": 4
+    },
+    {
+      "file": "../rules-docs-writer/rules.md",
+      "links": [
+        {
+          "text": "Core References Hub",
+          "url": "../shared/core-references.md",
+          "line": 15,
+          "sourceFile": "../rules-docs-writer/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Response Protocol",
+          "url": "../shared/response-protocol.md",
+          "line": 135,
+          "sourceFile": "../rules-docs-writer/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Workflow Guide",
+          "url": "../shared/workflow-guide.md",
+          "line": 141,
+          "sourceFile": "../rules-docs-writer/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Common Requirements",
+          "url": "../shared/common-requirements.md",
+          "line": 156,
+          "sourceFile": "../rules-docs-writer/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        }
+      ],
+      "brokenCount": 0,
+      "validCount": 4
+    },
+    {
+      "file": "../rules-devops/rules.md",
+      "links": [
+        {
+          "text": "Core References Hub",
+          "url": "../shared/core-references.md",
+          "line": 15,
+          "sourceFile": "../rules-devops/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Common Requirements",
+          "url": "../shared/common-requirements.md",
+          "line": 107,
+          "sourceFile": "../rules-devops/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Response Protocol",
+          "url": "../shared/response-protocol.md",
+          "line": 113,
+          "sourceFile": "../rules-devops/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Workflow Guide",
+          "url": "../shared/workflow-guide.md",
+          "line": 119,
+          "sourceFile": "../rules-devops/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        }
+      ],
+      "brokenCount": 0,
+      "validCount": 4
+    },
+    {
+      "file": "../rules-deep-research-agent/rules.md",
+      "links": [
+        {
+          "text": "Core References Hub",
+          "url": "../shared/core-references.md",
+          "line": 5,
+          "sourceFile": "../rules-deep-research-agent/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Common Requirements",
+          "url": "../shared/common-requirements.md",
+          "line": 152,
+          "sourceFile": "../rules-deep-research-agent/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Response Protocol",
+          "url": "../shared/response-protocol.md",
+          "line": 183,
+          "sourceFile": "../rules-deep-research-agent/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Workflow Guide",
+          "url": "../shared/workflow-guide.md",
+          "line": 189,
+          "sourceFile": "../rules-deep-research-agent/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        }
+      ],
+      "brokenCount": 0,
+      "validCount": 4
+    },
+    {
+      "file": "../rules-debug/rules.md",
+      "links": [
+        {
+          "text": "Core References Hub",
+          "url": "../shared/core-references.md",
+          "line": 5,
+          "sourceFile": "../rules-debug/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Core References Hub",
+          "url": "../shared/core-references.md",
+          "line": 25,
+          "sourceFile": "../rules-debug/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Response Protocol",
+          "url": "../shared/response-protocol.md",
+          "line": 80,
+          "sourceFile": "../rules-debug/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Workflow Guide",
+          "url": "../shared/workflow-guide.md",
+          "line": 86,
+          "sourceFile": "../rules-debug/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Common Requirements",
+          "url": "../shared/common-requirements.md",
+          "line": 92,
+          "sourceFile": "../rules-debug/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        }
+      ],
+      "brokenCount": 0,
+      "validCount": 5
+    },
+    {
+      "file": "../rules-context-condensing/rules.md",
+      "links": [
+        {
+          "text": "Core References Hub",
+          "url": "../shared/core-references.md",
+          "line": 9,
+          "sourceFile": "../rules-context-condensing/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Response Protocol",
+          "url": "../shared/response-protocol.md",
+          "line": 128,
+          "sourceFile": "../rules-context-condensing/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Common Requirements",
+          "url": "../shared/common-requirements.md",
+          "line": 154,
+          "sourceFile": "../rules-context-condensing/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        }
+      ],
+      "brokenCount": 0,
+      "validCount": 3
+    },
+    {
+      "file": "../rules-code-style-analyzer/rules.md",
+      "links": [
+        {
+          "text": "Core References Hub",
+          "url": "../shared/core-references.md",
+          "line": 15,
+          "sourceFile": "../rules-code-style-analyzer/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Response Protocol",
+          "url": "../shared/response-protocol.md",
+          "line": 110,
+          "sourceFile": "../rules-code-style-analyzer/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Workflow Guide",
+          "url": "../shared/workflow-guide.md",
+          "line": 116,
+          "sourceFile": "../rules-code-style-analyzer/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Common Requirements",
+          "url": "../shared/common-requirements.md",
+          "line": 131,
+          "sourceFile": "../rules-code-style-analyzer/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        }
+      ],
+      "brokenCount": 0,
+      "validCount": 4
+    },
+    {
+      "file": "../rules-code/rules.md",
+      "links": [
+        {
+          "text": "Core References Hub",
+          "url": "../shared/core-references.md",
+          "line": 15,
+          "sourceFile": "../rules-code/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Core References Hub",
+          "url": "../shared/core-references.md",
+          "line": 25,
+          "sourceFile": "../rules-code/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Response Protocol",
+          "url": "../shared/response-protocol.md",
+          "line": 75,
+          "sourceFile": "../rules-code/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Workflow Guide",
+          "url": "../shared/workflow-guide.md",
+          "line": 81,
+          "sourceFile": "../rules-code/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Common Requirements",
+          "url": "../shared/common-requirements.md",
+          "line": 87,
+          "sourceFile": "../rules-code/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        }
+      ],
+      "brokenCount": 0,
+      "validCount": 5
+    },
+    {
+      "file": "../rules-ask/rules.md",
+      "links": [
+        {
+          "text": "Core References Hub",
+          "url": "../shared/core-references.md",
+          "line": 15,
+          "sourceFile": "../rules-ask/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Common Requirements",
+          "url": "../shared/common-requirements.md",
+          "line": 122,
+          "sourceFile": "../rules-ask/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Response Protocol",
+          "url": "../shared/response-protocol.md",
+          "line": 128,
+          "sourceFile": "../rules-ask/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Workflow Guide",
+          "url": "../shared/workflow-guide.md",
+          "line": 134,
+          "sourceFile": "../rules-ask/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        }
+      ],
+      "brokenCount": 0,
+      "validCount": 4
+    },
+    {
+      "file": "../rules-architect/rules.md",
+      "links": [
+        {
+          "text": "Core References Hub",
+          "url": "../shared/core-references.md",
+          "line": 15,
+          "sourceFile": "../rules-architect/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Core References Hub",
+          "url": "../shared/core-references.md",
+          "line": 25,
+          "sourceFile": "../rules-architect/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Common Requirements",
+          "url": "../shared/common-requirements.md",
+          "line": 77,
+          "sourceFile": "../rules-architect/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Response Protocol",
+          "url": "../shared/response-protocol.md",
+          "line": 123,
+          "sourceFile": "../rules-architect/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Workflow Guide",
+          "url": "../shared/workflow-guide.md",
+          "line": 129,
+          "sourceFile": "../rules-architect/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        }
+      ],
+      "brokenCount": 0,
+      "validCount": 5
+    },
+    {
+      "file": "../rules-accessibility-expert/rules.md",
+      "links": [
+        {
+          "text": "Core References Hub",
+          "url": "../shared/core-references.md",
+          "line": 15,
+          "sourceFile": "../rules-accessibility-expert/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Response Protocol",
+          "url": "../shared/response-protocol.md",
+          "line": 106,
+          "sourceFile": "../rules-accessibility-expert/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Workflow Guide",
+          "url": "../shared/workflow-guide.md",
+          "line": 112,
+          "sourceFile": "../rules-accessibility-expert/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Common Requirements",
+          "url": "../shared/common-requirements.md",
+          "line": 127,
+          "sourceFile": "../rules-accessibility-expert/rules.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        }
+      ],
+      "brokenCount": 0,
+      "validCount": 4
+    },
+    {
+      "file": "../rules/rules.md",
+      "links": [],
+      "brokenCount": 0,
+      "validCount": 0
+    },
+    {
+      "file": "../rules/memory-bank.md",
+      "links": [],
+      "brokenCount": 0,
+      "validCount": 0
+    },
+    {
+      "file": "../logs/memory-activity.md",
+      "links": [],
+      "brokenCount": 0,
+      "validCount": 0
+    },
+    {
+      "file": "../memory/README.md",
+      "links": [
+        {
+          "text": "Memory Rules documentation",
+          "url": "../rules-memory/rules.md",
+          "line": 71,
+          "sourceFile": "../memory/README.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        }
+      ],
+      "brokenCount": 0,
+      "validCount": 1
+    },
+    {
+      "file": "../docs/xml-format-validation-checklist.md",
+      "links": [],
+      "brokenCount": 0,
+      "validCount": 0
+    },
+    {
+      "file": "../docs/usage-statistics.md",
+      "links": [],
+      "brokenCount": 0,
+      "validCount": 0
+    },
+    {
+      "file": "../docs/rules-template.md",
+      "links": [],
+      "brokenCount": 0,
+      "validCount": 0
+    },
+    {
+      "file": "../docs/rules-index.md",
+      "links": [],
+      "brokenCount": 0,
+      "validCount": 0
+    },
+    {
+      "file": "../docs/rules-code-cleanup-report.md",
+      "links": [
+        {
+          "text": "General Tool Guidelines",
+          "url": "../shared/tool-guidelines.md",
+          "line": 24,
+          "sourceFile": "../docs/rules-code-cleanup-report.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Common Tool Guidelines",
+          "url": "../shared/tools-common.md",
+          "line": 24,
+          "sourceFile": "../docs/rules-code-cleanup-report.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        }
+      ],
+      "brokenCount": 0,
+      "validCount": 2
+    },
+    {
+      "file": "../docs/phase2-standardization-complete.md",
+      "links": [],
+      "brokenCount": 0,
+      "validCount": 0
+    },
+    {
+      "file": "../docs/phase2-optimization-report.md",
+      "links": [],
+      "brokenCount": 0,
+      "validCount": 0
+    },
+    {
+      "file": "../docs/optimized-rules-template.md",
+      "links": [
+        {
+          "text": "Core References Hub",
+          "url": "../shared/core-references.md",
+          "line": 21,
+          "sourceFile": "../docs/optimized-rules-template.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Response Protocol",
+          "url": "../shared/response-protocol.md",
+          "line": 71,
+          "sourceFile": "../docs/optimized-rules-template.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Workflow Guide",
+          "url": "../shared/workflow-guide.md",
+          "line": 77,
+          "sourceFile": "../docs/optimized-rules-template.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Common Requirements",
+          "url": "../shared/common-requirements.md",
+          "line": 83,
+          "sourceFile": "../docs/optimized-rules-template.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        }
+      ],
+      "brokenCount": 0,
+      "validCount": 4
+    },
+    {
+      "file": "../docs/optimization-summary.md",
+      "links": [],
+      "brokenCount": 0,
+      "validCount": 0
+    },
+    {
+      "file": "../docs/optimization-complete.md",
+      "links": [],
+      "brokenCount": 0,
+      "validCount": 0
+    },
+    {
+      "file": "../docs/onboarding-revert-report.md",
+      "links": [
+        {
+          "text": "Standard Responses",
+          "url": "../shared/standard-responses.md",
+          "line": 12,
+          "sourceFile": "../docs/onboarding-revert-report.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Standard Responses",
+          "url": "../shared/standard-responses.md",
+          "line": 16,
+          "sourceFile": "../docs/onboarding-revert-report.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Standard Responses",
+          "url": "../shared/standard-responses.md",
+          "line": 20,
+          "sourceFile": "../docs/onboarding-revert-report.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Standard Responses",
+          "url": "../shared/standard-responses.md",
+          "line": 24,
+          "sourceFile": "../docs/onboarding-revert-report.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Standard Responses",
+          "url": "../shared/standard-responses.md",
+          "line": 28,
+          "sourceFile": "../docs/onboarding-revert-report.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Standard Responses",
+          "url": "../shared/standard-responses.md",
+          "line": 32,
+          "sourceFile": "../docs/onboarding-revert-report.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Standard Responses",
+          "url": "../shared/standard-responses.md",
+          "line": 36,
+          "sourceFile": "../docs/onboarding-revert-report.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Standard Responses",
+          "url": "../shared/standard-responses.md",
+          "line": 40,
+          "sourceFile": "../docs/onboarding-revert-report.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Standard Responses",
+          "url": "../shared/standard-responses.md",
+          "line": 44,
+          "sourceFile": "../docs/onboarding-revert-report.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Standard Responses",
+          "url": "../shared/standard-responses.md",
+          "line": 48,
+          "sourceFile": "../docs/onboarding-revert-report.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Standard Responses",
+          "url": "../shared/standard-responses.md",
+          "line": 52,
+          "sourceFile": "../docs/onboarding-revert-report.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Standard Responses",
+          "url": "../shared/standard-responses.md",
+          "line": 56,
+          "sourceFile": "../docs/onboarding-revert-report.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Standard Responses",
+          "url": "../shared/standard-responses.md",
+          "line": 60,
+          "sourceFile": "../docs/onboarding-revert-report.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Standard Responses",
+          "url": "../shared/standard-responses.md",
+          "line": 64,
+          "sourceFile": "../docs/onboarding-revert-report.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Standard Responses",
+          "url": "../shared/standard-responses.md",
+          "line": 68,
+          "sourceFile": "../docs/onboarding-revert-report.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Standard Responses",
+          "url": "../shared/standard-responses.md",
+          "line": 72,
+          "sourceFile": "../docs/onboarding-revert-report.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Standard Responses",
+          "url": "../shared/standard-responses.md",
+          "line": 76,
+          "sourceFile": "../docs/onboarding-revert-report.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Standard Responses",
+          "url": "../shared/standard-responses.md",
+          "line": 80,
+          "sourceFile": "../docs/onboarding-revert-report.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        }
+      ],
+      "brokenCount": 0,
+      "validCount": 18
+    },
+    {
+      "file": "../docs/onboarding-consistency-report.md",
+      "links": [],
+      "brokenCount": 0,
+      "validCount": 0
+    },
+    {
+      "file": "../docs/memory-bank-best-practices.md",
+      "links": [],
+      "brokenCount": 0,
+      "validCount": 0
+    },
+    {
+      "file": "../docs/invalid-references-fix-report.md",
+      "links": [
+        {
+          "text": "General Tool Guidelines",
+          "url": "../shared/tool-guidelines.md",
+          "line": 22,
+          "sourceFile": "../docs/invalid-references-fix-report.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Common Tool Guidelines",
+          "url": "../shared/tools-common.md",
+          "line": 25,
+          "sourceFile": "../docs/invalid-references-fix-report.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        },
+        {
+          "text": "Memory Agent documentation",
+          "url": "../../agents/memory/memory-agent.md",
+          "line": 40,
+          "sourceFile": "../docs/invalid-references-fix-report.md",
+          "valid": false,
+          "error": "File not found",
+          "type": "relative"
+        },
+        {
+          "text": "Memory Rules documentation",
+          "url": "../rules-memory/rules.md",
+          "line": 43,
+          "sourceFile": "../docs/invalid-references-fix-report.md",
+          "valid": true,
+          "error": null,
+          "type": "relative"
+        }
+      ],
+      "brokenCount": 1,
+      "validCount": 3
+    },
+    {
+      "file": "../docs/dependency-analysis-report.md",
+      "links": [
+        {
+          "text": ".*\\\\\\\\",
+          "url": ".*\\\\\\\\.md",
+          "line": 132,
+          "sourceFile": "../docs/dependency-analysis-report.md",
+          "valid": false,
+          "error": "File not found",
+          "type": "relative"
+        },
+        {
+          "text": ".*\\\\\\\\",
+          "url": ".*\\\\\\\\.md",
+          "line": 133,
+          "sourceFile": "../docs/dependency-analysis-report.md",
+          "valid": false,
+          "error": "File not found",
+          "type": "relative"
+        },
+        {
+          "text": ".*\\\\\\\\",
+          "url": ".*\\\\\\\\.md",
+          "line": 134,
+          "sourceFile": "../docs/dependency-analysis-report.md",
+          "valid": false,
+          "error": "File not found",
+          "type": "relative"
+        },
+        {
+          "text": ".*\\\\\\\\",
+          "url": ".*\\\\\\\\.md",
+          "line": 135,
+          "sourceFile": "../docs/dependency-analysis-report.md",
+          "valid": false,
+          "error": "File not found",
+          "type": "relative"
+        },
+        {
+          "text": ".*\\\\\\\\",
+          "url": ".*\\\\\\\\.md",
+          "line": 138,
+          "sourceFile": "../docs/dependency-analysis-report.md",
+          "valid": false,
+          "error": "File not found",
+          "type": "relative"
+        },
+        {
+          "text": ".*\\\\\\\\",
+          "url": ".*\\\\\\\\.md",
+          "line": 139,
+          "sourceFile": "../docs/dependency-analysis-report.md",
+          "valid": false,
+          "error": "File not found",
+          "type": "relative"
+        }
+      ],
+      "brokenCount": 6,
+      "validCount": 0
+    },
+    {
+      "file": "../docs/context-condensing-integration-report.md",
+      "links": [],
+      "brokenCount": 0,
+      "validCount": 0
+    },
+    {
+      "file": "../docs/conditional-loading-guide.md",
+      "links": [],
+      "brokenCount": 0,
+      "validCount": 0
+    },
+    {
+      "file": "../rules/memory-bank/tech.md",
+      "links": [],
+      "brokenCount": 0,
+      "validCount": 0
+    },
+    {
+      "file": "../rules/memory-bank/tasks.md",
+      "links": [],
+      "brokenCount": 0,
+      "validCount": 0
+    },
+    {
+      "file": "../rules/memory-bank/product.md",
+      "links": [],
+      "brokenCount": 0,
+      "validCount": 0
+    },
+    {
+      "file": "../rules/memory-bank/context.md",
+      "links": [],
+      "brokenCount": 0,
+      "validCount": 0
+    },
+    {
+      "file": "../rules/memory-bank/brief.md",
+      "links": [],
+      "brokenCount": 0,
+      "validCount": 0
+    },
+    {
+      "file": "../rules/memory-bank/architecture.md",
+      "links": [],
+      "brokenCount": 0,
+      "validCount": 0
+    },
+    {
+      "file": "../memory/projects/sparc-implementation/artifacts/self-reflection-analysis.md",
+      "links": [],
+      "brokenCount": 0,
+      "validCount": 0
+    },
+    {
+      "file": "../memory/projects/sample-project/timeline/initial-setup.md",
+      "links": [],
+      "brokenCount": 0,
+      "validCount": 0
+    },
+    {
+      "file": "../memory/projects/sample-project/learnings/file-system-memory-patterns.md",
+      "links": [],
+      "brokenCount": 0,
+      "validCount": 0
+    },
+    {
+      "file": "../memory/projects/sample-project/decisions/memory-storage-approach.md",
+      "links": [],
+      "brokenCount": 0,
+      "validCount": 0
+    },
+    {
+      "file": "../memory/projects/sample-project/artifacts/memory-mode-diagram.md",
+      "links": [],
+      "brokenCount": 0,
+      "validCount": 0
+    }
+  ],
+  "summary": {
+    "totalFiles": 69,
+    "totalLinks": 156,
+    "brokenLinks": 7,
+    "validLinks": 149,
+    "successRate": "95.51"
+  }
+}

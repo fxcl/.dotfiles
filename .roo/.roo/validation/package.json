@@ -1,0 +1,23 @@
+{
+  "name": "roocode-validation",
+  "version": "1.0.0",
+  "description": "Automated validation scripts for RooCode documentation system",
+  "main": "index.js",
+  "scripts": {
+    "validate-all": "node scripts/master-validator.js",
+    "master": "node scripts/master-validator.js",
+    "check-links": "node scripts/link-checker.js",
+    "validate-templates": "node scripts/template-validator.js",
+    "check-format": "node scripts/format-checker.js",
+    "validate-references": "node scripts/cross-reference-validator.js",
+    "report": "node scripts/generate-report.js"
+  },
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "fs-extra": "^11.1.1",
+    "glob": "^10.3.10",
+    "markdown-it": "^14.0.0"
+  },
+  "author": "RooCode Team",
+  "license": "MIT"
+}
