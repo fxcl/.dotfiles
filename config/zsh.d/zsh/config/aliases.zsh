@@ -270,6 +270,8 @@ _setup_python_aliases() {
   }
 
   # Python Aliases
+  alias python='python3'                          # Use python3 as default python command.
+  alias python3='python3'                         # Ensure python3 points to python3 binary.
   alias cvenv='python_venv_create'                # Creates and activates a Python virtual environment.
   alias dvenv='python_venv_deactivate'            # Deactivates the current Python virtual environment.
   alias rvenv='python_venv_remove'                # Removes the Python virtual environment.

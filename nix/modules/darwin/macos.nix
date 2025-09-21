@@ -32,6 +32,7 @@ in
           "charmbracelet/tap"
           #"chipsalliance/verible"
           #" FelixKratz/formulae"
+          "atlassian/homebrew-acli"
         ];
 
         # `brew install --cask`
@@ -132,8 +133,9 @@ in
           #     "with-unlimited-select"
           #   ];
           # }
-          "swift-format",
-           "atlassian/acli/acli"
+          "swift-format"
+           "acli"
+           "jj"
         ];
 
         masApps = {

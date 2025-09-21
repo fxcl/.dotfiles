@@ -1,5 +1,6 @@
 ### Changed
 
+- **config/zsh.d/zsh/config/aliases.zsh**: Added Python aliases to use python3 binary for both `python` and `python3` commands.
 - **config/zsh.d/zsh/bin/proto**: Add `NODE_EXTRA_CA_CERTS` export for macOS to handle custom SSL certificates.
 -e ### Fix .zshrc (config/zsh.d/.zshrc) - Final
 
@@ -25,6 +26,7 @@
 # Changes Log
 
 ## [2025-06-28] - Zsh Environment Configuration Refactoring
+
 - Refactored `config/zsh.d/.zshenv` to improve readability and maintainability.
 - Renamed `_exists` to `_is_dir` and updated it to check for directories.
 - Added comments to the `PATH` configuration and standardized directory checks.
@@ -33,6 +35,7 @@
 - Updated proxy management functions to provide clearer output.
 
 ## [2025-06-27] - Proto Script Optimization
+
 - Optimized 'config/zsh.d/zsh/bin/proto' for improved performance and readability.
 - Removed commented-out plugin installation checks to clean up the script.
 - Grouped environment variable exports for better organization.

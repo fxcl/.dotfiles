@@ -1,0 +1,152 @@
+# Ruler Configuration File
+# See https://ai.intellectronica.net/ruler for documentation.
+
+default_agents = [
+  "copilot",
+  "claude",
+  "cursor",
+  "aider",
+  "gemini-cli",
+  "goose",
+  "opencode",
+  "kilocode",
+  "augmentcode",
+  "junie",
+  "jules",
+  "openhands",
+  "firebase",
+  "cline",
+  "windsurf",
+  "codex",
+  "amp",
+]
+
+# --- Agent Specific Configurations ---
+# You can enable/disable agents and override their default output paths here.
+
+[agents.copilot]
+enabled = true
+output_path = ".github/copilot-instructions.md"
+
+[agents.claude]
+enabled = true
+output_path = "CLAUDE.md"
+
+[agents.cursor]
+enabled = true
+output_path = ".cursor/rules/ruler_cursor_instructions.mdc"
+
+[agents.aider]
+enabled = true
+output_path_instructions = "AGENTS.md"
+output_path_config = ".aider.conf.yml"
+
+[agents.gemini-cli]
+enabled = true
+
+[agents.goose]
+enabled = true
+output_path = ".goosehints"
+
+[agents.opencode]
+enabled = true
+
+[agents.kilocode]
+enabled = true
+output_path = ".kilocode/rules/ruler_kilocode_instructions.md"
+
+[agents.augmentcode]
+enabled = true
+output_path = ".augment/rules/ruler_augment_instructions.md"
+
+[agents.junie]
+enabled = true
+output_path = ".junie/guidelines.md"
+
+[agents.jules]
+enabled = true
+
+[agents.openhands]
+enabled = true
+output_path = ".openhands/microagents/repo.md"
+
+[agents.firebase]
+enabled = true
+output_path = ".idx/airules.md"
+
+[agents.cline]
+enabled = true
+output_path = ".clinerules"
+
+[agents.windsurf]
+enabled = true
+output_path = ".windsurf/rules/ruler_windsurf_instructions.md"
+
+[agents.codex]
+enabled = true
+output_path = "AGENTS_CODEX.md"
+output_path_config = ".codex/config.toml"
+[agents.amp]
+enabled = true
+
+
+# --- MCP Servers (recommended in ruler.toml) ---
+[mcp]
+enabled = true
+merge_strategy = "merge"
+
+[mcp_servers.sequentialthinking]
+command = "docker"
+args = [
+  "run",
+  "--rm",
+  "-i",
+  "--name",
+  "mcp-sequentialthinking",
+  "--read-only",
+  "--cap-drop=ALL",
+  "--security-opt=no-new-privileges",
+  "-v",
+  "mcp-seq-data:/app/data",
+  "mcp/sequentialthinking",
+]
+
+[mcp_servers.memory]
+command = "docker"
+args = [
+  "run",
+  "-i",
+  "-v",
+  "claude-memory:/app/dist",
+  "--rm",
+  "--name",
+  "mcp-memory",
+  "--read-only",
+  "--cap-drop=ALL",
+  "--security-opt=no-new-privileges",
+  "mcp/memory",
+]
+
+[mcp_servers.filesystem]
+command = "docker"
+args = [
+  "run",
+  "--rm",
+  "-i",
+  "--name",
+  "mcp-filesystem",
+  "--read-only",
+  "--cap-drop=ALL",
+  "--security-opt=no-new-privileges",
+  "-v",
+  "mcp-files:/data",
+  "mcp/filesystem",
+]
+
+[mcp_servers.git]
+command = "npx"
+args = ["-y", "@modelcontextprotocol/server-git", "--repository", "."]
+
+# --- .gitignore management ---
+[gitignore]
+enabled = true
