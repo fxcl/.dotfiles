@@ -1,0 +1,27 @@
+name: Arrow to Named Function
+version: 1.0.0
+schema: v1
+
+models:
+  - name: Qwen3 Coder (Local)
+    provider: ollama
+    model: qwen3-coder:latest
+    apiBase: http://localhost:11434
+    roles:
+      - chat
+      - edit
+
+rules:
+  - "Convert arrow functions to named function declarations only. Do not modify comments."
+
+prompts:
+  - name: Convert arrow functions to named functions
+    description: Convert arrow functions to named function declarations with proper currying
+    prompt: |
+      Convert arrow functions to named function declarations. DO NOT modify comments.
+
+      Examples:
+      `const add = (x, y) => x + y` → `function add(x, y) { return x + y }`
+      `const add = (x) => (y) => x + y` → `function add(x) { return function addWith(y) { return x + y } }`
+
+      Process only the specified folder. Preserve all functionality exactly.

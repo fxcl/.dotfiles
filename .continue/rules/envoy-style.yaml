@@ -1,0 +1,49 @@
+name: repo/envoy-style
+version: 1.0.0
+schema: v1
+
+rules:
+  - name: Envoy Commenting
+    rule: |
+      General
+      - Use Envoy markers exclusively (no JSDoc).
+      - Single-line `//` comments are one line only. For multi-line use block comments `/* */` with pipe `|` margins (not asterisks).
+
+      //++ Description
+      - Purpose: Describe what the code element does.
+      - Placement: Immediately above the element (no blank line between comment and element).
+      - Mandatory for all exported functions, types, constants, and interfaces.
+      - Categories (optional, in [BRACKETS]):
+        - default (no category)
+        - [GROUP] start grouping related items
+        - [END] end group
+        - [MODULE] document entire module (use block comment form with `|` margins)
+
+      //?? Help
+      - Purpose: Examples, gotchas, pros/cons, migration notes.
+      - Placement: Below the element with at least one blank line above.
+      - Categories (in [BRACKETS]): [EXAMPLE], [GOTCHA], [PRO], [CON], [SETUP], [ADVANCED], [MIGRATION].
+
+      //-- Tech Debt
+      - Purpose: Track existing tech debt (not permission to create new debt).
+      - Placement: At the precise location of the debt.
+      - Categories: [WORKAROUND], [LIMITATION], [OPTIMIZATION], [REFACTOR], [COMPATIBILITY].
+      - Must include the reason and an outline plan to fix.
+
+      //!! Critical Issues
+      - Purpose: Issues that block releases.
+      - Placement: Next to the issue, or file-wide: below imports and above description/function with blank lines above and below.
+      - Categories: [SECURITY], [PERFORMANCE], [CORRECTNESS], [INCOMPLETE], [BREAKING].
+
+      //>> References
+      - Purpose: Links and references to related resources.
+      - Format: `//>> [CATEGORY] [Link text](url)` — Markdown link syntax is required.
+      - Placement: Inline where relevant or at the bottom of the file in a See Also section.
+      - Common categories: [NEXT], [PREV], [RELATED], [CANONICAL], [AUTHOR].
+
+      Common Mistakes to Avoid
+      - Placing `//++` at file top instead of directly above the element.
+      - Grouping multiple `//` lines instead of using a block comment.
+      - Missing `//++` on exported elements.
+      - Using `*` margins instead of `|` in block comments.
+      - Missing brackets on categories (e.g., `EXAMPLE` instead of `[EXAMPLE]`).

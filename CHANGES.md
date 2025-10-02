@@ -1,3 +1,13 @@
+## [2025-10-02] - Git Hooks Fix
+
+- **Fixed**: Updated `config/git/hooks/pre-commit` to properly detect git conflict markers by correcting the regex pattern from `^[<]{7} |^[>]{7} ` to `^<{7}|^={7}|^>{7}` to match standard git conflict markers (`<<<<<<<`, `=======`, `>>>>>>>`).
+
+## [2025-09-25] - Prime Directive Rule Conversion
+
+- **Changed**: Converted `.continue/rules/prime-directive.md` to YAML format (`.continue/rules/prime-directive.yaml`) with proper Continue rules schema.
+- **Changed**: Converted `.continue/rules/one-function-one-file.md` to YAML format (`.continue/rules/one-function-one-file.yaml`) with proper Continue rules schema.
+- **Changed**: Converted `.continue/rules/functional-programming.md` to YAML format (`.continue/rules/functional-programming.yaml`) with proper Continue rules schema.
+
 ### Changed
 
 - **config/zsh.d/zsh/config/aliases.zsh**: Added Python aliases to use python3 binary for both `python` and `python3` commands.

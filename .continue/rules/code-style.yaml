@@ -1,0 +1,36 @@
+name: repo/code-style
+version: 1.0.0
+schema: v1
+
+rules:
+  - name: Code Style
+    rule: |
+      Indentation & Width
+      - Use tabs for indentation.
+      - Soft line limit at 80 characters.
+
+      Punctuation & Types
+      - No semicolons.
+      - Prefer Array<T> notation over T[].
+
+      Control Flow
+      - No for/while loops—use toolsmith functions (map, filter, reduce, etc.).
+
+      Spacing
+      - Spaces around all operators: `x + y` not `x+y`.
+      - Object spacing: `{ x: 7 }` not `{x:7}`; space after colons.
+      - Arrays: space after commas: `[1, 2, 3]` not `[1,2,3]`.
+      - Function params: `(a, b)` not `(a,b)`.
+
+      Trailing Commas
+      - Always in multi-line arrays, objects, and parameter lists.
+      - Never in single-line structures.
+
+      Blank Lines (explicit rules)
+      - No blank lines at the top or bottom of a block.
+      - Insert a blank line before `return` statements.
+      - Insert a blank line above and below any statement that spans multiple lines.
+      - Insert a blank line between different statement types (e.g., const → if, if → return, const → assertEquals).
+      - Group `const` declarations at top with a single blank line below the group (not above).
+      - Add a blank line before help comments (`//??`).
+      - Never more than one blank line in a row.

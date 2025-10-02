@@ -1,0 +1,11 @@
+name: repo/architecture
+version: 1.0.0
+schema: v1
+
+rules:
+  - name: Dependency Hierarchy
+    rule: |
+      Maintain sacred dependency hierarchy and one-directional flow. Delete folder → delete feature. No cycles. The hierarchy IS the graph.
+  - name: Naming Conventions
+    rule: |
+      Functions camelCase, types PascalCase, constants UPPER_SNAKE_CASE; avoid abbreviations. Initialisms only first letter capped in camel/Pascal (e.g., apiKey, AstNode).

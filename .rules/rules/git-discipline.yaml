@@ -1,0 +1,23 @@
+name: repo/git-discipline
+version: 1.0.0
+schema: v1
+
+rules:
+  - name: Git Discipline
+    rule: |
+      Commit Structure
+      - Atomic, focused commits—one logical change per commit.
+      - Use Conventional Commits 1.0.0 format.
+        Types allowed: feat, fix, docs, chore, refactor, test.
+        Format: `type: description` or `type(scope): description`.
+        Breaking change: `type!:` or `BREAKING CHANGE:` footer.
+
+      Pre-commit Gates (must be green for changed files)
+      - deno task test
+      - deno task lint
+      - deno task typecheck
+      - deno task fmt
+
+      AI Assistant Requirements
+      - Update all affected documentation before committing.
+      - Ensure zero lint and type errors in changed code.

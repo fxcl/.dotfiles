@@ -1,0 +1,33 @@
+name: repo/testing
+version: 1.0.0
+schema: v1
+
+rules:
+  - name: Test Discipline
+    rule: |
+      Scope & Location
+      - One test file per function/component in the same folder: `index.test.ts`.
+      - Use `Deno.test` (and `t.step` if necessary).
+      - Import assertions from https://deno.land/std/assert/mod.ts
+
+      Policy
+      - NEW files: write tests first (TDD), then implement to pass.
+      - Edited files: add/adjust tests before making the fix.
+      - "Throwaway" means temporary until Auditor generates tests—not a license to ignore rules.
+
+      Rules Apply Equally
+      - Tests must follow all production rules: no classes, no loops, functional style, code style, imports order, Envoy comments where exported.
+      - Do not mock our own functions; test real behavior. Only mock true externals when unavoidable.
+
+      Coverage
+      - Target 100% reported coverage. If a line/branch cannot be covered:
+        Process:
+        1) Make every effort to test it.
+        2) If truly impossible/impractical, document why.
+        3) Present the case to The Architect for approval.
+        4) If approved, add the ignore comment WITH SPECIFIC REASON.
+        5) Our scripts will report all ignores for review.
+        Syntax:
+        - Single line: `// deno-coverage-ignore [reason]`
+        - Block start: `// deno-coverage-ignore-start [reason]`
+        - Block end: `// deno-coverage-ignore-stop`

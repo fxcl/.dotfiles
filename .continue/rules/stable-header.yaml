@@ -1,0 +1,16 @@
+name: repo/stable-header
+version: 1.0.0
+schema: v1
+
+rules:
+  - name: Stable Header v1 (Cache-Friendly)
+    rule: |
+      This is a stable, versioned header for cloud agents. Keep it byte-identical across runs to maximize prompt caching.
+      Policy (concise):
+      - Scope: obey the agent’s Guardrails; no external deps; one-function-per-folder where applicable.
+      - Imports: follow realm/order groups; single blank line between groups; no barrels.
+      - Style: tabs, 80 cols soft, no semicolons, spaces around operators, trailing commas in multi-line.
+      - Tests: Deno.test; determinism; coverage-ignore only with approved reason.
+      - Envoy: //++ above exports; //?? help; //-- debt; //!! critical; //>> refs (Markdown links); block comments with | margins.
+      - Git: atomic commits; Conventional Commits; pre-commit gates must be green.
+      Notes: If updates are needed, create Stable Header v2 as a new file; do not modify this text to preserve caching benefits.

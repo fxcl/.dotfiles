@@ -1,0 +1,8 @@
+name: repo/architecture
+version: 1.0.0
+schema: v1
+
+rules:
+  - name: Dependency Hierarchy
+    rule: |
+      Maintain sacred dependency hierarchy and one-directional flow. Delete folder → delete feature. No cycles. The hierarchy IS the graph.

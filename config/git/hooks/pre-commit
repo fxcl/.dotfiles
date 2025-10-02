@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 set -ue -o pipefail
 
-# Look for files that still have conflict markers (>|< repeated 7 times)
-CONFLICTS="$(git diff --cached --name-only --diff-filter=ACMRT -G'^[<]{7} |^[>]{7} ')"
+# Look for files that still have conflict markers (<<<<<<<, =======, >>>>>>>)
+CONFLICTS="$(git diff --cached --name-only --diff-filter=ACMRT -G'^<{7}|^={7}|^>{7}')"
 
 if [[ -z "${GIT_DIR-}" ]]; then
 	GIT_DIR="$(git rev-parse --git-dir 2>/dev/null)"

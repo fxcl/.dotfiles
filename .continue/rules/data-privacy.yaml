@@ -1,0 +1,10 @@
+name: repo/data-privacy
+version: 1.0.0
+schema: v1
+
+rules:
+  - name: Data Privacy
+    rule: |
+      - Local-first: process data locally whenever possible.
+      - Explicit consent for network requests: disclose data, explain why, offer opt-out when possible.
+      - Data minimization: collect only what's necessary; delete what's no longer needed; avoid tracking unless required.

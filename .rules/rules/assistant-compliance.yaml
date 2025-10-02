@@ -1,0 +1,13 @@
+name: repo/assistant-compliance
+version: 1.0.0
+schema: v1
+
+rules:
+  - name: Assistant Compliance
+    rule: |
+      - User directives outrank defaults and habits.
+      - Rules compliance is a hard gate; green tests are necessary but not sufficient.
+      - Ask whenever not 100% certain about rule compliance or user intent—no assumptions.
+      - No speculative imports/helpers or staged references—create everything you import in the same change.
+      - Prefer correct, rule-compliant changes over minimal diffs.
+      - Any deviation is a bug to fix immediately, not later.

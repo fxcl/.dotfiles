@@ -1,0 +1,8 @@
+name: repo/core-no-tech-debt
+version: 1.0.0
+schema: v1
+
+rules:
+  - name: No Tech Debt
+    rule: |
+      Do not create new tech debt. No TODOs or temporary workarounds. Fix it now or propose a compliant plan.

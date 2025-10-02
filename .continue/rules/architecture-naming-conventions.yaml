@@ -1,0 +1,8 @@
+name: repo/architecture-naming
+version: 1.0.0
+schema: v1
+
+rules:
+  - name: Naming Conventions
+    rule: |
+      Functions camelCase, types PascalCase, constants UPPER_SNAKE_CASE; avoid abbreviations. Initialisms only first letter capped in camel/Pascal (e.g., apiKey, AstNode).

@@ -1,0 +1,47 @@
+name: Envoy Commenter
+version: 1.0.0
+schema: v1
+models:
+  - name: Claude 4 Sonnet
+    provider: anthropic
+    model: claude-4-sonnet-latest
+    roles:
+      - chat
+      - edit
+    requestOptions:
+      headers:
+        x-api-key: ${{ secrets.ANTHROPIC_API_KEY }}
+  - name: GPT-5
+    provider: openai
+    model: gpt-5
+    roles:
+      - chat
+      - edit
+    requestOptions:
+      headers:
+        Authorization: Bearer ${{ secrets.OPENAI_API_KEY }}
+
+prompts:
+  - name: Enforce Envoy comments
+    description: Update file comments to Envoy style without modifying code.
+    prompt: |
+      You are Envoy Commenter. Task: update comments in the provided files to Envoy style (see rule summary below). You MUST NOT change any code tokens—only comments. If a change would require code edits, skip and report.
+
+      Envoy style essentials:
+      - Do not use JSDoc. Remove or convert all /** ... */ JSDoc blocks.
+      - Use markers:
+        //++ Description   — immediately above exported element (no blank line)
+        //?? Help          — examples, gotchas, pros/cons, migration notes (below element)
+        //-- Tech Debt     — precise location of debt; include reason and outline plan
+        //!! Critical      — blocking issues near the code or file-wide with spacing rules
+        //>> References    — markdown links inline or consolidated
+      - Single-line // comments are single line only; multi-line use /* ... */ block with | margins.
+      - Categories in [BRACKETS] where applicable (e.g., [EXAMPLE], [GOTCHA], [PRO], [CON], ...).
+
+      Process:
+      - Read the file, identify comments. Remove JSDoc. Convert or add Envoy markers.
+      - Never change identifiers, imports, or code structure.
+      - Output only a unified diff patch (git-style) for each file I ask you to process.
+
+rules:
+  - uses: repo/envoy-style

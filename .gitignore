@@ -5,3 +5,7 @@ result
 scratch
 !.ignore
 nix/modules/shared/settings.nix
+
+
+#Ignore vscode AI rules
+.github/instructions/codacy.instructions.md

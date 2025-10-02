@@ -1,0 +1,12 @@
+name: repo/toolsmith-fp
+version: 1.0.0
+schema: v1
+
+rules:
+  - name: Toolsmith-Centric FP
+    rule: |
+      - No external FP or validation libraries (e.g., fp-ts, zod). Use the toolsmith exclusively.
+      - Prefer toolsmith `vanilla`/`lifted` functions where provided.
+      - Use toolsmith monads for effects and errors (Result, Validation, Maybe, Task, etc.)—no thrown exceptions.
+      - Prefer named function declarations over curried arrow functions.
+      - Enforce immutability, single responsibility, and composition over complexity.

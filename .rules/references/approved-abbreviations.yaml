@@ -1,0 +1,63 @@
+name: Approved Abbreviations
+version: 1.0.0
+
+# Abbreviations that are acceptable and don't need to be spelled out
+approved:
+  # Common universally understood abbreviations
+  - MAX
+  - MIN
+  - ETC
+
+  # Standard initialisms (technology/web)
+  - HTML
+  - CSS
+  - API
+  - URL
+  - URI
+  - HTTP
+  - HTTPS
+  - JSON
+  - XML
+  - AST
+  - DOM
+  - SQL
+  - PDF
+
+  # Programming/CS initialisms
+  - UUID
+  - GUID
+  - UTF
+  - ASCII
+  - REGEX
+  - CLI
+  - GUI
+
+  # Time/measurement
+  - MS  # milliseconds
+  - UTC
+  - GMT
+
+  # Mathematical
+  - PI
+  - LOG
+  - SIN
+  - COS
+  - TAN
+
+# Patterns that should be expanded
+expand:
+  - pattern: "NUM"
+    expansion: "NUMBER_OF"
+    example: "NUM_ITEMS → NUMBER_OF_ITEMS"
+
+  - pattern: "TEMP"
+    expansion: "TEMPORARY"
+    example: "TEMP_DIR → TEMPORARY_DIRECTORY"
+
+  - pattern: "PREV"
+    expansion: "PREVIOUS"
+    example: "PREV_VALUE → PREVIOUS_VALUE"
+
+  - pattern: "CURR"
+    expansion: "CURRENT"
+    example: "CURR_INDEX → CURRENT_INDEX"

@@ -1,0 +1,15 @@
+name: repo/seven-deadly-sins
+version: 1.0.0
+schema: v1
+
+rules:
+  - name: Seven Deadly Sins
+    rule: |
+      Avoid these sins and apply the listed solutions:
+      - Assumption → Verify, test, confirm.
+      - Premature Optimization → Measure first, optimize real bottlenecks only.
+      - Class-Based Thinking → Pure functions, composition, immutability.
+      - Mocking Our Own Code → Test real behavior; only mock true externals.
+      - Tech Debt Accumulation → Fix now or don't write it.
+      - Accessibility Afterthought → Accessibility from day one.
+      - Monolithic Functions → Small, focused, composable.

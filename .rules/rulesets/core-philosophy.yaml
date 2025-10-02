@@ -1,0 +1,18 @@
+name: repo/core-philosophy
+version: 1.0.0
+schema: v1
+
+rules:
+  - name: Prime Directive
+    rule: |
+      DO NOT ASSUME. DO NOT TAKE SHORTCUTS. DO NOT GUESS.
+      Verify everything. Work in small increments. If not 100% certain of rule compliance or user intent, STOP and ASK before proceeding.
+  - name: No Tech Debt
+    rule: |
+      Do not create new tech debt. No TODOs or temporary workarounds. Fix it now or propose a compliant plan.
+  - name: Functional Programming
+    rule: |
+      No classes, no exceptions, immutable data, pure functions with explicit IO boundaries. One function per file.
+  - name: One Function, One File
+    rule: |
+      Place each function in its own folder with index.ts; tests in index.test.ts. Types in types/index.ts; constants in constants/index.ts.

@@ -1,0 +1,114 @@
+name: OOP to FP Method Mappings
+version: 1.0.0
+description: Maps JavaScript OOP methods to toolsmith FP functions with exact paths and usage patterns
+
+mappings:
+  # Array methods
+  - jsMethod: ".length"
+    toolsmithFunction: "length"
+    path: "libraries/toolsmith/src/vanilla/array/length"
+    usage: "length(array)"
+
+  - jsMethod: ".reduce"
+    toolsmithFunction: "reduce"
+    path: "libraries/toolsmith/src/vanilla/array/reduce"
+    usage: "reduce(fn)(initial)(array)"
+
+  - jsMethod: ".map"
+    toolsmithFunction: "map"
+    path: "libraries/toolsmith/src/vanilla/array/map"
+    usage: "map(fn)(array)"
+
+  - jsMethod: ".filter"
+    toolsmithFunction: "filter"
+    path: "libraries/toolsmith/src/vanilla/array/filter"
+    usage: "filter(predicate)(array)"
+
+  - jsMethod: ".find"
+    toolsmithFunction: "find"
+    path: "libraries/toolsmith/src/vanilla/array/find"
+    usage: "find(predicate)(array)"
+
+  - jsMethod: ".sort"
+    toolsmithFunction: "sort"
+    path: "libraries/toolsmith/src/vanilla/array/sort"
+    usage: "sort(compareFn)(array)"
+
+  - jsMethod: ".reverse"
+    toolsmithFunction: "reverse"
+    path: "libraries/toolsmith/src/vanilla/array/reverse"
+    usage: "reverse(array)"
+
+  - jsMethod: ".slice"
+    toolsmithFunction: "slice"
+    path: "libraries/toolsmith/src/vanilla/array/slice"
+    usage: "slice(start)(end)(array)"
+
+  - jsMethod: ".concat"
+    toolsmithFunction: "concat"
+    path: "libraries/toolsmith/src/vanilla/array/concat"
+    usage: "concat(array1)(array2)"
+
+  - jsMethod: ".includes"
+    toolsmithFunction: "includes"
+    path: "libraries/toolsmith/src/vanilla/array/includes"
+    usage: "includes(item)(array)"
+
+  # String methods
+  - jsMethod: ".split"
+    toolsmithFunction: "split"
+    path: "libraries/toolsmith/src/vanilla/string/split"
+    usage: "split(delimiter)(string)"
+
+  - jsMethod: ".join"
+    toolsmithFunction: "join"
+    path: "libraries/toolsmith/src/vanilla/string/join"
+    usage: "join(delimiter)(array)"
+
+  - jsMethod: ".toLowerCase()"
+    toolsmithFunction: "toLower"
+    path: "libraries/toolsmith/src/vanilla/string/toCase/toLower"
+    usage: "toLower(string)"
+
+  - jsMethod: ".toUpperCase()"
+    toolsmithFunction: "toUpper"
+    path: "libraries/toolsmith/src/vanilla/string/toCase/toUpper"
+    usage: "toUpper(string)"
+
+  - jsMethod: ".trim()"
+    toolsmithFunction: "trim"
+    path: "libraries/toolsmith/src/vanilla/string/trim"
+    usage: "trim(string)"
+
+  - jsMethod: ".replace"
+    toolsmithFunction: "replace"
+    path: "libraries/toolsmith/src/vanilla/string/replace"
+    usage: "replace(search)(replacement)(string)"
+
+  - jsMethod: ".substring"
+    toolsmithFunction: "substring"
+    path: "libraries/toolsmith/src/vanilla/string/substring"
+    usage: "substring(start)(end)(string)"
+
+  - jsMethod: ".charAt"
+    toolsmithFunction: "charAt"
+    path: "libraries/toolsmith/src/vanilla/string/charAt"
+    usage: "charAt(index)(string)"
+
+# Common magic number constants
+magicNumbers:
+  - value: "0"
+    constant: "ADDITIVE_IDENTITY"
+    context: "reduce operations, array start index"
+
+  - value: "1"
+    constant: "MULTIPLICATIVE_IDENTITY"
+    context: "multiply operations, single item"
+
+  - value: "-1"
+    constant: "NOT_FOUND_INDEX"
+    context: "indexOf, findIndex results"
+
+  - value: "1000"
+    constant: "ONE_SECOND_MS"
+    context: "setTimeout, intervals"

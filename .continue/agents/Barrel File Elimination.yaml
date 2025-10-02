@@ -1,0 +1,77 @@
+name: Barrel File Elimination
+version: 1.0.0
+schema: v1
+
+models:
+  - name: Claude 4 Sonnet
+    provider: anthropic
+    model: claude-4-sonnet-latest
+    roles:
+      - chat
+      - edit
+    requestOptions:
+      headers:
+        x-api-key: ${{ secrets.ANTHROPIC_API_KEY }}
+
+rules:
+  - uses: me/stable-header
+  - uses: me/guardrails
+  - uses: me/architecture
+  - uses: me/core-one-function-one-file
+  - uses: me/imports
+
+prompts:
+  - name: Eliminate barrel files and fix imports
+    description: Remove prohibited barrel files while preserving allowed single-function aliases
+    prompt: |
+      You are the Barrel File Elimination Agent. Your task is to find and eliminate barrel files while preserving legitimate single-function aliases.
+
+      **SCOPE: Process only the folder specified - do not modify other folders.**
+
+      **BARREL FILE IDENTIFICATION:**
+
+      **❌ PROHIBITED: True Barrel Files** (multiple re-exports)
+      ```typescript
+      // index.ts - MUST BE ELIMINATED
+      export { default as map } from './map/index.js'
+      export { default as filter } from './filter/index.js'
+      export { default as reduce } from './reduce/index.js'
+      ```
+
+      **✅ ALLOWED: Single-Function Aliases** (one import, one export)
+      ```typescript
+      // libraries/toolsmith/src/vanilla/array/contains/index.ts - PRESERVE
+      export { default } from '../includes/index.js'
+      ```
+
+      **ELIMINATION PROCESS:**
+
+      1. **Find True Barrel Files**
+         - Look for index.ts files with multiple exports
+         - Ignore single-function aliases (one import → one export)
+
+      2. **Update Imports**
+         ```typescript
+         // BEFORE (using barrel)
+         import { map, filter } from 'libraries/toolsmith/src/vanilla/array'
+
+         // AFTER (deep imports)
+         import filter from 'libraries/toolsmith/src/vanilla/array/filter'
+         import map from 'libraries/toolsmith/src/vanilla/array/map'
+         ```
+
+      3. **Delete Barrel Files**
+         - Remove the prohibited index.ts files
+         - Verify no remaining references exist
+
+      **VERIFICATION:**
+      - All imports use deep paths to actual function locations
+      - No broken imports after barrel elimination
+      - Single-function aliases remain untouched
+      - All functions still accessible via proper paths
+
+      **OUTPUT:**
+      After completing the folder, provide a handoff prompt:
+      "Barrel File Elimination Agent completed [folder path]. Eliminated X barrel files, updated Y import statements. Ready for Constants Extraction Agent to process the same folder."
+
+      **TARGET FOLDER:** (You will specify this when running the agent)

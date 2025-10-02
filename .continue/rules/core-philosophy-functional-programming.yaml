@@ -1,0 +1,8 @@
+name: repo/core-functional-programming
+version: 1.0.0
+schema: v1
+
+rules:
+  - name: Core Functional Programming
+    rule: |
+      No classes, no exceptions, immutable data, pure functions with explicit IO boundaries. One function per file.

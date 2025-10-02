@@ -1,0 +1,63 @@
+name: Workspace Config
+version: "0.0.1"
+schema: v1
+
+models:
+  # Local models via Ollama (explicit blocks)
+  - name: Mistral (Ollama)
+    provider: ollama
+    model: mistral:latest
+    apiBase: http://localhost:11434
+    roles:
+      - chat
+      - edit
+      - apply
+  - name: Qwen3 Coder (Ollama)
+    provider: ollama
+    model: qwen3-coder:latest
+    apiBase: http://localhost:11434
+    roles:
+      - chat
+      - edit
+      - apply
+
+  # Cloud models (explicit blocks with headers)
+  - name: GPT-5
+    provider: openai
+    model: gpt-5
+    roles:
+      - chat
+      - edit
+      - apply
+    requestOptions:
+      headers:
+        Authorization: Bearer ${{ secrets.OPENAI_API_KEY }}
+  - name: Claude 4 Sonnet
+    provider: anthropic
+    model: claude-4-sonnet-latest
+    roles:
+      - chat
+      - edit
+      - apply
+    requestOptions:
+      headers:
+        x-api-key: ${{ secrets.ANTHROPIC_API_KEY }}
+  - name: Claude Opus 4.1 (20250805)
+    provider: anthropic
+    model: claude-opus-4-1-20250805
+    roles:
+      - chat
+      - edit
+      - apply
+    requestOptions:
+      headers:
+        x-api-key: ${{ secrets.ANTHROPIC_API_KEY }}
+
+context:
+  - provider: code
+  - provider: docs
+  - provider: diff
+  - provider: terminal
+  - provider: problems
+  - provider: folder
+  - provider: codebase

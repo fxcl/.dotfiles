@@ -33,13 +33,14 @@ in
           #"chipsalliance/verible"
           #" FelixKratz/formulae"
           "atlassian/homebrew-acli"
+          "codacy/codacy-cli-v2"
         ];
 
         # `brew install --cask`
         casks = [
           "swiftdefaultappsprefpane"
           #"iina"
-          "mpv"
+          "stolendata-mpv"
           # "keepingyouawake"
           "chai"
           "keka"
@@ -71,6 +72,8 @@ in
         ];
         # `brew install`
         brews = [
+        "neo4j"
+		    "codacy/codacy-cli-v2/codacy-cli-v2"
          "jq"
           "ruby@3.3"
           "libyaml"

@@ -1,0 +1,8 @@
+name: repo/core-one-function-one-file
+version: 1.0.0
+schema: v1
+
+rules:
+  - name: One Function, One File
+    rule: |
+      Place each function in its own folder with index.ts; tests in index.test.ts. Types in types/index.ts; constants in constants/index.ts.

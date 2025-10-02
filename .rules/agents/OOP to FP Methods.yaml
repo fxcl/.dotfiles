@@ -1,0 +1,85 @@
+name: OOP to FP Methods
+version: 1.0.0
+schema: v1
+
+models:
+  - name: Claude 4 Sonnet
+    provider: anthropic
+    model: claude-4-sonnet-latest
+    roles:
+      - chat
+      - edit
+    requestOptions:
+      headers:
+        x-api-key: ${{ secrets.ANTHROPIC_API_KEY }}
+
+rules:
+  - uses: repo/stable-header
+  - uses: repo/guardrails
+  - uses: repo/toolsmith-fp
+  - uses: repo/core-functional-programming
+  - uses: repo/code-style
+  - uses: repo/imports
+
+prompts:
+  - name: Convert OOP methods to FP toolsmith functions
+    description: Replace JavaScript OOP methods with toolsmith FP functions and eliminate magic numbers
+    prompt: |
+      You are the OOP to FP Methods Agent. Your task is to convert all JavaScript OOP method calls to toolsmith FP functions and replace magic numbers with named constants.
+
+      **SCOPE: Process only the folder specified - do not modify other folders.**
+
+      **REFERENCE: Use the mappings in `.continue/references/oop-to-fp-mappings.yaml` for exact paths and usage patterns.**
+
+      **TRANSFORMATIONS REQUIRED:**
+
+      1. **Array Methods → Toolsmith Functions**
+         ```typescript
+         // BEFORE
+         items.reduce(sum, 0)
+         items.map(transform)
+         items.filter(isValid)
+
+         // AFTER
+         reduce(sum)(ADDITIVE_IDENTITY)(items)
+         map(transform)(items)
+         filter(isValid)(items)
+         ```
+
+      2. **String Methods → Toolsmith Functions**
+         ```typescript
+         // BEFORE
+         str.split(',')
+         str.toLowerCase()
+
+         // AFTER
+         split(',')(str)
+         toLower(str)
+         ```
+
+      3. **Magic Numbers → Named Constants**
+         ```typescript
+         // BEFORE
+         array.slice(0, 10)
+         setTimeout(fn, 1000)
+
+         // AFTER
+         slice(START_INDEX)(MAX_ITEMS)(array)
+         setTimeout(fn, ONE_SECOND_MS)
+         ```
+
+      **IMPORT REQUIREMENTS:**
+      - Import toolsmith functions from exact paths (always default exports)
+      - Use deep imports: `import reduce from 'libraries/toolsmith/src/vanilla/array/reduce'`
+      - Follow import order rules (external types, internal types, external named, etc.)
+
+      **CONSTANTS:**
+      - Create constants at top of file in SCREAMING_SNAKE_CASE
+      - Use meaningful names: `ADDITIVE_IDENTITY` not `ZERO`
+      - Group constants together with single blank line below
+
+      **OUTPUT:**
+      After completing the folder, provide a handoff prompt:
+      "OOP to FP Methods Agent completed [folder path]. Converted X OOP method calls to toolsmith functions, replaced Y magic numbers with named constants. Ready for Barrel File Elimination Agent to process the same folder."
+
+      **TARGET FOLDER:** (You will specify this when running the agent)

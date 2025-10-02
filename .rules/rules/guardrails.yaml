@@ -1,0 +1,17 @@
+name: repo/guardrails
+version: 1.0.0
+schema: v1
+
+rules:
+  - name: Guardrails v1 (Scope & Safety)
+    rule: |
+      Generic safety constraints for all cloud agents. Keep this text stable for caching. If updated, create v2.
+      - No external dependencies; do not edit package manifests, lockfiles, or tool configs.
+      - One function per folder with a default export (except tests); no barrel files; direct imports only.
+      - Keep edits within the requested scope; do not modify unrelated files or libraries.
+      - Do not delete/rename files unless the prompt explicitly authorizes it.
+      - Imports: follow realm/order groups; single blank line between groups.
+      - Style-only or comments-only passes must not change behavior.
+      - Arborist is the only AST source; Envoy must not parse code.
+      - Tests must be deterministic; coverage-ignore requires an explicit reason.
+      - All pre-commit gates must pass; prefer minimal diffs.

@@ -1,0 +1,13 @@
+name: repo/error-handling
+version: 1.0.0
+schema: v1
+
+rules:
+  - name: Error Handling
+    rule: |
+      - Handle all errors explicitly—no silent failures or swallowed exceptions.
+      - Show user-friendly messages; log technical details separately.
+      - Fail gracefully: do not crash app; preserve user data; provide fallbacks.
+      - Use toolsmith monads (Result, Validation, etc.) for predictable error handling; do not throw exceptions.
+      - For multiple errors, accumulate via Validation; for effects, prefer Task/Result.
+      - Recovery: retry with backoff, fallback to cache when possible, degrade gracefully.
