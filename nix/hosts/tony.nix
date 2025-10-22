@@ -11,7 +11,6 @@
     # nix.buildCores = 4;
   };
 
-
   homebrew.casks = [
     # "arq" # I need a specific version so I will handle it myself.
     # "transmit"

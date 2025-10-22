@@ -68,7 +68,7 @@ _load_tool_deferred() {
 ################################################################################
 
 # Use a large history file for better command recall.
-HISTSIZE=1000000
+HISTSIZE=200000
 SAVEHIST="$HISTSIZE"
 HISTFILE="${XDG_DATA_HOME}/.zsh_history"
 

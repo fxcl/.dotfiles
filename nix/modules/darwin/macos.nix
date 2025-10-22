@@ -38,6 +38,7 @@ in
 
         # `brew install --cask`
         casks = [
+        "pareto-security"
           "swiftdefaultappsprefpane"
           #"iina"
           "stolendata-mpv"

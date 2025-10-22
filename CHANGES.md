@@ -1,3 +1,10 @@
+## [2025-10-22] - Zsh History Display Limit
+
+- **Added**: Custom history function in `config/zsh.d/zsh/config/aliases.zsh` that displays the last 1000 commands by default instead of showing all 200,000 history entries.
+- **Added**: `history_custom()` function with configurable default count (1000) that uses the `fc` command to display history.
+- **Added**: Alias for `history` command that overrides the default behavior to use the custom function.
+- **Added**: `_setup_history_aliases()` function to organize history-related aliases following the project's pattern.
+
 ## [2025-10-02] - Git Hooks Fix
 
 - **Fixed**: Updated `config/git/hooks/pre-commit` to properly detect git conflict markers by correcting the regex pattern from `^[<]{7} |^[>]{7} ` to `^<{7}|^={7}|^>{7}` to match standard git conflict markers (`<<<<<<<`, `=======`, `>>>>>>>`).

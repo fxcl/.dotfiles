@@ -301,6 +301,25 @@ _setup_macos_aliases() {
   fi
 }
 
+_setup_history_aliases() {
+  # Custom history function to show last 1000 commands by default
+  history_custom() {
+    # Define default history count
+    local DEFAULT_HISTORY_COUNT=1000
+    local count=${1:-$DEFAULT_HISTORY_COUNT}
+    
+    # Check if history exists before trying to display it
+    if [[ -f "$HISTFILE" ]] || builtin history 1 >/dev/null 2>&1; then
+      fc -l -"$count"
+    else
+      echo "No history available"
+    fi
+  }
+  
+  # Override the default history command
+  alias history='history_custom'
+}
+
 _setup_aliases() {
   _setup_development_aliases
   _setup_system_tool_aliases
@@ -309,6 +328,7 @@ _setup_aliases() {
   _setup_ai_tool_aliases
   _setup_python_aliases
   _setup_macos_aliases
+  _setup_history_aliases
 }
 
 _setup_aliases
