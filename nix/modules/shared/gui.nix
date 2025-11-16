@@ -67,7 +67,6 @@ in
           # "sync"
           # "visual-studio-code"
           # "logseq"
-          # "vscodium"
         ];
 
         # my.hm.file = {

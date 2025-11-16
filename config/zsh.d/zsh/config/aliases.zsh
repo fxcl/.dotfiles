@@ -34,6 +34,9 @@ alias l="ls -lah"  # Lists files in long format, including hidden files.
 alias ll="ls -lh"  # Lists files in long format.
 alias la="ls -lAh" # Lists files in long format, including almost all hidden files.
 
+# claude-code
+alias clauded="claude --dangerously-skip-permissions"
+
 _setup_development_aliases() {
   # Homebrew
   alias cask="brew --cask" # Manages Homebrew Casks.
@@ -294,10 +297,10 @@ _setup_macos_aliases() {
     export PATH # Adds VSCode binary directory to PATH.
 
     # VSCode Launcher Function
-    codium() {
-      # Launches VSCode with the current working directory.
-      VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args "$@"
-    }
+    # codium() {
+    #   # Launches VSCode with the current working directory.
+    #   VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args "$@"
+    # }
   fi
 }
 
@@ -307,7 +310,7 @@ _setup_history_aliases() {
     # Define default history count
     local DEFAULT_HISTORY_COUNT=1000
     local count=${1:-$DEFAULT_HISTORY_COUNT}
-    
+
     # Check if history exists before trying to display it
     if [[ -f "$HISTFILE" ]] || builtin history 1 >/dev/null 2>&1; then
       fc -l -"$count"
@@ -315,7 +318,7 @@ _setup_history_aliases() {
       echo "No history available"
     fi
   }
-  
+
   # Override the default history command
   alias history='history_custom'
 }

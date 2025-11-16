@@ -23,7 +23,6 @@
     ./cc.nix
     ./kube.nix
     ./python.nix
-    ./vscode.nix
     ./zk.nix
     ./emacs.nix
     ./rust.nix
@@ -50,7 +49,6 @@
     cc.enable = lib.mkDefault true;
     kube.enable = lib.mkDefault false;
     python.enable = lib.mkDefault false;
-    vscode.enable = lib.mkDefault true;
     zk.enable = lib.mkDefault true;
     emacs.enable = lib.mkDefault false;
     rust.enable = lib.mkDefault true;

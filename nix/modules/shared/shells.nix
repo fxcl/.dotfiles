@@ -171,10 +171,6 @@ in
                   source = ../../../config/vale;
                 };
                 ".vale.ini" = { source = ../../../config/.vale.ini; };
-                ".config/VSCodium" = {
-                  recursive = true;
-                  source = ../../../config/VSCodium;
-                };
                 ".config/goneovim/settings.toml" = {
                   source = ../../../config/goneovim/settings.toml;
                 };

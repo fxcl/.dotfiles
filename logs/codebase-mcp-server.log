@@ -1,0 +1,32 @@
+{"level":"info","logFile":"/Users/kelvin/.dotfiles/logs/codebase-mcp-server.log","logLevel":"info","logsDir":"/Users/kelvin/.dotfiles/logs","message":"Logger initialized","mode":"production","service":"codebase-mcp-server","timestamp":"2025-11-16T07:44:16.214Z"}
+{"level":"info","message":"Loading MCP config from: /Users/kelvin/Library/Application Support/Code/User/globalStorage/kilocode.kilo-code/settings/mcp_settings.json","service":"codebase-mcp-server","timestamp":"2025-11-16T07:44:16.220Z"}
+{"level":"info","message":"Loading environment variables from MCP config for server: memory-mcp","service":"codebase-mcp-server","timestamp":"2025-11-16T07:44:16.221Z"}
+{"level":"info","message":"Starting CodeBase MCP Server...","service":"codebase-mcp-server","timestamp":"2025-11-16T07:44:16.221Z"}
+{"level":"info","message":"Database path: /Users/kelvin/.dotfiles/.sqlite/codebase.db","service":"codebase-mcp-server","timestamp":"2025-11-16T07:44:16.221Z"}
+{"level":"info","message":"Created database directory during validation: /Users/kelvin/.dotfiles/.sqlite","service":"codebase-mcp-server","timestamp":"2025-11-16T07:44:16.222Z"}
+{"level":"info","message":"Database path validated: /Users/kelvin/.dotfiles/.sqlite/codebase.db","service":"codebase-mcp-server","timestamp":"2025-11-16T07:44:16.222Z"}
+{"level":"info","message":"Connecting to database: /Users/kelvin/.dotfiles/.sqlite/codebase.db","service":"codebase-mcp-server","timestamp":"2025-11-16T07:44:16.222Z"}
+{"level":"info","message":"Database connection established successfully","service":"codebase-mcp-server","timestamp":"2025-11-16T07:44:16.225Z"}
+{"level":"warn","message":"Missing tables detected: tag_catalog, global_cache, indexing_lock, fts, code_snippets, chunks, lance_db_cache, creating missing tables","service":"codebase-mcp-server","timestamp":"2025-11-16T07:44:16.227Z"}
+{"level":"info","message":"Empty database detected, creating fresh tables","service":"codebase-mcp-server","timestamp":"2025-11-16T07:44:16.227Z"}
+{"level":"info","message":"Initializing database with CodeBase Index schema...","service":"codebase-mcp-server","timestamp":"2025-11-16T07:44:16.227Z"}
+{"level":"info","message":"Core tables created successfully","service":"codebase-mcp-server","timestamp":"2025-11-16T07:44:16.230Z"}
+{"level":"info","message":"FTS tables created successfully","service":"codebase-mcp-server","timestamp":"2025-11-16T07:44:16.232Z"}
+{"level":"info","message":"Code snippets table created successfully","service":"codebase-mcp-server","timestamp":"2025-11-16T07:44:16.233Z"}
+{"level":"info","message":"Chunks table created successfully","service":"codebase-mcp-server","timestamp":"2025-11-16T07:44:16.233Z"}
+{"level":"info","message":"LanceDB tables created successfully","service":"codebase-mcp-server","timestamp":"2025-11-16T07:44:16.234Z"}
+{"level":"info","message":"Inserting sample data...","service":"codebase-mcp-server","timestamp":"2025-11-16T07:44:16.234Z"}
+{"level":"info","message":"Inserting sample data into lance_db_cache table...","service":"codebase-mcp-server","timestamp":"2025-11-16T07:44:16.236Z"}
+{"level":"info","message":"Sample data inserted successfully into lance_db_cache: 2 records","service":"codebase-mcp-server","timestamp":"2025-11-16T07:44:16.237Z"}
+{"level":"info","message":"Sample data inserted successfully","service":"codebase-mcp-server","timestamp":"2025-11-16T07:44:16.237Z"}
+{"level":"info","message":"Database initialization completed successfully","service":"codebase-mcp-server","timestamp":"2025-11-16T07:44:16.237Z"}
+{"level":"info","message":"LanceDB not supported on this platform, using SQLite-only mode","service":"codebase-mcp-server","timestamp":"2025-11-16T07:44:16.238Z"}
+{"level":"info","message":"No .env file found, using system environment variables only","service":"codebase-mcp-server","timestamp":"2025-11-16T07:44:16.238Z"}
+{"baseUrl":"https://api.siliconflow.cn/v1","dimensions":1024,"embeddingType":"openai-compatible","envKeys":{"EMBEDDING_API_KEY":true,"EMBEDDING_BASE_URL":true,"EMBEDDING_MODEL_NAME":true,"EMBEDDING_PROVIDER_TYPE":true,"OPENAI_API_KEY":true},"hasApiKey":true,"level":"info","maxChunkSize":300,"message":"Environment variables for embedding provider:","modelName":"Qwen/Qwen3-Embedding-0.6B","service":"codebase-mcp-server","timestamp":"2025-11-16T07:44:16.238Z"}
+{"level":"info","message":"Initializing embedding provider from environment variables: openai-compatible (SiliconFlow)","service":"codebase-mcp-server","timestamp":"2025-11-16T07:44:16.239Z"}
+{"level":"info","message":"Configuring embedding provider: siliconflow","service":"codebase-mcp-server","timestamp":"2025-11-16T07:44:16.239Z"}
+{"level":"info","message":"Embedding provider configured: env-configured-siliconflow-provider","service":"codebase-mcp-server","timestamp":"2025-11-16T07:44:16.240Z"}
+{"level":"info","message":"SiliconFlow embedding provider initialized from environment","service":"codebase-mcp-server","timestamp":"2025-11-16T07:44:16.240Z"}
+{"level":"info","message":"CodebaseIndexServer initialized successfully","service":"codebase-mcp-server","timestamp":"2025-11-16T07:44:16.240Z"}
+{"level":"info","message":"CodeBase MCP Server started successfully","service":"codebase-mcp-server","timestamp":"2025-11-16T07:44:16.241Z"}
+{"level":"info","message":"Received SIGTERM, shutting down...","service":"codebase-mcp-server","timestamp":"2025-11-16T07:46:32.025Z"}

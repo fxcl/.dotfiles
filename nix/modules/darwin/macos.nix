@@ -38,7 +38,8 @@ in
 
         # `brew install --cask`
         casks = [
-        "pareto-security"
+          "sfm"
+          "pareto-security"
           "swiftdefaultappsprefpane"
           #"iina"
           "stolendata-mpv"
@@ -46,8 +47,6 @@ in
           "chai"
           "keka"
           "kekaexternalhelper"
-          "font-jetbrains-mono-nerd-font"
-          "font-mononoki-nerd-font"
           #"eloston-chromium"
           # "code-composer-studio"
           #"crossover"
@@ -120,7 +119,6 @@ in
           #"shortcat"
           "typos-cli"
           "mint"
-          "huggingface-cli"
           "charmbracelet/tap/mods"
           # "font-sketchybar-app-font"
           "sketchybar"
@@ -802,8 +800,6 @@ in
             rm -rf /Applications/Emacs.app
           fi
 
-          #ln -sfv ~/.config/VSCodium/settings.json ~/Library/Application\ Support/VSCodium/User/settings.json
-          #ln -sfv ~/.config/VSCodium/keybindings.json ~/Library/Application\ Support/VSCodium/User/#keybindings.json
         '';
       };
     };
